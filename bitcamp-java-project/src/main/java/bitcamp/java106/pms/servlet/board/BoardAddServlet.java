@@ -14,9 +14,9 @@ import bitcamp.java106.pms.dao.BoardDao;
 import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.servlet.InitServlet;
 
-@SuppressWarnings("serial")
 @WebServlet("/board/add")
 public class BoardAddServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     
     BoardDao boardDao;
     
