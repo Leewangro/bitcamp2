@@ -55,11 +55,10 @@ public class ClassroomListServlet extends HttpServlet{
             for (Classroom classroom : list) {
                 out.println("<tr>");
                 out.printf("<td>%d</td>"
-                        +  "<td><a href='view?no=%d'>%s</a></td>"
+                        +  "<td>%s</td>"
                         +  "<td>%s</td>"
                         +  "<td>%s</td>"
                         +  "<td>%s</td>\n",
-                    classroom.getNo(), 
                     classroom.getNo(), 
                     classroom.getTitle(), 
                     classroom.getStartDate(), 
