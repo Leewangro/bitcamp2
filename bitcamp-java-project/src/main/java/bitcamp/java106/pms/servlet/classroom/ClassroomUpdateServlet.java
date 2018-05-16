@@ -13,10 +13,10 @@ import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/classroom/update")
-public class ClassroomUpdateController implements Controller {
+public class ClassroomUpdateServlet implements Controller {
     ClassroomDao classroomDao;
     
-    public ClassroomUpdateController(ClassroomDao classroomDao) {
+    public ClassroomUpdateServlet(ClassroomDao classroomDao) {
         this.classroomDao = classroomDao;
     }
     

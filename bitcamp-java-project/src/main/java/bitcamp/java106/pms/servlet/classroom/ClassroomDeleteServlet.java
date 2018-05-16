@@ -11,10 +11,10 @@ import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
 
 @Component("/classroom/delete")
-public class ClassroomDeleteController implements Controller {
+public class ClassroomDeleteServlet implements Controller {
     ClassroomDao classroomDao;
     
-    public ClassroomDeleteController(ClassroomDao classroomDao) {
+    public ClassroomDeleteServlet(ClassroomDao classroomDao) {
         this.classroomDao = classroomDao;
     }
     
