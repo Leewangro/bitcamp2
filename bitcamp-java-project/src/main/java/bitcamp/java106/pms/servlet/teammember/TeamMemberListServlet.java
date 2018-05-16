@@ -52,10 +52,12 @@ public class TeamMemberListServlet extends HttpServlet {
             out.println("<table border='1'>");
             out.println("<tr>");
             out.println("   <th>아이디</th>");
+            out.println("   <th>삭제</th>");
             out.println("</tr>");
             for (String memberId : list) {
                 out.print("<tr>");
                 out.printf("<td>%s, </td>", memberId);
+                out.printf("<td><a href='form3.html'>삭제</a></td>\n");
                 out.print("</tr>");
             }
             
@@ -67,11 +69,8 @@ public class TeamMemberListServlet extends HttpServlet {
         out.println("<p>");
         out.println("<a href='form.html'>목록</a>");
         out.println("<button>변경</button>");
-        out.printf("<a href='form3.html'>삭제</a>\n");
         out.println("</p>");
         out.println("</form>"); 
-        out.println("</body>");
-        out.println("</html>"); 
         out.println("</body>");
         out.println("</html>");
     }

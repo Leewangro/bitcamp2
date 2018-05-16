@@ -34,7 +34,7 @@ public class TeamMemberDeleteServlet extends HttpServlet {
     }
     
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -47,7 +47,7 @@ public class TeamMemberDeleteServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
-        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+        out.println("<meta http-equiv='Refresh' content='1;url=form.html'>");
 
         out.println("<title>팀 회원 등록</title>");
         out.println("</head>");
