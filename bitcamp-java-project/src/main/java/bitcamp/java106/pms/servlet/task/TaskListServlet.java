@@ -53,20 +53,23 @@ public class TaskListServlet extends HttpServlet {
         
         try {
             Team team = teamDao.selectOne(teamName);
+            
             if (team == null) {
                 out.printf("<p>'%s' 팀은 존재하지 않습니다.\n<p>", teamName);
                 return;
             }
+            out.println("<p><a href='form2.html'>팀 등록</a></p>");
+
             List<Task> list = taskDao.selectList(team.getName());
             for (Task task : list) {
                 out.println("<table border='1'>");
                 out.println("<tr>");
-                out.printf("<td>%d</td>"
+                out.printf("<td><a href='view?no=%d'>%d</a></td>"
                         + "<td>%s</td>"
                         + "<td>%s</td>"
                         + "<td>%s</td>"
                         + "<td>%s</td>\n", 
-                        task.getNo(), task.getTitle(), 
+                        task.getNo(), task.getNo(), task.getTitle(), 
                         task.getStartDate(), task.getEndDate(),
                         (task.getWorker() == null) ? 
                                 "-" : task.getWorker().getId());

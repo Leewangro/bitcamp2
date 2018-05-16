@@ -54,26 +54,26 @@ public class TaskViewServlet extends HttpServlet {
                 return;
             }
             out.println("<table border='1'>");
-            out.println("<tr><td>팀명</td></tr>");
+            out.print("<tr><td>팀명</td>");
             out.printf("   <td><input type='text' name='teamName' value='%s' readonly></td></tr>\n",
                     task.getTeam().getName());
-            out.println("<tr><td>작업번호</td></tr>");
-            out.printf("    <input type='text' name='no' value='%d' readonly></td></tr>\n", 
+            out.print("<tr><td>작업번호</td>");
+            out.printf("    <td><input type='text' name='no' value='%d' readonly></td></tr>\n", 
                     no);
-            out.println("<tr><td>작업명</td></tr>");
+            out.print("<tr><td>작업명</td>");
             out.printf("    <td><input type='text' name='title' value='%s'></td></tr>\n",
                     task.getTitle());
-            out.println("<tr><th>시작일</th>");
+            out.print("<tr><th>시작일</th>");
             out.printf("    <td><input type='date' name='startDate' value='%s'></td></tr>\n",
                     task.getStartDate());
-            out.println("<tr><th>종료일</th>");
+            out.print("<tr><th>종료일</th>");
             out.printf("    <td><input type='date' name='endDate' value='%s'></td></tr>\n",
                     task.getEndDate());
-            out.println("<tr><td>작업자</td></tr>");
+            out.print("<tr><td>작업자</td>");
             out.printf("    <td><input type='text' name='description' value='%s'></td></tr>\n",
                     (task.getWorker() == null) ? "-" : task.getWorker().getId());
-            out.println("<tr><td>작업상태</td></tr>");
-            out.printf("    <td><input type='date' name='endDate' value='%s'></td></tr>\n",
+            out.print("<tr><td>작업상태</td>");
+            out.printf("    <td><input type='text' name='state' value='%s'></td></tr>\n",
                     getStateLabel(task.getState()));
             out.println("</table>");
         } catch (Exception e) {
