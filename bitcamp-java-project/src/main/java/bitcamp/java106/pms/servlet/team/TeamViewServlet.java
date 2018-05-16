@@ -54,7 +54,7 @@ public class TeamViewServlet extends HttpServlet {
                 out.println("해당 이름의 팀이 없습니다.");
             } 
             out.println("<table border='1'>");
-            out.println("<tr><th>팀명</th>");
+            out.println("<tr><th>팀명</th>"); 
             out.printf("    <td><input type='text' name='name' value='%s'></td></tr>\n",
                     team.getName());
             out.println("<tr><th>설명</th>");
