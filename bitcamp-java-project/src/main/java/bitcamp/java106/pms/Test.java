@@ -16,7 +16,7 @@ public class Test {
         System.out.println(request.getParameter("content"));
         System.out.println(request.getParameter("age"));
         System.out.println("기남이형 잘생겼어요~");
-        System.out.println("제가 막내입니다.-왕로");
+        System.out.println("내가먼저!!");
  
     }
 
