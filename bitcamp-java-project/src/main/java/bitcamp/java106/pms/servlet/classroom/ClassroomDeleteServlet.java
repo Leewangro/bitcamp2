@@ -1,40 +1,68 @@
 // Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.classroom;
 
+import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 
 import bitcamp.java106.pms.controller.Controller;
+import bitcamp.java106.pms.dao.BoardDao;
 import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
+import bitcamp.java106.pms.servlet.InitServlet;
 
-@Component("/classroom/delete")
-public class ClassroomDeleteServlet implements Controller {
+@WebServlet("/classroom/delete")
+public class ClassroomDeleteServlet extends HttpServlet {
     ClassroomDao classroomDao;
     
-    public ClassroomDeleteServlet(ClassroomDao classroomDao) {
-        this.classroomDao = classroomDao;
+    @Override
+    public void init() throws ServletException {
+        classroomDao = InitServlet.getApplicationContext().getBean(ClassroomDao.class);
     }
     
     @Override
-    public void service(ServerRequest request, ServerResponse response) {
+    protected void doGet(
+            HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         int no = Integer.parseInt(request.getParameter("no"));
+        
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+        out.println("<title>수업 삭제</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>수업 삭제 결과</h1>");
+        
         
         try {
             int count = classroomDao.delete(no);
             
             if (count == 0) {
-                out.println("유효하지 않은 게시물 번호입니다.");
+                out.println("<p>유효하지 않은 게시물 번호입니다.</p>");
             } else {
-                out.println("삭제하였습니다.");
+                out.println("<p>삭제하였습니다.</p>");
             }
         } catch (Exception e) {
-            out.println("삭제 실패!");
+            out.println("<p>삭제 실패!</p>");
             e.printStackTrace(out);
         }
+        out.println("</body>");
+        out.println("</html>");
+        
+        
     }
 
 }
