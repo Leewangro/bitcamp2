@@ -64,10 +64,8 @@ public class TeamViewServlet extends HttpServlet {
             out.printf("    <td><input type='text' name='maxQty' value='%s'></td></tr>\n",
                     team.getMaxQty());
             out.println("<tr><th>기간</th>");
-            out.printf("    <td><input type='text' value='%s~%s'></td></tr>\n",
-                    team.getStartDate(), team.getEndDate());
-
-            
+            out.printf("    <td><input type='date' name='startDate' value='%s'>~"
+                    + "<input type='date' name='endDate' value='%s'></td></tr>\n",team.getStartDate(),team.getEndDate());
             out.println("</table>");
             
            
