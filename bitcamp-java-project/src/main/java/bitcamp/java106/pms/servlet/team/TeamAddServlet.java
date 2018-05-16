@@ -22,7 +22,7 @@ import bitcamp.java106.pms.server.ServerResponse;
 import bitcamp.java106.pms.servlet.InitServlet;
 
 @WebServlet("/team/add")
-public class TeamAddController extends HttpServlet {
+public class TeamAddServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     TeamDao teamDao;
