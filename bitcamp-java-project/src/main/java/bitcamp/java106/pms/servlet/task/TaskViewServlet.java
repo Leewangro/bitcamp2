@@ -87,7 +87,7 @@ public class TaskViewServlet extends HttpServlet {
         out.println("</p>");
         out.println("</form>"); 
         out.println("</body>");
-        out.println("</html>"); 
+        out.println("</html>");
     }
 
     public static String getStateLabel(int state) {
