@@ -32,7 +32,7 @@ public class ClassroomAddServlet implements Controller {
         try {
             classroomDao.insert(classroom);
             out.println("등록 성공!");
-        } catch (Exception e) { 
+        } catch (Exception e) {  
             out.println("등록 실패!");
             e.printStackTrace(out);
         }
