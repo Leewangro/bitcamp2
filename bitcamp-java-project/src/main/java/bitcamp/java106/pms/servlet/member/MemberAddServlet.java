@@ -50,10 +50,10 @@ public class MemberAddServlet extends HttpServlet {
         out.println("<meta charset='UTF-8'>");
         out.println("<meta http-equiv='Refresh' content='1;url=list'>");
         
-        out.println("<title>게시물 등록</title>");
+        out.println("<title>회원 등록</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>게시물 등록 결과</h1>");
+        out.println("<h1>회원 등록 결과</h1>");
         
         
         try {
