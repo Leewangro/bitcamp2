@@ -34,11 +34,14 @@ public class TeamMemberDeleteServlet extends HttpServlet {
     }
     
     @Override
-    protected void doPost(
+    protected void doGet(
             HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println(request.getParameter("teamName"));
+        System.out.println( request.getParameter("memberId")); 
+        
         PrintWriter out = response.getWriter();
         String teamName = request.getParameter("teamName");
         String memberId = request.getParameter("memberId");
