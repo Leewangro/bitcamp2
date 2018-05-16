@@ -1,7 +1,14 @@
 // Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.team;
 
+import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 
@@ -9,20 +16,35 @@ import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
+import bitcamp.java106.pms.servlet.InitServlet;
 
-@Component("/team/delete")
-public class TeamDeleteController implements Controller {
+@WebServlet("/team/delete")
+public class TeamDeleteServlet extends HttpServlet {
 
-    TeamDao teamDao;
     
-    public TeamDeleteController(TeamDao teamDao) {
-        this.teamDao = teamDao;
-    }
+    private static final long serialVersionUID = 1L;
+    TeamDao teamDao;
 
     @Override
-    public void service(ServerRequest request, ServerResponse response) {
+    public void init() throws ServletException {
+        teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String name = request.getParameter("name");
+        
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+        out.println("<title>팀 삭제</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>팀 삭제 결과</h1>");
         
         try {
             int count = teamDao.delete(name);
@@ -36,6 +58,8 @@ public class TeamDeleteController implements Controller {
             out.println("삭제 실패!");
             e.printStackTrace(out);
         }
+        out.println("</body>");
+        out.println("</html>");
     }
     
 }
