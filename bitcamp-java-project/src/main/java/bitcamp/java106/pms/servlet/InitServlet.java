@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import bitcamp.java106.pms.AppConfig;
-import bitcamp.java106.pms.dao.BoardDao;
 
 // 하는 일:
 // => Spring IoC 컨테이너(bean container)를 준비한다. 
@@ -29,7 +28,6 @@ public class InitServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         iocContainer = new AnnotationConfigApplicationContext(AppConfig.class);
-        System.out.println(iocContainer.getBean(BoardDao.class));
     }
     
     // 다른 서블릿이 사용할 자원을 준비하는 일만 하기 때문에 
