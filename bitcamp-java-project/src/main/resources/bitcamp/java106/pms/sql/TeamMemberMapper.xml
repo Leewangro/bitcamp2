@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitcamp.java106.pms.dao.TeamMemberDao">
+
+	<select id="selectList" resultType="String" parameterType="String">
+		select mid from pms2_team_member where tnm=#{teamName}
+		<!-- limit #{startIndex}, #{pageSize} -->
+	</select>
+
+	<insert id="insert" parameterType="map">
+		insert into
+		pms2_team_member(tnm,mid) values(#{teamName},#{memberId})
+	</insert>
+
+	<delete id="delete" parameterType="map">
+		delete from pms2_team_member
+		where tnm=#{teamName} and mid=#{memberId}
+	</delete>
+
+	<select id="isExist" parameterType="map" resultType="int">
+		select count(*)
+		from pms2_team_member
+		where tnm=#{teamName} and mid=#{memberId}
+	</select>
+	
+	
+
+</mapper>
