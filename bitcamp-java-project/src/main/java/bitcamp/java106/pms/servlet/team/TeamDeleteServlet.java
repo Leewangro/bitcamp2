@@ -50,12 +50,12 @@ public class TeamDeleteServlet extends HttpServlet {
             int count = teamDao.delete(name);
     
             if (count == 0) {
-                out.println("해당 이름의 팀이 없습니다.");
+                out.println("<p>해당 이름의 팀이 없습니다.<p>");
             } else {
-                out.println("삭제하였습니다.");
+                out.println("<p>삭제하였습니다.<p>");
             }
         } catch (Exception e) {
-            out.println("삭제 실패!");
+            out.println("<p>삭제 실패!<p>");
             e.printStackTrace(out);
         }
         out.println("</body>");
