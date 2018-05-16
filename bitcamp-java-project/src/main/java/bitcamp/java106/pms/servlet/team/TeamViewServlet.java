@@ -82,7 +82,7 @@ public class TeamViewServlet extends HttpServlet {
         out.println("</p>");
         out.println("</form>"); 
         out.println("</body>");
-        out.println("</html>");
+        out.println("</html>"); 
     }
 }
 
