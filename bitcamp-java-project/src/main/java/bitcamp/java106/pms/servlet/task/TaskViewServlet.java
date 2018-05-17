@@ -63,14 +63,14 @@ public class TaskViewServlet extends HttpServlet {
             out.print("<tr><td>작업명</td>");
             out.printf("    <td><input type='text' name='title' value='%s'></td></tr>\n",
                     task.getTitle());
-            out.print("<tr><th>시작일</th>");
+            out.print("<tr><td>시작일</td>");
             out.printf("    <td><input type='date' name='startDate' value='%s'></td></tr>\n",
                     task.getStartDate());
-            out.print("<tr><th>종료일</th>");
+            out.print("<tr><td>종료일</td>");
             out.printf("    <td><input type='date' name='endDate' value='%s'></td></tr>\n",
                     task.getEndDate());
             out.print("<tr><td>작업자</td>");
-            out.printf("    <td><input type='text' name='description' value='%s'></td></tr>\n",
+            out.printf("    <td><input type='text' name='memberId' value='%s'></td></tr>\n",
                     (task.getWorker() == null) ? "-" : task.getWorker().getId());
             out.print("<tr><td>작업상태</td>");
             out.printf("    <td><input type='text' name='state' value='%s'></td></tr>\n",
@@ -83,7 +83,10 @@ public class TaskViewServlet extends HttpServlet {
         out.println("<p>");
         out.println("<a href='list'>목록</a>");
         out.println("<button>변경</button>");
-        out.printf("<a href='delete?name=%d'>삭제</a>\n", no);
+        out.printf("<a href='delete?no=%d'>삭제</a>\n", no);
+        out.printf("<a href='state?no=%d&state=1'>작업중</a>");
+        out.printf("<a href='state?no=%d&state=0'>작업대기</a>");
+        out.printf("<a href='state?no=%d&state=9'>작업완료</a>");
         out.println("</p>");
         out.println("</form>"); 
         out.println("</body>");
