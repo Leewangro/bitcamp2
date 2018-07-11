@@ -3,44 +3,86 @@ package bitcamp.java106.pms.domain;
 import java.io.Serializable;
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Board implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int no;
     private String title;
     private String content;
-    private Date createdDate;
+    private String name;
+    private int hits;
+    private String down;
     
-    // 개발하는 동안 객체의 내용을 확인하기 위해서 toString()을 오버라이딩 한다.
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date createdDate;
+
     @Override
     public String toString() {
-        return "Board [no=" + no + ", title=" + title + ", content=" + content + ", createdDate=" + createdDate + "]";
+        return "Board [no=" + no + ", title=" + title + ", content=" + content + ", name=" + name + ", hits=" + hits
+                + ", down=" + down + ", createdDate=" + createdDate + "]";
     }
-    
+
     public int getNo() {
         return no;
     }
+
     public void setNo(int no) {
         this.no = no;
     }
+
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getContent() {
         return content;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public void setHits(int hits) {
+        this.hits = hits;
+    }
+
+    public String getDown() {
+        return down;
+    }
+
+    public void setDown(String down) {
+        this.down = down;
+    }
+
     public Date getCreatedDate() {
         return createdDate;
     }
+
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+    
+    // 개발하는 동안 객체의 내용을 확인하기 위해서 toString()을 오버라이딩 한다.
+   
     
     
 }

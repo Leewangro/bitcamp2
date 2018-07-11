@@ -1,0 +1,32 @@
+package bitcamp.java106.pms.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import bitcamp.java106.pms.domain.Board;
+
+public interface BoardDao_bak {
+    int delete(int no) ;
+    List<Board> selectList(Map<String,Object> params);
+    int insert(Board board);
+    int update(Board board);  
+    Board selectOne(int no); 
+}
+
+//ver 52 - ?˜?´ì§? ?‹¨?œ„ë¡? ?°?´?„° ê°?? ¸?˜¤ê¸?
+//ver 50 - ?´?˜?Š¤ë¥? ?¸?„°?˜?´?Š¤ë¡? ë³?ê²?
+//ver 33 - Mybatis ? ?š© 
+//ver 32 - DB ì»¤ë„¥?…˜ ?? ? ?š©
+//ver 31 - JDBC API ? ?š©
+//ver 24 - File I/O ? ?š©
+//ver 23 - @Component ?• ?…¸?…Œ?´?…˜?„ ë¶™ì¸?‹¤.
+//ver 22 - ì¶”ìƒ ?´?˜?Š¤ AbstractDaoë¥? ?ƒ?† ë°›ëŠ”?‹¤.
+//ver 19 - ?š°ë¦? ë§Œë“  ArrayList ???‹  java.util.LinkedListë¥? ?‚¬?š©?•˜?—¬ ëª©ë¡?„ ?‹¤ë£¬ë‹¤. 
+//ver 18 - ArrayListë¥? ?´?š©?•˜?—¬ ?¸?Š¤?„´?Š¤(?˜ ì£¼ì†Œ) ëª©ë¡?„ ?‹¤ë£¬ë‹¤. 
+// ver 16 - ?¸?Š¤?„´?Š¤ ë³??ˆ˜ë¥? ì§ì ‘ ?‚¬?š©?•˜?Š” ???‹  ê²Ÿí„°, ?…‹?„° ?‚¬?š©.
+// ver 14 - BoardControllerë¡œë??„° ?°?´?„° ê´?ë¦? ê¸°ëŠ¥?„ ë¶„ë¦¬?•˜?—¬ BoardDao ?ƒ?„±.
+
+
+
+
+

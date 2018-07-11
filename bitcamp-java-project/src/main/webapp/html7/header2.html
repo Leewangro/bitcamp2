@@ -1,0 +1,155 @@
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/common.css">
+<div class="header-box">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+ <div class="wrapper">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" style="text-align: right;">
+    <ul id="nav-id" class="navbar-nav">
+      <li class="nav-item active" >
+      <div class="id-bar"">
+            <span class="id-bar-text">닉네임:</span><span id="username" class="id-bar-text"></span>
+            <a id="logoutBtn" href='' class="btn btn-success btn-sm">로그아웃</a>
+      </div>
+      </li>
+
+
+    </ul>
+  </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <div class="wrapper">
+  <a class="navbar-brand" href="#"><img src="/bitcamp-java-project/html7/img/logo.gif"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          관광지
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">전체</a>
+          <a class="dropdown-item" href="#">자연</a>
+          <a class="dropdown-item" href="#">문화관광지</a>
+          <a class="dropdown-item" href="#">도보</a>
+          <a class="dropdown-item" href="#">레저/체험</a>
+          <a class="dropdown-item" href="#">섬 속의 섬</a>
+          <a class="dropdown-item" href="#">포토스팟</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          음식점
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">전체</a>
+          <a class="dropdown-item" href="#">향토음식</a>
+          <a class="dropdown-item" href="#">한식</a>
+          <a class="dropdown-item" href="#">양식</a>
+          <a class="dropdown-item" href="#">일식</a>
+          <a class="dropdown-item" href="#">중식</a>
+          <a class="dropdown-item" href="#">동남아식</a>
+          <a class="dropdown-item" href="#">무슬림프렌들리</a>
+          <a class="dropdown-item" href="#">카페</a>
+          <a class="dropdown-item" href="#">고메워크선정맛집</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          숙박
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="javascript:void(0)" class="dropdown-item">전체</a>
+            <a href="javascript:void(0)" class="dropdown-item">호텔</a>
+            <a href="javascript:void(0)" class="dropdown-item">리조트/콘도</a>
+            <a href="javascript:void(0)" class="dropdown-item">모텔/여관</a>
+            <a href="javascript:void(0)" class="dropdown-item">펜션/민박</a>
+            <a href="javascript:void(0)" class="dropdown-item">게스트하우스</a>
+            <a href="javascript:void(0)" class="dropdown-item">굿스테이</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          쇼핑
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="javascript:void(0)" class="dropdown-item">전체</a>
+            <a href="javascript:void(0)" class="dropdown-item">전통시장</a>
+            <a href="javascript:void(0)" class="dropdown-item">플리마켓</a>
+            <a href="javascript:void(0)" class="dropdown-item">면세점</a>
+            <a href="javascript:void(0)" class="dropdown-item">상점/상가</a>
+            <a href="javascript:void(0)" class="dropdown-item">특산품</a>
+            <a href="javascript:void(0)" class="dropdown-item">관광기념품</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          제주이야기
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="javascript:void(0)" class="dropdown-item">문화와역사 </a>
+            <a href="javascript:void(0)" class="dropdown-item">유네스코</a>
+            <a href="javascript:void(0)" class="dropdown-item">영상속제주</a>
+            <a href="javascript:void(0)" class="dropdown-item">제주명품42</a>
+            <a href="javascript:void(0)" class="dropdown-item">우수관광사업체</a>
+            <a href="javascript:void(0)" class="dropdown-item">지오브랜드</a>
+            <a href="javascript:void(0)" class="dropdown-item">템플스테이</a>
+            <a href="javascript:void(0)" class="dropdown-item">4·3  70주년</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          여행필수정보
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="javascript:void(0)" class="dropdown-item">날씨</a>
+            <a href="javascript:void(0)" class="dropdown-item">교통</a>
+            <a href="javascript:void(0)" class="dropdown-item">편의시설</a>
+            <a href="javascript:void(0)" class="dropdown-item">가이드북</a>
+            <a href="javascript:void(0)" class="dropdown-item">관광문의</a>
+            <a href="javascript:void(0)" class="dropdown-item">무장애 관광</a>
+            <a href="javascript:void(0)" class="dropdown-item">제주의료관광</a>
+            <a href="javascript:void(0)" class="dropdown-item">공지</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          제주여행추천
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="javascript:void(0)" class="dropdown-item">일정 추천</a>
+            <a href="javascript:void(0)" class="dropdown-item">여행 큐레이션</a>
+            <a href="javascript:void(0)" class="dropdown-item">테마여행</a>
+            <a href="javascript:void(0)" class="dropdown-item">축제와 행사</a>
+            <a href="javascript:void(0)" class="dropdown-item">제주人놀다</a>
+            <a href="javascript:void(0)" class="dropdown-item">알쓸신제 원정대</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          나의 여행
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="javascript:void(0)" class="dropdown-item">나의 여행일정</a>
+            <a href="javascript:void(0)" class="dropdown-item">찜한 여행</a>
+            <a href="javascript:void(0)" class="dropdown-item">나의 리뷰</a>
+            <a href="javascript:void(0)" class="dropdown-item">방문 여행지</a>
+            <a href="javascript:void(0)" class="dropdown-item">관광문의</a>
+            <a href="javascript:void(0)" class="dropdown-item">틀린정보신고</a>
+            <a href="javascript:void(0)" class="dropdown-item">정보수정</a>
+        </div>
+      </li>
+    </ul>
+    <div>
+    </div>
+  </div>
+    </div>
+</nav>
+</div>

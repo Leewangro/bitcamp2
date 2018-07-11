@@ -1,0 +1,1176 @@
+@charset "utf-8";
+/* 플래너 뷰 */
+
+#planner_header {
+    height: 85px;
+    width: 100%;
+    position: relative;
+    
+    float: left;
+}
+
+#planner_header .topnav .wrapper h1 a {
+    margin-right: 100px;
+}
+
+
+#planner_header .topnav .menu_wrap .people {
+    float: left;
+    width: 170px;   
+    height: 65px;
+    line-height: 65px;
+    border-right: solid #ebebeb 1px;
+    text-align: center;
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#planner_header .topnav .menu_wrap .people .people_title {
+    float: left;
+    border-right: solid #ebebeb 1px;
+    text-align: center;
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#planner_header .topnav .menu_wrap .people input {
+    float: left;
+    width: 140px;
+    height: 65px;
+    line-height: 62px;
+    border: 0;
+    text-align: right;
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#sub10 .dropdown-content {
+    z-index: 9999;
+}
+
+#sub10 .action {
+    position: relative;
+    width: 1200px;
+}
+.fixed {
+    width: 1200px;
+    top: 213px;
+    position: fixed;
+    z-index: 1;
+}
+
+#sub10 .plan .plan_nav {
+    position: absolute;
+    width: 144px;
+    border-top: 2px solid #dedede;
+    border-bottom: 2px solid #dedede;
+    background: white;
+    left: 50%;
+    margin-left: -750px;
+}
+
+#sub10 .plan .plan_nav .plan_nav_prev {
+    background: url(../img/sub10/plan_nav_prev.png) no-repeat;
+    background-position: center center;
+    margin-bottom: 3px;
+}
+
+#sub10 .plan .plan_nav .plan_nav_prev,
+.plan_nav_next {
+    width: 100%;
+    cursor: pointer;
+    height: 30px;
+}
+
+#sub10 .plan .plan_nav .plan_nav_list {
+    width: 100%;
+    max-height: 360px;
+    overflow-y: hidden;
+}
+
+#sub10 .plan .plan_nav .plan_nav_list .plan_nav_btn.on {
+    background: url(../img/sub10/plan_nav_line_on.gif) no-repeat;
+    background-position: left center;
+    color: #ff9320;
+}
+
+#sub10 .plan .plan_nav .plan_nav_list .plan_nav_btn {
+    width: 100%;
+    color: #b3b3b3;
+    font-size: 11px;
+    padding-left: 37px;
+    background: url(../img/sub10/plan_nav_line.gif) no-repeat;
+    background-position: left center;
+    height: 30px;
+    line-height: 12px;
+    cursor: pointer;
+}
+
+#sub10 .plan .plan_nav .plan_nav_list .plan_nav_btn.last {
+    background: url(../img/sub10/plan_nav_line_last.gif) no-repeat;
+    background-position: left center;
+    height: 10px;
+}
+
+#sub10 .plan .plan_nav .plan_nav_next {
+    background: url(../img/sub10/plan_nav_next.png) no-repeat;
+    background-position: center center;
+    margin-top: 3px;
+}
+
+#sub10 .plan .plan_cover {
+    width: 100%;
+    position: relative;
+}
+
+#sub10 .plan .plan_cover .cover_img {
+    width: 100%;
+    height: 350px;
+    background: url('http://img.earthtory.com/img/city_images/312/jeju_1425527621.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+#sub10 .plan .plan_cover .cover_bg {
+    background: url(../img/sub10/cover_bg.png) repeat-x;
+    /* linear-gradient( to bottom, transparent, rgba(0,0,0,.6));  백그라운드 이미지 대신 사용가능*/
+    width: 100%;
+    height: 204px;
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    bottom: 0px;
+}
+
+#sub10 .plan .plan_cover .plan_box {
+    position: absolute;
+    top: 180px;
+    z-index: 10;
+    left: 25px;
+}
+
+#sub10 .plan .plan_cover .plan_box .plan_title {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 10px;
+    z-index: 10;
+}
+
+#sub10 .plan .plan_cover .plan_box .plan_cont {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    z-index: 10;
+}
+
+#sub10 .plan .plan_cover .share_box {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 20;
+}
+
+#sub10 .plan .plan_cover .share_box #share {
+    float: right;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: 15px;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    z-index: 30;
+}
+
+#sub10 .plan .plan_cover .share_box #like {
+    float: right;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: 15px;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    z-index: 30;
+}
+
+#sub10 .plan .plan_mnu_box {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#sub10 .plan .plan_mnu_box1 {
+    width: 50%;
+    height: 70px;
+    border-left: 1px solid #c8c8ca;
+    border-bottom: 1px solid #c8c8ca;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: white;
+    cursor: pointer;
+    float: left;
+    box-sizing: border-box;
+}
+
+#sub10 .plan .plan_mnu_box1 .plan_mnu {
+    display: block;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 18px;
+    color: #808080;
+    float: left;
+}
+
+#sub10 .plan .plan_mnu_box1 .plan_mnu on {
+    color: #49b2e9;
+}
+
+#sub10 .plan .plan_mnu_box1 .plan_mnu_line {
+    float: left;
+    width: 1px;
+    height: 24px;
+    background: #b3b3b3;
+}
+
+#sub10 .plan .plan_mnu_box2 .pdfexcel_box {
+    float: right;
+    background: #ededed;
+    height: 37px;
+    line-height: 37px;
+    padding-left: 23px;
+    padding-right: 23px;
+}
+
+#sub10 .plan .plan_mnu_box2 .pdfexcel_box .pe_txt {
+    font-size: 13px;
+    color: #555555;
+    float: left;
+    font-weight: bold;
+}
+
+#sub10 .plan .plan_mnu_box2 {
+    float: left;
+    width: 50%;
+    height: 70px;
+    border-right: 1px solid #c8c8ca;
+    border-bottom: 1px solid #c8c8ca;
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: white;
+    cursor: pointer;
+}
+
+#sub10 .plan .plan_mnu_box2 .pdfexcel_box .down_btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    float: left;
+    margin-left: 10px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+#sub10 .plan .plan_mnu_box2 .pdfexcel_box .down_btn.pdf {
+    background: url(../img/sub10/down_btn_pdf.png) no-repeat #555555;
+}
+
+#sub10 .plan .plan_mnu_box2 .pdfexcel_box .down_btn.excel {
+    background: url(../img/sub10/down_btn_excel.png) no-repeat #555555;
+}
+
+#sub10 .plan .plan_mnu_box2 .plan_mnu_btn {
+    display: block;
+    background: #49b2e9;
+    width: 150px;
+    font-size: 18px;
+    color: white;
+    float: right;
+    padding: 5px;
+    text-align: center;
+}
+
+#sub10 .plan .day_page {
+    padding-bottom: 60px;
+    float: left;
+    
+    margin: 0 auto;
+    position: relative;
+}
+
+#sub10 .plan .day_page .day_page_left {
+    float: left;
+    width: 744px;
+    min-height: 500px;
+    padding-right: 25px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_info_box {
+    width: 100%;
+    height: 60px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_info_box .day_txt {
+    float: left;
+    background: #203341;
+    height: 60px;
+    line-height: 60px;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    width: 110px;
+    text-align: center;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_info_box .day_info {
+    float: left;
+    width: 609px;
+    background: white;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    height: 60px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_info_box .day_info .day_info_left {
+    float: left;
+    width: 430px;
+    padding-left: 10px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_info_box .day_info .day_info_left .date {
+    font-size: 12px;
+    color: #b3b3b3;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_info_box .day_info .day_info_left .day_title {
+    color: #363636;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 5px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box {
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    background: white;
+    min-height: 100px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .day_sch_num {
+    height: 65px;
+    text-align: center;
+    float: left;
+    width: 110px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .day_sch_num .sch_num {
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #10349e;
+    font-size: 16px;
+    line-height: 28px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-image: none;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content {
+    width: 604px;
+    float: left;
+    padding-top: 15px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_img {
+    float: left;
+    width: 70px;
+    height: 70px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box {
+    width: 425px;
+    float: left;
+    padding-left: 10px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_name {
+    font-size: 17px;
+    color: #555555;
+    font-weight: bold;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info {
+    height: 41px;
+    padding-top: 10px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info .tag {
+    height: 23px;
+    border: 1px solid #cccccc;
+    background: #f5f5f5;
+    font-size: 12px;
+    color: #555555;
+    line-height: 23px;
+    padding-left: 9px;
+    padding-right: 9px;
+    float: left;
+    border-radius: 3px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info .sinfo_line {
+    background: #808080;
+    width: 1px;
+    height: 10px;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info .sinfo_txt {
+    float: left;
+    font-size: 12px;
+    color: #555555;
+    line-height: 23px;
+    background: url(../img/sub10/spot_rate_icon.png) no-repeat;
+    padding-left: 20px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info .sinfo_txt span {
+    color: #fe931f;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_btn_box {
+    width: 109px;
+    float: left;
+    height: 100%;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_btn_box .spot_btn {
+    float: right;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_add_content {
+    width: 100%;
+    padding-left: 190px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_add_content .sch_price {
+    color: #555555;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_add_content .sch_price.hide {
+    display: none;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_add_content .sch_memo {
+    font-size: 13px;
+    color: #808080;
+    line-height: 18px;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_add_content .sch_memo_box {
+    display: none;
+}
+
+#sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_add_content .sch_memo_box .plan_info_box {}
+
+#sub10 .plan .day_page_right {
+    float: right;
+    width: 35%;
+    position: relative;
+}
+
+#sub10 .plan .day_page_right .right_scroll_box {
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+
+#sub10 .plan .day_page_right .right_scroll_box .day_sel {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #c8c8ca;
+    overflow: hidden;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    background: url(../img/sub10/select_arrow.gif) no-repeat right center white;
+    z-index: 99;
+}
+
+#sub10 .plan .day_page_right .right_scroll_box .day_sel .day_select {
+    width: 100px;
+    background: transparent;
+    height: 30px;
+    font-size: 16px;
+    color: #8b8b8b;
+    line-height: 30px;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+}
+
+#sub10 .plan .day_page_right .right_scroll_box .map_box {
+    width: 100%;
+    height: 305px;
+    position: relative;
+    border-bottom: 1px solid #ff9320;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+#sub10 .plan .day_page_right .right_scroll_box .spot_list_box {
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    background: white;
+    height: 195px;
+    width: 100%;
+}
+/* 전체일정표 */
+
+#sub10 .plan .day_page_all .all_schedule_title {
+    float: left;
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #121212;
+    line-height: 32px;
+}
+#sub10 .plan .day_page_all .all_schedule .tbl_basic tbody th {
+    width: 10%;
+    background-color: #f6f3f3;
+}
+#sub10 .plan .day_page_all .all_schedule .tbl_basic th:last-child, .tbl_basic td:last-child {
+    width: 30%;
+    border-right: 1px solid #d2d2d2;
+}
+
+/*sub_10_planner*/
+
+#sub10 .full_wrap {
+    width: 100%;
+    height: 824px;
+    
+}
+
+#sub10 .full_wrap .left_full_box {
+    border-right: solid 1px #a7a7a7;
+    height: 100%;
+    z-index: 999;
+    float: left;
+    overflow: hidden;
+}
+
+#sub10 .full_wrap .left_full_box .f1 {
+    float: left;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_title_box {
+    width: 160px;
+    height: 100%;
+    background: #203341;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_title_box li {
+    width: 100%;
+    height: 60px;
+    line-height: 50px;
+    background: #203341;
+    color: #fff;
+    text-align: center;
+    border-bottom: solid 1px #374854;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_title_box li .full_data_info {
+    margin-left: 15px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_title_box li .full_data_info .cal_title {
+    font-size: 15px;
+    line-height: 30px;
+    float: left;
+
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_title_box li .full_data_info .cal {
+    font-size: 12px;
+    background-color: transparent;
+    border: 0;
+    color: #49b2e9;
+    height: 30px;
+    float: left;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_title_box li .day_edit_start_btn {
+    margin-top: 18px;
+    margin-left: 10px;
+    background: url(../img/sub10/cat_set_icon.png) no-repeat;
+    padding-left: 18px;
+    line-height: 15px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu {
+    width: 160px;
+    height: 100%;
+    background: #203341;
+    overflow-y: auto;
+    max-height: 654px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li {
+    width: 100%;
+    height: 70px;
+    background: #203341;
+    color: #fff;
+    text-align: center;
+    border-bottom: solid 1px #374854;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li on {
+    background: #1a7ad9;
+    border-bottom: solid 1px #1a7ad9;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_left_box {
+    margin-top: 16px;
+    margin-left: 18px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_left_box .cat_left_day {
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_left_box .cat_left_date {
+    color: #49b2e9;
+    font-size: 11px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_right_box {
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_right_box .cat_right_weekday {
+    margin-bottom: 3px;
+    text-align: left !important;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_right_box .cat_right_city {
+    color: #b3b3b3;
+    text-align: left !important;
+}
+
+#sub10 #show_all_day {
+    line-height: 70px;
+    font-size: 15px !important;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_add_box {
+    width: 160px;
+    background: rgb(32, 51, 65);
+    color: rgb(255, 255, 255);
+    height: 424px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_add_box li {
+    padding-top: 15px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #cat_add_box li .add_box_pert {
+    width: 124px;
+    height: 32px;
+    line-height: 32px;
+    border: solid 1px #fff;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_date_controll_box {
+    width: 160px;
+    height: 100%;
+    background: #203341;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_date_controll_box li {
+    width: 100%;
+    height: 120px;
+    background: #203341;
+    color: #fff;
+    text-align: center;
+    border-bottom: solid 1px #374854;
+    font-size: 12px;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_date_controll_box li .controll_box_pert_top {
+    text-align: center;
+    border-top: solid #fff 1px;
+    margin-top: 10px;
+    padding-top: 15px;
+    width: 100%;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_date_controll_box li .controll_box_pert_top .controll_box_pert_center {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 15px;
+}
+
+#sub10 .full_wrap .left_full_box .f1 #pn_date_controll_box li .controll_box_pert_top .controll_box_pert_center img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box {
+    width: 265px;
+    border-right: solid #a9a9a9 1px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .title_box {
+    width: 265px;
+    height: 50px;
+    background: #707070;
+    color: #fff;
+    line-height: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    }
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .title_box #schedule_detail_title {
+    display: block;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .title_box #schedule_detail_title .schedule_detail_title_text {
+    width: 245px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .title_box #schedule_detail_title .schedule_detail_title_text .day_reset_btn {
+    width: 20px;
+    height: 20px;
+    background: url(../img/sub10/day_reset_icon.png) no-repeat;
+    background-size: 20px 20px;
+    margin-top: 14px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .title_box #schedule_detail_title .schedule_detail_title_text .day_next_btn {
+    width: 22px;
+    height: 24px;
+    border: solid #fff 1px;
+    background: url(../img/sub10/next_icon.png) no-repeat 6px 6px;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .title_box #schedule_detail_title .schedule_detail_title_text .day_prev_btn {
+    width: 22px;
+    height: 24px;
+    border: solid #fff 1px;
+    border-right: 0px;
+    background: url(../img/sub10/prev_icon.png) no-repeat 6px 6px;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable {
+    display: block;
+    overflow-y: scroll;
+    height: 724px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item {
+    padding: 5px;
+    cursor: move;
+    border-bottom: solid #a7a7a7 1px;
+    background: #fff;
+    width: 100%;
+    position: relative;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item_ctrl_box {
+    position: absolute;
+    top: 55px;
+    right: 7px;
+    display: none;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item_ctrl_box div {
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box {
+    width: 62px;
+    height: 55px;
+    position: relative;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box img {
+    width: 62px;
+    height: 55px;
+    float: left;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box .spot_order_box {
+    width: 22px;
+    height: 22px;
+    border-radius: 10px;
+    position: absolute;
+    background: #223b68;
+    line-height: 19px;
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box .memo_size {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+    width: 22px;
+    height: 20px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box .memo_size .memo_indi {
+    width: 22px;
+    height: 20px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .info_box {
+    padding-left: 10px;
+    width: 153px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .info_box div {
+    font-size: 12px;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .info_box .sub {
+    font-size: 12px;
+    color: #808080;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .inspot_add_box {
+    border-top: solid #a7a7a7 1px;
+    padding-top: 10px;
+    height: 49px;
+    text-align: center;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .inspot_add_box .inspot_set_box .add_inspot_spot_btn {
+    width: 104px;
+    height: 30px;
+    background: #ff9320;
+    border: solid #f7870f 1px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    margin: auto;
+
+}
+#sub10 .full_wrap .left_full_box #schedule_full_box .inspot_add_box .inspot_set_box {
+    display: inline-block;
+}
+
+#sub10 .full_wrap #right_full_box {
+    float: left;
+    position: absolute;
+    left: 425px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#sub10 .full_wrap #right_full_box #on_city_open_btn {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    background: url(../img/sub10/city_open_btn.png);
+    cursor: pointer;
+    z-index: 99;
+}
+#sub10 .full_wrap #right_full_box #city_list {
+    width: 365px;
+    z-index: 999;
+    position: absolute;
+    left: 0px;
+    background: #fff;
+    display: block;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_title {
+    width: 365px;
+    height: 50px;
+    background: #1a7ad9;
+    line-height: 50px;
+    color: #fff;
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_title .list_title_option_menu {
+    position: absolute;
+    font-size: 12px;
+    color: #fff;
+    top: 12px;
+    right: 15px;
+    font-weight: normal;
+    cursor: pointer;
+    width: 76px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border: solid 1px #fff;
+    background: url(../img/sub10/w_arrow_down.png)no-repeat 62px 10px;
+    padding-right: 6px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list #on_city_close_btn {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    background: url(../img/sub10/city_close_btn.png);
+    cursor: pointer;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box {
+    background: #fff;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_search_box {
+    height: 75px;
+    border-bottom: solid #dadada 1px;
+    padding-top: 10px;
+    background: #fff;
+    text-align: center;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_search_box #input_search {
+    width: 328px;
+    height: 31px;
+    border: solid #c8c8ca 1px;
+    padding-left: 5px;
+    font-family: 'nanum';
+    background: url(../img/sub10/search_icon.png) no-repeat;
+    background-position: 300px 4px;
+    font-size: 14px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box {
+    background: #f7f7f7;
+    height: 120px;
+    padding-top: 8px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .list_cat_item {
+    width: 68px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .list_tag_box {
+    position: relative;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .list_tag_box #map_tag_select_box {
+    width: 318px;
+    height: 31px;
+    border: solid #c8c8ca 1px;
+    background: #fff url(../img/sub10/drop_select_arrow_a.png) no-repeat 300px 12px;
+    line-height: 31px;
+    margin: 0 auto;
+    margin-top: 5px;
+    padding-left: 5px;
+    font-size: 13px;
+    color: #808080;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .list_tag_box #map_tag_select_sub_box {
+    position: absolute;
+    width: 318px;
+    padding: 10px;
+    border: solid 1px #c8c8ca;
+    background: #fff;
+    padding-bottom: 3px;
+    max-height: 252px;
+    overflow-y: auto;
+    display: none;
+    margin-top: -1px;
+    z-index: 9;
+    left: 24px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable {
+    overflow-y: scroll;
+    background: #fff;
+    height: 578px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item {
+    padding: 15px;
+    cursor: move;
+    border-bottom: solid #a7a7a7 1px;
+    background: #fff;
+    width: 100%;
+    position: relative;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item:last-child {
+    padding: 15px;
+    cursor: move;
+    border-bottom: solid #a7a7a7 0px;
+    background: #fff;
+    width: 100%;
+    position: relative;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .img_box {
+    width: 82px;
+    height: 75px;
+    position: relative;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .img_box img {
+    width: 82px;
+    height: 75px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box {
+    padding-left: 10px;
+    width: 153px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .title {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub {
+    font-size: 12px;
+    color: #808080;
+    padding-top: 5px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub .tooltip_clip_cnt.fl {
+    height: 19px;
+    padding-left: 18px;
+    line-height: 19px;
+    background: url(../img/sub10/list_clip_icon.png) no-repeat;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub .tooltip_cnt_line.fl {
+    width: 6px;
+    height: 13px;
+    margin-top: 3px;
+    border-right: solid 1px #d9d9d9;
+    margin-right: 5px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub .tooltip_review_rate.fl {
+    height: 19px;
+    padding-left: 18px;
+    line-height: 19px;
+    background: url(../img/sub10/list_review_icon.png) no-repeat;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub.include_pn_day {
+    font-size: 12px;
+    color: #808080;
+    padding-top: 8px;
+    color:#1a7ad9;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .spot_to_inspot {
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .total_view_item {
+    height: 106px;
+    background: #f0f0f0;
+    font-size: 12px;
+    color: #363636;
+    padding-top: 26px;
+    border-bottom: solid #dcdcdc 1px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#sub10 .full_wrap #right_full_box #city_list .list_box.connectedSortable .total_view_item .total_view_sub_text {
+    font-size: 11px;
+    color: #555555;
+    line-height: 18px;
+    padding-top: 5px;
+}
+
+#sub10 .full_wrap #right_full_box .fr {
+    height: 824px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+

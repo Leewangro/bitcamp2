@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.detail-view {
+    border-color: white;
+}
+.notice {
+    text-align:center;
+}
+.notice text {
+    color: dimgray;
+}
+.box-1 {
+    
+}
+.box-2 {
+    width: 1200px;
+    margin: auto;
+}
+#nav-id {
+    text-align: right;
+}
+
+

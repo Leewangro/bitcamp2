@@ -1,64 +1,16 @@
 package bitcamp.java106.pms.dao;
 
 import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.stereotype.Component;
+import java.util.Map;
 
 import bitcamp.java106.pms.domain.Board;
 
-@Component
-public class BoardDao {
-    
-    SqlSessionFactory sqlSessionFactory;
-    
-    public BoardDao(SqlSessionFactory sqlSessionFactory) {
-        this.sqlSessionFactory = sqlSessionFactory;
-    }
-    
-    public int delete(int no) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            int count = sqlSession.delete(
-                    "bitcamp.java106.pms.dao.BoardDao.delete", no);
-            sqlSession.commit();
-            return count;
-        }
-    }
-    
-    public List<Board> selectList() throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            return sqlSession.selectList(
-                    "bitcamp.java106.pms.dao.BoardDao.selectList");
-        }
-    }
-
-    public int insert(Board board) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            int count = sqlSession.insert(
-                    "bitcamp.java106.pms.dao.BoardDao.insert", board);
-            sqlSession.commit();
-            return count;
-        }
-    }
-
-    public int update(Board board) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            int count = sqlSession.update(
-                    "bitcamp.java106.pms.dao.BoardDao.update", board);
-            sqlSession.commit();
-            return count;
-        }
-    }
-
-    public Board selectOne(int no) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            return sqlSession.selectOne(
-                    "bitcamp.java106.pms.dao.BoardDao.selectOne", no);
-        }  
-    }
+public interface BoardDao {
+    List<Board> selectList(Map<String,Object> params);
 }
 
+//ver 52 - 페이지 단위로 데이터 가져오기
+//ver 50 - 클래스를 인터페이스로 변경
 //ver 33 - Mybatis 적용 
 //ver 32 - DB 커넥션 풀 적용
 //ver 31 - JDBC API 적용

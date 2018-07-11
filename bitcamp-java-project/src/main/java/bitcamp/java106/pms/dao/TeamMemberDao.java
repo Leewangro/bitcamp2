@@ -1,70 +1,20 @@
 package bitcamp.java106.pms.dao;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.stereotype.Component;
+import bitcamp.java106.pms.domain.Member;
 
-@Component
-public class TeamMemberDao {
-
-    SqlSessionFactory sqlSessionFactory;
-    
-    public TeamMemberDao(SqlSessionFactory sqlSessionFactory) {
-        this.sqlSessionFactory = sqlSessionFactory;
-    }
-    
-    public int insert(String teamName, String memberId) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            HashMap<String,Object> paramMap = new HashMap<>();
-            paramMap.put("teamName", teamName);
-            paramMap.put("memberId", memberId);
-            
-            int count = sqlSession.insert(
-                    "bitcamp.java106.pms.dao.TeamMemberDao.insert", paramMap);
-            sqlSession.commit();
-            return count;
-        }
-    }
-    
-    public int delete(String teamName, String memberId) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            HashMap<String,Object> paramMap = new HashMap<>();
-            paramMap.put("teamName", teamName);
-            paramMap.put("memberId", memberId);
-            
-            int count = sqlSession.delete(
-                    "bitcamp.java106.pms.dao.TeamMemberDao.delete", paramMap);
-            sqlSession.commit();
-            return count;
-        } 
-    }
-    
-    public List<String> selectList(String teamName) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            return sqlSession.selectList(
-                    "bitcamp.java106.pms.dao.TeamMemberDao.selectList", teamName);
-        }
-    }
-    
-    public boolean isExist(String teamName, String memberId) throws Exception {
-        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            HashMap<String,Object> paramMap = new HashMap<>();
-            paramMap.put("teamName", teamName);
-            paramMap.put("memberId", memberId);
-            
-            int count = sqlSession.selectOne(
-                    "bitcamp.java106.pms.dao.TeamMemberDao.isExist", paramMap);
-            if (count > 0)
-                return true;
-            else 
-                return false;
-        }
-    }
+public interface TeamMemberDao {
+    int insert(Map<String,Object> params);
+    int delete(Map<String,Object> params);
+    List<String> selectList(String teamName);
+    List<Member> selectListWithEmail(String teamName);
+    boolean isExist(Map<String,Object> params);
 }
 
+//ver 50 - 클래스를 인터페이스로 전환
+//ver 37 - selectListWithEmail() 추가 
 //ver 33 - Mybatis 적용
 //ver 32 - DB 커넥션 풀 적용
 //ver 31 - JDBC API 적용

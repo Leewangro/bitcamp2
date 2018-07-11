@@ -1,5 +1,46 @@
 # 자바 프로젝트
 
+## src42 - JSP 적용
+학습목표
+    - JSP를 적용하여 MVC 아키텍처를 완성한다.
+    - JSP를 활용할 수 있다.
+작업내용
+    - 서블릿에서 수행하던 UI 출력을 JSP로 옮긴다.
+
+## src41 - 쿠키와 세션 기술 적용
+학습목표
+    - 쿠키와 세션을 이용하여 로그인을 처리할 수 있다.
+    - Referer 헤더의 용도를 이해한다.
+작업내용
+    - 쿠키를 이용하여 아이디를 기억하는 로그인 폼 만들기
+    - 세션을 이용하여 로그인 사용자 정보를 보관하고 사용하기
+    - 로그인 후 Referer 헤더 값을 참조하여 이전 페이지로 이동하게 한다.
+    
+## src40 - Filter, Listener 기술 적용
+학습목표
+    - 필터의 구동 원리를 이해하고 적용할 수 있다.
+    - FilterConfig 객체를 사용하여 web.xml에 있는 init-param 값을 사용할 수 있다.
+    - 리스너의 구동 원리를 이해하고 적용할 수 있다.
+    - 컨텍스트 파라미터를 설정하고 사용할 수 있다.
+작업내용
+    - Filter에서 클라이언트 데이터 인코딩 지정을 수행한다.
+      (CharacterEncodingFilter)
+    - ServletContextListener 구현체에서 스프링 IoC 컨테이너 준비
+      (ContextLoaderListener, WebApplicationContextUtils)
+
+## src39 - forward, include 기술 적용 
+학습목표
+    - forward와 include의 용도를 이해하고 적용할 수 있다.
+작업내용
+    - 오류 처리 코드를 별도의 서블릿으로 분리하여 forward 한다.
+    - 팀 상세보기 화면을 여러 서블릿으로 분리하여 include 한다.
+
+## src38 - refresh, redirect 기술 적용
+학습목표
+    - refresh와 redirect의 동작을 이해하고 사용할 수 있다.
+작업내용
+    - 등록, 변경, 삭제 후 refresh와 redirect를 적용하기
+
 ## src37 - 서블릿 기술 적용
 학습목표
     - 서블릿을 만들고 배치할 수 있다.
