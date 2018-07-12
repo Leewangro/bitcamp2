@@ -44,12 +44,10 @@
 <body>
 	<div id="header"></div>
 	<div id="sub09" class="container">
-		<div class="tit-img">
-			<img id="plan-title-img" src="">
-		</div>
+
 		<div class="content">
 			<div class="plan-info-box">
-				<div class="info-left-box">
+				<nav class="info-left-box">
 					<div class="user-info-box">
 						<div class="author-box">
 							<div class="author-img">
@@ -81,7 +79,7 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</nav>
 				<div class="info-right-box">
 					<div class="plan-info-top">
 						<div class="plan-detail-txt">
@@ -121,6 +119,7 @@
 										126.570667),
 								level : 3
 							};
+
 							var map = new daum.maps.Map(container, options);
 						</script>
 					</div>
@@ -160,73 +159,85 @@
 													</p>
 													<div class="author-info">
 														<div class="conts-label">
-															<div class="spot-like-count">
+															<div class="like-count">
 																<a class="">좋아요<span>170</span></a>
 															</div>
-															<div class="spot-commont-count">
-																<a class="show-comments-of-note">댓글<span>100</span></a>
+															<div class="comment-count">
+																<a class="show-comments-of-note"  id="comment-space">댓글<span>100</span></a>
+																								<!-- 스크립트로 이동을 위한 아이디 -->
 															</div>
 														</div>
 													</div>
-												</div>
-												<div class="spot-comment-content"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="story-nav fix">
-						<div class="nav-warp" style="height: 678px;">
-							<ul>
-								<li><a class="btn-top nav-btn-top story-view-nav-btn"
-									data-id="top">Top</a></li>
-								<li class="story-view-nav-li"><a class="story-view-nav-btn"
-									data-id="0"> <span>Day</span><span>1</span>
-								</a></li>
-								<li class="story-view-nav-li"><a
-									class="nav-cmt story-view-nav-btn" data-id="comment"> <span
-										class="plan-comment-count">5</span>
-								</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="comment-wrap" id="plan-detail-comment-wrap-area">
-						<h3>
-							댓글 (<span class="plan-comment-count">16</span>)
-						</h3>
-						<div class="view-comment">
-							<div id="plan-detail-comment-area">
-								<div class="plan-comment">
-									<div class="spot-comment-content">
-										<div class="comment-write">
-											<div class="my-p">
-												<div class="my-p-img">
-													<div>
-														<img src="../../img/sub09/me.jpg">
+
+													<!-- 라이브리 시티 설치 코드 -->
+													<div id="lv-container" data-id="city"
+														data-uid="MTAyMC8zNzk5NC8xNDUyNA==">
+														<script type="text/javascript">
+															(function(d, s) {
+																var j, e = d
+																		.getElementsByTagName(s)[0];
+
+																if (typeof LivereTower === 'function') {
+																	return;
+																}
+
+																j = d
+																		.createElement(s);
+																j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+																j.async = true;
+
+																e.parentNode
+																		.insertBefore(
+																				j,
+																				e);
+															})(document,
+																	'script');
+														</script>
+														<noscript>라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
 													</div>
+													<!-- 시티 설치 코드 끝 -->
 												</div>
-											</div>
-											<textarea class="form-control new-comment-textarea"
-												placeholder="댓글을 입력해주세요."></textarea>
-											<div class="comment-edit-btns">
-												<button class="btn btn-primary save-new-comment">저장</button>
 											</div>
 										</div>
-									</div>
-									<div class="spot-comment-list">
-										<ul class="comment-list">
-											<li class="commentRoot">
-												<div>
-													
-												</div>
-											</li>
-										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+
+					<div class="story-nav fix">
+						<nav class="nav-warp" style="height: 678px;">
+							<ul>
+								<li>
+									<a class="btn-top nav-btn-top story-view-nav-btn"
+										data-id="top" id="top">Top</a>
+								</li>
+								
+								<li class="story-view-nav-li">
+									<a class="story-view-nav-day-btn" data-id="0"> 
+										<span>Day</span><span>1</span>
+									</a>
+								</li>
+								
+								<li class="story-view-nav-li">
+									<a class="story-view-nav-day-btn" data-id="0"> 
+										<span>Day</span><span>2</span>
+									</a>
+								</li>
+								
+								<li class="story-view-nav-li">
+									<a class="story-view-nav-day-btn" data-id="0"> 
+										<span>Day</span><span>3</span>
+									</a>
+								</li>
+								
+								<li class="story-view-nav-li">
+									<a class="nav-cmt story-view-nav-btn" data-id="comment" id="sm-comment" >
+										 <span class="plan-comment-count">5</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>
@@ -240,6 +251,47 @@
 			/* id 지정을 통해서도 가능합니다. 
 			 $("#header").load("header.html #navbar")
 			 */
+		});
+	</script>
+
+	<script type="text/javascript">
+	$('#top').click(function() {      // When arrow is clicked
+	    $('body,html').animate({
+	        scrollTop : 0                       // Scroll to top of body
+	    }, 500);
+	});
+	</script> 
+	
+	<script type="text/javascript">
+	$('#sm-comment').click(function() {      // When arrow is clicked
+	    $('body,#comment-space').animate({
+	        scrollTop : 0                       // Scroll to top of body
+	    }, 500);
+	});
+	</script>
+	
+ 
+	<script>
+		//왼쪽 fixed
+		$(document).ready(function() {
+			$(window).bind('scroll', function() {
+				var container = $('.container').height();
+				var content = $('.content').height();
+				if ($(window).scrollTop() > container - content + 200) {
+					if ($(window).scrollTop() > content - 310) {
+						$('nav').removeClass('fixed');
+						$('nav').addClass('absolute');
+						return;
+					}
+					$('nav').removeClass('action');
+					$('nav').removeClass('absolute');
+					$('nav').addClass('fixed');
+				} else {
+					$('nav').removeClass('absolute');
+					$('nav').removeClass('fixed');
+					$('nav').addClass('action');
+				}
+			});
 		});
 	</script>
 </body>
