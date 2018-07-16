@@ -3,7 +3,7 @@
 
 <head>
     <!-- meta tags -->
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>탐라는제주 - 숨어 있던 진짜 hot한 제주</title>
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../../css/main.css" />
     <link rel="stylesheet" href="../../css/sub09_view.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- js -->  
+    <!-- js --> 
     <script src="../../js/common/jquery-3.3.1.min.js"></script>
     <script src="../../js/common/jquery-ui.min.js"></script>
 </head>
@@ -324,8 +324,8 @@
              */
         });
     </script>
+    <!--왼쪽 fixed-->
     <script>
-        //왼쪽 fixed
         $(document).ready(function () {
             $(window).bind('scroll', function () {
                 var container = $('.container').height();
@@ -347,30 +347,7 @@
             });
         });
     </script>
-    <!--리모컨 -->
-    <script type="text/javascript">
-        (function (d, s) {
-            var j, e = d
-                .getElementsByTagName(s)[0];
-
-            if (typeof LivereTower === 'function') {
-                return;
-            }
-
-            j = d
-                .createElement(s);
-            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-            j.async = true;
-
-            e.parentNode
-                .insertBefore(
-                    j,
-                    e);
-        })(document,
-            'script');
-    </script>
-    <noscript>라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
-
+    <!--top scroll로 이동-->
     <script type="text/javascript">
         $('#top').click(function () {
             $('body,html').animate({
@@ -378,6 +355,7 @@
             }, 500);
         });
     </script>
+    <!--bottom scroll로 이동-->
     <script type="text/javascript">
         $('#sm-comment').click(function () {
             $('body,html').animate({
@@ -385,6 +363,7 @@
             }, 500);
         });
     </script>
+    <!--페이스북 댓글 라이브러리 -->
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
