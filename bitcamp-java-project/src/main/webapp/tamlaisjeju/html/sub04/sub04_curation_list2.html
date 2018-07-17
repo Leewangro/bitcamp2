@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/layout.css" />
     <!-- sub05 -->
-    <link rel="stylesheet" href="../../css/sub04.css" />
+    <link rel="stylesheet" href="../../css/sub04_2.css" />
     <!-- logo font -->
     <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -276,9 +276,13 @@
                             <div class="tab_cnt">
                                 <div class="util_area2">
                                     <div class="clear">
-                                        <div class="sort_type">
-                                            <button type="button" class="ico_sort on">섬네일형</button>
-                                            <button type="button" class="ico_sort type_list">리스트형</button>
+                                        <div class="toggle_area">
+                                            <button class="thumb">
+                                                <i class="fas fa-th"></i>
+                                            </button>
+                                            <button class="list">
+                                                <i class="fas fa-th-list"></i>
+                                            </button>
                                         </div>
                                         <div class="order_type">
                                             <label for="goto-select-1" style="display:none;"> 정렬 </label>
@@ -314,230 +318,335 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="item_list type_thumb">
-                                    <li>
-                                        <dl class="item_section">
-                                            <dt class="item_top">
-                                                <a href="#">
-                                                    <span class="s_day">관광지</span>
-                                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/e3ce0dd4-9ac0-4fd5-a08e-15d1d829b4e7.jpg" alt="에코랜드 테마파크"
-                                                        class="">
-                                                    <div class="score_area">
-                                                        <p class="score_count" style="width: 100%;">5</p>
-                                                    </div>
-                                                    <p class="s_tit">에코랜드 테마파크</p>
-                                                    <p class="s_theme">제주시 &gt; 조천</p>
-                                                    <p class="s_theme_tit">기차를 타고 감사하는 곶자왈, 원시림 테마공원</p>
-                                                    <p class="item_tag">#테마공원 #아이 #맑음 #가을 </p>
+                                <script>
+                                    $('.toggle_area button').on('click', function (e) {
+                                        if ($(this).hasClass('thumb')) {
+                                            $('.board_list').removeClass('type02').addClass('type01');
+                                            $(this).removeClass("off").addClass('on');
+                                        } else if ($(this).hasClass('list')) {
+                                            $('.board_list').removeClass('type01').addClass('type02');
+                                            $(this).removeClass("on").addClass('off');
+                                        }
+                                    });
+                                </script>
+                                <div class="board_list type01">
+                                    <div class="box_wrap clear">
+                                        <div class="box">
+                                            <div class="img_area">
+                                                <a href="sub01_view.html">
+                                                    <span class="category">관광지</span>
+                                                    <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
+                                                    <span class="star_score"></span>
                                                 </a>
-                                            </dt>
-                                            <dd class="item_count_area clear">
-                                                <p class="ico_type like">
-                                                    <span>좋아요</span>
-                                                    <span class="count">17</span>
-                                                </p>
-                                                <p class="ico_type zzim ">
-                                                    <span>찜하기</span>
-                                                    <span class="count">576</span>
-                                                </p>
-                                                <p class="ico_type review">
-                                                    <span>리뷰</span>
-                                                    <span class="count">382</span>
-                                                </p>
-                                                <p class="item_count_h_area">
-                                                    조회 36,485 | 방문 191 </p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="item_section">
-                                            <dt class="item_top">
+                                                <div class="score_area"><p class="score_count" style="width: 100%;">5</p></div>
+                                            </div>
+                                            <!-- img area end -->
+                                            <div class="box_cont_area">
                                                 <a href="#">
-                                                    <span class="s_day">관광지</span>
-                                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/a7b4a973-40e9-44e6-87d9-46a4c4f3b367.jpg" alt="산굼부리"
-                                                        class="">
-                                                    <div class="score_area">
-                                                        <p class="score_count" style="width: 100%;">5</p>
-                                                    </div>
-                                                    <p class="s_tit">산굼부리</p>
-                                                    <p class="s_theme">제주시 &gt; 조천</p>
-                                                    <p class="s_theme_tit">사계절마다 다른풍경의 '분화구 식물원', 국가지정 문화재 천연기념물 263호</p>
-                                                    <p class="item_tag">#오름 #걷기/등산 #친구 #맑음 #가을 </p>
+                                                    <b>제주김만복(만복이네김밥집)제주김만복(만복이네김밥집)</b>
                                                 </a>
-                                            </dt>
-                                            <dd class="item_count_area clear">
-                                                <p class="ico_type like">
-                                                    <span>좋아요</span>
-                                                    <span class="count">18</span>
+                                                <p class="location_category">제주시 &gt; 제주시내</p>
+                                                <p class="hashtag">
+                                                    <a href="#">#전복김밥</a>
+                                                    <a href="#">#통전복주먹밥</a>
+                                                    <a href="#">#미역국</a>
                                                 </p>
-                                                <p class="ico_type zzim ">
-                                                    <span>찜하기</span>
-                                                    <span class="count">349</span>
-                                                </p>
-                                                <p class="ico_type review">
-                                                    <span>리뷰</span>
-                                                    <span class="count">532</span>
-                                                </p>
+                                                <div class="icon_area">
+                                                    <ul class="clear">
+                                                        <li class="icon like_icon">
+                                                            <a href="#">
+                                                                <span>좋아요</span>
+                                                                <span class="like_count">60</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon zzim_icon">
+                                                            <a href="#">
+                                                                <span>찜하기</span>
+                                                                <span class="zzim_count">883</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon review_icon">
+                                                            <a href="#">
+                                                                <span>리뷰</span>
+                                                                <span class="review_count">921</span>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                                 <p class="item_count_h_area">
-                                                    조회 31,778 | 방문 266 </p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="item_section">
-                                            <dt class="item_top">
+                                                        조회 71,625 | 방문 139 </p>
+                                            </div>
+                                            <!-- box_cont_area -->
+                                        </div>
+                                        <!-- box end -->
+                                        <div class="box">
+                                            <div class="img_area">
                                                 <a href="#">
-                                                    <span class="s_day">관광지</span>
-                                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/b7e1515a-de0d-4b5e-9f9e-3d359e2ebd5b.jpg" alt="용머리해안"
-                                                        class="">
-                                                    <div class="score_area">
-                                                        <p class="score_count" style="width: 100%;">5</p>
-                                                    </div>
-                                                    <p class="s_tit">용머리해안</p>
-                                                    <p class="s_theme">서귀포시 &gt; 안덕</p>
-                                                    <p class="s_theme_tit">시간이 보여주는 위대함 속으로 · 천연기념물 제526호 · 올레10코스</p>
-                                                    <p class="item_tag">#해변 #휴식/힐링 #부모 #커플 #맑음 #봄 </p>
+                                                    <span class="category">관광지</span>
+                                                    <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
+                                                    <span class="star_score"></span>
                                                 </a>
-                                            </dt>
-                                            <dd class="item_count_area clear">
-                                                <p class="ico_type like">
-                                                    <span>좋아요</span>
-                                                    <span class="count">7</span>
-                                                </p>
-                                                <p class="ico_type zzim ">
-                                                    <span>찜하기</span>
-                                                    <span class="count">278</span>
-                                                </p>
-                                                <p class="ico_type review">
-                                                    <span>리뷰</span>
-                                                    <span class="count">169</span>
-                                                </p>
-                                                <p class="item_count_h_area">
-                                                    조회 29,747 | 방문 85 </p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="item_section">
-                                            <dt class="item_top">
+                                                <div class="score_area"><p class="score_count" style="width: 100%;">5</p></div>
+                                            </div>
+                                            <!-- img area end -->
+                                            <div class="box_cont_area">
                                                 <a href="#">
-                                                    <span class="s_day">관광지</span>
-                                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/71d30f38-e1ff-4f07-9a01-7a8a2741a361.jpg" alt="오설록티뮤지엄"
-                                                        class="">
-                                                    <div class="score_area">
-                                                        <p class="score_count" style="width: 100%;">5</p>
-                                                    </div>
-                                                    <p class="s_tit">오설록티뮤지엄</p>
-                                                    <p class="s_theme">서귀포시 &gt; 안덕</p>
-                                                    <p class="s_theme_tit">제주녹차문화의 중심, 차박물관과 카페테리아, 2016 KOREAT JEJU TOP 30 선정</p>
-                                                    <p class="item_tag">#녹차 #테마공원 #커플 #아이 #겨울 </p>
+                                                    <b>제주김만복(만복이네김밥집)제주김만복(만복이네김밥집)</b>
                                                 </a>
-                                            </dt>
-                                            <dd class="item_count_area clear">
-                                                <p class="ico_type like">
-                                                    <span>좋아요</span>
-                                                    <span class="count">13</span>
+                                                <p class="location_category">제주시 &gt; 제주시내</p>
+                                                <p class="hashtag">
+                                                    <a href="#">#전복김밥</a>
+                                                    <a href="#">#통전복주먹밥</a>
+                                                    <a href="#">#미역국</a>
                                                 </p>
-                                                <p class="ico_type zzim ">
-                                                    <span>찜하기</span>
-                                                    <span class="count">717</span>
-                                                </p>
-                                                <p class="ico_type review">
-                                                    <span>리뷰</span>
-                                                    <span class="count">503</span>
-                                                </p>
+                                                <div class="icon_area">
+                                                    <ul class="clear">
+                                                        <li class="icon like_icon">
+                                                            <a href="#">
+                                                                <span>좋아요</span>
+                                                                <span class="like_count">60</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon zzim_icon">
+                                                            <a href="#">
+                                                                <span>찜하기</span>
+                                                                <span class="zzim_count">883</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon review_icon">
+                                                            <a href="#">
+                                                                <span>리뷰</span>
+                                                                <span class="review_count">921</span>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                                 <p class="item_count_h_area">
-                                                    조회 27,420 | 방문 251 </p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="item_section">
-                                            <dt class="item_top">
+                                                        조회 71,625 | 방문 139 </p>
+                                            </div>
+                                            <!-- box_cont_area -->
+                                        </div>
+                                        <!-- box end -->
+                                        <div class="box">
+                                            <div class="img_area">
                                                 <a href="#">
-                                                    <span class="s_day">관광지</span>
-                                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/566690a0-2605-4748-9573-e89b93656b67.jpg" alt="천제연폭포"
-                                                        class="">
-                                                    <div class="score_area">
-                                                        <p class="score_count" style="width: 100%;">5</p>
-                                                    </div>
-                                                    <p class="s_tit">천제연폭포</p>
-                                                    <p class="s_theme">서귀포시 &gt; 중문</p>
-                                                    <p class="s_theme_tit">칠선녀가 목욕을 하다 간다는 전설이 있는 폭포 · 서귀포시 중문동 · 천연기념물 제378호 · 올레8코스</p>
-                                                    <p class="item_tag">#폭포 #경관/포토 #커플 #아이 #맑음 #여름 </p>
+                                                    <span class="category">관광지</span>
+                                                    <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
+                                                    <span class="star_score"></span>
                                                 </a>
-                                            </dt>
-                                            <dd class="item_count_area clear">
-                                                <p class="ico_type like">
-                                                    <span>좋아요</span>
-                                                    <span class="count">10</span>
-                                                </p>
-                                                <p class="ico_type zzim ">
-                                                    <span>찜하기</span>
-                                                    <span class="count">318</span>
-                                                </p>
-                                                <p class="ico_type review">
-                                                    <span>리뷰</span>
-                                                    <span class="count">132</span>
-                                                </p>
-                                                <p class="item_count_h_area">
-                                                    조회 27,595 | 방문 66 </p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="item_section">
-                                            <dt class="item_top">
+                                                <div class="score_area"><p class="score_count" style="width: 100%;">5</p></div>
+                                            </div>
+                                            <!-- img area end -->
+                                            <div class="box_cont_area">
                                                 <a href="#">
-                                                    <span class="s_day">관광지</span>
-                                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/ea88a6e7-8ba6-4659-9b5d-4b857fa4b9a9.jpg" alt="Hanwha aqua planet JEJU"
-                                                        class="">
-                                                    <div class="score_area">
-                                                        <p class="score_count" style="width: 100%;">5</p>
-                                                    </div>
-                                                    <p class="s_tit">제주아쿠아플라넷</p>
-                                                    <p class="s_theme">서귀포시 &gt; 성산</p>
-                                                    <p class="s_theme_tit">450여종의 바다생명체가 있는 아시아 최대 수족관</p>
-                                                    <p class="item_tag">#Indoors #Theme Parks #Children #Rain.Wind #Winter #Four seasons </p>
+                                                    <b>제주김만복(만복이네김밥집)제주김만복(만복이네김밥집)</b>
                                                 </a>
-                                            </dt>
-                                            <dd class="item_count_area clear">
-                                                <p class="ico_type like">
-                                                    <span>좋아요</span>
-                                                    <span class="count">7</span>
+                                                <p class="location_category">제주시 &gt; 제주시내</p>
+                                                <p class="hashtag">
+                                                    <a href="#">#전복김밥</a>
+                                                    <a href="#">#통전복주먹밥</a>
+                                                    <a href="#">#미역국</a>
                                                 </p>
-                                                <p class="ico_type zzim ">
-                                                    <span>찜하기</span>
-                                                    <span class="count">456</span>
-                                                </p>
-                                                <p class="ico_type review">
-                                                    <span>리뷰</span>
-                                                    <span class="count">272</span>
-                                                </p>
+                                                <div class="icon_area">
+                                                    <ul class="clear">
+                                                        <li class="icon like_icon">
+                                                            <a href="#">
+                                                                <span>좋아요</span>
+                                                                <span class="like_count">60</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon zzim_icon">
+                                                            <a href="#">
+                                                                <span>찜하기</span>
+                                                                <span class="zzim_count">883</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon review_icon">
+                                                            <a href="#">
+                                                                <span>리뷰</span>
+                                                                <span class="review_count">921</span>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                                 <p class="item_count_h_area">
-                                                    조회 26,112 | 방문 137 </p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <pseudo:after></pseudo:after>
-                                </ul>
-                                <div class="paging">
-                                    <div class="page-wrap">
-                                        <a href="javascript:void(0)" class="spr_com page-first">처음</a>
-                                        <a href="javascript:void(0)" class="spr_com page-prev">이전</a>
-                                        <a href="1" class="">1</a>
-                                        <a href="2" class="">2</a>
-                                        <a href="3" class="">3</a>
-                                        <a href="4" class="current">4</a>
-                                        <a href="5" class="">5</a>
-                                        <a href="6" class="">6</a>
-                                        <a href="7" class="">7</a>
-                                        <a href="8" class="">8</a>
-                                        <a href="9" class="">9</a>
-                                        <a href="10" class="">10</a>
-                                        <a href="javascript:void(0)" class="spr_com page-next">다음</a>
-                                        <a href="javascript:void(0)" class="spr_com page-last">마지막페이지</a>
+                                                        조회 71,625 | 방문 139 </p>
+                                            </div>
+                                            <!-- box_cont_area -->
+                                        </div>
+                                        <!-- box end -->
                                     </div>
+                                    <!-- box_wrap -->
+                                    <div class="box_wrap clear">
+                                        <div class="box">
+                                            <div class="img_area">
+                                                <a href="#">
+                                                    <span class="category">관광지</span>
+                                                    <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
+                                                    <span class="star_score"></span>
+                                                </a>
+                                                <div class="score_area"><p class="score_count" style="width: 100%;">5</p></div>
+                                            </div>
+                                            <!-- img area end -->
+                                            <div class="box_cont_area">
+                                                <a href="#">
+                                                    <b>제주김만복(만복이네김밥집)제주김만복(만복이네김밥집)</b>
+                                                </a>
+                                                <p class="location_category">제주시 &gt; 제주시내</p>
+                                                <p class="hashtag">
+                                                    <a href="#">#전복김밥</a>
+                                                    <a href="#">#통전복주먹밥</a>
+                                                    <a href="#">#미역국</a>
+                                                </p>
+                                                <div class="icon_area">
+                                                    <ul class="clear">
+                                                        <li class="icon like_icon">
+                                                            <a href="#">
+                                                                <span>좋아요</span>
+                                                                <span class="like_count">60</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon zzim_icon">
+                                                            <a href="#">
+                                                                <span>찜하기</span>
+                                                                <span class="zzim_count">883</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon review_icon">
+                                                            <a href="#">
+                                                                <span>리뷰</span>
+                                                                <span class="review_count">921</span>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p class="item_count_h_area">
+                                                        조회 71,625 | 방문 139 </p>
+                                            </div>
+                                            <!-- box_cont_area -->
+                                        </div>
+                                        <!-- box end -->
+                                        <div class="box">
+                                            <div class="img_area">
+                                                <a href="#">
+                                                    <span class="category">관광지</span>
+                                                    <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
+                                                    <span class="star_score"></span>
+                                                </a>
+                                                <div class="score_area"><p class="score_count" style="width: 100%;">5</p></div>
+                                            </div>
+                                            <!-- img area end -->
+                                            <div class="box_cont_area">
+                                                <a href="#">
+                                                    <b>제주김만복(만복이네김밥집)제주김만복(만복이네김밥집)</b>
+                                                </a>
+                                                <p class="location_category">제주시 &gt; 제주시내</p>
+                                                <p class="hashtag">
+                                                    <a href="#">#전복김밥</a>
+                                                    <a href="#">#통전복주먹밥</a>
+                                                    <a href="#">#미역국</a>
+                                                </p>
+                                                <div class="icon_area">
+                                                    <ul class="clear">
+                                                        <li class="icon like_icon">
+                                                            <a href="#">
+                                                                <span>좋아요</span>
+                                                                <span class="like_count">60</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon zzim_icon">
+                                                            <a href="#">
+                                                                <span>찜하기</span>
+                                                                <span class="zzim_count">883</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon review_icon">
+                                                            <a href="#">
+                                                                <span>리뷰</span>
+                                                                <span class="review_count">921</span>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p class="item_count_h_area">
+                                                        조회 71,625 | 방문 139 </p>
+                                            </div>
+                                            <!-- box_cont_area -->
+                                        </div>
+                                        <!-- box end -->
+                                        <div class="box">
+                                            <div class="img_area">
+                                                <a href="#">
+                                                    <span class="category">관광지</span>
+                                                    <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
+                                                    <span class="star_score"></span>
+                                                </a>
+                                                <div class="score_area"><p class="score_count" style="width: 100%;">5</p></div>
+                                            </div>
+                                            <!-- img area end -->
+                                            <div class="box_cont_area">
+                                                <a href="#">
+                                                    <b>제주김만복(만복이네김밥집)제주김만복(만복이네김밥집)</b>
+                                                </a>
+                                                <p class="location_category">제주시 &gt; 제주시내</p>
+                                                <p class="hashtag">
+                                                    <a href="#">#전복김밥</a>
+                                                    <a href="#">#통전복주먹밥</a>
+                                                    <a href="#">#미역국</a>
+                                                </p>
+                                                <div class="icon_area">
+                                                    <ul class="clear">
+                                                        <li class="icon like_icon">
+                                                            <a href="#">
+                                                                <span>좋아요</span>
+                                                                <span class="like_count">60</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon zzim_icon">
+                                                            <a href="#">
+                                                                <span>찜하기</span>
+                                                                <span class="zzim_count">883</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="icon review_icon">
+                                                            <a href="#">
+                                                                <span>리뷰</span>
+                                                                <span class="review_count">921</span>
+                                                            </a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p class="item_count_h_area">
+                                                    조회 71,625 | 방문 139 </p>
+                                            </div>
+                                            <!-- box_cont_area -->
+                                        </div>
+                                        <!-- box end -->
+                                    </div>
+                                    <!-- box_wrap -->
+
+
+                                    <div class="pagination_wrap">
+                                        <div class="pagination">
+                                            <a href="#">«</a>
+                                            <a href="#">1</a>
+                                            <a href="#" class="active">2</a>
+                                            <a href="#">3</a>
+                                            <a href="#">4</a>
+                                            <a href="#">5</a>
+                                            <a href="#">6</a>
+                                            <a href="#">»</a>
+                                        </div>
+                                        <!-- pagination end -->
+                                    </div>
+                                    <!-- pagination_wrap end-->
+
                                 </div>
                             </div>
                             <!-- tab_cnt -->
@@ -566,31 +675,37 @@
     <script>
         // Get the modal
         var modal = document.getElementById('jeju_map_popup');
-        
+
         // Get the button that opens the modal
         var btn = document.getElementById('btn_jeju_map');
-        
+
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("btn_close")[0];
-        
+
         // When the user clicks the button, open the modal 
-        btn.onclick = function() {
+        btn.onclick = function () {
             modal.style.display = "block";
+            btn.style.background = "#2168f6";
+            btn.style.color = "white";
         }
-        
+
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
+        span.onclick = function () {
             modal.style.display = "none";
+            btn.style.background = "white";
+            btn.style.color = "#2168f6";
         }
-        
+
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+                btn.style.background = "white";
+                btn.style.color = "#2168f6";
             }
         }
-        </script>
-        <!--
+    </script>
+    <!--
         <script>
             function myFunction() {
                 var x = document.getElementById("jeju_map_popup");

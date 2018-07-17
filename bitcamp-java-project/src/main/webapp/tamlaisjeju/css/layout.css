@@ -275,7 +275,7 @@
 /* sub layout */
 
 #content {
-  width: 1200px;
+  /* width: 1200px; */
   margin: 30px auto;
 }
 
@@ -290,7 +290,7 @@ visual  - 비주얼
 ***************************************************************************************/
 
 #visual {
-  margin-top: 168px;
+  /* margin-top: 168px; */
   width: 100%;
 }
 
@@ -300,11 +300,11 @@ visual  - 비주얼
   height: 450px;
 }
 
-.visual_cont {
+.container .visual_cont {
   position: relative;
 }
 
-.visual_cont_box {
+.container .visual_cont_box {
   position: absolute;
   left: 0;
   top: -450px;
@@ -315,28 +315,28 @@ visual  - 비주얼
   background: rgba(0, 0, 0, .5);
 }
 
-.visual_cont_box h3 {
+.container .visual_cont_box h3 {
   font-size: 32px;
   color: #fff;
   line-height: 35px;
   margin-bottom: 20px;
 }
 
-.visual_cont_box h3 span {
+.container .visual_cont_box h3 span {
   display: block;
   font-size: 20px;
   line-height: 28px;
 }
 
-.visual_cont_box p.score {
+.container .visual_cont_box p.score {
   color: #fff;
 }
 
-.visual_cont_box .hashtag {
+.container .visual_cont_box .hashtag {
   color: #ccc;
 }
 
-.visual_cont_box .tit {
+.container .visual_cont_box .tit {
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
@@ -345,15 +345,15 @@ visual  - 비주얼
   margin-bottom: 15px;
 }
 
-.visual_cont_box ul {
+.container .visual_cont_box ul {
   margin-bottom: 30px
 }
 
-.visual_cont_box ul li {
+.container .visual_cont_box ul li {
   margin: 10px 0;
 }
 
-.visual_cont_box ul li b {
+.container .visual_cont_box ul li b {
   display: block;
   margin-bottom: 10px;
   height: 14px;
@@ -362,7 +362,7 @@ visual  - 비주얼
   color: #ccc;
 }
 
-.visual_cont_box ul li span {
+.container .visual_cont_box ul li span {
   display: block;
   min-height: 14px;
   font-size: 14px;
@@ -370,7 +370,7 @@ visual  - 비주얼
   line-height: 18px;
 }
 
-.visual_cont_box a.btn {
+.container .visual_cont_box a.btn {
   display: inline-block;
   padding: 10px 15px;
   min-height: 14px;
@@ -380,11 +380,11 @@ visual  - 비주얼
   background-color: transparent;
 }
 
-.visual_cont_box a.btn:hover {
+.container .visual_cont_box a.btn:hover {
   background-color: #fff;
 }
 
-.visual_cont_box .weather_area {
+.container .visual_cont_box .weather_area {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -396,7 +396,7 @@ visual  - 비주얼
   color: #fff;
 }
 
-.visual_cont_box .weather_area img {
+.container .visual_cont_box .weather_area img {
   display: block;
   margin: 8px auto;
 }
@@ -554,14 +554,17 @@ visual  - 비주얼
   }
 }
 
-.container {
+#container {
   max-width: 100%;
-  margin: 0;
-}
-
-#content {
   padding: 168px 0 0 0;
 }
+
+.container {
+  max-width: 100%;
+  padding: 168px 0 0 0;
+}
+
+#content {}
 
 #content h3 {
   margin-bottom: 20px;
@@ -1813,14 +1816,55 @@ board_list - 게시판 리스트
   color: #2168f6;
 }
 
+/* form_wrap board */
+
+.form_wrap {
+  text-align: right;
+}
+
+.form_wrap .toggle_area {}
+
+.form_wrap .toggle_area button {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.category_wrap {
+  border-top: 1px solid #cbcbcb;
+  border-left: 1px solid #cbcbcb;
+  ;
+}
+
+.category_wrap button {
+  float: left;
+  padding: 10px;
+  width: 25%;
+  border-top: none;
+  border-left: none;
+}
+
+.category_wrap button.active,
+.category_wrap button:hover {
+  background: #24a7e9;
+  color: #fff;
+  box-shadow: none;
+}
+
 /* board_list type01*/
 
-.board_list.type01 .box_wrap .box:first-child {
+/* .board_list.type01 .box_wrap .box:first-child {
   margin-left: 0;
+} */
+
+.board_list.type01 .box_wrap {
+  margin: 2% 0 2% -2%;
 }
 
 .board_list.type01 .box {
-  width: 32%;
+  width: 31.33%;
+  /* width: 33.3%;  */
+  /* width: calc(34% - 2%); */
   margin-left: 2%;
 }
 
@@ -1904,7 +1948,7 @@ board_list - 게시판 리스트
 }
 
 .board_list.type02 .box .img_area img {
-height:180px;
+  height: 180px;
 }
 
 .board_list.type02 .img_area {
@@ -2395,7 +2439,6 @@ board_list travelog - 내가 쓰는 여행기 리스트
 }
 
 .board_list.travelog figure.effect h2 {
-  /* padding-top: 30%; */
   padding: 30% 20% 0 20%;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2442,6 +2485,219 @@ board_list travelog - 내가 쓰는 여행기 리스트
   }
 }
 */
+
+/**************************************************************************************
+board_list planner - 여행일정 추천
+***************************************************************************************/
+
+.board_list.planner {}
+
+.board_list.planner .box_wrap {}
+
+.board_list.planner .box_wrap .box {
+  float: none;
+  overflow: hidden;
+}
+
+.board_list.planner .box_wrap .box {
+  float: none;
+  overflow: hidden;
+  margin: 2% 0;
+  min-height:230px;
+}
+
+.board_list.planner .box_wrap .box h5 {
+  padding: 0;
+}
+
+.board_list.planner .box_wrap .box h5::before {
+  display: none;
+}
+
+.board_list.planner .box_wrap figure {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 25%;
+  background: #000;
+  text-align: center;
+  cursor: pointer;
+  margin: 0;
+}
+
+.board_list.planner .box_wrap .box_cont {
+  float: left;
+  width: 75%;
+  padding: 2%;
+}
+
+.board_list.planner .box_wrap .box_cont p {
+  margin-bottom: 2%;
+}
+
+.board_list.planner .box_wrap .box_cont p.hashtag {
+  color: #2168f6;
+}
+
+.board_list.planner .box_wrap .box_cont .count_area {}
+
+.board_list.planner .box_wrap .box_cont .count_area ul {
+  text-align: right
+}
+
+.board_list.planner .box_wrap .box_cont .count_area ul li {
+  display: inline-block;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+.board_list.planner .box_wrap figure img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.8;
+  min-height:230px;
+}
+
+.board_list.planner .box_wrap figure figcaption {
+  padding: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.board_list.planner .box_wrap figure figcaption h5 {
+  color: #fff;
+}
+
+.board_list.planner .box_wrap figure figcaption::before,
+.board_list.planner .box_wrap figure figcaption::after {
+  pointer-events: none;
+}
+
+.board_list.planner .box_wrap figure figcaption,
+.board_list.planner .box_wrap figure figcaption>a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+
+/* For some effects it will show as a button */
+
+.board_list.planner .box_wrap figure figcaption>a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.board_list.planner .box_wrap figure h5 {
+  word-spacing: -0.15em;
+  font-weight: 300;
+}
+
+.board_list.planner .box_wrap figure h5 span {
+  font-weight: 800;
+}
+
+.board_list.planner .box_wrap figure h5,
+.board_list.planner .box_wrap figure p {
+  margin: 0;
+}
+
+.board_list.planner .box_wrap figure p {
+  font-size: 14px;
+  color: #1b1b1b;
+}
+
+figure.effect.type03 {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+figure.effect.type03 img {
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0, 0, 300px);
+  transform: translate3d(0, 0, 300px);
+}
+
+figure.effect.type03:hover img {
+  opacity: 0.6;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.board_list.planner .box_wrap .box:hover figure.effect.type03 img {
+  opacity: 0.6;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+figure.effect.type03 figcaption::before,
+figure.effect.type03 figcaption::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 1px;
+  background: #fff;
+  content: '';
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+figure.effect.type03:hover figcaption::before {
+  opacity: 0.5;
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+  transform: translate3d(-50%, -50%, 0) rotate(45deg);
+}
+
+figure.effect.type03:hover figcaption::after {
+  opacity: 0.5;
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+  transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+figure.effect.type03 h5,
+figure.effect.type03 p {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+figure.effect.type03 h5 {
+  -webkit-transform: translate3d(0, -50%, 0) translate3d(0, -150%, 0);
+  transform: translate3d(0, -50%, 0) translate3d(0, -150%, 0);
+}
+
+figure.effect.type03 p {
+  -webkit-transform: translate3d(0, -50%, 0) translate3d(0, 150%, 0);
+  transform: translate3d(0, -50%, 0) translate3d(0, 150%, 0);
+}
+
+figure.effect.type03:hover h5 {
+  -webkit-transform: translate3d(0, -50%, 0) translate3d(0, -100%, 0);
+  transform: translate3d(0, -50%, 0) translate3d(0, -100%, 0);
+}
+
+figure.effect.type03:hover p {
+  -webkit-transform: translate3d(0, -50%, 0) translate3d(0, 100%, 0);
+  transform: translate3d(0, -50%, 0) translate3d(0, 100%, 0);
+}
 
 /**************************************************************************************
 all_page_box - 제주여행 꿀팁

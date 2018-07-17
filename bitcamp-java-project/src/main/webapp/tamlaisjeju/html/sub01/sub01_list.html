@@ -26,6 +26,8 @@
     <!-- js -->
     <script src="../../js/common/jquery-3.3.1.min.js"></script>
     <script src="../../js/common/jquery-ui.min.js"></script>
+    <script src="../../node_modules/shufflejs/dist/shuffle.min.js"></script>
+
 </head>
 
 <body>
@@ -33,46 +35,52 @@
 
     <header id="header"></header>
 
-    <div id="visual">
-        <img src="../../img/sub01/sub01_visual.jpg" alt="제주의 산">
-    </div>
 
-    <div id="container" class="container wrapper">
-        <div id="content" class="content">
+
+    <div id="container" class="container">
+        <div id="visual">
+            <img src="../../img/sub01/sub01_visual.jpg" alt="제주의 산">
+        </div>
+        <div id="content" class="content wrapper">
             <h3>제주도 모든 여행지를 한 눈에…</h3>
 
             <p class="h3_txt">내가 가본 제주는 어디까지일까? 수많은 제주의 아름다운 여행지를 취향에 맞게 선택해보자. 368개의 크고 작은 오름을 비롯하여 눈 돌리면 어디에서나 마주치는 한라산 그리고 푸른 바다…. 제주의 보석
                 같은 여행지가 여러분의 선택을 기다린다.</p>
 
-            <h4>게시판 리스트 타입1</h4>
-            <p class="h4_txt">이미지 경로는 변경해서 사용해 주세요.이미지는 각 메뉴 폴더 별로 작업해 주세요. 예) sub01, sub02, sub03 ...</p>
 
-            <div class="board_form_wrap">
+
+
+
+
+
+
+            <div class="category_wrap clear">
+                <button class="active btn" data-filter="box">전체</button>
+                <button class="btn" data-filter="nature">자연</button>
+                <button class="btn" data-filter="culture">문화관광</button>
+                <button class="btn" data-filter="leisure">레저/체험</button>
+                <button class="btn" data-filter="theme">테마관광지</button>
+                <button class="btn" data-filter="island">섬속의 섬</button>
+                <button class="btn" data-filter="walking">도보</button>
+                <button class="btn" data-filter="photospot">포토스팟</button>
+                <button class="btn" data-filter="shopping">쇼핑</button>
+            </div>
+            <!--category_wrap end -->
+            <div class="form_wrap board">
                 <div class="toggle_area">
                     <button class="thumb">
-                        <i class="fas fa-th"></i>Thumbnails</button>
+                        <i class="fas fa-th"></i>
+                        <span class="none">Thumbnails</span>
+                    </button>
                     <button class="list">
-                        <i class="fas fa-th-list"></i>List view</button>
+                        <i class="fas fa-th-list"></i>
+                        <span class="none">List view</span>
+                    </button>
                 </div>
                 <!-- toggle_area end -->
             </div>
-            <!-- board_form_wrap end -->
+            <!-- form_wrap end -->
             <script>
-                // jQuery(document).ready(function ($) {
-                //     //enable tabs and add fade effect
-                //     $(".toggle_area").tabs(".board_list > .box_wrap", {
-                //         effect: 'fade'
-                //     });
-                //     // add stripes for list view
-                //     $(".box:even").addClass("even");
-                //     $(".box:odd").addClass("odd");
-                //     $('#container ul').removeClass('list').addClass('grid');
-
-                // });
-
-
-
-
                 $('.toggle_area button').on('click', function (e) {
                     if ($(this).hasClass('thumb')) {
                         $('.board_list').removeClass('type02').addClass('type01');
@@ -82,12 +90,12 @@
                 });
             </script>
 
-            <div class="board_list type01">
-                <div class="box_wrap clear">
-                    <div class="box">
+            <div id="board" class="board_list type01">
+                <div id="board_cont" class="box_wrap clear">
+                    <div class="box nature">
                         <div class="img_area">
                             <a href="sub01_view.html">
-                                <span class="category">관광지</span>
+                                <span class="category">자연관광지</span>
                                 <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
                                 <span class="star_score"></span>
                             </a>
@@ -133,10 +141,10 @@
                         <!-- box_cont_area -->
                     </div>
                     <!-- box end -->
-                    <div class="box">
+                    <div class="box culture">
                         <div class="img_area">
                             <a href="#">
-                                <span class="category">관광지</span>
+                                <span class="category">문화관광지</span>
                                 <img src="../../img/common/board_img.gif" alt="제주김만복(만복이네김밥집)">
                                 <span class="star_score"></span>
                             </a>
@@ -235,7 +243,7 @@
                     <!-- box end -->
                 </div>
                 <!-- box_wrap -->
-                <div class="box_wrap clear">
+                <div id="board_cont" class="box_wrap clear">
                     <div class="box">
                         <div class="img_area">
                             <a href="#">
@@ -410,6 +418,39 @@
         <!-- content end-->
     </div>
     <!-- container end-->
+
+
+    <script>
+        var $boxs = $("#board_cont > .box");
+        var $btns = $(".btn").on("click", function () {
+
+            var active =
+                $btns.removeClass("active")
+                .filter(this)
+                .addClass("active")
+                .data("filter");
+
+            $boxs
+                .hide()
+                .filter("." + active)
+                .fadeIn(450);
+
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <footer id="footer"></footer>
     <script type="text/javascript">
         $(document).ready(function () {
