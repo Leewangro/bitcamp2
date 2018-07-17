@@ -31,82 +31,57 @@
       </style>
 </head>
 <body>
-        <div id="planner_header">
-            <div class="topnav" id="myTopnav">
-                <div class="wrapper clear" style="margin: 0;">
+        <div id="sub10_planner_header">
+            <div class="myTopnav clear" id="myTopnav">
                     <h1>
                         <a href="../../index.html">탐라는 제주</a>
                     </h1>
-                    <div class="menu_wrap" style="float: left;">
+                    <div class="planner_set">
                         <div class="people">
                             <input type="text" placeholder="인원을 입력하세요">명
                         </div>
-                        <div class="dropdown">
-                                <button class="dropbtn" style="border-right: solid #ebebeb 1px;">일행
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content" style="z-index: 9999;">
-                                    <table style="width:200px;">
-                                        <tr>
-                                            <td><a href="../sub04/sub04_travelog_list.html" style="font-size: 13px; text-align: center;">부모</td>
-                                            <td><a href="../sub04/sub04_travelog_list.html" style="font-size: 13px; text-align: center;">친구</a></td>
-                                            <td><a href="../sub04/sub04_travelmate_list.html" style="font-size: 13px; text-align: center;">커플</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">혼자</a></td>
-                                            <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">아이</a></td>
-                                            <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">단체</a></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">테마
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-content" style="z-index: 9999;">
-                                <table style="width:300px;">
-                                    <tr>
-                                        <td><a href="../sub04/sub04_planner_list.html" style="font-size: 13px; text-align: center;">걷기/등산</a></td>
-                                        <td><a href="../sub04/sub04_travelog_list.html" style="font-size: 13px; text-align: center;">경관/포토</a></td>
-                                        <td><a href="../sub04/sub04_travelmate_list.html" style="font-size: 13px; text-align: center;">휴식/힐링</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">테마공원</a></td>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">문화유적지</a></td>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">미술/박물관</a></td>
-                                    </tr>
-                                <tr>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">액티비티</a></td>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">체험관광</a></td>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">드라이브</a></td>
-                                    </tr>
-                                <tr>
-                                        <td><a href="../sub04/sub04_curation_list.html" style="font-size: 13px; text-align: center;">쇼핑</a></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </div>
+                        <div class="custom-select1">
+                            <select>
+                                <option value="0">일행</option>
+                                <option value="1">부모</option>
+                                <option value="2">친구</option>
+                                <option value="3">커플</option>
+                                <option value="4">혼자</option>
+                                <option value="5">아이</option>
+                                <option value="6">단체</option>
+                            </select>
                         </div>
-                        <div class="people">
-                                <input type="text" placeholder="태그 입력하세요">
+
+                        <div class="custom-select1" style="width: 180px;">
+                                <select>
+                                    <option value="0">테마</option>
+                                    <option value="1">걷기/등산</option>
+                                    <option value="2">경관/포토</option>
+                                    <option value="3">휴식/힐링</option>
+                                    <option value="4">테마공원</option>
+                                    <option value="5">문화유적지</option>
+                                    <option value="6">미술/박물관</option>
+                                    <option value="7">액티비티</option>
+                                    <option value="8">체험관광</option>
+                                    <option value="9">드라이브</option>
+                                    <option value="10">쇼핑</option>
+                                </select>
                             </div>
-                        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">☰</a>
+                        
+                        <div class="tag">
+                                <input type="text" placeholder="태그 입력하세요">
+                        </div>
+                        
+                        
                     </div>
-                </div>
+                    <div class="plan_out">
+                        <div class="plan_out_btn">저장&amp;닫기
+                            <a href="../sub11/sub11_myschedule.html"></a>
+                        </div>
+                        
+                    </div>
             </div>
-            
-            <script>
-                function myFunction() {
-                    var x = document.getElementById("myTopnav");
-                    if (x.className === "topnav") {
-                        x.className += " responsive";
-                    } else {
-                        x.className = "topnav";
-                    }
-                }
-            </script></div>
+        </div>
             
 
     <div class="container" id="sub10" style="padding: 90px 0 0 0;">
@@ -192,7 +167,7 @@
 
                         <div id="schedule_detail_box" class="connectedSortable ui-sortable">
                             <div class="day_spot_item" data="" data-set_day="" data-rel_srl="" data-pl_type="" data-no="" data-pl_cat="301" data-latlng=""
-                                data-ci="">
+                                data-ci="" ondrop="drop(event)" ondragover="allowDrop(event)">
                                 <div class="item_ctrl_box" style="display: none;">
                                     <div class="fl item_copy_plan" title="장소복사">
                                         <img src="../../img/sub10/item_more_icon_a.png" alt="장소복사">
@@ -679,214 +654,49 @@
                     <div class="clear"></div>
                 </div>
                 <div id="right_full_box" class="f1">
-                    <div id="on_city_open_btn"></div>
                     <div id="city_list">
                         <div class="list_title">
                             <span>제주도</span>
                         </div>
-                        <div id="on_city_close_btn"></div>
                         <div class="clear"></div>
                         <div class="list_search_full_box">
                             <div class="list_search_box">
-                                <input type="text" id="input_search" placeholder="장소 검색">
+                                <form onsubmit="searchPlaces(); return false;">
+                                    <input type="text" id="keyword" placeholder="장소 검색">
+                                    <button type="submit">검색하기</button>
+                                </form>
                             </div>
-                            <div class="list_category_box">
-                                <div class="list_cat_item fl on" data="3">
-                                    <img src="../../img/sub10/ic_300_c.png" alt="관광지">
-                                </div>
-                                <div class="list_cat_item fl" data="2">
-                                    <img src="../../img/sub10/ic_200_a.png" alt="음식">
-                                </div>
-                                <div class="list_cat_item fl" data="4">
-                                    <img src="../../img/sub10/ic_400_a.png" alt="쇼핑">
-                                </div>
-                                <div class="list_cat_item fl" data="1">
-                                    <img src="../../img/sub10/ic_100_a.png" alt="숙박">
-                                </div>
-                                <div class="list_cat_item fl" data="5">
-                                    <img src="../../img/sub10/ic_000_a.png" alt="찜하기">
-                                </div>
+                            <ul class="list_category_box" id="category">
+                                <li id="AT4" data-order="0">
+                                    <span class="category_bg bank">
+                                    </span>
+                                </li>
+                                <li id="FD6" data-order="1">
+                                    <span class="category_bg cafe">
+                                    </span>
+                                </li>
+                                <li id="MT1, CS2, CE7" data-order="2">
+                                    <span class="category_bg mart">
+                                    </span>
+                                </li>
+                                <li id="AD5" data-order="3">
+                                    <span class="category_bg store">
+                                    </span>
+                                </li>
+                                <li id="zzim1">
+                                    <span class="category_bg zzim">
+                                     </span>
+                                </li>
                                 <div class="clear"></div>
 
-                                <div class="list_tag_box">
-                                    <div id="map_tag_select_box" class="et_slide_parent" data-is_open="0">태그 선택</div>
-                                    <div id="map_tag_select_sub_box" class="et_slide" style="display: none;">
-                                        <div class="item" data-check="0" data="301012">건축물</div>
-                                        <div class="item" data-check="0" data="301011">공원/정원/광장</div>
-                                        <div class="item" data-check="0" data="301010">관공서/학교</div>
-                                        <div class="item" data-check="0" data="301009">교통</div>
-                                        <div class="item" data-check="0" data="301008">기념관/기념비</div>
-                                        <div class="item" data-check="0" data="302007">데이투어/액티비티</div>
-                                        <div class="item" data-check="0" data="301007">랜드마크</div>
-                                        <div class="item" data-check="0" data="301006">박물관/미술관</div>
-                                        <div class="item" data-check="0" data="302001">스포츠</div>
-                                        <div class="item" data-check="0" data="301005">역사/종교</div>
-                                        <div class="item" data-check="0" data="302005">웰니스/스파</div>
-                                        <div class="item" data-check="0" data="301004">유명거리/이색장소</div>
-                                        <div class="item" data-check="0" data="301003">인포센터</div>
-                                        <div class="item" data-check="0" data="301002">자연</div>
-                                        <div class="item" data-check="0" data="301001">전경/전망대</div>
-                                        <div class="item" data-check="0" data="302004">전시/공연/관람</div>
-                                        <div class="item" data-check="0" data="302003">테마파크/동물원</div>
-                                        <div class="item" data-check="0" data="302002">트레킹/하이킹</div>
-                                        <div class="item" data-check="0" data="303004">펍/선술집</div>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                                </ul>
                         </div>
-                        <div class="list_box connectedSortable">
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
+                       
+                        <div id="menu_wrap" class="bg_white">
+                                <ul id="placesList"></ul>
+                                <div id="pagination"></div>
                             </div>
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="day_spot_item ui-draggable" data="0" data-set_day="0" data-rel_srl="7319" data-pl_type="0" data-no="0" data-pl_cat="301"
-                                data-ci="312">
-                                <div class="img_box fl">
-                                    <img src="http://img.earthtory.com/img/place_img/312/7319_0_et.jpg" alt="장소">
-                                </div>
-                                <div class="fl info_box">
-                                    <div class="title">천지연 폭포</div>
-                                    <div class="sub">자연절경</div>
-                                    <div class="sub">
-                                        <div class="tooltip_clip_cnt fl">1,658</div>
-                                        <div class="tooltip_cnt_line fl"></div>
-                                        <div class="tooltip_review_rate fl">10.0</div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="sub include_pn_day"></div>
-                                </div>
-                                <div class="spot_to_inspot">
-                                    <img src="../../img/sub10/spot_to_inspot_a.png" alt="장소추가">
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="total_view_item" style="display: none;">표시되지 않은 장소: undefined개
-                                <div class="total_view_sub_text">지도에서 전체 결과를 확인하려면 여기를
-                                    <br>클릭하세요.</div>
-                            </div>
-                        </div>
                     </div>
                     <div id="map" class="fr"></div>
                 </div>
@@ -906,65 +716,279 @@
         });
     </script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
-    <script>
-        var infowindow = new daum.maps.InfoWindow({
-            zIndex: 1
-        });
-
+<script>
+        // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+        var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
+            contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
+            markers = [], // 마커를 담을 배열입니다
+            currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+         
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
             mapOption = {
-                center: new daum.maps.LatLng(37.450701, 126.994784), // 지도의 중심좌표
-                level: 6 // 지도의 확대 레벨
-            };
-
-        var map = new daum.maps.Map(mapContainer, mapOption);
-        var ps = new daum.maps.services.Places();
-        ps.keywordSearch('섭지코지 관광지', placesSearchCB);
-
-        function placesSearchCB(data, status, pagination) {
-            if (status === daum.maps.services.Status.OK) {
-                var bounds = new daum.maps.LatLngBounds();
-                for (var i = 0; i < data.length; i++) {
-                    displayMarker(data[i]);
-                    bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
-                }
-                map.setBounds(bounds);
+                center: new daum.maps.LatLng(33.48922500465404, 126.76550064323604), // 지도의 중심좌표
+                level: 8 // 지도의 확대 레벨
+            };  
+        
+        // 지도를 생성합니다    
+        var map = new daum.maps.Map(mapContainer, mapOption); 
+        
+        // 장소 검색 객체를 생성합니다
+        var ps = new daum.maps.services.Places(map); 
+        
+        // 지도에 idle 이벤트를 등록합니다
+        daum.maps.event.addListener(map, 'idle', searchPlaces);
+        
+        // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다 
+        contentNode.className = 'placeinfo_wrap';
+        
+        // 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
+        // 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 daum.maps.event.preventMap 메소드를 등록합니다 
+        addEventHandle(contentNode, 'mousedown', daum.maps.event.preventMap);
+        addEventHandle(contentNode, 'touchstart', daum.maps.event.preventMap);
+        
+        // 커스텀 오버레이 컨텐츠를 설정합니다
+        placeOverlay.setContent(contentNode);  
+        
+        // 각 카테고리에 클릭 이벤트를 등록합니다
+        addCategoryClickEvent();
+        
+        // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
+        function addEventHandle(target, type, callback) {
+            if (target.addEventListener) {
+                target.addEventListener(type, callback);
+            } else {
+                target.attachEvent('on' + type, callback);
             }
         }
+        
+        // 카테고리 검색을 요청하는 함수입니다
+        function searchPlaces() {
+            if (!currCategory) {
+                return;
+            }
 
-        function displayMarker(place) {
-            var marker = new daum.maps.Marker({
-                map: map,
-                position: new daum.maps.LatLng(place.y, place.x)
-            });
-            daum.maps.event.addListener(marker, 'click', function () {
-                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-                infowindow.open(map, marker);
-            });
+            // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+            ps.keywordSearch( keyword, placesSearchCB); 
+            
+            // 커스텀 오버레이를 숨깁니다 
+            placeOverlay.setMap(null);
+        
+            // 지도에 표시되고 있는 마커를 제거합니다
+            removeMarker();
+            
+            ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
+        }
+        
+        // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+        function placesSearchCB(data, status, pagination) {
+            if (status === daum.maps.services.Status.OK) {
+        
+                // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+                displayPlaces(data);
+                displayPagination(pagination);
+            } else if (status === daum.maps.services.Status.ZERO_RESULT) {
+                // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
+        
+            } else if (status === daum.maps.services.Status.ERROR) {
+                // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
+                
+            }
+        }
+        
+        // 지도에 마커를 표출하는 함수입니다
+        function displayPlaces(places) {
+        
+            // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+            // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+            var order = document.getElementById(currCategory).getAttribute('data-order');
+            menuEl = document.getElementById('menu_wrap');
+            var listEl = document.getElementById('placesList');
+            fragment = document.createDocumentFragment();
+        
+            
+            removeAllChildNods(listEl);
+            removeMarker();
+            
+            for ( var i=0; i<places.length; i++ ) {
+        
+                    // 마커를 생성하고 지도에 표시합니다
+                    var marker = addMarker(new daum.maps.LatLng(places[i].y, places[i].x), order);
+                    itemEl = getListItem(i, places[i]);
+        
+                    // 마커와 검색결과 항목을 클릭 했을 때
+                    // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+                    (function(marker, place) {
+                        daum.maps.event.addListener(marker, 'click', function() {
+                            displayPlaceInfo(place);
+                        });
+                    })(marker, places[i]);
+                    fragment.appendChild(itemEl);
+            }
+            listEl.appendChild(fragment);
+            menuEl.scrollTop = 0;
+        }
+        
+        function getListItem(index, places) {
+        
+            var el = document.createElement('li'),
+            itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+                        '<div class="info">' +
+                        '   <h5>' + places.place_name + '</h5>';
+        
+            if (places.road_address_name) {
+                itemStr += '    <span>' + places.road_address_name + '</span>' +
+                            '   <span class="jibun gray">' +  places.address_name  + '</span>';
+            } else {
+                itemStr += '    <span>' +  places.address_name  + '</span>'; 
+            }
+                         
+              itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+                        '</div>';           
+        
+            el.innerHTML = itemStr;
+            el.className = 'item';
+            el.attributes = 'ondragstart="drag(event)"', 'draggable="true"';
+            return el;
+            
+        }
+
+        // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+        function addMarker(position, order) {
+            var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+                imageSize = new daum.maps.Size(27, 28),  // 마커 이미지의 크기
+                imgOptions =  {
+                    spriteSize : new daum.maps.Size(72, 208), // 스프라이트 이미지의 크기
+                    spriteOrigin : new daum.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                    offset: new daum.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+                },
+                markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+                    marker = new daum.maps.Marker({
+                    position: position, // 마커의 위치
+                    image: markerImage 
+                });
+        
+            marker.setMap(map); // 지도 위에 마커를 표출합니다
+            markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+        
+            return marker;
+        }
+        
+        // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+        function removeMarker() {
+            for ( var i = 0; i < markers.length; i++ ) {
+                markers[i].setMap(null);
+            }   
+            markers = [];
+        }
+        
+        // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
+        function displayPlaceInfo (place) {
+            var content = '<div class="placeinfo">' +
+                            '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+        
+            if (place.road_address_name) {
+                content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
+                            '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+            }  else {
+                content += '    <span title="' + place.address_name + '">' + place.address_name + '</span>';
+            }                
+           
+            content += '    <span class="tel">' + place.phone + '</span>' + 
+                        '</div>' + 
+                        '<div class="after"></div>';
+        
+
+            contentNode.innerHTML = content;
+            placeOverlay.setPosition(new daum.maps.LatLng(place.y, place.x));
+            placeOverlay.setMap(map);  
+        }
+        //검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+        function displayPagination(pagination) {
+            var paginationEl = document.getElementById('pagination'),
+                fragment = document.createDocumentFragment(),
+                i; 
+        
+            // 기존에 추가된 페이지번호를 삭제합니다
+            while (paginationEl.hasChildNodes()) {
+                paginationEl.removeChild (paginationEl.lastChild);
+            }
+        
+            for (i=1; i<=pagination.last; i++) {
+                var el = document.createElement('a');
+                el.href = "#";
+                el.innerHTML = i;
+        
+                if (i===pagination.current) {
+                    el.className = 'on';
+                } else {
+                    el.onclick = (function(i) {
+                        return function() {
+                            pagination.gotoPage(i);
+                        }
+                    })(i);
+                }
+        
+                fragment.appendChild(el);
+            }
+            paginationEl.appendChild(fragment);
+        }
+        
+        // 각 카테고리에 클릭 이벤트를 등록합니다
+        function addCategoryClickEvent() {
+            var category = document.getElementById('category'),
+                children = category.children;
+        
+            for (var i=0; i<children.length; i++) {
+                children[i].onclick = onClickCategory;
+            }
+        }
+        
+        // 카테고리를 클릭했을 때 호출되는 함수입니다
+        function onClickCategory() {
+            var id = this.id,
+                className = this.className;
+        
+            placeOverlay.setMap(null);
+        
+            if (className === 'on') {
+                currCategory = '';
+                changeCategoryClass();
+                removeMarker();
+            } else {
+                currCategory = id;
+                changeCategoryClass(this);
+                searchPlaces();
+            }
+        }
+        
+        // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+        function changeCategoryClass(el) {
+            var category = document.getElementById('category'),
+                children = category.children,
+                i;
+        
+            for ( i=0; i<children.length; i++ ) {
+                children[i].className = '';
+            }
+        
+            if (el) {
+                el.className = 'on';
+            } 
+        } 
+        // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+        function removeAllChildNods(el) {   
+            while (el.hasChildNodes()) {
+                el.removeChild (el.lastChild);
+            }
         }
 
         function relayout() {
             map.relayout();
         }
 
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("conts_detail");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tab_btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        map.relayout();
+ 
+</script>
 
-
-        document.getElementById("defaultOpen").click();
-    </script>
 <script>
 $(function() {
 
@@ -984,6 +1008,104 @@ $(function() {
   });
 
 });
+</script>
+
+
+<script>
+/*cumtom select*/
+var x, i, j, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select1":*/
+x = document.getElementsByClassName("custom-select1");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < selElmnt.length; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+  });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+
+
+</script>
+
+<script>
+
+    function allowDrop(ev) {
+    ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+
 </script>
 
 </body>
