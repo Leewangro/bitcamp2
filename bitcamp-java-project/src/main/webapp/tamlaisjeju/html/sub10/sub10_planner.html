@@ -167,7 +167,7 @@
 
                         <div id="schedule_detail_box" class="connectedSortable ui-sortable">
                             <div class="day_spot_item" data="" data-set_day="" data-rel_srl="" data-pl_type="" data-no="" data-pl_cat="301" data-latlng=""
-                                data-ci="" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                data-ci="">
                                 <div class="item_ctrl_box" style="display: none;">
                                     <div class="fl item_copy_plan" title="장소복사">
                                         <img src="../../img/sub10/item_more_icon_a.png" alt="장소복사">
@@ -195,7 +195,7 @@
                                 <div class="clear"></div>
                             </div>
                             <div class="day_spot_item" data="" data-set_day="" data-rel_srl="" data-pl_type="" data-no="" data-pl_cat="301" data-latlng=""
-                                data-ci="">
+                                data-ci=""  >
                                 <div class="item_ctrl_box" style="display: none;">
                                     <div class="fl item_copy_plan" title="장소복사">
                                         <img src="../../img/sub10/item_more_icon_a.png" alt="장소복사">
@@ -846,11 +846,14 @@
                         '</div>';           
         
             el.innerHTML = itemStr;
+            el.id = 'dragitem' + (index+1);
             el.className = 'item';
-            el.attributes = 'ondragstart="drag(event)"', 'draggable="true"';
+            el.draggable = 'true';
             return el;
-            
         }
+
+
+        
 
         // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
         function addMarker(position, order) {
@@ -986,6 +989,8 @@
             map.relayout();
         }
 
+
+
  
 </script>
 
@@ -1025,7 +1030,7 @@ for (i = 0; i < x.length; i++) {
   x[i].appendChild(a);
   /*for each element, create a new DIV that will contain the option list:*/
   b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
+  b.setAttribute("class", "select-items select-hide");  
   for (j = 1; j < selElmnt.length; j++) {
     /*for each option in the original select element,
     create a new DIV that will act as an option item:*/
@@ -1089,25 +1094,117 @@ document.addEventListener("click", closeAllSelect);
 
 </script>
 
+
+
 <script>
+    /* Events fired on the drag target */
+    document.addEventListener("dragstart", function(event) {
+        event.dataTransfer.setData("Text", event.target.id);
+    });
+    
+    document.addEventListener("dragend", function(event) {
+    });
+    
+    /* Events fired on the drop target */
+    document.addEventListener("dragover", function(event) {
+        event.preventDefault();
+    });
+    
+    document.addEventListener("drop", function(event) {
+        event.preventDefault();
+        if ( event.target.className == "day_spot_item" ) {
+            var data = event.dataTransfer.getData("Text");
+            var nodeCopy = document.getElementById(data).cloneNode(true);
+            nodeCopy.id = "newId"; /* We cannot use the same ID */
+            event.target.appendChild(nodeCopy);
+        }
+    });
+    </script>
+        
 
-    function allowDrop(ev) {
-    ev.preventDefault();
-    }
+<script>
+  $('#schedule_detail_box, .list_box').on('click', '.spot_distance_box', function () {
+      return false;
+    });
 
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
+    $('#schedule_detail_box').on('click', '.btn_del', function () {
+      cur_day = $(this).parent().parent().attr('data-set_day');
+      cur_order = $(this).parent().parent().attr('data');
 
-    function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-    }
+      del_plan_inspot(cur_day, cur_order);
+      _now_menu = $('#cat_menu li.on').attr('data');
+      if (_now_menu == 'clip') {
+        clearTimeout(auto_time);
+        auto_time = setTimeout(function () {
+          get_clip_list(1);
+        }, 500);
+      }
+
+      return false;
+    });
 
 
+$('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function () {
+      $(this).find('.item_ctrl_box').show();
+      _now_menu = $(this).parent().attr('id');
+      var no = $(this).attr('data-no');
+      var pl_cat = $(this).attr('data-pl_cat');
+
+      if (_now_menu == 'schedule_detail_box') {
+        var _this_only_clip = 1;
+      } else {
+        var _this_only_clip = 0;
+      }
+      markers['only_clip_' + _this_only_clip][no].setZIndex(99999999999999);
+      markers['only_clip_' + _this_only_clip][no].setIcon('/res/map/marker/ic_current.png');
+
+      if (pl_cat == '800' || pl_cat == '901' || pl_cat == '902' || pl_cat == '903') {
+        _arv_no = Number(no) + 1;
+        markers['only_clip_' + _this_only_clip][_arv_no].setZIndex(99999999999999);
+        markers['only_clip_' + _this_only_clip][_arv_no].setIcon('/res/map/marker/ic_current.png');
+      }
+      if (pl_cat == '100') {
+        markers['only_clip_' + _this_only_clip][no].set("labelClass", "s_label");
+      }
+    });
+
+    $('#schedule_detail_box, .list_box').on('mouseout', '.day_spot_item', function () {
+      $(this).find('.item_ctrl_box').hide();
+
+      _now_menu = $(this).parent().attr('id');
+      var _order = $(this).attr('data');
+      var pl_srl = $(this).attr('data-rel_srl');
+      var now_pl_srl = $('#select_detail_view_spot').attr('data');
+
+      if (_now_menu == 'schedule_detail_box') {
+        var _this_only_clip = 1;
+      } else {
+        var _this_only_clip = 0;
+      }
+
+      if (pl_srl != now_pl_srl) {
+        var no = $(this).attr('data-no');
+        var pl_cat = $(this).attr('data-pl_cat');
+        var is_clip_yn = markers['only_clip_' + _this_only_clip][no].clip_yn;
+
+        markers['only_clip_' + _this_only_clip][no].setZIndex(99999999999999);
+        if (is_clip_yn == 'y') {
+          markers['only_clip_' + _this_only_clip][no].setIcon('/res/map/marker/' + pl_cat + '_' + _order + '.png');
+        } else {
+          markers['only_clip_' + _this_only_clip][no].setIcon('/res/map/marker/n' + pl_cat + '_' + _order + '.png');
+        }
+        if (pl_cat == '800' || pl_cat == '901' || pl_cat == '902' || pl_cat == '903') {
+          _arv_no = Number(no) + 1;
+          markers['only_clip_' + _this_only_clip][_arv_no].setIcon('/res/map/marker/' + pl_cat + '_' + _order +
+            '.png');
+        }
+        if (pl_cat == '100') {
+          markers['only_clip_' + _this_only_clip][no].set("labelClass", "labels");
+        }
+      }
+
+    });
 </script>
-
 </body>
 
 </html>
