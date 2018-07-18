@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class TravelLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private int no;
+    private int tlno;
     private String member;
     private String partner;
     private String preference;
@@ -17,16 +17,17 @@ public class TravelLog implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startDate;
     private Date endDate;
+    
     @Override
     public String toString() {
-        return "TravelLog [no=" + no + ", member=" + member + ", partner=" + partner + ", preference=" + preference
+        return "TravelLog [tlno=" + tlno + ", member=" + member + ", partner=" + partner + ", preference=" + preference
                 + ", startDate=" + startDate + ", endDate=" + endDate + "]";
     }
     public int getNo() {
-        return no;
+        return tlno;
     }
-    public void setNo(int no) {
-        this.no = no;
+    public void setNo(int tlno) {
+        this.tlno = tlno;
     }
     public String getMember() {
         return member;

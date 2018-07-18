@@ -5,26 +5,26 @@ import java.util.Map;
 
 import bitcamp.java106.pms.domain.Board;
 
-public interface BoardDao_bak {
-    int delete(int no) ;
-    List<Board> selectList(Map<String,Object> params);
-    int insert(Board board);
-    int update(Board board);  
-    Board selectOne(int no); 
-}
+//public interface BoardDao_bak {
+//    int delete(int no) ;
+//    List<Board> selectList(Map<String,Object> params);
+//    int insert(Board board);
+//    int update(Board board);  
+//    Board selectOne(int no); 
+//}
 
-//ver 52 - ?˜?´ì§? ?‹¨?œ„ë¡? ?°?´?„° ê°?? ¸?˜¤ê¸?
-//ver 50 - ?´?˜?Š¤ë¥? ?¸?„°?˜?´?Š¤ë¡? ë³?ê²?
-//ver 33 - Mybatis ? ?š© 
-//ver 32 - DB ì»¤ë„¥?…˜ ?? ? ?š©
-//ver 31 - JDBC API ? ?š©
-//ver 24 - File I/O ? ?š©
-//ver 23 - @Component ?• ?…¸?…Œ?´?…˜?„ ë¶™ì¸?‹¤.
-//ver 22 - ì¶”ìƒ ?´?˜?Š¤ AbstractDaoë¥? ?ƒ?† ë°›ëŠ”?‹¤.
-//ver 19 - ?š°ë¦? ë§Œë“  ArrayList ???‹  java.util.LinkedListë¥? ?‚¬?š©?•˜?—¬ ëª©ë¡?„ ?‹¤ë£¬ë‹¤. 
-//ver 18 - ArrayListë¥? ?´?š©?•˜?—¬ ?¸?Š¤?„´?Š¤(?˜ ì£¼ì†Œ) ëª©ë¡?„ ?‹¤ë£¬ë‹¤. 
-// ver 16 - ?¸?Š¤?„´?Š¤ ë³??ˆ˜ë¥? ì§ì ‘ ?‚¬?š©?•˜?Š” ???‹  ê²Ÿí„°, ?…‹?„° ?‚¬?š©.
-// ver 14 - BoardControllerë¡œë??„° ?°?´?„° ê´?ë¦? ê¸°ëŠ¥?„ ë¶„ë¦¬?•˜?—¬ BoardDao ?ƒ?„±.
+//ver 52 - ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ï¿½??ï¿½ï¿½?ï¿½ï¿½ï¿½?
+//ver 50 - ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ï¿½?ï¿½?
+//ver 33 - Mybatis ?ï¿½ï¿½?ï¿½ï¿½ 
+//ver 32 - DB ì»¤ë„¥?ï¿½ï¿½ ?? ?ï¿½ï¿½?ï¿½ï¿½
+//ver 31 - JDBC API ?ï¿½ï¿½?ï¿½ï¿½
+//ver 24 - File I/O ?ï¿½ï¿½?ï¿½ï¿½
+//ver 23 - @Component ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë¶™ì¸?ï¿½ï¿½.
+//ver 22 - ì¶”ìƒ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ AbstractDaoï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ë°›ëŠ”?ï¿½ï¿½.
+//ver 19 - ?ï¿½ï¿½ï¿½? ë§Œë“  ArrayList ???ï¿½ï¿½ java.util.LinkedListï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ëª©ë¡?ï¿½ï¿½ ?ï¿½ï¿½ë£¬ë‹¤. 
+//ver 18 - ArrayListï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½(?ï¿½ï¿½ ì£¼ì†Œ) ëª©ë¡?ï¿½ï¿½ ?ï¿½ï¿½ë£¬ë‹¤. 
+// ver 16 - ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ï¿½??ï¿½ï¿½ï¿½? ì§ì ‘ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ???ï¿½ï¿½ ê²Ÿí„°, ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½.
+// ver 14 - BoardControllerë¡œï¿½??ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ï¿½?ï¿½? ê¸°ëŠ¥?ï¿½ï¿½ ë¶„ë¦¬?ï¿½ï¿½?ï¿½ï¿½ BoardDao ?ï¿½ï¿½?ï¿½ï¿½.
 
 
 
