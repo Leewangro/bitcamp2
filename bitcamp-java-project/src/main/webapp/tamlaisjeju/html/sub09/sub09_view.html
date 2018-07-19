@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="../../css/common.css" />
 <link rel="stylesheet" href="../../css/layout.css" />
 <link rel="stylesheet" href="../../css/main.css" />
-<link rel="stylesheet" href="../../css/sub09.css" />
+<link rel="stylesheet" href="../../css/sub09_view.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- js -->
@@ -50,12 +50,12 @@
 								</a>
 							</div>
 							<div class="author-name">
-								<h3>ID값</h3>
-								<h5>(여자)</h5>
+								<h3 id="mem_id">아이디</h3>
+								<h5 id="mem_gen">여자</h5>
 							</div>
 						</div>
 						<!--author0box -->
-						<div class="author-ment">아이유 개이쁨;실화냐</div>
+						<div class="author-ment" id="mem_profile">아이유 개이쁨;실화냐</div>
 						<div class="follower-btns">
 							<button class="follower">동행신청</button>
 							<button class="following hide">신청하였습니다</button>
@@ -63,13 +63,13 @@
 
 						<div class="author-page-links">
 							<ul>
-								<li><a> <span>여행일정</span> <span class="count">(40)</span>
+								<li><a> <span>여행일정</span><span id="trav_schedule" class="count"></span>
 								</a></li>
-								<li><a> <span>여행리뷰</span> <span class="count">(40)</span>
+								<li><a> <span>여행리뷰</span> <span id="trav_review" class="count"></span>
 								</a></li>
-								<li><a> <span>방문장소</span> <span class="count">(40)</span>
+								<li><a> <span>동행횟수</span> <span id="accompany_count" class="count"></span>
 								</a></li>
-								<li><a> <span>회원평점</span> <span class="count">(40)</span>
+								<li><a> <span>회원댓글</span> <span id="mem_comment" class="count"></span>
 								</a></li>
 							</ul>
 						</div>
@@ -111,24 +111,27 @@
 					<div class="plan-detail-txt">
 						<h2 class="plan-tit">글쓴이 한 마디</h2>
 						<div class="plan-txt">
-							<pre>같이 가고 싶은 분들 많이 신청해주세요!!</pre>
+							<pre id="author_comment"></pre>
 						</div>
 						<div class="more-info-con">
 							<div class="theme-round">
 								<p>
-									<span> 여행시작일 : </span> <span>2016-07-12</span>
+									<span> 여행시작일 : </span> <span id="s_date"></span>
 								</p>
 								<p>
-									<span>1</span> <span>명</span>
+									<span> 여행종료일 : </span> <span id="e_date"></span>
 								</p>
-								<p>여행 전</p>
-								<p>나홀로 여행</p>
+								<p>
+									<span id="per_count"></span> <span>명</span>
+								</p>
+								<p id="mem_theme">나홀로 여행</p>
 							</div>
 
 							<div class="update-date">
-								<span class="first"> <span>처음 만든 날 : </span> <span>2016-06-10</span>
-								</span> <span class="last"> <span>마지막 수정한 날 : </span> <span>2017-10-23</span>
-								</span> <span class="last"> <span>조회수</span> : <span>87.3K</span>
+								<span class="first"> <span>처음 만든 날 : </span> <span id="cre_date"></span>
+								</span> <span class="last"> <span>마지막 수정한 날 : </span> <span id="last_update"></span>
+								</span> <span class="last"> <span>조회수</span> : <span id="board_hits"></span>
+								</span> <span class="last"> <span>게시글 번호</span> : <span id="board_num"></span>
 								</span>
 							</div>
 						</div>
@@ -140,97 +143,14 @@
 					<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a39a869b2b427425c966081cb35dc719"></script>
 					<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-    mapOption = { 
-        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-
-var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
- 
-// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-var positions = [
-    {
-        content: '<div>카카오</div>', 
-        latlng: new daum.maps.LatLng(33.450705, 126.570677)
-    },
-    {
-        content: '<div>생태연못</div>', 
-        latlng: new daum.maps.LatLng(33.450936, 126.569477)
-    },
-    {
-        content: '<div>텃밭</div>', 
-        latlng: new daum.maps.LatLng(33.450879, 126.569940)
-    },
-    {
-        content: '<div>근린공원</div>',
-        latlng: new daum.maps.LatLng(33.451393, 126.570738)
-    }
-];
-
-for (var i = 0; i < positions.length; i ++) {
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng // 마커의 위치
-    });
-
-    // 마커에 표시할 인포윈도우를 생성합니다 
-    var infowindow = new daum.maps.InfoWindow({
-        content: positions[i].content // 인포윈도우에 표시할 내용
-    });
-
-    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-    daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-}
-
-// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-function makeOverListener(map, marker, infowindow) {
-    return function() {
-        infowindow.open(map, marker);
-    };
-}
-
-// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-function makeOutListener(infowindow) {
-    return function() {
-        infowindow.close();
-    };
-}
-
-/* 아래와 같이도 할 수 있습니다 */
-/*
-for (var i = 0; i < positions.length; i ++) {
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng // 마커의 위치
-    });
-
-    // 마커에 표시할 인포윈도우를 생성합니다 
-    var infowindow = new daum.maps.InfoWindow({
-        content: positions[i].content // 인포윈도우에 표시할 내용
-    });
-
-    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-    (function(marker, infowindow) {
-        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-        daum.maps.event.addListener(marker, 'mouseover', function() {
-            infowindow.open(map, marker);
-        });
-
-        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-        daum.maps.event.addListener(marker, 'mouseout', function() {
-            infowindow.close();
-        });
-    })(marker, infowindow);
-}
-*/
-</script>
+                        var container = document.getElementById('map');
+                        var options = {
+                            center: new daum.maps.LatLng(33.450701,
+                                126.570667),
+                            level: 3
+                        };
+                        var map = new daum.maps.Map(container, options);
+                    </script>
 				</div>
 				<!--지도 종료-->
 				<!--cont_wrap의 day시작-->
@@ -245,7 +165,7 @@ for (var i = 0; i < positions.length; i ++) {
 								<div class="spot-tit type">
 									<a class="spot-title-area" id="d1">
 										<h4>
-											<span> 시드니 </span>
+											<span id="trav_place">  </span>
 										</h4>
 									</a>
 								</div>
@@ -425,6 +345,47 @@ for (var i = 0; i < positions.length; i ++) {
             js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
+	
+
+	<script>
+	
+		$.getJSON("디스패처/클래스/메소드", {
+		   no : 1
+		}, res => {
+		   $(mem_id).val(res.MID);
+		   $(mem_gen).val( (res.GEN == 0 ? "여" : "남") );
+		   $(mem_profile).val(res.content);
+		   $(trav_schedule).val( "(" + res.schedule + ")" );
+		   $(trav_review).val( "(" + res.REVIEW + ")" );
+		   $(accompany_count).val( "(" + res.schedule + ")" );
+		   $(mem_comment).val( "(" + res.schedule + ")" );
+		   $(s_date).val(res.SDT);
+		   $(e_date).val(res.EDT);
+		   $(per_count).val(res.CAPA);
+		   $(mem_theme).val(res.THEMA);
+		   $(cre_date).val(res.CDT);
+		   $(last_update).val(res.LUPDATE);
+		   $(board_hits).val(res.COUNT);
+		/*    $(mid).text(res.id);
+		   $(mid).html(res.id); */
+		   
+		});
+		
+		$.post("디스패처/클래스/메소드", {
+		   memberId:$(mid).val(),
+		   tel:$(tel).val()
+		}, res => {
+		   if(res.state == "SUCCESS")
+		      alert("등록햇습니다")
+		   else
+		      console.log("error");
+		});
+		
+	</script>
 </body>
 
+
 </html>
+
+
+
