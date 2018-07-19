@@ -1,9 +1,14 @@
 package bitcamp.java106.pms.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.domain.TravelLogContent;
 
 public interface TravelLogContentDao {
-    TravelLogContent selectList(int no);
+    List<TravelLogContent> selectList(Map<String,Object> params);
+    TravelLogContent selectOne(int no);
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기
