@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="d1">
+
+</div>
+
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<script id="p-template" type="text/x-handlebars-template">
+{{#each list}}
+     <p>{{name}}, {{age}}</p>
+
+{{/each}}
+</script>
+
+<script>
+var pTemplateSrc = $("#p-template").html();
+var templateFn = Handlebars.compile(pTemplateSrc);
+
+var html = templateFn({
+	list: [{name: "aaa", age: 20}, 
+		{name: "aaa2", age: 22},
+		{name: "aaa3", age: 23},
+		{name: "aaa4", age: 24},
+		{name: "aaa5", age: 25}]
+});
+
+$('#d1').html(html);
+
+console.log($('#d1').find('p').length);
+
+
+
+</script>
+
+
+</body>
+</html>

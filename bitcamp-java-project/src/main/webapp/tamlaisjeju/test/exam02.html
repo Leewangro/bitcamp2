@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<div id="d1">
+
+	</div>
+
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+	<script id="tr-template" type="text/x-handlebars-template">
+		{{#each list}}
+		<div class="t_timeline_content day-{{day}}">
+			<div class="context_menu">
+				<span>
+					<a href="#">#데이트</a>
+					<a href="#">#포토존</a>
+					<a href="#">#꽃</a>
+				</span>
+			</div>
+
+			<div class="content_box clear">
+				<div class="content_icon">
+					<p class="contnet_name">{{place}}</p>
+					<p class="content_addr">{{address}}</p>
+				</div>
+				<div class="content_text">
+					<p>{{review}}</p>
+
+				</div>
+			</div>
+			<div class="t_timeline_content_imgbox">
+				<figure class="snip0016">
+					<figcaption>
+						<p>사진더보기</p>
+						<a href="#"></a>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		{{/each}}
+
+	</script>
+	<script>
+		var trTemplateSrc = $("#tr-template").html();
+		var count = 1;
+		var templateFn = Handlebars.compile(trTemplateSrc);
+	    
+		$.getJSON( "http://localhost:8888/bitcamp-java-project/json/TravelLogContent/list", (data) => {
+			$(d1).html(templateFn({
+				list: data
+			}))
+			var leng = $('.t_timeline_content').length
+	 		
+			for (count; count < leng-1; count++){
+			console.log($('.day-'+ count).length)
+			} 
+		});
+	</script>
+
+</body>
+
+</html>

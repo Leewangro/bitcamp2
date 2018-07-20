@@ -28,7 +28,7 @@
   <select id="selectList" 
           resultMap="TravelLogContentMap" 
           parameterType="map">
-    SELECT TLNO, TCNO, PLACE, ADDR, PHOTO, REVIEW 
+    SELECT TLNO, TCNO, PLACE, ADDR, PHOTO, REVIEW, DAY
     FROM TAMLA_TRAVEL_LOG_CONTENT
   </select>
   <!-- 
