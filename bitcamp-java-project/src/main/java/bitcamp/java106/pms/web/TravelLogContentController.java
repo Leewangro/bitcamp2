@@ -48,6 +48,15 @@ public class TravelLogContentController {
         
         map.put("list", travelLogContentService.list(pageNo, pageSize));
     }
+
+    @RequestMapping("zz{page}")
+    public void listOnlyDay(
+    		@MatrixVariable(defaultValue="1") int pageNo,
+    		@MatrixVariable(defaultValue="3") int pageSize,
+    		Map<String,Object> map) {        
+    	
+    	map.put("zz", travelLogContentService.zz(pageNo, pageSize));
+    }
     
 //    @RequestMapping("update")
 //    public String update(Board board) throws Exception {

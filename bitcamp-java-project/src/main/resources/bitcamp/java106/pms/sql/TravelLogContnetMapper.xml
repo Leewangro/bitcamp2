@@ -13,10 +13,12 @@
 
   <resultMap type="TravelLogContent" id="TravelLogContentMap">
     <id column="TCNO" property="tcno"/>
+    <result column="TLNO" property="tlno"/>
     <result column="PLACE" property="place"/>
     <result column="ADDR" property="address"/>
     <result column="PHOTO" property="photo"/>
     <result column="REVIEW" property="review"/>
+    <result column="DAY" property="day"/>
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -31,6 +33,16 @@
     SELECT TLNO, TCNO, PLACE, ADDR, PHOTO, REVIEW, DAY
     FROM TAMLA_TRAVEL_LOG_CONTENT
   </select>
+  
+  
+    <select id="zz" 
+          resultMap="TravelLogContentMap" 
+          parameterType="map">
+    SELECT TLNO, DAY, 
+    GROUP_CONCAT( PLACE SEPARATOR ',' ) 
+    FROM TAMLA_TRAVEL_LOG_CONTENT 
+    GROUP BY DAY
+  </select>
   <!-- 
   
   <insert id="insert" parameterType="Board"
@@ -43,7 +55,7 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
   <select id="selectOne" parameterType="int" resultMap="TravelLogContentMap">
-    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW 
+    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY
     from TAMLA_TRAVEL_LOG_CONTENT 
     where TLNO=#{value}
   </select>

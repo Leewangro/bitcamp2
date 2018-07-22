@@ -28,6 +28,15 @@ public class TravelLogContentImpl implements TravelLogContentService {
 
         return travelLogContnetDao.selectList(params);
     }
+    
+    @Override
+    public List<TravelLogContent> zz(int pageNo, int pageSize) {
+    	HashMap<String,Object> params = new HashMap<>();
+    	params.put("startRowNo", (pageNo - 1) * pageSize);
+    	params.put("pageSize", pageSize);
+    	
+    	return travelLogContnetDao.zz(params);
+    }
 
 
     @Override

@@ -20,7 +20,7 @@
     <!-- sub08 -->
     <link rel="stylesheet" type="text/css" href="../../css/sub08.css">
     <!-- handlebars -->
-    
+
     <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
 
     <!-- logo font -->
@@ -87,7 +87,7 @@
                 <!-- 지도 -->
 
                 <!-- <div class=map_bb style="width: 100%;height: 400px;background-color: teal;margin-bottom:84px;" style="overflow: hidden;z-index:2; "></div> -->
-                 <div id="map" style="width:100%;height:400px;margin-bottom:84px;"></div>
+                <div id="map" style="width:100%;height:400px;margin-bottom:84px;"></div>
             </div>
 
             <!-- 타임라인 -->
@@ -95,21 +95,8 @@
             <div class="t_timeline">
 
                 <nav class="action">
-                    <div class="timeline_content_day fix_day1 day off clear">
-                        <h4> Day 1</h4>
-                        <p>2018.08.02</p>
-                        <p>Day1 경로보기</p>
-                    </div>
-                    <div class="timeline_content_day fix_day2 day off clear">
-                        <h4> Day 2</h4>
-                        <p>2018.08.03</p>
-                        <p>Day2 경로보기</p>
-                    </div>
-                    <div class="timeline_content_day fix_day3 day off clear">
-                        <h4> Day 3</h4>
-                        <p>2018.08.04</p>
-                        <p>Day3 경로보기</p>
-                    </div>
+                    <div id="nav_day_bar"></div>
+
 
                     <div class="nav_menu">
 
@@ -251,18 +238,39 @@
                         <p>2018.08.02</p>
                         <p>Day1 경로보기</p>
                     </div>
-                
 
-                        <div id="tlile"></div>
-                   
 
-                   
-              
+                    <div id="tlile"></div>
 
-   
 
-                    
                 </div>
+
+                <div id="div2" class="day2">
+                    <div class="timeline_content_day c_day2">
+                        <h4> Day 1</h4>
+                        <p>2018.08.02</p>
+                        <p>Day1 경로보기</p>
+                    </div>
+                </div>
+                <div id="div3" class="day3">
+                    <div class="timeline_content_day c_day3">
+                        <h4> Day 1</h4>
+                        <p>2018.08.02</p>
+                        <p>Day1 경로보기</p>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -368,7 +376,7 @@
             // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
             map.relayout();
         }
-    </script> 
+    </script>
 
     <!-- <script>
         $('.js-timeline').Timeline({
@@ -383,6 +391,57 @@
         });
     </script>
 -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.ajax({
+
+                type: "GET",
+
+                url: "http://localhost:8888/bitcamp-java-project/json/TravelLogContent/list",
+
+                dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                success: function (data) {
+
+                    var arr = new Array();
+                    var w;
+                    var a;
+                    for (var i = 0; i < data.length; i++) {
+                        var w = data[i].day
+                        var a = data[i].place
+                        arr[w] = a
+                    }
+                    for (var i = 1; i < arr.length; i++) {
+                        $("#nav_day_bar").append(
+                            "<div class='timeline_content_day fix_day" + i + " day off clear'>" +
+                            "<h4> Day" + i + "</h4>" +
+                            "<p></p>" +
+                            "<p>" + "Day" + i + "경로보기" + "</p>" + "</div>")
+                    }
+                    console.log(arr[1])
+                    console.log(arr[2])
+                    console.log(arr[3])
+
+                },
+
+                complete: function (data) {
+
+                    // 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
+
+                    // TODO
+
+
+                },
+
+                error: function (xhr, status, error) {
+
+                    alert("에러발생");
+                }
+            });
+        });
+    </script>
 
     <script>
         //왼쪽 fixed
@@ -616,38 +675,38 @@
 
         var menu = new TreeMenu($(".treemenu"));
     </script>
-            <script id="tr-template" type="text/x-handlebars-template">
+    <script id="tr-template" type="text/x-handlebars-template">
         {{#each list}}
-                    <div class="t_timeline_content">
-                        <div class="context_menu">
-                            <span>
-                                <a href="#">#데이트</a>
-                                <a href="#">#포토존</a>
-                                <a href="#">#꽃</a>
-                            </span>
-                        </div>
+        <div class="t_timeline_content">
+            <div class="context_menu">
+                <span>
+                    <a href="#">#데이트</a>
+                    <a href="#">#포토존</a>
+                    <a href="#">#꽃</a>
+                </span>
+            </div>
 
-                        <div class="content_box clear">
-                            <img src="../../img/sub08/jeju1.jpg" alt="jeju1" />
-                            <div class="content_icon">
-                                <p class="contnet_name">{{place}}</p>
-                                <p class="content_addr">{{address}}</p>
-                            </div>
-                            <div class="content_text">
-                                <p>{{review}}</p>
+            <div class="content_box clear">
+                <img src="../../img/sub08/jeju1.jpg" alt="jeju1" />
+                <div class="content_icon">
+                    <p class="contnet_name">{{place}}</p>
+                    <p class="content_addr">{{address}}</p>
+                </div>
+                <div class="content_text">
+                    <p>{{review}}</p>
 
-                            </div>
-                        </div>
-                        <div class="t_timeline_content_imgbox">
-                            <figure class="snip0016">
-                                <img src="../../img/sub08/{{photo}}" alt="jeju1" />
-                                <figcaption>
-                                    <p>사진더보기</p>
-                                    <a href="#"></a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="t_timeline_content_imgbox">
+                <figure class="snip0016">
+                    <img src="../../img/sub08/{{photo}}" alt="jeju1" />
+                    <figcaption>
+                        <p>사진더보기</p>
+                        <a href="#"></a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
 
         {{/each}}
 
@@ -655,6 +714,22 @@
     <script src="../../js/common/common.js"></script>
     <script type="text/javascript" src="sub08_view.js"></script>
 
+
+    <!-- <div class="timeline_content_day fix_day1 day off clear">
+        <h4> Day 1</h4>
+        <p>2018.08.02</p>
+        <p>Day1 경로보기</p>
+    </div>
+    <div class="timeline_content_day fix_day2 day off clear">
+        <h4> Day 2</h4>
+        <p>2018.08.03</p>
+        <p>Day2 경로보기</p>
+    </div>
+    <div class="timeline_content_day fix_day3 day off clear">
+        <h4> Day 3</h4>
+        <p>2018.08.04</p>
+        <p>Day3 경로보기</p>
+    </div> -->
 
 
 

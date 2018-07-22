@@ -8,6 +8,7 @@ import bitcamp.java106.pms.domain.TravelLogContent;
 
 public interface TravelLogContentDao {
     List<TravelLogContent> selectList(Map<String,Object> params);
+    List<TravelLogContent> zz(Map<String,Object> params);
     TravelLogContent selectOne(int no);
 }
 

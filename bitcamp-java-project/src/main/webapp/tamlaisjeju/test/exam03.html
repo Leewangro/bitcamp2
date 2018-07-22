@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<title>JSON Sample with jQuery</title>
+</head>
+
+<body>
+
+	<h2 id="gname"></h2>
+
+	<p>
+		<span id="place"></span>
+	</p>
+
+	<h3>앨범 목록</h3>
+
+	<ul id="albums"></ul>
+
+
+
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+
+
+		$(document).ready(function () {
+
+			jQuery.ajax({
+
+				type: "GET",
+
+				url: "http://localhost:8888/bitcamp-java-project/json/TravelLogContent/list",
+
+				dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+				success: function (data) {
+
+					// var map = new Map();
+
+					// map.put("1","12");
+					// console.log(map.size());
+					// for (var i = 0; i < data.length; i++) {
+					// 	map.put(data[i].day, data[i].place)
+					// }
+					// console.log(map.get(1));
+
+					// for (var i = 0; i < data.day; i++) {
+					// 	console.log(map.get(data[i].day));
+					// }
+		
+
+
+						var arr = new Array();
+						var w;
+						var a;
+						for (var i = 0; i < data.length; i++) {
+							var w = data[i].day
+							var a = data[i].place
+							arr[w] = a
+						}
+						for (var i = 1; i < arr.length; i++) {
+						$("#gname").append("<div class='hello'>" + i + "일차" + "</div>")
+						console.log("생성")
+					}
+						console.log(arr[1])
+						console.log(arr[2])
+						console.log(arr[3])
+
+				},
+
+				complete: function (data) {
+
+					// 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
+
+					// TODO
+
+
+				},
+
+				error: function (xhr, status, error) {
+
+					alert("에러발생");
+
+				}
+
+			});
+
+		});
+	</script>
+</body>
+
+</html>

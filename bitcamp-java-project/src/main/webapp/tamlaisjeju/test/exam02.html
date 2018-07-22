@@ -7,10 +7,24 @@
 </head>
 
 <body>
-
 	<div id="d1">
-
 	</div>
+		
+	<div id="d2"></div>
+
+
+	<div class="editor_side_tag">
+			<p>
+				HashTag 입력
+			</p>
+			<div class="animated bounceInDown">
+
+				<input id="input" type="text" placeholder="HashTag 엔터로 입력">
+				<button id="enter">hashtag</button>
+				<ul id="tag_box" class="tag_cls">
+				</ul>
+			</div>
+		</div>
 
 	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -21,7 +35,7 @@
 			<div class="context_menu">
 				<span>
 					<a href="#">#데이트</a>
-					<a href="#">#포토존</a>
+					<a href="#">#포토존</a> 
 					<a href="#">#꽃</a>
 				</span>
 			</div>
@@ -48,7 +62,7 @@
 
 		{{/each}}
 
-	</script>
+	</script> 
 	<script>
 		var trTemplateSrc = $("#tr-template").html();
 		var count = 1;
@@ -60,8 +74,11 @@
 			}))
 			var leng = $('.t_timeline_content').length
 	 		
-			for (count; count < leng-1; count++){
-			console.log($('.day-'+ count).length)
+			for (count; count < leng; count++){
+			console.log(count+ "일차" + $('.day-'+ count).length + "개")
+			if ($('.day-'+ count).length) {
+				ul.appendChild(li);
+			}
 			} 
 		});
 	</script>

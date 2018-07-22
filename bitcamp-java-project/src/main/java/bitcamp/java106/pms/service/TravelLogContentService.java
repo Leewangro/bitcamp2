@@ -10,6 +10,7 @@ public interface TravelLogContentService {
     // 업무 용어를 사용하라!
       
       List<TravelLogContent> list(int pageNo, int pageSize); 
+      List<TravelLogContent> zz(int pageNo, int pageSize); 
       TravelLogContent get(int no);
 //    Team getWithMembers(String name);
 //    int add(Team team);
