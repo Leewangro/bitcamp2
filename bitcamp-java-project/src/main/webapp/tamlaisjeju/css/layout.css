@@ -143,6 +143,207 @@
   font-size: 13px;
 }
 
+/**************************************************************************************
+헤더 모달
+***************************************************************************************/
+
+body.modal-open {
+  overflow: hidden;
+  padding-right: 0px !important;
+}
+
+.login .modal-open {
+  overflow: hidden;
+  padding-right: 0px !important;
+}
+
+.login .modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+}
+
+.login .modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-right: 0px !important;
+}
+
+.login .modal-dialog {
+  position: relative;
+  width: auto;
+  pointer-events: none;
+}
+
+.login .modal.fade .modal-dialog {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  -webkit-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .login .modal.fade .modal-dialog {
+    transition: none;
+  }
+}
+
+.login .modal.show .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.login .modal-dialog-centered {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: calc(100% - (0.5rem * 2));
+}
+
+.login .modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.login .modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+
+.login .modal-backdrop.fade {
+  opacity: 0;
+}
+
+.login .modal-backdrop.show {
+  opacity: 0.5;
+}
+
+.login .modal-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 0px;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+
+.login .modal-header .close {
+  padding: 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+
+.login .modal-title {
+  margin-bottom: 0;
+  margin-left: 43%;
+  line-height: 1.5;
+  font-size: 30px;
+}
+
+.login .modal-body {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1rem 4rem;
+  text-align: center;
+}
+
+.login .modal-footer {
+  display: -ms-flexbox;
+  display: block;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 0px;
+  margin-bottom: 1rem;
+}
+
+.login .modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+.login .btn_login {
+  display: block;
+  width: 20rem;
+  height: 45px;
+  margin-left: 4.5rem;
+  margin-top: 20px;
+  padding: 12px 0 12px 48px;
+}
+
+.login .btn_login span {
+  display: block;
+  height: 21px;
+  border-left: 1px solid #e5e5e5;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 21px;
+}
+
+.login .btn_login.fb {
+  background: url(../img/common/ico_facebook_l.png) no-repeat 19px 50%;
+    background-color: #445e99;
+}
+
+.login .btn_login.kt {
+  background: url(../img/common/ico_kakao_l.png) no-repeat 12px 50%;
+  background-color: #f7c000;
+}
+
+.login .btn_login.ig {
+  background: url(../img/common/ico_google_l.png) no-repeat 15px 50%;
+  background-color: #d62d20;
+}
+
+.login button {
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-transform: inherit;
+}
+
+
+
+
+
+
+
 @media screen and (max-width: 1200px) {
   .top_util {
     display: none;
@@ -297,7 +498,7 @@ visual  - 비주얼
 #visual img {
   display: block;
   width: 100%;
-  height: 450px;
+  height: 350px;
 }
 
 .container .visual_cont {
@@ -1503,6 +1704,7 @@ container - 컨텐츠 스타일
 .img_wrap {
   position: relative;
   text-align: center;
+  margin:30px 0;
 }
 
 .img_wrap img {}
@@ -1830,8 +2032,44 @@ board_list - 게시판 리스트
   border: 1px solid #e5e5e5;
 }
 
-<<<<<<< HEAD
-.category_wrap {
+
+
+/* category_tab */
+
+.category_tab {
+  width: 100%;
+  text-align: center;
+  margin:5% 0;
+}
+
+.category_tab li {
+  width: 15%;
+  margin: 0 5px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.category_tab li a {
+
+  display: block;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 17px;
+  line-height: 24px;
+
+}
+
+.category_tab li a:hover,
+.category_tab li .active {
+  background-color: #3a3b3c;
+  color: #fff;
+}
+
+
+
+/* .category_wrap {
   border-top: 1px solid #cbcbcb;
   border-left: 1px solid #cbcbcb;
   ;
@@ -1850,10 +2088,8 @@ board_list - 게시판 리스트
   background: #24a7e9;
   color: #fff;
   box-shadow: none;
-}
+} */
 
-=======
->>>>>>> a871631b871e39d01b58ef6f196a3ead1cfb209c
 /* board_list type01*/
 
 /* .board_list.type01 .box_wrap .box:first-child {
@@ -1869,6 +2105,7 @@ board_list - 게시판 리스트
   /* width: 33.3%;  */
   /* width: calc(34% - 2%); */
   margin-left: 2%;
+  margin-bottom: 2%;
 }
 
 .board_list.type01 .box_cont_area {
@@ -2701,6 +2938,60 @@ figure.effect.type03:hover p {
   -webkit-transform: translate3d(0, -50%, 0) translate3d(0, 100%, 0);
   transform: translate3d(0, -50%, 0) translate3d(0, 100%, 0);
 }
+
+
+
+
+
+
+/**************************************************************************************
+curation - 큐레이션
+***************************************************************************************/
+
+.board_list.curation {}
+
+.board_list.curation .curation_search_box {}
+
+.board_list.curation .curation_search_box dl {
+    display: table;
+    width: 100%;
+    margin-top: -1px;
+}
+
+.board_list.curation .curation_search_box dt {
+    display: table-cell;
+    width: 12%;
+    padding: 4px 0 4px 15px;
+    color: #000;
+    border: 1px solid #355e89;
+    background-color: #4c83bd;
+    color: #fff;
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.board_list.curation .curation_search_box dd {
+    display: table-cell;
+    padding: 4px 8px;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.board_list.curation .curation_search_box dd span {
+    display: inline-block;
+    padding: 1px;
+}
+
+
+.board_list.curation .curation_search_box .btn_wrap {
+    margin: 30px 0;
+}
+
+
+
+
+
 
 /**************************************************************************************
 all_page_box - 제주여행 꿀팁

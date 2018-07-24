@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!-- meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>탐라는제주 - 숨어 있던 진짜 hot한 제주</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+	<meta property="og:title" content="탐라는제주">
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
+	<!-- font -->
+	<link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+	    crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- css -->
+	<link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../css/common.css" />
+	<link rel="stylesheet" href="../../../css/layout.css" />
+
+</head>
+
+<body>
+
+
+
+	<header id="header"></header>
+
+
+
+	<div id="container" class="container">
+		<div id="content" class="content wrapper">
+			<div id="result" class="view_cont">
+
+
+			</div>
+			<!-- result end-->
+			<!-- content end -->
+		</div>
+		<!-- container end -->
+
+		<script id="codeTemp" type="text/x-handlebars-template">
+			<div id="visual" class="svisual">
+				<img src="{{firstimage}}" alt="{{title}}">
+			</div>
+			<!-- visual end-->
+			<div class="visual_cont wrapper">
+				<div class="visual_cont_box">
+					<h3>{{title}}
+					</h3>
+					<p class="score">4.5 / 5</p>
+					<p class="hashtag">
+						<a href="#">#맛집</a>
+						<a href="#">#김밥</a>
+					</p>
+					<p class="tit">기본정보</p>
+					<ul>
+						<li class="clear">
+							<b>주소</b>
+							<span>제주특별자치도 서귀포시 성산읍 성산리 114</span>
+						</li>
+						<li class="clear">
+							<b>연락처</b>
+							<span>(+82) 064-783-0959</span>
+						</li>
+					</ul>
+					<div class="btn_wrap">
+						<a class="btn">길찾기</a>
+					</div>
+					<!--spot_info end-->
+					<div class="weather_area">
+						<img src="../../img/common/weather/weather_blur.png" alt="흐림">
+						<strong>흐림</strong>
+					</div>
+					<!-- weather_area end-->
+				</div>
+				<!-- visual_cont_box-->
+			</div>
+			<!-- visual_cont end-->
+		</script>
+
+
+
+		<footer id="footer"></footer>
+
+
+
+
+
+
+		<!-- js -->
+		<script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
+		<script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+		<script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../js/common.js"></script>
+		<!-- <script src="../../../js/header.js"></script> -->
+		<script src="view.js"></script>
+		<script>
+			$(document).ready(function () {
+				$("#header").load("../../../include/header.html")
+				$("#footer").load("../../../include/footer.html")
+				/* id 지정을 통해서도 가능합니다. 
+				 $("#header").load("header.html #navbar")
+				 */
+			});
+		</script>
+
+
+
+</body>
+
+</html>
