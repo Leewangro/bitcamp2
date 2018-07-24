@@ -4,26 +4,43 @@
 #sub10_planner_header {
     height: 85px;
     width: 100%;
-    min-width: 1050px;
+    min-width: 1200px;
     float: left;
 }
 
 #sub10_planner_header #myTopnav {
+    padding: 10px;
     height: 85px;
     width: 100%;
     float: left;
 }
 
-#sub10_planner_header .topnav .wrapper h1 a {
+#sub10_planner_header .myTopnav h1 {
+    display: block;
+    float: left;
+}
+
+#sub10_planner_header .myTopnav h1 a {
+    display: block;
+    width: 200px;
+    height: 63px;
+    font-family: 'Gugi', cursive;
+    float: none;
+    font-size: 0;
+    text-indent: -9999px;
+    padding: 0;
+    line-height: 0;
+    background: url(../img/common/tamla_logo_web.gif) no-repeat;
+    background-size: cover;
     margin-right: 100px;
 }
 
-#sub10_planner_header .topnav .planner_set {
+#sub10_planner_header .myTopnav .planner_set {
     float: left;
     margin-left: 100px;
 }
 
-#sub10_planner_header .topnav .planner_set .people {
+#sub10_planner_header .myTopnav .planner_set .people {
     float: left;
     width: 170px;
     height: 65px;
@@ -35,7 +52,7 @@
     font-weight: bold;
 }
 
-#sub10_planner_header .topnav .planner_set .people input {
+#sub10_planner_header .myTopnav .planner_set .people input {
     float: left;
     width: 140px;
     height: 65px;
@@ -47,13 +64,13 @@
     font-weight: bold;
 }
 
-#sub10_planner_header .topnav .planner_set .tag {
+#sub10_planner_header .myTopnav .planner_set .tag {
     float: left;
     border-right: solid #ebebeb 1px;
     color: #555555;
 }
 
-#sub10_planner_header .topnav .planner_set .tag input {
+#sub10_planner_header .myTopnav .planner_set .tag input {
     float: left;
     width: 140px;
     height: 65px;
@@ -65,12 +82,12 @@
     font-weight: bold;
 }
 
-#sub10_planner_header .topnav .plan_out {
+#sub10_planner_header .myTopnav .plan_out {
     float: right;
     padding: 10px;
 }
 
-#sub10_planner_header .topnav .plan_out .plan_out_btn {
+#sub10_planner_header .myTopnav .plan_out .plan_out_btn {
     float: right;
     width: 100px;
     height: 42px;
@@ -83,6 +100,12 @@
     color: #fff;
     margin-right: 10px;
     cursor: pointer;
+}
+
+#sub10_planner_header .myTopnav .plan_out .plan_out_btn a {
+    float: right;
+    width: 100px;
+    height: 42px;
 }
 /*custom-select-1 */
 
@@ -729,6 +752,7 @@
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 20px;
+    background-color: white;
 }
 
 #sub10 .plan .day_page_right .right_scroll_box .spot_list_box .owl-stage-outer .owl-stage .owl-item .spot_list_item .spot_item {
@@ -1041,12 +1065,13 @@
     border-bottom: solid #a7a7a7 1px;
     background: #fff;
     width: 100%;
+    height: 65px;
     position: relative;
 }
 
 #sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item_ctrl_box {
     position: absolute;
-    top: 55px;
+    top: 35px;
     right: 7px;
     display: none;
 }
@@ -1057,7 +1082,6 @@
 }
 
 #sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box {
-    width: 62px;
     height: 55px;
     position: relative;
     cursor: pointer;
@@ -1069,7 +1093,7 @@
     float: left;
 }
 
-#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .img_box .spot_order_box {
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .spot_order_box {
     width: 22px;
     height: 22px;
     border-radius: 10px;
@@ -1109,6 +1133,22 @@
     color: #808080;
 }
 
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item img {
+	width : 50px;
+	height : 50px;
+    color: #808080;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item .title_info .title{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item .title_info .info{
+	display: none;
+}
+
+
 #sub10 .full_wrap .left_full_box #schedule_full_box .inspot_add_box {
     border-top: solid #a7a7a7 1px;
     padding-top: 10px;
@@ -1132,6 +1172,21 @@
     display: inline-block;
 }
 
+#sub10 .full_wrap .left_full_box #schedule_detail_box .item h5 {
+    font-weight: 0;
+    padding-left: 13px;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_detail_box li {
+    list-style:none
+}
+
+#sub10 .full_wrap .left_full_box #schedule_detail_box .item span {
+    font-size: 12px;
+}
+
 #sub10 .full_wrap #right_full_box {
     float: left;
     position: absolute;
@@ -1143,6 +1198,7 @@
 
 #sub10 .full_wrap #right_full_box #city_list {
     width: 365px;
+    height: 100%;
     z-index: 999;
     position: absolute;
     left: 0px;
@@ -1183,7 +1239,7 @@
 }
 
 #sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_search_box {
-    height: 100px;
+    height: 115px;
     border-bottom: solid #dadada 1px;
     padding-top: 10px;
     background: #fff;
@@ -1379,10 +1435,16 @@
     padding-top: 5px;
 }
 
+#sub10 .full_wrap #right_full_box #city_list .item h5 {
+    padding-left: 13px;
+    font-size: 16px;
+}
+
+
 #sub10 .full_wrap #right_full_box .fr {
     height: 824px;
     position: relative;
-    width: 100%;
+    width: 80%;
     overflow: hidden;
 }
 
@@ -1637,8 +1699,8 @@
 /* 카테고리 검색 목록 css */
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap {position:relative;width:100%;height:350px;}
-#category {position:absolute;top:95px;left:10px;border-radius: 5px; border:1px solid #909090;background: #fff;overflow: hidden;z-index: 2;}
-#category li {float:left;list-style: none;width:50px;border-right: 1px solid #acacac;text-align: center; cursor: pointer;}
+#category {position:absolute;top:95px;left:10px;border-radius: 5px; background: #fff;overflow: hidden;z-index: 2;}
+#category li {float:left;list-style: none;width:50px;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}
 #category li:hover {background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
 #category li:last-child{margin-right:0;border-right:0;}
@@ -1668,10 +1730,15 @@
 #menu_wrap .option p {margin:10px 0;}  
 #menu_wrap .option button {margin-left:5px;}
 #placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .item {border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {margin-top: 7px;}
+#placesList .item span img {width: 100%; height: 100%;  }
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;white-space: nowrap;}
+#placesList .item .img{float:left;width: 50px; height: 50px;}
+#placesList .item .title{float:left;font-weight:bold;font-size:14px;}
+#placesList .item .info{float:left;font-size:12px;}
+#placesList .item .title_info{margin-left:10px;float:left;width: 270px;}
+
 #placesList .info .gray {color:#8a8a8a;}
 #placesList .info .jibun {padding-left:26px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
 #placesList .info .tel {color:#009900;}

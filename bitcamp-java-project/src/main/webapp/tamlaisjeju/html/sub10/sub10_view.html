@@ -22,12 +22,6 @@
     <!-- logo font -->
     <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
     <style type="text/css">
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     </style>
@@ -57,11 +51,8 @@
                     </div>
                     <ul class="plan_box">
                         <li class="plan_title">xxxx 여행</li>
-                        <li class="plan_cont clear">출발: 2018-06-18 ~ 도착:2018-06-20</li>
-                        <li class="plan_cont clear">인원: 2명</li>
-                        <li class="plan_cont clear">일행: 친구</li>
-                        <li class="plan_cont clear">테마: 사진</li>
-                        <li class="plan_cont clear">태그: #일출봉</li>
+                     <li id="tableBody"></li>
+        
                     </ul>
                     <div class="cover_bg"></div>
                 </div>
@@ -1000,8 +991,6 @@
 
                 </div>
 
-
-
                 
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
@@ -1064,6 +1053,11 @@
 
 
     <div id="footer"></div>
+    <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#header").load("../include/sub_header.html")
@@ -1073,6 +1067,20 @@
              */
         });
     </script>
+    
+<script id="tr-template" type="text/x-handlebars-template">
+<li class="plan_cont clear">출발일:{{startDate}} ~ 도착일:{{endDate}}</li>
+<li class="plan_cont clear">인원:{{num}}</li>
+<li class="plan_cont clear">일행:{{people}}</li>
+<li class="plan_cont clear">테마:{{theme}}</li>
+<li class="plan_cont clear">태그:{{memo}}</li>
+<li class="plan_cont clear">태그:{{time}}</li>
+</script>   
+
+    <script src="../../js/common.js"></script>
+    <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="list.js"></script>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
     <script>
@@ -1157,7 +1165,6 @@
     </script>
 
 
-
     <script>
         function openCity(evt, cityName) {
             var i, tabcontent, tablinks;
@@ -1182,7 +1189,7 @@
             $(window).bind('scroll', function () {
                 var container = $('.container').height();
                 var content = $('.day_page_all').height();
-                if ($(window).scrollTop() > container - content - 200) {
+                if ($(window).scrollTop() > container - content - 80) {
                     if ($(window).scrollTop() > content - 100) {
                         $('nav').addClass('absolute');
                         $('nav').removeClass('fixed');
@@ -1299,6 +1306,7 @@
             map1.relayout();
         }
     </script>
+
     <script type="text/javascript">
         var day_data; //일차 데이터
         var sch_data; //상세 일정 데이터
