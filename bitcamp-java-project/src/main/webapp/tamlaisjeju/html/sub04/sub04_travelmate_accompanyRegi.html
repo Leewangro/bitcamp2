@@ -42,34 +42,13 @@
 				<div class="people">
 					<input type="text">명
 				</div>
-				<div class="custom-select1">
-					<select>
-						<option value="0">일행</option>
-						<option value="1">부모</option>
-						<option value="2">친구</option>
-						<option value="3">커플</option>
-						<option value="4">혼자</option>
-						<option value="5">아이</option>
-						<option value="6">단체</option>
-					</select>
+				<div class="people" style="width: 160px; text-align: center;">
+					<input type="text">
 				</div>
 
-				<div class="custom-select1" style="width: 160px;    text-align: center;">
-					<select>
-						<option value="0">테마</option>
-						<option value="1">걷기/등산</option>
-						<option value="2">경관/포토</option>
-						<option value="3">휴식/힐링</option>
-						<option value="4">테마공원</option>
-						<option value="5">문화유적지</option>
-						<option value="6">미술/박물관</option>
-						<option value="7">액티비티</option>
-						<option value="8">체험관광</option>
-						<option value="9">드라이브</option>
-						<option value="10">쇼핑</option>
-					</select>
+				<div class="people" style="width: 160px; text-align: center;">
+					<input type="text">
 				</div>
-
 
 			</div>
 			<div class="plan_out">
@@ -872,11 +851,12 @@ $('#category > li').click(function() {
 });
 
 </script>
-<script type="text/javascript">
+	<script type="text/javascript">
       $('#store').click(function() {
+    	  alert("저장되었습니다."),
     	  location.href="../sub09/sub09_view.html";
                   });
-   </script> 
+   </script>
 
 	<script src="planner.js"></script>
 </body>

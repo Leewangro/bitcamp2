@@ -31,9 +31,8 @@
 <link rel="stylesheet" href="../../css/sub09.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- js -->
-<script src="../../js/common/jquery-3.3.1.min.js"></script>
-<script src="../../js/common/jquery-ui.min.js"></script>
+
+
 </head>
 
 <body>
@@ -262,6 +261,10 @@
 			<!-- content end -->
 		</div>
 		<!-- container end -->
+		<!-- js -->
+		<script src="../../js/common/jquery-3.3.1.min.js"></script>
+		<script src="../../js/common/jquery-ui.min.js"></script>
+		<script src="../../js/common/common.js"></script>
 		<!--footer -->
 		<div id="footer"></div>
 		<script type="text/javascript">
@@ -350,6 +353,25 @@
 				e.parentNode.insertBefore(j, e);
 			})(document, 'script');
 		</script>
+		<!-- <script>
+    $(document).ready(function() {
+            $("#btn").click(function() {
+                var result = document.getElementById('ajaxValue');
+                $.ajax({
+                    url :  serverRoot + "/json/accompanyregi/add",
+                    dataType :"json", // 데이터타입을 json 으로 받아옴
+                    success : function(data) {
+                    	alert("성공");
+                    },
+                    error : function(e) {
+                    	alert("실패");
+                    }
+                });
+            });
+    });
+</script> -->
+
+
 </body>
 
 

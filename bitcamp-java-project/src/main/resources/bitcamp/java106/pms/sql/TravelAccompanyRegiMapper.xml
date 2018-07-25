@@ -28,7 +28,7 @@
     select *
     from TAMLA_ACCOMPANY_REGI
    <!-- 
-     order by BDNUM desc
+     order by no desc
     limit #{startRowNo}, #{pageSize}
     -->
   </select>
