@@ -7,8 +7,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java106.pms.dao.TravelLogDao;
-import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.domain.TravelLog;
 import bitcamp.java106.pms.service.TravelLogService;
 

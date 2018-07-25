@@ -7,9 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import bitcamp.java106.pms.dao.PlannerDao;
-import bitcamp.java106.pms.dao.TravelPlanDao;
 import bitcamp.java106.pms.domain.Planner;
-import bitcamp.java106.pms.domain.TravelPlan;
 import bitcamp.java106.pms.service.PlannerService;
 
 @Service

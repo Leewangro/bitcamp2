@@ -3,7 +3,6 @@ package bitcamp.java106.pms.dao;
 import java.util.List;
 import java.util.Map;
 
-import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.domain.TravelLogContent;
 
 public interface TravelLogContentDao {

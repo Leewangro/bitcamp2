@@ -1,5 +1,8 @@
 package bitcamp.java106.pms.web.json;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 /* Java 샘플 코드 */
 
 
@@ -7,8 +10,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.io.BufferedReader;
-import java.io.IOException;
 
 public class OpenApi {
     public static void main(String[] args) throws IOException {

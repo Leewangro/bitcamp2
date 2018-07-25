@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.domain.TravelLogContent;
 import bitcamp.java106.pms.service.TravelLogContentService;
 
