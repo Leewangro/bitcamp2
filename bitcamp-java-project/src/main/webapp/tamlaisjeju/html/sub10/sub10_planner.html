@@ -435,10 +435,7 @@
                         <div class="clear"></div>
                         <div class="list_search_full_box">
                             <div class="list_search_box">
-                                <form onsubmit="searchPlaces(); return false;">
-                                    <input type="text" id="keyword" placeholder="장소 검색">
-                                    <button type="submit">검색하기</button>
-                                </form>
+                                    <input type="text" id="keyword" placeholder="장소 검색" onFocus="this.value='';return true;">
                             </div>
                             <ul class="list_category_box" id="category">
                                 <li id="a12" data-order="0" class="tourist"> <!-- 관광지 -->
@@ -519,14 +516,26 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 10 // 지도의 확대 레벨
     };
-
+var marker = []; 
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 // 마커를 표시할 위치와 title 객체 배열입니다 
+
+function removeMarker() {
+	console.log("qwe");
+	console.log(marker.length);
+    for ( var i = 0; i < marker.length; i++ ) {
+    	console.log(marker.length);
+        marker[i] = null;
+        console.log(marker[i].position);
+    }   
+    marker = [];
+}
+
 $('#a12').on('click', function() {
+	var input = document.getElementById("keyword").value='';
 $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json", 
-	            function(contentTypeId) {
-let datas = [];
-	        // json 객체 내부 접근하기
+	    function(contentTypeId) {
+        let datas = [];
 	        var item = contentTypeId.response.body.items.item;
 	        for(let data of item) {
 	        	
@@ -543,7 +552,9 @@ let datas = [];
 	  
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    
+if (marker != null) {
+    removeMarker();
+} 
 for (var i = 0; i < datas.length; i++) {
     
     // 마커 이미지의 이미지 크기 입니다
@@ -553,13 +564,14 @@ for (var i = 0; i < datas.length; i++) {
     var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
 
     // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
+    marker = new daum.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: new daum.maps.LatLng(datas[i].lat, datas[i].lng), // 마커를 표시할 위치
         title: datas[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image: markerImage // 마커 이미지 
-
     });
+    console.log(marker);
+
     // 마커에 표시할 인포윈도우를 생성합니다 
     var infowindow = new daum.maps.InfoWindow({
         content: datas[i].title // 인포윈도우에 표시할 내용
@@ -570,6 +582,16 @@ for (var i = 0; i < datas.length; i++) {
     // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
     daum.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
     daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+}
+function removeMarker() {
+    console.log("qwe");
+    console.log(marker.length);
+    for ( var i = 0; i < marker.length; i++ ) {
+        console.log(marker.length);
+        marker[i] = null;
+        console.log(marker[i].position);
+    }   
+    marker = [];
 }
 
 // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -593,7 +615,224 @@ function makeOutListener(infowindow) {
 });
 });
 
+$('#a38').on('click', function() {
+var input = document.getElementById("keyword").value='';
+    if (marker != null) {
+        removeMarker();
+    } 
+	$.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=38&_type=json", 
+	        function(contentTypeId) {
+	        let datas = [];
+	            var item = contentTypeId.response.body.items.item;
+	            for(let data of item) {
+	                
+	                let x = data.mapy;
+	                let y = data.mapx;
+	                
+	                if( typeof(x) == "String" || typeof(x) == "string" )
+	                    x = parseFloat(x);
+	                if( typeof(y) == "String" || typeof(y) == "string" )
+	                    y = parseFloat(y)
+	                
+	                datas.push( { title:data.title, lat: x, lng:y});
+	            }
+	      
+	// 마커 이미지의 이미지 주소입니다
+	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+	    
+	for (var i = 0; i < datas.length; i++) {
+	    
+	    // 마커 이미지의 이미지 크기 입니다
+	    var imageSize = new daum.maps.Size(24, 35); 
+	    
+	    // 마커 이미지를 생성합니다    
+	    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
 
+	    // 마커를 생성합니다
+	    var marker = new daum.maps.Marker({
+	        map: map, // 마커를 표시할 지도
+	        position: new daum.maps.LatLng(datas[i].lat, datas[i].lng), // 마커를 표시할 위치
+	        title: datas[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+	        image: markerImage // 마커 이미지 
+	    });
+	    // 마커에 표시할 인포윈도우를 생성합니다 
+	    var infowindow = new daum.maps.InfoWindow({
+	        content: datas[i].title // 인포윈도우에 표시할 내용
+	    });
+
+	    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+	    daum.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+	}
+
+	// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	function makeOverListener(map, marker, infowindow) {
+	    return function() {
+	        infowindow.open(map, marker);
+	    };
+	}
+
+	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	function makeOutListener(infowindow) {
+	    return function() {
+	        infowindow.close();
+	    };
+	}
+	        /* function myFunction() {
+	            for (var tt = 0; tt < title.length; tt++ )
+	                if (clti[i].title == map.ma.Xd)
+	                    console.log(Xd);
+	        } */
+	});
+	});
+	
+$('#a39').on('click', function() {
+var input = document.getElementById("keyword").value='';
+    if (marker != null) {
+        removeMarker();
+    } 
+	$.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=39&_type=json", 
+	        function(contentTypeId) {
+	        let datas = [];
+	            var item = contentTypeId.response.body.items.item;
+	            for(let data of item) {
+	                
+	                let x = data.mapy;
+	                let y = data.mapx;
+	                
+	                if( typeof(x) == "String" || typeof(x) == "string" )
+	                    x = parseFloat(x);
+	                if( typeof(y) == "String" || typeof(y) == "string" )
+	                    y = parseFloat(y)
+	                
+	                datas.push( { title:data.title, lat: x, lng:y});
+	            }
+	      
+	// 마커 이미지의 이미지 주소입니다
+	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+	    
+	for (var i = 0; i < datas.length; i++) {
+	    
+	    // 마커 이미지의 이미지 크기 입니다
+	    var imageSize = new daum.maps.Size(24, 35); 
+	    
+	    // 마커 이미지를 생성합니다    
+	    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+
+	    // 마커를 생성합니다
+	    var marker = new daum.maps.Marker({
+	        map: map, // 마커를 표시할 지도
+	        position: new daum.maps.LatLng(datas[i].lat, datas[i].lng), // 마커를 표시할 위치
+	        title: datas[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+	        image: markerImage // 마커 이미지 
+	    });
+	    // 마커에 표시할 인포윈도우를 생성합니다 
+	    var infowindow = new daum.maps.InfoWindow({
+	        content: datas[i].title // 인포윈도우에 표시할 내용
+	    });
+
+	    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+	    daum.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+	}
+
+	// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	function makeOverListener(map, marker, infowindow) {
+	    return function() {
+	        infowindow.open(map, marker);
+	    };
+	}
+
+	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	function makeOutListener(infowindow) {
+	    return function() {
+	        infowindow.close();
+	    };
+	}
+	        /* function myFunction() {
+	            for (var tt = 0; tt < title.length; tt++ )
+	                if (clti[i].title == map.ma.Xd)
+	                    console.log(Xd);
+	        } */
+	});
+	});
+
+$('#a32').on('click', function() {
+var input = document.getElementById("keyword").value='';
+    if (marker != null) {
+        removeMarker();
+    } 
+	$.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=32&_type=json", 
+	        function(contentTypeId) {
+	        let datas = [];
+	            var item = contentTypeId.response.body.items.item;
+	            for(let data of item) {
+	                
+	                let x = data.mapy;
+	                let y = data.mapx;
+	                
+	                if( typeof(x) == "String" || typeof(x) == "string" )
+	                    x = parseFloat(x);
+	                if( typeof(y) == "String" || typeof(y) == "string" )
+	                    y = parseFloat(y)
+	                
+	                datas.push( { title:data.title, lat: x, lng:y});
+	            }
+	      
+	// 마커 이미지의 이미지 주소입니다
+	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+	    
+	for (var i = 0; i < datas.length; i++) {
+	    
+	    // 마커 이미지의 이미지 크기 입니다
+	    var imageSize = new daum.maps.Size(24, 35); 
+	    
+	    // 마커 이미지를 생성합니다    
+	    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+
+	    // 마커를 생성합니다
+	    var marker = new daum.maps.Marker({
+	        map: map, // 마커를 표시할 지도
+	        position: new daum.maps.LatLng(datas[i].lat, datas[i].lng), // 마커를 표시할 위치
+	        title: datas[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+	        image: markerImage // 마커 이미지 
+	    });
+	    // 마커에 표시할 인포윈도우를 생성합니다 
+	    var infowindow = new daum.maps.InfoWindow({
+	        content: datas[i].title // 인포윈도우에 표시할 내용
+	    });
+
+	    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+	    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+	    daum.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+	}
+
+	// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	function makeOverListener(map, marker, infowindow) {
+	    return function() {
+	        infowindow.open(map, marker);
+	    };
+	}
+
+	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	function makeOutListener(infowindow) {
+	    return function() {
+	        infowindow.close();
+	    };
+	}
+	        /* function myFunction() {
+	            for (var tt = 0; tt < title.length; tt++ )
+	                if (clti[i].title == map.ma.Xd)
+	                    console.log(Xd);
+	        } */
+	});
+	});
 </script>
 
 
@@ -834,7 +1073,6 @@ $('#category > li').click(function() {
     
     $list_category_box.find('div:nth-child(' + (index + 1) + ')').addClass('on');
 });
-
 </script>
 <script src="planner.js"></script>
 </body>
