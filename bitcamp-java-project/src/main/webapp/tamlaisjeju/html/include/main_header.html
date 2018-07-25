@@ -22,6 +22,55 @@
                 <a href="#">네이버블로그</a>
             </li>
         </ul>
+        <ul class="login" style="float:right; border-right: 1px solid #353e4d;">
+            <li>
+
+                <!-- Button trigger modal -->
+                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                로그인
+                </a>
+      
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">로그인</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        로그인 하시면 여행지 리뷰 등록 및 내가 찜한 여행지와 일정, 방문지 등의 다양한 기능을 사용하실 수 있습니다.
+                        </div>
+                        <div class="modal-footer">
+                        
+                                <fb:login-button class="btn_login fb" scope="public_profile,email" onlogin="checkLoginState();"><span>페이스북으로 로그인</span></span></fb:login-button>
+                                <button class="btn_login fb" scope="public_profile,email" onlogin="checkLoginState();"><span>페이스북으로 로그인</span></button>
+                                
+                                
+
+
+
+                                <button type="button" class="btn_login kt"><a id="kakao-login-btn"></a>
+<a href="http://developers.kakao.com/logout"></a></button>
+                                
+                                <button type="button" class="btn_login ig"><span>Google로 로그인</span></button>
+                                
+                                <a href="https://accounts.google.com/o/oauth2/auth?
+    client_id=CLIENT_ID
+    &redirect_uri=REDIRECT_URI
+    &scope=https://www.googleapis.com/auth/plus.login
+    &response_type=code">로그인</a>
+    
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+            </li>
+    	</ul>
     </div>
 </div>
 
@@ -85,9 +134,9 @@
                     <a href="html/sub04/sub04_planner_list.html">여행 일정 추천</a>
                     <a href="html/sub04/sub04_travelog_list.html">내가 쓰는 여행기</a>
                     <a href="html/sub04/travelmate_list.html">설레는 동행</a>
-                    <a href="html/sub04/curation_list.html">여행큐레이션</a>
+                    <a href="html/sub04/sub04_curation_list.html">여행큐레이션</a>
                 </div>
-            </div> 
+            </div>
             <div class="dropdown">
                 <button class="dropbtn">제주여행꿀팁
                     <i class="fa fa-caret-down"></i>
@@ -140,6 +189,7 @@
 </div>
 
 
+
 <script>
     function myFunction() {
         var x = document.getElementById("myTopnav");
@@ -149,4 +199,50 @@
             x.className = "topnav";
         }
     }
+</script>
+
+<script type="text/javascript">
+    // 페이스북 로그인 버튼을 화면에 붙인다.
+    // => 로그인 버튼을 누르면 페이스북 사이트의 로그인 페이지가 출력된다.
+    // => 그 페이지에서 로그인을 수행한 후 onlogin에 등록한 코드가 실행된다.
+    //    즉 checkLoginState() 함수가 실행된다.
+    function checkLoginState() {
+        console.log("로그인을 수행했음!");
+    }
+    
+    
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '228605734455848', // 개발자가 등록한 앱 ID
+        cookie     : true,  
+        xfbml      : true,  
+        version    : 'v3.0' 
+      });
+      FB.AppEvents.logPageView();
+    };
+    
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('cccee00c7c2c1125ce4e68ddd47e6a2d');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        alert(JSON.stringify(authObj));
+      },
+      fail: function(err) {
+         alert(JSON.stringify(err));
+      }
+    });
+  //]]>
 </script>
