@@ -40,7 +40,7 @@
 			</h1>
 			<div class="planner_set">
 				<div class="people">
-					<input type="text" placeholder="인원을 입력하세요">명
+					<input type="text">명
 				</div>
 				<div class="custom-select1">
 					<select>
@@ -54,7 +54,7 @@
 					</select>
 				</div>
 
-				<div class="custom-select1" style="width: 180px;">
+				<div class="custom-select1" style="width: 160px;    text-align: center;">
 					<select>
 						<option value="0">테마</option>
 						<option value="1">걷기/등산</option>
@@ -68,10 +68,6 @@
 						<option value="9">드라이브</option>
 						<option value="10">쇼핑</option>
 					</select>
-				</div>
-
-				<div class="tag">
-					<input type="text" placeholder="태그 입력하세요">
 				</div>
 
 
@@ -97,8 +93,7 @@
 
 								<div class="full_data_info f1">
 									<div class="cal_title">여행 일정</div>
-									<input type="text" name="datefilter" value="일정을 입력하세요"
-										class="cal" />
+									<input type="text" name="datefilter" class="cal" />
 								</div> <!--  <div class="f1 day_edit_start_btn" onclick="day_edit_start()">EDIT</div> -->
 								<div class="clear"></div>
 							</li>
@@ -657,28 +652,6 @@ function makeOutListener(infowindow) {
 });
 
 
-</script>
-
-
-	<script>
-$(function() {
-
-  $('input[name="datefilter"]').daterangepicker({
-      autoUpdateInput: false,
-      locale: {
-          cancelLabel: 'Clear'
-      }
-  });
-
-  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-  });
-
-  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-  });
-
-});
 </script>
 
 	<script>
