@@ -1284,47 +1284,45 @@
     height: 100%;
     text-align: center;
     cursor: pointer;
-    padding-left: 7px;
 }
 
-
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .on .category_bg.bank {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .tourist.on {
     background: url(../img/sub10/ic_300_c.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .category_bg.bank {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .tourist {
     background: url(../img/sub10/ic_300_a.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .on .category_bg.cafe {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .food.on {
     background: url(../img/sub10/ic_200_c.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .category_bg.cafe {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .food {
     background: url(../img/sub10/ic_200_a.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .on .category_bg.mart {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .shop.on {
     background: url(../img/sub10/ic_400_c.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .category_bg.mart {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .shop {
     background: url(../img/sub10/ic_400_a.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .on .category_bg.store {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .hotel.on {
     background: url(../img/sub10/ic_100_c.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .category_bg.store {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .hotel {
     background: url(../img/sub10/ic_100_a.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .on .category_bg.zzim {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .zzim.on {
     background: url(../img/sub10/ic_000_c.png) no-repeat;
 }
 
-#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .category_bg.zzim {
+#sub10 .full_wrap #right_full_box #city_list .list_search_full_box .list_category_box .zzim {
     background: url(../img/sub10/ic_000_a.png) no-repeat;
 }
 
@@ -1705,14 +1703,6 @@
 #category li:hover {background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
 #category li:last-child{margin-right:0;border-right:0;}
 #category li span {width: 68px;text-align: center;cursor: pointer; display: block}
-#category li .category_bg {background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;}
-#category li .bank {background-position: -10px 0;}
-#category li .mart {background-position: -10px -36px;}
-#category li .pharmacy {background-position: -10px -72px;}
-#category li .oil {background-position: -10px -108px;}
-#category li .cafe {background-position: -10px -144px;}
-#category li .store {background-position: -10px -180px;}
-#category li.on .category_bg {background-position-x:-46px;}
 .placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
 .placeinfo {position:relative;width:100%;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;padding-bottom: 10px;background: #fff;}
 .placeinfo:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
