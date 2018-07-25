@@ -103,7 +103,7 @@
             </div>
             <script>
             
-            $.getJSON("http://localhost:8888/tamla/json/weather/info", { nx:59, ny:125 }, data => {
+            $.getJSON(serverRoot + "/json/weather/info", { nx:59, ny:125 }, data => {
                console.log(data);
                $(jeju_temp).text( data.temp + " ºC" );
                $(jeju_wind).text( data.vec +  " " + data.wsd + " m/s");
@@ -124,7 +124,7 @@
                }
                
             })
-            $.getJSON("http://localhost:8888/tamla/json/weather/info", { nx:60, ny:37 }, data => {
+            $.getJSON(serverRoot + "/json/weather/info", { nx:60, ny:37 }, data => {
                 console.log(data);
                 $(sungsan_temp).text( data.temp + " ºC" );
                 $(sungsan_wind).text( data.vec +  " " + data.wsd + " m/s");
@@ -144,7 +144,7 @@
                     $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky8.png");
                 }
             })
-            $.getJSON("http://localhost:8888/tamla/json/weather/info", { nx:52, ny:33 }, data => {
+            $.getJSON(serverRoot + "/json/weather/info", { nx:52, ny:33 }, data => {
                 console.log(data);
                 $(seogwipo_temp).text( data.temp + " ºC" );
                 $(seogwipo_wind).text( data.vec +  " " + data.wsd + " m/s");
@@ -164,7 +164,7 @@
                     $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky8.png");
                 }
             })
-            $.getJSON("http://localhost:8888/tamla/json/weather/info", { nx:46, ny:35 }, data => {
+            $.getJSON(serverRoot + "/json/weather/info", { nx:46, ny:35 }, data => {
                 console.log(data);
                 $(kosan_temp).text( data.temp + " ºC" );
                 $(kosan_wind).text( data.vec +  " " + data.wsd + " m/s");
