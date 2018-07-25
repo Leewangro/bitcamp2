@@ -1133,10 +1133,16 @@
     color: #808080;
 }
 
-#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item img {
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item .img{
 	width : 50px;
 	height : 50px;
     color: #808080;
+    float: left;
+}
+
+#sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item .title_info{
+    margin-left: 10px;
+    float: left;
 }
 
 #sub10 .full_wrap .left_full_box #schedule_full_box .connectedSortable .day_spot_item .item .title_info .title{
