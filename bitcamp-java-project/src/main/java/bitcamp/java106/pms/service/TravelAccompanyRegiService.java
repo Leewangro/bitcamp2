@@ -16,3 +16,4 @@ public interface TravelAccompanyRegiService {
 //ver 53 - 인터페이스 추가
 
 
+ 

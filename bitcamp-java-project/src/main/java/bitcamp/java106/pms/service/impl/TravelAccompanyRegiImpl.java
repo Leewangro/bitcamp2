@@ -26,7 +26,7 @@ public class TravelAccompanyRegiImpl implements TravelAccompanyRegiService {
         
         return tavelAccompanyRegiDao.selectList(params);
     }
-
+ 
     @Override
     public TravelAccompanyRegi selectOne(int no) {
         return tavelAccompanyRegiDao.selectOne(no);

@@ -27,7 +27,7 @@ public class TravelAccompanyRegi implements Serializable {
     public int getCno() {
         return cno;
     }
-    public void setCno(int cno) {
+    public void setCno(int cno) { 
         this.cno = cno;
     }
     public String getmTitle() {

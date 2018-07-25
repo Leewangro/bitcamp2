@@ -33,7 +33,7 @@ public class TravelAccompanyRegiController {
     public TravelAccompanyRegi selectOne(@PathVariable int no) {
         
         return travelAccompanyRegiService.selectOne(no);
-    }
+    } 
     
     @RequestMapping("add")
     @ResponseStatus(HttpStatus.CREATED)

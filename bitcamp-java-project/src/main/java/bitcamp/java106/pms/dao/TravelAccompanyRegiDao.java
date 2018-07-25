@@ -10,4 +10,4 @@ public interface TravelAccompanyRegiDao {
     List<TravelAccompanyRegi> selectList(Map<String,Object> params);
     int insert(TravelAccompanyRegi travelAccompanyRegi);
     TravelAccompanyRegi selectOne(int no);
-}  
+}   
