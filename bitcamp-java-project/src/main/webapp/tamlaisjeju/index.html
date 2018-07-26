@@ -79,7 +79,7 @@
                     <h3>가장 인기있는 여행지</h3>
                     <p class="h3_txt">지금 가장 많은 분들이 찾는 여행지를 추천해요.</p>
 
-                    <ul class="clear">
+                    <ul class="best_spot clear">
                         <li>
                             <a href="#">
                                 <img src="img/main/best_spot_img01.gif" alt="성산일출봉">
@@ -142,11 +142,71 @@
                 <div class="mcont_area">
                     <h3>가장 인기있는 플래너</h3>
                     <p class="h3_txt">지금 가장 인기있는 플래너를 만나보세요.</p>
+                    <ul class="planner clear">
+                        <li>
+                            <a href="#">플래너1</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너2</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너3</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너4</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너5</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너6</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너7</a>
+                        </li>
+                        <li>
+                            <a href="#">플래너8</a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- mcont_area end-->
                 <div class="mcont_area">
                     <h3>더 많은 여행정보는?</h3>
                     <p class="h3_txt">매일매일 쏟아지는 여행 꿀팁을 만나보세요.</p>
+                    <ul class="trip_info clear">
+                        <li>
+                            <a href="#">
+                                <img src="img/main/sns_blog.png" alt="네이버 블로그">
+                                <b>탐라는 제주 블로그</b>
+                                <span>여행가기 전에 꼭 알아야 할, 특별한 팁을 전해드려요.</span>
+                                <strong class="blog">바로가기 ></strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/main/sns_post.png" alt="네이버 포스트">
+                                <b>탐라는 제주 포스트</b>
+                                <span>여행 초보자를 고수로 만드는 모든 여행 정보를 전해드려요.</span>
+                                <strong class="post">바로가기 ></strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/main/sns_facebook.png" alt="페이스북">
+                                <b>탐라는 제주 페이스북</b>
+                                <span>좋아요를 누르고, 매일 쏟아지는 여행 팁을 받아보세요.</span>
+                                <strong class="facebook">바로가기 ></strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/main/sns_instagram.png" alt="인스타그램">
+                                <b>탐라는 제주 인스타그램</b>
+                                <span>팔로우를 누르고, 이벤트를 제일 먼저 만나보세요.</span>
+                                <strong class="instagram">바로가기 ></strong>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- mcont_area end-->
 
@@ -174,32 +234,32 @@
             }
 
             #mvisual ul li.img01 {
-                background: url('../img/main/visual_img01.jpg') no-repeat 0 50%;
+                background: url('img/main/visual_img01.jpg') no-repeat 0 50%;
                 background-size: cover;
             }
 
             #mvisual ul li.img02 {
-                background: url('../img/main/visual_img02.jpg') no-repeat 0 50%;
+                background: url('img/main/visual_img02.jpg') no-repeat 0 50%;
                 background-size: cover;
             }
 
             #mvisual ul li.img03 {
-                background: url('../img/main/visual_img03.jpg') no-repeat 0 50%;
+                background: url('img/main/visual_img03.jpg') no-repeat 0 50%;
                 background-size: cover;
             }
 
             #mvisual ul li.img04 {
-                background: url('../img/main/visual_img04.jpg') no-repeat 0 50%;
+                background: url('img/main/visual_img04.jpg') no-repeat 0 50%;
                 background-size: cover;
             }
 
             #mvisual ul li.img05 {
-                background: url('../img/main/visual_img05.jpg') no-repeat 0 50%;
+                background: url('img/main/visual_img05.jpg') no-repeat 0 50%;
                 background-size: cover;
             }
 
             #mvisual ul li.img06 {
-                background: url('../img/main/visual_img06.jpg') no-repeat 0 50%;
+                background: url('img/main/visual_img06.jpg') no-repeat 0 50%;
                 background-size: cover;
             }
 
@@ -207,7 +267,7 @@
                 display: inline-block;
                 margin-top: 140px;
                 padding: 20px;
-                background: url('../img/main/mtit_bg.png') repeat;
+                background: url('img/main/mtit_bg.png') repeat;
             }
 
             #mvisual ul li h3 {
@@ -242,21 +302,21 @@
                 margin: 2% 0 0 2%;
             }
 
-            #mcontent .mcont_area ul li a {
+            #mcontent .mcont_area ul.best_spot li a {
                 display: block;
                 height: 232px;
                 overflow: hidden;
                 border-radius: 15px;
             }
 
-            #mcontent .mcont_area ul li a img {
+            #mcontent .mcont_area ul.best_spot li a img {
                 display: block;
                 min-height: 232px;
                 max-height: 240px;
                 width: 100%;
             }
 
-            #mcontent .mcont_area ul li a b {
+            #mcontent .mcont_area ul.best_spot li a b {
                 display: block;
                 position: absolute;
                 left: 0;
@@ -265,6 +325,55 @@
                 font-size: 18px;
                 color: #fff;
                 text-align: center;
+            }
+
+
+            /* 더 많은 여행정보는? */
+
+            #mcontent .mcont_area ul.trip_info {}
+
+
+            #mcontent .mcont_area ul.trip_info li {}
+
+            #mcontent .mcont_area ul.trip_info li a {
+                display: block;
+                padding: 20px;
+                border: 1px solid #eee;
+                border-radius: 15px;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a b {
+                display: block;
+                font-size: 23px;
+                /* font-size: 26px; */
+                color: #212121;
+                margin: 20px 0;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a span {
+                display: block;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a strong {
+                display: block;
+                margin-top: 30px;
+                font-weight: normal;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a strong.blog {
+                color: #1ec200;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a strong.post {
+                color: #1ec200;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a strong.facebook {
+                color: #275bab;
+            }
+
+            #mcontent .mcont_area ul.trip_info li a strong.instagram {
+                color: #f03657
             }
         </style>
 
@@ -285,8 +394,7 @@
         <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="node_modules/slick-carousel/slick/slick.min.js"></script>
-        <script src="js/common/common.js"></script>
-        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+        <script src="js/common.js"></script>
         <!-- <script src="js/header.js"></script> -->
 
         <script>
@@ -302,8 +410,8 @@
 
         <script>
             $(document).ready(function () {
-                $("#header").load("include/main_header.html")
-                $("#footer").load("include/main_footer.html")
+                $("#header").load("html/include/main_header.html")
+                $("#footer").load("html/include/main_footer.html")
                 /* id 지정을 통해서도 가능합니다. 
                  $("#header").load("header.html #navbar")
                  */
