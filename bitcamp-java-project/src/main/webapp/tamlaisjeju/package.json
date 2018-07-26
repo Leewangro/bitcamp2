@@ -13,7 +13,6 @@
     "dropzone": "^5.5.1",
     "handlebars": "^4.0.11",
     "jquery": "^3.3.1",
-    "shufflejs": "^5.1.2",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^7.25.6"
   }
