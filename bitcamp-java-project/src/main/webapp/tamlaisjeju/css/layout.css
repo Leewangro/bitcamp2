@@ -484,6 +484,7 @@ visual  - 비주얼
   width: 100%;
   height:420px;
   overflow: hidden;
+  position: relative;
 }
 
 #visual img {
@@ -491,14 +492,10 @@ visual  - 비주얼
   width: 100%;
 }
 
-.container .visual_cont {
-  position: relative;
-}
-
-.container .visual_cont_box {
+#content .visual_cont_box {
   position: absolute;
   left: 0;
-  top: -450px;
+  top: 0;
   padding: 20px;
   width: 350px;
   height: 450px;
@@ -506,28 +503,26 @@ visual  - 비주얼
   background: rgba(0, 0, 0, .5);
 }
 
-.container .visual_cont_box h3 {
+#content  .visual_cont_box h3 {
   font-size: 32px;
   color: #fff;
   line-height: 35px;
   margin-bottom: 20px;
+  text-align: left;
 }
 
-.container .visual_cont_box h3 span {
+#content  .visual_cont_box h3 span {
   display: block;
   font-size: 20px;
   line-height: 28px;
+
 }
 
-/* .container .visual_cont_box p.score {
-  color: #fff;
-} */
-
-.container .visual_cont_box .hashtag {
+#content  .visual_cont_box .hashtag {
   color: #ccc;
 }
 
-.container .visual_cont_box .tit {
+#content  .visual_cont_box .tit {
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
@@ -536,15 +531,15 @@ visual  - 비주얼
   margin-bottom: 15px;
 }
 
-.container .visual_cont_box ul {
+#content  .visual_cont_box ul {
   margin-bottom: 30px
 }
 
-.container .visual_cont_box ul li {
+#content  .visual_cont_box ul li {
   margin: 10px 0;
 }
 
-.container .visual_cont_box ul li b {
+#content  .visual_cont_box ul li b {
   display: block;
   margin-bottom: 10px;
   height: 14px;
@@ -553,7 +548,7 @@ visual  - 비주얼
   color: #ccc;
 }
 
-.container .visual_cont_box ul li span {
+#content  .visual_cont_box ul li span {
   display: block;
   min-height: 14px;
   font-size: 14px;
@@ -561,7 +556,7 @@ visual  - 비주얼
   line-height: 18px;
 }
 
-.container .visual_cont_box a.btn {
+#content  .visual_cont_box a.btn {
   display: inline-block;
   padding: 10px 15px;
   min-height: 14px;
@@ -571,11 +566,11 @@ visual  - 비주얼
   background-color: transparent;
 }
 
-.container .visual_cont_box a.btn:hover {
+#content r .visual_cont_box a.btn:hover {
   background-color: #fff;
 }
 
-.container .visual_cont_box .weather_area {
+#content  .visual_cont_box .weather_area {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -587,9 +582,10 @@ visual  - 비주얼
   color: #fff;
 }
 
-.container .visual_cont_box .weather_area img {
+#content  .visual_cont_box .weather_area img {
   display: block;
   margin: 8px auto;
+  width: auto;
 }
 
 .sns_area {
