@@ -23,7 +23,24 @@
 	<link rel="stylesheet" href="../../../css/common.css" />
 	<link rel="stylesheet" href="../../../css/layout.css" />
 	<link rel="stylesheet" href="../../../node_modules/slick-carousel/slick/slick.css" />
-    <link rel="stylesheet" href="../../../node_modules/slick-carousel/slick/slick-theme.css" />
+	<link rel="stylesheet" href="../../../node_modules/slick-carousel/slick/slick-theme.css" />
+
+	<style type="text/css">
+		.view {}
+
+		.view .view_cont {}
+
+		.view .view_cont .view_img_area {
+			float: left;
+			width: 60%;
+		}
+
+		.view .view_cont .view_info_area {
+			float: left;
+			width: 40%;
+		}
+	</style>
+
 
 </head>
 
@@ -46,264 +63,128 @@
 
 	<script id="codeTemp" type="text/x-handlebars-template">
 
-		<div id="view">
-			<div class="view_cont">
+		<div id="content" class="view content wrapper">
+			<div class="view_cont clear">
 				<div class="view_img_area">
-					<ul>
-						<li><img src="{{firstimage}}" alt="{{title}}"></li>
-						<li><img src="{{firstimage}}" alt="{{title}}"></li>
-						<li><img src="{{firstimage}}" alt="{{title}}"></li>
-						<li><img src="{{firstimage}}" alt="{{title}}"></li>
-					</ul>
+					<div id="slide">
+						<ul>
+							<li>
+								<img src="{{firstimage}}" alt="{{title}}">
+							</li>
+						</ul>
+					</div>
 				</div>
 				<!-- view_img_area end-->
 				<div class="view_info_area">
 					<ul>
-						<li><b>주소 : </b>{{addr1}}{{addr2}}</li>
-						<li><b>전화번호 : </b>{{tel}}</li>
-					</ul>
-				</div>
-				<!-- view_info_area end-->
-			</div>
-			<!-- view_cont end-->
-		</div>
-		<!--view end -->
-
-
-
-		<div id="visual" class="svisual">
-			<div class="visual_cont wrapper">
-				<img src="{{firstimage}}" alt="{{title}}">
-				<div class="visual_cont_box">
-					<h3>{{title}}</h3>
-					<p class="hashtag">
-						<a href="#">#맛집</a>
-						<a href="#">#김밥</a>
-					</p>
-					<p class="tit">기본정보</p>
-					<ul>
-						<li class="clear">
-							<b>주소</b>
-							<span>제주특별자치도 서귀포시 성산읍 성산리 114</span>
-						</li>
-						<li class="clear">
-							<b>연락처</b>
-							<span>(+82) 064-783-0959</span>
+						<li>
+							<b>주소 : </b>{{addr1}}{{addr2}}</li>
+						<li>
+							<b>전화번호 : </b>{{tel}}</li>
+						<li>
+							<b>이용시간 : </b>{{telname}}</li>
+						<li>
+							<b>홈페이지 :</b>{{homepage}}</li>
+						<li>
+							<b>이용시간 :</b>{{usetime}}</li>
+						<li>
+							<b>태그 :</b>
+							<a href="#">#맛집</a>
+							<a href="#">#김밥</a>
 						</li>
 					</ul>
-					<div class="btn_wrap">
-						<a class="btn">길찾기</a>
-					</div>
-					<!--spot_info end-->
 					<div class="weather_area">
 						<img src="../../../img/common/weather/weather_blur.png" alt="흐림">
 						<strong>흐림</strong>
 					</div>
 					<!-- weather_area end-->
 				</div>
-				<!-- visual_cont_box-->
-			</div>
-			<!-- visual_cont end-->
-		</div>
-		<!-- visual end-->
-		<div id="content" class="content wrapper">
-			<div class="sns_area clear">
-				<ul>
-					<li>
-						<a href="#">
-							<span class="icon view_like_icon"></span>
-							<strong>좋아요</strong>26</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_zzim_icon"></span>
-							<strong>찜하기</strong>537</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_review_icon"></span>
-							<strong>리뷰</strong>114</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_schedule_icon"></span>
-							<strong>일정등록</strong>0</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_visit_icon"></span>
-							<strong>방문했어요</strong>57</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_hit_icon"></span>
-							<strong>조회</strong>19,416</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_sns_icon"></span>
-							<strong>SNS 공유</strong>8</a>
-					</li>
-				</ul>
-			</div>
-			<!-- sns_area -->
-
-
-
-			<div class="tab_area">
-				<div class="tab view_tab_area mt30 mb30">
+				<!-- view_info_area end-->
+				<div class="sns_area clear">
 					<ul>
 						<li>
-							<a class="tablinks" onclick="openTab(event, 'tab_cont01')" id="defaultOpen">이용 안내</a>
+							<a href="#">
+								<span class="icon view_like_icon"></span>
+								<strong>좋아요</strong>26</a>
 						</li>
 						<li>
-							<a class="tablinks" onclick="openTab(event, 'tab_cont02')">사진</a>
+							<a href="#">
+								<span class="icon view_zzim_icon"></span>
+								<strong>찜하기</strong>537</a>
 						</li>
 						<li>
-							<a class="tablinks" onclick="openTab(event, 'tab_cont03'),relayout()">지도/주변관광지</a>
+							<a href="#">
+								<span class="icon view_review_icon"></span>
+								<strong>리뷰</strong>114</a>
 						</li>
 						<li>
-							<a class="tablinks" onclick="openTab(event, 'tab_cont04')">리뷰</a>
+							<a href="#">
+								<span class="icon view_schedule_icon"></span>
+								<strong>일정등록</strong>0</a>
 						</li>
 						<li>
-							<a class="tablinks" onclick="openTab(event, 'tab_cont05')">리뷰2</a>
+							<a href="#">
+								<span class="icon view_visit_icon"></span>
+								<strong>방문했어요</strong>57</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="icon view_hit_icon"></span>
+								<strong>조회</strong>19,416</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="icon view_sns_icon"></span>
+								<strong>SNS 공유</strong>8</a>
 						</li>
 					</ul>
 				</div>
-
-				<script>
-					function openTab(evt, tabName) {
-						var i, tabcontent, tablinks;
-						tabcontent = document.getElementsByClassName("tabcontent");
-						for (i = 0; i < tabcontent.length; i++) {
-							tabcontent[i].style.display = "none";
-						}
-						tablinks = document.getElementsByClassName("tablinks");
-						for (i = 0; i < tablinks.length; i++) {
-							tablinks[i].className = tablinks[i].className.replace(" active", "");
-						}
-						document.getElementById(tabName).style.display = "block";
-						evt.currentTarget.className += " active";
-					}
-
-					// Get the element with id="defaultOpen" and click on it
-					document.getElementById("defaultOpen").click();
-				</script>
-
-
-
-
-
-
-				<div id="tab_cont01" class="tabcontent">
-					<h4>이용 안내</h4>
-					<h5>소개</h5>
-					<p class="h5_txt">전복내장으로 만든 김밥, 심플한 메뉴로 많은 여행객들에게 사랑받는 곳</p>
-					<h5>상세 정보</h5>
-					<p class="h5_txt">연중무휴(재료 소진시 조기마감)</p>
-					<h5>이용 시간</h5>
-					<ul class="list_1st">
-						<li>평일 : 10:00 ~ 20:00</li>
-						<li>주말 : 10:00 ~ 20:00</li>
-					</ul>
-					<h5>편의시설</h5>
-					<p class="h5_txt">공용주차장,현금결제,카드결제,화장실,편의점,음료대,유도 및 안내시설,경보 및 피난시설</p>
-				</div>
-				<!-- tab_cont01 end -->
-
-				<div id="tab_cont02" class="tabcontent">
-					<h4>사진(59)</h4>
-					<!-- Photo Grid -->
-					<div class="row">
-						<div class="column">
-							<img src="../../../img/sub01/wedding.jpg" style="width:100%">
-							<img src="../../../img/sub01/underwater.jpg" style="width:100%">
-							<img src="../../../img/sub01/rocks.jpg" style="width:100%">
-							<img src="../../../img/sub01/falls2.jpg" style="width:100%">
-							<img src="../../../img/sub01/nature.jpg" style="width:100%">
-							<img src="../../../img/sub01/ocean.jpg" style="width:100%">
-							<img src="../../../img/sub01/paris.jpg" style="width:100%">
-						</div>
-						<div class="column">
-							<img src="../../../img/sub01/paris.jpg" style="width:100%">
-							<img src="../../../img/sub01/ocean.jpg" style="width:100%">
-							<img src="../../../img/sub01/nature.jpg" style="width:100%">
-							<img src="../../../img/sub01/falls2.jpg" style="width:100%">
-							<img src="../../../img/sub01/rocks.jpg" style="width:100%">
-							<img src="../../../img/sub01/underwater.jpg" style="width:100%">
-							<img src="../../../img/sub01/wedding.jpg" style="width:100%">
-						</div>
-						<div class="column">
-							<img src="../../../img/sub01/wedding.jpg" style="width:100%">
-							<img src="../../../img/sub01/underwater.jpg" style="width:100%">
-							<img src="../../../img/sub01/rocks.jpg" style="width:100%">
-							<img src="../../../img/sub01/falls2.jpg" style="width:100%">
-							<img src="../../../img/sub01/nature.jpg" style="width:100%">
-							<img src="../../../img/sub01/ocean.jpg" style="width:100%">
-							<img src="../../../img/sub01/paris.jpg" style="width:100%">
-						</div>
-						<div class="column">
-							<img src="../../../img/sub01/wedding.jpg" style="width:100%">
-							<img src="../../../img/sub01/underwater.jpg" style="width:100%">
-							<img src="../../../img/sub01/rocks.jpg" style="width:100%">
-							<img src="../../../img/sub01/falls2.jpg" style="width:100%">
-							<img src="../../../img/sub01/nature.jpg" style="width:100%">
-							<img src="../../../img/sub01/ocean.jpg" style="width:100%">
-							<img src="../../../img/sub01/paris.jpg" style="width:100%">
-						</div>
-					</div>
-				</div>
-				<!-- tab_cont02 end-->
-				<div id="tab_cont03" class="tabcontent">
-					<h4>지도/주변관광지</h4>
-					<div id="map" style="width:100%;height:350px;"></div>
-
-
-
-				</div>
-				<!-- tab_cont03 end-->
-				<div id="tab_cont04" class="tabcontent">
-					<h3>리뷰</h3>
-
-					<!-- 라이브리 시티 설치 코드 -->
-					<div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk5NC8xNDUyNA==">
-						<script type="text/javascript">
-							(function (d, s) {
-								var j, e = d.getElementsByTagName(s)[0];
-
-								if (typeof LivereTower === 'function') {
-									return;
-								}
-
-								j = d.createElement(s);
-								j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-								j.async = true;
-
-								e.parentNode.insertBefore(j, e);
-							})(document, 'script');
-						</script>
-						<noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
-					</div>
-					<!-- 시티 설치 코드 끝 -->
-
-				</div>
-				<!-- tab_cont04 end-->
-				<div id="tab_cont05" class="tabcontent">
-					<h3>타기관 리뷰</h3>
-
-				</div>
-				<!-- tab_cont05 end-->
-
+				<!-- sns_area -->
 			</div>
-			<!-- tab_area end-->
+			<!-- view_cont end-->
+
+			<div class="cont">
+				<h3>개요</h3>
+				<p>{{overview}}</p>
+				<h3>위치정보</h3>
+				<div id="map" style="width:100%;height:350px;"></div>
+			</div>
+
+
 		</div>
-		<!-- content end-->
+		<!--content end -->
+
+
+
+
+
+
+
+
+
 	</script>
 	<!-- codeTemp end-->
+
 
 	<footer id="footer"></footer>
 
 
+	<!-- js -->
+	<script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../../../node_modules/slick-carousel/slick/slick.min.js"></script>
+	<script src="../../../js/common/common.js"></script>
+	<script src="view.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#header").load("../../include/sub_header.html")
+			$("#footer").load("../../include/sub_footer.html")
+			/* id 지정을 통해서도 가능합니다. 
+			 $("#header").load("header.html #navbar")
+			 */
+		});
+	</script>
 
 
 
@@ -358,48 +239,17 @@
 				infowindow.open(map, marker);
 			});
 		}
-
-		function relayout() {
-			// 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-			// 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
-			// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-			map.relayout();
-		}
 	</script>
 
-	<!-- js -->
-	<script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
-	<script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../../../node_modules/slick-carousel/slick/slick.min.js"></script>
-	<script src="../../../js/common/common.js"></script>
-	<script src="view.js"></script>
+
 	<script>
-		$(document).ready(function () {
-			$("#header").load("../../include/sub_header.html")
-			$("#footer").load("../../include/sub_footer.html")
-			/* id 지정을 통해서도 가능합니다. 
-			 $("#header").load("header.html #navbar")
-			 */
-		});
-	</script>
-
-
-
-<script>
-		$('.view_img_area ul').slick({
+		$('#slide').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			autoplay: true,
 			autoplaySpeed: 2000,
 		});
 	</script>
-
-
-
-
-
-
 
 </body>
 
