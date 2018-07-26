@@ -206,9 +206,47 @@
 				<div id="map" style="width:100%;height:350px;"></div>
 
 
+
 			</div>
 			<div id="tab_cont04" class="tabcontent">
 				<h3>리뷰</h3>
+
+
+
+			</div>
+			<div id="tab_cont05" class="tabcontent">
+				<h3>타기관 리뷰</h3>
+
+
+
+
+
+
+
+
+
+				<footer id="footer"></footer>
+
+
+
+
+
+
+				<!-- js -->
+				<script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
+				<script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+				<script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+				<script src="../../../js/common/common.js"></script>
+				<script src="view.js"></script>
+				<script>
+					$(document).ready(function () {
+						$("#header").load("../../include/sub_header.html")
+						$("#footer").load("../../include/sub_footer.html")
+						/* id 지정을 통해서도 가능합니다. 
+						 $("#header").load("header.html #navbar")
+						 */
+					});
+				</script>
 
 				<!-- 라이브리 시티 설치 코드 -->
 				<div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk5NC8xNDUyNA==">
@@ -231,10 +269,6 @@
 				</div>
 				<!-- 시티 설치 코드 끝 -->
 
-			</div>
-			<div id="tab_cont05" class="tabcontent">
-				<h3>타기관 리뷰</h3>
-
 				<script>
 					function openTab(evt, cityName) {
 						var i, tabcontent, tablinks;
@@ -253,10 +287,6 @@
 					// Get the element with id="defaultOpen" and click on it
 					document.getElementById("defaultOpen").click();
 				</script>
-
-
-
-
 
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63e85967272ed81006a618efef0241f0&libraries=services"></script>
 				<script>
@@ -315,32 +345,6 @@
 						map.relayout();
 					}
 				</script>
-
-
-
-				<footer id="footer"></footer>
-
-
-
-
-
-
-				<!-- js -->
-				<script src="../../../node_modules/handlebars/dist/handlebars.min.js"></script>
-				<script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
-				<script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-				<script src="../../../js/common/common.js"></script>
-				<script src="view.js"></script>
-				<script>
-					$(document).ready(function () {
-						$("#header").load("../../include/sub_header.html")
-						$("#footer").load("../../include/sub_footer.html")
-						/* id 지정을 통해서도 가능합니다. 
-						 $("#header").load("header.html #navbar")
-						 */
-					});
-				</script>
-
 
 
 </body>
