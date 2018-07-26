@@ -51,7 +51,6 @@
   background-size: cover;
 }
 
-.topnav h1 a:hover {}
 
 .menu_wrap {
   float: right;
@@ -67,10 +66,6 @@
   font-size: 17px;
 }
 
-.active {
-  /* background-color: #4CAF50; */
-  /* color: white; */
-}
 
 .topnav .icon {
   display: none;
@@ -109,11 +104,6 @@
   text-align: left;
 }
 
-.topnav a:hover,
-.dropdown:hover .dropbtn {
-  /* background-color: #555;
-  color: white; */
-}
 
 .dropdown-content a:hover {
   background-color: #ddd;
@@ -491,7 +481,6 @@ visual  - 비주얼
 ***************************************************************************************/
 
 #visual {
-  /* margin-top: 168px; */
   width: 100%;
   height:420px;
   overflow: hidden;
@@ -500,7 +489,6 @@ visual  - 비주얼
 #visual img {
   display: block;
   width: 100%;
-  /* height: 350px; */
 }
 
 .container .visual_cont {
@@ -531,9 +519,9 @@ visual  - 비주얼
   line-height: 28px;
 }
 
-.container .visual_cont_box p.score {
+/* .container .visual_cont_box p.score {
   color: #fff;
-}
+} */
 
 .container .visual_cont_box .hashtag {
   color: #ccc;
