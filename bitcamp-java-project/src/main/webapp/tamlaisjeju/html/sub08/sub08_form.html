@@ -21,9 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--bootstrap-->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <!-- drozone -->
-    <link rel="stylesheet" href="../../node_modules/dropzone/dist/min/dropzone.min.css">
-    <link rel="stylesheet" href="../../node_modules/dropzone/dist/min/basic.min.css">
     <!-- sweetArert2 -->
     <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
     <style type="text/css">
@@ -221,6 +218,7 @@
                 </div>
                 <div id="post_wraps">
                     <div id="cont_1" class="post_wrap">
+
                         <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg2">
                             클릭하여 사진 등록
                             <img src="">
@@ -259,18 +257,15 @@
                         </div>
                         <!--dropzone-->
 
-                        <div id="xForm">
-
-                            <input type="text" id="txtData" />
-
-                        </div>
-
-
                         <div id="trueForm">
-
-                            <form action="/" class="dropzone dz_form" enctype="multipart/form-data" id="my-dropzone" method="post">
+                            <div class="dropzone" >
+                                <div>
+                                </div>
                                 <span class="dz_ico">+</span>
-                                <!-- 고유 값이 필요한 경우 -->
+                                <div id="imgbox"></div>
+                            </div>
+                            <input id="fileupload" type="file" name="files" multiple hidden>
+                            <!-- 고유 값이 필요한 경우 -->
 
 
                             </form>
@@ -281,7 +276,7 @@
 
                                 <!-- <button id="btnAllClear" disabled="disabled">취소</button> -->
 
-                                <button type="submit" id="btnSubmit" disabled="disabled">등록</button>
+                                <button onclick="upload()" id="btnSubmit" disabled="disabled">등록</button>
 
                             </div>
 
@@ -323,6 +318,9 @@
             </div>
         </div>
 
+
+        <!--commonJS-->
+        <script src="../../js/common/common.js"></script>
         <!-- logo font -->
         <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
@@ -330,14 +328,15 @@
         <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
-        <!-- drozone -->
-        <script type="text/javascript" src="../../node_modules/dropzone/dist/min/dropzone.min.js"></script>
         <!-- sweetArert2 -->
         <script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <!--metadata-->
         <script type="text/javascript" src="metadeta/jpegmeta.js"></script>
         <script type="text/javascript" src="metadeta/demo.js"></script>
-
+        <!--jQuery upload-->
+        <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+        <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+        <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
         <script>
             $('.modal').on('hidden.bs.modal', function (e) {
@@ -681,167 +680,27 @@
                 });
             });
         </script>
-
-
         <script type="text/javascript">
-            //Dropzone 초기화, myDropzone form 있는 id 위해
+            // 사진업로드
+    
+            var imgBox = $('#imgbox');
 
-            Dropzone.options.myDropzone = {
+            $('#fileupload').fileupload({
+                url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
+                dataType: 'json',
+                /* "서버가 보낸 데이터가 JSON 문자열이다. 자바스크립트 객체로 바꿔라." 라는 의미*/
+                done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+                    console.log('done()...');
+                    console.log(data.result);
 
-                //업로드 그림 경로 지정
-                url: '@Url.Action("dropZone", "Home")',
-
-                // 파라메터 지정
-                //params: {"Data" : xx},
-                //업로드 취소 및 추가 삭제 미리 보기 그림 링크 를 기본 안 추가
-                addRemoveLinks: true,
-
-                // 자동 업로드 끔
-                autoProcessQueue: false,
-
-                // 최대 업로드 카운트
-                maxFiles: 20,
-
-                //여러 개의 사진 업로드 허용
-                uploadMultiple: true,
-
-                // 병렬처리 WebConfig도 같이 수정해줘야함.
-                parallelUploads: 20,
-
-                // 최대 업로드 용량 Mb 단위
-                maxFilesize: 100,
-                method: 'post',
-
-                // 허용 확장자
-                acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
-
-
-
-                // 기본 true false 로 주면 아무 동작 못함
-                clickable: true,
-
-                // 지원하지 않는 IE 10 미만일 경우
-                fallback: function () {
-                    document.getElementById('trueForm').style.display = "none";
-                    document.getElementById('falseForm').style.display = 'block';
-                },
-
-                init: function () {
-                    var submitButton = document.querySelector("#btnSubmit")
-                    var allClearButton = document.querySelector("#btnAllClear")
-
-                    myDropzone = this; // closure
-
-                    // Call the action method to load the images from the server
-                    // $.getJSON("../..//getList").done(function (data) {
-                    //     if (data.Data != '') {
-
-                    //         $.each(data.Data, function (index, item) {
-                    //             //// Create the mock file:
-                    //             var mockFile = {
-                    //                 name: item.fileName, // 마우스 오버 네임
-                    //                 size: item.Size
-                    //             };
-
-                    //             // Call the default addedfile event handler
-                    //             myDropzone.emit("addedfile", mockFile);
-
-                    //             // And optionally show the thumbnail of the file:
-                    //             myDropzone.emit("thumbnail", mockFile, item.Path);
-
-                    //             // If you use the maxFiles option, make sure you adjust it to the
-                    //             // correct amount:
-                    //             //var existingFileCount = 1; // The number of files already uploaded
-                    //             //myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
-
-                    //         });
-                    //     }
-                    // });
-
-
-
-                    // 업로드 버튼 이벤트 등록
-                    submitButton.addEventListener("click", function () {
-
-                        // tell Dropzone to process all queued files
-                        // 다른 폼의 데이터를 Dropzone 안의 히든 폼으로 주고 서브밋 시키면 Form 2개 데이터를 취합할 수 있다.
-                        $('#hideTxtData').attr('value', $('#txtData').val());
-                        myDropzone.processQueue();
-                    });
-
-                    // // All Clear
-                    // allClearButton.addEventListener("click", function () {
-
-                    //     // Using "_this" here, because "this" doesn't point to the dropzone anymore
-                    //     if (confirm('정말 전체 항목을 삭제하겠습니까?')) {
-                    //         // 서버 삭제 로직
-                    //         $.ajax({
-                    //             url: '@Url.Action("removeAll","Home")',
-                    //             type: 'POST',
-                    //             success: function (data) {
-                    //                 if (data.Data == 'OK') {
-                    //                     myDropzone.removeAllFiles(true); // true 주면 업로드 중인 파일도 다 같이 삭제
-                    //                     //document.location.reload();
-                    //                 }
-                    //             }
-                    //         });
-                    //     }
-
-                    //     // If you want to cancel uploads as well, you
-                    //     // could also call _this.removeAllFiles(true);
-                    // });
-
-                    // maxFiles 카운터를 초과하면 경고창
-                    this.on("maxfilesexceeded", function (data) {
-                        alert('최대 업로드 파일 수는 20개 입니다.');
-                    });
-
-                    // Dropzone에 이미지가 추가되면 업로드 버튼 활성화
-                    this.on("addedfile", function () {
-                        $("#btnSubmit").removeAttr("disabled");
-                        $("#btnAllClear").removeAttr("disabled");
-                    });
-
-
-                    //업로드 완료 후 사건 내가 받아들일 위해 JSON 데이터 형식
-                    this.on("complete", function (data) {
-                        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length ===
-                            0) {
-                            if (data.xhr != undefined) {
-                                var res = eval('(' + data.xhr.responseText + ')');
-
-                                //var res = data;
-                                var msg;
-                                if (res.Result) {
-                                    msg = "이미지 업로드 완료( " + res.Count + " )";
-                                } else {
-                                    msg = "업로드 실패: " + res.Message;
-                                }
-                                alert(msg);
-                            }
-                        }
-                    });
-
-                    // 이미지 삭제
-                    this.on("removedfile", function (data) {
-                        //alert(data.name);   // 삭제할 파일명       
-                        // 서버 삭제 로직
-
-                        $.ajax({
-                            url: '@Url.Action("removeTarget","Home")',
-                            type: 'POST',
-                            data: {
-                                'PK': data.name
-                            }
-                        });
-
-                        if (this.getAcceptedFiles().length === 0) {
-                            $("#btnSubmit").attr("disabled", true);
-                            $("#btnAllClear").attr("disabled", true);
-                        }
-                    });
+                    $('<img>')
+                        .attr('src', serverRoot + '/files/' + data.result.filename + "_50x50.jpg")
+                        .appendTo(imgBox);
+                    //      $.each(data.result.fileList, function(index, file) {
+                    //        $('<p/>').text(file.filename + " : " + file.filesize).appendTo(document.body);
+                    //      });
                 }
-            };
+            });
         </script>
 
         <script>
@@ -924,6 +783,7 @@
             function add_div() {
                 $('#post_wraps').append(
                     "<div id=" + "'cont_" + count + "'" + " class='post_wrap'>" +
+                    "<button class='cancel_btn' onclick='delete_cont(this.value)'></button>" +
                     "<div class='post_imgbox' data-toggle='modal' data-target='.bd-example-modal-lg2'>" +
                     '클릭하여 사진 등록' +
                     "<img src=''>" +
@@ -948,6 +808,33 @@
                 count++;
             }
 
+            function delete_cont() {
+                var contDiv = document.activeElement.parentNode;
+                swal({
+                    title: '정말 삭제하시겠습니까?',
+                    text: "작성한 모든 정보가 삭제됩니다.",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '네, 삭제할께요'
+                }).then((result) => {
+                    if (result.value) {
+                        swal(
+                            '삭제완료',
+                            '작성중인 게시물을 삭제하였습니다.',
+                            'success'
+                        )
+                        contDiv.remove();
+                    }
+
+                })
+
+            }
+
+            // 업로드 버튼 클릭
+            function upload() {
+                $("#fileupload").trigger("click");
 
 
             // function remove_div(obj) {
