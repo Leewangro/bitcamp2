@@ -443,7 +443,7 @@
                                 var $item = $(item);
                                 $item.attr("data-treemenu-id", ++id);
                                 this.setOpen($item, false);
-                                if (parseInt($item.attr("level")) > 0) {
+                                if (parseInt($item.attr("level") ) > 0) {
                                     this.hideItem($item);
                                 } else {
                                     this.showItem($item);
@@ -598,9 +598,9 @@
                         var dayPath = new Array();
                         var treeItem = new Array();
                         for (let i = 0; i < maxDay; i++) {
-                            sarr.push($('.day' + (i + 1)).offset().top)
-                            dayPath.push( $('.day'+ (i+1)));
-                            treeItem.push($('#day' + (i + 1)))
+                            sarr.push($('.day' + (i + 1) ).offset().top)
+                            dayPath.push( $('.day'+ (i+1) ));
+                            treeItem.push($('#day' + (i + 1) ))
                         }
 
 
@@ -609,11 +609,11 @@
                                 while ($(document).scrollTop() > sarr[y] - 180) {
                                     $('.day').removeClass('off');
                                     $('.day').addClass('off');
-                                    $('.fix_day' + (y + 1)).removeClass('off');
-                                    $('.c_day' + (y + 1)).addClass('off');
-                                    $('.c_day' + (y + 2)).removeClass('off');
-                                    $('.fix_day' + (y + 1)).addClass('on');
-                                    menu.openItem(treeItem[y])
+                                    $('.fix_day' + (y + 1) ).removeClass('off');
+                                    $('.c_day' + (y + 1) ).addClass('off');
+                                    $('.c_day' + (y + 2) ).removeClass('off');
+                                    $('.fix_day' + (y + 1) ).addClass('on');
+                                    menu.openItem( treeItem[y] )
                                     return;
                                 }
                             }

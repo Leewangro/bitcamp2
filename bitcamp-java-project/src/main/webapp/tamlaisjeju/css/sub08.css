@@ -1338,7 +1338,7 @@ body {
     height: 180px;
     border: 1px solid #eee;
     position: absolute;
-    color: #EEE;
+    color: rgb(194, 194, 194);
     text-align: center;
     line-height: 180px;
     cursor: pointer;
@@ -1785,6 +1785,14 @@ input,
 .items {
     font-weight: 100;
 }
+.items {
+    color: #46799b;
+    background: #e0eaf1;
+    margin-left: 3px;
+    border: 0px solid white;
+    border-radius: 20px;
+    padding: 2px 3px 0 10px;
+}
 
 .done {
     text-decoration: line-through;
@@ -1828,4 +1836,35 @@ input,
 
 #status {
     display: none;
+}
+
+/* cnt 추가버튼 */
+#cnt_add_wrap {
+    margin-bottom: 150px;
+    cursor: pointer;
+}
+#cnt_add_wrap .cnt_add_btn1,
+.cnt_add_btn2 {
+    display: block;
+    text-align: center;
+    color: gray;
+}
+#cnt_add_wrap .cnt_add_btn1 {
+    width: 36px;
+    height: 36px;
+    margin: auto;
+    font-size: 24px;
+    border: 1px dotted gray;
+    line-height: 30px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    -webkit-transition: 0.5s;
+}
+#cnt_add_wrap .cnt_add_btn2 {
+    font-size: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+}
+#cnt_add_wrap:hover .cnt_add_btn1 {
+    font-size: 30px;
 }

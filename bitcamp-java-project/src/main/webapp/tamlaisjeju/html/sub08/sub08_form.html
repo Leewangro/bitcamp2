@@ -173,7 +173,7 @@
                                     <div>
                                         <form onsubmit="searchPlaces(); return false;">
                                             키워드 :
-                                            <input type="text" value="제주도" +  id="keyword" size="15">
+                                            <input type="text" value="제주도" + id="keyword" size="15">
                                             <button type="submit">검색하기</button>
                                         </form>
                                     </div>
@@ -219,25 +219,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="post_wrap">
-                    <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg2">
-                        클릭하여 사진 등록
-                        <img src="">
-                    </div>
-                    <div class="post_text">
+                <div id="post_wraps">
+                    <div id="cont_1" class="post_wrap">
+                        <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg2">
+                            클릭하여 사진 등록
+                            <img src="">
+                        </div>
+                        <div class="post_text">
 
 
-                        <form>
-                            <input id="post_title" type="text" value="" class="post_titl" placeholder="장소">
-                            <input id="post_address" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_addr" value="" placeholder="주소"
-                                readonly>
-                            <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
-                            <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false"></textarea>
-                            <div class="text_count">글자제한:
-                                <span class="count">80</span>/80</div>
-                            <button onclick="map()"></button>
-                        </form>
+                            <form>
+                                <input id="post_title_1" type="text" value="" class="post_titl" placeholder="장소">
+                                <input id="post_address_1" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_addr" value="" placeholder="주소"
+                                    readonly>
+                                <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+                                <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false"></textarea>
+                                <div class="text_count">글자제한:
+                                    <span class="count">80</span>/80</div>
+                                <button onclick="map()"></button>
+                            </form>
+                        </div>
                     </div>
+                </div>
+                <div id="cnt_add_wrap" onclick="add_div()">
+                    <span class="cnt_add_btn1">+</span>
+                    <span class="cnt_add_btn2">클릭하여 게시물 추가하기</span>
                 </div>
 
             </div>
@@ -587,7 +593,13 @@
                         // 사용자가 입력한 값이 제한 값을 초과하는지를 검사한다.
                         if (now < 0) {
                             var str = $input.val();
-                            alert('글자 입력수가 초과하였습니다.');
+                            swal({
+                                type: 'error',
+                                title: '입력초과',
+                                text: '글자 입력수를 초과하였습니다.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                             $input.val(str.substr(0, maximumCount));
                             now = 0;
                         }
@@ -852,6 +864,8 @@
                         type: 'error',
                         title: '입력초과',
                         text: 'HashTag는 5개까지 입력가능합니다.',
+                        showConfirmButton: false,
+                        timer: 1500
                     })
                     return;
                 }
@@ -903,6 +917,44 @@
             input.addEventListener("keypress", addNewItemAfterKeypress);
             manageGroupTag(li, "click", toggleDone);
             manageGroupTag(deleteBtns, "click", deleteItem);
+        </script>
+        <script>
+            var count = 2;
+
+            function add_div() {
+                $('#post_wraps').append(
+                    "<div id=" + "'cont_" + count + "'" + " class='post_wrap'>" +
+                    "<div class='post_imgbox' data-toggle='modal' data-target='.bd-example-modal-lg2'>" +
+                    '클릭하여 사진 등록' +
+                    "<img src=''>" +
+                    "</div>" +
+                    "<div class='post_text'>" +
+
+                    "<form>" +
+                    "<input id='post_title_" + count + "'" +
+                    "type='text' value='' class='post_titl' placeholder='장소'>" +
+                    "<input id='post_address_" + count + "'" +
+                    "type='text' onclick='/*sample5_execDaumPostcode()*/' class='post_addr' value='' placeholder='주소' readonly>" +
+                    "<div id='map' style='width:300px;height:300px;margin-top:10px;display:none'></div>" +
+                    "<textarea id='post_text_form" + count + "'" +
+                    "class='title_textarea text_area' placeholder='내용을 입력하세요.' data-is-observable='false'></textarea>" +
+                    "<div class='text_count'>글자제한:" +
+                    "<span class='count'>80</span>/80</div>" +
+                    "<button onclick='map()'></button>" +
+                    "</form>" +
+                    "</div>" +
+                    "</div>"
+                );
+                count++;
+            }
+
+
+
+            // function remove_div(obj) {
+
+            //     document.getElementById('field').removeChild(obj.parentNode);
+
+            // }
         </script>
 
 
