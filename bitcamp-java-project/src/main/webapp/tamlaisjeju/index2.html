@@ -36,14 +36,33 @@
             background: url("img/main/header_bottom_line.png") repeat-x left bottom;
         }
 
-        #header h1 {}
+        #header h1 {
+            float: left;
+            margin:13px 0 0 13px;
+        }
 
         #header h1 a {
             color: #fff;
         }
-        #header ul{text-align: center;}
-        #header ul li{display:inline-block;}
-        #header ul li a{color:#fff;}
+
+        #header ul {
+            text-align: center;
+        }
+
+        #header ul li {
+            display: inline-block;
+        }
+
+        #header ul li a {
+            display: block;
+            padding: 25px 19px;
+            color: #fff;
+            font-size: 19px;
+            line-height: 25px;
+            font-weight: bold;
+            transition: 0.2s all linear;
+            -webkit-transition: 0.2s all linear;
+        }
 
 
         #mvisual {
@@ -92,11 +111,17 @@
 
 
 
-        #mvisual ul li div.tit_bg {
-            display: inline-block;
+        #mvisual ul li div.tit_box {
+            position: absolute;
+            top: 300px;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            text-align: center;
+            /* display: inline-block;
             margin-top: 140px;
             padding: 20px;
-            background: url('img/main/mtit_bg.png') repeat;
+            background: url('img/main/mtit_bg.png') repeat; */
         }
 
 
