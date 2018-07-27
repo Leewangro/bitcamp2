@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick.css" />
-    <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick-theme.css" />
+    <!-- <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick-theme.css" /> -->
 
 
     <style type="text/css">
@@ -45,6 +45,8 @@
 
         #header h1 a {
             color: #fff;
+            display: block;
+            font-size:32px;
         }
 
         #header ul {
@@ -128,6 +130,44 @@
         #mvisual ul li.img06 {
             background: url('img/main/visual_img06.jpg') no-repeat 0 50%;
             background-size: cover;
+        }
+
+
+
+
+
+        .slick-prev,
+        .slick-next {
+            font-size: 0;
+            line-height: 0;
+
+            position: absolute;
+            top: 50%;
+
+            display: block;
+
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            -webkit-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+
+            cursor: pointer;
+
+            color: transparent;
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        .slick-prev:hover,
+        .slick-prev:focus,
+        .slick-next:hover,
+        .slick-next:focus {
+            color: transparent;
+            outline: none;
+            background: transparent;
         }
 
 
@@ -790,7 +830,8 @@
             $('#mvisual ul').slick({
                 dots: true,
                 infinite: true,
-                speed: 500,
+                autoplay: true,
+                speed: 1000,
                 fade: true,
                 cssEase: 'linear'
             });
