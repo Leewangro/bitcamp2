@@ -17,12 +17,6 @@ var serviceKey = "5fTAWN079L8Yfhs%2F9YQ7zBKyOO6%2BKpeQJ15u5GiLJY4AN%2Bx96uwIQHWm
 $(function() {
     $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" + serviceKey + "&contentTypeId=12&areaCode=39&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=6&pageNo=1&_type=json", function(areaCode) {
         // json 객체 내부 접근하기
-        // console.dir(areaCode);
-        // console.log(areaCode);
-        // console.log(areaCode.response);
-        // console.log(areaCode.response.body);
-        // console.log(areaCode.response.body.items);
-        // console.log(areaCode.response.body.items.item);
         
         var items = areaCode.response.body.items.item;
         

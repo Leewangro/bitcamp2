@@ -20,13 +20,6 @@ $(function () {
         "&contentId=" + contentid +
         "&defaultYN=Y&firstImageYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
         function (contentId) {
-            // json 객체 내부 접근하기
-            // console.dir(contentId);
-            // console.log(contentId);
-            // console.log(contentId.response);
-            // console.log(contentId.response.body);
-            // console.log(contentId.response.body.items);
-            // console.log(contentId.response.body.items.item);
 
             var items = contentId.response.body.items.item;
         
