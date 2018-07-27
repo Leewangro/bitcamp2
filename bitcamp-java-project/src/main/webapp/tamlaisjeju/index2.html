@@ -167,7 +167,7 @@
             margin: 25px 0;
             padding: 0;
             color: #fff;
-            font-size: 42px;
+            font-size: 50px;
         }
 
         #mvisual ul li p {
@@ -175,25 +175,147 @@
             font-size: 23px;
         }
 
-
-
-
         #mvisual .weather_area {
             position: absolute;
-            right: 20px;
+            right: 100px;
             top: 100px;
             z-index: 2000;
             color: #fff;
         }
 
-
-
-
         #mvisual .weather_area .weather_img {
-            border-radius: 100%;
+            position: relative;
             width: 127px;
             height: 127px;
+            margin: 15px auto;
+            border-radius: 100%;
             border: 3px solid #fff;
+
+        }
+
+
+
+        #mvisual .weather_area .wico {
+            display: inline-block;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            width: 64px;
+            height: 64px;
+            background: url("img/main/weather_icon.png") no-repeat;
+            font-size: 0;
+        }
+
+        #mvisual .weather_area .wico.weather1 {
+            background-position: 0 0;
+        }
+
+        #mvisual .weather_area .wico.weather2 {
+            background-position: -70px 0;
+        }
+
+        #mvisual .weather_area .wico.weather3 {
+            background-position: -140px 0;
+        }
+
+        #mvisual .weather_area .wico.weather4 {
+            background-position: -209px 0;
+        }
+
+        #mvisual .weather_area .wico.weather5 {
+            background-position: -279px 0;
+        }
+
+        #mvisual .weather_area .wico.weather6 {
+            background-position: -350px 0;
+        }
+
+        #mvisual .weather_area .wico.weather7 {
+            background-position: -419px 0;
+        }
+
+
+
+        #mvisual .weather_area .today_area {}
+
+        #mvisual .weather_area .today_area .today {
+            display: block;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        #mvisual .weather_area .today_area span {
+            display: inline-block;
+            font-size: 57px;
+            line-height: 57px;
+            font-weight: bold;
+        }
+
+        #mvisual .weather_area .today_area .month {}
+
+        #mvisual .weather_area .today_area .bar {}
+
+        #mvisual .weather_area .today_area .date {}
+
+        #mvisual .weather_area .weather_txt {
+            text-align: center;
+        }
+
+        #mvisual .weather_area p {
+            text-align: center;
+        }
+
+        #mvisual .weather_area p a {
+            color: #fff;
+        }
+
+
+        #mvisual .vmore {
+            position: absolute;
+            left: 50%;
+            margin-left: -36px;
+            z-index: 20;
+            bottom: 60px;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {}
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateY(-20px);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateY(20px);
+            }
+        }
+
+        #mvisual .shake {
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-name: shake;
+        }
+
+
+
+        #mvisual .vmore .scroll {
+            display: block;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 104px;
+        }
+
+        #mvisual .vmore.bot .scroll {
+            height: 65px;
+            background: url("img/main/scroll_down.png") no-repeat 50% 0;
+            font-size: 0;
+            text-indent: -9999px;
         }
     </style>
 
@@ -227,11 +349,11 @@
 
                 <div class="weather_area">
                     <div class="weather_img">
-
+                        <strong id="icon_weather" class="wico weather2">구름조금</strong>
                     </div>
                     <!-- weather img end-->
-                    <div class="today">
-                        <strong>Today</strong>
+                    <div class="today_area">
+                        <strong class="today">Today</strong>
                         <span class="month" id="txt_month">7</span>
                         <span class="bar">/</span>
                         <span class="date" id="txt_day">27</span>
@@ -251,6 +373,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img02">
@@ -258,6 +382,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img03">
@@ -265,6 +391,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img04">
@@ -272,6 +400,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img05">
@@ -279,6 +409,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img06">
@@ -286,9 +418,18 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
                         <span class="visual_bg"></span>
                     </li>
                 </ul>
+
+
+                <div data-animation-delay="800" data-animation="shake" class="vmore shake visible bot action">
+                    <a class="scroll bot" href="#" title="아래로 이동">하단 내용 보기</a>
+                </div>
+
+
             </div>
             <div id="mcontent" class="wrapper">
                 <div class="mcont_area">
@@ -633,7 +774,7 @@
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
-                autoplaySpeed: 2000,
+                autoplaySpeed: 4000,
             });
         </script>
 
