@@ -1650,6 +1650,7 @@ body {
     min-height: 300px;
     margin: 20px;
     border: 1px dotted #eee;
+    cursor: pointer;
 }
 
 #txtData {
@@ -1867,4 +1868,23 @@ input,
 }
 #cnt_add_wrap:hover .cnt_add_btn1 {
     font-size: 30px;
+}
+
+
+/*삭제버튼*/
+.cancel_btn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right : 0px;
+    background-image: url("../img/sub08/cancel-button.png");
+    background-size: 20px;
+    z-index: 2;
+    -webkit-transition: 0.5s;
+}
+.cancel_btn:focus {
+    outline: none;
+}
+.cancel_btn:hover {
+    background-image: url("../img/sub08/cancel-button-red.png");
 }
