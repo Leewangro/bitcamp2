@@ -26,14 +26,30 @@
     <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick-theme.css" />
 
 
-<style type="text/css">
-#header{}
-</style>
+    <style type="text/css">
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #header h1 {}
+
+        #header h1 a {
+            color: #fff;
+        }
+
+        #mvisual {
+            height: 930px;
+        }
+    </style>
 
 
     <body>
         <header id="header" class="main_header clear">
-            <h1>탐라는제주</h1>
+            <h1>
+                <a href="#">탐라는제주</a>
+            </h1>
             <h2 class="skip">주메뉴영역</h2>
             <ul>
                 <li>
@@ -53,44 +69,50 @@
         </header>
 
 
-        <div id="mcontainer" class="container">
+        <div id="mcontainer">
             <div id="mvisual">
                 <ul>
                     <li class="img01">
-                        <div class="tit_bg">
+                        <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="visual_bg"></span>
                     </li>
                     <li class="img02">
-                        <div class="tit_bg">
+                        <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="visual_bg"></span>
                     </li>
                     <li class="img03">
-                        <div class="tit_bg">
+                        <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="visual_bg"></span>
                     </li>
                     <li class="img04">
-                        <div class="tit_bg">
+                        <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="visual_bg"></span>
                     </li>
                     <li class="img05">
-                        <div class="tit_bg">
+                        <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="visual_bg"></span>
                     </li>
                     <li class="img06">
-                        <div class="tit_bg">
+                        <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="visual_bg"></span>
                     </li>
                 </ul>
             </div>
@@ -305,7 +327,7 @@
 
         <style type="text/css">
             #mvisual {
-                height: 420px;
+                /* height: 420px; */
                 overflow: hidden;
                 position: relative;
             }
@@ -316,9 +338,9 @@
             #mvisual ul li {
                 position: relative;
                 width: 100%;
-                height: 420px;
+                height: 930px;
+                /* height: 420px; */
                 text-align: center;
-
             }
 
             #mvisual ul li.img01 {
@@ -351,11 +373,25 @@
                 background-size: cover;
             }
 
+
+
+
             #mvisual ul li div.tit_bg {
                 display: inline-block;
                 margin-top: 140px;
                 padding: 20px;
                 background: url('img/main/mtit_bg.png') repeat;
+            }
+
+            
+            #mvisual ul li span.visual_bg{
+                display:block;
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:url("img/main/mvisual_bg.png") repeat;
             }
 
             #mvisual ul li h3 {
