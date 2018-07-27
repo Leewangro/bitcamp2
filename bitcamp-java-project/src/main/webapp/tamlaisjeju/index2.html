@@ -48,6 +48,7 @@
         }
 
         #header ul {
+            display: inline-block;
             text-align: center;
         }
 
@@ -76,7 +77,7 @@
             display: inline-block;
             width: 20px;
             height: 20px;
-            background: url("img/main/sitemap-ico.png") no-repeat 0 3px;
+            background: url("img/main/sitemap-ico.png") no-repeat 0 0;
             font-size: 0;
             text-indent: -9999px;
             vertical-align: middle;
@@ -138,6 +139,9 @@
             width: 100%;
             z-index: 10;
             text-align: center;
+            z-index: 2000;
+
+            
             /* display: inline-block;
             margin-top: 140px;
             padding: 20px;
@@ -161,12 +165,12 @@
             margin: 10px 0;
             padding: 0;
             color: #fff;
-            font-size: 30px;
+            font-size: 42px;
         }
 
         #mvisual ul li p {
             color: #fff;
-            font-size: 20px;
+            font-size: 23px;
         }
     </style>
 
@@ -191,7 +195,7 @@
                     <a href="#">나의 여행</a>
                 </li>
             </ul>
-            <a href="#">사이트맵</a>
+            <a class="sitemap" href="#">사이트맵</a>
         </header>
 
 
