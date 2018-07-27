@@ -29,11 +29,11 @@
     <style type="text/css">
         #header {
             position: fixed;
-            height:75px;
+            height: 75px;
             top: 0;
             left: 0;
-            z-index:2000;
-            background:url("img/main/header_bottom_line.png") repeat-x left bottom;
+            z-index: 2000;
+            background: url("img/main/header_bottom_line.png") repeat-x left bottom;
         }
 
         #header h1 {}
@@ -41,9 +41,87 @@
         #header h1 a {
             color: #fff;
         }
+        #header ul{text-align: center;}
+        #header ul li{display:inline-block;}
+        #header ul li a{color:#fff;}
+
 
         #mvisual {
             height: 930px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #mvisual ul li {
+            position: relative;
+            width: 100%;
+            height: 930px;
+            text-align: center;
+        }
+
+        #mvisual ul li.img01 {
+            background: url('img/main/visual_img01.jpg') no-repeat 0 50%;
+            background-size: cover;
+        }
+
+        #mvisual ul li.img02 {
+            background: url('img/main/visual_img02.jpg') no-repeat 0 50%;
+            background-size: cover;
+        }
+
+        #mvisual ul li.img03 {
+            background: url('img/main/visual_img03.jpg') no-repeat 0 50%;
+            background-size: cover;
+        }
+
+        #mvisual ul li.img04 {
+            background: url('img/main/visual_img04.jpg') no-repeat 0 50%;
+            background-size: cover;
+        }
+
+        #mvisual ul li.img05 {
+            background: url('img/main/visual_img05.jpg') no-repeat 0 50%;
+            background-size: cover;
+        }
+
+        #mvisual ul li.img06 {
+            background: url('img/main/visual_img06.jpg') no-repeat 0 50%;
+            background-size: cover;
+        }
+
+
+
+
+        #mvisual ul li div.tit_bg {
+            display: inline-block;
+            margin-top: 140px;
+            padding: 20px;
+            background: url('img/main/mtit_bg.png') repeat;
+        }
+
+
+        #mvisual ul li span.visual_bg {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url("img/main/mvisual_bg.png") repeat;
+            z-index: 100;
+        }
+
+        #mvisual ul li h3 {
+            position: relative;
+            margin: 10px 0;
+            padding: 0;
+            color: #fff;
+            font-size: 30px;
+        }
+
+        #mvisual ul li p {
+            color: #fff;
+            font-size: 20px;
         }
     </style>
 
@@ -329,90 +407,6 @@
         <!-- mcontainer end -->
 
         <style type="text/css">
-            #mvisual {
-                overflow: hidden;
-                position: relative;
-            }
-
-            #mvisual ul {}
-
-
-            #mvisual ul li {
-                position: relative;
-                width: 100%;
-                height: 930px;
-                text-align: center;
-            }
-
-            #mvisual ul li.img01 {
-                background: url('img/main/visual_img01.jpg') no-repeat 0 50%;
-                background-size: cover;
-            }
-
-            #mvisual ul li.img02 {
-                background: url('img/main/visual_img02.jpg') no-repeat 0 50%;
-                background-size: cover;
-            }
-
-            #mvisual ul li.img03 {
-                background: url('img/main/visual_img03.jpg') no-repeat 0 50%;
-                background-size: cover;
-            }
-
-            #mvisual ul li.img04 {
-                background: url('img/main/visual_img04.jpg') no-repeat 0 50%;
-                background-size: cover;
-            }
-
-            #mvisual ul li.img05 {
-                background: url('img/main/visual_img05.jpg') no-repeat 0 50%;
-                background-size: cover;
-            }
-
-            #mvisual ul li.img06 {
-                background: url('img/main/visual_img06.jpg') no-repeat 0 50%;
-                background-size: cover;
-            }
-
-
-
-
-            #mvisual ul li div.tit_bg {
-                display: inline-block;
-                margin-top: 140px;
-                padding: 20px;
-                background: url('img/main/mtit_bg.png') repeat;
-            }
-
-            
-            #mvisual ul li span.visual_bg{
-                display:block;
-                position:absolute;
-                left:0;
-                top:0;
-                width:100%;
-                height:100%;
-                background:url("img/main/mvisual_bg.png") repeat;
-                z-index:100;
-            }
-
-            #mvisual ul li h3 {
-                position: relative;
-                margin: 10px 0;
-                padding: 0;
-                color: #fff;
-                font-size: 30px;
-            }
-
-            #mvisual ul li p {
-                color: #fff;
-                font-size: 20px;
-            }
-
-
-
-
-
             #mcontent {}
 
             #mcontent .mcont_area {
