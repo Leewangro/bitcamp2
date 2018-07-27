@@ -141,23 +141,23 @@
             z-index: 10;
             text-align: center;
             z-index: 2000;
-
-
-
-            /* display: inline-block;
-            margin-top: 140px;
-            padding: 20px;
-            background: url('img/main/mtit_bg.png') repeat; */
         }
 
 
 
-        #mvisual ul li span.img_text{
+        #mvisual ul li span.img_text {
             position: absolute;
-            right:100px;
-            bottom:100px;
-            color:#fff;
-            vertical-align:middle;
+            right: 30px;
+            bottom: 30px;
+            color: #fff;
+            vertical-align: middle;
+            z-index: 2000;
+            font-size: 14px;
+        }
+
+        #mvisual ul li span.img_text i {
+            display: inline-block;
+            padding-right: 10px;
         }
 
         #mvisual ul li span.visual_bg {
@@ -383,7 +383,7 @@
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
                         <span class="img_text">
-                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉1</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img02">
@@ -392,7 +392,7 @@
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
                         <span class="img_text">
-                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉2</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img03">
@@ -401,7 +401,7 @@
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
                         <span class="img_text">
-                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉3</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img04">
@@ -410,7 +410,7 @@
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
                         <span class="img_text">
-                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉4</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img05">
@@ -419,7 +419,7 @@
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
                         <span class="img_text">
-                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉5</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img06">
@@ -428,7 +428,7 @@
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
                         <span class="img_text">
-                            <i class="fas fa-map-marker-alt"></i>성산일출봉</span>
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉6</span>
                         <span class="visual_bg"></span>
                     </li>
                 </ul>
@@ -779,13 +779,25 @@
         <!-- <script src="js/header.js"></script> -->
 
         <script>
+            // $('#mvisual ul').slick({
+            //     slidesToShow: 1,
+            //     slidesToScroll: 1,
+            //     autoplay: true,
+            //     autoplaySpeed: 4000,
+            // });
+
+
             $('#mvisual ul').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 4000,
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
             });
         </script>
+
+
+
 
 
 
