@@ -26,13 +26,33 @@
     <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick-theme.css" />
 
 
-
+<style type="text/css">
+#header{}
+</style>
 
 
     <body>
+        <header id="header" class="main_header clear">
+            <h1>탐라는제주</h1>
+            <h2 class="skip">주메뉴영역</h2>
+            <ul>
+                <li>
+                    <a href="#">관광지</a>
+                </li>
+                <li>
+                    <a href="#">커뮤니티</a>
+                </li>
+                <li>
+                    <a href="#">제주여행꿀팁</a>
+                </li>
+                <li>
+                    <a href="#">나의 여행</a>
+                </li>
+            </ul>
+            <a href="#">사이트맵</a>
+        </header>
 
 
-        <header id="header"></header>
         <div id="mcontainer" class="container">
             <div id="mvisual">
                 <ul>
@@ -394,9 +414,9 @@
                 display: block;
                 color: #fff;
                 position: absolute;
-                left:20px;
-                bottom:20px;
-                font-size:20px;
+                left: 20px;
+                bottom: 20px;
+                font-size: 20px;
             }
 
             #mcontent .mcont_area ul.best_spot li a span b {
@@ -494,7 +514,7 @@
 
 
 
-        <script>
+        <!-- <script>
             $(document).ready(function () {
                 $("#header").load("html/include/main_header.html")
                 $("#footer").load("html/include/main_footer.html")
@@ -502,7 +522,7 @@
                  $("#header").load("header.html #navbar")
                  */
             });
-        </script>
+        </script> -->
     </body>
 
 </html>
