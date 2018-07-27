@@ -15,25 +15,25 @@ var url2="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntr
 
 
 
-$(function () {
-    $.getJSON(url1 + serviceKey +
-        "&contentId=" + contentid +
-        "&defaultYN=Y&firstImageYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
-        function (contentId) {
+// $(function () {
+//     $.getJSON(url1 + serviceKey +
+//         "&contentId=" + contentid +
+//         "&defaultYN=Y&firstImageYN=Y&addrinfoYN=Y&overviewYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json",
+//         function (contentId) {
 
-            var items = contentId.response.body.items.item;
+//             var items = contentId.response.body.items.item;
         
-            var temp2 = $('#codeTemp').html();
-            var template = Handlebars.compile(temp2);
+//             var temp2 = $('#codeTemp01').html();
+//             var template = Handlebars.compile(temp2);
             
-            var html = template(items);
-            // console.log(items);
-            // console.log(html);
+//             var html = template(items);
+//             // console.log(items);
+//             // console.log(html);
             
-            $('#result').html(html);
+//             $('#result01').html(html);
 
-        });
-});
+//         });
+// });
 
 $(function () {
     $.getJSON(url2 + serviceKey +
@@ -43,14 +43,14 @@ $(function () {
 
             var items = contentId.response.body.items.item;
         
-            var temp2 = $('#codeTemp').html();
+            var temp2 = $('#codeTemp02').html();
             var template = Handlebars.compile(temp2);
             
             var html = template(items);
             // console.log(items);
             // console.log(html);
             
-            $('#result').html(html);
+            $('#result02').html(html);
 
         });
 });
