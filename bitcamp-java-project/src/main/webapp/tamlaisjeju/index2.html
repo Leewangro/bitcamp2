@@ -33,12 +33,14 @@
             top: 0;
             left: 0;
             z-index: 2000;
-            background: url("img/main/header_bottom_line.png") repeat-x left bottom;
+            background: url("img/main/header_bg.png") repeat;
+            border-bottom: 1px solid #fff;
+            /* background: url("img/main/header_bottom_line.png") repeat-x left bottom; */
         }
 
         #header h1 {
             float: left;
-            margin:13px 0 0 13px;
+            margin: 13px 0 0 13px;
         }
 
         #header h1 a {
@@ -51,7 +53,13 @@
 
         #header ul li {
             display: inline-block;
+            text-align: left;
         }
+
+
+
+
+
 
         #header ul li a {
             display: block;
@@ -63,6 +71,18 @@
             transition: 0.2s all linear;
             -webkit-transition: 0.2s all linear;
         }
+
+        #header a.sitemap {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url("img/main/sitemap-ico.png") no-repeat 0 3px;
+            font-size: 0;
+            text-indent: -9999px;
+            vertical-align: middle;
+        }
+
+
 
 
         #mvisual {
