@@ -433,7 +433,8 @@
                     <p>
                         <a href="http://www.kma.go.kr" target="_blank" title="기상청 홈페이지가 새창으로 열립니다.">(출처: 기상청) </a>
                     </p>
-                </div><!-- weather_area end -->
+                </div>
+                <!-- weather_area end -->
                 <ul>
                     <li class="img01">
                         <div class="tit_box">
@@ -837,14 +838,6 @@
         <!-- <script src="js/header.js"></script> -->
 
         <script>
-            // $('#mvisual ul').slick({
-            //     slidesToShow: 1,
-            //     slidesToScroll: 1,
-            //     autoplay: true,
-            //     autoplaySpeed: 4000,
-            // });
-
-
             $('#mvisual ul').slick({
                 dots: true,
                 infinite: true,
@@ -852,6 +845,14 @@
                 speed: 1000,
                 fade: true,
                 cssEase: 'linear'
+            });
+
+
+            $('.best_spot ul').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
             });
         </script>
 
