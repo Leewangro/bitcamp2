@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     z-index: 2000;
-    background: url("img/main/header_bg.png") repeat;
+    background: url("../img/main/header_bg.png") repeat;
     border-bottom: 1px solid #fff;
     /* background: url("img/main/header_bottom_line.png") repeat-x left bottom; */
 }
@@ -24,9 +24,7 @@
 }
 
 #header ul {
-    /* display: inline-block; */
     text-align: center;
-    /* padding: 0 31%; */
 }
 
 #header ul li {
@@ -49,14 +47,14 @@
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: url("img/main/sitemap-ico.png") no-repeat 0 0;
+    background: url("../img/main/sitemap-ico.png") no-repeat 0 0;
     font-size: 0;
     text-indent: -9999px;
     vertical-align: middle;
 }
 
 #mvisual {
-    height: 930px;
+    height: 950px;
     overflow: hidden;
     position: relative;
 }
@@ -64,7 +62,7 @@
 #mvisual ul li {
     position: relative;
     width: 100%;
-    height: 930px;
+    height: 950px;
     text-align: center;
 }
 
@@ -100,11 +98,11 @@
 
 #mvisual .slick-slider {
     position: relative;
-    height: 930px;
+    height: 950px;
 }
 
 #mvisual .slick-prev,
-.slick-next {
+#mvisual .slick-next {
     font-size: 0;
     line-height: 0;
     position: absolute;
@@ -122,7 +120,7 @@
 }
 
 #mvisual .slick-prev::after,
-.slick-next::after {
+#mvisual .slick-next::after {
     content: "";
     display: block;
     width: 100%;
