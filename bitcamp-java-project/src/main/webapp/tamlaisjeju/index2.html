@@ -731,16 +731,15 @@
             }
 
             #mcontent .mcont_area ul.best_spot li a {
-                display: block;
+                display: inline-block;
                 height: 285px;
                 overflow: hidden;
                 position: relative;
+                width:50%;
             }
 
             #mcontent .mcont_area ul.best_spot li a img {
                 display: block;
-                /* min-height: 232px;
-                max-height: 240px; */
                 width: 100%;
             }
 
@@ -848,7 +847,7 @@
             });
 
 
-            $('.best_spot ul').slick({
+            $('.best_spot').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
