@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick.css" />
-    <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick-theme.css" />
+    <!-- <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick-theme.css" /> -->
 
 
     <style type="text/css">
@@ -45,12 +45,14 @@
 
         #header h1 a {
             color: #fff;
+            display: block;
+            font-size: 32px;
         }
 
         #header ul {
-            display: inline-block;
+            /* display: inline-block; */
             text-align: center;
-            padding: 0 31%;
+            /* padding: 0 31%; */
         }
 
         #header ul li {
@@ -133,23 +135,87 @@
 
 
 
+        #mvisual .slick-slider {
+            position: relative;
+            height: 930px;
+
+        }
+
+        #mvisual .slick-prev,
+        .slick-next {
+            font-size: 0;
+            line-height: 0;
+            position: absolute;
+            top: 50%;
+            display: block;
+            width: 118px;
+            height: 118px;
+            padding: 0;
+            -webkit-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            cursor: pointer;
+            color: transparent;
+            border: none;
+            outline: none;
+            background: transparent;
+            z-index: 2000;
+        }
+
+
+
+        #mvisual .slick-prev::after,
+        .slick-next::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: url("img/main/control_btn_bg.png");
+            opacity: 0.2;
+        }
+
+
+
+        #mvisual .slick-prev {
+            background: url("img/main/control_arr_left_ico .png") no-repeat 50% 50%;
+            left: 0;
+        }
+
+        #mvisual .slick-next {
+            background: url("img/main/control_arr_right_ico .png") no-repeat 50% 50%;
+            right: 0;
+        }
+
+
+
+
+
         #mvisual ul li div.tit_box {
             position: absolute;
-            top: 350px;
+            top: 380px;
             left: 0;
             width: 100%;
             z-index: 10;
             text-align: center;
             z-index: 2000;
-
-
-
-            /* display: inline-block;
-            margin-top: 140px;
-            padding: 20px;
-            background: url('img/main/mtit_bg.png') repeat; */
         }
 
+
+
+        #mvisual ul li span.img_text {
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+            color: #fff;
+            vertical-align: middle;
+            z-index: 2000;
+            font-size: 14px;
+        }
+
+        #mvisual ul li span.img_text i {
+            display: inline-block;
+            padding-right: 10px;
+        }
 
         #mvisual ul li span.visual_bg {
             display: block;
@@ -167,7 +233,7 @@
             margin: 25px 0;
             padding: 0;
             color: #fff;
-            font-size: 42px;
+            font-size: 50px;
         }
 
         #mvisual ul li p {
@@ -175,25 +241,147 @@
             font-size: 23px;
         }
 
-
-
-
         #mvisual .weather_area {
             position: absolute;
-            right: 20px;
+            right: 100px;
             top: 100px;
             z-index: 2000;
             color: #fff;
         }
 
-
-
-
         #mvisual .weather_area .weather_img {
-            border-radius: 100%;
+            position: relative;
             width: 127px;
             height: 127px;
+            margin: 15px auto;
+            border-radius: 100%;
             border: 3px solid #fff;
+
+        }
+
+
+
+        #mvisual .weather_area .wico {
+            display: inline-block;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            width: 64px;
+            height: 64px;
+            background: url("img/main/weather_icon.png") no-repeat;
+            font-size: 0;
+        }
+
+        #mvisual .weather_area .wico.weather1 {
+            background-position: 0 0;
+        }
+
+        #mvisual .weather_area .wico.weather2 {
+            background-position: -70px 0;
+        }
+
+        #mvisual .weather_area .wico.weather3 {
+            background-position: -140px 0;
+        }
+
+        #mvisual .weather_area .wico.weather4 {
+            background-position: -209px 0;
+        }
+
+        #mvisual .weather_area .wico.weather5 {
+            background-position: -279px 0;
+        }
+
+        #mvisual .weather_area .wico.weather6 {
+            background-position: -350px 0;
+        }
+
+        #mvisual .weather_area .wico.weather7 {
+            background-position: -419px 0;
+        }
+
+
+
+        #mvisual .weather_area .today_area {}
+
+        #mvisual .weather_area .today_area .today {
+            display: block;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        #mvisual .weather_area .today_area span {
+            display: inline-block;
+            font-size: 57px;
+            line-height: 57px;
+            font-weight: bold;
+        }
+
+        #mvisual .weather_area .today_area .month {}
+
+        #mvisual .weather_area .today_area .bar {}
+
+        #mvisual .weather_area .today_area .date {}
+
+        #mvisual .weather_area .weather_txt {
+            text-align: center;
+        }
+
+        #mvisual .weather_area p {
+            text-align: center;
+        }
+
+        #mvisual .weather_area p a {
+            color: #fff;
+        }
+
+
+        #mvisual .vmore {
+            position: absolute;
+            left: 50%;
+            margin-left: -36px;
+            z-index: 20;
+            bottom: 60px;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {}
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateY(-20px);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateY(20px);
+            }
+        }
+
+        #mvisual .shake {
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-name: shake;
+        }
+
+
+
+        #mvisual .vmore .scroll {
+            display: block;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 104px;
+        }
+
+        #mvisual .vmore.bot .scroll {
+            height: 65px;
+            background: url("img/main/scroll_down.png") no-repeat 50% 0;
+            font-size: 0;
+            text-indent: -9999px;
         }
     </style>
 
@@ -203,35 +391,35 @@
             <h1>
                 <a href="#">탐라는제주</a>
             </h1>
-            <h2 class="hide">주메뉴영역</h2>
-            <ul>
-                <li>
-                    <a href="#">관광지</a>
-                </li>
-                <li>
-                    <a href="#">커뮤니티</a>
-                </li>
-                <li>
-                    <a href="#">제주여행꿀팁</a>
-                </li>
-                <li>
-                    <a href="#">나의 여행</a>
-                </li>
-            </ul>
+            <div class="wrapper">
+                <h2 class="hide">주메뉴영역</h2>
+                <ul>
+                    <li>
+                        <a href="#">관광지</a>
+                    </li>
+                    <li>
+                        <a href="#">커뮤니티</a>
+                    </li>
+                    <li>
+                        <a href="#">제주여행꿀팁</a>
+                    </li>
+                    <li>
+                        <a href="#">나의 여행</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- wrapper end-->
             <a class="sitemap" href="#">사이트맵</a>
         </header>
-
-
         <div id="mcontainer">
             <div id="mvisual">
-
                 <div class="weather_area">
                     <div class="weather_img">
-
+                        <strong id="icon_weather" class="wico weather2">구름조금</strong>
                     </div>
                     <!-- weather img end-->
-                    <div class="today">
-                        <strong>Today</strong>
+                    <div class="today_area">
+                        <strong class="today">Today</strong>
                         <span class="month" id="txt_month">7</span>
                         <span class="bar">/</span>
                         <span class="date" id="txt_day">27</span>
@@ -241,16 +429,20 @@
                         <em id="txt_weather_sky">구름 조금</em>
                         <em id="txt_week">Fri</em>
                     </div>
+                    <!-- weather_txt end-->
                     <p>
                         <a href="http://www.kma.go.kr" target="_blank" title="기상청 홈페이지가 새창으로 열립니다.">(출처: 기상청) </a>
                     </p>
                 </div>
+                <!-- weather_area end -->
                 <ul>
                     <li class="img01">
                         <div class="tit_box">
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉1</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img02">
@@ -258,6 +450,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉2</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img03">
@@ -265,6 +459,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉3</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img04">
@@ -272,6 +468,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉4</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img05">
@@ -279,6 +477,8 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉5</span>
                         <span class="visual_bg"></span>
                     </li>
                     <li class="img06">
@@ -286,9 +486,18 @@
                             <h3>숨어 있던 진짜 hot한 제주</h3>
                             <p>탐라는제주를 통해 여행일정을 계획하고 공유하며, 여행친구을 찾아 떠나보세요!</p>
                         </div>
+                        <span class="img_text">
+                            <i class="fas fa-map-marker-alt"></i>성산일출봉6</span>
                         <span class="visual_bg"></span>
                     </li>
                 </ul>
+
+
+                <div data-animation-delay="800" data-animation="shake" class="vmore shake visible bot action">
+                    <a class="scroll bot" href="#" title="아래로 이동">하단 내용 보기</a>
+                </div>
+
+
             </div>
             <div id="mcontent" class="wrapper">
                 <div class="mcont_area">
@@ -630,12 +839,25 @@
 
         <script>
             $('#mvisual ul').slick({
+                dots: true,
+                infinite: true,
+                autoplay: true,
+                speed: 1000,
+                fade: true,
+                cssEase: 'linear'
+            });
+
+
+            $('.best_spot ul').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
-                autoplaySpeed: 2000,
+                autoplaySpeed: 4000,
             });
         </script>
+
+
+
 
 
 
