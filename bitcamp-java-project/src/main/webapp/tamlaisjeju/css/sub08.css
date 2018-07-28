@@ -1871,7 +1871,7 @@ input,
 }
 
 
-/*삭제버튼*/
+/*입력폼 삭제버튼*/
 .cancel_btn {
     position: absolute;
     width: 20px;
@@ -1887,4 +1887,10 @@ input,
 }
 .cancel_btn:hover {
     background-image: url("../img/sub08/cancel-button-red.png");
+}
+
+/*사진업로드 */
+#imgbox img{
+    margin: 5px;
+    padding: 10px 0 10px 0;
 }
