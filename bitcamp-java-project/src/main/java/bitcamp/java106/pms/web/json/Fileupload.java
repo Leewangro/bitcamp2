@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import net.coobird.thumbnailator.Thumbnails;
+
 @RestController 
 @RequestMapping("/upload") 
 public class Fileupload {
@@ -79,10 +81,26 @@ public class Fileupload {
             jsonData.put("filename", filename);
             jsonData.put("filesize", files[i].getSize());
             jsonData.put("originname", files[i].getOriginalFilename());
+            
             try {
                 File path = new File(filesDir + "/" + filename);
                 System.out.println(path);
                 files[i].transferTo(path);
+              // 썸네일 이미지 생성
+              Thumbnails.of(path)
+                        .size(50, 50)
+                        .outputFormat("jpg")
+                        .toFile(path.getCanonicalPath() + "_50x50");
+              
+              Thumbnails.of(path)
+              			.size(120, 120)
+              			.outputFormat("jpg")
+          				.toFile(path.getCanonicalPath() + "_120x120");
+              
+              Thumbnails.of(path)
+  						.size(180, 180)
+  						.outputFormat("jpg")
+  						.toFile(path.getCanonicalPath() + "_180x180");
                 jsonDataList.add(jsonData);
             } catch (Exception e) {
                 e.printStackTrace();

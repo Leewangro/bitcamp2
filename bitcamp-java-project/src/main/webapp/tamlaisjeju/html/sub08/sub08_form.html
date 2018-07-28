@@ -262,9 +262,12 @@
                                 <div>
                                 </div>
                                 <span class="dz_ico">+</span>
-                                <div id="imgbox"></div>
                             </div>
-                            <div id="imgbox2"></div>
+                            <p>업로드 대기중 사진</p>
+                            <div id="imgbox"></div>
+                            <div id="imgbox2">
+                                <p>업로드 완료된 사진</p>
+                            </div>
                             <input id="fileupload" type="file" name="files" multiple hidden>
                             <!-- 고유 값이 필요한 경우 -->
 
@@ -836,6 +839,7 @@
             // });
             /////
             var imgBox = $('#imgbox2');
+
             $('#fileupload').fileupload({
                 url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
                 dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
@@ -853,17 +857,35 @@
                     var imagesDiv = $('#imgbox');
                     imagesDiv.html("");
                     for (var i = 0; i < data.files.length; i++) {
+
+
                         try {
                             if (data.files[i].preview.toDataURL) {
-                                $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
-                                    '120px').appendTo(imagesDiv);
+                                imagesDiv.append(
+                                    "<img src=" + data.files[i].preview.toDataURL() +
+                                    " style='width: 120px;' name=" + data.files[i].name + " class=" +
+                                    "'readyImgs'" + ">"
+
+                                )
+
+
+                                // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
+                                //     '120px').appendTo(imagesDiv);
+
+                                // console.log(data.files[i].name)
+                                $('#btnSubmit').removeAttr("disabled");
                             }
                         } catch (err) {}
                     }
+                    console.log($('.readyImgs').length)
+
+
                     $('#btnSubmit').unbind("click");
                     $('#btnSubmit').click(function () {
+
                         alert("클릭")
                         data.submit();
+
                     });
                 },
                 submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
@@ -873,10 +895,20 @@
                     console.log('done()...');
                     console.log(data.result.files);
 
-                     $.each(data.result.files, function (index, file) {
-                        $('<img>')
-                        .attr('src', serverRoot + '/files/' + file.filename)
-                        .appendTo(imgBox);
+                    $.each(data.result.files, function (index, file) {
+                        let imgs = $("img[name=" + "'" + file.originname + "'" + "]")
+                        console.log($('#imgbox>img'))
+                        // $('<img>')
+                        // .attr('src', serverRoot + '/files/' + file.filename + "_120x120.jpg")
+                        // .appendTo(imgBox);
+                        imgBox.append(imgs)
+                        imgs.removeClass('readyImgs')
+                        // $("img[name=" + "'" + file.originname + "'" + "]").remove();
+                        console.log($('.readyImgs').length)
+                        if ($('.readyImgs').length < 1) {
+                            $('#btnSubmit').attr("disabled", true);
+                        }
+
                     });
                 }
             });
