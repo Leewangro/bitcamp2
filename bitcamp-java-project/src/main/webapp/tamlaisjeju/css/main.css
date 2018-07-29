@@ -341,7 +341,9 @@
 
 #mcontent {}
 
-#mcontent {}
+#mcontent .mcont_area {
+    margin: 2% auto;
+}
 
 #mcontent h3 {
     margin: 0 0 35px 0;
@@ -352,9 +354,6 @@
     font-weight: bold;
 }
 
-#mcontent .mcont_area {
-    margin: 2% 0;
-}
 
 #mcontent .mcont_area ul {}
 
