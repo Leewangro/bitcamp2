@@ -262,9 +262,9 @@
                                 <div>
                                 </div>
                                 <span class="dz_ico">+</span>
+                                <div id="imgbox">업로드 대기중인 사진이 없습니다.</div>
                             </div>
-                            <p>업로드 대기중 사진</p>
-                            <div id="imgbox"></div>
+                            
                             <div id="imgbox2">
                                 <p>업로드 완료된 사진</p>
                             </div>
@@ -908,6 +908,11 @@
                         if ($('.readyImgs').length < 1) {
                             $('#btnSubmit').attr("disabled", true);
                         }
+                        
+                        if ($('#imgbox>img').length == 0) {
+                           $('#imgbox').html("업로드 대기중인 사진이 없습니다.")
+                        } 
+                        
 
                     });
                 }
