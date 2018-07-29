@@ -368,7 +368,8 @@
 /*당신만의 여행을 경험해 보세요. */
 
 #mcontent .mcont_area ul.best_spot {
-    width: 85%;
+    position: relative;
+    width: 84%;
     margin: 0 auto;
 }
 
@@ -379,12 +380,12 @@
 }
 
 #mcontent .mcont_area ul.best_spot li a {
-    display: inline-block;
+    display: block;
     height: 285px;
     overflow: hidden;
     position: relative;
-    width: 50%;
-    margin: -4px 0px -4px -4px;
+    width:100%;
+    /* margin: -4px 0px -4px -4px; */
 }
 
 #mcontent .mcont_area ul.best_spot li a img {
@@ -412,8 +413,8 @@
     position: absolute;
     top: 50%;
     display: block;
-    width: 118px;
-    height: 118px;
+    width: 25px;
+    height: 47px;
     padding: 0;
     cursor: pointer;
     color: transparent;
@@ -425,12 +426,12 @@
 
 #mcontent .mcont_area ul.best_spot .slick-prev {
     background: url("../img/main/best_spot_arr_left.png") no-repeat 50% 50%;
-    left: 0;
+    left: -8%;
 }
 
 #mcontent .mcont_area ul.best_spot .slick-next {
     background: url("../img/main/best_spot_arr_right.png") no-repeat 50% 50%;
-    right: 0;
+    right: -8%;
 }
 
 /* 더 많은 여행정보는? */
