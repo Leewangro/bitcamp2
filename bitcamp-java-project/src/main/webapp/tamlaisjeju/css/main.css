@@ -518,9 +518,9 @@
     color: #e4c02b;
 }
 
-#mcontent .mcont_area.best_planner ul li .more a:hover,
-#mcontent .mcont_area.best_planner ul li .more a:focus,
-#mcontent .mcont_area.best_planner ul li ul li .more a:active {
+#mcontent .mcont_area.best_planner figcaption .more_btn:hover,
+#mcontent .mcont_area.best_planner figcaption .more_btn:focus,
+#mcontent .mcont_area.best_planner figcaption .more_btn:active {
     background-color: #e4c02b;
     color: #1d1d1d;
 }
