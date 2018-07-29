@@ -38,7 +38,7 @@ var url2="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntr
 $(function () {
     $.getJSON(url2 + serviceKey +
         "&contentId=" + contentid +
-        "&MobileOS=ETC&MobileApp=AppTesting&_type=json",
+        "&MobileOS=ETC&MobileApp=AppTesting&_type=json", 
         function (contentId) {
 
             var items = contentId.response.body.items.item;
