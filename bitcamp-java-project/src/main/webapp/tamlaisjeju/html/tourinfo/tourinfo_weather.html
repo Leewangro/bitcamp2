@@ -21,9 +21,8 @@
     <!-- css -->
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/layout.css" />
-    <link rel="stylesheet" href="../../css/.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
 </head>
 
 <body>
@@ -64,7 +63,8 @@
                             <img id="jeju_sky" src="../../img/sub05/tour_info/sky4.png" alt="흐림">
                         </span>
                         <b>
-                            <span id="jeju_temp"></span><span id="jeju_wind"></span>
+                            <span id="jeju_temp"></span>
+                            <span id="jeju_wind"></span>
                         </b>
                     </li>
                     <li class="seogwipo clear">
@@ -74,7 +74,8 @@
                             <img id="seogwipo_sky" src="../../img/sub05/tour_info/sky4.png" alt="흐림">
                         </span>
                         <b>
-                            <span id="seogwipo_temp"></span><span id="seogwipo_wind"></span>
+                            <span id="seogwipo_temp"></span>
+                            <span id="seogwipo_wind"></span>
                         </b>
                     </li>
                     <li class="sungsan clear">
@@ -84,7 +85,8 @@
                             <img id="sungsan_sky" src="../../img/sub05/tour_info/sky4.png" alt="흐림">
                         </span>
                         <b>
-                            <span id="sungsan_temp"></span><span id="sungsan_wind"></span>
+                            <span id="sungsan_temp"></span>
+                            <span id="sungsan_wind"></span>
                         </b>
                     </li>
                     <li class="kosan clear">
@@ -94,98 +96,110 @@
                             <img id="kosan_sky" src="../../img/sub05/tour_info/sky4.png" alt="흐림">
                         </span>
                         <b>
-                            <span id="kosan_temp"></span><span id="kosan_wind"></span>
+                            <span id="kosan_temp"></span>
+                            <span id="kosan_wind"></span>
                         </b>
                     </li>
                 </ul>
             </div>
 
-            <script src="../../js/common/jquery-3.3.1.min.js"></script>
-            <script src="../../js/common/jquery-ui.min.js"></script>
+            <!-- js -->
+            <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+            <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
             <script src="../../js/common/common.js"></script>
             <script>
-
-            $.getJSON(serverRoot + "/json/weather/info", { nx:59, ny:125 }, data => {
-               console.log(data);
-               $(jeju_temp).text( data.temp + " ºC" );
-               $(jeju_wind).text( data.vec +  " " + data.wsd + " m/s");
-               if(data.wth == "맑음") {
-            	   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky1.png");
-               } else if(data.wth == "구름조금") {
-                   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky2.png");
-               } else if(data.wth == "구름많음") {
-                   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky3.png");
-               } else if(data.wth == "흐림") {
-                   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky4.png");
-               } else if(data.wth == "비") {
-                   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky5.png");
-               } else if(data.wth == "눈비") {
-                   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky6.png");
-               } else {
-            	   $(jeju_sky).attr("src","../../img/sub05/tour_info/sky8.png");
-               }
-            })
-            $.getJSON(serverRoot + "/json/weather/info", { nx:60, ny:37 }, data => {
-                console.log(data);
-                $(sungsan_temp).text( data.temp + " ºC" );
-                $(sungsan_wind).text( data.vec +  " " + data.wsd + " m/s");
-                if(data.wth == "맑음") {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky1.png");
-                } else if(data.wth == "구름조금") {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky2.png");
-                } else if(data.wth == "구름많음") {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky3.png");
-                } else if(data.wth == "흐림") {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky4.png");
-                } else if(data.wth == "비") {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky5.png");
-                } else if(data.wth == "눈비") {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky6.png");
-                } else {
-                    $(sungsan_sky).attr("src","../../img/sub05/tour_info/sky8.png");
-                }
-            })
-            $.getJSON(serverRoot + "/json/weather/info", { nx:52, ny:33 }, data => {
-                console.log(data);
-                $(seogwipo_temp).text( data.temp + " ºC" );
-                $(seogwipo_wind).text( data.vec +  " " + data.wsd + " m/s");
-                if(data.wth == "맑음") {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky1.png");
-                } else if(data.wth == "구름조금") {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky2.png");
-                } else if(data.wth == "구름많음") {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky3.png");
-                } else if(data.wth == "흐림") {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky4.png");
-                } else if(data.wth == "비") {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky5.png");
-                } else if(data.wth == "눈비") {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky6.png");
-                } else {
-                    $(seogwipo_sky).attr("src","../../img/sub05/tour_info/sky8.png");
-                }
-            })
-            $.getJSON(serverRoot + "/json/weather/info", { nx:46, ny:35 }, data => {
-                console.log(data);
-                $(kosan_temp).text( data.temp + " ºC" );
-                $(kosan_wind).text( data.vec +  " " + data.wsd + " m/s");
-                if(data.wth == "맑음") {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky1.png");
-                } else if(data.wth == "구름조금") {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky2.png");
-                } else if(data.wth == "구름많음") {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky3.png");
-                } else if(data.wth == "흐림") {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky4.png");
-                } else if(data.wth == "비") {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky5.png");
-                } else if(data.wth == "눈비") {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky6.png");
-                } else {
-                    $(kosan_sky).attr("src","../../img/sub05/tour_info/sky8.png");
-                }
-            })
-            
+                $.getJSON(serverRoot + "/json/weather/info", {
+                    nx: 59,
+                    ny: 125
+                }, data => {
+                    console.log(data);
+                    $(jeju_temp).text(data.temp + " ºC");
+                    $(jeju_wind).text(data.vec + " " + data.wsd + " m/s");
+                    if (data.wth == "맑음") {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky1.png");
+                    } else if (data.wth == "구름조금") {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky2.png");
+                    } else if (data.wth == "구름많음") {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky3.png");
+                    } else if (data.wth == "흐림") {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky4.png");
+                    } else if (data.wth == "비") {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky5.png");
+                    } else if (data.wth == "눈비") {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky6.png");
+                    } else {
+                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky8.png");
+                    }
+                })
+                $.getJSON(serverRoot + "/json/weather/info", {
+                    nx: 60,
+                    ny: 37
+                }, data => {
+                    console.log(data);
+                    $(sungsan_temp).text(data.temp + " ºC");
+                    $(sungsan_wind).text(data.vec + " " + data.wsd + " m/s");
+                    if (data.wth == "맑음") {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky1.png");
+                    } else if (data.wth == "구름조금") {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky2.png");
+                    } else if (data.wth == "구름많음") {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky3.png");
+                    } else if (data.wth == "흐림") {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky4.png");
+                    } else if (data.wth == "비") {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky5.png");
+                    } else if (data.wth == "눈비") {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky6.png");
+                    } else {
+                        $(sungsan_sky).attr("src", "../../img/sub05/tour_info/sky8.png");
+                    }
+                })
+                $.getJSON(serverRoot + "/json/weather/info", {
+                    nx: 52,
+                    ny: 33
+                }, data => {
+                    console.log(data);
+                    $(seogwipo_temp).text(data.temp + " ºC");
+                    $(seogwipo_wind).text(data.vec + " " + data.wsd + " m/s");
+                    if (data.wth == "맑음") {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky1.png");
+                    } else if (data.wth == "구름조금") {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky2.png");
+                    } else if (data.wth == "구름많음") {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky3.png");
+                    } else if (data.wth == "흐림") {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky4.png");
+                    } else if (data.wth == "비") {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky5.png");
+                    } else if (data.wth == "눈비") {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky6.png");
+                    } else {
+                        $(seogwipo_sky).attr("src", "../../img/sub05/tour_info/sky8.png");
+                    }
+                })
+                $.getJSON(serverRoot + "/json/weather/info", {
+                    nx: 46,
+                    ny: 35
+                }, data => {
+                    console.log(data);
+                    $(kosan_temp).text(data.temp + " ºC");
+                    $(kosan_wind).text(data.vec + " " + data.wsd + " m/s");
+                    if (data.wth == "맑음") {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky1.png");
+                    } else if (data.wth == "구름조금") {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky2.png");
+                    } else if (data.wth == "구름많음") {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky3.png");
+                    } else if (data.wth == "흐림") {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky4.png");
+                    } else if (data.wth == "비") {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky5.png");
+                    } else if (data.wth == "눈비") {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky6.png");
+                    } else {
+                        $(kosan_sky).attr("src", "../../img/sub05/tour_info/sky8.png");
+                    }
+                })
             </script>
 
             <!-- img_wrap end -->

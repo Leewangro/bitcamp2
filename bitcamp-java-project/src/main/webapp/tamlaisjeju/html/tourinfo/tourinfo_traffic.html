@@ -21,11 +21,7 @@
     <!-- css -->
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/layout.css" />
-    <link rel="stylesheet" href="../../css/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- js -->
-    <script src="../../js/common/jquery-3.3.1.min.js"></script>
-    <script src="../../js/common/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -1282,6 +1278,29 @@
 
 
 
+
+
+    <div id="footer"></div>
+
+    <!-- js -->
+    <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../js/common/common.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#header").load("../include/sub_header.html")
+            $("#footer").load("../include/sub_footer.html")
+            /* id 지정을 통해서도 가능합니다. 
+             $("#header").load("header.html #navbar")
+             */
+        });
+    </script>
+
+
+
     <script>
         function openTabs(evt, tabNames) {
             var i, tabcontent, tablinks;
@@ -1319,17 +1338,6 @@
 
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("inner_defaultOpen").click();
-    </script>
-
-    <div id="footer"></div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#header").load("../include/sub_header.html")
-            $("#footer").load("../include/sub_footer.html")
-            /* id 지정을 통해서도 가능합니다. 
-             $("#header").load("header.html #navbar")
-             */
-        });
     </script>
 
 </body>
