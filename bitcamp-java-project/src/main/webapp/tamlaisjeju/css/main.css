@@ -452,6 +452,7 @@
 
 #mcontent .mcont_area.best_planner figure {
     overflow: hidden;
+    margin: 0;
 }
 
 #mcontent .mcont_area.best_planner figure span.img_area {
@@ -467,13 +468,22 @@
 #mcontent .mcont_area.best_planner figcaption {
     display: block;
     float: left;
-    width: 70%
+    width: 65%;
 }
 
-#mcontent .mcont_area.best_planner figcaption b {}
+#mcontent .mcont_area.best_planner figcaption b {
+    font-size: 18px;
+}
 
 #mcontent .mcont_area.best_planner figcaption h4 {
+    margin-bottom: 15px;
+    font-size: 37px;
     color: #e4c02b;
+    line-height: 45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
 }
 
 #mcontent .mcont_area.best_planner figcaption p {
@@ -492,9 +502,37 @@
 
 #mcontent .mcont_area.best_planner ul li .more a:hover,
 #mcontent .mcont_area.best_planner ul li .more a:focus,
-#mcontent .mcont_area.best_planner ul li .more a:active {
+#mcontent .mcont_area.best_planner ul li ul li .more a:active {
     background-color: #e4c02b;
     color: #1d1d1d;
+}
+
+#mcontent .mcont_area.best_planner .slick-prev,
+#mcontent .mcont_area.best_planner .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 26px;
+    height: 47px;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 2000;
+}
+
+#mcontent .mcont_area.best_planner .slick-prev {
+    background: url("../img/main/best_planner_arr_left.png") no-repeat 50% 50%;
+    left: -8%;
+}
+
+#mcontent .mcont_area.best_planner .slick-next {
+    background: url("../img/main/best_planner_arr_right.png") no-repeat 50% 50%;
+    right: -8%;
 }
 
 /* 더 많은 여행정보는? */
