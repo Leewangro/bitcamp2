@@ -355,7 +355,7 @@
 }
 
 #mcontent .mcont_area ul {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #mcontent .mcont_area ul li {
