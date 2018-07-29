@@ -14,18 +14,15 @@
 	<!-- font -->
 	<link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-	    crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
 	    crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<!-- css -->
+	<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../css/common.css" />
 	<link rel="stylesheet" href="../../css/layout.css" />
-	<link rel="stylesheet" href="../../css/main.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- js -->
-	<script src="../../js/common/jquery-3.3.1.min.js"></script>
-	<script src="../../js/common/jquery-ui.min.js"></script>
+
 </head>
 
 <body>
@@ -232,18 +229,26 @@
 			<div class="h4_txt">이용자는 제주관광정보 공식사이트에서 제공하는 서비스 이용시 발생되는 문제에 대하여 제주관광공사에 손해배상청구를 할 수 없으며 제주관광공사는 이에 대해 책임을 지지 아니합니다.</div>
 			<h4>부칙</h4>
 			<div class="h4_txt">본 약관은 2016년 9월 5일부터 적용됩니다.</div>
-		</div><!-- content end -->
-	</div><!-- container end -->
-		<div id="footer"></div>
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$("#header").load("../include/sub_header.html")
-				$("#footer").load("../include/sub_footer.html")
-				/* id 지정을 통해서도 가능합니다. 
-				 $("#header").load("header.html #navbar")
-				 */
-			});
-		</script>
+		</div>
+		<!-- content end -->
+	</div>
+	<!-- container end -->
+	<div id="footer"></div>
+	<!-- js -->
+	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../../js/common/common.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$("#header").load("../include/sub_header.html")
+			$("#footer").load("../include/sub_footer.html")
+			/* id 지정을 통해서도 가능합니다. 
+			 $("#header").load("header.html #navbar")
+			 */
+		});
+	</script>
 </body>
 
 </html>
