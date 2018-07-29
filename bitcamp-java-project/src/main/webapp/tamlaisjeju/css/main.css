@@ -441,18 +441,29 @@
 /* 가장 인기있는 플래너 best_planner */
 
 #mcontent .mcont_area.best_planner {
+    padding: 2% 0;
     background-color: #62636a;
+}
+
+#mcontent .mcont_area.best_planner h3 {
+    color: #fff;
+}
+
+#mcontent .mcont_area.best_planner .h3_txt {
+    color: #fff;
 }
 
 #mcontent .mcont_area.best_planner ul {}
 
 #mcontent .mcont_area.best_planner ul li {
     color: #fff;
+    margin: 0 auto;
 }
 
 #mcontent .mcont_area.best_planner figure {
     overflow: hidden;
-    margin: 0;
+    width: 84%;
+    margin: 0 auto;
 }
 
 #mcontent .mcont_area.best_planner figure span.img_area {
@@ -473,6 +484,10 @@
 
 #mcontent .mcont_area.best_planner figcaption b {
     font-size: 18px;
+    font-weight:normal;
+}
+#mcontent .mcont_area.best_planner figcaption i{
+    padding-left:5px;
 }
 
 #mcontent .mcont_area.best_planner figcaption h4 {
@@ -489,11 +504,12 @@
 #mcontent .mcont_area.best_planner figcaption p {
     font-size: 16px;
     color: #fff;
+    line-height: 26px;
 }
 
-#mcontent .mcont_area.best_planner ul li .more {}
-
-#mcontent .mcont_area.best_planner ul li .more a {
+#mcontent .mcont_area.best_planner figcaption .more_btn {
+    display:inline-block;
+    margin-top: 24px;
     padding: 8px 23px 8px 20px;
     border: 1px solid #e4c02b;
     font-size: 15px;
@@ -527,12 +543,12 @@
 
 #mcontent .mcont_area.best_planner .slick-prev {
     background: url("../img/main/best_planner_arr_left.png") no-repeat 50% 50%;
-    left: -8%;
+    left: 0;
 }
 
 #mcontent .mcont_area.best_planner .slick-next {
     background: url("../img/main/best_planner_arr_right.png") no-repeat 50% 50%;
-    right: -8%;
+    right: 0;
 }
 
 /* 더 많은 여행정보는? */
