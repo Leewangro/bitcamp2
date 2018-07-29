@@ -12,9 +12,21 @@
     /* background: url("img/main/header_bottom_line.png") repeat-x left bottom; */
 }
 
+#header .inner_header{
+    position: relative;
+    width:98%;
+    margin:0 auto;
+    
+}
+
+
 #header h1 {
-    float: left;
-    margin: 13px 0 0 13px;
+    position: absolute;
+    left:0;
+    top:50%;
+    margin-top:-18px;
+    /* float: left;
+    margin: 13px 0 0 13px; */
 }
 
 #header h1 a {
@@ -45,6 +57,10 @@
 
 #header a.sitemap {
     display: inline-block;
+    position: absolute;
+    right:0;
+    top:50%;
+    margin-top:-10px;
     width: 20px;
     height: 20px;
     background: url("../img/main/sitemap-ico.png") no-repeat 0 0;
@@ -52,6 +68,9 @@
     text-indent: -9999px;
     vertical-align: middle;
 }
+
+
+
 
 #mvisual {
     height: 950px;
@@ -119,24 +138,26 @@
     z-index: 2000;
 }
 
-#mvisual .slick-prev::after,
-#mvisual .slick-next::after {
+#mvisual .slick-prev::before,
+#mvisual .slick-next::before {
     content: "";
     display: block;
     width: 100%;
     height: 100%;
     background: url("../img/main/control_btn_bg.png");
-    opacity: 0.2;
+    /* opacity: 0.2; */
 }
 
 #mvisual .slick-prev {
     background: url("../img/main/control_arr_left_ico .png") no-repeat 50% 50%;
     left: 0;
+
 }
 
 #mvisual .slick-next {
     background: url("../img/main/control_arr_right_ico .png") no-repeat 50% 50%;
     right: 0;
+
 }
 
 #mvisual ul li div.tit_box {
