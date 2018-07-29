@@ -440,32 +440,59 @@
 
 /* 가장 인기있는 플래너 best_planner */
 
-#mcontent .mcont_area .best_planner {
-    background-color: #62636a
+#mcontent .mcont_area.best_planner {
+    background-color: #62636a;
 }
 
-#mcontent .mcont_area .best_planner ul {}
+#mcontent .mcont_area.best_planner ul {}
 
-#mcontent .mcont_area .best_planner ul li {color:#fff;}
+#mcontent .mcont_area.best_planner ul li {
+    color: #fff;
+}
 
-#mcontent .mcont_area .best_planner ul li b {}
+#mcontent .mcont_area.best_planner figure {
+    overflow: hidden;
+}
 
-#mcontent .mcont_area .best_planner ul li h4 {color:#e4c02b;}
+#mcontent .mcont_area.best_planner figure span.img_area {
+    display: block;
+    float: right;
+    width: 30%;
+}
 
-#mcontent .mcont_area .best_planner ul li p {font-size:14px;}
+#mcontent .mcont_area.best_planner figure span.img_area img {
+    height: 255px;
+}
 
-#mcontent .mcont_area .best_planner ul li .more {}
+#mcontent .mcont_area.best_planner figcaption {
+    display: block;
+    float: left;
+    width: 70%
+}
 
-#mcontent .mcont_area .best_planner ul li .more a {
+#mcontent .mcont_area.best_planner figcaption b {}
+
+#mcontent .mcont_area.best_planner figcaption h4 {
+    color: #e4c02b;
+}
+
+#mcontent .mcont_area.best_planner figcaption p {
+    font-size: 16px;
+    color: #fff;
+}
+
+#mcontent .mcont_area.best_planner ul li .more {}
+
+#mcontent .mcont_area.best_planner ul li .more a {
     padding: 8px 23px 8px 20px;
     border: 1px solid #e4c02b;
     font-size: 15px;
     color: #e4c02b;
 }
 
-#mcontent .mcont_area .best_planner ul li .more a:hover,
-#mcontent .mcont_area .best_planner ul li .more a:focus,
-#mcontent .mcont_area .best_planner ul li .more a:active {
+#mcontent .mcont_area.best_planner ul li .more a:hover,
+#mcontent .mcont_area.best_planner ul li .more a:focus,
+#mcontent .mcont_area.best_planner ul li .more a:active {
     background-color: #e4c02b;
     color: #1d1d1d;
 }
