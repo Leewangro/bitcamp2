@@ -12,19 +12,17 @@
     /* background: url("img/main/header_bottom_line.png") repeat-x left bottom; */
 }
 
-#header .inner_header{
+#header .inner_header {
     position: relative;
-    width:98%;
-    margin:0 auto;
-    
+    width: 98%;
+    margin: 0 auto;
 }
-
 
 #header h1 {
     position: absolute;
-    left:0;
-    top:50%;
-    margin-top:-18px;
+    left: 0;
+    top: 50%;
+    margin-top: -18px;
     /* float: left;
     margin: 13px 0 0 13px; */
 }
@@ -58,9 +56,9 @@
 #header a.sitemap {
     display: inline-block;
     position: absolute;
-    right:0;
-    top:50%;
-    margin-top:-10px;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
     width: 20px;
     height: 20px;
     background: url("../img/main/sitemap-ico.png") no-repeat 0 0;
@@ -68,9 +66,6 @@
     text-indent: -9999px;
     vertical-align: middle;
 }
-
-
-
 
 #mvisual {
     height: 950px;
@@ -151,13 +146,11 @@
 #mvisual .slick-prev {
     background: url("../img/main/control_arr_left_ico .png") no-repeat 50% 50%;
     left: 0;
-
 }
 
 #mvisual .slick-next {
     background: url("../img/main/control_arr_right_ico .png") no-repeat 50% 50%;
     right: 0;
-
 }
 
 #mvisual ul li div.tit_box {
@@ -346,8 +339,6 @@
 
 /**************************mcontent**************************/
 
-
-
 #mcontent {}
 
 #mcontent .mcont_area {
@@ -361,6 +352,13 @@
     float: left;
     width: 22.5%;
     margin: 2% 0 0 2%;
+}
+
+/*당신만의 여행을 경험해 보세요. */
+
+#mcontent .mcont_area ul.best_spot {
+    width: 85%;
+    margin: 0 auto;
 }
 
 #mcontent .mcont_area ul.best_spot li {
@@ -396,12 +394,9 @@
     display: block;
 }
 
-
-
 /* 더 많은 여행정보는? */
 
 #mcontent .mcont_area ul.trip_info {}
-
 
 #mcontent .mcont_area ul.trip_info li {}
 
@@ -446,12 +441,6 @@
     color: #f03657
 }
 
-
-
-
-
-
-
 #mcontent {}
 
 #mcontent h3 {
@@ -462,13 +451,6 @@
     text-align: center;
     font-weight: bold;
 }
-
-
-
-
-
-
-
 
 #mcontent .slick-prev,
 #mcontent .slick-next {
@@ -501,32 +483,21 @@
 #mcontent .slick-prev {
     background: url("../img/main/control_arr_left_ico .png") no-repeat 50% 50%;
     left: 0;
-
 }
 
 #mvisual .slick-next {
     background: url("../img/main/control_arr_right_ico .png") no-repeat 50% 50%;
     right: 0;
-
 }
-
-
-
-
-
-
-
-
-
-
 
 /**************************************************************************************
 반응형
 ***************************************************************************************/
 
-
-@media(max-width:1300px){
-	#header{}
-	#header .inner_header{}
-	#header .inner_header .menu_area{width:98%;}
+@media(max-width:1300px) {
+    #header {}
+    #header .inner_header {}
+    #header .inner_header .menu_area {
+        width: 98%;
+    }
 }
