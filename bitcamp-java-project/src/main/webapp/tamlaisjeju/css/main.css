@@ -354,7 +354,6 @@
     font-weight: bold;
 }
 
-
 #mcontent .mcont_area ul {}
 
 #mcontent .mcont_area ul li {
@@ -385,12 +384,10 @@
     height: 285px;
     overflow: hidden;
     position: relative;
-    width:50%;
-    margin:-4px;
+    width: 50%;
+    margin: -4px;
     /* margin: -4px 0px -4px -4px; */
 }
-
-
 
 #mcontent .mcont_area ul.best_spot li a img {
     display: block;
@@ -437,6 +434,38 @@
 #mcontent .mcont_area ul.best_spot .slick-next {
     background: url("../img/main/best_spot_arr_right.png") no-repeat 50% 50%;
     right: -8%;
+}
+
+/* 가장 인기있는 플래너 best_planner */
+
+#mcontent .mcont_area .best_planner {
+    background-color: #62636a
+}
+
+#mcontent .mcont_area .best_planner ul {}
+
+#mcontent .mcont_area .best_planner ul li {}
+
+#mcontent .mcont_area .best_planner ul li b {}
+
+#mcontent .mcont_area .best_planner ul li h4 {}
+
+#mcontent .mcont_area .best_planner ul li p {}
+
+#mcontent .mcont_area .best_planner ul li .more {}
+
+#mcontent .mcont_area .best_planner ul li .more a {
+    padding: 8px 23px 8px 20px;
+    border: 1px solid #e4c02b;
+    font-size: 15px;
+    color: #e4c02b;
+}
+
+#mcontent .mcont_area .best_planner ul li .more a:hover,
+#mcontent .mcont_area .best_planner ul li .more a:focus,
+#mcontent .mcont_area .best_planner ul li .more a:active {
+    background-color: #e4c02b;
+    color: #1d1d1d;
 }
 
 /* 더 많은 여행정보는? */
