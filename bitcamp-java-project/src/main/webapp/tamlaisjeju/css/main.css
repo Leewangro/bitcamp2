@@ -140,12 +140,12 @@
 
 #mvisual .slick-prev::before,
 #mvisual .slick-next::before {
-    /* content: "";
+    content: "";
     display: block;
     width: 100%;
     height: 100%;
-    background: url("../img/main/control_btn_bg.png"); */
-    /* opacity: 0.2; */
+    background: url("../img/main/control_btn_bg.png");
+    opacity: 0.4;
 }
 
 #mvisual .slick-prev {
@@ -346,6 +346,112 @@
 
 /**************************mcontent**************************/
 
+
+
+#mcontent {}
+
+#mcontent .mcont_area {
+    margin: 2% 0;
+}
+
+#mcontent .mcont_area ul {}
+
+#mcontent .mcont_area ul li {
+    position: relative;
+    float: left;
+    width: 22.5%;
+    margin: 2% 0 0 2%;
+}
+
+#mcontent .mcont_area ul.best_spot li {
+    float: left;
+    width: 50%;
+    margin: 0;
+}
+
+#mcontent .mcont_area ul.best_spot li a {
+    display: inline-block;
+    height: 285px;
+    overflow: hidden;
+    position: relative;
+    width: 50%;
+    margin: -4px 0px -4px -4px;
+}
+
+#mcontent .mcont_area ul.best_spot li a img {
+    display: block;
+    width: 100%;
+}
+
+#mcontent .mcont_area ul.best_spot li a span {
+    display: block;
+    color: #fff;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    font-size: 20px;
+}
+
+#mcontent .mcont_area ul.best_spot li a span b {
+    display: block;
+}
+
+
+
+/* 더 많은 여행정보는? */
+
+#mcontent .mcont_area ul.trip_info {}
+
+
+#mcontent .mcont_area ul.trip_info li {}
+
+#mcontent .mcont_area ul.trip_info li a {
+    display: block;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+}
+
+#mcontent .mcont_area ul.trip_info li a b {
+    display: block;
+    font-size: 23px;
+    /* font-size: 26px; */
+    color: #212121;
+    margin: 20px 0;
+}
+
+#mcontent .mcont_area ul.trip_info li a span {
+    display: block;
+}
+
+#mcontent .mcont_area ul.trip_info li a strong {
+    display: block;
+    margin-top: 30px;
+    font-weight: normal;
+}
+
+#mcontent .mcont_area ul.trip_info li a strong.blog {
+    color: #1ec200;
+}
+
+#mcontent .mcont_area ul.trip_info li a strong.post {
+    color: #1ec200;
+}
+
+#mcontent .mcont_area ul.trip_info li a strong.facebook {
+    color: #275bab;
+}
+
+#mcontent .mcont_area ul.trip_info li a strong.instagram {
+    color: #f03657
+}
+
+
+
+
+
+
+
 #mcontent {}
 
 #mcontent h3 {
@@ -360,6 +466,49 @@
 
 
 
+
+
+
+
+#mcontent .slick-prev,
+#mcontent .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 118px;
+    height: 118px;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 2000;
+}
+
+#mcontent .slick-prev::before,
+#mcontent .slick-next::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../img/main/control_btn_bg.png");
+    opacity: 0.4;
+}
+
+#mcontent .slick-prev {
+    background: url("../img/main/control_arr_left_ico .png") no-repeat 50% 50%;
+    left: 0;
+
+}
+
+#mvisual .slick-next {
+    background: url("../img/main/control_arr_right_ico .png") no-repeat 50% 50%;
+    right: 0;
+
+}
 
 
 
