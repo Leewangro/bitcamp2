@@ -354,7 +354,9 @@
     font-weight: bold;
 }
 
-#mcontent .mcont_area ul {}
+#mcontent .mcont_area ul {
+    overflow: hidden;
+}
 
 #mcontent .mcont_area ul li {
     position: relative;
@@ -444,13 +446,13 @@
 
 #mcontent .mcont_area .best_planner ul {}
 
-#mcontent .mcont_area .best_planner ul li {}
+#mcontent .mcont_area .best_planner ul li {color:#fff;}
 
 #mcontent .mcont_area .best_planner ul li b {}
 
-#mcontent .mcont_area .best_planner ul li h4 {}
+#mcontent .mcont_area .best_planner ul li h4 {color:#e4c02b;}
 
-#mcontent .mcont_area .best_planner ul li p {}
+#mcontent .mcont_area .best_planner ul li p {font-size:14px;}
 
 #mcontent .mcont_area .best_planner ul li .more {}
 
