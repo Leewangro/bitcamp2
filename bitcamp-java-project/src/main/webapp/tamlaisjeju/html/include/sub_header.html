@@ -4,7 +4,7 @@
     </h1>
     <div class="menu_area">
         <h2 class="hide">주메뉴영역</h2>
-        <div class="topnav" id="myTopnav">
+        <div class="nav_area topnav clear" id="myTopnav">
             <a href="#">관광지</a>
             <div class="dropdown">
                 <button class="dropbtn">커뮤니티
@@ -31,22 +31,23 @@
                 </div>
             </div>
             <div class="dropdown">
-                    <button class="dropbtn">나의 여행
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                            <a href="../mytrip/mytrip_accounts.html">전체</a>
-                            <a href="../mytrip/mytrip_myschedule.html">나의 여행일정</a>
-                            <a href="../mytrip/">나의 여행기</a>
-                            <a href="#">나의 동행</a>
-                            <a href="../sub11/sub11_myreview.html">나의 리뷰</a>
-                            <a href="../sub11/sub11_Zzim.html">찜한여행</a>
-                            <a href="../sub11/sub11_accounts.html">정보수정</a>
-                    </div>
+                <button class="dropbtn">나의 여행
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="../mytrip/mytrip_accounts.html">전체</a>
+                    <a href="../mytrip/mytrip_myschedule.html">나의 여행일정</a>
+                    <a href="../mytrip/">나의 여행기</a>
+                    <a href="#">나의 동행</a>
+                    <a href="../sub11/sub11_myreview.html">나의 리뷰</a>
+                    <a href="../sub11/sub11_Zzim.html">찜한여행</a>
+                    <a href="../sub11/sub11_accounts.html">정보수정</a>
                 </div>
+            </div>
             <a href="#about">About</a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-        </div><!-- topnav end -->
+        </div>
+        <!-- topnav end -->
     </div>
     <!-- menu_area end-->
     <div class="ico_wrap">
@@ -98,109 +99,127 @@
 
 
 <style type="text/css">
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
+    .menu_area {
+        text-align: center;
+    }
 
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+    .nav_area {
+        overflow: hidden;
+    }
 
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
+    .nav_area a {
+        display: inline-block;
+        /* float: left;
+        display: block; */
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
 
-.topnav .icon {
-  display: none;
-}
 
-.dropdown {
-    float: left;
-    overflow: hidden;
-}
+    .nav_area .icon {
+        display: none;
+    }
 
-.dropdown .dropbtn {
-    font-size: 17px;    
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-}
+    .nav_area .dropdown {
+        display: inline-block;
+        /* float: left; */
+        /* overflow: hidden; */
+    }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
+    .nav_area .dropdown .dropbtn {
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
 
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
+    .nav_area .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
 
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #555;
-  color: white;
-}
+    .nav_area .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
 
-.dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-}
+    .nav_area a:hover,
+    .nav_area .dropdown:hover .dropbtn {
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+    }
 
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child), .dropdown .dropbtn {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
+    .nav_area .dropdown-content a:hover {
+        background-color: #ddd;
+        color: black;
+    }
 
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .topnav.responsive .dropdown {float: none;}
-  .topnav.responsive .dropdown-content {position: relative;}
-  .topnav.responsive .dropdown .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-}
+    .nav_area .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    @media screen and (max-width: 600px) {
+        .nav_area a:not(:first-child),
+        .nav_area .dropdown .dropbtn {
+            display: none;
+        }
+        .nav_area a.icon {
+            float: right;
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .nav_area.responsive {
+            position: relative;
+        }
+        .nav_area.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .nav_area.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+        .nav_area.responsive .dropdown {
+            float: none;
+        }
+        .nav_area.responsive .dropdown-content {
+            position: relative;
+        }
+        .nav_area.responsive .dropdown .dropbtn {
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+    }
 </style>
 
 
 
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>

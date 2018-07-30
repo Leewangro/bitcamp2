@@ -9,14 +9,42 @@
 
 /* layout */
 
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+
+}
+
 /* header */
-
-
 
 #header {
   position: fixed;
   height: 75px;
-  width:100%;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 2000;
@@ -73,29 +101,28 @@
   vertical-align: middle;
 }
 
-#header .ico_wrap a{
+#header .ico_wrap a {
   display: inline-block;
-  color:#fff;
-  margin:0 5px;
+  color: #fff;
+  margin: 0 5px;
   /* width: 20px;
   height: 20px; */
   /* font-size: 0;
   text-indent: -9999px; */
 }
 
-#header .ico_wrap a i{
-  font-size:32px;
+#header .ico_wrap a i {
+  font-size: 32px;
   vertical-align: middle;
 }
 
-#header .ico_wrap a sapn{
+#header .ico_wrap a sapn {
   font-size: 0;
   text-indent: -9999px;
 }
 
 #header .ico_wrap a.sitemap {
-  cursor:pointer
-
+  cursor: pointer
 }
 
 /* 사이트맵 팝업 */
@@ -144,22 +171,17 @@
 
 @media screen and (max-height: 450px) {
   .nav_overlay {
-      overflow-y: auto;
+    overflow-y: auto;
   }
   .nav_overlay a {
-      font-size: 20px
+    font-size: 20px
   }
   .nav_overlay .closebtn {
-      font-size: 40px;
-      top: 15px;
-      right: 35px;
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 }
-
-
-
-
-
 
 /*검색 팝업*/
 
@@ -171,8 +193,8 @@
   z-index: 9999;
   top: 0;
   left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .srh_overlay-content {
@@ -224,14 +246,6 @@
   background: #bbb;
 }
 
-
-
-
-
-
-
-
-
 /* #header {
   position: fixed;
   left: 0;
@@ -248,6 +262,7 @@
   /* border-top: 1px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf; */
 }
+
 /* 
 .topnav h1 {
   display: block;
@@ -523,7 +538,7 @@ body.modal-open {
 
 .login .btn_login.fb {
   background: url(../img/common/ico_facebook_l.png) no-repeat 19px 50%;
-    background-color: #445e99;
+  background-color: #445e99;
 }
 
 .login .btn_login.kt {
@@ -545,12 +560,6 @@ body.modal-open {
   cursor: pointer;
   text-transform: inherit;
 }
-
-
-
-
-
-
 
 @media screen and (max-width: 1200px) {
   .top_util {
@@ -686,7 +695,7 @@ body.modal-open {
 #content {
   /* width: 1200px; */
   margin: 30px auto;
-  min-height:500px;
+  min-height: 500px;
 }
 
 #svisual img {
@@ -701,7 +710,7 @@ visual  - 비주얼
 
 #visual {
   width: 100%;
-  height:420px;
+  height: 420px;
   overflow: hidden;
   position: relative;
 }
@@ -722,7 +731,7 @@ visual  - 비주얼
   background: rgba(0, 0, 0, .5);
 }
 
-#content  .visual_cont_box h3 {
+#content .visual_cont_box h3 {
   font-size: 32px;
   color: #fff;
   line-height: 35px;
@@ -730,18 +739,17 @@ visual  - 비주얼
   text-align: left;
 }
 
-#content  .visual_cont_box h3 span {
+#content .visual_cont_box h3 span {
   display: block;
   font-size: 20px;
   line-height: 28px;
-
 }
 
-#content  .visual_cont_box .hashtag {
+#content .visual_cont_box .hashtag {
   color: #ccc;
 }
 
-#content  .visual_cont_box .tit {
+#content .visual_cont_box .tit {
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
@@ -750,15 +758,15 @@ visual  - 비주얼
   margin-bottom: 15px;
 }
 
-#content  .visual_cont_box ul {
+#content .visual_cont_box ul {
   margin-bottom: 30px
 }
 
-#content  .visual_cont_box ul li {
+#content .visual_cont_box ul li {
   margin: 10px 0;
 }
 
-#content  .visual_cont_box ul li b {
+#content .visual_cont_box ul li b {
   display: block;
   margin-bottom: 10px;
   height: 14px;
@@ -767,7 +775,7 @@ visual  - 비주얼
   color: #ccc;
 }
 
-#content  .visual_cont_box ul li span {
+#content .visual_cont_box ul li span {
   display: block;
   min-height: 14px;
   font-size: 14px;
@@ -775,7 +783,7 @@ visual  - 비주얼
   line-height: 18px;
 }
 
-#content  .visual_cont_box a.btn {
+#content .visual_cont_box a.btn {
   display: inline-block;
   padding: 10px 15px;
   min-height: 14px;
@@ -789,7 +797,7 @@ visual  - 비주얼
   background-color: #fff;
 }
 
-#content  .visual_cont_box .weather_area {
+#content .visual_cont_box .weather_area {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -801,7 +809,7 @@ visual  - 비주얼
   color: #fff;
 }
 
-#content  .visual_cont_box .weather_area img {
+#content .visual_cont_box .weather_area img {
   display: block;
   margin: 8px auto;
   width: auto;
@@ -2237,14 +2245,12 @@ board_list - 게시판 리스트
   border: 1px solid #e5e5e5;
 }
 
-
-
 /* category_tab */
 
 .category_tab {
   width: 100%;
   text-align: center;
-  margin:5% 0;
+  margin: 5% 0;
 }
 
 .category_tab li {
@@ -2255,7 +2261,6 @@ board_list - 게시판 리스트
 }
 
 .category_tab li a {
-
   display: block;
   padding: 15px;
   background-color: #fff;
@@ -2263,7 +2268,6 @@ board_list - 게시판 리스트
   border-radius: 30px;
   font-size: 17px;
   line-height: 24px;
-
 }
 
 .category_tab li a:hover,
@@ -2271,8 +2275,6 @@ board_list - 게시판 리스트
   background-color: #3a3b3c;
   color: #fff;
 }
-
-
 
 /* .category_wrap {
   border-top: 1px solid #cbcbcb;
@@ -2948,7 +2950,7 @@ board_list planner - 여행일정 추천
   float: none;
   overflow: hidden;
   margin: 2% 0;
-  min-height:230px;
+  min-height: 230px;
 }
 
 .board_list.planner .box_wrap .box h5 {
@@ -3002,7 +3004,7 @@ board_list planner - 여행일정 추천
   min-height: 100%;
   max-width: 100%;
   opacity: 0.8;
-  min-height:230px;
+  min-height: 230px;
 }
 
 .board_list.planner .box_wrap figure figcaption {
@@ -3144,11 +3146,6 @@ figure.effect.type03:hover p {
   transform: translate3d(0, -50%, 0) translate3d(0, 100%, 0);
 }
 
-
-
-
-
-
 /**************************************************************************************
 curation - 큐레이션
 ***************************************************************************************/
@@ -3158,45 +3155,39 @@ curation - 큐레이션
 .board_list.curation .curation_search_box {}
 
 .board_list.curation .curation_search_box dl {
-    display: table;
-    width: 100%;
-    margin-top: -1px;
+  display: table;
+  width: 100%;
+  margin-top: -1px;
 }
 
 .board_list.curation .curation_search_box dt {
-    display: table-cell;
-    width: 12%;
-    padding: 4px 0 4px 15px;
-    color: #000;
-    border: 1px solid #355e89;
-    background-color: #4c83bd;
-    color: #fff;
-    vertical-align: middle;
-    font-weight: 500;
+  display: table-cell;
+  width: 12%;
+  padding: 4px 0 4px 15px;
+  color: #000;
+  border: 1px solid #355e89;
+  background-color: #4c83bd;
+  color: #fff;
+  vertical-align: middle;
+  font-weight: 500;
 }
 
 .board_list.curation .curation_search_box dd {
-    display: table-cell;
-    padding: 4px 8px;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+  display: table-cell;
+  padding: 4px 8px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .board_list.curation .curation_search_box dd span {
-    display: inline-block;
-    padding: 1px;
+  display: inline-block;
+  padding: 1px;
 }
-
 
 .board_list.curation .curation_search_box .btn_wrap {
-    margin: 30px 0;
+  margin: 30px 0;
 }
-
-
-
-
-
 
 /**************************************************************************************
 all_page_box - 제주여행 꿀팁
