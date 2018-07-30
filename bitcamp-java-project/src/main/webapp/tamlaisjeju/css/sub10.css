@@ -886,7 +886,6 @@
     height: 100%;
     background: #203341;
     overflow-y: auto;
-    max-height: 654px;
 }
 
 #sub10 .full_wrap .left_full_box .f1 #cat_menu li {
@@ -928,6 +927,7 @@
 
 #sub10 .full_wrap .left_full_box .f1 #cat_menu li .cat_date_right_box .cat_right_weekday {
     margin-bottom: 3px;
+    margin-left: 10px;
     text-align: left !important;
 }
 
@@ -941,26 +941,15 @@
     font-size: 15px !important;
 }
 
-#sub10 .full_wrap .left_full_box .f1 #cat_add_box {
+#sub10 .full_wrap .left_full_box .f1 #cat_menu #cat_date_all {
     width: 160px;
     background: rgb(32, 51, 65);
     color: rgb(255, 255, 255);
-    height: 413px;
+    height: 624px;
+    max-height: 624px;
+    overflow-y: auto;
 }
 
-#sub10 .full_wrap .left_full_box .f1 #cat_add_box li {
-    padding-top: 15px;
-}
-
-#sub10 .full_wrap .left_full_box .f1 #cat_add_box li .add_box_pert {
-    width: 124px;
-    height: 32px;
-    line-height: 32px;
-    border: solid 1px #fff;
-    text-align: center;
-    margin: 0 auto;
-    cursor: pointer;
-}
 
 #sub10 .full_wrap .left_full_box .f1 #pn_date_controll_box {
     width: 160px;
@@ -1765,6 +1754,8 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
-.customoverlay {position:relative;bottom:40px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left; background-color:white;}
+.customoverlay {position:relative;bottom:40px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left; background-color:white; }
 .close {position: absolute;top: -22px;right: 10px;color: #888;width: 10px;height: 10px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png'); background-size:10px;}
 .close:hover {cursor: pointer;}
+.customoverlay div {overflow: hidden; text-overflow: ellipsis; width:200px;font-size:13px;margin-left:10px;display:inline-block}
+.customoverlay img {width:50px;height:50px; display:inline-block;}

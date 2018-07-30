@@ -89,7 +89,7 @@
 
                                 <div class="full_data_info f1">
                                     <div class="cal_title">여행 일정</div>
-                                    <input type="text" name="datefilter" value="일정을 입력하세요" class="cal"/>
+                                    <input type="text" name="datefilter" id="datefilter" placeholder="일정을 입력하세요" class="cal"/>
                                 </div>
                               <!--  <div class="f1 day_edit_start_btn" onclick="day_edit_start()">EDIT</div> -->
                                 <div class="clear"></div>
@@ -97,7 +97,8 @@
                         </ul>
                         <ul id="cat_menu" data="" data-member_srl="">
                             <li id="show_all_day" data="show_all_day" original-title>전체 여행 루트</li>
-                            <li data="1" data-date="06.06" data-day_week="3" data-f_ci="" data-f_lat="" data-f_lng="" class="on" original-title="제주도">
+                            <li id="cat_date_all">
+                        <!--     <li data="1" data-date="06.06" data-day_week="3" data-f_ci="" data-f_lat="" data-f_lng="" class="on" original-title="제주도">
                                 <div class="fl cat_date_left_box">
                                     <div class="cat_left_day">DAY1</div>
                                     <div class="cat_left_date">06.06</div>
@@ -106,8 +107,8 @@
                                     <div class="cat_right_weekday">수요일</div>
                                 </div>
                                 <div class="clear"></div>
-                            </li>
-                            <li data="2" data-date="06.07" data-day_week="4" data-f_ci="312" data-f_lat="33.48901130" data-f_lng="126.49830230" original-title="제주도">
+                            </li> -->
+                           <!--  <li data="2" data-date="06.07" data-day_week="4" data-f_ci="312" data-f_lat="33.48901130" data-f_lng="126.49830230" original-title="제주도">
                                 <div class="fl cat_date_left_box">
                                     <div class="cat_left_day">DAY2</div>
                                     <div class="cat_left_date">06.07</div>
@@ -126,11 +127,7 @@
                                     <div class="cat_right_weekday">금요일</div>
                                 </div>
                                 <div class="clear"></div>
-                            </li>
-                        </ul>
-                        <ul id="cat_add_box">
-                            <li>
-                                <div class="add_box_pert" onclick="add_plan_day()"> DAY 추가</div>
+                            </li> -->
                             </li>
                         </ul>
                         <ul id="pn_date_controll_box" data="" data-member_srl="1360628">
@@ -520,13 +517,6 @@ var overlay;
 var marker;
 var prevClickItem = null;
 var prevClickMarker = null;
-var customOverlay1 = $('#map').children()[2];
-console.log(customOverlay1)
-/* 
-customOverlay1.addEventListener("click", fn({
-	
-})) */
-
 let datas = [];
 
 function markerOverlayDelete() {
@@ -689,8 +679,8 @@ function markerPoint(datas) {
             })
             
 	        bounds.extend(new daum.maps.LatLng(datas.lat, datas.lng));
-	        var content = '<div class="customoverlay">' +'<img src=' + datas.img + ' style=width:50px;height:50px; display:inline-block;>' 
-	        + '<div style="width:200px;font-size:13px;margin-left:10px;display:inline-block">' + datas.title + '</div>' + '</div>'
+	        var content = '<div class="customoverlay">' +'<img src=' + datas.img + '>' 
+	        + '<div>' + datas.title + '</div>' + '</div>'
 	        + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
 	        overlay = new daum.maps.CustomOverlay({
 	            content: content,
@@ -722,61 +712,76 @@ function markerOverlay(node) {
 </script>
 
 
-<ul id="cat_menu" data="" data-member_srl="">
-                            <li id="show_all_day" data="show_all_day" original-title>전체 여행 루트</li>
-                            <li data="1" data-date="06.06" data-day_week="3" data-f_ci="" data-f_lat="" data-f_lng="" class="on" original-title="제주도">
-                                <div class="fl cat_date_left_box">
-                                    <div class="cat_left_day">DAY1</div>
-                                    <div class="cat_left_date">06.06</div>
-                                </div>
-                                <div class="fl cat_date_right_box">
-                                    <div class="cat_right_weekday">수요일</div>
-                                </div>
-                                <div class="clear"></div>
-                            </li>
-                            <li data="2" data-date="06.07" data-day_week="4" data-f_ci="312" data-f_lat="33.48901130" data-f_lng="126.49830230" original-title="제주도">
-                                <div class="fl cat_date_left_box">
-                                    <div class="cat_left_day">DAY2</div>
-                                    <div class="cat_left_date">06.07</div>
-                                </div>
-                                <div class="fl cat_date_right_box">
-                                    <div class="cat_right_weekday">목요일</div>
-                                </div>
-                                <div class="clear"></div>
-                            </li>
-                            <li data="3" data-date="06.08" data-day_week="5" data-f_ci="" data-f_lat="" data-f_lng="" original-title="">
-                                <div class="fl cat_date_left_box">
-                                    <div class="cat_left_day">DAY3</div>
-                                    <div class="cat_left_date">06.08</div>
-                                </div>
-                                <div class="fl cat_date_right_box">
-                                    <div class="cat_right_weekday">금요일</div>
-                                </div>
-                                <div class="clear"></div>
-                            </li>
-                        </ul>
-
 
 
 <!-- document.getElementsByClassName('cal').datefilter.value; -->
 <script>
 $(function() {
-  $('input[name="datefilter"]').daterangepicker({
+	$('input[name="datefilter"]').daterangepicker({
       autoUpdateInput: false,
       locale: {
           cancelLabel: 'Clear'
-      }
+      } 
   });
 
   $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
+      calDate();
+      
   });
 
   $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
       $(this).val('');
   });
-
 });
+function calDate() {
+	if ($('.cal')[0].value.match(/-/) != null) {
+	
+	var strDate1 = $('.cal')[0].value.split(" - ")[0].split("/")[0] + "-" + $('.cal')[0].value.split(" - ")[0].split("/")[1] + "-" + $('.cal')[0].value.split(" - ")[0].split("/")[2]
+	var strDate2 = $('.cal')[0].value.split(" - ")[1].split("/")[0] + "-" + $('.cal')[0].value.split(" - ")[1].split("/")[1] + "-" + $('.cal')[0].value.split(" - ")[1].split("/")[2]
+    var arr1 = strDate1.split('-');
+    var arr2 = strDate2.split('-');
+    var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+    var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+    
+    var diff = dat2 - dat1;
+    var currDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+    
+    /* console.log(dat1/currDay);
+    console.log(new Date((dat1/currDay)*currDay));
+    console.log(dat1);
+    console.log(dat2);
+    console.log(dat1/currDay);
+    console.log(dat2/currDay);
+    var dd = (new Date(((dat2/currDay)+1)*currDay));
+                            console.log(dd);
+                            console.log(dd.getDate()); */
+    var betweenDay = parseInt(diff/currDay);
+    var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+    var dayOfWeek = null;
+    var calMonthDate = null;
+    $("#cat_date_all").empty();
+    for (var i = 0; i < betweenDay+1; i++) {
+    	var dat3 = (new Date(((dat1/currDay)+i)*currDay));
+    	calMonthDate = (dat3.getMonth() + "." + (dat3.getDate()));
+    	var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate());
+    	dayOfWeek = week[new Date(calYearMonthDate).getDay()];
+			$('#cat_date_all').append(
+			"<li data="+ (i+1) +">" +
+			      "<div class='fl cat_date_left_box'>" +
+			          "<div class='cat_left_day'>" + 'DAY'+(i+1)+"</div>" +
+			          "<div class='cat_left_date'>" + calMonthDate + "</div>" +
+			      "</div>" +
+			      "<div class='fl cat_date_right_box'>" +
+			          "<div class='cat_right_weekday'>"+ dayOfWeek + "</div>" +
+			      "</div>" +
+			      "<div class='clear'></div>" +
+			  "</li>"
+			);
+    }
+    }
+}
+
 </script>
 
 <script>
