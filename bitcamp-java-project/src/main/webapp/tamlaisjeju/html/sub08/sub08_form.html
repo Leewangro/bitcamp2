@@ -263,10 +263,10 @@
                                     <div>
                                     </div>
                                     <span class="dz_ico">+</span>
-                                    <div id="imgbox">업로드 대기중인 사진이 없습니다.</div>
+                                    <div id="imgbox1_1" class="imgboxs1">업로드 대기중인 사진이 없습니다.</div>
                                 </div>
 
-                                <div id="imgbox2">
+                                <div id="imgbox2_1" class="imgboxs2">
                                     <p>업로드 완료된 사진</p>
                                 </div>
                                 <input id="fileupload" type="file" class='fileuploads' name="files" multiple hidden>
@@ -279,7 +279,7 @@
 
                                     <!-- <button id="btnAllClear" disabled="disabled">취소</button> -->
 
-                                    <button id="btnSubmit" type="button">사진업로드</button>
+                                    <button id="btnSubmit" class="btnSubmits" type="button">사진업로드</button>
 
                                 </div>
 
@@ -791,15 +791,15 @@
                         "<span aria-hidden='true'>&times;</span>" +
                         "</button>" +
                         "</div>" +
-                        "<div id='trueForm'>" +
+                        "<div id='trueForm"+count+ "'" + ">" +
                         "<div class='dropzone' onclick='imgClickBoxsSub(this)'>" +
                         "<div>" +
                         "</div>" +
                         "<span class='dz_ico'>+</span>" +
-                        "<div id='imgbox'>업로드 대기중인 사진이 없습니다.</div>" +
+                        "<div id='imgbox"+count +"'"+ " class='imgboxs1'>업로드 대기중인 사진이 없습니다.</div>" +
                         "</div>" +
 
-                        "<div id='imgbox2'>" +
+                        "<div id=imgbox2_"+count +"'"+ " class='imgboxs2'>" +
                         "<p>업로드 완료된 사진</p>" +
                         "</div>" +
                         "<input id='fileupload" + count + "'" +
@@ -808,7 +808,7 @@
                         "<div class='clear'>" +
 
 
-                        "<button id='btnSubmit' type='button'>사진업로드</button>" +
+                        "<button id='btnSubmit' class='btnSubmits' type='button'>사진업로드</button>" +
 
                         "</div>" +
 
@@ -822,7 +822,106 @@
 
 
                 count++;
+                var imagesDiv = null;
+                $("#fileupload" + (count - 1)).fileupload({
+                    url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
+                    dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
+                    sequentialUploads: true, // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+                    singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
+                    autoUpload: true, // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+                    disableImageResize: /Android(?!.*Chrome)|Opera/
+                        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+                    previewMaxWidth: 120, // 미리보기 이미지 너비
+                    previewMaxHeight: 120, // 미리보기 이미지 높이 
+                    previewCrop: true, // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+                    processalways: function (e, data) {
+                        imagesDiv = $(this).parent().children()[0].childNodes[2];
+                        console.log('fileuploadprocessalways()...');
+                        console.log(data.files);
+                        console.log($(this).parent().children()[0].childNodes[2]);
+                        console.log("len:", data.files.length);
+                        $(imagesDiv).html("");
 
+                        for (var i = 0; i < data.files.length; i++) {
+                            try {
+                                if (data.files[i].preview.toDataURL) {
+                                    $(imagesDiv).append(
+                                        "<div style='display:inline-block;position:relative;'>" +
+                                        "<div style='position:absolute;top:44px;left:26px'>" +
+                                        "<div id='floatingCirclesG'>" +
+                                        "<div class='f_circleG' id='frotateG_01'></div>" +
+                                        "<div class='f_circleG' id='frotateG_02'></div>" +
+                                        "<div class='f_circleG' id='frotateG_03'></div>" +
+                                        "<div class='f_circleG' id='frotateG_04'></div>" +
+                                        "<div class='f_circleG' id='frotateG_05'></div>" +
+                                        "<div class='f_circleG' id='frotateG_06'></div>" +
+                                        "<div class='f_circleG' id='frotateG_07'></div>" +
+                                        "<div class='f_circleG' id='frotateG_08'></div>" +
+                                        "</div>" +
+                                        "</div>" +
+                                        "<img src=" + data.files[i].preview.toDataURL() +
+                                        " style='width: 120px;' class=" +
+                                        "'readyImgs'" + ">" +
+                                        "</div>"
+                                    )
+
+
+                                    // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
+                                    //     '120px').appendTo(imagesDiv);
+
+                                    // console.log(data.files[i].name)
+                                    $('#btnSubmit').removeAttr("disabled");
+                                }
+                            } catch (err) {
+                                console.log("err");
+                            }
+                        }
+                        console.log($('.readyImgs').length)
+
+
+                        // $('#btnSubmit').unbind("click");
+                        // $('#btnSubmit').click(function () {
+
+                        //     alert("클릭")
+                        //     data.submit();
+                        // });
+                    },
+                    submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
+                        console.log('submit()...');
+                    },
+                    done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+                        console.log('done()...');
+                        console.log(data.result.files);
+
+                        $.each(data.result.files, function (index, file) {
+                            let imgs = $(file)
+                            let imgBox = $(imagesDiv).parent().parent().children()[1]
+                            $(imgBox).append(
+                                "<div class='imgboxDiv' style='height:120px;width:120px;overflow:hidden;display:inline-block'>" +
+                                "<img src='"+serverRoot + "/files/" + file.filename + "_120x120.jpg'>" +
+                                "</div>"
+                            )
+                            // $('<img>')
+                            // .attr('src', serverRoot + '/files/' + file.filename + "_180x180.jpg")
+                            // .appendTo(imgBox);
+                            console.log(imgs[0])
+                            // imgBox.append(imgs[0])
+                            // imgs[0].removeClass('readyImgs')
+                            console.log("aaa")
+                            console.log($("img[name=" + "'" + file.originname + "'" + "]"))
+                            console.log("aaa")
+                            // $("img[name=" + "'" + file.originname + "'" + "]").remove();
+                            // console.log($('.readyImgs').length)
+                            // if ($('.readyImgs').length < 1) {
+                            //     $('#btnSubmit').attr("disabled", true);
+                            // }
+
+                            if ($('imagesDiv').children("img").length == 0) {
+                                $(imagesDiv).html("업로드 대기중인 사진이 없습니다.")
+                            }
+                        });
+                    }
+                });
             }
 
             function delete_cont() {
@@ -850,6 +949,8 @@
             }
 
             var $imgClickBox = null;
+            var showBox = null;
+            var showBox2 = null;
             // // 업로드 버튼 클릭
             // $('.dropzone').click(function (val) {
             //     console.log(val)
@@ -891,7 +992,7 @@
             //     }
             // });
             /////
-            var imgBox = $('#imgbox2');
+            var imgBox = $('#imgbox2_');
 
             $("input[name=files]").fileupload({
                 url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
@@ -907,14 +1008,13 @@
                 processalways: function (e, data) {
                     console.log('fileuploadprocessalways()...');
                     console.log(data.files);
-                    var imagesDiv = $('#imgbox');
-                    imagesDiv.html("");
+                    var imagesDiv = showBox;
+                    $(imagesDiv).hmtl("");
                     for (var i = 0; i < data.files.length; i++) {
-
 
                         try {
                             if (data.files[i].preview.toDataURL) {
-                                imagesDiv.append(
+                                $(imagesDiv).append(
                                     "<div style='display:inline-block;position:relative;'>" +
                                     "<div style='position:absolute;top:44px;left:26px'>" +
                                     "<div id='floatingCirclesG'>" +
