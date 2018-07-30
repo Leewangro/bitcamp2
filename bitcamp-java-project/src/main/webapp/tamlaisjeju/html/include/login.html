@@ -11,7 +11,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">로그인</h5>
+                                <h5 id="exampleModalLongTitle" class="modal-title">로그인</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -20,85 +20,13 @@
                                 로그인 하시면 여행지 리뷰 등록 및 내가 찜한 여행지와 일정, 방문지 등의 다양한 기능을 사용하실 수 있습니다.
                             </div>
                             <div class="modal-footer">
+                                    
+	                                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+	                                
+	                                <a id="custom-login-btn" href="javascript:loginWithKakao()">
+	                                    <button type="button" class="btn_login kt"><span>카카오톡으로 로그인</span></button>
+	                                </a>
 
-                                    <style type="text/css">
-                                        .fb-login-button span{
-                                            margin-left: 20%;
-                                        }
-
-                                        ._51mx ._5h0o {
-                                            border-left: 1px solid;
-                                            border-color: #e5e5e5;
-                                            margin-left: 9px;
-                                        }
-
-                                        ._51mx ._5h0d ._5h0k {
-                                            margin: 8px 13px;
-                                        }
-                                    </style>
-                                    <div class="fb-login-button" 
-                                        data-width="320"
-                                        data-max-rows="1" 
-                                        data-size="large" 
-                                        data-button-type="login_with" 
-                                        data-show-faces="false" 
-                                        data-auto-logout-link="false" 
-                                        data-use-continue-as="false">
-                                        페이스북으로 로그인
-                                    </div>
-                                <!-- <button class="btn_login fb" scope="public_profile,email" onclick="checkLoginState();">
-                                    <span>페이스북으로 로그인</span>
-                                </button> -->
-                                
-                                <a id="custom-login-btn" href="javascript:loginWithKakao()">
-                                    <button type="button" class="btn_login kt"><span>카카오톡으로 로그인</span></button>
-                                </a>
-
-
-                                <style type="text/css">
-                                    #customBtn {
-                                      display: inline-block;
-                                      background: white;
-                                      color: #444;
-                                      width: 320px;
-                                      border-radius: 5px;
-                                      border: thin solid #888;
-                                      box-shadow: 1px 1px 1px grey;
-                                      white-space: nowrap;
-                                    }
-                                    #customBtn:hover {
-                                      cursor: pointer;
-                                    }
-                                    span.label {
-                                      font-family: serif;
-                                      font-weight: normal;
-                                    }
-                                    span.icon {
-                                      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
-                                      display: inline-block;
-                                      vertical-align: middle;
-                                      width: 42px;
-                                      height: 42px;
-                                    }
-                                    span.buttonText {
-                                      display: inline-block;
-                                      vertical-align: middle;
-                                      padding-left: 42px;
-                                      padding-right: 42px;
-                                      font-size: 14px;
-                                      font-weight: bold;
-                                      /* Use the Roboto font that is loaded in the <head> */
-                                      font-family: 'Roboto', sans-serif;
-                                    }
-                                  </style>
-
-                                <!-- <div id="customBtn" class="customGPlusSignIn">
-                                    <span class="icon"></span>
-                                    <span class="buttonText">Google로 로그인</span>
-                                </div> -->
-                                <button class="btn_login ig">
-                                    <span>Google로 로그인</span>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -108,34 +36,29 @@
             </li>
         </ul>
         
-        <script type="text/javascript">
-    // 페이스북 로그인 버튼을 화면에 붙인다.
-    // => 로그인 버튼을 누르면 페이스북 사이트의 로그인 페이지가 출력된다.
-    // => 그 페이지에서 로그인을 수행한 후 onlogin에 등록한 코드가 실행된다.
-    //    즉 checkLoginState() 함수가 실행된다.
-    function checkLoginState() {
-        console.log("로그인을 수행했음!");
-    }
+<script type="text/javascript">
 
-
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '228605734455848', // 개발자가 등록한 앱 ID
-            cookie: true,
-            xfbml: true,
-            version: 'v3.0'
-        });
-        FB.AppEvents.logPageView();
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/ko_KR/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+	window.fbAsyncInit = function() {
+	      FB.init({
+	        appId      : '228605734455848',
+	        cookie     : true,  
+	        xfbml      : true,  
+	        version    : 'v3.0' 
+	      });
+	      
+	      FB.getLoginStatus(function(response) {
+	    	  statusChangeCallback(response);
+	      });
+	};
+	
+	(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "https://connect.facebook.net/ko_KR/sdk.js";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	
 </script>
 
 <script type='text/javascript'>
@@ -146,40 +69,12 @@
         // 로그인 창을 띄웁니다.
         Kakao.Auth.login({
           success: function(authObj) {
-            alert(JSON.stringify(authObj));
+            console.log(JSON.stringify(authObj));
           },
           fail: function(err) {
-            alert(JSON.stringify(err));
+            console.log(JSON.stringify(err));
           }
         });
       };
     //]]>
-  </script>
-
-<script src="https://apis.google.com/js/api:client.js"></script>
-  <script>
-  var googleUser = {};
-  var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: '83175317661-drvsnkq8f9lr8t774t0v04if9k21pot9.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
-      });
-      attachSignin(document.getElementById('customBtn'));
-    });
-  };
-
-  function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-          document.getElementById('customBtn').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
-        }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        });
-  }
-  </script>
+</script>
