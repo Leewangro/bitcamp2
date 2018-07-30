@@ -46,6 +46,21 @@
   border-bottom: 1px solid #fff;
 }
 
+
+#header h1 {
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  margin-top: -24px;
+  font-weight:normal;
+  font-size:36px;
+}
+
+#header h1 a {
+  color: #fff;
+}
+
+
 .menu_area {
   text-align: center;
   vertical-align: middle;
@@ -150,17 +165,6 @@
     width: 100%;
     text-align: left;
   }
-}
-
-#header h1 {
-  position: absolute;
-  left: 2%;
-  top: 50%;
-  margin-top: -18px;
-}
-
-#header h1 a {
-  color: #fff;
 }
 
 #header .ico_wrap {
