@@ -508,7 +508,7 @@ body.modal-open {
   height: 40px;
   margin-left: 11%;
   padding: 12px 0 12px 48px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .login .btn_login span {
@@ -545,11 +545,6 @@ body.modal-open {
   cursor: pointer;
   text-transform: inherit;
 }
-
-
-
-
-
 
 
 @media screen and (max-width: 1200px) {
