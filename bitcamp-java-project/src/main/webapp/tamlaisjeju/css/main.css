@@ -53,18 +53,37 @@
     -webkit-transition: 0.2s all linear;
 }
 
-#header a.sitemap {
-    display: inline-block;
+#header .ico_wrap {
     position: absolute;
     right: 0;
     top: 50%;
     margin-top: -10px;
-    width: 20px;
-    height: 20px;
-    background: url("../img/main/sitemap-ico.png") no-repeat 0 0;
+    vertical-align: middle;
+}
+
+#header .ico_wrap a{
+    display: inline-block;
+    color:#fff;
+    /* width: 20px;
+    height: 20px; */
+    /* font-size: 0;
+    text-indent: -9999px; */
+}
+
+#header .ico_wrap a i{
+    font-size:32px;
+}
+
+#header .ico_wrap a sapn{
     font-size: 0;
     text-indent: -9999px;
-    vertical-align: middle;
+}
+
+#header .ico_wrap a.sitemap {
+
+
+    /* background: url("../img/main/sitemap-ico.png") no-repeat 0 0; */
+
 }
 
 #mvisual {
