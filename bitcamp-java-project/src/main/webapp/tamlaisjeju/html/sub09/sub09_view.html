@@ -393,12 +393,12 @@ crossorigin="anonymous">
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
 					console.log(data)
-					$(aWord).append(data[11].pDesc);
+					$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
-					$(sDay).append(data[11].sDate);
-					$(eDay).append(data[11].eDate);
-					$(partner).append(data[11].mTem);
-					$(theme).append(data[11].mTem); 
+					$(sDay).append(data[10].sDate);
+					$(eDay).append(data[10].eDate);
+					$(partner).append(data[10].mTem);
+					$(theme).append(data[10].mTem); 
 					//$(hits).text(data./*디비 컬럼명 뭐로하냐*/);
 					//$(recoNum).text(data./*디비 컬럼명 뭐로하냐*/);
 				},
