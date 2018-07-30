@@ -63,15 +63,15 @@ crossorigin="anonymous">
 
 						<div class="author-page-links">
 							<ul>
-								<li><a><span>여행일정</span><span id="tra_schedule"
-										class="count"></span></a></li>
+								<li><a style="padding-left: 5px;"><span>여행일정</span><span
+										id="tra_schedule" class="count">(40)</span></a></li>
 								<li><a><span>여행리뷰</span><span id="tra_review"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 								<br>
 								<li><a><span>동행횟수</span><span id="acp_num"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 								<li><a><span>회원댓글</span><span id="mem_comment"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -131,10 +131,10 @@ crossorigin="anonymous">
 
 							<div class="theme-round">
 								<p>
-									<span>조회수</span> : <span>8754</span>
+									<span id="b-hits">조회수 :</span>
 								</p>
 								<p>
-									<span>추천수</span> : <span>153</span>
+									<span id="b-reco">추천수 :</span>
 								</p>
 							</div>
 						</div>
@@ -181,7 +181,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -197,7 +197,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -213,7 +213,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -249,7 +249,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -260,7 +260,7 @@ crossorigin="anonymous">
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- 
 				<div class="author-info">
 					<div class="conts-label">
@@ -385,8 +385,8 @@ crossorigin="anonymous">
 			var eDay = $('#edt');
 			var partner = $('#wNum');
 			var theme = $('#theme');
-			var hits = $('#aWord');
-			var recoNum = $('#aWord');
+			var hits = $('#b-hits');
+			var recoNum = $('#b-reco');
 
 			$.ajax({
 				url : serverRoot + "/json/accompanyregi/list",
@@ -399,8 +399,9 @@ crossorigin="anonymous">
 					$(eDay).append(data[10].eDate);
 					$(partner).append(data[10].mWithNum);
 					$(theme).append(data[10].mTem); 
-					//$(hits).text(data./*디비 컬럼명 뭐로하냐*/);
-					//$(recoNum).text(data./*디비 컬럼명 뭐로하냐*/);
+					//$(hits).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(recoNum).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
 				},
 				error : function(e) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
@@ -408,7 +409,7 @@ crossorigin="anonymous">
 			});
 		});
 	</script>
- 
+
 </body>
 
 
