@@ -61,7 +61,7 @@
                 <div class="editor_side_inner_content">
                     <div class="editor_side_btn">
                         <p>사진도구</p>
-                        <button class="side_upload_btn" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        <button class="side_upload_btn">
                             <span class="side_upload"></span> 사진업로드</button>
                         <button class="side_sns_btn">
                             <span class="side_sns"></span>sns사진</button>
@@ -219,7 +219,7 @@
                 <div id="post_wraps">
                     <div id="cont_1" class="post_wrap">
 
-                        <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg2">
+                        <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg1">
                             클릭하여 사진 등록
                             <img src="">
                         </div>
@@ -246,75 +246,73 @@
 
             </div>
             <!--모달-->
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>사진업로드</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <!--dropzone-->
+            <div id="modalDiv">
+                <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>사진업로드</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--dropzone-->
 
-                        <div id="trueForm">
-                            <div class="dropzone" >
-                                <div>
+                            <div id="trueForm">
+                                <div class="dropzone" onclick="imgClickBoxs(this)">
+                                    <div>
+                                    </div>
+                                    <span class="dz_ico">+</span>
+                                    <div id="imgbox">업로드 대기중인 사진이 없습니다.</div>
                                 </div>
-                                <span class="dz_ico">+</span>
-                                <div id="imgbox"></div>
-                            </div>
-                            <input id="fileupload" type="file" name="files" multiple hidden>
-                            <!-- 고유 값이 필요한 경우 -->
+
+                                <div id="imgbox2">
+                                    <p>업로드 완료된 사진</p>
+                                </div>
+                                <input id="fileupload" type="file" class='fileuploads' name="files" multiple hidden>
+                                <!-- 고유 값이 필요한 경우 -->
 
 
-                            </form>
+                                <div class="clear">
 
-                            <div class="clear">
+                                    <!--업로드 버튼을 여러 장의 사진 일회용 업로드 기능 제공-->
 
-                                <!--업로드 버튼을 여러 장의 사진 일회용 업로드 기능 제공-->
+                                    <!-- <button id="btnAllClear" disabled="disabled">취소</button> -->
 
-                                <!-- <button id="btnAllClear" disabled="disabled">취소</button> -->
+                                    <button id="btnSubmit" type="button">사진업로드</button>
 
-                                <button onclick="upload()" id="btnSubmit" disabled="disabled">등록</button>
+                                </div>
 
                             </div>
 
                         </div>
-
-                        <div id="falseForm" style="display:none;">
-
-                            지원하지 않는 브라우저입니다.
-
-                        </div>
-
                     </div>
                 </div>
-            </div>
-            <!-- 모달2 -->
-            <div id="dropbox" class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>사진업로드</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div>
-                            <h1>사진업로드</h1>
-                            <form id="form" action="javascript:void(0)">
-                                <p>Choose JPEG file:
-                                    <input id="fileWidget" type="file">
-                                </p>
-                            </form>
-                            <img id="img" height="100" alt="Image preview" src="">
-                            <div id="status"></div>
-                        </div>
+                <!-- 모달2 -->
+                <!-- <div id="dropbox" class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>사진업로드</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div>
+                                <h1>사진업로드</h1>
+                                <form id="form" action="javascript:void(0)">
+                                    <p>Choose JPEG file:
+                                        <input id="fileWidget" type="file">
+                                    </p>
+                                </form>
+                                <img id="img" height="100" alt="Image preview" src="">
+                                <div id="status"></div>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -331,20 +329,16 @@
         <!-- sweetArert2 -->
         <script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <!--metadata-->
-        <script type="text/javascript" src="metadeta/jpegmeta.js"></script>
-        <script type="text/javascript" src="metadeta/demo.js"></script>
+        <!-- <script type="text/javascript" src="metadeta/jpegmeta.js"></script>
+        <script type="text/javascript" src="metadeta/demo.js"></script> -->
         <!--jQuery upload-->
         <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
         <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
         <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-
-        <script>
-            $('.modal').on('hidden.bs.modal', function (e) {
-                console.log('modal close');
-                $(this).find('form')[0].reset()
-            });
-        </script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=619a7dc4f7d23963aa128663f464c8d5&libraries=services"></script>
+        <script src="../../node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+        <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+        <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
 
         <script>
@@ -680,28 +674,7 @@
                 });
             });
         </script>
-        <script type="text/javascript">
-            // 사진업로드
-    
-            var imgBox = $('#imgbox');
 
-            $('#fileupload').fileupload({
-                url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
-                dataType: 'json',
-                /* "서버가 보낸 데이터가 JSON 문자열이다. 자바스크립트 객체로 바꿔라." 라는 의미*/
-                done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-                    console.log('done()...');
-                    console.log(data.result);
-
-                    $('<img>')
-                        .attr('src', serverRoot + '/files/' + data.result.filename + "_50x50.jpg")
-                        .appendTo(imgBox);
-                    //      $.each(data.result.fileList, function(index, file) {
-                    //        $('<p/>').text(file.filename + " : " + file.filesize).appendTo(document.body);
-                    //      });
-                }
-            });
-        </script>
 
         <script>
             var button = document.getElementById("enter");
@@ -784,7 +757,7 @@
                 $('#post_wraps').append(
                     "<div id=" + "'cont_" + count + "'" + " class='post_wrap'>" +
                     "<button class='cancel_btn' onclick='delete_cont(this.value)'></button>" +
-                    "<div class='post_imgbox' data-toggle='modal' data-target='.bd-example-modal-lg2'>" +
+                    "<div class='post_imgbox' data-toggle='modal' data-target='.bd-example-modal-lg" + count + "'>" +
                     '클릭하여 사진 등록' +
                     "<img src=''>" +
                     "</div>" +
@@ -805,7 +778,51 @@
                     "</div>" +
                     "</div>"
                 );
+
+                (function (count) {
+                    $('#modalDiv').append(
+                        "<div class='modal fade bd-example-modal-lg" + count + "'" +
+                        "tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true'>" +
+                        "<div class='modal-dialog modal-lg'>" +
+                        "<div class='modal-content'>" +
+                        "<div class='modal-header'>" +
+                        "<h5>사진업로드</h5>" +
+                        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
+                        "<span aria-hidden='true'>&times;</span>" +
+                        "</button>" +
+                        "</div>" +
+                        "<div id='trueForm'>" +
+                        "<div class='dropzone' onclick='imgClickBoxsSub(this)'>" +
+                        "<div>" +
+                        "</div>" +
+                        "<span class='dz_ico'>+</span>" +
+                        "<div id='imgbox'>업로드 대기중인 사진이 없습니다.</div>" +
+                        "</div>" +
+
+                        "<div id='imgbox2'>" +
+                        "<p>업로드 완료된 사진</p>" +
+                        "</div>" +
+                        "<input id='fileupload" + count + "'" +
+                        "class='fileuploads' type='file' name='files' multiple hidden>" +
+
+                        "<div class='clear'>" +
+
+
+                        "<button id='btnSubmit' type='button'>사진업로드</button>" +
+
+                        "</div>" +
+
+                        "</div>" +
+
+                        "</div>" +
+                        "</div>" +
+                        "</div>"
+                    )
+                })(count)
+
+
                 count++;
+
             }
 
             function delete_cont() {
@@ -832,7 +849,139 @@
 
             }
 
-            // 업로드 버튼 클릭
+            var $imgClickBox = null;
+            // // 업로드 버튼 클릭
+            // $('.dropzone').click(function (val) {
+            //     console.log(val)
+            //     imgClickBox = val.target.parentNode.parentNode.childNodes[5].click();
+            // })
+            function imgClickBoxs(val) {
+                console.log(val.parentNode.childNodes[5])
+                $imgClickBox = val.parentNode.childNodes[5]
+                $imgClickBox.click();
+                // imgClickBox.
+            }
+
+            function imgClickBoxsSub(val) {
+                console.log(val.parentNode.childNodes[2])
+                $imgClickBox = val.parentNode.childNodes[2]
+                $imgClickBox.click();
+                // imgClickBox.
+            }
+
+            // 사진업로드
+
+            // var imgBox = $('#imgbox');
+
+            // $('#fileupload').fileupload({
+            //     url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
+            //     dataType: 'json',
+
+            //     /* "서버가 보낸 데이터가 JSON 문자열이다. 자바스크립트 객체로 바꿔라." 라는 의미*/
+            //     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+            //         console.log('done()...');
+            //         console.log(data.result);
+
+            //         $('<img>')
+            //             .attr('src', serverRoot + '/files/' + data.result.filename + "_120x120.jpg")
+            //             .appendTo(imgBox);
+            //         //      $.each(data.result.fileList, function(index, file) {
+            //         //        $('<p/>').text(file.filename + " : " + file.filesize).appendTo(document.body);
+            //         //      });
+            //     }
+            // });
+            /////
+            var imgBox = $('#imgbox2');
+
+            $("input[name=files]").fileupload({
+                url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
+                dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
+                sequentialUploads: true, // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+                singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
+                autoUpload: false, // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+                disableImageResize: /Android(?!.*Chrome)|Opera/
+                    .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+                previewMaxWidth: 120, // 미리보기 이미지 너비
+                previewMaxHeight: 120, // 미리보기 이미지 높이 
+                previewCrop: true, // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+                processalways: function (e, data) {
+                    console.log('fileuploadprocessalways()...');
+                    console.log(data.files);
+                    var imagesDiv = $('#imgbox');
+                    imagesDiv.html("");
+                    for (var i = 0; i < data.files.length; i++) {
+
+
+                        try {
+                            if (data.files[i].preview.toDataURL) {
+                                imagesDiv.append(
+                                    "<div style='display:inline-block;position:relative;'>" +
+                                    "<div style='position:absolute;top:44px;left:26px'>" +
+                                    "<div id='floatingCirclesG'>" +
+                                    "<div class='f_circleG' id='frotateG_01'></div>" +
+                                    "<div class='f_circleG' id='frotateG_02'></div>" +
+                                    "<div class='f_circleG' id='frotateG_03'></div>" +
+                                    "<div class='f_circleG' id='frotateG_04'></div>" +
+                                    "<div class='f_circleG' id='frotateG_05'></div>" +
+                                    "<div class='f_circleG' id='frotateG_06'></div>" +
+                                    "<div class='f_circleG' id='frotateG_07'></div>" +
+                                    "<div class='f_circleG' id='frotateG_08'></div>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "<img src=" + data.files[i].preview.toDataURL() +
+                                    " style='width: 120px;' name=" + data.files[i].name + " class=" +
+                                    "'readyImgs'" + ">" +
+                                    "</div>"
+                                )
+
+
+                                // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
+                                //     '120px').appendTo(imagesDiv);
+
+                                // console.log(data.files[i].name)
+                                $('#btnSubmit').removeAttr("disabled");
+                            }
+                        } catch (err) {}
+                    }
+                    console.log($('.readyImgs').length)
+
+
+                    // $('#btnSubmit').unbind("click");
+                    // $('#btnSubmit').click(function () {
+
+                    //     alert("클릭")
+                    //     data.submit();
+                    // });
+                },
+                submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
+                    console.log('submit()...');
+                },
+                done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+                    console.log('done()...');
+                    console.log(data.result.files);
+
+                    $.each(data.result.files, function (index, file) {
+                        let imgs = $("img[name=" + "'" + file.originname + "'" + "]")
+                        console.log($('#imgbox>img'))
+                        // $('<img>')
+                        // .attr('src', serverRoot + '/files/' + file.filename + "_120x120.jpg")
+                        // .appendTo(imgBox);
+                        imgBox.append(imgs)
+                        imgs.removeClass('readyImgs')
+                        // $("img[name=" + "'" + file.originname + "'" + "]").remove();
+                        console.log($('.readyImgs').length)
+                        if ($('.readyImgs').length < 1) {
+                            $('#btnSubmit').attr("disabled", true);
+                        }
+
+                        if ($('#imgbox>img').length == 0) {
+                            $('#imgbox').html("업로드 대기중인 사진이 없습니다.")
+                        }
+
+
+                    });
+                }
+            });
         </script>
 
 
