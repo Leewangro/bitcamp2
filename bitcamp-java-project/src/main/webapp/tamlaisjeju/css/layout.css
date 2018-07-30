@@ -511,6 +511,10 @@ body.modal-open {
   text-transform: inherit;
 }
 
+#logout {
+  display:none;
+}
+
 @media screen and (max-width: 1200px) {
   .top_util {
     display: none;

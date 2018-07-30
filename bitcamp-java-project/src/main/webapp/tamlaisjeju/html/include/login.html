@@ -2,16 +2,19 @@
             <li>
 
                 <!-- Button trigger modal -->
-                <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                <div><a id="login" data-toggle="modal" data-target="#exampleModalCenter" href="#">
                     로그인
-                </a>
+				</a></div>
+				<div><a id="logout" href="#" onclick="logout();">
+                    로그아웃
+                </a></div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 id="exampleModalLongTitle" class="modal-title">로그인</h5>
+								<h5 id="exampleModalLongTitle" class="modal-title">로그인</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -20,8 +23,11 @@
                                 로그인 하시면 여행지 리뷰 등록 및 내가 찜한 여행지와 일정, 방문지 등의 다양한 기능을 사용하실 수 있습니다.
                             </div>
                             <div class="modal-footer">
-                                    
-	                                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+								<fb:login-button
+									id="fb-btn" 
+									scope="public_profile,email"
+									onlogin="checkLoginState();">
+							  	</fb:login-button>
 	                                
 	                                <a id="custom-login-btn" href="javascript:loginWithKakao()">
 	                                    <button type="button" class="btn_login kt"><span>카카오톡으로 로그인</span></button>
@@ -36,29 +42,61 @@
             </li>
         </ul>
         
-<script type="text/javascript">
 
+<script>
 	window.fbAsyncInit = function() {
-	      FB.init({
-	        appId      : '228605734455848',
-	        cookie     : true,  
-	        xfbml      : true,  
-	        version    : 'v3.0' 
-	      });
-	      
-	      FB.getLoginStatus(function(response) {
-	    	  statusChangeCallback(response);
-	      });
+		FB.init({
+		appId      : '228605734455848',
+		cookie     : true,
+		xfbml      : true,
+		version    : 'v3.0'
+		});
+		
+		FB.getLoginStatus(function(response) {
+    		statusChangeCallback(response);
+		});
 	};
 	
-	(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "https://connect.facebook.net/ko_KR/sdk.js";
-		  fjs.parentNode.insertBefore(js, fjs);
+	(function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
+
+	function statusChangeCallback(response) {
+		if(response.status === 'connected'){
+			console.log('로그인성공');
+			setElements(true);
+		} else {
+			console.log('로그인실패');
+			setElements(false);
+		}
+	}
+
 	
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+	}
+
+	function setElements(isLoggedIn) {
+		if(isLoggedIn) {
+			document.getElementById('login').style.display ='none';
+			document.getElementById('logout').style.display ='block';
+		} else {
+			document.getElementById('login').style.display ='block';
+			document.getElementById('logout').style.display ='none';
+		}
+	}
+
+	function logout(){
+		FB.logout(function(response){
+			setElements(false);
+		})
+	}
 </script>
 
 <script type='text/javascript'>
