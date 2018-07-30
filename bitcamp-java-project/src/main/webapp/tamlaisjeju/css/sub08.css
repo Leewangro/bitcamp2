@@ -1735,27 +1735,26 @@ body {
     font-size: 18px;
 }
 
-#trueForm #btnSubmit,
-#btnAllClear {
+.btnSubmits {
     border: 1px solid #eee;
     padding: 7px 15px 7px 15px;
     font-size: 15px;
     margin-bottom: 10px;
 }
 
-#trueForm #btnAllClear {
+#btnAllClear {
     background-color: red;
     color: white;
 }
 
-#trueForm #btnSubmit {
+.btnSubmits {
     background-color: #2168f6;
     color: white;
     width: 95%;
     transition: background-color 0.5s;
 }
 
-#trueForm #btnSubmit:hover {
+.btnSubmits:hover {
     background-color: #1358e2;
 }
 
@@ -1895,7 +1894,7 @@ input,
 }
 
 /*사진업로드 */
-#imgbox {
+.imgboxs1 {
     height: 186px;
     font-size: 15px;
     line-height: 160px;
@@ -1903,23 +1902,23 @@ input,
     white-space: nowrap;
     overflow: auto;
 }
-#imgbox img{
+.imgboxs1 img{
     margin: 3px;
     border-radius: 20%;
     display: inline-block;
 }
-#imgbox2 {
+.imgboxs2 {
     height: 223px;
     font-size: 15px;
-    line-height: 160px;
+    /* line-height: 160px; */
     color: gray;
     white-space: nowrap;
     overflow: auto;
     border: 1px solid #eee;
     margin: 0 20px 20px 20px;
 }
-#imgbox2 img{
-    margin: 3px;
+.imgboxs2 img{
+    /* margin: 3px; */
     border-radius: 20%;
 }
 
