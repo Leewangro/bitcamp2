@@ -1,3 +1,144 @@
-<div class="location">
-    <div class="wrapper"></div><!-- wrapper end -->
-</div><!-- location end -->
+<div id="navigation" class="location">
+    <div class="wrapper">
+        <!--네비게이션 -->
+        <nav class="path">
+            <ul class="clearfix" id="navi">
+                <li class="home">
+                    <span>
+                        <a class="navi_home" href="/html/kr/">HOME</a>
+                    </span>
+                </li>
+                <li class="page page1">
+                    <span style="padding:6px 4px;">관광정보 </span>
+                </li>
+                <li class="page page2" id="ipage2">
+                    <span class="off" title="같은 레벨 메뉴 보기">
+                        <a href="#ipage2"> 교통정보</a>
+                    </span>
+                    <ul class="obj" style="display: none;">
+                        <li>
+                            <a href="/_prog/stay/">숙박업소</a>
+                        </li>
+                        <li>
+                            <a href="/_prog/festival/">축제행사</a>
+                        </li>
+                        <li>
+                            <a href="/html/kr/sub04/sub04_0403.html">경남먹거리</a>
+                        </li>
+                        <li>
+                            <a href="/_prog/jang/">전통시장안내</a>
+                        </li>
+                        <li>
+                            <a href="/html/kr/sub04/sub04_0405.html">교통정보</a>
+                        </li>
+                        <li>
+                            <a href="/html/kr/sub04/sub04_0406.html">문화관광해설사</a>
+                        </li>
+                        <li>
+                            <a href="/html/kr/sub04/sub04_0407.html">경남시티투어</a>
+                        </li>
+                        <li>
+                            <a href="/html/kr/sub04/sub04_0408.html">수산물명품축제</a>
+                        </li>
+                        <li>
+                            <a href="/html/kr/sub04/sub04_0409.html">경남관광기념품공모전</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <!-- wrapper end -->
+</div>
+<!-- location end -->
+
+
+<script type="text/javascript">
+    $(function () {
+        $('.page2 .obj').hide();
+        $('.page2 .off').on('click', function () {
+            $(this).next('.page2 .obj').slideToggle();
+            $('.page2 .obj').hide();
+            $(this).next().show();
+        });
+        $('.page2 .off').click(function () {
+            $('.page3 .obj').hide();
+            $('.page3 .off').removeClass('on').attr('title', '같은 레벨 메뉴 보기');
+            $(this).toggleClass('on');
+            $(this).attr('title', '메뉴 닫기');
+            $('.page2 .off').not('.on').attr('title', '같은 레벨 메뉴 보기');
+        });
+        $('.page3 .obj').hide();
+        $('.page3 .off').on('click', function () {
+            $(this).next('.page3 .obj').slideToggle();
+            $('.page3 .obj').hide();
+            $(this).next().show();
+        });
+        $('.page3 .off').click(function () {
+            $('.page2 .obj').hide();
+            $('.page2 .off').removeClass('on').attr('title', '같은 레벨 메뉴 보기');
+            $(this).toggleClass('on');
+            $(this).attr('title', '메뉴 닫기');
+            $('.page3 .off').not('.on').attr('title', '같은 레벨 메뉴 보기');
+        });
+    })
+</script>
+
+
+
+<div class="btn">
+    <a href="/html/kr/sub04/sub04_0405.html" target="_blank" title="새창으로 열립니다." onclick="printContent('/html/kr/sub04/sub04_0405.html');return false"
+        class="btn_print">인쇄</a>
+    <a id="sns_slide" href="#sns_slide" class="">sns공유</a>
+    <div id="naviSNS" style="position: absolute; top: 45px; right: 0px; z-index: -1; display: none;">
+
+
+        <a href="#naviSNS" onclick="twitterOpen(); return false;" class="tw" title="새창열림">트위터</a>
+        <a href="#naviSNS" onclick="facebookOpen(); return false;" class="fb" title="새창열림">페이스북</a>
+
+    </div>
+</div>
+<!-- btn end-->
+<script type="text/javascript">
+    //페이스북
+    function facebookOpen() {
+        var titl = " 교통정보 &gt; 관광정보 ";
+        titl = titl.replace('"', '"');
+        titl = titl.replace('"', '"');
+        titl = encodeURIComponent(titl);
+        var link = encodeURIComponent("http://tour.gyeongnam.go.kr/html/kr/sub04/sub04_0405.html");
+        var url = "http://www.facebook.com/sharer.php?u=" + link + "&t=" + titl;
+        snswindowOpen(url, 900, 450, 'no');
+    }
+    //twitter
+    function twitterOpen() {
+        var titl = " 교통정보 &gt; 관광정보 ";
+        titl = titl.replace('"', '"');
+        titl = titl.replace('"', '"');
+        titl = titl.replace('>', '>');
+        titl = titl.replace('>', '>');
+        titl = encodeURIComponent(titl);
+        var link = encodeURIComponent("http://tour.gyeongnam.go.kr/html/kr/sub04/sub04_0405.html");
+        var url = "http://twitter.com/share?text=" + titl + "&url=" + link;
+        snswindowOpen(url, 800, 400, 'yes');
+    }
+
+    function snswindowOpen() {
+        var nUrl;
+        var nWidth;
+        var nHeight;
+        var nLeft;
+        var nTop;
+        var nScroll;
+        nUrl = arguments[0];
+        nWidth = arguments[1];
+        nHeight = arguments[2];
+        nScroll = (arguments.length > 3 ? arguments[3] : "no");
+        nLeft = (arguments.length > 4 ? arguments[4] : (screen.width / 2 - nWidth / 2));
+        nTop = (arguments.length > 5 ? arguments[5] : (screen.height / 2 - nHeight / 2));
+        winopen = window.open(nUrl, 'SNS', "left=" + nLeft + ",top=" + nTop + ",width=" + nWidth +
+            ",height=" + nHeight + ",scrollbars=" + nScroll +
+            ",toolbar=no,location=no,directories=no,status=no,menubar=no,resizable=no");
+    }
+</script>
