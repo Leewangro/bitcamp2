@@ -70,6 +70,10 @@
     text-indent: -9999px; */
 }
 
+#header .ico_wrap a i{
+    font-size:20px;
+}
+
 #header .ico_wrap a.sitemap {
 
 
