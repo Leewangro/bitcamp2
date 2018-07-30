@@ -190,10 +190,10 @@
 #sub09 .content .aside_wrap .info-right-box .nav-warp .nav-cmt {
     height: 30px;
     line-height: 30px;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
     color: #999;
     font-size: 12px;
-    background: url(../img/sub09/comment.png) 10px 8px no-repeat;
+    /*background: url(../img/sub09/comment.png) 10px 8px no-repeat;*/
 }
 /*right-box의 종료*/
 
