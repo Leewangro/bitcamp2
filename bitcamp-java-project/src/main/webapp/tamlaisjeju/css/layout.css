@@ -504,10 +504,9 @@ body.modal-open {
 
 .login .btn_login {
   display: block;
-  width: 75%;
+  width: 320px;
   height: 40px;
   margin-left: 11.5%;
-  margin-top: 20px;
   padding: 12px 0 12px 48px;
   border-radius: 5px;
   font-size:15px;
