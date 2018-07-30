@@ -71,7 +71,12 @@
 }
 
 #header .ico_wrap a i{
-    font-size:20px;
+    font-size:32px;
+}
+
+#header .ico_wrap a sapn{
+    font-size: 0;
+    text-indent: -9999px;
 }
 
 #header .ico_wrap a.sitemap {
