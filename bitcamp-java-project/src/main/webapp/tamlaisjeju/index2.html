@@ -55,7 +55,7 @@
                         <i class="fas fa-user-circle"></i>
                         로그인
                     </a>
-                    <a class="sitemap" href ="#" onclick="openNav()">
+                    <a class="sitemap" href="#" onclick="openNav()">
                         <i class="fas fa-bars"></i>
                         <sapn class="ico_txt">사이트맵</sapn>
                     </a>
@@ -67,13 +67,28 @@
                 </div>
                 <!-- ico_wrap end-->
 
-                <div id="myNav" class="overlay">
+                <div id="myNav" class="nav_overlay">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <div class="overlay-content">
+                    <div class="nav_overlay-content">
                         <a href="#">About</a>
                         <a href="#">Services</a>
                         <a href="#">Clients</a>
                         <a href="#">Contact</a>
+                    </div>
+                </div>
+
+
+
+
+                <div id="myOverlay" class="srh_overlay">
+                    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                    <div class="srh_overlay-content">
+                        <form action="/action_page.php">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
 
@@ -466,6 +481,16 @@
         <script src="node_modules/slick-carousel/slick/slick.min.js"></script>
         <script src="js/common/common.js"></script>
         <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+        <!-- 검색 -->
+        <script>
+            function openSearch() {
+                document.getElementById("myOverlay").style.display = "block";
+            }
+
+            function closeSearch() {
+                document.getElementById("myOverlay").style.display = "none";
+            }
+        </script>
         <!-- 사이트맵 -->
         <script>
             /* Open */
