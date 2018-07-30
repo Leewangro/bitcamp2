@@ -72,6 +72,7 @@
 
 #header .ico_wrap a i{
     font-size:32px;
+    vertical-align: middle;
 }
 
 #header .ico_wrap a sapn{
@@ -225,7 +226,7 @@
     position: absolute;
     right: 100px;
     top: 100px;
-    z-index: 2000;
+    z-index: 1000;
     color: #fff;
 }
 
