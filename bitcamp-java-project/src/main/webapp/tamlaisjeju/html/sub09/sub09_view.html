@@ -411,7 +411,18 @@ crossorigin="anonymous">
 			});
 		});
 	</script>
-	
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('.medium-insert-image');
+	    var instances = M.Materialbox.init(elems, options);
+	  });
+
+	  // Or with jQuery
+
+	  $(document).ready(function(){
+	    $('.medium-insert-image').materialbox();
+	  });
+	</script>
 </body>
 
 
