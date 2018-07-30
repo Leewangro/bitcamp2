@@ -506,10 +506,9 @@ body.modal-open {
   display: block;
   width: 320px;
   height: 40px;
-  margin-left: 11.5%;
+  margin-left: 11%;
   padding: 12px 0 12px 48px;
   border-radius: 5px;
-  font-size:15px;
 }
 
 .login .btn_login span {
