@@ -395,10 +395,10 @@ crossorigin="anonymous">
 					console.log(data)
 					$(aWord).append(data[0].pDesc);
 					//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
-					$(sDay).val(data.sDate);
-					$(eDay).text(data.eDate);
-					$(partner).text(data.mTem);
-					$(theme).text(data.mTem);
+					$(sDay).append(data[0].sDate);
+					$(eDay).append(data[0].eDate);
+					$(partner).append(data[0].mTem);
+					$(theme).append(data[0].mTem);
 					//$(hits).text(data./*디비 컬럼명 뭐로하냐*/);
 					//$(recoNum).text(data./*디비 컬럼명 뭐로하냐*/);
 				},
