@@ -61,13 +61,20 @@
     vertical-align: middle;
 }
 
-#header .ico_wrap a.sitemap {
+#header .ico_wrap a{
     display: inline-block;
+    color:#fff;
     width: 20px;
     height: 20px;
-    background: url("../img/main/sitemap-ico.png") no-repeat 0 0;
     font-size: 0;
     text-indent: -9999px;
+}
+
+#header .ico_wrap a.sitemap {
+
+
+    /* background: url("../img/main/sitemap-ico.png") no-repeat 0 0; */
+
 }
 
 #mvisual {
