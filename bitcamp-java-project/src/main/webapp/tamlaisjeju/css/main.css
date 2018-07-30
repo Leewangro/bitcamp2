@@ -310,7 +310,8 @@
     width: 100%;
     z-index: 10;
     text-align: center;
-    z-index: 2000;
+    z-index: 1000;
+    text-shadow: 1px 1px 1px #000;
 }
 
 #mvisual ul li span.img_text {
@@ -319,7 +320,7 @@
     bottom: 30px;
     color: #fff;
     vertical-align: middle;
-    z-index: 2000;
+    z-index: 1000;
     font-size: 14px;
 }
 
