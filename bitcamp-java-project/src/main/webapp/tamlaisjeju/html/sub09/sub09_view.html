@@ -175,9 +175,8 @@ crossorigin="anonymous">
 									<div class="conts-txt-area">
 										<div class="medium-insert-image ui-sortable"
 											contenteditable="false">
-											<a href="../../img/sub09/jeju.jpg" data-lightbox="image-1">
-												<img src="../../img/sub09/jeju.jpg">
-											</a>
+											<img onclick="this.src.popupView()"
+												src="../../img/sub09/jeju.jpg">
 											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
 												적으세요설명을 적으세요</p>
 										</div>
@@ -413,7 +412,28 @@ crossorigin="anonymous">
 			});
 		});
 	</script>
-	
+	<script>
+		String.prototype.popupView = function() {
+
+			var img_view = this;
+			var x = x + 20;
+			var y = y + 30;
+			htmlz = "<html><head><title>이미지크게보기</title><style>body{margin:0;cursor:hand;}</style></head><body scroll=auto onload='width1=document.all.Timage.width;if(width1>1024)width1=1024;height1=document.all.Timage.height;if(height1>768)height1=768;top.window.resizeTo(width1+30,height1+54);' onclick='top.window.close();'><img src='"+img_view+"' title='클릭하시면 닫힙니다.' name='Timage' id='Timage'></body></html>"
+			imagez = window
+					.open(
+							'',
+							"image",
+							"width="
+									+ 100
+									+ ", height="
+									+ 100
+									+ ", top=0,left=0,scrollbars=auto,resizable=1,toolbar=0,menubar=0,location=0,directories=0,status=1");
+			imagez.document.open();
+			imagez.document.write(htmlz)
+			imagez.document.close();
+		}
+	</script>
+
 </body>
 
 
