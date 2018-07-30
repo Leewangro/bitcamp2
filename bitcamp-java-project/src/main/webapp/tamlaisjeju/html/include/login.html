@@ -21,30 +21,25 @@
                             </div>
                             <div class="modal-footer">
 
-                                <!-- <fb:login-button class="btn_login fb" scope="public_profile,email" onlogin="checkLoginState();">
-                                    <span>페이스북으로 로그인</span>
-                                </fb:login-button> -->
-                                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-                                    <!-- <div class="fb-login-button" 
-                                        data-width="320" 
+                                    <div class="fb-login-button" 
+                                        data-width="320"
                                         data-max-rows="1" 
                                         data-size="large" 
                                         data-button-type="login_with" 
                                         data-show-faces="false" 
                                         data-auto-logout-link="false" 
                                         data-use-continue-as="false">
-                                        페이스북으로 로그인
-                                    </div> -->
-
+                                        
+                                    </div>
                                 <!-- <button class="btn_login fb" scope="public_profile,email" onclick="checkLoginState();">
                                     <span>페이스북으로 로그인</span>
                                 </button> -->
                                 
 
 
-                                <!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
+                                <a id="custom-login-btn" href="javascript:loginWithKakao()">
                                     <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="320">
-                                </a> -->
+                                </a>
 
 
                                 <style type="text/css">
@@ -96,6 +91,7 @@
 
             </li>
         </ul>
+        
         <script type="text/javascript">
     // 페이스북 로그인 버튼을 화면에 붙인다.
     // => 로그인 버튼을 누르면 페이스북 사이트의 로그인 페이지가 출력된다.
@@ -121,7 +117,7 @@
         if (d.getElementById(id)) return;
         js = d.createElement(s);
         js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        js.src = "https://connect.facebook.net/ko_KR/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
@@ -164,7 +160,7 @@
     console.log(element.id);
     auth2.attachClickHandler(element, {},
         function(googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
+          document.getElementById('customBtn').innerText = "Signed in: " +
               googleUser.getBasicProfile().getName();
         }, function(error) {
           alert(JSON.stringify(error, undefined, 2));
