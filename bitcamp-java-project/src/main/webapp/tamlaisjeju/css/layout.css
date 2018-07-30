@@ -175,35 +175,8 @@
   left: 0;
   top: 50%;
   margin-top: -18px;
-  /* float: left;
-  margin: 13px 0 0 13px; */
-}
 
-/* #header h1 a {
-  color: #fff;
-  display: block;
-  font-size: 32px;
 }
-
-#header ul {
-  text-align: center;
-}
-
-#header ul li {
-  display: inline-block;
-  text-align: left;
-}
-
-#header ul li a {
-  display: block;
-  padding: 25px 19px;
-  color: #fff;
-  font-size: 19px;
-  line-height: 25px;
-  font-weight: bold;
-  transition: 0.2s all linear;
-  -webkit-transition: 0.2s all linear;
-} */
 
 #header .ico_wrap {
   position: absolute;
