@@ -362,6 +362,7 @@
     line-height: 23px;
     word-wrap: break-word;
     word-break: keep-all;
+    padding-left: 10px;
 }
 #sub09 .spot-contents p a {
     display: inline;
@@ -416,8 +417,10 @@
 #sub09 .medium-insert-image .r-cm{
 	float: left;
 	margin-left: 10px;
+	height: 489.77777777777777px; 
+	width: 48%;
 }
 #sub09 .absolute{
-	text-align: left;
+	text-align: left; 
     bottom: 200px; 
 }
