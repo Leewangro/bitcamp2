@@ -341,8 +341,8 @@
                                     pDesc: $('#pDesc').val(),
                                     sDate: $('#sDate').val(),
                                     eDate: $('#eDate').val(),
-                                    mTem: $('#mTem').val(),
-                                    mWithNum: $('#mWithNum').val()
+                                    mTem: $("#mTem option:selected").text(),
+                                    mWithNum: $('#mWithNum option:selected').text()
                               };
 
                               $
@@ -351,13 +351,13 @@
                                           url: serverRoot + "/json/accompanyregi/add",
                                           data: param,
                                           success: function (data) {
-                                                location.href = "sub04_travelmate_accompanyRegi.html";
+                                                //location.href = "sub04_travelmate_accompanyRegi.html";
                                           },
                                           error: function (data) {
                                                 alert("빈 칸을 채워주세요.");
                                           }
 
-                                    });
+                                    }); 
                         });
       </script>
 

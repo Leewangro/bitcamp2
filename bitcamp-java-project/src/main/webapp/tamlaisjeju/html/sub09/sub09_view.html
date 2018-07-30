@@ -29,9 +29,9 @@ crossorigin="anonymous">
 <link rel="stylesheet" href="../../css/layout.css" />
 <link rel="stylesheet" href="../../css/main.css" />
 <link rel="stylesheet" href="../../css/sub09.css" />
+<link rel="../../node_modules/lightbox2/dist/css/lightbox.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 </head>
 
@@ -63,15 +63,15 @@ crossorigin="anonymous">
 
 						<div class="author-page-links">
 							<ul>
-								<li><a><span>여행일정</span><span id="tra_schedule"
-										class="count"></span></a></li>
+								<li><a style="padding-left: 5px;"><span>여행일정</span><span
+										id="tra_schedule" class="count">(40)</span></a></li>
 								<li><a><span>여행리뷰</span><span id="tra_review"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 								<br>
 								<li><a><span>동행횟수</span><span id="acp_num"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 								<li><a><span>회원댓글</span><span id="mem_comment"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -98,7 +98,7 @@ crossorigin="anonymous">
 
 							<li class="story-view-nav-li"><a
 								class="nav-cmt story-view-nav-btn" data-id="comment"
-								id="h-bottom"> <span class="plan-comment-count">아래로</span>
+								id="h-bottom"> <span class="plan-comment-count">bottom</span>
 							</a></li>
 						</ul>
 					</nav>
@@ -131,10 +131,10 @@ crossorigin="anonymous">
 
 							<div class="theme-round">
 								<p>
-									<span>조회수</span> : <span>8754</span>
+									<span id="b-hits">조회수 :</span>
 								</p>
 								<p>
-									<span>추천수</span> : <span>153</span>
+									<span id="b-reco">추천수 :</span>
 								</p>
 							</div>
 						</div>
@@ -175,13 +175,14 @@ crossorigin="anonymous">
 									<div class="conts-txt-area">
 										<div class="medium-insert-image ui-sortable"
 											contenteditable="false">
-											<img src="../../img/sub09/jeju.jpg">
+											<img onclick="this.src.popupView()"
+												src="../../img/sub09/jeju.jpg">
 											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
 												적으세요설명을 적으세요</p>
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -197,7 +198,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -213,7 +214,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -249,7 +250,7 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -260,7 +261,7 @@ crossorigin="anonymous">
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- 
 				<div class="author-info">
 					<div class="conts-label">
@@ -306,7 +307,9 @@ crossorigin="anonymous">
 	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../../node_modules/lightbox2/dist/js/lightbox.js"></script>
 	<script src="../../js/common/common.js"></script>
+
 	<!--footer -->
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -385,28 +388,50 @@ crossorigin="anonymous">
 			var eDay = $('#edt');
 			var partner = $('#wNum');
 			var theme = $('#theme');
-			var hits = $('#aWord');
-			var recoNum = $('#aWord');
+			var hits = $('#b-hits');
+			var recoNum = $('#b-reco');
 
 			$.ajax({
 				url : serverRoot + "/json/accompanyregi/list",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
 					console.log(data)
-					$(aWord).append(data[0].pDesc);
+					$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
-					$(sDay).append(data[0].sDate);
-					$(eDay).append(data[0].eDate);
-					$(partner).append(data[0].mTem);
-					$(theme).append(data[0].mTem);
-					//$(hits).text(data./*디비 컬럼명 뭐로하냐*/);
-					//$(recoNum).text(data./*디비 컬럼명 뭐로하냐*/);
+					$(sDay).append(data[10].sDate);
+					$(eDay).append(data[10].eDate);
+					$(partner).append(data[10].mWithNum);
+					$(theme).append(data[10].mTem);
+					//$(hits).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(recoNum).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
 				},
 				error : function(e) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
 		});
+	</script>
+	<script>
+		String.prototype.popupView = function() {
+
+			var img_view = this;
+			var x = x + 20;
+			var y = y + 30;
+			htmlz = "<html><head><title>이미지크게보기</title><style>body{margin:0;cursor:hand;}</style></head><body scroll=auto onload='width1=document.all.Timage.width;if(width1>1024)width1=1024;height1=document.all.Timage.height;if(height1>768)height1=768;top.window.resizeTo(width1+30,height1+54);' onclick='top.window.close();'><img src='"+img_view+"' title='클릭하시면 닫힙니다.' name='Timage' id='Timage'></body></html>"
+			imagez = window
+					.open(
+							'',
+							"image",
+							"width="
+									+ 100
+									+ ", height="
+									+ 100
+									+ ", top=0,left=0,scrollbars=auto,resizable=1,toolbar=0,menubar=0,location=0,directories=0,status=1");
+			imagez.document.open();
+			imagez.document.write(htmlz)
+			imagez.document.close();
+		}
 	</script>
 
 </body>

@@ -27,13 +27,8 @@
 
 <body>
     <div id="header"></div>
-
-    <div id="container" class="container">
-        <div id="visual">
-            <img src="../../img/common/sub_visual_img04.jpg" alt="대표이미지">
-        </div>
-        <!-- visual end -->
-        <div id="content" class="content wrapper">
+    <div id="sub11" class="sub11 container">
+        <div id="content">
             <div class="cont my_tour">
                 <div class="location_wrap clear">
                     <div class="location clear">
@@ -42,7 +37,7 @@
                             <span class="p_depth">
                                 <a class="asd">&gt; 나의 여행</a>
                             </span>
-                            <a class="btn_dropdown">&gt; 찜한 여행</a>
+                            <a class="btn_dropdown">&gt; 방문 여행지</a>
                             <div tabindex="99" class="snb_menu_box" style="top: auto; max-height: none; overflow: auto;">
                                 <a href="" class="asd">관광지</a>
                                 <a href="" class="asd">음식점</a>
@@ -90,7 +85,8 @@
                         <div class="clear">
                             <dl class="take_item">
                                 <dt class="take_img badge_bronze">
-                                    <img src="https://api.visitjeju.net/badge/iconpath/201803/05/1783fff5-2b33-4e94-8a03-8d4fa8dd69fd.png" alt="오름배지">
+                                    <img src="https://api.visitjeju.net/badge/iconpath/201803/05/1783fff5-2b33-4e94-8a03-8d4fa8dd69fd.png"
+                                        alt="오름배지">
                                     <span class="thumb_align"></span>
                                 </dt>
                                 <dd class="take_tit1">오름</dd>
@@ -137,19 +133,33 @@
                 </div>
                 <div class="my_tour_wrap">
                     <div class="wrap_tit_zone clear">
-                        <p class="wrap_tit">찜한 여행지</p>
+                        <p class="wrap_tit">방문 여행지</p>
                     </div>
+                    <div class="place_wrap">
+                        <p class="info_txt">내가 방문한 제주 여행지는 1개 입니다</p>
+                        <div id="map1" class="map" style="width: 100%; height: 300px; background: rgba(0,0,0,.1);">
+
+                        </div>
+                    </div>
+
                     <div class="util_wrap clear">
                         <div class="util_area">
-                            <ul class="count_list clear">
+                            <p class="list_tit">방문시기</p>
+                            <ul class="season_list">
                                 <li class="on">
-                                    <a href="/kr/schedule/tourSchedule#">찜한 여행지(2)</a>
+                                    <a href="javascript:void(0)">전체</a>
                                 </li>
                                 <li class="">
-                                    <a href="/kr/schedule/tourSchedule?tourfnsdateabove=20180706000000#">찜한 여행일정(2)</a>
+                                    <a href="javascript:void(0)">#봄</a>
                                 </li>
                                 <li class="">
-                                    <a href="/kr/schedule/tourSchedule?tourfnsdatebelow=20180706000000#">찜한 즐겨찾기(0)</a>
+                                    <a href="javascript:void(0)">#여름</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:void(0)">#가을</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:void(0)">#겨울</a>
                                 </li>
                             </ul>
                         </div>
@@ -186,34 +196,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="inner_map_wrap">
-                        <div class="loc_btn_area">
-                            <ul class="location_category clear">
-                                <li>
-                                    <span class="ico_loc_1">관광지</span>
-                                </li>
-                                <li>
-                                    <span class="ico_loc_2">음식점</span>
-                                </li>
-                                <li>
-                                    <span class="ico_loc_3">숙박</span>
-                                </li>
-                                <li>
-                                    <span class="ico_loc_4">쇼핑</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="map_area">
 
-                        </div>
-                    </div>
                     <div class="tour_list clear">
                         <dl class="item_section">
                             <dt class="item_top">
                                 <a href="/kr/detail/view?contentsid=CONT_000000000500477&amp;contentscd=c1#">
                                     <span class="s_day">관광지</span>
-                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/e1c2f9e4-bf4c-488c-884c-5674f8d8b119.jpg" alt="우도(해양도립공원)"
-                                        class="">
+                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/e1c2f9e4-bf4c-488c-884c-5674f8d8b119.jpg"
+                                        alt="우도(해양도립공원)" class="">
                                     <p class="s_tit">우도(해양도립공원)</p>
                                     <p class="s_theme">섬 속의 섬 &gt; 우도</p>
                                 </a>
@@ -226,8 +216,8 @@
                             <dt class="item_top">
                                 <a href="/kr/detail/view?contentsid=CONT_000000000500349&amp;contentscd=c1#">
                                     <span class="s_day">관광지</span>
-                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/711dea02-985d-4363-b092-8ef7b93eb2cd.gif" alt="성산일출봉(UNESCO 세계자연유산)"
-                                        class="">
+                                    <img src="https://api.visitjeju.net/photomng/thumbnailpath/201804/30/711dea02-985d-4363-b092-8ef7b93eb2cd.gif"
+                                        alt="성산일출봉(UNESCO 세계자연유산)" class="">
                                     <p class="s_tit">성산일출봉(UNESCO 세계자연유산)</p>
                                     <p class="s_theme">서귀포시 &gt; 성산</p>
                                 </a>

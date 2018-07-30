@@ -413,6 +413,7 @@
 	float: left;
 	height: 250px; 
 	width: 50%;
+	cursor: pointer;
 }
 #sub09 .medium-insert-image .r-cm{
 	float: left;
