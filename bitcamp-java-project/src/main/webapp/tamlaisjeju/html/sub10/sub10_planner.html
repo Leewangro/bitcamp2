@@ -104,7 +104,6 @@
                                 </div>
                                 <div class="fl cat_date_right_box">
                                     <div class="cat_right_weekday">수요일</div>
-                                    <div class="cat_right_city">제주도</div>
                                 </div>
                                 <div class="clear"></div>
                             </li>
@@ -115,7 +114,6 @@
                                 </div>
                                 <div class="fl cat_date_right_box">
                                     <div class="cat_right_weekday">목요일</div>
-                                    <div class="cat_right_city">제주도</div>
                                 </div>
                                 <div class="clear"></div>
                             </li>
@@ -126,7 +124,6 @@
                                 </div>
                                 <div class="fl cat_date_right_box">
                                     <div class="cat_right_weekday">금요일</div>
-                                    <div class="cat_right_city"></div>
                                 </div>
                                 <div class="clear"></div>
                             </li>
@@ -484,12 +481,12 @@
 <script id="tr-template" type="text/x-handlebars-template">
 {{#each list}}
                         <div class="item" id=dragitem{{@index}}; draggable="true" data-target={{@index}}>
-                            <span class="img" style=background-image:url("{{firstimage2}}"></span>
-                            <span class="title_info">
-                            <span class="title" onclick="myFunction(this)" id=clti{{@index}};>{{title}}</span>
-                            <span class="info clear">{{addr1}}</span>
-                            </span>
-                            <span class="clear"></span>
+                            <div class="img" style=background-image:url("{{firstimage2}}"></div>
+                            <div class="title_info">
+                            <div class="title" onclick="markerOverlay(this)" id=clti{{@index}};>{{title}}</div>
+                            <div class="info clear">{{addr1}}</div>
+                            </div>
+                            <div class="clear"></div>
                         </div>
 {{/each}}
 
@@ -517,15 +514,10 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         center: new daum.maps.LatLng(33.38003512348535,126.63019113977133), // 지도의 중심좌표
         level: 9 // 지도의 확대 레벨
     };
-var marker1;
-var markerImage;    
-var markers = [];
-var marker = []; 
-var infowindow2 = null;
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 // 마커를 표시할 위치와 title 객체 배열입니다 
-var infowindow = new daum.maps.InfoWindow({zIndex:1});
 var overlay;
+var marker;
 var prevClickItem = null;
 var prevClickMarker = null;
 var customOverlay1 = $('#map').children()[2];
@@ -535,26 +527,31 @@ customOverlay1.addEventListener("click", fn({
 	
 })) */
 
-function removeMarker() {
-    for ( var i = 0; i < marker.length; i++ ) {
-        marker[i].setMap(null);
-    }   
-    marker = [];
-}
-
 let datas = [];
 
+function markerOverlayDelete() {
+	if (marker != null || overlay != null) {
+		   marker.setMap(null);
+		   overlay.setMap(null);
+	}
+	
+}
+
 $('#a12').on('click', function() {
+	markerOverlayDelete()
+	if (datas != null) {
+		datas = [];
+	}
 	var input = document.getElementById("keyword").value='';
-    removeMarker();
 $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json", 
-		function bbb(contentTypeId) {
+		function(contentTypeId) {
 	        var item = contentTypeId.response.body.items.item;
-	        
-	        for(let data of item) {
+	        console.log(item);
+	        for(let data of item) { 
 	        	if (data.firstimage2 == null) {
                     data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/93/197693_image3_1.jpg';
                 }
+	        	let w = data.contenttypeid;
 	        	let x = data.mapy;
 	        	let y = data.mapx;
 	        	let z = data.firstimage2;
@@ -563,127 +560,207 @@ $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBased
 	            if( typeof(y) == "String" || typeof(y) == "string" )
 	                y = parseFloat(y)
 	        	
-	        	Promise.resolve(datas.push( { title:data.title, lat: x, lng:y, img:z}));
+	        	datas.push({title:data.title, lat: x, lng:y, img:z, contenttypeid:w});
 	        }
 	  
 // 마커 이미지의 이미지 주소입니다
-$.when(bbb).done(marker12());
 });
-function marker12() {
-	marker11();
-}
-
 });
 
-function marker11() {
-var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    for (var i = 0; i < datas.length; i++) {
-	    displayMarker(datas[i])
+
+$('#a39').on('click', function() {
+	markerOverlayDelete()
+	if (datas != null) {
+        datas = [];
     }
-		function displayMarker(place) {
-		    var imageSrc = '../../img/sub10/n301_0.png', // 마커이미지의 주소입니다    
-		    imageSize = new daum.maps.Size(45, 45), // 마커이미지의 크기입니다
-		    imageOption = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
-		    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
-		    var bounds = new daum.maps.LatLngBounds();
-	    // 마커를 생성하고 지도에 표시합니다
-		    marker = new daum.maps.Marker({
-		        map: map,
-		        title: place.title,
-		        position: new daum.maps.LatLng(place.lat, place.lng),
-		        image : markerImage
-		    });
-		    markers.push(marker);
-		
+    var input = document.getElementById("keyword").value='';
+$.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=39&_type=json", 
+        function(contentTypeId) {
+            var item = contentTypeId.response.body.items.item;
+            
+            for(let data of item) { 
+                if (data.firstimage2 == null) {
+                    data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/97/689597_image3_1.jpg';
+                }
+                let w = data.contenttypeid;
+                let x = data.mapy;
+                let y = data.mapx;
+                let z = data.firstimage2;
+                if( typeof(x) == "String" || typeof(x) == "string" )
+                    x = parseFloat(x);
+                if( typeof(y) == "String" || typeof(y) == "string" )
+                    y = parseFloat(y)
+                
+                Promise.resolve(datas.push( { title:data.title, lat: x, lng:y, img:z, contenttypeid:w}));
+            }
+      
+// 마커 이미지의 이미지 주소입니다
+});
+});
 
-			daum.maps.event.addListener(marker, 'click', function() {
+
+$('#a38').on('click', function() {
+	markerOverlayDelete()
+	if (datas != null) {
+        datas = [];
+    }
+    var input = document.getElementById("keyword").value='';
+$.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=38&_type=json", 
+        function(contentTypeId) {
+            var item = contentTypeId.response.body.items.item;
+            
+            for(let data of item) { 
+                if (data.firstimage2 == null) {
+                    data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/92/818792_image3_1.jpg';
+                }
+                let w = data.contenttypeid;
+                let x = data.mapy;
+                let y = data.mapx;
+                let z = data.firstimage2;
+                if( typeof(x) == "String" || typeof(x) == "string" )
+                    x = parseFloat(x);
+                if( typeof(y) == "String" || typeof(y) == "string" )
+                    y = parseFloat(y)
+                
+                Promise.resolve(datas.push( { title:data.title, lat: x, lng:y, img:z, contenttypeid:w}));
+            }
+      
+// 마커 이미지의 이미지 주소입니다
+});
+});
+
+
+$('#a32').on('click', function() {
+	markerOverlayDelete()
+	if (datas != null) {
+        datas = [];
+    }
+    var input = document.getElementById("keyword").value='';
+$.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=32&_type=json", 
+        function(contentTypeId) {
+            var item = contentTypeId.response.body.items.item;
+            
+            for(let data of item) { 
+                if (data.firstimage2 == null) {
+                    data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/11/729311_image3_1.jpg';
+                }
+                let w = data.contenttypeid;
+                let x = data.mapy;
+                let y = data.mapx;
+                let z = data.firstimage2;
+                if( typeof(x) == "String" || typeof(x) == "string" )
+                    x = parseFloat(x);
+                if( typeof(y) == "String" || typeof(y) == "string" )
+                    y = parseFloat(y)
+                
+                Promise.resolve(datas.push( { title:data.title, lat: x, lng:y, img:z, contenttypeid:w}));
+            }
+      
+// 마커 이미지의 이미지 주소입니다
+});
+});
+
+
+function markerPoint(datas) {
+		    var bounds = new daum.maps.LatLngBounds();
 			if (!(overlay == null)) {
 				closeOverlay();  
 			}
-			var imageSrc1 = '../../img/sub10/301_0.png', // 마커이미지의 주소입니다    
-            imageSize1 = new daum.maps.Size(45, 45), // 마커이미지의 크기입니다
-            imageOption1 = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
-            var markerImage1 = new daum.maps.MarkerImage(imageSrc1, imageSize1, imageOption1);
-            marker1 = new daum.maps.Marker({
+			console.log(datas)
+			if (datas.contenttypeid == 12) {
+			var imageSrc = '../../img/sub10/301_0.png';
+			} 
+			else if (datas.contenttypeid == 39) {
+			var imageSrc = '../../img/sub10/200_0.png';
+			}
+			else if (datas.contenttypeid == 38) {
+            var imageSrc = '../../img/sub10/400_0.png';
+            }
+			else if (datas.contenttypeid == 32) {
+            var imageSrc = '../../img/sub10/100_0.png';
+            }
+            var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
+            var imageOption = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+            marker = new daum.maps.Marker({
             	map: map,
-            	position: new daum.maps.LatLng(place.lat, place.lng),
-            	image: markerImage1
+            	position: new daum.maps.LatLng(datas.lat, datas.lng),
+            	image: markerImage
             })
             
-            
-	        bounds.extend(new daum.maps.LatLng(place.lat, place.lng));
-	        var content = '<div class="customoverlay">' +'<img src=' + place.img + ' style=width:50px;height:50px; display:inline-block;>' 
-	        + '<div style="width:200px;font-size:13px;margin-left:10px;display:inline-block">' + place.title + '</div>' + '</div>'
+	        bounds.extend(new daum.maps.LatLng(datas.lat, datas.lng));
+	        var content = '<div class="customoverlay">' +'<img src=' + datas.img + ' style=width:50px;height:50px; display:inline-block;>' 
+	        + '<div style="width:200px;font-size:13px;margin-left:10px;display:inline-block">' + datas.title + '</div>' + '</div>'
 	        + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
 	        overlay = new daum.maps.CustomOverlay({
 	            content: content,
 	            map: map,
-	            position: new daum.maps.LatLng(place.lat, place.lng)
+	            position: new daum.maps.LatLng(datas.lat, datas.lng)
 	        });
 	        overlay.setMap(map);
 	        map.setBounds(bounds);
 	        map.setLevel(8);
-			console.log();
-			for (var c = 0; c < $(".title").length; c++) {
-				if ($(".title")[c].innerHTML == place.title) {
-					console.log($(".title")[c].innerHTML);
-					console.log(place.title);
-					if(prevClickMarker != null)
-						prevClickMarker.removeClass('on');
-					prevClickMarker = $($(".title")[c]).parent().parent();
-					
-					console.log(prevClickMarker);
-					prevClickMarker.addClass('on');
-	
-			         var divLoc = $($(".title")[c]);
-			         scrollClick();
-			         
-			    }
-			 
-			}
-			 function scrollClick() {
-				 $('#menu_wrap').animate({
-                     scrollTop : 0 }, 0);
-				 $('#menu_wrap').animate({
-                     scrollTop : divLoc.offset().top -300 }, 0);
-			 }
-			         
-			});
-        };
 }
 		function closeOverlay() {
 			overlay.setMap(null);   
 			overlay = null;
-			marker1.setMap(null);
-			
+			marker.setMap(null);
 		}
 
-function myFunction(node) {
-        for (var a = 0; a < datas.length; a++) {
-            if (markers[a].Xd == node.textContent) {
-                console.log(node.textContent);
-                console.log(datas[a].title);
-                console.log(node)
-                console.log($(node));
-                
+function markerOverlay(node) {
+        
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].title == node.textContent) {
                 if(prevClickItem != null)
                 	prevClickItem.removeClass('on');
                 prevClickItem = $(node).parent().parent();
-                console.log($(node));
-                console.log($(node).parent().parent())
-                
                 prevClickItem.addClass('on');
-                //(node.id).closest('.item').addclass('on');
-                daum.maps.event.trigger(markers[a], 'click');
+                markerPoint(datas[i]);
             }
         }
 }  
 </script>
 
 
+<ul id="cat_menu" data="" data-member_srl="">
+                            <li id="show_all_day" data="show_all_day" original-title>전체 여행 루트</li>
+                            <li data="1" data-date="06.06" data-day_week="3" data-f_ci="" data-f_lat="" data-f_lng="" class="on" original-title="제주도">
+                                <div class="fl cat_date_left_box">
+                                    <div class="cat_left_day">DAY1</div>
+                                    <div class="cat_left_date">06.06</div>
+                                </div>
+                                <div class="fl cat_date_right_box">
+                                    <div class="cat_right_weekday">수요일</div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li data="2" data-date="06.07" data-day_week="4" data-f_ci="312" data-f_lat="33.48901130" data-f_lng="126.49830230" original-title="제주도">
+                                <div class="fl cat_date_left_box">
+                                    <div class="cat_left_day">DAY2</div>
+                                    <div class="cat_left_date">06.07</div>
+                                </div>
+                                <div class="fl cat_date_right_box">
+                                    <div class="cat_right_weekday">목요일</div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li data="3" data-date="06.08" data-day_week="5" data-f_ci="" data-f_lat="" data-f_lng="" original-title="">
+                                <div class="fl cat_date_left_box">
+                                    <div class="cat_left_day">DAY3</div>
+                                    <div class="cat_left_date">06.08</div>
+                                </div>
+                                <div class="fl cat_date_right_box">
+                                    <div class="cat_right_weekday">금요일</div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </ul>
+
+
+
+<!-- document.getElementsByClassName('cal').datefilter.value; -->
 <script>
 $(function() {
-
   $('input[name="datefilter"]').daterangepicker({
       autoUpdateInput: false,
       locale: {
