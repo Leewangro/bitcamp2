@@ -66,8 +66,8 @@
     color:#fff;
     width: 20px;
     height: 20px;
-    font-size: 0;
-    text-indent: -9999px;
+    /* font-size: 0;
+    text-indent: -9999px; */
 }
 
 #header .ico_wrap a.sitemap {
