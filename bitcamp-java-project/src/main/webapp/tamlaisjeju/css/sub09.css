@@ -190,10 +190,10 @@
 #sub09 .content .aside_wrap .info-right-box .nav-warp .nav-cmt {
     height: 30px;
     line-height: 30px;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
     color: #999;
     font-size: 12px;
-    background: url(../img/sub09/comment.png) 10px 8px no-repeat;
+    /*background: url(../img/sub09/comment.png) 10px 8px no-repeat;*/
 }
 /*right-box의 종료*/
 
@@ -411,13 +411,13 @@
 }
 #sub09 .medium-insert-image img{
 	float: left;
-	height: 489.77777777777777px; 
+	height: 250px; 
 	width: 50%;
 }
 #sub09 .medium-insert-image .r-cm{
 	float: left;
 	margin-left: 10px;
-	height: 489.77777777777777px; 
+	height: 250px; 
 	width: 48%;
 }
 #sub09 .absolute{

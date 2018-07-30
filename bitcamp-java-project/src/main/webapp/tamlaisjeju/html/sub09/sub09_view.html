@@ -29,6 +29,7 @@ crossorigin="anonymous">
 <link rel="stylesheet" href="../../css/layout.css" />
 <link rel="stylesheet" href="../../css/main.css" />
 <link rel="stylesheet" href="../../css/sub09.css" />
+<link rel="../../node_modules/lightbox2/dist/css/lightbox.css"/>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -63,15 +64,15 @@ crossorigin="anonymous">
 
 						<div class="author-page-links">
 							<ul>
-								<li><a><span>여행일정</span><span id="tra_schedule"
-										class="count"></span></a></li>
+								<li><a style="padding-left: 5px;"><span>여행일정</span><span
+										id="tra_schedule" class="count">(40)</span></a></li>
 								<li><a><span>여행리뷰</span><span id="tra_review"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 								<br>
 								<li><a><span>동행횟수</span><span id="acp_num"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 								<li><a><span>회원댓글</span><span id="mem_comment"
-										class="count"></span></a></li>
+										class="count">(40)</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -87,7 +88,7 @@ crossorigin="anonymous">
 							<li><a class="btn-top nav-btn-top story-view-nav-btn"
 								id="top">Top</a></li>
 
-							<li class="story-view-nav-li" data-target="#d1"><a
+							<li class="story-view-nav-li" data-target="#d1" id="day-1"><a
 								class="story-view-nav-day-btn" href="#d1"> <span>Day</span>
 									<span>1</span>
 							</a></li>
@@ -98,7 +99,7 @@ crossorigin="anonymous">
 
 							<li class="story-view-nav-li"><a
 								class="nav-cmt story-view-nav-btn" data-id="comment"
-								id="h-bottom"> <span class="plan-comment-count">5</span>
+								id="h-bottom"> <span class="plan-comment-count">아래로</span>
 							</a></li>
 						</ul>
 					</nav>
@@ -131,10 +132,10 @@ crossorigin="anonymous">
 
 							<div class="theme-round">
 								<p>
-									<span>조회수</span> : <span>8754</span>
+									<span id="b-hits">조회수 :</span>
 								</p>
 								<p>
-									<span>추천수</span> : <span>153</span>
+									<span id="b-reco">추천수 :</span>
 								</p>
 							</div>
 						</div>
@@ -181,7 +182,39 @@ crossorigin="anonymous">
 										</div>
 									</div>
 									<p>
-									<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+									</p>
+									<p>
+										<br>
+									</p>
+								</div>
+								<div class="spot-contents">
+									<div class="conts-txt-area">
+										<div class="medium-insert-image ui-sortable"
+											contenteditable="false">
+											<img src="../../img/sub09/jeju.jpg">
+											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
+												적으세요설명을 적으세요</p>
+										</div>
+									</div>
+									<p>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+									</p>
+									<p>
+										<br>
+									</p>
+								</div>
+								<div class="spot-contents">
+									<div class="conts-txt-area">
+										<div class="medium-insert-image ui-sortable"
+											contenteditable="false">
+											<img src="../../img/sub09/jeju.jpg">
+											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
+												적으세요설명을 적으세요</p>
+										</div>
+									</div>
+									<p>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
@@ -192,7 +225,6 @@ crossorigin="anonymous">
 						</div>
 					</div>
 				</div>
-				<!-- day1종료-->
 				<div class="story-day">
 					<div class="spot-container">
 						<div class="story-conts">
@@ -204,7 +236,7 @@ crossorigin="anonymous">
 								<div class="spot-tit type">
 									<a class="spot-title-area" id="d1">
 										<h4>
-											<span> 제주도 </span>
+											<span> 커여워 </span>
 										</h4>
 									</a>
 								</div>
@@ -214,25 +246,22 @@ crossorigin="anonymous">
 											contenteditable="false">
 											<img src="../../img/sub09/jeju.jpg">
 											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
-												적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
 												적으세요설명을 적으세요</p>
 										</div>
 									</div>
 									<p>
-										ⓒInstagram | <a target="_blank" href="#">이정호의제주도탐방</a>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
 									</p>
 									<p>
 										<br>
 									</p>
-									
 								</div>
 							</div>
 							<!--spot-note-box-->
 						</div>
 					</div>
 				</div>
-				<!-- day1종료-->
-				
+
 				<!-- 
 				<div class="author-info">
 					<div class="conts-label">
@@ -278,7 +307,9 @@ crossorigin="anonymous">
 	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../../node_modules/lightbox2/dist/js/lightbox.js"></script>
 	<script src="../../js/common/common.js"></script>
+	
 	<!--footer -->
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -357,22 +388,23 @@ crossorigin="anonymous">
 			var eDay = $('#edt');
 			var partner = $('#wNum');
 			var theme = $('#theme');
-			var hits = $('#aWord');
-			var recoNum = $('#aWord');
+			var hits = $('#b-hits');
+			var recoNum = $('#b-reco');
 
 			$.ajax({
 				url : serverRoot + "/json/accompanyregi/list",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
 					console.log(data)
-					$(aWord).append(data[0].pDesc);
+					$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
-					$(sDay).val(data.sDate);
-					$(eDay).text(data.eDate);
-					$(partner).text(data.mTem);
-					$(theme).text(data.mTem);
-					//$(hits).text(data./*디비 컬럼명 뭐로하냐*/);
-					//$(recoNum).text(data./*디비 컬럼명 뭐로하냐*/);
+					$(sDay).append(data[10].sDate);
+					$(eDay).append(data[10].eDate);
+					$(partner).append(data[10].mWithNum);
+					$(theme).append(data[10].mTem); 
+					//$(hits).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(recoNum).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
 				},
 				error : function(e) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
