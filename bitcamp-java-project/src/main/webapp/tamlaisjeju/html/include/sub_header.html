@@ -1,4 +1,81 @@
-<div class="topnav" id="myTopnav">
+<div class="inner_header">
+        <h1>
+            <a href="#">탐라는제주</a>
+        </h1>
+        <div class="menu_area">
+            <h2 class="hide">주메뉴영역</h2>
+            <ul>
+                <li>
+                    <a href="#">관광지</a>
+                </li>
+                <li>
+                    <a href="#">커뮤니티</a>
+                </li>
+                <li>
+                    <a href="#">제주여행꿀팁</a>
+                </li>
+                <li>
+                    <a href="#">나의 여행</a>
+                </li>
+            </ul>
+        </div>
+        <!-- menu_area end-->
+        <div class="ico_wrap">
+            <a class="login" href="#">
+                <i class="fas fa-user-circle"></i>
+                로그인
+            </a>
+            <a class="sitemap" href="#" onclick="openNav()">
+                <i class="fas fa-bars"></i>
+                <sapn class="ico_txt">사이트맵</sapn>
+            </a>
+            <a class="search" href="#" onclick="openSearch()">
+                <i class="fas fa-search"></i>
+                <sapn class="ico_txt">검색</sapn>
+            </a>
+
+        </div>
+        <!-- ico_wrap end-->
+
+        <div id="myNav" class="nav_overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="nav_overlay-content">
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+
+
+
+
+        <div id="myOverlay" class="srh_overlay">
+            <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+            <div class="srh_overlay-content">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- inner_header end -->
+
+
+
+
+
+
+
+
+
+<!-- <div class="topnav" id="myTopnav">
     <div class="wrapper clear">
         <h1>
             <a href="../../index.html">탐라는 제주</a>
@@ -84,4 +161,4 @@
             x.className = "topnav";
         }
     }
-</script>
+</script> -->

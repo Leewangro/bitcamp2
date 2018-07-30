@@ -359,6 +359,7 @@
     top: 100px;
     z-index: 1000;
     color: #fff;
+    text-shadow: 1px 1px 1px #000;
 }
 
 #mvisual .weather_area .weather_img {
