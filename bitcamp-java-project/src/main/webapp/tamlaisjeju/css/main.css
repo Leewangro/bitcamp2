@@ -53,18 +53,21 @@
     -webkit-transition: 0.2s all linear;
 }
 
-#header a.sitemap {
-    display: inline-block;
+#header .ico_wrap {
     position: absolute;
     right: 0;
     top: 50%;
     margin-top: -10px;
+    vertical-align: middle;
+}
+
+#header .ico_wrap a.sitemap {
+    display: inline-block;
     width: 20px;
     height: 20px;
     background: url("../img/main/sitemap-ico.png") no-repeat 0 0;
     font-size: 0;
     text-indent: -9999px;
-    vertical-align: middle;
 }
 
 #mvisual {
