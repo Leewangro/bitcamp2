@@ -78,6 +78,10 @@ dependencies {
     //썸네일이미지생성
     compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
     
+    // 메타데이터 추출 라이브러리
+    compile group: 'com.drewnoakes', name: 'metadata-extractor', version: '2.11.0'
+    
+    
 }
 
 
