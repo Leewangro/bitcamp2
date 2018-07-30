@@ -356,14 +356,14 @@
     font-size: 18px;
     font-weight: 300;
 }
-#sub09 .conts-txt-area p {
+#sub09 .spot-contents p {
     color: #5c5c5c;
     font-size: 16px;
     line-height: 23px;
     word-wrap: break-word;
     word-break: keep-all;
 }
-#sub09 .conts-txt-area p a {
+#sub09 .spot-contents p a {
     display: inline;
     color: #ff8000;
 }
@@ -409,8 +409,12 @@
     cursor: pointer;
 }
 #sub09 .medium-insert-image img{
+	float: left;
 	height: 489.77777777777777px; 
 	width: 50%;
+}
+#sub09 .medium-insert-image .r-cm{
+	float: left;
 }
 #sub09 .absolute{
 	text-align: left;
