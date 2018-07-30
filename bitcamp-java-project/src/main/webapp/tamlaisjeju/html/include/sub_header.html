@@ -101,6 +101,7 @@
 <style type="text/css">
     .menu_area {
         text-align: center;
+        vertical-align:middle;
     }
 
     .nav_area {
@@ -135,26 +136,27 @@
         outline: none;
         color: white;
         padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
         margin: 0;
     }
 
     .nav_area .dropdown-content {
         display: none;
         position: absolute;
+        left:0;
+        width:100%;
+        top:75px;
         background-color: #f9f9f9;
-        min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
 
     .nav_area .dropdown-content a {
+        display: inline-block;
         float: none;
         color: black;
         padding: 12px 16px;
         text-decoration: none;
-        display: block;
+
         text-align: left;
     }
 
