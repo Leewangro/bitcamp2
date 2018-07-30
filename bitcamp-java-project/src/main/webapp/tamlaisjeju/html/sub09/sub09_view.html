@@ -371,7 +371,6 @@
 					dataType : "json", // 데이터타입을 json 으로 받아옴
 					success : function(data) {
 						console.log(data)
-						alert("성공");
 						$(aWord).append(data[0].pDesc);
 						//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
 						$(sDay).val(data.sDate);
@@ -382,7 +381,7 @@
 						//$(recoNum).text(data./*디비 컬럼명 뭐로하냐*/);
 					},
 					error : function(e) {
-						alert("실패");
+						alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 					}
 				});
 			});

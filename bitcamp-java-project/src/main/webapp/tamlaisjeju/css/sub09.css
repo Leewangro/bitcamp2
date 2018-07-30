@@ -276,9 +276,8 @@
 
 #sub09 .story-conts {
     width: 100%;
-    
-    
 }
+
 #sub09 .story-conts h3 {
     top: -10px;
     left: 2px;
@@ -409,7 +408,10 @@
     background: url(../img/sub09/comment.png) 0 4px no-repeat;
     cursor: pointer;
 }
-
+#sub09 .conts-txt-area img{
+	height: 489.77777777777777px; 
+	width: 50%;
+}
 #sub09 .absolute{
 	text-align: left;
     bottom: 200px; 
