@@ -1,61 +1,59 @@
-<!--location -->
-<div class="path wrapper">
-    <a href="#" class="home">HOME</a>
-    <!--gl_path1dir == "service" -->
-    <a href="#" class="path1">사이트이용안내</a>
-    <div class="path2 on">
-        <span>틀린정보신고</span>
-        <ul class="path2_list">
-            <li>
-                <a href="#">개인정보취급방침</a>
-            </li>
-            <li>
-                <a href="#">이용약관</a>
-            </li>
-            <li>
-                <a href="#">틀린정보신고</a>
-            </li>
-            <li>
-                <a href="#">관광업체등록문의</a>
-            </li>
-            <li>
-                <a href="#">사이트맵</a>
-            </li>
-        </ul>
-    </div>
+<div id="path" class="wrapper clear">
+    <ul>
+        <li class="home">
+            <a href="#">HOME</a>
+        </li>
+        <li class="depth_1">
+            <a href="#">사이트이용안내</a>
+        </li>
+        <li class="depth_2">
+            <a href="#">틀린정보신고</a>
+        </li>
+    </ul>
+
 </div>
-<!-- path end-->
 
 
+<style class="text/css">
+    #location {
+        position: relative;
+        height: 50px;
+        border-bottom: 1px solid #e4e4e4;
+        box-sizing: border-box;
+        background: #fff;
+    }
 
-<!-- <script type="text/javascript">
-    $(function () {
-        $('.page2 .obj').hide();
-        $('.page2 .off').on('click', function () {
-            $(this).next('.page2 .obj').slideToggle();
-            $('.page2 .obj').hide();
-            $(this).next().show();
-        });
-        $('.page2 .off').click(function () {
-            $('.page3 .obj').hide();
-            $('.page3 .off').removeClass('on').attr('title', '같은 레벨 메뉴 보기');
-            $(this).toggleClass('on');
-            $(this).attr('title', '메뉴 닫기');
-            $('.page2 .off').not('.on').attr('title', '같은 레벨 메뉴 보기');
-        });
-        $('.page3 .obj').hide();
-        $('.page3 .off').on('click', function () {
-            $(this).next('.page3 .obj').slideToggle();
-            $('.page3 .obj').hide();
-            $(this).next().show();
-        });
-        $('.page3 .off').click(function () {
-            $('.page2 .obj').hide();
-            $('.page2 .off').removeClass('on').attr('title', '같은 레벨 메뉴 보기');
-            $(this).toggleClass('on');
-            $(this).attr('title', '메뉴 닫기');
-            $('.page3 .off').not('.on').attr('title', '같은 레벨 메뉴 보기');
-        });
-    })
-</script>
- -->
+
+    #path {}
+
+    #path ul {
+        border-left: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+    }
+
+    #path ul li {
+        display: inline-block;
+        margin-left:-4px;
+        height: 50px;
+        border-right: 1px solid #e4e4e4;
+        vertical-align: middle;
+        line-height:50px;
+    }
+    #path ul li.home{
+        width:50px;
+        height:50px;
+    }
+
+    #path ul li.home a {
+        font-size: 0;
+        line-height: 0;
+        background: url("../../img/common/icon_home.png") no-repeat 50% 50%;
+        text-align: center;
+    }
+
+    #path ul li a {
+        display: block;
+        height:50px;
+        padding:0 25px;
+    }
+</style>
