@@ -46,7 +46,7 @@
                     </div>
                     <!-- photo_zone end -->
                     <div class="myinfo_zone">
-                        <ul>
+                        <ul class="clear">
                             <li>
                                 <span>나의 여행일정</span>
                                 <b class="count">2</b>
@@ -89,7 +89,7 @@
 
                 .mytrip_wrap .myinfo_box h3 {
                     border-bottom: 1px solid #e5e5e5;
-                    margin:0;
+                    margin: 0;
                 }
 
                 .mytrip_wrap .myinfo_box .photo_zone {
@@ -101,16 +101,18 @@
                 .mytrip_wrap .myinfo_box .photo_zone .porfile_photo {}
 
                 .mytrip_wrap .myinfo_box .photo_zone .porfile_photo img {
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
+                    display: block;
+                    width: 190px;
+                    height: 190px;
+                    margin: 0 auto;
+                    border-radius: 100%;
                 }
 
                 .mytrip_wrap .myinfo_box .photo_zone .porfile_photo i {
                     font-size: 150px;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
+                    width: 190px;
+                    height: 190px;
+                    margin: 0 auto;
                 }
 
 
@@ -122,7 +124,11 @@
 
                 .mytrip_wrap .myinfo_box .myinfo_zone ul {}
 
-                .mytrip_wrap .myinfo_box .myinfo_zone ul li {}
+                .mytrip_wrap .myinfo_box .myinfo_zone ul li {
+                    float: left;
+                    width: 50%;
+                    margin: 5px 0;
+                }
             </style>
 
 
