@@ -36,8 +36,8 @@
   
   <insert id="insert" parameterType="TravelAccompanyRegi"
           useGeneratedKeys="true" keyColumn="no" keyProperty="cno">
-    insert into TAMLA_ACCOMPANY_REGI(MEM_TITLE,PLAN_DESC,SDT,EDT,MEM_TEM,MEM_WITHNUM,GEN) 
-    values(#{mTitle},#{pDesc},#{sDate},#{eDate},#{mTem},#{mWithNum},#{gen})
+    insert into TAMLA_ACCOMPANY_REGI(MEM_TITLE,PLAN_DESC,SDT,EDT,MEM_TEM,MEM_WITHNUM,GEN,CONT_DESC) 
+    values(#{mTitle},#{pDesc},#{sDate},#{eDate},#{mTem},#{mWithNum},#{gen},#{cDesc})
   </insert>
   
   
