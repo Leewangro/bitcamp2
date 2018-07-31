@@ -1,5 +1,5 @@
 <ul class="login" style="float:right; border-right: 1px solid #353e4d;">
-	<a id="login" data-toggle="modal" data-target="#exampleModalCenter" href="#" style="display:block;">
+	<a id="login" data-toggle="modal" data-target="#exampleModalCenter" href="#" style="display:block">
 		로그인
 	</a>
 	<a id="logout" href="#" onclick="logout();" style="display:none;">
@@ -7,16 +7,7 @@
 	</a>
 	<!-- Button trigger modal -->
 		
-	<style type="css/text">
-		.fb-signin-button {
-		  /* This is where you control how the button looks. Be creative! */
-		  display: inline-block;
-		  padding: 4px 8px;
-		  border-radius: 3px;
-		  background-color: #4267b2;
-		  color: #fff;
-		}
-	</style>
+		
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -32,14 +23,11 @@
 					로그인 하시면 여행지 리뷰 등록 및 내가 찜한 여행지와 일정, 방문지 등의 다양한 기능을 사용하실 수 있습니다.
 				</div>
 				<div class="modal-footer">
-					<template>
-						<fb-signin-button
-						  :params="fbSignInParams"
-						  @success="onSignInSuccess"
-						  @error="onSignInError">
-						  Sign in with Facebook
-						</fb-signin-button>
-					  </template>
+					<fb:login-button
+						id="fb-btn" 
+						scope="public_profile,email"
+						onlogin="checkLoginState();">
+					</fb:login-button>
 						
 						<a id="custom-login-btn" href="javascript:loginWithKakao()">
 							<button type="button" class="btn_login kt"><span>카카오톡으로 로그인</span></button>
@@ -51,28 +39,7 @@
 	</div>
 </ul>
         
-<script>
-	export default {
-	  data () {
-		return {
-		  fbSignInParams: {
-			scope: 'email,user_likes',
-			return_scopes: true
-		  }
-		}
-	  },
-	  methods: {
-		onSignInSuccess (response) {
-		  FB.api('/me', dude => {
-			console.log(`Good to see you, ${dude.name}.`)
-		  })
-		},
-		onSignInError (error) {
-		  console.log('OH NOES', error)
-		}
-	  }
-	}
-</script>
+
 <script>
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -81,22 +48,54 @@
 		xfbml      : true,
 		version    : 'v3.0'
 		});
+		
+		FB.getLoginStatus(function(response) {
+    		statusChangeCallback();
+		});
 	};
 	
 	(function(d, s, id){
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) {return;}
 		js = d.createElement(s); js.id = id;
-		js.src = "https://connect.facebook.net/ko_Kr/sdk.js";
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 
-	import FBSignInButton from 'vue-facebook-signin-button'
-	Vue.use(FBSignInButton)
+	function statusChangeCallback(response) {
+		if(response.status === 'connected'){
+			console.log('로그인성공');
+			setElements(true);
+		} else {
+			console.log('로그인실패');
+			setElements(false);
+		}
+	}
+
+	
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+	}
+
+	function setElements(isLoggedIn) {
+		if(isLoggedIn) {
+			document.getElementById('login').style.display ='none';
+			document.getElementById('logout').style.display ='block';
+		} else {
+			document.getElementById('login').style.display ='block';
+			document.getElementById('logout').style.display ='none';
+		}
+	}
+
+	function logout(){
+		FB.logout(function(response){
+			setElements(false);
+		})
+	}
 </script>
 
-
-hhmmss
 <script type='text/javascript'>
     //<![CDATA[
       // 사용할 앱의 JavaScript 키를 설정해 주세요.
