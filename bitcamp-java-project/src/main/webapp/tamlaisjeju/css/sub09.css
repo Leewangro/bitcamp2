@@ -425,3 +425,31 @@
 	text-align: left; 
     bottom: 200px; 
 }
+
+#sub09 .modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+.modal.show .modal-dialog {
+  max-width: 1000px;
+  padding-top: 70px;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+#sub09 .medium-insert-image .m-img{
+	float: left;
+	height: 700px; 
+	width: 100%;
+	cursor: pointer;
+}
