@@ -485,6 +485,7 @@
                             <div class="contentid_info" style="display:none";>{{contentid}}</div>
                             <div class="lat" style="display:none";>{{mapy}}</div>
                             <div class="lng" style="display:none";>{{mapx}}</div>
+                            <div class="url" style="display:none";>{{firstimage2}}</div>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -517,6 +518,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var overlay;
+var overlay1;
 var marker;
 var prevClickItem = null;
 var prevClickMarker = null;
@@ -714,29 +716,79 @@ function markerOverlay(node) {
 }  
 </script>
 <script>
-function dayRoot(pa) {
-      console.log($(pa).children()[3].textContent);
-      console.log($(pa).children()[4].textContent);
-	  var imageSrc = '../../img/sub10/100_0.png';
-	  var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
-      var imageOption = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
-      var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+$('.fl schedule_detail_title_text .fl').change(function () {
+	console.log("됨")
+	if ($('.cat_left_day').value == 'DAY1') {
+		  if (marker2 != null) {
+	          marker2.setVisible(false);
+	      }
+	      if (marker1 != null) {
+	          marker1.setVisible(true);
+	      }
+	}
+	   if ($('.cat_left_day').value == DAY2) {
+	          if (marker1 != null) {
+	              marker1.setVisible(false);
+	          }
+	          if (marker2 != null) {
+	              marker2.setVisible(true);
+	          }
+	    }
+});
+var marker1 = [];
+var dayMarker = [];
+var linePath1 = [];
+var linePath2 = [];
+function dayRoot(dayIndex, daySchedule) {
+	 console.log(dayMarker) 
+	  if (dayIndex == 'DAY1') {
+      console.log($(daySchedule).children()[3].textContent);
+      console.log($(daySchedule).children()[4].textContent);
+	  var imageSrc1 = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+	  var imageSize1 = new daum.maps.Size(24, 35); // 마커이미지의 크기입니다
+      var imageOption1 = {offset: new daum.maps.Point(20, 15)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+      var markerImage1 = new daum.maps.MarkerImage(imageSrc1, imageSize1, imageOption1);
       
-      marker = new daum.maps.Marker({
+      marker1 = new daum.maps.Marker({
           map: map,
-          position: new daum.maps.LatLng(datas.lat, datas.lng),
-          image: markerImage
+          position: new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent),
+          image: markerImage1
       })
+      /* if (marker1 == ) */
+      linePath1.push(new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent));
+
+    	// 지도에 표시할 선을 생성합니다
+    	var polyline = new daum.maps.Polyline({
+    	    path: linePath1, // 선을 구성하는 좌표배열 입니다
+    	    strokeWeight: 5, // 선의 두께 입니다
+    	    strokeColor: '#FFAE00', // 선의 색깔입니다
+    	    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    	    strokeStyle: 'solid' // 선의 스타일입니다
+    	});
+    	polyline.setMap(map); 
+    	
+    	var content1 = '<div class="customoverlay">' +'<img src=' + $(daySchedule).children()[5].textContent + '>' 
+        + '<div>' + $(daySchedule).children()[0].textContent + '</div>' + '</div>'
+        + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
+		overlay1 = new daum.maps.CustomOverlay({
+		content: content1,
+		map: map,
+		position: new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent)
+		});
+    	// 지도에 선을 표시합니다 
       
-      
-      
+        daum.maps.event.addListener(marker1, 'click', function() {
+	    overlay1.setMap(map);
+	    });
+        }
+	  
+	
 }
 
 </script>
 
 
 
-<!-- document.getElementsByClassName('cal').datefilter.value; -->
 <script>
 $(function() {
   $('input[name="datefilter"]').daterangepicker({
@@ -781,6 +833,10 @@ function calDate() {
                             console.log(dd);
                             console.log(dd.getDate()); */
     var betweenDay = parseInt(diff/currDay);
+                            
+    for(let i=0; i<betweenDay+1; i++)
+    	dayMarker[i] = [];
+                            
     var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
     $("#cat_date_all").empty();
     $("#schedule_full_box").empty();
@@ -1217,8 +1273,12 @@ document.addEventListener("click", closeAllSelect);
             //console.log(event.target.appendChild(nodeCopy));
             console.log("asd");
             console.log(nodeCopy);
+            console.log($(nodeCopy).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent);
+            console.log()
+            var dayIndex = $(nodeCopy).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent;
+            var daySchedule = $(nodeCopy).children()[1];
         }
-        dayRoot($(nodeCopy).children()[1]);
+        dayRoot(dayIndex, daySchedule);
     });
     </script>
         
