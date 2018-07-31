@@ -691,7 +691,7 @@ body.modal-open {
 #path ul li.home a {
   font-size: 0;
   line-height: 0;
-  background: url("../../img/common/icon_home.png") no-repeat 50% 50%;
+  background: url("../img/common/icon_home.png") no-repeat 50% 50%;
   text-align: center;
 }
 
