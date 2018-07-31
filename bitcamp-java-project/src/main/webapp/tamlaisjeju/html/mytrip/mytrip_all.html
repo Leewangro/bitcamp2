@@ -90,8 +90,12 @@
                                     3박4일
                                 </span>
                                 <img src="../../img/common/board_img.gif" alt="이미지">
-                                <b>한 템포 쉬어가는 여행</b>
-                                <span class="trip_info"></span>
+                                <strong class="trip_info">
+                                    <b class="trip_tit">한 템포 쉬어가는 여행</b>
+                                    <span class="tag">3박4일</span>
+                                    <span class="tag">혼자</span>
+                                    <span class="tag">휴식과 치유여행</span>
+                                </strong>
                             </a>
 
                         </div>
@@ -231,7 +235,7 @@
         .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a {
             display: block;
             position: relative;
-            border:1px solid #e5e5e5;
+            border: 1px solid #e5e5e5;
         }
 
         .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a img {
@@ -248,6 +252,28 @@
             background-color: #333;
             color: #fff;
             font-size: 12px;
+
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a b {
+            display: block;
+            font-size: 18px;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 94%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box strong {
+            display: block;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box .tag {
+            display: inline-block;
+            font-size:13px;
 
         }
     </style>
