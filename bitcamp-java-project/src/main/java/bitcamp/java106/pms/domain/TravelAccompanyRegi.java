@@ -19,15 +19,16 @@ public class TravelAccompanyRegi implements Serializable {
     
     private String mTem;
     private String mWithNum;
+    private int gen;
     @Override
     public String toString() {
         return "TravelAccompanyRegi [cno=" + cno + ", mTitle=" + mTitle + ", pDesc=" + pDesc + ", sDate=" + sDate
-                + ", eDate=" + eDate + ", mTem=" + mTem + ", mWithNum=" + mWithNum + "]";
+                + ", eDate=" + eDate + ", mTem=" + mTem + ", mWithNum=" + mWithNum + ", gen=" + gen + "]";
     }
     public int getCno() {
         return cno;
     }
-    public void setCno(int cno) { 
+    public void setCno(int cno) {
         this.cno = cno;
     }
     public String getmTitle() {
@@ -66,7 +67,14 @@ public class TravelAccompanyRegi implements Serializable {
     public void setmWithNum(String mWithNum) {
         this.mWithNum = mWithNum;
     }
-   
+    public int getGen() {
+        return gen;
+    }
+    public void setGen(int gen) {
+        this.gen = gen;
+    }
+    
+    
     
     
 }
