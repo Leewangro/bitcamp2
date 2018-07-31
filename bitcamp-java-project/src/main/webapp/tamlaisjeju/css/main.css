@@ -329,7 +329,7 @@
     position: relative;
     width: 50%;
     margin: -4px;
-    background:url("../img/main/img_bg.png") repeat;
+
     /* margin: -4px 0px -4px -4px; */
 }
 
@@ -345,6 +345,8 @@
     left: 20px;
     bottom: 20px;
     font-size: 20px;
+    padding:20px;
+   background:url("../img/main/img_bg.png") repeat;
 }
 
 #mcontent .mcont_area ul.best_spot li a span b {
@@ -483,6 +485,7 @@
     outline: none;
     background: transparent;
     z-index: 2000;
+    margin-top: -23px;
 }
 
 #mcontent .mcont_area.best_planner .slick-prev {
