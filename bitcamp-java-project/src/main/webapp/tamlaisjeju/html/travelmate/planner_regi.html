@@ -4,6 +4,7 @@
 <head>
       <!-- meta tags -->
       <meta charset="utf-8">
+      
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>탐라는제주 - 숨어 있던 진짜 hot한 제주</title>
@@ -18,7 +19,7 @@
       <link rel="stylesheet" href="../../css/common.css" />
       <link rel="stylesheet" href="../../css/layout.css" />
       <!-- sub02 -->
-      <link rel="stylesheet" href="../../css/sub10.css" />
+      <link rel="stylesheet" href="../../css/sub09_form.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
       <style type="text/css">
@@ -32,46 +33,20 @@
                         <a href="../../index.html">탐라는 제주</a>
                     </h1>
                     <div class="planner_set">
-                        <div class="people">
-                            <input type="text" placeholder="인원을 입력하세요">명
+                        <div class="mWithNum">
+                            <input id="m-num" type="text" readonly="readonly">명
                         </div>
-                        <div class="custom-select1">
-                            <select>
-                                <option value="0">일행</option>
-                                <option value="1">부모</option>
-                                <option value="2">친구</option>
-                                <option value="3">커플</option>
-                                <option value="4">혼자</option>
-                                <option value="5">아이</option>
-                                <option value="6">단체</option>
-                            </select>
+                        <div class="mTem" style="width: 180px;">
+                            <input id="m-tem" type="text" readonly="readonly"> 
                         </div>
-
-                        <div class="custom-select1" style="width: 180px;">
-                                <select>
-                                    <option value="0">테마</option>
-                                    <option value="1">걷기/등산</option>
-                                    <option value="2">경관/포토</option>
-                                    <option value="3">휴식/힐링</option>
-                                    <option value="4">테마공원</option>
-                                    <option value="5">문화유적지</option>
-                                    <option value="6">미술/박물관</option>
-                                    <option value="7">액티비티</option>
-                                    <option value="8">체험관광</option>
-                                    <option value="9">드라이브</option>
-                                    <option value="10">쇼핑</option>
-                                </select>
-                            </div>
-                        
-                        <div class="tag">
-                                <input type="text" placeholder="태그 입력하세요">
-                        </div>
-                        
-                        
+                        <div class="gen" style="width: 180px;">
+                            <input id="m-gen" type="text" readonly="readonly">
+                        </div>                   
+                                              
                     </div>
                     <div class="plan_out">
-                        <div class="plan_out_btn">저장&amp;닫기
-                            <a href="../sub11/sub11_myschedule.html"></a>
+                        <div class="plan_out_btn" style="border: 1px solid #2793db; color: #2793db; background-color: white;">저장&amp;닫기
+                            <a href="../sub09/sub09_view"></a>
                         </div>
                         
                     </div>
@@ -465,6 +440,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="../../js/common/common.js"></script>
     <script>
         $(document).ready(function () {
             $("#header").load("../include/sub_header.html")
@@ -728,8 +704,8 @@ function dayRoot(pa) {
           image: markerImage
       })
       
-      
-      
+      let txtNode = $("<textarea width='100px' height='150px'>");
+      $(pa).parent().append(txtNode);
 }
 
 </script>
@@ -1335,6 +1311,39 @@ $('#category > li').click(function() {
     $list_category_box.find('div:nth-child(' + (index + 1) + ')').addClass('on');
 });
 </script>
+<script>
+		$(document).ready(function() {
+			var sDay = $('#sdt');
+			var eDay = $('#edt');
+			var partner = $('#m-num');
+			var theme = $('#m-tem');
+			var gender = $('#m-gen');
+
+			$.ajax({
+				url : serverRoot + "/json/accompanyregi/list",
+				dataType : "json", // 데이터타입을 json 으로 받아옴
+				success : function(data) {
+					console.log(data)
+					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
+					//$(sDay).append(data[10].sDate);
+					//$(eDay).append(data[10].eDate);
+					$(partner).val(data[10].mWithNum);
+					$(theme).val(data[10].mTem);
+					$(gender).val((data[10].gen == 0 ? "무관" : data[10].gen == 1 ? "남자" : "여자"));
+				
+				},
+				error : function(e) {
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+				}
+			});
+		});
+	</script>
+	<script>
+	$('.plan_out_btn').click(function() {
+		location.href = "travelmate_list.html";
+	}
+	</script>
+
 <script src="planner_form.js"></script>
 </body>
 
