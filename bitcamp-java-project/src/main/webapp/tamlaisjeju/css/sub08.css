@@ -1312,7 +1312,7 @@ body {
 
 #menu_wrap {
     position: absolute;
-    top: 0;
+    top: 31px;
     left: 0;
     bottom: 0;
     width: 250px;
