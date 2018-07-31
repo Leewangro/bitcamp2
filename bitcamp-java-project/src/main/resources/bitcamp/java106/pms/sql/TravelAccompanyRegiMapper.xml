@@ -14,6 +14,7 @@
     <result column="EDT" property="eDate"/>
     <result column="MEM_TEM" property="mTem"/>
     <result column="MEM_WITHNUM" property="mWithNum"/>
+    <result column="GEN" property="gen"/>
   </resultMap>
    
  <select id="selectOne" parameterType="int" 
@@ -35,8 +36,8 @@
   
   <insert id="insert" parameterType="TravelAccompanyRegi"
           useGeneratedKeys="true" keyColumn="no" keyProperty="cno">
-    insert into TAMLA_ACCOMPANY_REGI(MEM_TITLE,PLAN_DESC,SDT,EDT,MEM_TEM,MEM_WITHNUM) 
-    values(#{mTitle},#{pDesc},#{sDate},#{eDate},#{mTem},#{mWithNum})
+    insert into TAMLA_ACCOMPANY_REGI(MEM_TITLE,PLAN_DESC,SDT,EDT,MEM_TEM,MEM_WITHNUM,GEN) 
+    values(#{mTitle},#{pDesc},#{sDate},#{eDate},#{mTem},#{mWithNum},#{gen})
   </insert>
   
   
