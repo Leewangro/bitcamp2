@@ -294,16 +294,19 @@
                 <div id="map_modal" class="modal fade bd-example-modal-lg-map1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="display: none">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                         <div class="modal-content">
                             <div class="map_wrap">
                                 <div id="map" style="width:800px;height:500px;position:relative;overflow:hidden;"></div>
                                 <div id="menu_wrap" class="bg_white">
                                     <div class="option">
                                         <div>
-                                            <form onsubmit="searchPlaces(); return false;">
-                                                키워드 :
-                                                <input type="text" value="제주도" + id="keyword" size="15">
-                                                <button type="submit">검색하기</button>
+                                            <form class="search_bar" onsubmit="searchPlaces(); return false;">
+                                                장소명 :
+                                                <input class="search_input" type="text" value="제주도" + id="keyword" size="15">
+                                                <button class="search_btn" type="submit">검색하기</button>
                                             </form>
                                         </div>
                                     </div>
@@ -410,7 +413,6 @@
 
 
                     // 지도데이터
-                    console.log($(data))
                     for (let i = 0; i < data.length; i++) {
                         mapArr[i] = $(data[i])[0]
                         console.log($(data[i])[0])
@@ -419,17 +421,19 @@
                         console.log($(data[$(this).index()])[0])
                         addrValue.value = $(data[$(this).index()])[0].address_name
                         placeValue.value = $(data[$(this).index()])[0].place_name
-                        xValue = $(data[$(this).index()])[0].x
-                        yValue = $(data[$(this).index()])[0].y
+                        xValue.value = $(data[$(this).index()])[0].x
+                        yValue.value = $(data[$(this).index()])[0].y
+                        swal(
+                            "'" + $(data[$(this).index()])[0].place_name + "'",
+                            '리스트에 추가하였습니다.',
+                            'success'
+                        )
+                        $(".close").trigger('click')
                     })
 
-                    $(data).click(function () {
-                        console.log(this)
-                    })
-
-
-
-
+                    // $(data).click(function () {
+                    //     console.log(this)
+                    // })
 
                     // 페이지 번호를 표출합니다
                     displayPagination(pagination);
@@ -818,7 +822,9 @@
                     "<input id='post_title_" + count + "'" +
                     "type='text' value='' class='post_titl' placeholder='장소'>" +
                     "<input id='post_address_" + count + "'" +
-                    "type='text' onclick='/*sample5_execDaumPostcode()*/' class='post_addr' value='' placeholder='주소' readonly>" +
+                    "<input id='post_address_'"+count+ "type='text' onclick='addrClick(this)' class='post_addr' value='' placeholder='주소' readonly data-toggle='modal' data-target='.bd-example-modal-lg-map1'>" +
+                    "<input id='post_x_'"+count+ " type='text' class='post_x' value='' placeholder='위도'>" +
+                    "<input id='post_y_'"+count+ " type='text' class='post_y' value='' placeholder='경도'>" +
                     "<div id='map' style='width:300px;height:300px;margin-top:10px;display:none'></div>" +
                     "<textarea id='post_text_form" + count + "'" +
                     "class='title_textarea text_area' placeholder='내용을 입력하세요.' data-is-observable='false'></textarea>" +
@@ -950,7 +956,7 @@
                             $(imgBox).append(
                                 "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
                                 "<img src='" + serverRoot + "/files/" + file.filename +
-                                "_120x120.jpg'>" +
+                                "_180x180.jpg'>" +
                                 "</div>"
                             )
                             // $('<img>')
@@ -1134,6 +1140,8 @@
             //         });
             //     }
             // });
+
+            var previewImg = null;
             $("#fileupload1").fileupload({
                 url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
                 dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
@@ -1173,7 +1181,7 @@
                                     "'readyImgs'" + ">" +
                                     "</div>"
                                 )
-
+                                previewImg = data.files[i]
 
                                 // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
                                 //     '120px').appendTo(imagesDiv);
@@ -1185,7 +1193,6 @@
                             console.log("err");
                         }
                     }
-                    console.log($('.readyImgs').length)
 
 
                     // $('#btnSubmit').unbind("click");
@@ -1203,12 +1210,13 @@
                     console.log(data.result.files);
 
                     $.each(data.result.files, function (index, file) {
-                        let imgs = $(file)
                         let imgBox = $(imagesDiv).parent().parent().children()[1]
-                        $(imgBox).append(
+                         $(imgBox).append(
                             "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
-                            "<img src='" + serverRoot + "/files/" + file.filename +
-                            "_120x120.jpg'>" +
+                            "<img src='" + previewImg.preview.toDataURL() + "'>" +
+                            "<input name='imgName' type='text' value='"+file.filename+"'>" + 
+                            "<input name='imgX' type='text' value='"+file.filename+"'>" + 
+                            "<input name='imgY' type='text' value='"+file.filename+"'>" + 
                             "</div>"
                         )
 
