@@ -98,8 +98,12 @@
                             </a>
                         </div>
                         <!-- trip_box end -->
+                        <div class="trip_box no_select">
+                            <b>찜한 여행일정이 없습니다.</b>
+                        </div>
+                        <!-- trip_box end -->
                     </div>
-                    <!-- mytrip_box-->
+                    <!-- mytrip_box end-->
                     <div class="mytrip_box">
                         <h4>
                             <a href="#">찜한 여행일정</a>
@@ -117,6 +121,10 @@
                                     <span class="tag">휴식과 치유여행</span>
                                 </strong>
                             </a>
+                        </div>
+                        <!-- trip_box end -->
+                        <div class="trip_box no_select">
+                            <b>찜한 여행일정이 없습니다.</b>
                         </div>
                         <!-- trip_box end -->
                     </div>
@@ -140,6 +148,10 @@
                             </a>
                         </div>
                         <!-- trip_box end -->
+                        <div class="trip_box no_select">
+                            <b>찜한 여행일정이 없습니다.</b>
+                        </div>
+                        <!-- trip_box end -->
                     </div>
                     <!-- mytrip_box-->
                     <div class="mytrip_box">
@@ -159,6 +171,10 @@
                                     <span class="tag">휴식과 치유여행</span>
                                 </strong>
                             </a>
+                        </div>
+                        <!-- trip_box end -->
+                        <div class="trip_box no_select">
+                            <b>찜한 여행일정이 없습니다.</b>
                         </div>
                         <!-- trip_box end -->
                     </div>
@@ -273,7 +289,10 @@
         }
 
 
-        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box {}
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box {
+            min-height: 240px;
+            margin-bottom:20px;
+        }
 
         .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a {
             display: block;
@@ -297,6 +316,16 @@
             color: #fff;
             font-size: 12px;
 
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box.no_select {
+            background: url("../../img/common/ico_warn.png") no-repeat 50% 50px;
+            background-color: #f4f4f4;
+            border: 1px solid #e5e5e5;
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box.no_select b {
+            color: #959595;
         }
 
         .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a b {
