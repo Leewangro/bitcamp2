@@ -32,17 +32,35 @@
             <img src="../../img/common/sub_visual_img04.jpg" alt="대표이미지">
         </div>
         <!-- visual end -->
+        <nav id="location"></nav>
         <div id="content" class="content wrapper">
-
-
-
-
-
-
-            <div class="mytrip">
-
+            <div class="mytrip_wrap clear">
+                <div class="myinfo_box">
+                    <div class="photo_zone">
+                        <div class="porfile_photo">
+                            <i class="far fa-user-circle"></i>
+                        </div>
+                        <!-- porfile_photo end-->
+                    </div>
+                    <!-- photo_zone end -->
+                </div>
+                <!-- myinfo_box end -->
             </div>
             <!-- mytrip end -->
+
+
+            <style type="text/css">
+                .mytrip_wrap {}
+
+                .mytrip_wrap .myinfo_box {
+                    background: #f4f4f4;
+                }
+
+                .mytrip_wrap .myinfo_box .photo_zone {
+                    float: left;
+                    width: 30%;
+                }
+            </style>
 
 
 
@@ -317,6 +335,7 @@
         $(document).ready(function () {
             $("#header").load("../include/sub_header.html")
             $("#footer").load("../include/sub_footer.html")
+            $("#location").load("../include/location.html")
             /* id 지정을 통해서도 가능합니다. 
              $("#header").load("header.html #navbar")
              */
