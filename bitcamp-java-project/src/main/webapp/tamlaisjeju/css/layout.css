@@ -976,7 +976,7 @@ visual  - 비주얼
   padding: 0;
 }
 
-#content {}
+/* #content {}
 
 #content h3 {
   margin-bottom: 20px;
@@ -985,7 +985,7 @@ visual  - 비주얼
   color: #1b1b1b;
   text-align: center;
   font-weight: bold;
-}
+} */
 
 #content .h3_sub_txt {
   margin-top: 24px;
