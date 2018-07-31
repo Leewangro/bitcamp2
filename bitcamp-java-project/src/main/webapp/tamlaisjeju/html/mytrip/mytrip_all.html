@@ -35,7 +35,9 @@
         <nav id="location"></nav>
         <div id="content" class="content wrapper">
             <div class="mytrip_wrap clear">
-                <div class="myinfo_box">
+                <div class="myinfo_box clear">
+                    <h3>
+                        <span class="user_name">000</span>님의 제주여행</h3>
                     <div class="photo_zone">
                         <div class="porfile_photo">
                             <i class="far fa-user-circle"></i>
@@ -43,6 +45,35 @@
                         <!-- porfile_photo end-->
                     </div>
                     <!-- photo_zone end -->
+                    <div class="myinfo_zone">
+                        <ul>
+                            <li>
+                                <span>나의 여행일정</span>
+                                <b class="count">2</b>
+                            </li>
+                            <li>
+                                <span>찜한 즐겨찾기</span>
+                                <b class="count">2</b>
+                            </li>
+                            <li>
+                                <span>찜한 여행일정</span>
+                                <b class="count">2</b>
+                            </li>
+                            <li>
+                                <span>찜한 여행지</span>
+                                <b class="count">2</b>
+                            </li>
+                            <li>
+                                <span>나의 동행</span>
+                                <b class="count">2</b>
+                            </li>
+                            <li>
+                                <span>나의 여행기</span>
+                                <b class="count">2</b>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- myinfo_zone end-->
                 </div>
                 <!-- myinfo_box end -->
             </div>
@@ -56,10 +87,42 @@
                     background: #f4f4f4;
                 }
 
+                .mytrip_wrap .myinfo_box h3 {
+                    border-bottom: 1px solid #e5e5e5;
+                    margin:0;
+                }
+
                 .mytrip_wrap .myinfo_box .photo_zone {
+                    position: relative;
                     float: left;
                     width: 30%;
                 }
+
+                .mytrip_wrap .myinfo_box .photo_zone .porfile_photo {}
+
+                .mytrip_wrap .myinfo_box .photo_zone .porfile_photo img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                }
+
+                .mytrip_wrap .myinfo_box .photo_zone .porfile_photo i {
+                    font-size: 150px;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                }
+
+
+
+                .mytrip_wrap .myinfo_box .myinfo_zone {
+                    float: right;
+                    width: 70%;
+                }
+
+                .mytrip_wrap .myinfo_box .myinfo_zone ul {}
+
+                .mytrip_wrap .myinfo_box .myinfo_zone ul li {}
             </style>
 
 
