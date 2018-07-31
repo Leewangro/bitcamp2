@@ -80,19 +80,40 @@
 
                 <div class="mytrip_box_wrap clear">
                     <div class="mytrip_box">
-                        <h4><a href="#">나의 여행일정</a></h4>
+                        <h4>
+                            <a href="#">나의 여행일정</a>
+                        </h4>
+
+                        <div class="trip_box">
+                            <a href="#">
+                                <span class="category">
+                                    3박4일
+                                </span>
+                                <img src="../../img/common/board_img.gif" alt="이미지">
+                                <b>한 템포 쉬어가는 여행</b>
+                                <span class="trip_info"></span>
+                            </a>
+
+                        </div>
+                        <!-- trip_box end -->
                     </div>
                     <!-- mytrip_box-->
                     <div class="mytrip_box">
-                        <h4><a href="#">찜한 여행일정</a></h4>
+                        <h4>
+                            <a href="#">찜한 여행일정</a>
+                        </h4>
                     </div>
                     <!-- mytrip_box-->
                     <div class="mytrip_box">
-                        <h4><a href="#">찜한 여행지</a></h4>
+                        <h4>
+                            <a href="#">찜한 여행지</a>
+                        </h4>
                     </div>
                     <!-- mytrip_box-->
                     <div class="mytrip_box">
-                        <h4><a href="#">방문 여행지</a></h4>
+                        <h4>
+                            <a href="#">방문 여행지</a>
+                        </h4>
                     </div>
                     <!-- mytrip_box-->
                 </div>
@@ -110,6 +131,7 @@
 
         .mytrip_wrap .myinfo_box {
             background: #f4f4f4;
+            margin-bottom: 30px;
         }
 
         .mytrip_wrap .myinfo_box h3 {
@@ -187,8 +209,46 @@
             width: 23%;
             margin: 0 1%;
         }
-        .mytrip_wrap .mytrip_box_wrap .mytrip_box  h4{
-            border-bottom:2px solid #eee;
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box h4 {
+            margin: 0 0 30px 0;
+            padding: 0 0 10px 0;
+            border-bottom: 2px solid #2168f6;
+
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box h4 a {
+            display: block;
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box h4:before {
+            display: none;
+        }
+
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box {}
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a {
+            display: block;
+            position: relative;
+            border:1px solid #e5e5e5;
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a img {
+            display: block;
+            width: 100%;
+        }
+
+        .mytrip_wrap .mytrip_box_wrap .mytrip_box .trip_box a span.category {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            font-size: 12px;
+
         }
     </style>
 
