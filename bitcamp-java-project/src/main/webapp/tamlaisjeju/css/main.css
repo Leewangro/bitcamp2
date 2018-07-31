@@ -329,6 +329,7 @@
     position: relative;
     width: 50%;
     margin: -4px;
+    background:url("../img/main/img_bg.png") repeat;
     /* margin: -4px 0px -4px -4px; */
 }
 
