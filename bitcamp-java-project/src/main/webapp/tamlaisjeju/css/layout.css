@@ -425,12 +425,12 @@ body.modal-open {
   border-top-right-radius: 0.3rem;
 }
 
-.login .modal-header .close {
+.modal-header .modal-header .close {
   padding: 1rem;
   margin: -1rem -1rem -1rem auto;
 }
 
-.login .modal-title {
+.modal-header .modal-title {
   margin-bottom: 0;
   margin-left: 43%;
   line-height: 1.5;
