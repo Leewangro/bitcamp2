@@ -51,7 +51,6 @@ var common = {
 			$('.sigungu').text('전체');
 		})
 	},
-
 	sigunguChange: function () {
 		$('.sigunguLists').on('click', 'li', function (e) {
 			draw.sigunguCode = $(this).attr("data-toggle");
@@ -62,87 +61,72 @@ var common = {
 			//$('.sigungu').text($(this).context.innerHTML);
 		})
 	},
-
 	tabChange: function () {
-		$(".contenttype a").click(function () {
-			$(".contenttype a").addClass("active");
+		$(".contenttype").click(function () {
+			$(".contenttype").addClass("active");
 			draw.contentTypeId = $(this).attr("data-toggle");
 			$("#travelContents").empty();
 			draw.elementCount = 1;
 			$(".contentTypeList").empty();
-			draw.sigunguCode = '';
-			//draw.areaSigunguCodeGet();
+			draw.contentTypeId = '';
 			draw.elements();
-			//$(".areaList").css('visibility', 'hidden');
-			//$('.area').text($(this).context.innerHTML);
-			//$('.sigungu').text('전체');
+
 		})
-
-
-		// $('.contentTypeList').on('click', 'li', function (e) {
-		// 	draw.contentTypeId = $(this).attr("data-toggle");
-		// 	$("#travelContents").empty();
-		// 	draw.elementCount = 1;
-		// 	draw.elements();
-		// $(".sigunguLists").css('visibility', 'hidden');
-		//$('.sigungu').text($(this).context.innerHTML);
-		// })
-
 	},
 
 
 
 
-
-	areaDetailCodeParsing: function (data) {
+	areaDetailCodeParsing : function (data) {
 		var list = data.response.body.items.item
 		var sigunguDraw = '';
 		if (list.code != 1) {
 			$.each(list, function (i, item) {
 				i += 1;
 				if (i === 1) {
-					sigunguDraw += "<div class='hiddenMenu'>" +
-						"<li class='sigunguList' data-toggle=''>" + '전체' + '</li>' +
-						"<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
+					sigunguDraw +=  "<div class='hiddenMenu'>"
+										+"<li class='sigunguList' data-toggle=''>" + '전체' +'</li>' 
+										+"<li class='sigunguList' data-toggle="+ item.code +'>'+ item.name +'</li>'
 				} else if (i % 7 === 0) {
-					sigunguDraw += "</div><div class='hiddenMenu'>" +
-						"<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
+					sigunguDraw +=  "</div><div class='hiddenMenu'>"
+										+"<li class='sigunguList' data-toggle="+ item.code +'>'+ item.name +'</li>'
 				} else {
-					sigunguDraw += "<li class='sigunguList' data-toggle=" + item.code + ">" + item.name + "</li>"
+					sigunguDraw += "<li class='sigunguList' data-toggle="+ item.code +">"+ item.name +"</li>" 
 				}
 			})
 			$(".sigunguLists").append(sigunguDraw);
 		} else {
-			sigunguDraw =
+			sigunguDraw = 
 				'<span>상세지역이 없습니다</span>'
-			$(".sigunguLists").append(sigunguDraw)
+				$(".sigunguLists").append(sigunguDraw)
 		}
-	},
+	},	
+
+
+
+
+
 
 
 	tabParsing: function (data) {
 		var list = data.response.body.items.item
-		var sigunguDraw = '';
+		var contentTypeIdDraw = '';
 		if (list.code != 1) {
 			$.each(list, function (i, item) {
 				i += 1;
 				if (i === 1) {
-					sigunguDraw += "<div class='hiddenMenu'>" +
-						"<li class='sigunguList' data-toggle=''>" + '전체' + '</li>' +
-						"<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
+					contentTypeIdDraw += "<div class='contentTypeList'>" +
+						"<li class='contenttype' data-toggle=''>" + '전체' + '</li>' +
+						"<li class='contenttype' data-toggle=" + item.code + '>' + item.name + '</li>'
 				} else if (i % 7 === 0) {
-					sigunguDraw += "</div><div class='hiddenMenu'>" +
-						"<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
+					contentTypeIdDraw += "</div><div class='hiddenMenu'>" +
+						"<li class='contenttype' data-toggle=" + item.code + '>' + item.name + '</li>'
 				} else {
-					sigunguDraw += "<li class='sigunguList' data-toggle=" + item.code + ">" + item.name + "</li>"
+					contentTypeIdDraw += "<li class='contenttype' data-toggle=" + item.code + ">" + item.name + "</li>"
 				}
 			})
-			$(".sigunguLists").append(sigunguDraw);
-		} else {
-			sigunguDraw =
-				'<span>상세지역이 없습니다</span>'
-			$(".sigunguLists").append(sigunguDraw)
-		}
+			$(".contenttype").append(contentTypeIdDraw);
+		} 
 	},
 
 	buttonAction: function () {

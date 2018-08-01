@@ -20,6 +20,7 @@ $(function () {
     common.areaChange();
     common.sigunguChange();
     common.buttonAction();
+    common.tabChange();
     draw.init();
     draw.elements();
 })
@@ -34,12 +35,27 @@ var parsing = {
         console.log(data)
     },
 
-    tab: function (data) {
-        console.log(data)
-    },
+
+
 
     dataParsing: function (data) {
         var list = data.response.body.items.item
+
+        var tabElements =
+            "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
+            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'" + "target='_blank'>" +
+            "<div class='thumbnail'>" +
+            "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+            "<div class='caption text-center'>" +
+            "<h5>" + item.title + "</h5>" +
+            "<h6>" + item.addr1 + "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</a>" +
+            "</div>"
+        $("#travelContents").append(tabElements)
+
+
         if (Array.isArray(list)) {
             if (list != undefined) {
                 $.each(list, function (i, item) {
@@ -92,7 +108,7 @@ var draw = {
         this.elementCount = 1;
         this.areaCode = 39;
         this.sigunguCode = '';
-        this.contentTypeId = 12;
+        this.contentTypeId = '';
     },
 
 
@@ -104,43 +120,7 @@ var draw = {
         common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);
     },
 
-    tabContentTypeIdGet: function(){
-        common.getInfo('get', 'areaBasedList', 'contentTypeId=' + this.contentTypeId + '&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
-    }
+
 
 
 }
-
-
-// tab: function (data) {
-
-//     var list = data.response.body.items.item
-//     var contentTypeId = '';
-//     if (list.code != 1) {
-//         $.each(list, function (i, item) {
-//             i += 1;
-//             if (i === 1) {
-//                 tabDraw += "<div class='hiddenMenu'>" +
-//                     "<li class='sigunguList' data-toggle=''>" + '전체' + '</li>' +
-//                     "<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
-//             } else if (i % 7 === 0) {
-//                 tabDraw += "</div><div class='hiddenMenu'>" +
-//                     "<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
-//             } else {
-//                 tabDraw += "<li class='sigunguList' data-toggle=" + item.code + ">" + item.name + "</li>"
-//             }
-//         })
-//         $(".sigunguLists").append(tabDraw);
-//     } else {
-//         tabDraw =
-//             '<span>상세지역이 없습니다</span>'
-//         $(".sigunguLists").append(tabDraw)
-//     }
-
-
-
-
-
-
-
-// },
