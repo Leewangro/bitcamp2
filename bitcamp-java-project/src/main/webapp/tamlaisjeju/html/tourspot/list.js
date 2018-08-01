@@ -9,6 +9,12 @@
 - 베니키아, 한옥, 굿스테이 숙박 검색 : 지역정보(선택) > 각 숙박 정보 목록
 */
 
+
+
+
+
+
+
 $(function () {
     // common.leftMenuImport();
     common.areaChange();
@@ -30,7 +36,7 @@ var parsing = {
                 $.each(list, function (i, item) {
                     var InfoElements =
                         "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-                        "<a href='../tourspot/cmm/detail.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'" + "target='_blank'>" +
+                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'" + "target='_blank'>" +
                         "<div class='thumbnail'>" +
                         "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
                         "<div class='caption text-center'>" +
@@ -51,7 +57,7 @@ var parsing = {
             console.log(data)
             var infoElements =
                 "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-                "<a href='../tourspot/cmm/detail.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
+                "<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
                 "<div class='thumbnail'>" +
                 "<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
                 "<div class='caption text-center'>" +
