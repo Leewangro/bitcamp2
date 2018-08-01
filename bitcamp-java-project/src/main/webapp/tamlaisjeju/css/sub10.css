@@ -1754,8 +1754,8 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
-.customoverlay {position:relative;bottom:40px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left; background-color:white; }
+.customoverlay {position:relative;text-align:center;bottom:43px;border-radius:6px;float:left; background-color:#1a7ad9; color:white; max-width:200px; }
 .close {position: absolute;top: -22px;right: 10px;color: #888;width: 10px;height: 10px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png'); background-size:10px;}
 .close:hover {cursor: pointer;}
-.customoverlay div {overflow: hidden; text-overflow: ellipsis; width:200px;font-size:13px;margin-left:10px;display:inline-block}
+.customoverlay div {padding:2px 5px;overflow: hidden; text-overflow: ellipsis;font-size:13px;display:inline-block;text-align:center;}
 .customoverlay img {width:50px;height:50px; display:inline-block;}
