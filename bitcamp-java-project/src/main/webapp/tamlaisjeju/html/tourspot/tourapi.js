@@ -46,7 +46,7 @@ var common = {
                 draw.areaSigunguCodeGet();
                 draw.elements();
                 $(".areaList").css('visibility','hidden');
-                $('.area').text($(this).context.innerHTML);
+                //$('.area').text($(this).context.innerHTML);
                 $('.sigungu').text('전체');
             })
         },
@@ -58,7 +58,7 @@ var common = {
                 draw.elementCount = 1;
                 draw.elements(); 
                 $(".sigunguLists").css('visibility','hidden');
-                $('.sigungu').text($(this).context.innerHTML);
+                //$('.sigungu').text($(this).context.innerHTML);
             })
         },
 
