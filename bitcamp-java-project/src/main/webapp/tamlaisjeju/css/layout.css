@@ -2252,7 +2252,7 @@ board_list - 게시판 리스트
 }
 
 .category_tab li {
-  width: 15%;
+  width: 10%;
   margin: 0 5px;
   display: inline-block;
   overflow: hidden;
@@ -2260,11 +2260,11 @@ board_list - 게시판 리스트
 
 .category_tab li a {
   display: block;
-  padding: 15px;
+  padding: 10px 5px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 30px;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 24px;
 }
 
