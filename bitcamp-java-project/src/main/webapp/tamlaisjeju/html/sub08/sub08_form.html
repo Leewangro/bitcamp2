@@ -938,6 +938,7 @@
 
                 count++;
                 var imagesDiv = null;
+                var previewsCnt2 = 0;
                 $("#fileupload" + (count - 1)).fileupload({
                     url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
                     dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
@@ -1009,33 +1010,29 @@
                         console.log(data.result.files);
 
                         $.each(data.result.files, function (index, file) {
-                            let imgs = $(file)
+                            let previews = [];
+                            $.each(data.files, function (index, file) {
+                                previews.push(file.preview.toDataURL())
+                            });
                             let imgBox = $(imagesDiv).parent().parent().children()[1]
                             $(imgBox).append(
                                 "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
-                                "<img src='" + serverRoot + "/files/" + file.filename +
-                                "_180x180.jpg'>" +
+                                "<img src='" + previews[previewsCnt2] + "'>" +
+                                "<input name='imgName' type='text' value='" + file.filename +
+                                "'>" +
+                                "<input name='imgX' type='text' value='" + file.filename + "'>" +
+                                "<input name='imgY' type='text' value='" + file.filename + "'>" +
                                 "</div>"
                             )
-                            // $('<img>')
-                            // .attr('src', serverRoot + '/files/' + file.filename + "_180x180.jpg")
-                            // .appendTo(imgBox);
-                            console.log(imgs[0])
-                            // imgBox.append(imgs[0])
-                            // imgs[0].removeClass('readyImgs')
-                            console.log("aaa")
-                            console.log($("img[name=" + "'" + file.originname + "'" + "]"))
-                            console.log("aaa")
-                            // $("img[name=" + "'" + file.originname + "'" + "]").remove();
-                            // console.log($('.readyImgs').length)
-                            // if ($('.readyImgs').length < 1) {
-                            //     $('#btnSubmit').attr("disabled", true);
-                            // }
+                            previewsCnt2++;
 
                             if ($('imagesDiv').children("img").length == 0) {
                                 $(imagesDiv).html("업로드 대기중인 사진이 없습니다.")
                             }
                         });
+                        previewsCnt2 = 0;
+
+
                     }
                 });
             }
@@ -1108,8 +1105,6 @@
             //     }
             // });
             /////
-            var imgBox = $('#imgbox2_');
-
             // $("#fileupload1").fileupload({
             //     url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
             //     dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
@@ -1199,7 +1194,8 @@
             //     }
             // });
 
-            var previewImg = null;
+            var previewImg = [];
+            var previewsCnt = 0;
             $("#fileupload1").fileupload({
                 url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
                 dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
@@ -1239,7 +1235,6 @@
                                     "'readyImgs'" + ">" +
                                     "</div>"
                                 )
-                                previewImg = data.files[i]
 
                                 // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
                                 //     '120px').appendTo(imagesDiv);
@@ -1268,20 +1263,28 @@
                     console.log(data.result.files);
 
                     $.each(data.result.files, function (index, file) {
+                        let previews = [];
+                        $.each(data.files, function (index, file) {
+                            previews.push(file.preview.toDataURL())
+                        });
                         let imgBox = $(imagesDiv).parent().parent().children()[1]
                         $(imgBox).append(
                             "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
-                            "<img src='" + previewImg.preview.toDataURL() + "'>" +
+                            "<img src='" + previews[previewsCnt] + "'>" +
                             "<input name='imgName' type='text' value='" + file.filename + "'>" +
                             "<input name='imgX' type='text' value='" + file.filename + "'>" +
                             "<input name='imgY' type='text' value='" + file.filename + "'>" +
                             "</div>"
                         )
+                        previewsCnt++;
 
                         if ($('imagesDiv').children("img").length == 0) {
                             $(imagesDiv).html("업로드 대기중인 사진이 없습니다.")
                         }
                     });
+                    previewsCnt = 0;
+
+
                 }
             });
         </script>

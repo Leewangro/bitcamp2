@@ -1,115 +1,68 @@
-<ul class="login" style="float:right; border-right: 1px solid #353e4d;">
-	<a id="login" data-toggle="modal" data-target="#exampleModalCenter" href="#" style="display:block">
-		로그인
-	</a>
-	<a id="logout" href="#" onclick="logout();" style="display:none;">
-		로그아웃
-	</a>
-	<!-- Button trigger modal -->
-		
-		
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 id="exampleModalLongTitle" class="modal-title">로그인</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					로그인 하시면 여행지 리뷰 등록 및 내가 찜한 여행지와 일정, 방문지 등의 다양한 기능을 사용하실 수 있습니다.
-				</div>
-				<div class="modal-footer">
-					<fb:login-button
-						id="fb-btn" 
-						scope="public_profile,email"
-						onlogin="checkLoginState();">
-					</fb:login-button>
-						
-						<a id="custom-login-btn" href="javascript:loginWithKakao()">
-							<button type="button" class="btn_login kt"><span>카카오톡으로 로그인</span></button>
-						</a>
-
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- Facebook login or logout button -->
+<ul class="login">
+<li><a id="Login" data-toggle="modal" data-target="#exampleModalCenter" href="#" onclick="fbLogin();"><img src="../../img/common/ico_facebook_l.png"></a></li>
+<li><span><img id="userPic" style="display:none;" src=
+    "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=243294969832614&height=50&width=50&ext=1535703401&hash=AeSCCs0TWbTnyBgY"></span><a id="Logout" onclick="Logout()" style="display:none;">로그아웃</a></li>
 </ul>
-        
-
 <script>
-	window.fbAsyncInit = function() {
-		FB.init({
-		appId      : '228605734455848',
-		cookie     : true,
-		xfbml      : true,
-		version    : 'v3.0'
-		});
-		
-		FB.getLoginStatus(function(response) {
-    		statusChangeCallback();
-		});
-	};
-	
-	(function(d, s, id){
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) {return;}
-		js = d.createElement(s); js.id = id;
-		js.src = "https://connect.facebook.net/en_US/sdk.js";
-		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-
-	function statusChangeCallback(response) {
-		if(response.status === 'connected'){
-			console.log('로그인성공');
-			setElements(true);
-		} else {
-			console.log('로그인실패');
-			setElements(false);
-		}
-	}
-
-	
-	function checkLoginState() {
-		FB.getLoginStatus(function(response) {
-			statusChangeCallback(response);
-		});
-	}
-
-	function setElements(isLoggedIn) {
-		if(isLoggedIn) {
-			document.getElementById('login').style.display ='none';
-			document.getElementById('logout').style.display ='block';
-		} else {
-			document.getElementById('login').style.display ='block';
-			document.getElementById('logout').style.display ='none';
-		}
-	}
-
-	function logout(){
-		FB.logout(function(response){
-			setElements(false);
-		})
-	}
-</script>
-
-<script type='text/javascript'>
-    //<![CDATA[
-      // 사용할 앱의 JavaScript 키를 설정해 주세요.
-      Kakao.init('cccee00c7c2c1125ce4e68ddd47e6a2d');
-      function loginWithKakao() {
-        // 로그인 창을 띄웁니다.
-        Kakao.Auth.login({
-          success: function(authObj) {
-            console.log(JSON.stringify(authObj));
-          },
-          fail: function(err) {
-            console.log(JSON.stringify(err));
-          }
-        });
-      };
-    //]]>
-</script>
+        window.fbAsyncInit = function() {
+            // FB JavaScript SDK configuration and setup
+            FB.init({
+              appId      : '228605734455848', // FB App ID
+              cookie     : true,  // enable cookies to allow the server to access the session
+              xfbml      : true,  // parse social plugins on this page
+              version    : 'v3.0' // use graph api version 2.8
+            });
+            
+            // Check whether the user already logged in
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    //display user data
+                    getFbUserData();
+                }
+            });
+        };
+        
+        // 로그인 창 띄우기
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/ko_KR/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        
+        // Facebook login with JavaScript SDK
+        function fbLogin() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    // Get and display the user profile data
+                    getFbUserData();
+                } else {
+                    document.getElementById('status').innerHTML = '로그인 실패';
+                }
+            }, {scope: 'email'});
+        }
+        
+        // Fetch the user profile data from facebook
+        function getFbUserData(){
+            FB.api('/me', {locale: 'ko_KR', fields: 'id,name,email,link,gender,picture'},
+            function (response) {
+                document.getElementById('Login').style.display = 'none';
+                document.getElementById('Logout').style.display = 'block';
+                document.getElementById('userPic').style.display = 'block';
+                //document.getElementById('userPic').src = response.picture;
+                console.log(response);
+                console.log(response.picture);
+            });
+        }
+        
+        // Logout from facebook
+        function Logout() {
+            FB.logout(function() {
+                document.getElementById('Login').style.display = 'block';
+                document.getElementById('Logout').style.display = 'none';
+                document.getElementById('userPic').style.display = 'none';
+            });
+        }
+        </script>
