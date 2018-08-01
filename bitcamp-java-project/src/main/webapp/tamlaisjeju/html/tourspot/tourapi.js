@@ -61,6 +61,9 @@ var common = {
 			//$('.sigungu').text($(this).context.innerHTML);
 		})
 	},
+
+
+	
 	tabChange: function () {
 		$(".contenttype").click(function () {
 			$(".contenttype").addClass("active");
@@ -111,21 +114,22 @@ var common = {
 	tabParsing: function (data) {
 		var list = data.response.body.items.item
 		var contentTypeIdDraw = '';
-		if (list.code != 1) {
+		
+		if (list.contenttypeid != 1) {
 			$.each(list, function (i, item) {
 				i += 1;
 				if (i === 1) {
 					contentTypeIdDraw += "<div class='contentTypeList'>" +
 						"<li class='contenttype' data-toggle=''>" + '전체' + '</li>' +
-						"<li class='contenttype' data-toggle=" + item.code + '>' + item.name + '</li>'
+						"<li class='contenttype' data-toggle=" + item.contenttypeid + '>' + item.name + '</li>'
 				} else if (i % 7 === 0) {
 					contentTypeIdDraw += "</div><div class='hiddenMenu'>" +
-						"<li class='contenttype' data-toggle=" + item.code + '>' + item.name + '</li>'
+						"<li class='contenttype' data-toggle=" + item.contenttypeid + '>' + item.name + '</li>'
 				} else {
-					contentTypeIdDraw += "<li class='contenttype' data-toggle=" + item.code + ">" + item.name + "</li>"
+					contentTypeIdDraw += "<li class='contenttype' data-toggle=" + item.contenttypeid + ">" + item.name + "</li>"
 				}
 			})
-			$(".contenttype").append(contentTypeIdDraw);
+			$("#tab").append(contentTypeIdDraw);
 		} 
 	},
 

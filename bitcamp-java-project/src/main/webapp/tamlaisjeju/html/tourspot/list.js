@@ -42,18 +42,10 @@ var parsing = {
         var list = data.response.body.items.item
 
         var tabElements =
-            "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-            "<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
-            "<div class='thumbnail'>" +
-            "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-            "<div class='caption text-center'>" +
-            "<h5>" + item.title + "</h5>" +
-            "<h6>" + item.addr1 + "</h6>" +
-            "</div>" +
-            "</div>" +
-            "</a>" +
-            "</div>"
-        $("#travelContents").append(tabElements)
+        console.log(data)
+            
+            "<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" 
+        $("#tab").append(tabElements)
 
 
         if (Array.isArray(list)) {
@@ -108,7 +100,7 @@ var draw = {
         this.elementCount = 1;
         this.areaCode = 39;
         this.sigunguCode = '';
-        this.contentTypeId = '';
+        this.contentTypeId = '12';
     },
 
 
