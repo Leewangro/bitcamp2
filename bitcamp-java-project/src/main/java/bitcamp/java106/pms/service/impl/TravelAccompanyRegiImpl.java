@@ -38,4 +38,9 @@ public class TravelAccompanyRegiImpl implements TravelAccompanyRegiService {
         System.out.println(travelAccompanyRegi);
         return tavelAccompanyRegiDao.insert(travelAccompanyRegi);
     }
+
+   @Override
+   public TravelAccompanyRegi recentData() {
+      return tavelAccompanyRegiDao.selectOneByRecent();
+   }
 }

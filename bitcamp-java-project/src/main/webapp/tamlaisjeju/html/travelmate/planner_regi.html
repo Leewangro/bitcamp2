@@ -49,19 +49,15 @@
 				<div class="gen" style="width: 180px;">
 					<input id="m-gen" type="text" readonly="readonly">
 				</div>
-
 			</div>
 			<div class="plan_out">
 				<div class="plan_out_btn"
 					style="border: 1px solid #2793db; color: #2793db; background-color: white;">
 					저장&amp;닫기 <a href="../sub09/sub09_view"></a>
 				</div>
-
 			</div>
 		</div>
 	</div>
-
-
 	<div class="container" id="sub10" style="padding: 90px 0 0 0;">
 		<div class="content_wrap">
 			<div class="full_wrap">
@@ -69,7 +65,6 @@
 					<div class="f1">
 						<ul id="pn_title_box" data="" data-member_srl="">
 							<li data="pn_data">
-
 								<div class="full_data_info f1">
 									<div class="cal_title">여행 일정</div>
 									<input type="text" name="datefilter" id="datefilter"
@@ -140,7 +135,6 @@
 									<div class="clear"></div>
 								</div>
 							</div>
-
 							<div id="schedule_detail_box"
 								class="connectedSortable ui-sortable">
 								<div class="day_spot_item" data="" data-set_day=""
@@ -433,7 +427,6 @@
 									<div class="spot_order_box">24시</div>
 								</div>
 							</div>
-
 							<div class="inspot_add_box">
 								<div class="inspot_set_box">
 									<div class="fl add_inspot_spot_btn" onclick="my_spot_inspot()">+
@@ -474,8 +467,6 @@
 								</li>
 							</ul>
 						</div>
-
-
 						<div id="menu_wrap" class="bg_white">
 							<ul id="placesList" class="filterUL"></ul>
 							<!-- <div id="pagination"></div> -->
@@ -487,7 +478,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="footer"></div>
 	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
 	<script type="text/javascript"
@@ -509,7 +499,6 @@
              */
         });
     </script>
-
 	<script id="tr-template" type="text/x-handlebars-template">
 {{#each list}}
                         <div class="item" id=dragitem{{@index}}; draggable="true" data-target={{@index}}>
@@ -524,9 +513,7 @@
                             <div class="clear"></div>
                         </div>
 {{/each}}
-
 </script>
-
 	<script type="text/javascript">
  jQuery(function($) {
       $('#keyword').keyup(function(event) {
@@ -540,8 +527,6 @@
      });
  });
 </script>
-
-
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
 	<script>
@@ -557,7 +542,6 @@ var marker;
 var prevClickItem = null;
 var prevClickMarker = null;
 let datas = [];
-
 function markerOverlayDelete() {
 	if (marker != null || overlay != null) {
 		   marker.setMap(null);
@@ -565,7 +549,6 @@ function markerOverlayDelete() {
 	}
 	
 }
-
 $('#a12').on('click', function() {
 	markerOverlayDelete()
 	if (datas != null) {
@@ -595,8 +578,6 @@ $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBased
 // 마커 이미지의 이미지 주소입니다
 });
 });
-
-
 $('#a39').on('click', function() {
 	markerOverlayDelete()
 	if (datas != null) {
@@ -626,8 +607,6 @@ $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBased
 // 마커 이미지의 이미지 주소입니다
 });
 });
-
-
 $('#a38').on('click', function() {
 	markerOverlayDelete()
 	if (datas != null) {
@@ -657,8 +636,6 @@ $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBased
 // 마커 이미지의 이미지 주소입니다
 });
 });
-
-
 $('#a32').on('click', function() {
 	markerOverlayDelete()
 	if (datas != null) {
@@ -688,8 +665,6 @@ $.getJSON("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBased
 // 마커 이미지의 이미지 주소입니다
 });
 });
-
-
 function markerPoint(datas) {
 		    var bounds = new daum.maps.LatLngBounds();
 			if (!(overlay == null)) {
@@ -735,7 +710,6 @@ function markerPoint(datas) {
 			overlay = null;
 			marker.setMap(null);
 		}
-
 function markerOverlay(node) {
         
         for (var i = 0; i < datas.length; i++) {
@@ -764,14 +738,11 @@ function dayRoot(pa) {
           image: markerImage
       })
       
-      let txtNode = $("<textarea id='sce-text' width='100px' height='150px'>");
+      let txtNode = $("<textarea id='sce-text'>");
+      $(txtNode).css('width','101%').css('height','80px').css('margin-top','7px')
       $(pa).parent().append(txtNode);
 }
-
 </script>
-
-
-
 	<!-- document.getElementsByClassName('cal').datefilter.value; -->
 	<script>
 $(function() {
@@ -781,16 +752,13 @@ $(function() {
           cancelLabel: 'Clear'
       }
   });
-
   $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
 	  $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
 	  calDate();
   });
-
   $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
       $(this).val('');
   });
-
 });
 var dayOfWeek = null;
 var calMonthDate = null;
@@ -820,7 +788,6 @@ function calDate() {
     var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
     $("#cat_date_all").empty();
     $("#schedule_full_box").empty();
-
     for (var i = 0; i < betweenDay+1; i++) {
         var dat3 = (new Date(((dat1/currDay)+i)*currDay));
         calMonthDate = (dat3.getMonth() + "." + (dat3.getDate()));
@@ -851,7 +818,6 @@ function calDate() {
             	        "<div class='clear'></div>" +
             	    "</div>" +
             	"</div>" +
-
             	"<div id='schedule_detail_box' class='connectedSortable ui-sortable'>" +
             	    "<div class='day_spot_item'>" +
             	        "<div class='item_ctrl_box'>" +
@@ -1117,12 +1083,10 @@ function calDate() {
             	    "</div>" +
             	"</div>" +
             	"</div>"
-
             	);
     }
     }
 }
-
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("schedule_full");
@@ -1137,7 +1101,6 @@ function openCity(evt, cityName) {
     evt.currentTarget.className += " on";
 }
 document.getElementById("defaultOpen").click();
-
 /* function del_plan_inspot_day_all(){
     if (confirm('일정을 초기화하겠습니까?') == true){ 
          $("#cat_date_all").empty();
@@ -1147,9 +1110,7 @@ document.getElementById("defaultOpen").click();
        return;
    }
  } */
-
 </script>
-
 	<script>
 /*cumtom select*/
 var x, i, j, selElmnt, a, b, c;
@@ -1224,11 +1185,7 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
-
-
 </script>
-
-
 	<script>
     /* Events fired on the drag target */
     document.addEventListener("dragstart", function(event) {
@@ -1257,17 +1214,13 @@ document.addEventListener("click", closeAllSelect);
         dayRoot($(nodeCopy).children()[1]);
     });
     </script>
-
-
 	<!-- <script>
   $('#schedule_detail_box, .list_box').on('click', '.spot_distance_box', function () {
       return false;
     });
-
     $('#schedule_detail_box').on('click', '.btn_del', function () {
       cur_day = $(this).parent().parent().attr('data-set_day');
       cur_order = $(this).parent().parent().attr('data');
-
       del_plan_inspot(cur_day, cur_order);
       _now_menu = $('#cat_menu li.on').attr('data');
       if (_now_menu == 'clip') {
@@ -1276,17 +1229,13 @@ document.addEventListener("click", closeAllSelect);
           get_clip_list(1);
         }, 500);
       }
-
       return false;
     });
-
-
 $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function () {
       $(this).find('.item_ctrl_box').show();
       _now_menu = $(this).parent().attr('id');
       var no = $(this).attr('data-no');
       var pl_cat = $(this).attr('data-pl_cat');
-
       if (_now_menu == 'schedule_detail_box') {
         var _this_only_clip = 1;
       } else {
@@ -1294,7 +1243,6 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
       }
       markers['only_clip_' + _this_only_clip][no].setZIndex(99999999999999);
       markers['only_clip_' + _this_only_clip][no].setIcon('/res/map/marker/ic_current.png');
-
       if (pl_cat == '800' || pl_cat == '901' || pl_cat == '902' || pl_cat == '903') {
         _arv_no = Number(no) + 1;
         markers['only_clip_' + _this_only_clip][_arv_no].setZIndex(99999999999999);
@@ -1304,26 +1252,21 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
         markers['only_clip_' + _this_only_clip][no].set("labelClass", "s_label");
       }
     });
-
     $('#schedule_detail_box, .list_box').on('mouseout', '.day_spot_item', function () {
       $(this).find('.item_ctrl_box').hide();
-
       _now_menu = $(this).parent().attr('id');
       var _order = $(this).attr('data');
       var pl_srl = $(this).attr('data-rel_srl');
       var now_pl_srl = $('#select_detail_view_spot').attr('data');
-
       if (_now_menu == 'schedule_detail_box') {
         var _this_only_clip = 1;
       } else {
         var _this_only_clip = 0;
       }
-
       if (pl_srl != now_pl_srl) {
         var no = $(this).attr('data-no');
         var pl_cat = $(this).attr('data-pl_cat');
         var is_clip_yn = markers['only_clip_' + _this_only_clip][no].clip_yn;
-
             markers['only_clip_' + _this_only_clip][no].setZIndex(99999999999999);
         if (is_clip_yn == 'y') {
           markers['only_clip_' + _this_only_clip][no].setIcon('/res/map/marker/' + pl_cat + '_' + _order + '.png');
@@ -1339,10 +1282,8 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
           markers['only_clip_' + _this_only_clip][no].set("labelClass", "labels");
         }
       }
-
     });
 </script> -->
-
 	<script>
 $('#category > li').click(function() {
     // 클릭된 당사자 => this
@@ -1378,18 +1319,17 @@ $('#category > li').click(function() {
 			var partner = $('#m-num');
 			var theme = $('#m-tem');
 			var gender = $('#m-gen');
-
 			$.ajax({
-				url : serverRoot + "/json/accompanyregi/list",
+				url : serverRoot + "/json/accompanyregi/recent",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
 					console.log(data)
 					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
 					//$(sDay).append(data[10].sDate);
 					//$(eDay).append(data[10].eDate);
-					$(partner).val(data[10].mWithNum);
-					$(theme).val(data[10].mTem);
-					$(gender).val((data[10].gen == 0 ? "무관" : data[10].gen == 1 ? "남자" : "여자"));
+					$(partner).val(data.mWithNum);
+		            $(theme).val(data.mTem);
+		            $(gender).val((data.gen == 0 ? "무관" : data.gen == 1 ? "남자" : "여자"));
 				},
 				error : function(e) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
@@ -1406,11 +1346,9 @@ $('#category > li').click(function() {
 		$('.plan_out_btn')
 				.click(
 						function() {
-
 							var param = {
 								cDesc : $('#sce-text').val(),
 							};
-
 							$.ajax({
 								type : "POST",
 								url : serverRoot + "/json/accompanyregi/add",
@@ -1421,11 +1359,9 @@ $('#category > li').click(function() {
 								error : function(data) {
 									alert("빈 칸을 채워주세요.");
 								}
-
 							});
 						}); 
 	</script>
 	<script src="planner_form.js"></script>
 </body>
-
 </html>

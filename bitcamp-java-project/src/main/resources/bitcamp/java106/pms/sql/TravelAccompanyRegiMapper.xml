@@ -2,43 +2,46 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  
-<mapper namespace="bitcamp.java106.pms.dao.TravelAccompanyRegiDao">
-  
-  <resultMap type="TravelAccompanyRegi" id="AccompanyRegiMap">
-    <id column="no" property="cno"/>
-    <result column="MEM_TITLE" property="mTitle"/>
-    <result column="PLAN_DESC" property="pDesc"/>
-    <result column="SDT" property="sDate"/>
-    <result column="EDT" property="eDate"/>
-    <result column="MEM_TEM" property="mTem"/>
-    <result column="MEM_WITHNUM" property="mWithNum"/>
-    <result column="GEN" property="gen"/>
-  </resultMap>
-   
- <select id="selectOne" parameterType="int" 
-     resultMap="AccompanyRegiMap">
-    select * 
-    from TAMLA_ACCOMPANY_REGI
-    where no=#{no}
-  </select>
-  
-  <select id="selectList" 
-          resultMap="AccompanyRegiMap" parameterType="map">
-    select *
-    from TAMLA_ACCOMPANY_REGI
-   <!-- 
-     order by no desc
-    limit #{startRowNo}, #{pageSize}
-    -->
-  </select>
-  
-  <insert id="insert" parameterType="TravelAccompanyRegi"
-          useGeneratedKeys="true" keyColumn="no" keyProperty="cno">
-    insert into TAMLA_ACCOMPANY_REGI(MEM_TITLE,PLAN_DESC,SDT,EDT,MEM_TEM,MEM_WITHNUM,GEN,CONT_DESC) 
-    values(#{mTitle},#{pDesc},#{sDate},#{eDate},#{mTem},#{mWithNum},#{gen},#{cDesc})
-  </insert>
-  
-  
+
+
+<mapper
+	namespace="bitcamp.java106.pms.dao.TravelAccompanyRegiDao">
+
+	<resultMap type="TravelAccompanyRegi" id="AccompanyRegiMap">
+		<id column="no" property="cno" />
+		<result column="MEM_TITLE" property="mTitle" />
+		<result column="PLAN_DESC" property="pDesc" />
+		<result column="SDT" property="sDate" />
+		<result column="EDT" property="eDate" />
+		<result column="MEM_TEM" property="mTem" />
+		<result column="MEM_WITHNUM" property="mWithNum" />
+		<result column="GEN" property="gen" />
+	</resultMap>
+
+	<select id="selectOneByRecent" resultMap="AccompanyRegiMap">
+		select * from TAMLA_ACCOMPANY_REGI order by no DESC limit 1
+	</select>
+
+	<select id="selectOne" parameterType="int"
+		resultMap="AccompanyRegiMap">
+		select *
+		from TAMLA_ACCOMPANY_REGI
+		where no=#{no}
+	</select>
+
+	<select id="selectList" resultMap="AccompanyRegiMap"
+		parameterType="map">
+		select *
+		from TAMLA_ACCOMPANY_REGI
+		<!-- order by no desc limit #{startRowNo}, #{pageSize} -->
+	</select>
+
+	<insert id="insert" parameterType="TravelAccompanyRegi"
+		useGeneratedKeys="true" keyColumn="no" keyProperty="cno">
+		insert into
+		TAMLA_ACCOMPANY_REGI(MEM_TITLE,PLAN_DESC,SDT,EDT,MEM_TEM,MEM_WITHNUM,GEN,CONT_DESC)
+		values(#{mTitle},#{pDesc},#{sDate},#{eDate},#{mTem},#{mWithNum},#{gen},#{cDesc})
+	</insert>
+
+
 </mapper>

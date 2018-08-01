@@ -21,6 +21,7 @@ public class TravelAccompanyRegi implements Serializable {
     private String mWithNum;
     private int gen;
     private String cDesc;
+    
     @Override
     public String toString() {
         return "TravelAccompanyRegi [cno=" + cno + ", mTitle=" + mTitle + ", pDesc=" + pDesc + ", sDate=" + sDate
