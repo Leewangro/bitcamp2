@@ -43,7 +43,7 @@ var parsing = {
 
         var tabElements =
             "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'" + "target='_blank'>" +
+            "<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
             "<div class='thumbnail'>" +
             "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
             "<div class='caption text-center'>" +
