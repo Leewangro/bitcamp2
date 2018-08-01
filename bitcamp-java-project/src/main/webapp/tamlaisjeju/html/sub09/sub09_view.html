@@ -158,6 +158,12 @@
 				<div class="story-day">
 					<div class="spot-container">
 						<div class="story-conts">
+							<div style="margin-left: 822px;">
+								<button type="button" class="btn btn-secondary" style="background:darkgray; font-weight: bold;color: white;
+								"> < </button>
+								<button type="button" class="btn btn-secondary" style="background:darkgray; font-weight: bold;color: white;
+								"> > </button>
+							</div>
 							<h3>
 								<strong>Day <a href="#" id="d1">1</a>
 								</strong> <span class="desc">2016.07.12(Tue)</span>
@@ -203,27 +209,38 @@
 										<br>
 									</p>
 								</div>
-								<div class="spot-contents">
-									<div class="conts-txt-area">
-										<div class="medium-insert-image ui-sortable"
-											contenteditable="false">
-											<img src="../../img/sub09/jeju.jpg">
-											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
-												적으세요설명을 적으세요</p>
-										</div>
-									</div>
-									<p>
-										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
-									</p>
-									<p>
-										<br>
-									</p>
+							</div>
+							<!--spot-note-box-->
+							<div class="spot-note-box">
+								<div class="spot-tit type">
+									<a class="spot-title-area" id="d1">
+										<h4>
+											<span> 제주도 </span>
+										</h4>
+									</a>
 								</div>
 								<div class="spot-contents">
 									<div class="conts-txt-area">
-										<div class="medium-insert-image ui-sortable"
+										<div id="img-modal" class="medium-insert-image ui-sortable"
 											contenteditable="false">
-											<img src="../../img/sub09/jeju.jpg">
+											<img src="../../img/sub09/jeju.jpg" data-toggle="modal"
+												data-target="#exampleModal">
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1"
+												role="dialog" aria-labelledby="exampleModalLabel"
+												aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<img class="m-img" src="../../img/sub09/jeju.jpg">
+													</div>
+												</div>
+											</div>
 											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
 												적으세요설명을 적으세요</p>
 										</div>
@@ -237,6 +254,50 @@
 								</div>
 							</div>
 							<!--spot-note-box-->
+							<div class="spot-note-box">
+								<div class="spot-tit type">
+									<a class="spot-title-area" id="d1">
+										<h4>
+											<span> 제주도 </span>
+										</h4>
+									</a>
+								</div>
+								<div class="spot-contents">
+									<div class="conts-txt-area">
+										<div id="img-modal" class="medium-insert-image ui-sortable"
+											contenteditable="false">
+											<img src="../../img/sub09/jeju.jpg" data-toggle="modal"
+												data-target="#exampleModal">
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1"
+												role="dialog" aria-labelledby="exampleModalLabel"
+												aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<img class="m-img" src="../../img/sub09/jeju.jpg">
+													</div>
+												</div>
+											</div>
+											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
+												적으세요설명을 적으세요</p>
+										</div>
+									</div>
+									<p>
+										<a target="_blank" href="#">#제주도 #멋짐 #힐링</a>
+									</p>
+									<p>
+										<br>
+									</p>
+								</div>
+							</div>
+							<!--spot-note-box-->
+							
 						</div>
 					</div>
 				</div>
@@ -244,7 +305,7 @@
 					<div class="spot-container">
 						<div class="story-conts">
 							<h3>
-								<strong>Day <a href="#" id="d1">1</a>
+								<strong>Day <a href="#" id="d1">2</a>
 								</strong> <span class="desc">2016.07.12(Tue)</span>
 							</h3>
 							<div class="spot-note-box">
@@ -411,7 +472,7 @@
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
 					console.log(data)
-					$(aWord).append(data[10].pDesc);
+					//$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
 					$(sDay).append(data[10].sDate);
 					$(eDay).append(data[10].eDate);
