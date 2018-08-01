@@ -31,7 +31,6 @@ public class TravelAccompanyRegiController {
     
     @RequestMapping("list/{no}")
     public TravelAccompanyRegi selectOne(@PathVariable int no) {
-        
         return travelAccompanyRegiService.selectOne(no);
     } 
     
@@ -41,5 +40,10 @@ public class TravelAccompanyRegiController {
         System.out.println(travelAccompanyRegi);
         System.out.println("ctrl");
         return travelAccompanyRegiService.add(travelAccompanyRegi);
+    }
+    
+    @RequestMapping("recent")
+    public TravelAccompanyRegi getRecentData() {
+       return travelAccompanyRegiService.recentData();
     }
 }

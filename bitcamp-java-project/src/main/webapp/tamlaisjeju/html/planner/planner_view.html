@@ -1005,7 +1005,7 @@
                             </div>
 
                             <!-- Modal body -->
-                            <div class="modal-body" style="width: 100%; height: 100%;">
+                            <div class="modal-body" style="width: 50%; height: 50%;">
                                 <div id="map2" style="width: 100%; height: 100%;"></div>
                             </div>
 
@@ -1055,9 +1055,10 @@
     <div id="footer"></div>
     <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#header").load("../include/sub_header.html")
@@ -1077,9 +1078,9 @@
 <li class="plan_cont clear">태그:{{time}}</li>
 </script>   
 
-<script src="../../js/common.js"></script>
+<script src="../../js/common/common.js"></script>
 <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
-<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+
 <script src="planner_view.js"></script>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
@@ -1159,9 +1160,6 @@
             }
         });
 
-        function relayout() {
-            map.relayout();
-        }
     </script>
 
 
@@ -1212,8 +1210,8 @@
     <script>
         // 모달 다이알로그가 열리면 지도 크기 재조정
         $("#myModal").on('shown.bs.modal', function (e) {
+            console.log("Map Modal is shown!");
             e.preventDefault();
-            //console.log("Map Modal is shown!");
             map1.relayout();
         });
     </script>
@@ -1303,7 +1301,10 @@
         });
 
         function relayout() {
+        	console.log("relayout");
+        	map.relayout();
             map1.relayout();
+            map2.relayout();
         }
     </script>
 

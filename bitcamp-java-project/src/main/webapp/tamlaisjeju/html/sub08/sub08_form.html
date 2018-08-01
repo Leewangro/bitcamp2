@@ -164,23 +164,9 @@
                 <div class="cntmap_wrap">
                     <div class="contnet_map">
                         <div class="map_wrap">
-                            <div id="map" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
-                            <div id="menu_wrap" class="bg_white">
-                                <div class="option">
-                                    <div>
-                                        <form onsubmit="searchPlaces(); return false;">
-                                            키워드 :
-                                            <input type="text" value="제주도" + id="keyword" size="15">
-                                            <button type="submit">검색하기</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <hr>
-                                <ul id="placesList"></ul>
-                                <div id="pagination"></div>
-                            </div>
+                            <div id="editor-map" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
                         </div>
-                        <!-- <div class=map style="width: 100%;height: 400px;background-color: teal;"></div> -->
+                        <!-- <div class=map2 style="width: 100%;height: 400px;background-color: teal;"></div> -->
                     </div>
                 </div>
                 <div class="cal_warp">
@@ -228,9 +214,11 @@
 
                             <form>
                                 <input id="post_title_1" type="text" value="" class="post_titl" placeholder="장소">
-                                <input id="post_address_1" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_addr" value="" placeholder="주소"
-                                    readonly>
-                                <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+                                <input id="post_address_1" type="text" onclick="addrClick(this)" class="post_addr" value="" placeholder="주소" readonly data-toggle="modal"
+                                    data-target=".bd-example-modal-lg-map1">
+                                <input id="post_x_1" type="text" onclick="" class="post_x" value="" placeholder="위도" hidden>
+                                <input id="post_y_1" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_y" value="" placeholder="경도" hidden>
+                                <!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div> -->
                                 <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false"></textarea>
                                 <div class="text_count">글자제한:
                                     <span class="count">80</span>/80</div>
@@ -269,7 +257,7 @@
                                 <div id="imgbox2_1" class="imgboxs2">
                                     <p>업로드 완료된 사진</p>
                                 </div>
-                                <input id="fileupload" type="file" class='fileuploads' name="files" multiple hidden>
+                                <input id="fileupload1" type="file" class='fileuploads' name="files" multiple hidden>
                                 <!-- 고유 값이 필요한 경우 -->
 
 
@@ -289,30 +277,34 @@
                     </div>
                 </div>
                 <!-- 모달2 -->
-                <!-- <div id="dropbox" class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                <div id="map_modal" class="modal fade bd-example-modal-lg-map1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="display: none">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5>사진업로드</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div>
-                                <h1>사진업로드</h1>
-                                <form id="form" action="javascript:void(0)">
-                                    <p>Choose JPEG file:
-                                        <input id="fileWidget" type="file">
-                                    </p>
-                                </form>
-                                <img id="img" height="100" alt="Image preview" src="">
-                                <div id="status"></div>
+                            <div class="map_wrap">
+                                <div id="map" style="width:800px;height:500px;position:relative;overflow:hidden;"></div>
+                                <div id="menu_wrap" class="bg_white">
+                                    <div class="option">
+                                        <div>
+                                            <form class="search_bar" onsubmit="searchPlaces(); return false;">
+                                                장소명 :
+                                                <input class="search_input" type="text" value="제주도" + id="keyword" size="15">
+                                                <button class="search_btn" type="submit">검색하기</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <ul id="placesList"></ul>
+                                    <div id="pagination"></div>
+                                </div>
                             </div>
 
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
 
@@ -330,7 +322,7 @@
         <script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <!--metadata-->
         <!-- <script type="text/javascript" src="metadeta/jpegmeta.js"></script>
-        <script type="text/javascript" src="metadeta/demo.js"></script> -->
+            <script type="text/javascript" src="metadeta/demo.js"></script> -->
         <!--jQuery upload-->
         <script src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
         <script src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
@@ -341,10 +333,25 @@
         <script src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 
 
+
         <script>
+            var mapArr = new Array();
+            var mapData = null;
+            var addrValue = null;
+            var placeValue = null;
+            var xValue = null;
+            var yValue = null;
+
             // 마커를 담을 배열입니다
             var markers = [];
 
+            function addrClick(val) {
+                console.log($(val).parent().children()[0])
+                addrValue = val;
+                placeValue = $(val).parent().children()[0]
+                xValue = $(val).parent().children()[2]
+                yValue = $(val).parent().children()[3]
+            }
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = {
                     center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -377,6 +384,7 @@
 
                 // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
                 ps.keywordSearch("제주도 " + keyword, placesSearchCB);
+
             }
 
             // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -386,6 +394,33 @@
                     // 정상적으로 검색이 완료됐으면
                     // 검색 목록과 마커를 표출합니다
                     displayPlaces(data);
+                    mapData = data;
+
+
+
+                    // 지도데이터
+                    for (let i = 0; i < data.length; i++) {
+                        mapArr[i] = $(data[i])[0]
+                        console.log($(data[i])[0])
+                    }
+                    $('.item').click(function () {
+                        console.log($(data[$(this).index()])[0])
+                        addrValue.value = $(data[$(this).index()])[0].address_name
+                        placeValue.value = $(data[$(this).index()])[0].place_name
+                        xValue.value = $(data[$(this).index()])[0].x
+                        yValue.value = $(data[$(this).index()])[0].y
+                        swal(
+                            "'" + $(data[$(this).index()])[0].place_name + "'",
+                            '리스트에 추가하였습니다.',
+                            'success'
+                        )
+                        xyname()
+                        $(".close").trigger('click')
+                    })
+
+                    // $(data).click(function () {
+                    //     console.log(this)
+                    // })
 
                     // 페이지 번호를 표출합니다
                     displayPagination(pagination);
@@ -402,6 +437,8 @@
 
                 }
             }
+
+
 
             // 검색 결과 목록과 마커를 표출하는 함수입니다
             function displayPlaces(places) {
@@ -569,6 +606,81 @@
                 // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
                 map.relayout();
             }
+            $("#map_modal").on('shown.bs.modal', function (e) {
+                e.preventDefault();
+                searchPlaces();
+                relayout();
+            });
+            // 지도2
+            var mapContainer2 = document.getElementById('editor-map'), // 지도를 표시할 div  
+                mapOption = {
+                    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    level: 10 // 지도의 확대 레벨
+                };
+
+            var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
+
+            // 마커를 표시할 위치와 title 객체 배열입니다 
+            var positions = [];
+            // var addrValue = null;
+            // var placeValue = null;
+            // var xValue = null;
+            // var yValue = null;
+
+            var marker = null;
+            var markerImage = null;
+            var imageSize = null;
+            var imageSrc = null;
+
+            function xyname() {
+                positions.push({
+                    title: placeValue.value,
+                    latlng: new daum.maps.LatLng(yValue.value, xValue.value)
+                })
+                imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+
+                for (var i = 0; i < positions.length; i++) {
+                    console.log("호출")
+
+                    // 마커 이미지의 이미지 크기 입니다
+                    imageSize = new daum.maps.Size(24, 35);
+
+                    // 마커 이미지를 생성합니다    
+                    markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+                    // 마커를 생성합니다
+                    marker = new daum.maps.Marker({
+                        map: map2, // 마커를 표시할 지도
+                        position: positions[i].latlng, // 마커를 표시할 위치
+                        title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                        image: markerImage // 마커 이미지 
+                    });
+                }
+
+                console.log(positions)
+            }
+
+            // [{
+            //         title: '카카오',
+            //         latlng: new daum.maps.LatLng(33.450705, 126.570677)
+            //     },
+            //     {
+            //         title: '생태연못',
+            //         latlng: new daum.maps.LatLng(33.450936, 126.569477)
+            //     },
+            //     {
+            //         title: '텃밭',
+            //         latlng: new daum.maps.LatLng(33.450879, 126.569940)
+            //     },
+            //     {
+            //         title: '근린공원',
+            //         latlng: new daum.maps.LatLng(33.451393, 126.570738)
+            //     }
+            // ];
+            console.log()
+
+            // 마커 이미지의 이미지 주소입니다
         </script>
 
         <script>
@@ -767,7 +879,10 @@
                     "<input id='post_title_" + count + "'" +
                     "type='text' value='' class='post_titl' placeholder='장소'>" +
                     "<input id='post_address_" + count + "'" +
-                    "type='text' onclick='/*sample5_execDaumPostcode()*/' class='post_addr' value='' placeholder='주소' readonly>" +
+                    "<input id='post_address_'" + count +
+                    "type='text' onclick='addrClick(this)' class='post_addr' value='' placeholder='주소' readonly data-toggle='modal' data-target='.bd-example-modal-lg-map1'>" +
+                    "<input id='post_x_'" + count + " type='text' class='post_x' value='' placeholder='위도' hidden>" +
+                    "<input id='post_y_'" + count + " type='text' class='post_y' value='' placeholder='경도' hidden>" +
                     "<div id='map' style='width:300px;height:300px;margin-top:10px;display:none'></div>" +
                     "<textarea id='post_text_form" + count + "'" +
                     "class='title_textarea text_area' placeholder='내용을 입력하세요.' data-is-observable='false'></textarea>" +
@@ -791,15 +906,15 @@
                         "<span aria-hidden='true'>&times;</span>" +
                         "</button>" +
                         "</div>" +
-                        "<div id='trueForm"+count+ "'" + ">" +
+                        "<div id='trueForm" + count + "'" + ">" +
                         "<div class='dropzone' onclick='imgClickBoxsSub(this)'>" +
                         "<div>" +
                         "</div>" +
                         "<span class='dz_ico'>+</span>" +
-                        "<div id='imgbox"+count +"'"+ " class='imgboxs1'>업로드 대기중인 사진이 없습니다.</div>" +
+                        "<div id='imgbox" + count + "'" + " class='imgboxs1'>업로드 대기중인 사진이 없습니다.</div>" +
                         "</div>" +
 
-                        "<div id=imgbox2_"+count +"'"+ " class='imgboxs2'>" +
+                        "<div id=imgbox2_" + count + "'" + " class='imgboxs2'>" +
                         "<p>업로드 완료된 사진</p>" +
                         "</div>" +
                         "<input id='fileupload" + count + "'" +
@@ -897,8 +1012,9 @@
                             let imgs = $(file)
                             let imgBox = $(imagesDiv).parent().parent().children()[1]
                             $(imgBox).append(
-                                "<div class='imgboxDiv' style='height:120px;width:120px;overflow:hidden;display:inline-block'>" +
-                                "<img src='"+serverRoot + "/files/" + file.filename + "_120x120.jpg'>" +
+                                "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
+                                "<img src='" + serverRoot + "/files/" + file.filename +
+                                "_180x180.jpg'>" +
                                 "</div>"
                             )
                             // $('<img>')
@@ -994,24 +1110,114 @@
             /////
             var imgBox = $('#imgbox2_');
 
-            $("input[name=files]").fileupload({
+            // $("#fileupload1").fileupload({
+            //     url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
+            //     dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
+            //     sequentialUploads: true, // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+            //     singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
+            //     autoUpload: false, // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+            //     disableImageResize: /Android(?!.*Chrome)|Opera/
+            //         .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+            //     previewMaxWidth: 120, // 미리보기 이미지 너비
+            //     previewMaxHeight: 120, // 미리보기 이미지 높이 
+            //     previewCrop: true, // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+            //     processalways: function (e, data) {
+            //         console.log('fileuploadprocessalways()...');
+            //         console.log(data.files);
+            //         var imagesDiv = showBox;
+            //         $(imagesDiv).hmtl("");
+            //         for (var i = 0; i < data.files.length; i++) {
+
+            //             try {
+            //                 if (data.files[i].preview.toDataURL) {
+            //                     $(imagesDiv).append(
+            //                         "<div style='display:inline-block;position:relative;'>" +
+            //                         "<div style='position:absolute;top:44px;left:26px'>" +
+            //                         "<div id='floatingCirclesG'>" +
+            //                         "<div class='f_circleG' id='frotateG_01'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_02'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_03'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_04'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_05'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_06'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_07'></div>" +
+            //                         "<div class='f_circleG' id='frotateG_08'></div>" +
+            //                         "</div>" +
+            //                         "</div>" +
+            //                         "<img src=" + data.files[i].preview.toDataURL() +
+            //                         " style='width: 120px;' name=" + data.files[i].name + " class=" +
+            //                         "'readyImgs'" + ">" +
+            //                         "</div>"
+            //                     )
+
+
+            //                     // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
+            //                     //     '120px').appendTo(imagesDiv);
+
+            //                     // console.log(data.files[i].name)
+            //                     $('#btnSubmit').removeAttr("disabled");
+            //                 }
+            //             } catch (err) {}
+            //         }
+            //         console.log($('.readyImgs').length)
+
+
+            //         // $('#btnSubmit').unbind("click");
+            //         // $('#btnSubmit').click(function () {
+
+            //         //     alert("클릭")
+            //         //     data.submit();
+            //         // });
+            //     },
+            //     submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
+            //         console.log('submit()...');
+            //     },
+            //     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+            //         console.log('done()...');
+            //         console.log(data.result.files);
+
+            //         $.each(data.result.files, function (index, file) {
+            //             let imgs = $("img[name=" + "'" + file.originname + "'" + "]")
+            //             console.log($('#imgbox>img'))
+            //             // $('<img>')
+            //             // .attr('src', serverRoot + '/files/' + file.filename + "_120x120.jpg")
+            //             // .appendTo(imgBox);
+            //             $('#imgbox2_1').append(imgs)
+            //             imgs.removeClass('readyImgs')
+            //             // $("img[name=" + "'" + file.originname + "'" + "]").remove();
+            //             console.log($('.readyImgs').length)
+            //             if ($('.readyImgs').length < 1) {
+            //                 $('#btnSubmit').attr("disabled", true);
+            //             }
+
+            //             if ($('#imgbox>img').length == 0) {
+            //                 $('#imgbox').html("업로드 대기중인 사진이 없습니다.")
+            //             }
+
+
+            //         });
+            //     }
+            // });
+
+            var previewImg = null;
+            $("#fileupload1").fileupload({
                 url: serverRoot + '/json/upload/travel', // 서버에 요청할 URL
                 dataType: 'json', // 서버가 보낸 응답이 JSON임을 지정하기
                 sequentialUploads: true, // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
                 singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
-                autoUpload: false, // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+                autoUpload: true, // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
                 disableImageResize: /Android(?!.*Chrome)|Opera/
                     .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
                 previewMaxWidth: 120, // 미리보기 이미지 너비
                 previewMaxHeight: 120, // 미리보기 이미지 높이 
                 previewCrop: true, // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
                 processalways: function (e, data) {
-                    console.log('fileuploadprocessalways()...');
-                    console.log(data.files);
-                    var imagesDiv = showBox;
-                    $(imagesDiv).hmtl("");
-                    for (var i = 0; i < data.files.length; i++) {
 
+                    imagesDiv = $(this).parent().children()[0].childNodes[5];
+                    console.log('fileuploadprocessalways()...');
+                    $(imagesDiv).html("");
+
+                    for (var i = 0; i < data.files.length; i++) {
                         try {
                             if (data.files[i].preview.toDataURL) {
                                 $(imagesDiv).append(
@@ -1029,21 +1235,22 @@
                                     "</div>" +
                                     "</div>" +
                                     "<img src=" + data.files[i].preview.toDataURL() +
-                                    " style='width: 120px;' name=" + data.files[i].name + " class=" +
+                                    " style='width: 120px;' class=" +
                                     "'readyImgs'" + ">" +
                                     "</div>"
                                 )
-
+                                previewImg = data.files[i]
 
                                 // $("<img>").attr('src', data.files[i].preview.toDataURL()).css('width',
                                 //     '120px').appendTo(imagesDiv);
 
                                 // console.log(data.files[i].name)
-                                $('#btnSubmit').removeAttr("disabled");
+                                // $('#btnSubmit').removeAttr("disabled");
                             }
-                        } catch (err) {}
+                        } catch (err) {
+                            console.log("err");
+                        }
                     }
-                    console.log($('.readyImgs').length)
 
 
                     // $('#btnSubmit').unbind("click");
@@ -1061,24 +1268,19 @@
                     console.log(data.result.files);
 
                     $.each(data.result.files, function (index, file) {
-                        let imgs = $("img[name=" + "'" + file.originname + "'" + "]")
-                        console.log($('#imgbox>img'))
-                        // $('<img>')
-                        // .attr('src', serverRoot + '/files/' + file.filename + "_120x120.jpg")
-                        // .appendTo(imgBox);
-                        imgBox.append(imgs)
-                        imgs.removeClass('readyImgs')
-                        // $("img[name=" + "'" + file.originname + "'" + "]").remove();
-                        console.log($('.readyImgs').length)
-                        if ($('.readyImgs').length < 1) {
-                            $('#btnSubmit').attr("disabled", true);
+                        let imgBox = $(imagesDiv).parent().parent().children()[1]
+                        $(imgBox).append(
+                            "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
+                            "<img src='" + previewImg.preview.toDataURL() + "'>" +
+                            "<input name='imgName' type='text' value='" + file.filename + "'>" +
+                            "<input name='imgX' type='text' value='" + file.filename + "'>" +
+                            "<input name='imgY' type='text' value='" + file.filename + "'>" +
+                            "</div>"
+                        )
+
+                        if ($('imagesDiv').children("img").length == 0) {
+                            $(imagesDiv).html("업로드 대기중인 사진이 없습니다.")
                         }
-
-                        if ($('#imgbox>img').length == 0) {
-                            $('#imgbox').html("업로드 대기중인 사진이 없습니다.")
-                        }
-
-
                     });
                 }
             });

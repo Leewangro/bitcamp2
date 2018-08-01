@@ -138,11 +138,12 @@
                         </ul>
                     </div>
                     <div class="f1" id="schedule_full_box">
+                        <div class="schedule_full" id="defaultOpen">
                         <div class="title_box">
                             <div id="schedule_detail_title" data-date="06-06">
                                 <div class="fl schedule_detail_title_text">
-                                    <div class="fl">DAY1
-                                        <span style="color:#999999">|</span> 06.06(수요일)</div>
+                                    <div class="fl">일정입력하세요
+                                        <span style="color:#999999">|</span></div>
                                     <div class="fl day_reset_btn" onclick="del_plan_inspot_day_all()"></div>
                                     <div class="fr day_next_btn" onclick="plan_day_next()"></div>
                                     <div class="fr day_prev_btn" onclick="plan_day_prev()"></div>
@@ -416,6 +417,7 @@
                                 <div class="clear"></div>
                             </div>
                         </div>
+                        </div>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -480,6 +482,10 @@
                             <div class="title_info">
                             <div class="title" onclick="markerOverlay(this)" id=clti{{@index}};>{{title}}</div>
                             <div class="info clear">{{addr1}}</div>
+                            <div class="contentid_info" style="display:none";>{{contentid}}</div>
+                            <div class="lat" style="display:none";>{{mapy}}</div>
+                            <div class="lng" style="display:none";>{{mapx}}</div>
+                            <div class="url" style="display:none";>{{firstimage2}}</div>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -492,10 +498,10 @@
       $('#keyword').keyup(function(event) {
          var val = $(this).val();
          if (val == "") {
-             $('.filterUL div').show();
+             $('.filterUL .item').show();
           } else {
-             $('.filterUL div').hide();
-              $(".filterUL div:contains('"+val+"')").show();
+             $('.filterUL .item').hide();
+              $(".filterUL .item:contains('"+val+"')").show();
           }
      });
  });
@@ -708,11 +714,94 @@ function markerOverlay(node) {
         }
 }  
 </script>
+<script>
+function dayRootMap(dayRootIndex) {
+	for (var i = 0; i < dayMarkers.length; i ++) {
+		var dmk = dayMarkers[i];
+		var mol = mapOverlays[i];
+		var pl = polylines[i];
+		for (var z = 0; z < dmk.length; z++) {
+			dmkl = dmk[z];
+			moll = mol[z];
+			pll = pl[z];
+			dmkl.setMap(null);
+			moll.setMap(null);
+			pll.setMap(null);
+		}
+	}
+	update12();
+		/* var lp = linePaths[i]; */
+	/* dayMarkers.setMap(null);
+	mapOverlay[0].setMap(null);
+	polyline[0].setMap(null);  */
+	function update12() {
+		console.log(dayRootIndex)
+		  dayRootIndexNo = parseInt(dayRootIndex.substring(3))-1;
+		console.log(dayRootIndexNo)
+		var dayIndexNo11 = dayRootIndexNo;
+			
+		for (var s = 0; s < dayMarkers[dayIndexNo11].length; s ++) {
+			console.log(dayMarkers[dayIndexNo11])
+			var aaa = dayMarkers[dayIndexNo11][s]
+			var bbb = mapOverlays[dayIndexNo11][s]
+			var ccc = polylines[dayIndexNo11][s]
+			aaa.setMap(map);
+			bbb.setMap(map); 
+			ccc.setMap(map); 
+		}
+	    };
+}
+var dayRootIndexNo = null;
+var dayMarker = [];
+var dayMarkers = [];
+var polyline = [];
+var polylines = [];
+var linePath = [];
+var linePaths = [];
+var mapOverlay = [];
+var mapOverlays = [];
+var dayIndexNo = null;
+function dayRoot(dayIndex, daySchedule) {
+	  dayIndexNo = parseInt(dayIndex.substring(3))-1;
+      
+	  var imageSrc1 = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+	  var imageSize1 = new daum.maps.Size(24, 35); // 마커이미지의 크기입니다
+      var imageOption1 = {offset: new daum.maps.Point(13, 25)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+      var markerImage1 = new daum.maps.MarkerImage(imageSrc1, imageSize1, imageOption1);
+      dayMarker[dayIndexNo] = new daum.maps.Marker({
+          position: new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent),
+          image: markerImage1,
+      });
+      dayMarkers[dayIndexNo].push(dayMarker[dayIndexNo]);
+      dayMarker[dayIndexNo].setMap(map);
+      /* if (marker1 == ) */
+      linePath[dayIndexNo].push(new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent));
+    	// 지도에 표시할 선을 생성합니다
+    	linePaths.push(linePath[dayIndexNo]);
+    	polyline[dayIndexNo] = new daum.maps.Polyline({
+    	    path: linePath[dayIndexNo], // 선을 구성하는 좌표배열 입니다
+    	    strokeWeight: 5, // 선의 두께 입니다
+    	    strokeColor: '#FFAE00', // 선의 색깔입니다
+    	    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    	    strokeStyle: 'solid' // 선의 스타일입니다
+    	});
+    	polylines[dayIndexNo].push(polyline[dayIndexNo]);
+    	polyline[dayIndexNo].setMap(map); 
+    	
+    	var content1 = '<div class="customoverlay">' + '<div>' + $(daySchedule).children()[0].textContent + '</div>' + '</div>';
+        mapOverlay[dayIndexNo] = new daum.maps.CustomOverlay({
+		content: content1,
+		position: new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent)
+		});
+        mapOverlay[dayIndexNo].setMap(map);
+        mapOverlays[dayIndexNo].push(mapOverlay[dayIndexNo]);
+        
+}
+
+</script>
 
 
 
-
-<!-- document.getElementsByClassName('cal').datefilter.value; -->
 <script>
 $(function() {
   $('input[name="datefilter"]').daterangepicker({
@@ -732,7 +821,8 @@ $(function() {
   });
 
 });
-
+var dayOfWeek = null;
+var calMonthDate = null;
 function calDate() {
     if ($('.cal')[0].value.match(/-/) != null) {
     
@@ -756,17 +846,27 @@ function calDate() {
                             console.log(dd);
                             console.log(dd.getDate()); */
     var betweenDay = parseInt(diff/currDay);
+                            
+    for(let i=0; i<betweenDay+1; i++) {
+    	dayMarker[i] = [];
+    	dayMarkers[i] = [];
+    	linePath[i] = [];
+    	mapOverlay[i] = [];
+    	mapOverlays[i] = [];
+    	polylines[i] = [];
+    }
+                            
     var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-    var dayOfWeek = null;
-    var calMonthDate = null;
     $("#cat_date_all").empty();
+    $("#schedule_full_box").empty();
+
     for (var i = 0; i < betweenDay+1; i++) {
         var dat3 = (new Date(((dat1/currDay)+i)*currDay));
         calMonthDate = (dat3.getMonth() + "." + (dat3.getDate()));
         var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate());
         dayOfWeek = week[new Date(calYearMonthDate).getDay()];
             $('#cat_date_all').append(
-            "<li data="+ (i+1) +">" +
+            "<li class='cat_date' onclick=" + 'openCity'+ '('+'this'+','+'event'+','+ "'"+ 'schedule_day'+(i+1)+"'"+ ')'+ ">" +
                   "<div class='fl cat_date_left_box'>" +
                       "<div class='cat_left_day'>" + 'DAY'+(i+1)+"</div>" +
                       "<div class='cat_left_date'>" + calMonthDate + "</div>" +
@@ -777,9 +877,319 @@ function calDate() {
                   "<div class='clear'></div>" +
               "</li>"
             );
+            $("#schedule_full_box").append(
+            	    "<div class='schedule_full' id=schedule_day"+(i+1)+ " style='display:block;'>" +
+            	    "<div class='title_box'>" +
+            	    "<div id='schedule_detail_title'>" +
+            	        "<div class='fl schedule_detail_title_text'>" +
+            	            "<div class='fl'>" + 'DAY'+(i+1)+
+            	                "<span style='color:#999999'>|</span>"+ calMonthDate+'('+dayOfWeek+')'+"</div>" + 
+            	            "<div class='fl day_reset_btn' onclick='del_plan_inspot_day_all()'></div>" +
+            	            "<div class='clear'></div>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	"</div>" +
+
+            	"<div id='schedule_detail_box' class='connectedSortable ui-sortable'>" +
+            	    "<div class='day_spot_item'>" +
+            	        "<div class='item_ctrl_box'>" +
+            	            "<div class='fl item_copy_plan' title='장소복사'>" +
+            	                "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	            "</div>" +
+            	            "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	                "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	            "</div>" +
+            	            "<div class='fl btn_del' title='삭제'>" +
+            	                "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	            "</div>" +
+            	            "<div class='clear'></div>" +
+            	        "</div>" +
+            	        "<div class='spot_order_box'>8시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>9시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>10시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>11시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>12시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>13시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>14시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>15시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>16시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>17시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>18시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>19시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>20시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>21시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>22시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>23시</div>" +
+            	    "</div>" +
+            	    "<div class='day_spot_item'>" +
+            	    "<div class='item_ctrl_box'>" +
+            	        "<div class='fl item_copy_plan' title='장소복사'>" +
+            	            "<img src='../../img/sub10/item_more_icon_a.png' alt='장소복사'>" +
+            	        "</div>" +
+            	        "<div class='fl item_set_plan' title='메모&amp;예산'>" + 
+            	            "<img src='../../img/sub10/item_set_icon_a.png' alt='메모'>" +
+            	        "</div>" +
+            	        "<div class='fl btn_del' title='삭제'>" +
+            	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
+            	        "</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	    "<div class='spot_order_box'>24시</div>" +
+            	    "</div>" +
+            	    
+            	"</div>" +
+            	    "<div class='inspot_add_box'>" +
+            	    "<div class='inspot_set_box'>" +
+            	        "<div class='fl add_inspot_spot_btn' onclick='my_spot_inspot()'>+ My 장소</div>" +
+            	        "<div class='clear'></div>" +
+            	    "</div>" +
+            	"</div>" +
+            	"</div>"
+
+            	);
     }
     }
 }
+var dayRootIndex = null;
+function openCity(val, evt, cityName) {
+	dayRootIndex = $(val).children()[0].childNodes[0].textContent;
+	/* console.log($(val).children()[0].childNodes[0].textContent) */
+	dayRootMap(dayRootIndex);
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("schedule_full");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("cat_date");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" on", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " on";
+    
+}
+document.getElementById("defaultOpen").click();
+
+/* function del_plan_inspot_day_all(){
+    if (confirm('일정을 초기화하겠습니까?') == true){ 
+         $("#cat_date_all").empty();
+         $(".schedule_full").empty();
+         $("#datefilter").empty();
+   }else{   
+       return;
+   }
+ } */
 
 </script>
 
@@ -883,7 +1293,16 @@ document.addEventListener("click", closeAllSelect);
             var nodeCopy = document.getElementById(data).cloneNode(true);
             nodeCopy.id = "newId"; /* We cannot use the same ID */
             event.target.appendChild(nodeCopy);
+            //console.log(event.target.appendChild(nodeCopy));
+            console.log("asd");
+            console.log(nodeCopy);
+            console.log($(nodeCopy).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent);
+            console.log()
+            var dayIndex = $(nodeCopy).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent;
+            var daySchedule = $(nodeCopy).children()[1];
+            console.log(dayIndex);
         }
+        dayRoot(dayIndex, daySchedule);
     });
     </script>
         

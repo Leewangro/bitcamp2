@@ -18,7 +18,7 @@
     width: 900px;
     
     margin-left: 30%;
-    margin-top: 50px;
+    margin-top: 90px;
 }  
 /*left-box의 시작*/
 #sub09 .content .aside_wrap .info-left-box {
@@ -147,7 +147,7 @@
     /*background: rgba(0,0,0,0.1);*/
     position: absolute; 
     right: -1020px;
-    top: 50px;
+    top: 170px;
 }
  
 
@@ -453,3 +453,6 @@
 	width: 100%;
 	cursor: pointer;
 }
+
+
+

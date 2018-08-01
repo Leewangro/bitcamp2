@@ -11,6 +11,7 @@ public interface TravelAccompanyRegiService {
     List<TravelAccompanyRegi> list(int pageNo, int pageSize);
     TravelAccompanyRegi selectOne(int no);
     int add(TravelAccompanyRegi travelAccompanyRegi);
+    TravelAccompanyRegi recentData();
 }
 
 //ver 53 - 인터페이스 추가

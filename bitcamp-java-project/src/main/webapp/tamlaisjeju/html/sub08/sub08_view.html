@@ -22,8 +22,8 @@
     <style type="text/css">
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     </style>
- 
- 
+
+
 
 
 </head>
@@ -31,6 +31,10 @@
 <body>
     <div id="header"></div>
     <div id="sub08" class="sub08 container">
+        <div id="visual">
+            <img src="../../img/common/sub_visual_img01.jpg" alt="대표이미지">
+        </div>
+        <!-- visual end -->
 
         <div id="content">
 
@@ -357,7 +361,7 @@
                             "<div id='cont_day" + i + "' class='timeline_content_day c_day" + i +
                             "'>" +
                             "<h4>" + "Day" + i + "</h4>" +
-                            // "<p>" + "2018.08.02" + "</p>" +
+                            "<p></p>" +
                             "<p>" + "Day" + i + "경로보기</p>" +
                             "</div>"
                         )
@@ -432,18 +436,19 @@
                     var TreeMenu = function () {
                         function TreeMenu($container) {
                             _classCallCheck(this, TreeMenu);
-                            
-                            
+
+
                             this.$container = $container;
                             // $container.find("[level]").scrollTop(this.levelClickHandler.bind(
                             //     this));
-                            $container.find("[level]").scrollTop(this.levelClickHandler.bind(this));
+                            $container.find("[level]").scrollTop(this.levelClickHandler.bind(
+                                this));
                             var id = 0;
                             $container.find("[level]").each(function (index, item) {
                                 var $item = $(item);
                                 $item.attr("data-treemenu-id", ++id);
                                 this.setOpen($item, false);
-                                if (parseInt($item.attr("level") ) > 0) {
+                                if (parseInt($item.attr("level")) > 0) {
                                     this.hideItem($item);
                                 } else {
                                     this.showItem($item);
@@ -574,7 +579,7 @@
                         $(window).bind('scroll', function () {
                             var container = $('.container').height();
                             var content = $('.t_timeline').height();
-                            if ($(window).scrollTop() > container - content) {
+                            if ($(window).scrollTop() > container - content - 75) {
                                 if ($(window).scrollTop() > content - 252) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
@@ -598,22 +603,22 @@
                         var dayPath = new Array();
                         var treeItem = new Array();
                         for (let i = 0; i < maxDay; i++) {
-                            sarr.push($('.day' + (i + 1) ).offset().top)
-                            dayPath.push( $('.day'+ (i+1) ));
-                            treeItem.push($('#day' + (i + 1) ))
+                            sarr.push($('.day' + (i + 1)).offset().top)
+                            dayPath.push($('.day' + (i + 1)));
+                            treeItem.push($('#day' + (i + 1)))
                         }
 
 
                         function action() {
                             for (let y = maxDay; y >= 0; y--) {
-                                while ($(document).scrollTop() > sarr[y] - 180) {
+                                while ($(document).scrollTop() > sarr[y] - 95) {
                                     $('.day').removeClass('off');
                                     $('.day').addClass('off');
-                                    $('.fix_day' + (y + 1) ).removeClass('off');
-                                    $('.c_day' + (y + 1) ).addClass('off');
-                                    $('.c_day' + (y + 2) ).removeClass('off');
-                                    $('.fix_day' + (y + 1) ).addClass('on');
-                                    menu.openItem( treeItem[y] )
+                                    $('.fix_day' + (y + 1)).removeClass('off');
+                                    $('.c_day' + (y + 1)).addClass('off');
+                                    $('.c_day' + (y + 2)).removeClass('off');
+                                    $('.fix_day' + (y + 1)).addClass('on');
+                                    menu.openItem(treeItem[y])
                                     return;
                                 }
                             }
@@ -645,7 +650,7 @@
         function fnMove(id) {
             var offset = $("#div" + id).offset();
             $('html, body').animate({
-                scrollTop: offset.top - 169
+                scrollTop: offset.top - 75
             }, 400);
         }
     </script>
