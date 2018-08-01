@@ -21,15 +21,24 @@ $(function () {
     common.sigunguChange();
     common.buttonAction();
     draw.init();
-    draw.elements();;
+    draw.elements();
 })
+
+
+
+
+
 
 var parsing = {
     test: function (data) {
         console.log(data)
     },
-    dataParsing: function (data) {
 
+    tab: function (data) {
+        console.log(data)
+    },
+
+    dataParsing: function (data) {
         var list = data.response.body.items.item
         if (Array.isArray(list)) {
             if (list != undefined) {
@@ -77,18 +86,61 @@ var draw = {
     elementCount: 0,
     areaCode: 0,
     sigunguCode: 0,
+    contentTypeId: 0,
 
     init: function () {
         this.elementCount = 1;
         this.areaCode = 39;
         this.sigunguCode = '';
+        this.contentTypeId = 12;
     },
 
+
     elements: function () {
-        common.getInfo('get', 'areaBasedList', 'contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
+        common.getInfo('get', 'areaBasedList', 'contentTypeId=' + this.contentTypeId + '&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
     },
 
     areaSigunguCodeGet: function () {
         common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);
+    },
+
+    tabContentTypeIdGet: function(){
+        common.getInfo('get', 'areaBasedList', 'contentTypeId=' + this.contentTypeId + '&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
     }
+
+
 }
+
+
+// tab: function (data) {
+
+//     var list = data.response.body.items.item
+//     var contentTypeId = '';
+//     if (list.code != 1) {
+//         $.each(list, function (i, item) {
+//             i += 1;
+//             if (i === 1) {
+//                 tabDraw += "<div class='hiddenMenu'>" +
+//                     "<li class='sigunguList' data-toggle=''>" + '전체' + '</li>' +
+//                     "<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
+//             } else if (i % 7 === 0) {
+//                 tabDraw += "</div><div class='hiddenMenu'>" +
+//                     "<li class='sigunguList' data-toggle=" + item.code + '>' + item.name + '</li>'
+//             } else {
+//                 tabDraw += "<li class='sigunguList' data-toggle=" + item.code + ">" + item.name + "</li>"
+//             }
+//         })
+//         $(".sigunguLists").append(tabDraw);
+//     } else {
+//         tabDraw =
+//             '<span>상세지역이 없습니다</span>'
+//         $(".sigunguLists").append(tabDraw)
+//     }
+
+
+
+
+
+
+
+// },
