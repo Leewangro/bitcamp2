@@ -41,121 +41,123 @@
 
 
 
-			<ul class="category_tab">
-				<li>
-					<a href="#" class="active">#전체</a>
-				</li>
-				<li>
-					<a href="#" class="">#관광</a>
-				</li>
-				<li>
-					<a href="#" class="">#음식</a>
-				</li>
-				<li>
-					<a href="#" class="">#문화</a>
-				</li>
+			<div id="fh5co-page">
+				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+					<i></i>
+				</a>
+				<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			</ul>
+					<nav id="fh5co-main-menu" role="navigation">
+						<ul>
+							<!-- <a href="../cmm/index.html">Home</a> -->
+							</li>
+							<br>
+							<br>
+							<li data-toggle="collapse" data-target="#collapse2">
+								<a href="#">어디로 갈까</a>
+							</li>
+							<div class="collapse in" id="collapse2" aria-expanded="true">
+								<ul class="nav">
+									<li>
+										<a href="../group2/tourist.html">관광지</a>
+									</li>
+									<li>
+										<a href="../group2/festival.html">축제﹒행사</a>
+									</li>
+									<li>
+										<a href="../group2/tourcourse.html">추천 여행코스</a>
+									</li>
+								</ul>
+							</div>
+							<li data-toggle="collapse" data-target="#collapse3">
+								<a href="#">무엇을 먹을까</a>
+							</li>
+							<div class="collapse in" id="collapse3" aria-expanded="true">
+								<ul class="nav">
+									<li>
+										<a href="../group3/eatery.html">음식점정보</a>
+									</li>
+								</ul>
+							</div>
+							<li data-toggle="collapse" data-target="#collapse4">
+								<a href="#">어디서 잘까</a>
+							</li>
+							<div class="collapse in" id="collapse4" aria-expanded="true">
+								<ul class="nav">
+									<li>
+										<a href="../group4/accommodation.html">숙박업소정보</a>
+									</li>
+								</ul>
+							</div>
 
+						</ul>
+					</nav>
+				</aside>
 
+				<div id="fh5co-main">
+					<div class="fh5co-narrow-content">
+						<h2 class="animate-box" data-animate-effect="fadeInLeft">
+							관광지
+						</h2>
+						<nav class="areaLists">
+							<span class="area area__select-style">지역</span>
+							<span class="sigungu area__select-style">시군구</span>
+							<div class="areaList">
+								<!-- <div class="hiddenMenu">
+									<li class="areaCodes" data-toggle="1">서울</li>
+									<li class="areaCodes" data-toggle="7">울산</li>
+									<li class="areaCodes" data-toggle="35">경북</li>
+								</div>
+								<div class="hiddenMenu">
+									<li class="areaCodes" data-toggle="2">인천</li>
+									<li class="areaCodes" data-toggle="8">세종시</li>
+									<li class="areaCodes" data-toggle="36">경남</li>
+								</div>
+								<div class="hiddenMenu">
+									<li class="areaCodes" data-toggle="3">대전</li>
+									<li class="areaCodes" data-toggle="31">경기도</li>
+									<li class="areaCodes" data-toggle="37">전북</li>
+								</div>
+								<div class="hiddenMenu">
+									<li class="areaCodes" data-toggle="4">대구</li>
+									<li class="areaCodes" data-toggle="32">강원도</li>
+									<li class="areaCodes" data-toggle="38">전남</li>
+								</div> -->
+								<div class="hiddenMenu">
+									<!-- <li class="areaCodes" data-toggle="5">광주</li>
+									<li class="areaCodes" data-toggle="33">충북</li> -->
+									<li class="areaCodes" data-toggle="39">제주도</li>
+								</div>
+								<!-- <div class="hiddenMenu">
+									<li class="areaCodes" data-toggle="6">부산</li>
+									<li class="areaCodes" data-toggle="34">충남</li>
+								</div> -->
+							</div>
+							<!-- <ul class="sigunguLists">
+								<li>지역을 먼저 선택하세요</li>
+							</ul> -->
+						</nav>
+						<div class="row animate-box" id="travelContents" data-animate-effect="fadeInLeft">
 
+						</div>
 
-
-
-
-
-
-			<div id="board" class="board_list type01">
-
-				<div class="form_wrap">
-				</div>
-				<!-- form_wrap end -->
-
-
-				<div class="box_wrap clear" id="result">
-
-				</div>
-				<div class="pagination_wrap">
-					<div class="pagination">
-						<a href="#">&laquo;</a>
-						<a href="#">1</a>
-						<a href="#" class="active">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a href="#">6</a>
-						<a href="#">&raquo;</a>
+						<div class="text-right">
+							<a href="javascript:void(0)" onclick="moreView()">더보기</a>
+						</div>
 					</div>
-					<!-- pagination end -->
 				</div>
-				<!-- pagination_wrap end-->
 			</div>
-			<!-- board end -->
 
-			<!-- <button class="btn btn-primary">getJSON form Open API</button>
-			<button id="clear" class="btn btn-info">clear</button>
-			<input type="text" id="find">
-			<button id="findbtn" class="btn btn-info">find</button> -->
+
+
+
+
 		</div>
 		<!-- content end -->
 	</div>
 	<!-- container end-->
 
 
-	<script id="codeTemp" type="text/xxx-mytemplate">
-		{{#each .}}
-		<div class="box">
-			<div class="img_area">
-				<a href="view.html?contentid={{contentid}}">
-					<span class="category">관광지</span>
-					<img src="{{firstimage}}" alt="{{title}}">
-					<span class="star_score"></span>
-				</a>
-			</div>
-			<!-- img area end -->
-
-			<div class="box_cont_area">
-				<a href="view.html?{{contentid}}">
-					<b>{{title}}</b>
-				</a>
-				<p class="location_category">{{addr1}}</p>
-				<p class="hashtag">
-					<a href="#">#전복김밥</a>
-					<a href="#">#통전복주먹밥</a>
-					<a href="#">#미역국</a>
-				</p>
-				<p class="my_hashtag">
-					<a href="#"></a>
-				</p>
-				<div class="icon_area">
-					<ul class="clear">
-						<li class="icon like_icon">
-							<a href="#">
-								<span>좋아요</span>
-								<span class="like_count">60</span>
-							</a>
-						</li>
-						<li class="icon zzim_icon">
-							<a href="#">
-								<span>찜하기</span>
-								<span class="zzim_count">883</span>
-							</a>
-						</li>
-						<li class="icon review_icon">
-							<a href="#">
-								<span>리뷰</span>
-								<span class="review_count">921</span>
-							</a>
-
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!-- box_cont_area -->
-		</div>
-		<!-- box end end-->
-		{{/each}}
-	</script>
 
 
 
@@ -173,10 +175,8 @@
 	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../../js/common/common.js"></script>
-	<!-- <script src="list.js"></script> -->
-	<script src="api.js"></script>
-	<!-- <script src="search.js"></script> -->
-	<script src="VisitKoreaAPI.js"></script>
+	<script src="tourapi.js"></script>
+	<script src="list.js"></script>
 
 	<script>
 		$(document).ready(function () {
