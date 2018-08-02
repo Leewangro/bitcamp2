@@ -7,14 +7,14 @@ $('#a12').on('click', function() {
     		function(contentTypeId) {
         // json 객체 내부 접근하기
         console.log(contentTypeId.response.body.items.item);
-        
         var items = contentTypeId.response.body.items.item;
-        for (let data of items) {
+        var sorted = _.sortBy(items, "firstimage2")
+        for (let data of sorted) {
         	if (data.firstimage2 == null) {
-        		data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/93/197693_image3_1.jpg';
+        		data.firstimage2 = '../../img/common/noimage.jpg';
         	}
         }
-        var html = templateFn({list:items});
+        var html = templateFn({list:sorted});
         $('#placesList').html(html);
     });
 });
@@ -26,12 +26,13 @@ $('#a39').on('click', function() {
     		function(contentTypeId) {
         // json 객체 내부 접근하기
         var items = contentTypeId.response.body.items.item;
-        for (let data of items) {
+        var sorted = _.sortBy(items, "firstimage2")
+        for (let data of sorted) {
         	if (data.firstimage2 == null) {
-        		data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/97/689597_image3_1.jpg';
+        		data.firstimage2 = '../../img/common/noimage.jpg';
         	}
         }
-        var html = templateFn({list:items});
+        var html = templateFn({list:sorted});
         
         $('#placesList').html(html);
     });
@@ -42,12 +43,13 @@ $('#a38').on('click', function() {
     		function(contentTypeId) {
         // json 객체 내부 접근하기
         var items = contentTypeId.response.body.items.item;
-        for (let data of items) {
+        var sorted = _.sortBy(items, "firstimage2")
+        for (let data of sorted) {
         	if (data.firstimage2 == null) {
-        		data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/92/818792_image3_1.jpg';
+        		data.firstimage2 = '../../img/common/noimage.jpg';
         	}
         }
-        var html = templateFn({list:items});
+        var html = templateFn({list:sorted});
         
         $('#placesList').html(html);
     });
@@ -58,12 +60,13 @@ $('#a32').on('click', function() {
     		function(contentTypeId) {
         // json 객체 내부 접근하기
         var items = contentTypeId.response.body.items.item;
-        for (let data of items) {
+        var sorted = _.sortBy(items, "firstimage2")
+        for (let data of sorted) {
         	if (data.firstimage2 == null) {
-        		data.firstimage2 = 'http://tong.visitkorea.or.kr/cms/resource/11/729311_image3_1.jpg';
+        		data.firstimage2 = '../../img/common/noimage.jpg';
         	}
         }
-        var html = templateFn({list:items});
+        var html = templateFn({list:sorted});
         
         $('#placesList').html(html);
     });
