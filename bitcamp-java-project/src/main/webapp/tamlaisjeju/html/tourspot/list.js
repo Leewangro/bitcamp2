@@ -10,11 +10,6 @@
 */
 
 
-
-
-
-
-
 $(function () {
     // common.leftMenuImport();
     common.areaChange();
