@@ -593,7 +593,7 @@
 			$.ajax({
 				url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
-				success : function(data) {
+				success : function(data) { 
 					
 					for(let item of data.response.body.items.item) {
 						if($(token).val() == $(tokenVal).val()){
