@@ -203,10 +203,10 @@
                     </div>
                 </div>
                 <div id="post_wraps">
-                    <div id="cont_1" class="post_wrap">
+                    <div id="cont_1" class="post_wrap" onclick='imgBoxClick(this)'>
 
                         <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg1">
-                            클릭하여 사진 등록
+                            <span class='post_imgbox_text'>클릭하여 사진 등록</span>
                             <img src="">
                         </div>
                         <div class="post_text">
@@ -341,6 +341,7 @@
             var placeValue = null;
             var xValue = null;
             var yValue = null;
+            
 
             // 마커를 담을 배열입니다
             var markers = [];
@@ -615,7 +616,7 @@
             // 지도2
             var mapContainer2 = document.getElementById('editor-map'), // 지도를 표시할 div  
                 mapOption = {
-                    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    center: new daum.maps.LatLng(33.359040372937415, 126.53430503608087), // 지도의 중심좌표
                     level: 10 // 지도의 확대 레벨
                 };
 
@@ -950,14 +951,15 @@
             manageGroupTag(deleteBtns, "click", deleteItem);
         </script>
         <script>
+             
             var count = 2;
 
             function add_div() {
                 $('#post_wraps').append(
-                    "<div id=" + "'cont_" + count + "'" + " class='post_wrap'>" +
+                    "<div id=" + "'cont_" + count + "'" + " onclick='imgBoxClick(this)' class='post_wrap'>" +
                     "<button class='cancel_btn' onclick='delete_cont(this.value)'></button>" +
                     "<div class='post_imgbox' data-toggle='modal' data-target='.bd-example-modal-lg" + count + "'>" +
-                    '클릭하여 사진 등록' +
+                    "<span class='post_imgbox_text'>클릭하여 사진 등록</span>" +
                     "<img src=''>" +
                     "</div>" +
                     "<div class='post_text'>" +
@@ -1103,7 +1105,10 @@
                             });
                             let imgBox = $(imagesDiv).parent().parent().children()[1]
                             $(imgBox).append(
-                                "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
+                                "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;position:relative;'>" +
+                                "<div class='colorBox'></div>" +
+                                "<button class='upload_remove_btn' onclick='removeImg(this)'><img src='../../img/sub08/remove.png'></button>" +
+                                "<button class='upload_main_btn' onclick='mainImg(this)'><img src='../../img/sub08/main.png'></button>" +
                                 "<img src='" + previews[previewsCnt2] + "'>" +
                                 "<input name='imgName' type='text' value='" + file.filename +
                                 "'>" +
@@ -1122,6 +1127,35 @@
 
                     }
                 });
+            }
+            
+            var imgBoxClicks = null;
+            function imgBoxClick(val) {
+                console.log(val)
+                imgBoxClicks = val
+
+            }
+            function removeImg(val) {
+                $(val).parent().remove();
+                if ($(imgBoxClicks).children()[1].childNodes[1].src == $(val).parent().children()[3].currentSrc) {
+                    $(imgBoxClicks).children()[1].childNodes[1].src="";
+                    $(imgBoxClicks).children()[1].childNodes[0].style.display = "block";
+                }
+                
+            }
+
+            function mainImg(val) {
+                console.log($(val).parent().children()[3].currentSrc)
+                console.log()
+                $(imgBoxClicks).children()[1].childNodes[1].src=$(val).parent().children()[3].currentSrc
+                $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
+            }
+
+            function mainImg2(val) {
+                $(imgBoxClicks).children()[1].childNodes[1].src=$(val).parent().children()[3].currentSrc
+                console.log()
+                console.log($(imgBoxClicks).children())
+                // $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
             }
 
             function delete_cont() {
@@ -1358,7 +1392,10 @@
                         });
                         let imgBox = $(imagesDiv).parent().parent().children()[1]
                         $(imgBox).append(
-                            "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;'>" +
+                            "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;position:relative;'>" +
+                            "<div class='colorBox'></div>" +
+                            "<button class='upload_remove_btn' onclick='removeImg(this)'><img src='../../img/sub08/remove.png'></button>" +
+                            "<button class='upload_main_btn' onclick='mainImg2(this)'><img src='../../img/sub08/main.png'></button>" +
                             "<img src='" + previews[previewsCnt] + "'>" +
                             "<input name='imgName' type='text' value='" + file.filename + "'>" +
                             "<input name='imgX' type='text' value='" + file.filename + "'>" +
