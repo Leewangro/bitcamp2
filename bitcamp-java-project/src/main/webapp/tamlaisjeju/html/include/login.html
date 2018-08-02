@@ -1,9 +1,10 @@
 <!-- Facebook login or logout button -->
-<ul class="login">
-<li><a id="Login" data-toggle="modal" data-target="#exampleModalCenter" href="#" onclick="fbLogin();"></a></li>
-<li><span><img id="userPic" style="display:none;" src=
-    "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=243294969832614&height=50&width=50&ext=1535703401&hash=AeSCCs0TWbTnyBgY"></span><a id="Logout" onclick="Logout()" style="display:none;">로그아웃</a></li>
-</ul>
+<div class="login">
+<a id="Login" data-toggle="modal" data-target="#exampleModalCenter" href="#" onclick="fbLogin();">로그인</a>
+<span><img id="userPic" style="display:none; width:25px; border-radius:13px; float:left; margin-right:5px;" src=""></span>
+<span id="userName" style="margin-right: 7px; float:left;"></span>
+<span id="Logout" onclick="Logout()" style="display:none; float:left;">로그아웃</span>
+</div>
 <script>
         window.fbAsyncInit = function() {
             // FB JavaScript SDK configuration and setup
@@ -51,9 +52,8 @@
                 document.getElementById('Login').style.display = 'none';
                 document.getElementById('Logout').style.display = 'block';
                 document.getElementById('userPic').style.display = 'block';
-                //document.getElementById('userPic').src = response.picture;
-                console.log(response);
-                console.log(response.picture);
+                document.getElementById('userPic').src = response.picture.data.url;
+                document.getElementById('userName').innerHTML = response.name;
             });
         }
         
@@ -63,6 +63,7 @@
                 document.getElementById('Login').style.display = 'block';
                 document.getElementById('Logout').style.display = 'none';
                 document.getElementById('userPic').style.display = 'none';
+                document.getElementById('userName').style.display = 'none';
             });
         }
         </script>
