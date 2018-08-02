@@ -513,6 +513,7 @@
 		}
 	</script>
 -->
+	<!--화면 데이별로 넘기기(노드를 추가하여 이어 붙이는 방식)-->
  	<script>
  	  for(let i=0; i<day; i++){
  		  
@@ -548,11 +549,21 @@
 		$(r_cm).text(data);
 		$(img_modal).append(r_cm);
 		$(cont_txt_area).append(img_modal);
+		/*원래 이미지 부분*/
+		$(img).attr(data);
+		$(img_modal).append(img);
+		/*원래 이미지 종료*/
 		$(spot_cont).text(cont_txt_area);
 	    $(dayCon).append(spot_cont);
 		/*모달 이미지 부분*/
-		$(m_img).img(data);
+		$(m_img).attr(data);
 		$(modal_header).append(m_img);
+		/*모달의 x창*/
+		$(span_aria).text(data);
+		$(button_close).append(span_aria);
+		$(modal_header).append(button_close);
+		$(modal_content).append(modal_header);
+		/*모달x창 종료*/
 		$(modal_content).append(modal_header);
 		$(modal_dialog).append(modal_content);
 		$(modal_fade).append(modal_dialog);
@@ -560,8 +571,9 @@
 		$(cont_txt_area).append(img_modal);
 		$(spot_cont).append(cont_txt_area);
 		$(dayCon).append(spot_cont);
-		/*모달의 x창*/
-		$
+		/*모달 이미지 부분 종료*/
+		
+		
  	  }
  	</script>
 	
