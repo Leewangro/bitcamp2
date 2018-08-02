@@ -198,7 +198,7 @@
                         <div class="cal_days">
                             <span>총</span>
                             <span id="cal_day">0</span>
-                            <spam>일</span>
+                            <span>일</span>
                         </div>
                     </div>
                 </div>
@@ -338,10 +338,11 @@
             var mapArr = new Array();
             var mapData = null;
             var addrValue = null;
+            var addrValue2 = null;
             var placeValue = null;
             var xValue = null;
             var yValue = null;
-            
+
 
             // 마커를 담을 배열입니다
             var markers = [];
@@ -349,6 +350,7 @@
             function addrClick(val) {
                 console.log($(val).parent().children()[0])
                 addrValue = val;
+                addrValue2 = val;
                 placeValue = $(val).parent().children()[0]
                 xValue = $(val).parent().children()[2]
                 yValue = $(val).parent().children()[3]
@@ -613,7 +615,9 @@
                 searchPlaces();
                 relayout();
             });
-            // 지도2
+            //////////////////////////////////////////////
+            //////////////////////////////           지도2
+            //////////////////////////////////////////////
             var mapContainer2 = document.getElementById('editor-map'), // 지도를 표시할 div  
                 mapOption = {
                     center: new daum.maps.LatLng(33.359040372937415, 126.53430503608087), // 지도의 중심좌표
@@ -623,12 +627,12 @@
             var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
 
             // 마커를 표시할 위치와 title 객체 배열입니다 
-            var positions = [];
             // var addrValue = null;
             // var placeValue = null;
             // var xValue = null;
             // var yValue = null;
 
+            var positions = [];
             var marker2 = null;
             var markerImage = null;
             var imageSize = null;
@@ -636,17 +640,24 @@
             var markers2 = []
             linePath = []
 
-            function xyname() {
+            function xyname() {         
                 for (let z = 0; z < positions.length; z++) {
-                    if (positions[z].addr == addrValue) {
+                    if (positions[z].addr == addrValue2) {
                         positions.splice(z, 1)
-                        for (let z2 = 0; z2 < markers.length; z2++) {
-                            markers2[z2].setMap(null)
-                        }
-                        markers2 = []
+                        removeMarkers()
                         break;
                     }
                 }
+
+                function removeMarkers() {
+                    for (let e = 0; e < markers2.length; e++) {
+                        console.log(markers2[e])
+                        markers2[e].setMap(null);
+                    }
+                    markers2 = [];
+                }
+
+
                 positions.push({
                     title: placeValue.value,
                     latlng: new daum.maps.LatLng(yValue.value, xValue.value),
@@ -671,7 +682,7 @@
                         image: markerImage // 마커 이미지 
 
                     });
-                    linePath.push(new daum.maps.LatLng(positions[i].latlng.jb, positions[i].latlng.ib))
+                    // linePath.push(new daum.maps.LatLng(positions[i].latlng.jb, positions[i].latlng.ib))
                     marker2.setMap(map2)
                     markers2.push(marker2)
                 }
@@ -687,21 +698,21 @@
                 console.log(positions)
 
                 for (let i = 0; i < markers2.length; i++) {
-
+                    console.log("bbb")
                 }
 
 
                 // 지도에 표시할 선을 생성합니다
-                var polyline = new daum.maps.Polyline({
-                    path: linePath, // 선을 구성하는 좌표배열 입니다
-                    strokeWeight: 5, // 선의 두께 입니다
-                    strokeColor: '#FFAE00', // 선의 색깔입니다
-                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                    strokeStyle: 'solid' // 선의 스타일입니다
-                });
+                // var polyline = new daum.maps.Polyline({
+                //     path: linePath, // 선을 구성하는 좌표배열 입니다
+                //     strokeWeight: 5, // 선의 두께 입니다
+                //     strokeColor: '#FFAE00', // 선의 색깔입니다
+                //     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                //     strokeStyle: 'solid' // 선의 스타일입니다
+                // });
 
                 // 지도에 선을 표시합니다 
-                polyline.setMap(map);
+                // polyline.setMap(map);
 
 
 
@@ -723,11 +734,8 @@
                     }
                 }
 
-                console.log(positions);
-                console.log(markers2);
 
                 for (var i = 0; i < positions.length; i++) {
-                    console.log("호출")
 
                     // 마커 이미지의 이미지 크기 입니다
                     imageSize = new daum.maps.Size(24, 35);
@@ -749,26 +757,7 @@
 
 
 
-            // [{
-            //         title: '카카오',
-            //         latlng: new daum.maps.LatLng(33.450705, 126.570677)
-            //     },
-            //     {
-            //         title: '생태연못',
-            //         latlng: new daum.maps.LatLng(33.450936, 126.569477)
-            //     },
-            //     {
-            //         title: '텃밭',
-            //         latlng: new daum.maps.LatLng(33.450879, 126.569940)
-            //     },
-            //     {
-            //         title: '근린공원',
-            //         latlng: new daum.maps.LatLng(33.451393, 126.570738)
-            //     }
-            // ];
-            console.log()
-
-            // 마커 이미지의 이미지 주소입니다
+           
         </script>
 
         <script>
@@ -951,7 +940,6 @@
             manageGroupTag(deleteBtns, "click", deleteItem);
         </script>
         <script>
-             
             var count = 2;
 
             function add_div() {
@@ -1128,31 +1116,33 @@
                     }
                 });
             }
-            
+
             var imgBoxClicks = null;
+
             function imgBoxClick(val) {
                 console.log(val)
                 imgBoxClicks = val
 
             }
+
             function removeImg(val) {
                 $(val).parent().remove();
                 if ($(imgBoxClicks).children()[1].childNodes[1].src == $(val).parent().children()[3].currentSrc) {
-                    $(imgBoxClicks).children()[1].childNodes[1].src="";
+                    $(imgBoxClicks).children()[1].childNodes[1].src = "";
                     $(imgBoxClicks).children()[1].childNodes[0].style.display = "block";
                 }
-                
+
             }
 
             function mainImg(val) {
                 console.log($(val).parent().children()[3].currentSrc)
                 console.log()
-                $(imgBoxClicks).children()[1].childNodes[1].src=$(val).parent().children()[3].currentSrc
+                $(imgBoxClicks).children()[1].childNodes[1].src = $(val).parent().children()[3].currentSrc
                 $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
             }
 
             function mainImg2(val) {
-                $(imgBoxClicks).children()[1].childNodes[1].src=$(val).parent().children()[3].currentSrc
+                $(imgBoxClicks).children()[1].childNodes[1].src = $(val).parent().children()[3].currentSrc
                 console.log()
                 console.log($(imgBoxClicks).children())
                 // $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
