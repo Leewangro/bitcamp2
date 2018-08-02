@@ -2311,6 +2311,7 @@ board_list - 게시판 리스트
   /* width: calc(34% - 2%); */
   margin-left: 2%;
   margin-bottom: 2%;
+  min-height:490px;
 }
 
 .board_list.type01 .box_cont_area {
@@ -2323,6 +2324,7 @@ board_list - 게시판 리스트
 
 .board_list.type01 .box_cont_area .location_category {
   text-align: center;
+  font-size:15px;
 }
 
 .board_list.type01 .box_cont_area .hashtag {
