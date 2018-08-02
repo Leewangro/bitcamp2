@@ -11,11 +11,6 @@
 
 
 $(function () {
-    // common.leftMenuImport();
-    common.areaChange();
-    common.sigunguChange();
-    common.buttonAction();
-    common.tabChange();
     draw.init();
     draw.elements();
 })
@@ -35,30 +30,72 @@ var parsing = {
 
     dataParsing: function (data) {
         var list = data.response.body.items.item
-
-        var tabElements =
-        console.log(data)
-            
-            "<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" 
-        $("#tab").append(tabElements)
-
-
         if (Array.isArray(list)) {
             if (list != undefined) {
                 $.each(list, function (i, item) {
                     var InfoElements =
-                        "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'" + "target='_blank'>" +
-                        "<div class='thumbnail'>" +
+
+
+
+
+
+                        "<div class='box'>" +
+                        "<div class='img_area'>" +
+                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+                        "<span class='category'>관광지</span>" +
                         "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-                        "<div class='caption text-center'>" +
-                        "<h5>" + item.title + "</h5>" +
-                        "<h6>" + item.addr1 + "</h6>" +
-                        "</div>" +
-                        "</div>" +
+
                         "</a>" +
+
+                        "</div>" +
+
+
+                        "<div class='box_cont_area'>" +
+                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+
+                        "<b>" + item.title + "</b>" +
+
+
+
+                        "</a>" +
+
+                        "<p class='location_category'>" + item.addr1 + "</p>" +
+                        "<p class='hashtag'>" +
+                        "<a href='#'>#전복김밥</a>" +
+                        "<a href='#'>#통전복주먹밥</a>" +
+                        "<a href='#'>#미역국</a>" +
+
+                        "</p>" +
+                        "<div class='icon_area'>" +
+                        "<ul class='clear'>" +
+                        "<li class='icon like_icon'>" +
+                        "<a href='#'>" +
+                        "<span>좋아요</span>" +
+                        "<span class='like_count'>60</span>" +
+                        "</a>" +
+                        "</li>" +
+                        "<li class='icon zzim_icon'>" +
+                        "<a href='#'>" +
+                        "<span>찜하기</span>" +
+                        "<span class='zzim_count'>883</span>" +
+                        "</a>" +
+                        "</li>" +
+                        "<li class='icon review_icon'>" +
+                        "<a href='#'>" +
+                        "<span>리뷰</span>" +
+                        "<span class='review_count'>921</span>" +
+
+                        "</a>" +
+
+                        "</li>" +
+                        "</ul>" +
+                        "</div>" +
+                        "</div>" +
+
                         "</div>"
-                    $("#travelContents").append(InfoElements)
+
+                    $("#board").append(InfoElements)
+
                 })
             } else {
                 $(".text-right").css("display", "none");
