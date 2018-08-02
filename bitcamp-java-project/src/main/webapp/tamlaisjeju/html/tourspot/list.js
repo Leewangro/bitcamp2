@@ -25,11 +25,48 @@ var parsing = {
         console.log(data)
     },
 
+    tab: function (data) {
+        "<div class='contentTypeList category_tab'>" +
+        "<li class='contenttype' data-toggle='12'>" +
+        "<a class='active' href='list.html?&item=" + item.contenttypeid == 12 + "'>#관광지</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='14'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 14 + "'>#문화시설</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='15'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 15 + "'>#축제공연행사</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='25'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 25 + "'>#여행코스</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='28'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 28 + "'>#레포츠</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='32'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 32 + "'>#숙박</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='38'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 38 + "'>#쇼핑</a>" +
+            "</li>" +
+            "<li class='contenttype' data-toggle='39'>" +
+            "<a href='list.html?&item=" + item.contenttypeid == 39 + "'>#음식점</a>" +
+            "</li>" +
+            "</div>"
+
+        $("#tab").append(tab)
+    },
+
+
+
 
 
 
     dataParsing: function (data) {
         var list = data.response.body.items.item
+
+
+
+
         if (Array.isArray(list)) {
             if (list != undefined) {
                 $.each(list, function (i, item) {
