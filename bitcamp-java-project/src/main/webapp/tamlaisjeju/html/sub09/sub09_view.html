@@ -591,9 +591,7 @@
 				url : www.data.go.kr,
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
-					console.log(data)
 					$(sDay).append(data[10].sDate);
-					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
 				},
 				error : function(e) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
