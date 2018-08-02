@@ -82,7 +82,7 @@ dependencies {
     compile group: 'com.drewnoakes', name: 'metadata-extractor', version: '2.11.0'
 
     // 스프링 시큐리티(로그인 연동)
-    // compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.4.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.4.RELEASE'
     
     
 }
