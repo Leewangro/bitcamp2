@@ -576,12 +576,14 @@
  	</script>
 		<!-- 노드를 동적으로 삭제해주는 부분 -->
 	<script>
+	 for(let i=0; i<day; i++){
 		let dayCon = $('.spot-note-box');
 		let spot_tit = $('<div class="spot-tit type">');
 		let spot_cont = $('<div class="spot-conts">');
 		
 		$(dayCon).empty(spot_tit);
 		$(dayCon).empty(spot_cont);
+	 }
 	</script>
 	<!-- api에서 day에 필요한 토큰받아오기-->
 	<script>
