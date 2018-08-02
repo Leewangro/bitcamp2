@@ -595,6 +595,7 @@
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
 					if(token.val() == tokenVal.val()){
+						console.log(data);
 						$(token).append(data.contentid);
 					}
 				},
