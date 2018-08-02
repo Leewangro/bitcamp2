@@ -351,6 +351,7 @@
                 placeValue = $(val).parent().children()[0]
                 xValue = $(val).parent().children()[2]
                 yValue = $(val).parent().children()[3]
+                return;
             }
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = {
@@ -627,15 +628,28 @@
             // var xValue = null;
             // var yValue = null;
 
-            var marker = null;
+            var marker2 = null;
             var markerImage = null;
             var imageSize = null;
             var imageSrc = null;
+            var markers2 = []
+            linePath = []
 
             function xyname() {
+                for (let z = 0; z < positions.length; z++) {
+                    if (positions[z].addr == addrValue) {
+                        positions.splice(z, 1)
+                        for (let z2 = 0; z2 < markers.length; z2++) {
+                            markers2[z2].setMap(null)
+                        }
+                        markers2 = []
+                        break;
+                    }
+                }
                 positions.push({
                     title: placeValue.value,
-                    latlng: new daum.maps.LatLng(yValue.value, xValue.value)
+                    latlng: new daum.maps.LatLng(yValue.value, xValue.value),
+                    addr: addrValue
                 })
                 imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
@@ -650,16 +664,89 @@
                     markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 
                     // 마커를 생성합니다
-                    marker = new daum.maps.Marker({
-                        map: map2, // 마커를 표시할 지도
+                    marker2 = new daum.maps.Marker({
+                        position: positions[i].latlng, // 마커를 표시할 위치
+                        title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                        image: markerImage // 마커 이미지 
+
+                    });
+                    linePath.push(new daum.maps.LatLng(positions[i].latlng.jb, positions[i].latlng.ib))
+                    marker2.setMap(map2)
+                    markers2.push(marker2)
+                }
+                // var polyline = new daum.maps.Polyline({
+                //     path: linePath, // 선을 구성하는 좌표배열 입니다
+                //     strokeWeight: 5, // 선의 두께 입니다
+                //     strokeColor: '#FFAE00', // 선의 색깔입니다
+                //     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                //     strokeStyle: 'solid' // 선의 스타일입니다
+                // });
+                // polyline.setMap(map2);
+
+                console.log(positions)
+
+                for (let i = 0; i < markers2.length; i++) {
+
+                }
+
+
+                // 지도에 표시할 선을 생성합니다
+                var polyline = new daum.maps.Polyline({
+                    path: linePath, // 선을 구성하는 좌표배열 입니다
+                    strokeWeight: 5, // 선의 두께 입니다
+                    strokeColor: '#FFAE00', // 선의 색깔입니다
+                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid' // 선의 스타일입니다
+                });
+
+                // 지도에 선을 표시합니다 
+                polyline.setMap(map);
+
+
+
+            }
+
+            function markerRemove(e) {
+                console.log(e)
+
+                for (var i = 0; i < positions.length; i++) {
+                    console.log("-", positions[i].latlng.ib)
+                    if (positions[i].latlng.ib == e) {
+                        console.log("삭제")
+                        positions.splice(i, 1)
+                        for (var i2 = 0; i2 < markers2.length; i2++) {
+                            markers2[i2].setMap(null)
+                        }
+                        markers2 = []
+                        break;
+                    }
+                }
+
+                console.log(positions);
+                console.log(markers2);
+
+                for (var i = 0; i < positions.length; i++) {
+                    console.log("호출")
+
+                    // 마커 이미지의 이미지 크기 입니다
+                    imageSize = new daum.maps.Size(24, 35);
+
+                    // 마커 이미지를 생성합니다    
+                    markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+                    // 마커를 생성합니다
+                    marker2 = new daum.maps.Marker({
                         position: positions[i].latlng, // 마커를 표시할 위치
                         title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                         image: markerImage // 마커 이미지 
                     });
+                    marker2.setMap(map2)
+                    markers2.push(marker2)
                 }
 
-                console.log(positions)
             }
+
+
 
             // [{
             //         title: '카카오',
@@ -1039,6 +1126,7 @@
 
             function delete_cont() {
                 var contDiv = document.activeElement.parentNode;
+                var removeMarkers = contDiv.childNodes[2].childNodes[0][2].value
                 swal({
                     title: '정말 삭제하시겠습니까?',
                     text: "작성한 모든 정보가 삭제됩니다.",
@@ -1055,6 +1143,7 @@
                             'success'
                         )
                         contDiv.remove();
+                        markerRemove(removeMarkers);
                     }
 
                 })
