@@ -171,8 +171,8 @@
 							<div class="spot-note-box">
 								<div class="spot-tit type">
 									<a class="spot-title-area" id="d1">
-										<h4>
-											<span> 제주도 </span>
+										<h4 class="i-h4">
+											<span class="i-title"> 제주도 </span>
 										</h4>
 									</a>
 								</div>
@@ -514,14 +514,14 @@
 	</script>
 -->
 	<!--화면 데이별로 넘기기(노드를 동적으로 생성하는 부분 )-->
+	<!-- 
  	<script>
- 	  for(let i=0; i<day; i++){
  		  
  		let dayCon = $('.spot-note-box');
 	    let spot_tit = $('<div class="spot-tit type">');
 	    let spot_title_area = $('<a class="spot-title-area">');
-	    var h4 = $('<h4>');
-	    var span = $('<span>');
+	    var h4 = $('<h4 class="i-h4">');
+	    var span = $('<span class="m-title">');
 	    
 	    $(span).text(data);
 	    $(h4).append(span);
@@ -572,32 +572,35 @@
 		$(spot_cont).append(cont_txt_area);
 		$(dayCon).append(spot_cont);
 		/*모달 이미지 부분 종료*/
- 	  }
  	</script>
+ 	-->
 		<!-- 노드를 동적으로 삭제해주는 부분 -->
-	<script>
-	 for(let i=0; i<day; i++){
+	<!-- <script>
 		let dayCon = $('.spot-note-box');
 		let spot_tit = $('<div class="spot-tit type">');
 		let spot_cont = $('<div class="spot-conts">');
 		
 		$(dayCon).empty(spot_tit);
 		$(dayCon).empty(spot_cont);
-	 }
 	</script>
+	-->
 	<!-- api에서 day에 필요한 토큰받아오기-->
 	<script>
 		$(document).ready(function() {
 			var token = $('contentid');
-			var tokenVal = $('tokenVal';)
+			var tokenVal = $('tokenVal');
+			
 			$.ajax({
-				url :"http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json",
+				url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(data) {
-					if(token.val() == tokenVal.val()){
-						console.log(data);
-						$(token).append(data.contentid);
+					
+					for(let item of data.response.body.items.item) {
+						if($(token).val() == $(tokenVal).val()){
+							$(token).append(data.contentid);
+						}
 					}
+					
 				},
 				error : function(e) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
