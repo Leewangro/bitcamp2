@@ -1131,6 +1131,10 @@
                     $(imgBoxClicks).children()[1].childNodes[1].src = "";
                     $(imgBoxClicks).children()[1].childNodes[0].style.display = "block";
                 }
+                if ($(imgBoxClicks).children()[0].childNodes[3].src == $(val).parent().children()[3].currentSrc) {
+                    $(imgBoxClicks).children()[0].childNodes[3].src = "";
+                    $(imgBoxClicks).children()[0].childNodes[1].style.display = "block";
+                }
 
             }
 
@@ -1142,10 +1146,8 @@
             }
 
             function mainImg2(val) {
-                $(imgBoxClicks).children()[1].childNodes[1].src = $(val).parent().children()[3].currentSrc
-                console.log()
-                console.log($(imgBoxClicks).children())
-                // $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
+                $(imgBoxClicks).children()[0].childNodes[3].src = $(val).parent().children()[3].currentSrc
+                $(imgBoxClicks).children()[0].childNodes[1].style.display = "none";
             }
 
             function delete_cont() {
