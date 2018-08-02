@@ -489,7 +489,7 @@
 		});
 	</script>
 	<!-- 팝업 -->
-	<!-- <script>
+	<script>
 		String.prototype.popupView = function() {
 
 			var img_view = this;
@@ -512,11 +512,9 @@
 			imagez.document.close();
 		}
 	</script>
--->
+
  	<script>
- 	  for(let i=0; i<day; i++){
- 		  
- 		var dayCon = $('.spot-note-box');
+	    var dayCon = $('.spot-note-box');
 	    var spot_tit = $('<div class="spot-tit type">');
 	    var spot_title_area = $('<a class="spot-title-area">');
 	    var h4 = $('<h4>');
@@ -527,42 +525,6 @@
 	    $(spot_title_area).append(h4);
 	    $(spot_tit).append(spot_title_area);
 	    $(dayCon).append(spot_tit);
-	    
-	    var spot_cont = $('.spot-contents');
-	    var cont_txt_area = $('<div class="conts-txt-area">');
-	    var img_modal  = $('<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
-	   
-	    var img = $('<img src="" data-toggle="modal" data-taarget="exampleModal">');
-	   
-	    var modal_fade = $('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');
-	    var modal_dialog = $('<div class="modal-dialog" role="document">');
-		var modal_content = $('<div class="modal-content">');
-		var modal_header = $('<div class="modal-header">');
-		var button_close = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-		var span_aria = $('<span aria-hidden="true">');
-		
-		var m_img = $('<img class="m-img" src="">')	;
-		
-		var r_cm = $('<p class="r-cm">');
-		/*이미지 설명부분*/
-		$(r_cm).text(data);
-		$(img_modal).append(r_cm);
-		$(cont_txt_area).append(img_modal);
-		$(spot_cont).text(cont_txt_area);
-	    $(dayCon).append(spot_cont);
-		/*모달 이미지 부분*/
-		$(m_img).img(data);
-		$(modal_header).append(m_img);
-		$(modal_content).append(modal_header);
-		$(modal_dialog).append(modal_content);
-		$(modal_fade).append(modal_dialog);
-		$(img_modal).append(modal_fade);
-		$(cont_txt_area).append(img_modal);
-		$(spot_cont).append(cont_txt_area);
-		$(dayCon).append(spot_cont);
-		/*모달의 x창*/
-		$
- 	  }
  	</script>
 	
 </body>
