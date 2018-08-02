@@ -473,13 +473,13 @@
 				success : function(data) {
 					console.log(data)
 					//$(aWord).append(data[10].pDesc);
-					//$(sDay).val("(" + data./*디비 컬럼명 뭐로하냐*/ + ")");
+					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
 					$(sDay).append(data[10].sDate);
 					$(eDay).append(data[10].eDate);
 					$(partner).append(data[10].mWithNum);
 					$(theme).append(data[10].mTem);
-					//$(hits).append(data[10]./*디비 컬럼명 뭐로하냐*/);
-					//$(recoNum).append(data[10]./*디비 컬럼명 뭐로하냐*/);
+					//$(hits).append(data[10]./*프로퍼티 뭐로하냐*/);
+					//$(recoNum).append(data[10]./*프로퍼티명 뭐로하냐*/);
 					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
 				},
 				error : function(e) {
@@ -513,13 +513,13 @@
 		}
 	</script>
 -->
-	<!--화면 데이별로 넘기기(노드를 추가하여 이어 붙이는 방식)-->
+	<!--화면 데이별로 넘기기(노드를 동적으로 생성하는 부분 )-->
  	<script>
  	  for(let i=0; i<day; i++){
  		  
- 		var dayCon = $('.spot-note-box');
-	    var spot_tit = $('<div class="spot-tit type">');
-	    var spot_title_area = $('<a class="spot-title-area">');
+ 		let dayCon = $('.spot-note-box');
+	    let spot_tit = $('<div class="spot-tit type">');
+	    let spot_title_area = $('<a class="spot-title-area">');
 	    var h4 = $('<h4>');
 	    var span = $('<span>');
 	    
@@ -529,7 +529,7 @@
 	    $(spot_tit).append(spot_title_area);
 	    $(dayCon).append(spot_tit);
 	    
-	    var spot_cont = $('.spot-contents');
+	    var spot_cont = $('<div class="spot-contents">');
 	    var cont_txt_area = $('<div class="conts-txt-area">');
 	    var img_modal  = $('<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
 	   
@@ -558,12 +558,12 @@
 		/*모달 이미지 부분*/
 		$(m_img).attr(data);
 		$(modal_header).append(m_img);
-		/*모달의 x창*/
+		/*모달의 x버튼 시작*/
 		$(span_aria).text(data);
 		$(button_close).append(span_aria);
 		$(modal_header).append(button_close);
 		$(modal_content).append(modal_header);
-		/*모달x창 종료*/
+		/*모달x버튼 종료*/
 		$(modal_content).append(modal_header);
 		$(modal_dialog).append(modal_content);
 		$(modal_fade).append(modal_dialog);
@@ -572,10 +572,36 @@
 		$(spot_cont).append(cont_txt_area);
 		$(dayCon).append(spot_cont);
 		/*모달 이미지 부분 종료*/
-		
-		
  	  }
  	</script>
+		<!-- 노드를 동적으로 삭제해주는 부분 -->
+	<script>
+		let dayCon = $('.spot-note-box');
+		let spot_tit = $('<div class="spot-tit type">');
+		let spot_cont = $('.spot-contents');
+		
+		$(dayCon).empty(spot_tit);
+		$(dayCon).empty(spot_cont);
+	</script>
+	<!-- api에서 day에 필요한 토큰받아오기-->
+	<script>
+		$(document).ready(function() {
+			var token = $('#aWord');
+			$.ajax({
+				url : serverRoot + "/json/accompanyregi/list",
+				dataType : "json", // 데이터타입을 json 으로 받아옴
+				success : function(data) {
+					console.log(data)
+					$(sDay).append(data[10].sDate);
+					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
+				},
+				error : function(e) {
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+				}
+			});
+		});
+	</script>
+	
 	
 </body>
 
