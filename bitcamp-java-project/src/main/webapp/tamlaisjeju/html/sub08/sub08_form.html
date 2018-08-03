@@ -640,7 +640,7 @@
             var markers2 = []
             linePath = []
 
-            function xyname() {         
+            function xyname() {
                 for (let z = 0; z < positions.length; z++) {
                     if (positions[z].addr == addrValue2) {
                         positions.splice(z, 1)
@@ -754,10 +754,6 @@
                 }
 
             }
-
-
-
-           
         </script>
 
         <script>
@@ -1096,7 +1092,7 @@
                                 "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;position:relative;'>" +
                                 "<div class='colorBox'></div>" +
                                 "<button class='upload_remove_btn' onclick='removeImg(this)'><img src='../../img/sub08/remove.png'></button>" +
-                                "<button class='upload_main_btn' onclick='mainImg(this)'><img src='../../img/sub08/main.png'></button>" +
+                                "<button class='upload_main_btn' onclick='mainImg(this)'><img src='../../img/sub08/main.png'>대표사진 변경</button>" +
                                 "<img src='" + previews[previewsCnt2] + "'>" +
                                 "<input name='imgName' type='text' value='" + file.filename +
                                 "'>" +
@@ -1143,11 +1139,27 @@
                 console.log()
                 $(imgBoxClicks).children()[1].childNodes[1].src = $(val).parent().children()[3].currentSrc
                 $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
+                swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: '대표사진이 변경되었습니다.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $(".close").trigger('click')
             }
 
             function mainImg2(val) {
                 $(imgBoxClicks).children()[0].childNodes[3].src = $(val).parent().children()[3].currentSrc
                 $(imgBoxClicks).children()[0].childNodes[1].style.display = "none";
+                swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: '대표사진이 변경되었습니다.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                $(".close").trigger('click')
             }
 
             function delete_cont() {
@@ -1387,7 +1399,7 @@
                             "<div class='imgboxDiv' style='display:inline-block;width:120px;height:120px;overflow:hidden;border-radius:20%;margin:3px;position:relative;'>" +
                             "<div class='colorBox'></div>" +
                             "<button class='upload_remove_btn' onclick='removeImg(this)'><img src='../../img/sub08/remove.png'></button>" +
-                            "<button class='upload_main_btn' onclick='mainImg2(this)'><img src='../../img/sub08/main.png'></button>" +
+                            "<button class='upload_main_btn' onclick='mainImg2(this)'><img src='../../img/sub08/main.png'>대표사진 변경</button>" +
                             "<img src='" + previews[previewsCnt] + "'>" +
                             "<input name='imgName' type='text' value='" + file.filename + "'>" +
                             "<input name='imgX' type='text' value='" + file.filename + "'>" +
@@ -1395,6 +1407,7 @@
                             "</div>"
                         )
                         previewsCnt++;
+                        
 
                         if ($('imagesDiv').children("img").length == 0) {
                             $(imagesDiv).html("업로드 대기중인 사진이 없습니다.")
