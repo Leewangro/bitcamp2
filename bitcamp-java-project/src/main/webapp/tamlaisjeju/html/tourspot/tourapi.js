@@ -47,7 +47,7 @@ var common = {
 		if (ref === 12) { //관광지
 			InfoElements = "<div class='detail_info'>" +
 				
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenter + "</td>" +
 				"<tr><td class='introLeft'><em>수용인원 	 </em></td><td class='introRight'>" + list.accomcount + "</td>" +
@@ -65,7 +65,7 @@ var common = {
 		} else if (ref === 14) { // 문화시설
 			InfoElements = "<div class='detail_info'>" +
 				
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterculture + "</td>" +
 				"<tr><td class='introLeft'><em>관람소요시간      </em></td><td class='introRight'>" + list.spendtime + "</td>" +
@@ -85,7 +85,7 @@ var common = {
 			InfoElements = "<div class='detail_info'>" +
 				"<div>" + list.program + "</div>" +
 				"<div>" + list.subevent + "</div>" +
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>행사장소  </em></td><td class='introRight'>" + list.eventplace + "</td>" +
 				"<tr><td class='introLeft'><em>행사장위치안내 	 </em></td><td class='introRight'>" + list.placeinfo + "</td>" +
@@ -106,7 +106,7 @@ var common = {
 		} else if (ref === 25) { // 여행코스
 			InfoElements = "<div class='detail_info'>" +
 		
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocentertourcourse + "</td>" +
 				"<tr><td class='introLeft'><em>코스테마	   </em></td><td class='introRight'>" + list.theme + "</td>" +
@@ -120,7 +120,7 @@ var common = {
 		} else if (ref === 28) { //레포츠
 			InfoElements = "<div class='detail_info'>" +
 		
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterleports + "</td>" +
 				"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservation + "</td>" +
@@ -142,7 +142,7 @@ var common = {
 		} else if (ref === 32) { // 숙박정보 
 			InfoElements = "<div class='detail_info'>" +
 	
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterlodging + "</td>" +
 				"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservationlodging + "</td>" +
@@ -163,7 +163,7 @@ var common = {
 		} else if (ref === 38) { // 쇼핑
 			InfoElements = "<div class='detail_info'>" +
 	
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>매장안내 </em></td><td class='introRight'>" + list.shopguide + "</td>" +
 				"<tr><td class='introLeft'><em>문의및안내 </em></td><td class='introRight'>" + list.infocentershopping + "</td>" +
@@ -185,7 +185,7 @@ var common = {
 		} else if (ref === 39) { // 음식점
 			InfoElements = "<div class='detail_info'>" +
 	
-				"<table class='table table-responsive'>" +
+				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>대표메뉴 </em></td><td class='introRight'>" + list.firstmenu + "</td>" +
 				"<tr><td class='introLeft'><em>취급메뉴 </em></td><td class='introRight'>" + list.treatmenu + "</td>" +
