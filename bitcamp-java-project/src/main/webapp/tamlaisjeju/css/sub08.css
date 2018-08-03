@@ -2333,3 +2333,15 @@ input,
     color: #eee;
     font-size: 10px;
 }
+.cntbox_remove .cntbox_remove_btn {
+    border: 1px solid #eee;
+    padding: 5px 10px 5px 10px;
+    border-radius: 20px;
+    color: white;
+    background-color: indianred;
+    margin-bottom: 10px;
+    float: right;
+    margin-right: 184px;
+    font-size: 13px;
+    outline: none;
+}
