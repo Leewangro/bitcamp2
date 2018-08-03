@@ -15,66 +15,16 @@ $(function () {
     draw.elements();
 })
 
-
-
-
-
-
 var parsing = {
     test: function (data) {
         console.log(data)
     },
-
-    tab: function (data) {
-        "<div class='contentTypeList category_tab'>" +
-        "<li class='contenttype' data-toggle='12'>" +
-        "<a class='active' href='list.html?&item=" + item.contenttypeid == 12 + "'>#관광지</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='14'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 14 + "'>#문화시설</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='15'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 15 + "'>#축제공연행사</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='25'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 25 + "'>#여행코스</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='28'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 28 + "'>#레포츠</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='32'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 32 + "'>#숙박</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='38'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 38 + "'>#쇼핑</a>" +
-            "</li>" +
-            "<li class='contenttype' data-toggle='39'>" +
-            "<a href='list.html?&item=" + item.contenttypeid == 39 + "'>#음식점</a>" +
-            "</li>" +
-            "</div>"
-
-        $("#tab").append(tab)
-    },
-
-
-
-
-
-
     dataParsing: function (data) {
         var list = data.response.body.items.item
-
-
-
-
         if (Array.isArray(list)) {
             if (list != undefined) {
                 $.each(list, function (i, item) {
                     var InfoElements =
-
-
-
-
 
                         "<div class='box'>" +
                         "<div class='img_area'>" +
@@ -131,8 +81,7 @@ var parsing = {
 
                         "</div>"
 
-                    $("#board").append(InfoElements)
-
+                    $("#travelContents").append(InfoElements)
                 })
             } else {
                 $(".text-right").css("display", "none");
@@ -143,9 +92,9 @@ var parsing = {
             console.log(data)
             var infoElements =
                 "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-                "<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
+                "<a href='../cmm/detail.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
                 "<div class='thumbnail'>" +
-                "<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+                "<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../images/default.png';" + ">" +
                 "<div class='caption text-center'>" +
                 "<h5>" + list.title + "</h5>" +
                 "<h6>" + list.addr1 + "</h6>" +
@@ -158,25 +107,23 @@ var parsing = {
         }
     }
 }
-var draw = {
-    elementCount : 0,
-    areaCode : 0,
-    sigunguCode : 0,
 
-    init     : function() {
+var draw = {
+    elementCount: 0,
+    areaCode: 0,
+    sigunguCode: 0,
+
+    init: function () {
         this.elementCount = 1;
         this.areaCode = 39;
         this.sigunguCode = '';
     },
 
-    elements : function() {
-        common.getInfo('get', 'areaBasedList','contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode='+ this.sigunguCode +'&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=A&numOfRows=24&pageNo='+ this.elementCount , parsing.dataParsing);
+    elements: function () {
+        common.getInfo('get', 'areaBasedList', 'contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
     },
 
-    areaSigunguCodeGet : function() {
+    areaSigunguCodeGet: function () {
         common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);
     }
-
-
-
 }
