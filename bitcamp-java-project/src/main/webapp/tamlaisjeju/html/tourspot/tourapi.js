@@ -1,10 +1,5 @@
 var common = {
 
-	// leftMenuImport : function () {
-	//     var $div = $('#fh5co-main-menu');
-	//     $div.load("../cmm/left-menu.html");
-	// }, 
-
 	date: new Date(),
 
 	getDate: function () {
@@ -50,169 +45,160 @@ var common = {
 		var list = data.response.body.items.item
 		var ref = list.contenttypeid
 		if (ref === 12) { //관광지
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+				
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenter + "</td><li>" +
-				"<tr><td class='introLeft'><em>수용인원 	 </em></td><td class='introRight'>" + list.accomcount + "</td><li>" +
-				"<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdate + "</td><li>" +
-				"<tr><td class='introLeft'><em>개장일 </em></td><td class='introRight'>" + list.opendate + "</td><li>" +
-				"<tr><td class='introLeft'><em>이용시기  </em></td><td class='introRight'>" + list.useseason + "</td><li>" +
-				"<tr><td class='introLeft'><em>이용시간  </em></td><td class='introRight'>" + list.usetime + "</td><li>" +
-				"<tr><td class='introLeft'><em>체험안내	   </em></td><td class='introRight'>" + list.expguide + "</td><li>" +
-				"<tr><td class='introLeft'><em>체험가능연령 </em></td><td class='introRight'>" + list.expagerange + "</td><li>" +
-				"<tr><td class='introLeft'><em>유모차대여여부 	 </em></td><td class='introRight'>" + list.chkbabycarriage + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parking + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenter + "</td>" +
+				"<tr><td class='introLeft'><em>수용인원 	 </em></td><td class='introRight'>" + list.accomcount + "</td>" +
+				"<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdate + "</td>" +
+				"<tr><td class='introLeft'><em>개장일 </em></td><td class='introRight'>" + list.opendate + "</td>" +
+				"<tr><td class='introLeft'><em>이용시기  </em></td><td class='introRight'>" + list.useseason + "</td>" +
+				"<tr><td class='introLeft'><em>이용시간  </em></td><td class='introRight'>" + list.usetime + "</td>" +
+				"<tr><td class='introLeft'><em>체험안내	   </em></td><td class='introRight'>" + list.expguide + "</td>" +
+				"<tr><td class='introLeft'><em>체험가능연령 </em></td><td class='introRight'>" + list.expagerange + "</td>" +
+				"<tr><td class='introLeft'><em>유모차대여여부 	 </em></td><td class='introRight'>" + list.chkbabycarriage + "</td>" +
+				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parking + "</td>" +
 				"</table>" +
-				"</div>" +
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 14) { // 문화시설
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+				
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterculture + "</td><li>" +
-				"<tr><td class='introLeft'><em>관람소요시간      </em></td><td class='introRight'>" + list.spendtime + "</td><li>" +
-				"<tr><td class='introLeft'><em>수용인원 	   </em></td><td class='introRight'>" + list.accomcountculture + "</td><li>" +
-				"<tr><td class='introLeft'><em>규모      </em></td><td class='introRight'>" + list.scale + "</td><li>" +
-				"<tr><td class='introLeft'><em>할인정보      </em></td><td class='introRight'>" + list.discountinfo + "</td><li>" +
-				"<tr><td class='introLeft'><em>이용시간 	  </em></td><td class='introRight'>" + list.usetimeculture + "</td><li>" +
-				"<tr><td class='introLeft'><em>이용요금 	   </em></td><td class='introRight'>" + list.usefee + "</td><li>" +
-				"<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdateculture + "</td><li>" +
-				"<tr><td class='introLeft'><em>유모차대여여부	 </em></td><td class='introRight'>" + list.chkbabycarriageculture + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingculture + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차요금  </em></td><td class='introRight'>" + list.parkingfee + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterculture + "</td>" +
+				"<tr><td class='introLeft'><em>관람소요시간      </em></td><td class='introRight'>" + list.spendtime + "</td>" +
+				"<tr><td class='introLeft'><em>수용인원 	   </em></td><td class='introRight'>" + list.accomcountculture + "</td>" +
+				"<tr><td class='introLeft'><em>규모      </em></td><td class='introRight'>" + list.scale + "</td>" +
+				"<tr><td class='introLeft'><em>할인정보      </em></td><td class='introRight'>" + list.discountinfo + "</td>" +
+				"<tr><td class='introLeft'><em>이용시간 	  </em></td><td class='introRight'>" + list.usetimeculture + "</td>" +
+				"<tr><td class='introLeft'><em>이용요금 	   </em></td><td class='introRight'>" + list.usefee + "</td>" +
+				"<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdateculture + "</td>" +
+				"<tr><td class='introLeft'><em>유모차대여여부	 </em></td><td class='introRight'>" + list.chkbabycarriageculture + "</td>" +
+				"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingculture + "</td>" +
+				"<tr><td class='introLeft'><em>주차요금  </em></td><td class='introRight'>" + list.parkingfee + "</td>" +
 				"</table>" +
-				"</div>" +
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 15) { // 축제정보
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
 				"<div>" + list.program + "</div>" +
 				"<div>" + list.subevent + "</div>" +
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>행사장소  </em></td><td class='introRight'>" + list.eventplace + "</td><li>" +
-				"<tr><td class='introLeft'><em>행사장위치안내 	 </em></td><td class='introRight'>" + list.placeinfo + "</td><li>" +
-				"<tr><td class='introLeft'><em>이용요금 	 </em></td><td class='introRight'>" + list.usetimefestival + "</td><li>" +
-				"<tr><td class='introLeft'><em>할인정보 	 </em></td><td class='introRight'>" + list.discountinfofestival + "</td><li>" +
-				"<tr><td class='introLeft'><em>예매처 	 </em></td><td class='introRight'>" + list.bookingplace + "</td><li>" +
-				"<tr><td class='introLeft'><em>행사시작일 	 </em></td><td class='introRight'>" + list.eventstartdate + "</td><li>" +
-				"<tr><td class='introLeft'><em>행사종료일	   </em></td><td class='introRight'>" + list.eventenddate + "</td><li>" +
-				"<tr><td class='introLeft'><em>관람가능연령	   </em></td><td class='introRight'>" + list.agelimit + "</td><li>" +
-				"<tr><td class='introLeft'><em>관람소요시간 </em></td><td class='introRight'>" + list.spendtimefestival + "</td><li>" +
-				"<tr><td class='introLeft'><em>할인정보 </em></td><td class='introRight'>" + list.discountinfofestival + "</td><li>" +
-				"<tr><td class='introLeft'><em>공연시간  </em></td><td class='introRight'>" + list.playtime + "</td><li>" +
-				"<tr><td class='introLeft'><em>주최자  </em></td><td class='introRight'>" + list.sponsor1 + "</td><li>" +
-				"<tr><td class='introLeft'><em>주최자연락처 </em></td><td class='introRight'>" + list.sponsor1tel + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>행사장소  </em></td><td class='introRight'>" + list.eventplace + "</td>" +
+				"<tr><td class='introLeft'><em>행사장위치안내 	 </em></td><td class='introRight'>" + list.placeinfo + "</td>" +
+				"<tr><td class='introLeft'><em>이용요금 	 </em></td><td class='introRight'>" + list.usetimefestival + "</td>" +
+				"<tr><td class='introLeft'><em>할인정보 	 </em></td><td class='introRight'>" + list.discountinfofestival + "</td>" +
+				"<tr><td class='introLeft'><em>예매처 	 </em></td><td class='introRight'>" + list.bookingplace + "</td>" +
+				"<tr><td class='introLeft'><em>행사시작일 	 </em></td><td class='introRight'>" + list.eventstartdate + "</td>" +
+				"<tr><td class='introLeft'><em>행사종료일	   </em></td><td class='introRight'>" + list.eventenddate + "</td>" +
+				"<tr><td class='introLeft'><em>관람가능연령	   </em></td><td class='introRight'>" + list.agelimit + "</td>" +
+				"<tr><td class='introLeft'><em>관람소요시간 </em></td><td class='introRight'>" + list.spendtimefestival + "</td>" +
+				"<tr><td class='introLeft'><em>할인정보 </em></td><td class='introRight'>" + list.discountinfofestival + "</td>" +
+				"<tr><td class='introLeft'><em>공연시간  </em></td><td class='introRight'>" + list.playtime + "</td>" +
+				"<tr><td class='introLeft'><em>주최자  </em></td><td class='introRight'>" + list.sponsor1 + "</td>" +
+				"<tr><td class='introLeft'><em>주최자연락처 </em></td><td class='introRight'>" + list.sponsor1tel + "</td>" +
 				"</table>" +
-				"</div>" +
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 25) { // 여행코스
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+		
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocentertourcourse + "</td><li>" +
-				"<tr><td class='introLeft'><em>코스테마	   </em></td><td class='introRight'>" + list.theme + "</td><li>" +
-				"<tr><td class='introLeft'><em>코스일정  </em></td><td class='introRight'>" + list.schedule + "</td><li>" +
-				"<tr><td class='introLeft'><em>코스총거리	   </em></td><td class='introRight'>" + list.distance + "</td><li>" +
-				"<tr><td class='introLeft'><em>코스총소요시간  </em></td><td class='introRight'>" + list.taketime + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocentertourcourse + "</td>" +
+				"<tr><td class='introLeft'><em>코스테마	   </em></td><td class='introRight'>" + list.theme + "</td>" +
+				"<tr><td class='introLeft'><em>코스일정  </em></td><td class='introRight'>" + list.schedule + "</td>" +
+				"<tr><td class='introLeft'><em>코스총거리	   </em></td><td class='introRight'>" + list.distance + "</td>" +
+				"<tr><td class='introLeft'><em>코스총소요시간  </em></td><td class='introRight'>" + list.taketime + "</td>" +
 				"</table>" +
-				"</div>" +
+
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 28) { //레포츠
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+		
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservation + "</td><li>" +
-				"<tr><td class='introLeft'><em>입장료	   </em></td><td class='introRight'>" + list.usefeeleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>수용인원 </em></td><td class='introRight'>" + list.accomcountleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>개장기간	   </em></td><td class='introRight'>" + list.openperiod + "</td><li>" +
-				"<tr><td class='introLeft'><em>개장시간  </em></td><td class='introRight'>" + list.openperiod + "</td><li>" +
-				"<tr><td class='introLeft'><em>이용시간  </em></td><td class='introRight'>" + list.usetimeleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>쉬는날 	 </em></td><td class='introRight'>" + list.restdateleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차시설  </em></td><td class='introRight'>" + list.parkingleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차요금		   </em></td><td class='introRight'>" + list.parkingfeeleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>유모차대여여부 	 </em></td><td class='introRight'>" + list.chkbabycarriageleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>신용카드가능여부  </em></td><td class='introRight'>" + list.chkcreditcardleports + "</td><li>" +
-				"<tr><td class='introLeft'><em>애완동물가능여부 </em></td><td class='introRight'>" + list.chkpetleports + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterleports + "</td>" +
+				"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservation + "</td>" +
+				"<tr><td class='introLeft'><em>입장료	   </em></td><td class='introRight'>" + list.usefeeleports + "</td>" +
+				"<tr><td class='introLeft'><em>수용인원 </em></td><td class='introRight'>" + list.accomcountleports + "</td>" +
+				"<tr><td class='introLeft'><em>개장기간	   </em></td><td class='introRight'>" + list.openperiod + "</td>" +
+				"<tr><td class='introLeft'><em>개장시간  </em></td><td class='introRight'>" + list.openperiod + "</td>" +
+				"<tr><td class='introLeft'><em>이용시간  </em></td><td class='introRight'>" + list.usetimeleports + "</td>" +
+				"<tr><td class='introLeft'><em>쉬는날 	 </em></td><td class='introRight'>" + list.restdateleports + "</td>" +
+				"<tr><td class='introLeft'><em>주차시설  </em></td><td class='introRight'>" + list.parkingleports + "</td>" +
+				"<tr><td class='introLeft'><em>주차요금		   </em></td><td class='introRight'>" + list.parkingfeeleports + "</td>" +
+				"<tr><td class='introLeft'><em>유모차대여여부 	 </em></td><td class='introRight'>" + list.chkbabycarriageleports + "</td>" +
+				"<tr><td class='introLeft'><em>신용카드가능여부  </em></td><td class='introRight'>" + list.chkcreditcardleports + "</td>" +
+				"<tr><td class='introLeft'><em>애완동물가능여부 </em></td><td class='introRight'>" + list.chkpetleports + "</td>" +
 				"</table>" +
-				"</div>" +
+	
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 32) { // 숙박정보 
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+	
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterlodging + "</td><li>" +
-				"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservationlodging + "</td><li>" +
-				"<tr><td class='introLeft'><em>예약 안내홈페이지 </em></td><td class='introRight'>" + list.reservationurl + "</td><li>" +
-				"<tr><td class='introLeft'><em>부대시설	   </em></td><td class='introRight'>" + list.subfacility + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td><li>" +
-				"<tr><td class='introLeft'><em>객실내취사여부  </em></td><td class='introRight'>" + list.chkcooking + "</td><li>" +
-				"<tr><td class='introLeft'><em>식음료장  </em></td><td class='introRight'>" + list.foodplace + "</td><li>" +
-				"<tr><td class='introLeft'><em>객실수		   </em></td><td class='introRight'>" + list.roomcount + "</td><li>" +
-				"<tr><td class='introLeft'><em>수용가능인원 	 </em></td><td class='introRight'>" + list.accomcountlodging + "</td><li>" +
-				"<tr><td class='introLeft'><em>체크인 시간 	 </em></td><td class='introRight'>" + list.checkintime + "</td><li>" +
-				"<tr><td class='introLeft'><em>체크아웃 시간  </em></td><td class='introRight'>" + list.checkouttime + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterlodging + "</td>" +
+				"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservationlodging + "</td>" +
+				"<tr><td class='introLeft'><em>예약 안내홈페이지 </em></td><td class='introRight'>" + list.reservationurl + "</td>" +
+				"<tr><td class='introLeft'><em>부대시설	   </em></td><td class='introRight'>" + list.subfacility + "</td>" +
+				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td>" +
+				"<tr><td class='introLeft'><em>객실내취사여부  </em></td><td class='introRight'>" + list.chkcooking + "</td>" +
+				"<tr><td class='introLeft'><em>식음료장  </em></td><td class='introRight'>" + list.foodplace + "</td>" +
+				"<tr><td class='introLeft'><em>객실수		   </em></td><td class='introRight'>" + list.roomcount + "</td>" +
+				"<tr><td class='introLeft'><em>수용가능인원 	 </em></td><td class='introRight'>" + list.accomcountlodging + "</td>" +
+				"<tr><td class='introLeft'><em>체크인 시간 	 </em></td><td class='introRight'>" + list.checkintime + "</td>" +
+				"<tr><td class='introLeft'><em>체크아웃 시간  </em></td><td class='introRight'>" + list.checkouttime + "</td>" +
+				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td>" +
 				"</table>" +
-				"</div>" +
+	
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 38) { // 쇼핑
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+	
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>매장안내 </em></td><td class='introRight'>" + list.shopguide + "</td><li>" +
-				"<tr><td class='introLeft'><em>문의및안내 </em></td><td class='introRight'>" + list.infocentershopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>영업시간</em></td><td class='introRight'>" + list.opentime + "</td><li>" +
-				"<tr><td class='introLeft'><em>쉬는날  </em></td><td class='introRight'>" + list.restdateshopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>규모 </em></td><td class='introRight'>" + list.scaleshopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>장서는날 </em></td><td class='introRight'>" + list.fairday + "</td><li>" +
-				"<tr><td class='introLeft'><em>문화센터바로가기  </em></td><td class='introRight'>" + list.culturecenter + "</td><li>" +
-				"<tr><td class='introLeft'><em>화장실 </em></td><td class='introRight'>" + list.restroom + "</td><li>" +
-				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkbabycarriageshopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkcreditcardshopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>애완동물가능여부	   </em></td><td class='introRight'>" + list.chkpetshopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingshopping + "</td><li>" +
-				"<tr><td class='introLeft'><em>판매품목별가격  </em></td><td class='introRight'>" + list.saleitemcost + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>매장안내 </em></td><td class='introRight'>" + list.shopguide + "</td>" +
+				"<tr><td class='introLeft'><em>문의및안내 </em></td><td class='introRight'>" + list.infocentershopping + "</td>" +
+				"<tr><td class='introLeft'><em>영업시간</em></td><td class='introRight'>" + list.opentime + "</td>" +
+				"<tr><td class='introLeft'><em>쉬는날  </em></td><td class='introRight'>" + list.restdateshopping + "</td>" +
+				"<tr><td class='introLeft'><em>규모 </em></td><td class='introRight'>" + list.scaleshopping + "</td>" +
+				"<tr><td class='introLeft'><em>장서는날 </em></td><td class='introRight'>" + list.fairday + "</td>" +
+				"<tr><td class='introLeft'><em>문화센터바로가기  </em></td><td class='introRight'>" + list.culturecenter + "</td>" +
+				"<tr><td class='introLeft'><em>화장실 </em></td><td class='introRight'>" + list.restroom + "</td>" +
+				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkbabycarriageshopping + "</td>" +
+				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkcreditcardshopping + "</td>" +
+				"<tr><td class='introLeft'><em>애완동물가능여부	   </em></td><td class='introRight'>" + list.chkpetshopping + "</td>" +
+				"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingshopping + "</td>" +
+				"<tr><td class='introLeft'><em>판매품목별가격  </em></td><td class='introRight'>" + list.saleitemcost + "</td>" +
 				"</table>" +
-				"</div>" +
+	
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 39) { // 음식점
-			InfoElements = "<div class='col-md-12'>" +
-				"<div class='col-md-12'>" +
-				"<div class='cntBox'>" +
+			InfoElements = "<div class='detail_info'>" +
+	
 				"<table class='table table-responsive'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td><p style='text-align:justify;'></tr>" +
-				"<tr><td class='introLeft'><em>대표메뉴 </em></td><td class='introRight'>" + list.firstmenu + "</td><li>" +
-				"<tr><td class='introLeft'><em>취급메뉴 </em></td><td class='introRight'>" + list.treatmenu + "</td><li>" +
-				"<tr><td class='introLeft'><em>문의및안내 </em></td><td class='introRight'>" + list.infocenterfood + "</td><li>" +
-				"<tr><td class='introLeft'><em>할인정보 </em></td><td class='introRight'>" + list.discountinfofood + "</td><li>" +
-				"<tr><td class='introLeft'><em>영업시간  </em></td><td class='introRight'>" + list.opentimefood + "</td><li>" +
-				"<tr><td class='introLeft'><em>주차가능 여부</em></td><td class='introRight'>" + list.parkingfood + "</td><li>" +
-				"<tr><td class='introLeft'><em>급연/흡연 여부  </em></td><td class='introRight'>" + list.smoking + "</td><li>" +
-				"<tr><td class='introLeft'><em>포장가능 여부  </em></td><td class='introRight'>" + list.packing + "</td><li>" +
-				"<tr><td class='introLeft'><em>쉬는날  </em></td><td class='introRight'>" + list.restdatefood + "</td><li>" +
-				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkcreditcardfood + "</td><li>" +
+				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
+				"<tr><td class='introLeft'><em>대표메뉴 </em></td><td class='introRight'>" + list.firstmenu + "</td>" +
+				"<tr><td class='introLeft'><em>취급메뉴 </em></td><td class='introRight'>" + list.treatmenu + "</td>" +
+				"<tr><td class='introLeft'><em>문의및안내 </em></td><td class='introRight'>" + list.infocenterfood + "</td>" +
+				"<tr><td class='introLeft'><em>할인정보 </em></td><td class='introRight'>" + list.discountinfofood + "</td>" +
+				"<tr><td class='introLeft'><em>영업시간  </em></td><td class='introRight'>" + list.opentimefood + "</td>" +
+				"<tr><td class='introLeft'><em>주차가능 여부</em></td><td class='introRight'>" + list.parkingfood + "</td>" +
+				"<tr><td class='introLeft'><em>급연/흡연 여부  </em></td><td class='introRight'>" + list.smoking + "</td>" +
+				"<tr><td class='introLeft'><em>포장가능 여부  </em></td><td class='introRight'>" + list.packing + "</td>" +
+				"<tr><td class='introLeft'><em>쉬는날  </em></td><td class='introRight'>" + list.restdatefood + "</td>" +
+				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkcreditcardfood + "</td>" +
 				"</table>" +
-				"</div>" +
+	
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		}

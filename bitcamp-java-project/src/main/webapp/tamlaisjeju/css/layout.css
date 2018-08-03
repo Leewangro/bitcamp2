@@ -2301,13 +2301,12 @@ board_list - 게시판 리스트
   margin-left: 0;
 } */
 
-.board_list.type01{
+.board_list.type01 {
   overflow: hidden;
 }
 
 .board_list.type01 .box_wrap {
   margin: 2% 0 2% -2%;
-
 }
 
 .board_list.type01 .box {
@@ -2316,7 +2315,7 @@ board_list - 게시판 리스트
   /* width: calc(34% - 2%); */
   margin-left: 2%;
   margin-bottom: 2%;
-  min-height:490px;
+  min-height: 490px;
 }
 
 .board_list.type01 .box_cont_area {
@@ -2329,7 +2328,7 @@ board_list - 게시판 리스트
 
 .board_list.type01 .box_cont_area .location_category {
   text-align: center;
-  font-size:15px;
+  font-size: 15px;
 }
 
 .board_list.type01 .box_cont_area .hashtag {
@@ -2495,17 +2494,50 @@ board_list - 게시판 리스트
 travelContents 관광지 게시판 뷰
 ***************************************************************************************/
 
-#travelContents{}
-#travelContents h3{text-align: center;}
+#travelContents {}
 
+#travelContents h3 {
+  text-align: center;
+}
 
-#travelContents .view_intro{}
-#travelContents .view_intro figure{float: left; width:65%;}
-#travelContents .view_intro figcaption{float: left; width:30%;}
+#travelContents .view_intro {
+  margin-bottom:30px;
+  border: 1px solid #e5e5e5;
+}
 
+#travelContents .view_intro figure {
+  float: left;
+  margin:0;
+  width: 55%;
+}
 
+#travelContents .view_intro figure img {
+  display: block;
+  width: 100%;
+}
 
+#travelContents .view_intro figcaption {
+  float: left;
+  margin-left: 2%;
+  padding:2%;
+  width: 43%;
+}
 
+#travelContents .view_intro ul {}
+
+#travelContents .view_intro ul li {
+  margin: 50px 0;
+}
+
+#travelContents .view_intro ul li:first-child {
+  margin-top: 0;
+}
+
+#travelContents .view_intro ul li b {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
 
 /**************************************************************************************
 board_list  travelmate - 동행 게시판 리스트
