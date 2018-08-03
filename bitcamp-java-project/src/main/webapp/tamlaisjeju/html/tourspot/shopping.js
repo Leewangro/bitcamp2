@@ -14,95 +14,95 @@ $(function () {
     draw.elements();
 })
 
-var parsing = { 
-test:function(data) {
-    console.log(data)
-},
-dataParsing: function (data) {
-    var list = data.response.body.items.item
-    if (list != undefined ) {
-        $.each(list, function (i, item) {
-            var InfoElements =
-            "<div class='box'>" +
-            "<div class='img_area'>" +
-            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
-            "<span class='category'>쇼핑</span>" +
-            "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+var parsing = {
+    test: function (data) {
+        console.log(data)
+    },
+    dataParsing: function (data) {
+        var list = data.response.body.items.item
+        if (list != undefined) {
+            $.each(list, function (i, item) {
+                var InfoElements =
+                    "<div class='box'>" +
+                    "<div class='img_area'>" +
+                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+                    "<span class='category'>쇼핑</span>" +
+                    "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
-            "</a>" +
+                    "</a>" +
 
-            "</div>" +
-
-
-            "<div class='box_cont_area'>" +
-            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
-
-            "<b>" + item.title + "</b>" +
+                    "</div>" +
 
 
+                    "<div class='box_cont_area'>" +
+                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
 
-            "</a>" +
+                    "<b>" + item.title + "</b>" +
 
-            "<p class='location_category'>" + item.addr1 + "</p>" +
-            "<p class='hashtag'>" +
-            "<a href='#'>#전복김밥</a>" +
-            "<a href='#'>#통전복주먹밥</a>" +
-            "<a href='#'>#미역국</a>" +
 
-            "</p>" +
-            "<div class='icon_area'>" +
-            "<ul class='clear'>" +
-            "<li class='icon like_icon'>" +
-            "<a href='#'>" +
-            "<span>좋아요</span>" +
-            "<span class='like_count'>60</span>" +
-            "</a>" +
-            "</li>" +
-            "<li class='icon zzim_icon'>" +
-            "<a href='#'>" +
-            "<span>찜하기</span>" +
-            "<span class='zzim_count'>883</span>" +
-            "</a>" +
-            "</li>" +
-            "<li class='icon review_icon'>" +
-            "<a href='#'>" +
-            "<span>리뷰</span>" +
-            "<span class='review_count'>921</span>" +
 
-            "</a>" +
+                    "</a>" +
 
-            "</li>" +
-            "</ul>" +
-            "</div>" +
-            "</div>" +
+                    "<p class='location_category'>" + item.addr1 + "</p>" +
+                    "<p class='hashtag'>" +
+                    "<a href='#'>#전복김밥</a>" +
+                    "<a href='#'>#통전복주먹밥</a>" +
+                    "<a href='#'>#미역국</a>" +
 
-            "</div>"
-            $("#travelContents").append(InfoElements)
-        })
-    } else {
-        $(".text-right").css("display","none");
+                    "</p>" +
+                    "<div class='icon_area'>" +
+                    "<ul class='clear'>" +
+                    "<li class='icon like_icon'>" +
+                    "<a href='#'>" +
+                    "<span>좋아요</span>" +
+                    "<span class='like_count'>60</span>" +
+                    "</a>" +
+                    "</li>" +
+                    "<li class='icon zzim_icon'>" +
+                    "<a href='#'>" +
+                    "<span>찜하기</span>" +
+                    "<span class='zzim_count'>883</span>" +
+                    "</a>" +
+                    "</li>" +
+                    "<li class='icon review_icon'>" +
+                    "<a href='#'>" +
+                    "<span>리뷰</span>" +
+                    "<span class='review_count'>921</span>" +
+
+                    "</a>" +
+
+                    "</li>" +
+                    "</ul>" +
+                    "</div>" +
+                    "</div>" +
+
+                    "</div>"
+                $("#travelContents").append(InfoElements)
+            })
+        } else {
+            $(".text-right").css("display", "none");
+        }
     }
-}
 }
 
 
 var draw = {
-elementCount : 0,
-areaCode : 0,
-sigunguCode : 0,
+    elementCount: 0,
+    areaCode: 0,
+    sigunguCode: 0,
 
-init     : function() {
-    this.elementCount = '';
-    this.areaCode = '39';
-    this.sigunguCode = '';
-},
+    init: function () {
+        this.elementCount = 1;
+        this.areaCode = '39';
+        this.sigunguCode = '';
+    },
 
-elements : function() {
-    console.log(this.elementCount)
-    common.getInfo('get', 'areaBasedList', 'contentTypeId=38&areaCode='+ this.areaCode +'&sigunguCode='+ this.sigunguCode +'&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&pageNo=' + this.elementCount, parsing.dataParsing);
-},
+    elements: function () {
+        console.log(this.elementCount)
+        common.getInfo('get', 'areaBasedList', 'contentTypeId=38&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&pageNo=' + this.elementCount, parsing.dataParsing);
+    },
 
-areaSigunguCodeGet : function() {
-    common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);
-}
+    areaSigunguCodeGet: function () {
+        common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);
+    }
 }

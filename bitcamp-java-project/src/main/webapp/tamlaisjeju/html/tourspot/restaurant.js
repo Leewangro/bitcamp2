@@ -93,7 +93,7 @@ areaCode : 0,
 sigunguCode : 0,
 
 init     : function() {
-    this.elementCount = '';
+    this.elementCount = 1;
     this.areaCode = '39';
     this.sigunguCode = '';
 },
