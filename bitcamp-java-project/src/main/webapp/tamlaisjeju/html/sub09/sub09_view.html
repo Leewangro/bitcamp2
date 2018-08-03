@@ -480,7 +480,6 @@
 						for(let i=0; i < data.length; i++) {
 							//console.log(data2.response.body.items.item);
 							//console.log(data2.response.body.items.item.length);
-							
 							for(let j=0; j < data2.response.body.items.item.length; j++) {
 								//console.log(data2.response.body.items.item[j].contentid);
 							//for(let item of data2.response.body.items.item) {}	
@@ -522,9 +521,9 @@
 									var r_cm = $('<p class="r-cm">');
 									
 								    
-									
+									console.log(data2.response.body.items.item[j].firstimage);
 									/*원래 이미지 부분*/
-									$(img).attr("src", "none");
+									$(img).attr("src", (data2.response.body.items.item[j].firstimage != undefined ? data2.response.body.items.item[j].firstimage : ""));
 									$(img_modal).append(img);
 									$(dayCon).append(img_modal);
 									/*이미지 설명부분*/
