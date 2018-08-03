@@ -13,9 +13,10 @@
 
   <resultMap type="TravelPlan" id="TravelPlanMap">
     <id column="PLNO" property="plno"/>
-    <result column="TNO" property="tno"/>
     <result column="MEMO" property="memo"/>
     <result column="PLANTI" property="pltime"/>
+    <result column="TTPNO" property="ttpno"/>
+    
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -27,9 +28,9 @@
   <select id="selectList" 
           resultMap="TravelPlanMap" 
           parameterType="map">
-   SELECT TP.PLNO, TTP.PLANTI, TTP.MEMO, TTP.TNO, TTP.PLNO
-   FROM TAMLA_PLAN TP, TAMLA_TRAVEL_PLAN TTP
-   WHERE TTP.PLNO=5
+   SELECT TTP.PLANTI, TTP.MEMO, TTP.PLNO, TTP.TTPNO
+   FROM TAMLA_TRAVEL_PLAN TTP
+   WHERE TTP.PLNO= #{plno}
   </select>
   
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우

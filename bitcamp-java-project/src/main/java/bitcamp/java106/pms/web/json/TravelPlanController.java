@@ -45,7 +45,7 @@ public class TravelPlanController {
             @MatrixVariable(defaultValue="1") int pageNo,
             @MatrixVariable(defaultValue="3") int pageSize,
             Map<String,Object>map) {
-        
+        System.out.println(plno);
         return travelPlanService.list(plno, pageNo, pageSize);
     }
     
