@@ -39,8 +39,10 @@
 
 
 
-			</div><!-- travelContents end-->
-			<div id="detailIntro"> </div><!-- detailIntro end -->
+			</div>
+			<!-- travelContents end-->
+			<div id="detailIntro"> </div>
+			<!-- detailIntro end -->
 
 
 
@@ -161,15 +163,22 @@
 				var list = data.response.body.items.item
 				InfoElements =
 
-					
 
-					"<div class='col-md-12'>" +
+
+
+					// 인트로박스
+
+
+
+					"<h4>"+ list.title+"</h4>"+
+
+					"<div class='content_top'>" +
 					"<figure class='text-center'>" +
-					"<img src='" + list.firstimage + "'" + "alt='이미지가 없습니다' class='img-responsive'>" +
+					"<img src='" + list.firstimage + "'" + "alt='이미지가 없습니다'>" +
 					"</figure>" +
-					"</div>" +
-					"<div class='col-md-12'>" +
 					"<figcaption>" +
+
+
 					"<ul>" +
 					"<li>" +
 					"<span> " + "<h2>" + list.title + "</h2>" + "</span>" +
@@ -185,8 +194,13 @@
 					"</ul>" +
 					"</figcaption>"
 
-					+
-					"<div class='buttonSet text-center'>"
+
+
+
+
+
+				+
+				"<div class='buttonSet text-center'>"
 				if (list.homepage != undefined) {
 					InfoElements + list.homepage
 				}
