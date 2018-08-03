@@ -532,11 +532,11 @@ var prevClickMarker = null;
 let datas = [];
 
 function markerOverlayDelete() {
-	if (marker != null || overlay != null) {
+	if (marker != null) {
 		   marker.setMap(null);
-		   overlay.setMap(null);
+	} else if (overlay != null) {
+		overlay.setMap(null);
 	}
-	
 }
 
 
