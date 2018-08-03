@@ -46,6 +46,12 @@
 			</div>
 			<!-- detailIntro end -->
 
+			<div id="travelgall">
+				<ul>
+
+				</ul>
+			</div>
+
 
 
 			<!-- 
@@ -89,6 +95,20 @@
 					</li>
 				</ul>
 			</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -147,6 +167,10 @@
 			common.getInfo('get', 'detailIntro', "contentTypeId=" + item + "&contentId=" + id +
 				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y",
 				common.detailPageIntroInfoDraw);
+			common.getInfo('get', 'detailImage', "contentTypeId=" + item + "&contentId=" + id +
+				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y",
+				parsing.contentsImgParsing);
+
 		})
 
 		$.urlParam = function (name) {
@@ -216,7 +240,15 @@
 					"<div class='mb30' id='map' style='width:100%; height:500px;'></div>" +
 
 
+
 					"</div>" // view_info end
+
+
+
+
+
+
+
 
 
 				$("#travelContents").append(InfoElements)
@@ -237,9 +269,72 @@
 				map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 				map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 				marker.setMap(map);
+
+
+			},
+
+
+
+			contentsImgParsing: function (data) {
+
+
+
+				for (var i = 0; i < 4; i++) {
+					var item = data.response.body.items.item[i];
+					var imgurl = item.originimgurl;
+					
+
+
+					//이미지가 없거나 찾지 못했을때
+					if (imgurl == null || imgurl == "undefined") {
+						return;
+					} else {
+
+
+
+
+						// $("#travelgall ul li" + (i + 1)).attr("src", data.response.body.items.item[i].originimgurl);
+			
+					var gallery =
+						"<img src=" + data.response.body.items.item[i].originimgurl +">"
+							
+
+
+
+					}
+
+					$("#travelgall").append(gallery)
+
+				}
+
+				// $("#travelgall").append(imgurl)
+
+
+
+
 			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		}
 	</script>
+
 
 
 
