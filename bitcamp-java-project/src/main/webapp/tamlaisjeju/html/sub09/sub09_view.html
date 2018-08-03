@@ -208,7 +208,7 @@
 									<p>
 										<br>
 									</p>
-								</div>
+								</div> 
 							</div>
 							<!--spot-note-box-->
 							<div class="spot-note-box">
@@ -600,13 +600,13 @@
 					url : "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json",
 					dataType : "json", // 데이터타입을 json 으로 받아옴
 					success : function(data2) { 
-						console.log(data);
-						console.log("---------------");
-						console.log(data2);
+						//console.log(data);
+						//console.log("---------------");
+						//console.log(data2);
 						
 						for(let i=0; i < data.length; i++) {
-							console.log(data2.response.body.items.item);
-							console.log(data2.response.body.items.item.length);
+							//console.log(data2.response.body.items.item);
+							//console.log(data2.response.body.items.item.length);
 							
 							for(let j=0; j < data2.response.body.items.item.length; j++) {
 								console.log(data2.response.body.items.item[j].contentid);
@@ -616,7 +616,7 @@
 							 		console.log(data);
 									
 							 		var dayCon = $('.spot-note-box');
-								    var spot_tit = $('<div class="spot-tit type">');
+ 								    var spot_tit = $('<div class="spot-tit type">');
 								    var spot_title_area = $('<a class="spot-title-area">');
 								    var h4_title = $('<h4 class="i-h4">');
 								    var span_title = $('<span class="m-title">');
@@ -627,7 +627,7 @@
 								    $(spot_tit).append(spot_title_area);
 								    $(dayCon).append(spot_tit);
 								    
-								    /* var spot_cont = $('<div class="spot-contents">');
+								    /*var spot_cont = $('<div class="spot-contents">');
 								    var cont_txt_area = $('<div class="conts-txt-area">');
 								    var img_modal  = $('<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
 								   
@@ -645,32 +645,32 @@
 									var r_cm = $('<p class="r-cm">');
 									
 									/*이미지 설명부분*/
-									$(r_cm).text(data);
+									/*$(r_cm).text(data);
 									$(img_modal).append(r_cm);
-									$(cont_txt_area).append(img_modal);
+									$(cont_txt_area).append(img_modal);*/
 									/*원래 이미지 부분*/
-									$(img).attr(data);
-									$(img_modal).append(img);
+									/*$(img).attr(data);
+									$(img_modal).append(img);*/
 									/*원래 이미지 종료*/
-									$(spot_cont).text(cont_txt_area);
-								    $(dayCon).append(spot_cont);
+									/*$(spot_cont).text(cont_txt_area);
+								    $(dayCon).append(spot_cont);*/
 									/*모달 이미지 부분*/
-									$(m_img).attr("src", data);
-									$(modal_header).append(m_img);
+									/*$(m_img).attr("src", data);
+									$(modal_header).append(m_img);*/
 									/*모달의 x버튼 시작*/
-									$(span_aria).text(data);
+									/*$(span_aria).text(data);
 									$(button_close).append(span_aria);
 									$(modal_header).append(button_close);
-									$(modal_content).append(modal_header);
+									$(modal_content).append(modal_header);*/
 									/*모달x버튼 종료*/
-									$(modal_content).append(modal_header);
+									/*$(modal_content).append(modal_header);
 									$(modal_dialog).append(modal_content);
 									$(modal_fade).append(modal_dialog);
 									$(img_modal).append(modal_fade);
 									$(cont_txt_area).append(img_modal);
 									$(spot_cont).append(cont_txt_area);
-									$(dayCon).append(spot_cont);
-									/*모달 이미지 부분 종료*/ */
+									$(dayCon).append(spot_cont);*/
+									/*모달 이미지 부분 종료*/ 
 								} 
 							}
 						}
