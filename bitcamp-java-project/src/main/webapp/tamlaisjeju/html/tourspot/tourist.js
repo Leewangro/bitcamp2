@@ -158,29 +158,24 @@ var parsing = {
         }
     }
 }
-
 var draw = {
-    elementCount: 0,
-    areaCode: 0,
-    sigunguCode: 0,
-    contentTypeId: 0,
+    elementCount : 0,
+    areaCode : 0,
+    sigunguCode : 0,
 
-    init: function () {
+    init     : function() {
         this.elementCount = 1;
         this.areaCode = 39;
         this.sigunguCode = '';
-        this.contentTypeId = '12';
     },
 
-
-    elements: function () {
-        common.getInfo('get', 'areaBasedList', 'contentTypeId=' + this.contentTypeId + '&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
+    elements : function() {
+        common.getInfo('get', 'areaBasedList','contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode='+ this.sigunguCode +'&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=A&numOfRows=24&pageNo='+ this.elementCount , parsing.dataParsing);
     },
 
-    areaSigunguCodeGet: function () {
+    areaSigunguCodeGet : function() {
         common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);
-    },
-
+    }
 
 
 
