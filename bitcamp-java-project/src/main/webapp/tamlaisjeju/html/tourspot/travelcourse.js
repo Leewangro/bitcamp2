@@ -44,7 +44,6 @@ var parsing = {
 
                     "</a>" +
 
-                    "<p class='location_category'>" + item.addr1 + "</p>" +
                     "<p class='hashtag'>" +
                     "<a href='#'>#전복김밥</a>" +
                     "<a href='#'>#통전복주먹밥</a>" +
