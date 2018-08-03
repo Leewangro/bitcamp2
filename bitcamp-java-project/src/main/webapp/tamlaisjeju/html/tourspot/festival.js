@@ -117,7 +117,7 @@ var draw = {
     },
     elements: function () {
         var date = common.getDate()
-        common.getInfo('get', 'searchFestival', 'areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&eventStartDate=' + date + '&pageNo=' + this.elementCount, parsing.dataParsing);
+        common.getInfo('get', 'searchFestival', 'areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&eventStartDate=' + date + '&pageNo=' + this.elementCount, parsing.dataParsing);
     },
     areaSigunguCodeGet: function () {
         common.getInfo('get', 'areaCode', 'numOfRows=50&MobileOS=ETC&MobileApp=test&areaCode=' + this.areaCode, common.areaDetailCodeParsing);

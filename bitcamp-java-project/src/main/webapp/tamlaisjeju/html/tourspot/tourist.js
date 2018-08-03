@@ -120,7 +120,7 @@ var draw = {
     },
 
     elements: function () {
-        common.getInfo('get', 'areaBasedList', 'contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
+        common.getInfo('get', 'areaBasedList', 'contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&pageNo=' + this.elementCount, parsing.dataParsing);
     },
 
     areaSigunguCodeGet: function () {
