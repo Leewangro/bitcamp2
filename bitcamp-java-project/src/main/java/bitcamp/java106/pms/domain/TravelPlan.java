@@ -17,13 +17,12 @@ public class TravelPlan implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date pltime;
     
-    
-    
+    private int ttpno;
 
     @Override
     public String toString() {
         return "TravelPlan [plno=" + plno + ", tno=" + tno + ", memo=" + memo + ", travels=" + travels + ", pltime="
-                + pltime + "]";
+                + pltime + ", ttpno=" + ttpno + "]";
     }
 
     public int getPlno() {
@@ -65,9 +64,14 @@ public class TravelPlan implements Serializable {
     public void setPltime(Date pltime) {
         this.pltime = pltime;
     }
-    
-    
 
+    public int getTtpno() {
+        return ttpno;
+    }
+
+    public void setTtpno(int ttpno) {
+        this.ttpno = ttpno;
+    }
     
     
 }
