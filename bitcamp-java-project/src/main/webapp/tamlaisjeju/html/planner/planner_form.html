@@ -724,19 +724,23 @@ function markerOverlay(node) {
 </script>
 <script>
 function dayRootMap(dayRootIndex) {
-	for (var i = 0; i < dayMarkers.length; i ++) {
-		var dmk = dayMarkers[i];
-		var mol = mapOverlays[i];
-		var pl = polylines[i];
-		for (var z = 0; z < dmk.length; z++) {
-			dmkl = dmk[z];
-			moll = mol[z];
-			pll = pl[z];
-			dmkl.setMap(null);
-			moll.setMap(null);
-			pll.setMap(null);
+	console.log(polylines)
+	console.log(polyline)
+	for (var i = 0; i < dayMarkers.length; i++) {
+		var dayRootMapMarker = dayMarkers[i];
+		var dayRootMapOverlay = mapOverlays[i];
+		var dayRootMapPolyline = polyline[i];
+		if (dayRootMapPolyline != null) {
+			dayRootMapPolyline.setMap(null);	
+		}
+		for (var z = 0; z < dayRootMapMarker.length; z++) {
+			dayRootMapMarkers = dayRootMapMarker[z];
+			dayRootMapOverlays = dayRootMapOverlay[z];
+			dayRootMapMarkers.setMap(null);
+			dayRootMapOverlays.setMap(null);
 		}
 	}
+	console.log(dayRootMapPolyline)
 	dayRootMapUpdate();
 		/* var lp = linePaths[i]; */
 	/* dayMarkers.setMap(null);
@@ -746,17 +750,19 @@ function dayRootMap(dayRootIndex) {
 		console.log(dayRootIndex)
 		  dayRootIndexNo = parseInt(dayRootIndex.substring(3))-1;
 		console.log(dayRootIndexNo)
-		var dayIndexNo11 = dayRootIndexNo;
+		var dayRootMapUpdateIndexNo = dayRootIndexNo;
 			
-		for (var s = 0; s < dayMarkers[dayIndexNo11].length; s ++) {
-			console.log(dayMarkers[dayIndexNo11])
-			var dmko = dayMarkers[dayIndexNo11][s]
-			var moo = mapOverlays[dayIndexNo11][s]
-			var plo = polylines[dayIndexNo11][s]
-			dmko.setMap(map);
-			moo.setMap(map); 
-			plo.setMap(map); 
+		for (var s = 0; s < dayMarkers[dayRootMapUpdateIndexNo].length; s++) {
+			var dayRootMapUpdateMarker = dayMarkers[dayRootMapUpdateIndexNo][s]
+			var dayRootMapUpdateOverlay = mapOverlays[dayRootMapUpdateIndexNo][s]
+			if (dayRootMapUpdateMarker != null || dayRootMapUpdateOverlay != null) {
+			dayRootMapUpdateMarker.setMap(map);
+			dayRootMapUpdateOverlay.setMap(map); 
+			}
 		}
+			if (polyline[dayRootMapUpdateIndexNo] != null ) {
+				polyline[dayRootMapUpdateIndexNo].setMap(map);
+			}
 	    };
 }
 var dayRootIndexNo = null;
@@ -765,7 +771,6 @@ var dayMarkers = [];
 var polyline = [];
 var polylines = [];
 var linePath = [];
-var linePaths = [];
 var mapOverlay = [];
 var mapOverlays = [];
 var dayIndexNo = null;
@@ -792,7 +797,6 @@ function dayRoot(dayIndex, daySchedule) {
       /* if (marker1 == ) */
       linePath[dayIndexNo].push(new daum.maps.LatLng($(daySchedule).children()[3].textContent, $(daySchedule).children()[4].textContent));
     	// 지도에 표시할 선을 생성합니다
-    	linePaths.push(linePath[dayIndexNo]);
     	polyline[dayIndexNo] = new daum.maps.Polyline({
     		title: $(daySchedule).children()[0].textContent,
     	    path: linePath[dayIndexNo], // 선을 구성하는 좌표배열 입니다
@@ -801,9 +805,10 @@ function dayRoot(dayIndex, daySchedule) {
     	    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
     	    strokeStyle: 'solid' // 선의 스타일입니다
     	});
-    	polylines[dayIndexNo].push(polyline[dayIndexNo]);
-    	polyline[dayIndexNo].setMap(map); 
-    	 
+    	console.log(polyline)
+    	polyline[dayIndexNo].setMap(map);
+    	polylines[dayIndexNo].push(polyline[dayIndexNo])
+    	console.log(polyline[dayIndexNo])
     	var content1 = '<div class="customoverlay">' + '<div>' + $(daySchedule).children()[0].textContent + '</div>' + '</div>';
         mapOverlay[dayIndexNo] = new daum.maps.CustomOverlay({
 		content: content1,
@@ -814,56 +819,64 @@ function dayRoot(dayIndex, daySchedule) {
         
 }
 
-function btn_del1(node) {
-    console.log($(node).parent().parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent)
-    var btn_del_dayIndex = $(node).parent().parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent;
-    console.log(btn_del_dayIndex);
-    btn_del_dayIndexNo = parseInt(btn_del_dayIndex.substring(3))-1;
-    console.log(btn_del_dayIndexNo)
+var schedule_dayMarkers = [];
+var schedule_mapOverlays = [];
+var schedule_dayMarker = [];
+var schedule_mapOverlay = [];
+var schedule_polyline = []; 
+var schedule_del_btn_dayIndexNo = null;
+var schedule_del_btn_dayIndex = null;
+function schedule_del_btn(node) {
+	
+	console.log($(node).parent().parent().children()[0].childNodes[0])
+	
+    schedule_del_btn_dayIndex = $(node).parent().parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent;
+	console.log(schedule_del_btn_dayIndex);
+    schedule_del_btn_dayIndexNo = parseInt(schedule_del_btn_dayIndex.substring(3))-1;
     var childTitle = $(node).parent().parent().children()[2].childNodes[3].childNodes[1].textContent;
     var childLat = $(node).parent().parent().children()[2].childNodes[3].childNodes[7].textContent;
     var childLng = $(node).parent().parent().children()[2].childNodes[3].childNodes[9].textContent
-    console.log(childLat)
-    console.log(childLng)
-    console.log(dayMarkers)
-    
-    for (var i = 0; i < dayMarkers[btn_del_dayIndexNo].length; i ++) {
-        var dmk1 = dayMarkers[btn_del_dayIndexNo][i];
-    	dmk1.setMap(null);
-        var mol1 = mapOverlays[btn_del_dayIndexNo][i];
-        mol1.setMap(null);
-        var pl1 = polylines[dayIndexNo][i];
-        console.log(pl1);
-        pl1.setMap(null);
-    
-        if (dmk1.Xd == childTitle || mol1.Xd == childTitle) {
-        	dmk1 = null;
-        	mol1 = null;
-        }
-        if (dmk1 != null || mol1 != null) {
-        	dmk1.setMap(map);
-        	mol1.setMap(map);
-        }
-        console.log(pl1);
+    console.log("aaa")
+    for (var i = 0; i < dayMarkers[schedule_del_btn_dayIndexNo].length; i++) {
+        schedule_dayMarker[schedule_del_btn_dayIndexNo] = dayMarkers[schedule_del_btn_dayIndexNo][i];
+        schedule_dayMarker[schedule_del_btn_dayIndexNo].setMap(null);
+        schedule_mapOverlay[schedule_del_btn_dayIndexNo] = mapOverlays[schedule_del_btn_dayIndexNo][i];
+        schedule_mapOverlay[schedule_del_btn_dayIndexNo].setMap(null);
         
-        console.log(dayMarkers);
+        if (schedule_dayMarker[schedule_del_btn_dayIndexNo].Xd == childTitle || schedule_mapOverlay[schedule_del_btn_dayIndexNo].Xd == childTitle) {
+        	schedule_dayMarker[schedule_del_btn_dayIndexNo] = null;
+        	schedule_mapOverlay[schedule_del_btn_dayIndexNo] = null;
+        	dayMarkers[schedule_del_btn_dayIndexNo].splice(i,1);
+        	mapOverlays[schedule_del_btn_dayIndexNo].splice(i,1);
+        	console.log(dayMarkers);
+        	console.log("ccc")
+        } else if (schedule_dayMarker[schedule_del_btn_dayIndexNo] != null || schedule_mapOverlay[schedule_del_btn_dayIndexNo] != null) {
+        	schedule_dayMarker[schedule_del_btn_dayIndexNo].setMap(map);
+        	schedule_mapOverlay[schedule_del_btn_dayIndexNo].setMap(map);
+        	 
+        	schedule_dayMarkers[schedule_del_btn_dayIndexNo].push(schedule_dayMarker[schedule_del_btn_dayIndexNo]);
+        	schedule_mapOverlays[schedule_del_btn_dayIndexNo].push(schedule_mapOverlay[schedule_del_btn_dayIndexNo]);
+        	console.log(schedule_dayMarkers[schedule_del_btn_dayIndexNo])
+          } else {
+        	  console.log("aa")
+          }
+        
     }
+    schedule_polyline[schedule_del_btn_dayIndexNo] = polyline[schedule_del_btn_dayIndexNo];
+    schedule_polyline[schedule_del_btn_dayIndexNo].setMap(null);
+    for (var x = 0; x < schedule_polyline[schedule_del_btn_dayIndexNo].Cg.length; x++) {
+        if (schedule_polyline[schedule_del_btn_dayIndexNo].Cg[x].ib == childLng && schedule_polyline[schedule_del_btn_dayIndexNo].Cg[x].jb == childLat) {
+            schedule_polyline[schedule_del_btn_dayIndexNo].Cg.splice(x,1);
+            schedule_polyline[schedule_del_btn_dayIndexNo].Gg[0].splice(x,1);
+            schedule_polyline[schedule_del_btn_dayIndexNo].Jd[0].splice(x,1);
+        } 
+    } schedule_polyline[schedule_del_btn_dayIndexNo].setMap(map);
     
-    for (var x = 0; x < pl1.Cg.length; x++) {
-        if (pl1.Cg[x].ib == childLng && pl1.Cg[x].jb == childLat) {
-            pl1.Cg.splice(x,1)
-        }
-    }
-    pl1.setMap(map);
-    console.log(pl1);
-    	
-    	
-    	
-    	
-    console.log(polylines)
-    console.log(mapOverlays)
-    /* $(asd).parent().parent().children()[2].remove() */
-/*     $(asd).parent().children()[0].style.display='none' */
+    console.log(dayMarkers);
+    console.log(mapOverlays);
+    console.log(polyline)
+    $(node).parent().parent().children()[2].remove();
+    $(node).parent().parent().children()[0].style.display='none';
       
 }
 
@@ -924,7 +937,9 @@ function calDate() {
     	mapOverlay[i] = [];
     	mapOverlays[i] = [];
     	polylines[i] = [];
-    }
+    	schedule_dayMarkers[i] = [];
+    	schedule_mapOverlays[i] = [];
+    } 
                             
     var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
     $("#cat_date_all").empty();
@@ -964,7 +979,7 @@ function calDate() {
             	"<div id='schedule_detail_box' class='connectedSortable ui-sortable'>" +
             	    "<div class='day_spot_item'>" +
             	        "<div class='item_ctrl_box'>" +
-            	            "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	            "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	                "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	            "</div>" +
             	            "<div class='clear'></div>" +
@@ -973,7 +988,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -982,7 +997,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -991,7 +1006,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1000,7 +1015,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1009,7 +1024,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1018,7 +1033,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1027,7 +1042,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1036,7 +1051,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1045,7 +1060,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1054,7 +1069,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1063,7 +1078,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1072,7 +1087,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1081,7 +1096,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1090,7 +1105,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1099,7 +1114,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1108,7 +1123,7 @@ function calDate() {
             	    "</div>" +
             	    "<div class='day_spot_item'>" +
             	    "<div class='item_ctrl_box'>" +
-            	        "<div class='btn_del' onclick='btn_del1(this)' title='삭제'>" +
+            	        "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
             	            "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
             	        "</div>" +
             	        "<div class='clear'></div>" +
@@ -1273,6 +1288,7 @@ document.addEventListener("click", closeAllSelect);
         }
         dayRoot(dayIndex, daySchedule);
         $(nodeCopy).parent().children()[0].style.display='block'
+        console.log($(nodeCopy).parent().children()[0])
         
     });
     
