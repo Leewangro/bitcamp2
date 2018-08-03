@@ -27,7 +27,7 @@ var parsing = {
                     "<div class='box'>" +
                     "<div class='img_area'>" +
                     "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
-                    "<span class='category'>음식점</span>" +
+                    "<span class='category'>여행코스</span>" +
                     "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
                     "</a>" +
