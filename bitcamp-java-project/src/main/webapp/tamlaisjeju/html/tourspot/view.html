@@ -170,11 +170,11 @@
 
 
 
-					"<h4>"+ list.title+"</h4>"+
+					"<h3>" + list.title + "</h3>" +
 
-					"<div class='content_top'>" +
-					"<figure class='text-center'>" +
-					"<img src='" + list.firstimage + "'" + "alt='이미지가 없습니다'>" +
+					"<div class='view_intro clear'>" +
+					"<figure>" +
+					"<img src='" + list.firstimage + "'" + "alt=" + list.title + ">" +
 					"</figure>" +
 					"<figcaption>" +
 
@@ -199,8 +199,8 @@
 
 
 
-				+
-				"<div class='buttonSet text-center'>"
+					+
+					"<div class='buttonSet text-center'>"
 				if (list.homepage != undefined) {
 					InfoElements + list.homepage
 				}

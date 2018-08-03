@@ -2496,8 +2496,12 @@ travelContents 관광지 게시판 뷰
 ***************************************************************************************/
 
 #travelContents{}
-#travelContents h4{}
-#travelContents h4:before{display:none;}
+#travelContents h3{text-align: center;}
+
+
+#travelContents .view_intro{}
+#travelContents .view_intro figure{float: left; width:65%;}
+#travelContents .view_intro figcaption{float: left; width:30%;}
 
 
 
