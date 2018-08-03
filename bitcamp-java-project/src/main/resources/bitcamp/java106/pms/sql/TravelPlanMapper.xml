@@ -16,6 +16,7 @@
     <result column="MEMO" property="memo"/>
     <result column="PLANTI" property="pltime"/>
     <result column="TTPNO" property="ttpno"/>
+    <result column="TOURNO" property="tno"/>
     
   </resultMap>
   
@@ -28,7 +29,7 @@
   <select id="selectList" 
           resultMap="TravelPlanMap" 
           parameterType="map">
-   SELECT TTP.PLANTI, TTP.MEMO, TTP.PLNO, TTP.TTPNO
+   SELECT TTP.PLANTI, TTP.MEMO, TTP.PLNO, TTP.TTPNO, TTP.TOURNO
    FROM TAMLA_TRAVEL_PLAN TTP
    WHERE TTP.PLNO= #{plno}
   </select>
