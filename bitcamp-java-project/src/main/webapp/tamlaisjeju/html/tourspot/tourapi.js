@@ -43,6 +43,8 @@ var common = {
 
 
 
+
+
 	detailPageIntroInfoDraw: function (data) {
 		var InfoElements;
 		var list = data.response.body.items.item
