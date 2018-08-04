@@ -46,6 +46,15 @@
   border-bottom: 1px solid #fff;
 }
 
+
+
+#header.active{
+  background:#fff;
+  color: #121212;
+  border-bottom: 1px solid #e5e5e5;
+  transition: 0.5s;
+}
+
 #header h1 {
   position: absolute;
   left: 2%;
@@ -68,6 +77,11 @@
   background-size:cover;
 }
 
+
+
+
+
+
 .menu_area {
   text-align: center;
   vertical-align: middle;
@@ -82,6 +96,9 @@
   text-align: center;
 }
 
+#header.active .nav_area a{
+  color: #121212;
+}
 .nav_area a {
   display: inline-block;
   color: #f2f2f2;
@@ -102,6 +119,11 @@
   color: white;
   padding: 25px 20px;
   margin: 0;
+}
+
+
+#header.active .nav_area .dropbtn{
+  color: #121212;
 }
 
 .nav_area .dropdown-content {
@@ -186,6 +208,11 @@
   display: inline-block;
   color: #fff;
   margin: 0 5px;
+}
+
+
+#header.active .ico_wrap a{
+  color: #121212;
 }
 
 #header .ico_wrap a i {
