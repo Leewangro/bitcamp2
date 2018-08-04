@@ -11,8 +11,8 @@
 #sub09 .content .aside_wrap {
     /* width: 30%; */
     height: 500px;
-    right:200px;;
-    top:450;
+    right:200px;
+    top:450px;
     position: fixed;
 } 
 #sub09 .content .cont_wrap {
