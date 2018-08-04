@@ -220,7 +220,7 @@
 								</div>
 								<div class="modal-body">
 									<input type="text" id="mTitle" placeholder=" 일정 제목을 입력해주세요.">
-									<textarea id="pDesc" placeholder="일정 설명" style="width: 100%; height: 120px; padding: 8px; border: 1px solid #e9e9e9; box-sizing: border-box; resize: none;"></textarea>
+									<textarea id="pDesc" placeholder="일정 설명"></textarea>
 									<div>
 										<input id="sDate" type="date" placeholder="출발일" style="width: 48.1%; text-align: left; border: 1px solid #e9e9e9; height: 50px; padding-left: 10px;"> ~
 										<input id="eDate" type="date" placeholder="도착일" style="width: 48.1%; text-align: left; border: 1px solid #e9e9e9; height: 50px; padding-left: 10px;">
@@ -394,9 +394,19 @@
 		#travelmate_form #mTitle {
 			width: 100%;
 			margin-bottom: 10px;
-			padding:5px;
+			padding: 5px;
 			border: 1px solid #e9e9e9;
 			line-height: 50px;
+		}
+
+
+		#travelmate_form #pDesc {
+			width: 100%;
+			height: 120px;
+			padding: 8px;
+			border: 1px solid #e9e9e9;
+			box-sizing: border-box;
+			resize: none;
 		}
 	</style>
 
