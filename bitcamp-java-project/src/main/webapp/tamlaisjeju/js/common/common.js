@@ -26,16 +26,6 @@ function closeNav() {
 
 
 
-// $(window).scroll(function () {
-//     var scroll = $(window).scrollTop();
-//     if (scroll >= 300) {
-//         $("#header").css("background:url('../img/main/header_bg.png') repeat");
-//     } else {
-//         $("#header").css("background", "#fff");
-//     }
-// })
-
-
 $(function() {
     $(window).on("scroll", function() {
         if($(window).scrollTop() > 50) {
