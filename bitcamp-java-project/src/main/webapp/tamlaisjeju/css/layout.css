@@ -1481,7 +1481,7 @@ container - 컨텐츠 스타일
 .btn.btn-file:focus,
 .btn.btn-file:active {
   color: #666;
-  border: 1px solid #10349e;
+  border: 1px solid #104ba0;
 }
 
 .btn-ani:hover .bico.bticon.arr,
@@ -1507,8 +1507,8 @@ container - 컨텐츠 스타일
 
 .btn-ani.line {
   background-color: #fff;
-  border-color: #10349e;
-  color: #10349e;
+  border-color: #104ba0;
+  color: #104ba0;
 }
 
 .btn-ani.line .bico.bticon.down {
@@ -1519,8 +1519,8 @@ container - 컨텐츠 스타일
 
 .btn.btn-ani.btn-write,
 .btn.btn-ani.btn-list {
-  border-color: #10349e;
-  background-color: #10349e;
+  border-color: #104ba0;
+  background-color: #104ba0;
   color: #fff;
   padding: 10px 20px;
 }
@@ -1711,7 +1711,7 @@ container - 컨텐츠 스타일
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: #10349e;
+  background-color: #104ba0;
   line-height: 70px;
   font-size: 32px;
   color: #fff;
@@ -1918,7 +1918,7 @@ container - 컨텐츠 스타일
   left: 0;
   width: 30px;
   height: 30px;
-  background-color: #10349e;
+  background-color: #104ba0;
   font-size: 16px;
   line-height: 28px;
 }
@@ -1983,7 +1983,7 @@ container - 컨텐츠 스타일
   display: block;
   margin: 0;
   margin-bottom: 10px;
-  color: #10349e;
+  color: #104ba0;
   font-size: 20px;
   line-height: 30px;
   font-weight: bold;
@@ -2176,14 +2176,14 @@ board_list pagination - 게시판 페이징
 }
 
 .board_list .pagination a.active {
-  background-color: #10349e;
+  background-color: #104ba0;
   color: #fff;
-  border: 1px solid #10349e;
+  border: 1px solid #104ba0;
 }
 
 .board_list .pagination a:hover:not(.active) {
   /* background-color: #ddd; */
-  border: 1px solid #10349e;
+  border: 1px solid #104ba0;
 }
 
 /**************************************************************************************
@@ -2716,13 +2716,13 @@ board_list  travelmate - 동행 게시판 리스트
   padding: 8px 6px;
   margin: 0 2px;
   /* background-color: #134af1; */
-  /* background-color: #10349e; */
+  /* background-color: #104ba0; */
   font-size: 14px;
   color: #fff;
   vertical-align: middle;
   border-radius: 100%;
-  border: 1px solid #10349e;
-  color: #10349e;
+  border: 1px solid #104ba0;
+  color: #104ba0;
 }
 
 .board_list.travelmate .box_wrap figure .capacity {
@@ -2732,11 +2732,11 @@ board_list  travelmate - 동행 게시판 리스트
   margin: 0 2px;
   color: #fff;
   /* background-color: #134af1; */
-  /* background-color: #10349e; */
+  /* background-color: #104ba0; */
   vertical-align: middle;
   border-radius: 100%;
-  border: 1px solid #10349e;
-  color: #10349e;
+  border: 1px solid #104ba0;
+  color: #104ba0;
 }
 
 .board_list.travelmate figure.effect {
