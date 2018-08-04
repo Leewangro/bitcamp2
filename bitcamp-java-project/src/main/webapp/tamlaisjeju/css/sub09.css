@@ -11,7 +11,8 @@
 #sub09 .content .aside_wrap {
     width: 30%;
     height: 500px;
-    
+    left:0;
+    top:0;
     float: left;
     position: fixed;
 } 
