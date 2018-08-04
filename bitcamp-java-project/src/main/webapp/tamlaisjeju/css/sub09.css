@@ -9,17 +9,17 @@
 }
 
 #sub09 .content .aside_wrap {
-    /* width: 30%; */
-    height: 500px;
-    right:200px;
+    width: 30%;
+    /* height: 500px; */
+    right:0;
     top:450px;
     position: fixed;
 } 
 #sub09 .content .cont_wrap {
-    width: 900px;
+    width: 70%;
     
     /* margin-left: 30%; */
-    margin-top: 90px;
+    /* margin-top: 90px; */
 }  
 /*left-box의 시작*/
 #sub09 .content .aside_wrap .info-left-box {
@@ -28,7 +28,7 @@
         z-index: 1001;
         /* padding-top: 40px; */
         
-        margin: 50px 0 0 300px;
+        /* margin: 50px 0 0 300px; */
     
 }
 
