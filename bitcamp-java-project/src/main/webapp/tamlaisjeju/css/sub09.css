@@ -9,17 +9,16 @@
 }
 
 #sub09 .content .aside_wrap {
-    width: 30%;
+    /* width: 30%; */
     height: 500px;
-    left:0;
+    right:0;
     top:0;
-    float: left;
     position: fixed;
 } 
 #sub09 .content .cont_wrap {
     width: 900px;
     
-    margin-left: 30%;
+    /* margin-left: 30%; */
     margin-top: 90px;
 }  
 /*left-box의 시작*/
