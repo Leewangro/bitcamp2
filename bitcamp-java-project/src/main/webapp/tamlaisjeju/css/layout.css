@@ -52,7 +52,7 @@
   background:#fff;
   color: #121212;
   border-bottom: 1px solid #e5e5e5;
-  transition: 0.3s;
+  transition: 0.s;
 }
 
 #header h1 {
@@ -76,7 +76,9 @@
   background:url('../img/common/logo.png') no-repeat;
   background-size:cover;
 }
-
+#header.active h1 a{
+  background:url('../img/common/logo_active.png') no-repeat;
+}
 
 
 
