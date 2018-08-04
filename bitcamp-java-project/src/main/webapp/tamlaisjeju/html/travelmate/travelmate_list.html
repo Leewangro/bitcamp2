@@ -13,12 +13,11 @@
 	<meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
 	<!-- font -->
 	<link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-	    crossorigin="anonymous">
+
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
 	    crossorigin="anonymous">
 	<!-- css -->
+	<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../css/common.css" />
 	<link rel="stylesheet" href="../../css/layout.css" />
 	<link rel="stylesheet" href="../../css/sub04.css" />
@@ -220,7 +219,7 @@
 									</button>
 								</div>
 								<div class="modal-body">
-									<input type="text" id="mTitle" style="width: 100%; margin-bottom: 10px; border: 1px solid #e9e9e9; line-height: 50px;" placeholder=" 일정 제목을 입력해주세요.">
+									<input type="text" id="mTitle" placeholder=" 일정 제목을 입력해주세요.">
 									<textarea id="pDesc" placeholder="일정 설명" style="width: 100%; height: 120px; padding: 8px; border: 1px solid #e9e9e9; box-sizing: border-box; resize: none;"></textarea>
 									<div>
 										<input id="sDate" type="date" placeholder="출발일" style="width: 48.1%; text-align: left; border: 1px solid #e9e9e9; height: 50px; padding-left: 10px;"> ~
@@ -391,6 +390,14 @@
 		}
 
 		#travelmate_form .modal-header .close {}
+
+		#travelmate_form #mTitle {
+			width: 100%;
+			margin-bottom: 10px;
+			padding:5px;
+			border: 1px solid #e9e9e9;
+			line-height: 50px;
+		}
 	</style>
 
 </body>
