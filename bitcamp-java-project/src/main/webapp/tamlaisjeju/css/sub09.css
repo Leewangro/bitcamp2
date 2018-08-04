@@ -36,6 +36,7 @@
     
     /*box-shadow: 0 1px 1px rgba(125,125,125,.2);*/
     border-radius: 4px;
+    border:1px solid #e5e5e5;
 }
  
 #sub09 .content .aside_wrap .info-left-box .user-info-box .author-box {
@@ -424,7 +425,7 @@
 }
 #sub09 .absolute{
 	text-align: left; 
-    bottom: 200px; 
+    bottom: 700px; 
 }
 
 #sub09 .modal-content {
