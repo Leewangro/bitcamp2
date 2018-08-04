@@ -83,23 +83,20 @@
 
 			</div>
 			<!-- board end-->
-
-			<div class="text-right">
-				<a href="javascript:void(0)" onclick="moreView()">더보기</a>
+			<div class="btn_wrap text-right">
+				<a class="btn btn-ani btn-list" href="javascript:void(0)" onclick="moreView()">더보기</a>
 			</div>
 
+			<!-- content end -->
 		</div>
-		<!-- content end -->
-	</div>
-	<!-- container end-->
+		<!-- container end-->
 
 
 
 
 
 
-	<footer id="footer"></footer>
-
+		<footer id="footer"></footer>
 
 
 
@@ -107,23 +104,24 @@
 
 
 
-	<!-- js -->
-	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
-	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../../js/common/common.js"></script>
-	<script src="tourapi.js"></script>
-	<script src="travelcourse.js"></script>
 
-	<script>
-		$(document).ready(function () {
-			$("#header").load("../include/sub_header.html")
-			$("#footer").load("../include/sub_footer.html")
-			/* id 지정을 통해서도 가능합니다. 
-			 $("#header").load("header.html #navbar")
-			 */
-		});
-	</script>
+		<!-- js -->
+		<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+		<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../js/common/common.js"></script>
+		<script src="tourapi.js"></script>
+		<script src="travelcourse.js"></script>
+
+		<script>
+			$(document).ready(function () {
+				$("#header").load("../include/sub_header.html")
+				$("#footer").load("../include/sub_footer.html")
+				/* id 지정을 통해서도 가능합니다. 
+				 $("#header").load("header.html #navbar")
+				 */
+			});
+		</script>
 
 
 
