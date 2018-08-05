@@ -9,14 +9,14 @@
 }
 
 #sub09 .content .aside_wrap {
-    width: 30%;
+    width: 25%;
     /* height: 500px; */
     right:0;
     top:450px;
     position: fixed;
 } 
 #sub09 .content .cont_wrap {
-    width: 70%;
+    width: 75%;
     
     /* margin-left: 30%; */
     /* margin-top: 90px; */
@@ -147,9 +147,10 @@
 #sub09 .content .aside_wrap .info-right-box {
     width: 100px;
     /*background: rgba(0,0,0,0.1);*/
-    position: absolute; 
-    right: -1020px;
-    top: 170px;
+    /* position: absolute;  */
+    position: fixed;
+    left: 0;
+    top: 450px;
 }
  
 
