@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../css/common.css" />
 	<link rel="stylesheet" href="../../css/layout.css" />
+	<link rel="stylesheet" href="../../node_modules/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="../../node_modules/slick-carousel/slick/slick-theme.css">
 
 </head>
 
@@ -34,90 +36,22 @@
 		</div>
 		<!-- visual end -->
 		<div id="content" class="content wrapper">
-
 			<div id="travelContents">
-
-
-
 			</div>
 			<!-- travelContents end-->
 			<div id="detailIntro">
-
 			</div>
 			<!-- detailIntro end -->
-
-			<div id="travelgall">
-				<ul>
-
-				</ul>
-			</div>
-
 			<div id="tourist_area">
+
+				<div class="location">
+					<h4>주변관광지</h4>
+					<ul>
+						<li class="location_item"></li>
+					</ul>
+				</div>
+				<!-- location end -->
 			</div>
-
-
-
-			<!-- 
-
-			<div class="sns_area clear">
-				<ul>
-					<li>
-						<a href="#">
-							<span class="icon view_like_icon"></span>
-							<strong>좋아요</strong>26</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_zzim_icon"></span>
-							<strong>찜하기</strong>537</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_review_icon"></span>
-							<strong>리뷰</strong>114</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_schedule_icon"></span>
-							<strong>일정등록</strong>0</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_visit_icon"></span>
-							<strong>방문했어요</strong>57</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_hit_icon"></span>
-							<strong>조회</strong>19,416</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="icon view_sns_icon"></span>
-							<strong>SNS 공유</strong>8</a>
-					</li>
-				</ul>
-			</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		</div>
 		<!-- content end -->
 	</div>
@@ -175,7 +109,7 @@
 			common.getInfo('get', 'detailImage', "contentTypeId=" + item + "&contentId=" + id +
 				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y",
 				parsing.contentsImgParsing);
-			common.getInfo('get', 'locationBasedList', "contentTypeId=" + item  + "&mapX=" + mapx +
+			common.getInfo('get', 'locationBasedList', "contentTypeId=" + item + "&mapX=" + mapx +
 				"&mapY=" + mapy + "&radius=10000" + //radius 거리반경(단위:m) , Max값 20000m=20Km
 				"&pageNo=1&numOfRows=10&listYN=Y&arrange=P&MobileOS=ETC&MobileApp=AppTesting",
 				parsing.contentsLocationParsing);
@@ -207,23 +141,14 @@
 				var InfoElements;
 				var list = data.response.body.items.item
 				InfoElements =
-
-
-
-
-					// 인트로박스
-
-
-
 					"<h3>" + list.title + "</h3>" +
-
 					"<div class='view_intro clear'>" +
-					"<figure>" +
-					"<img src='" + list.firstimage + "'" + "alt=" + list.title + ">" +
-					"</figure>" +
-					"<figcaption>" +
-
-
+					"<div id='view_gallery'>" +
+					"<ul>" +
+					"<li>" + "<img src='" + list.firstimage + "'" + "alt=" + list.title + ">" + "</li>" +
+					"</ul>" +
+					"</div>" + // view_gallery
+					"<div class='view_info'>" +
 					"<ul>" +
 					"<li>" +
 					"<b>이름</b>" +
@@ -238,21 +163,14 @@
 					"<span> " + list.tel + "</span>" +
 					"</li>" +
 					"</ul>" +
-					"</figcaption>"
+					"</div>"
 				"</div>" // view_intro end
-
-
-
-
-
 				+
 				"<div class='buttonSet right'>"
 				if (list.homepage != undefined) {
 					InfoElements + list.homepage
 				}
 				InfoElements += "</div>" +
-
-
 					"<div class='view_info clear'>" +
 					"<h4>개요</h4>" +
 					"<p class='mb30'>" + list.overview + "</p>" +
@@ -304,34 +222,65 @@
 						var gallery =
 							"<li>" + "<img src=" + data.response.body.items.item[i].originimgurl + ">" + "</li>"
 					}
-					$("#travelgall ul").append(gallery)
+					$("#view_gallery ul").append(gallery)
 				}
 				// $("#travelgall").append(imgurl)
 			},
 			contentsLocationParsing: function (data) {
-
-
-
-				var list = data.response.body.items.item
-				var location =
 				"<h4>주변관광지</h4>"
+				var list = data.response.body.items.item
+				if (list != undefined) {
+					console.log(list)
+					$.each(list, function (i, item) {
+						var LocationElements =
 
 
-				console.log(list)
+
+							"<div class='location'>" +
+							"<h5>" + item.title + "</h5>" +
+							"</div>" // location end
 
 
-		
-					$("#tourist_area").append(location)
+						"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+							item.mapy + "'>" +
+
+							"<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" +
+							"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+
+							"<div class='box_cont_area'>" +
+							"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+							item.mapy + "'>" +
+							"<b>" + item.title + "</b>" +
+							"</a>" +
+							"</div>" +
+							"</div>"
+						$("#tourist_area").append(LocationElements)
+					})
+				} else {
+					$(".text-right").css("display", "none");
 				}
-				// $("#travelgall").append(imgurl)
-			
+			}
 		}
 	</script>
 
+	<script src="../../node_modules/slick-carousel/slick/slick.min.js"></script>
 
 
+	<script>
+		$('#view_gallery li').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 4000,
+		});
+		$('.location').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 4000,
+		});
+	</script>
 
 </body>
 
 </html>
-

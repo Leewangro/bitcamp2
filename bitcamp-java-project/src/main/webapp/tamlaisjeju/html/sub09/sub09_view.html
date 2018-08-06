@@ -155,7 +155,7 @@
 				</div>
 				<!-- cont_wrap 종료 -->
 				<!--지도 시작-->
-				<div id="map">
+				<div id="map" >
 					<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a39a869b2b427425c966081cb35dc719"></script>
 
@@ -166,52 +166,19 @@
 				<div class="story-day">
 					<div class="spot-container">
 						<div class="story-conts">
-							<div style="margin-left: 822px;">
-								<button type="button" class="btn btn-secondary"
+							<h3><button type="button" class="btn btn-secondary" id="pre_button"
 									style="background: darkgray; font-weight: bold; color: white;">
 									<</button>
-								<button type="button" class="btn btn-secondary"
-									style="background: darkgray; font-weight: bold; color: white;">
-									></button>
-							</div>
-							<h3>
 								<strong>Day <a href="#" id="d1">1</a>
 								</strong> <span class="desc">2016.07.12(Tue)</span>
+								<button type="button" class="btn btn-secondary" id="next_button"
+									style="background: darkgray; font-weight: bold; color: white;">
+									></button>
 							</h3>
 							<div class="spot-note-box">
-								<div class="spot-tit type">
-									<a class="spot-title-area" id="d1">
-										<h4 class="i-h4">
-											<span class="i-title"> </span>
-										</h4>
-									</a>
-								</div>
+								
 								<div class="spot-contents">
-									<div class="conts-txt-area">
-										<div id="img-modal" class="medium-insert-image ui-sortable"
-											contenteditable="false">
-											<img src="../../img/sub09/jeju.jpg" data-toggle="modal"
-												data-target="#exampleModal">
-											<!-- Modal -->
-											<div class="modal fade" id="exampleModal" tabindex="-1"
-												role="dialog" aria-labelledby="exampleModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<img class="m-img" src="../../img/sub09/oo.jpg">
-													</div>
-												</div>
-											</div>
-											<p class="r-cm">설명을 적으세요설명을 적으세요설명을 적으세요설명을 적으세요설명을
-												적으세요설명을 적으세요</p>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 							<!--spot-note-box-->
@@ -260,7 +227,7 @@
 			<!-- content end -->
 		</div>
 	</div>
-	<!-- container end -->
+	<!-- container end --> 
 	<div id="footer"></div>
 	<!-- js -->
 	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -489,6 +456,14 @@
                      //console.log("---------------");
                      console.log(data2);
 
+                     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                     mapOption = { 
+                         center: new daum.maps.LatLng( 33.379235341729505, 126.56948671100452), // 지도의 중심좌표
+                         level: 10 // 지도의 확대 레벨
+                     };
+
+                 	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
                      for (let i = 0; i < data.length; i++) {
                         //console.log(data2.response.body.items.item);
                         //console.log(data2.response.body.items.item.length);
@@ -498,7 +473,6 @@
                            if (data[i].tno == data2.response.body.items.item[j].contentid) {
                               //$(data2[j].tno).append(data[i].contentid);
                               //console.log(data);
-
                               console.log(data2.response.body.items.item[j])
 
                               var dayCon = $('.spot-note-box');
@@ -570,7 +544,17 @@
                               $(dayCon).append(spot_cont);
                               /*모달 이미지 부분 종료*/
                               
-                              
+
+                          // 마커가 표시될 위치입니다 
+                          var markerPosition  = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx); 
+
+                          // 마커를 생성합니다
+                          var marker = new daum.maps.Marker({
+                              position: markerPosition
+                          });
+						  
+                          // 마커가 지도 위에 표시되도록 설정합니다
+                          marker.setMap(map);
                            }
                         }
                      }
@@ -608,26 +592,30 @@
 		};  */
 	</script>
 	<!-- 페이지이동 스크립트 -->
-
+	<!-- 
 	<script>
 		if (ReceiveList_curPage == 1)
 			$(prev_a).addClass("disabled");
 		else {
 			$(prev_a).click(function() {
 				ReceiveList_curPage--;
-				$("label[for=tabOne]").trigger("click");
+				$("#pre_button").trigger("click");
 			});
 		}
-
+		
 		if (data.length != pageSize)
 			$(next_a).addClass("disabled");
 		else {
 			$(next_a).click(function() {
 				ReceiveList_curPage++;
-				$("label[for=tabOne]").trigger("click");
+				$("#next_button").trigger("click");
 			})
 		}
 	</script>
-	
+	 
+	 -->
+	<script type="text/javascript">
+
+	</script>
 </body>
 </html>
