@@ -1,6 +1,6 @@
 <!-- Facebook login or logout button -->
 <div class="login">
-<a id="Login" data-toggle="modal" data-target="#exampleModalCenter" href="#" onclick="fbLogin();">로그인</a>
+<a id="Login" data-toggle="modal" data-target="#exampleModalCenter" href="#" onclick="location.href='/auth/facebook'">로그인</a>
 <span><img id="userPic" style="display:none; width:25px; border-radius:13px; float:left; margin-right:5px;" src=""></span>
 <span id="userName" style="margin-right: 7px; float:left;"></span>
 <span id="Logout" onclick="Logout()" style="display:none; float:left;">로그아웃</span>
@@ -9,7 +9,7 @@
         window.fbAsyncInit = function() {
             // FB JavaScript SDK configuration and setup
             FB.init({
-              appId      : '228605734455848', // FB App ID
+              appId      : '228605734455848' // FB App ID
               cookie     : true,  // enable cookies to allow the server to access the session
               xfbml      : true,  // parse social plugins on this page
               version    : 'v3.0' // use graph api version 2.8
@@ -66,4 +66,4 @@
                 document.getElementById('userName').style.display = 'none';
             });
         }
-        </script>
+</script>
