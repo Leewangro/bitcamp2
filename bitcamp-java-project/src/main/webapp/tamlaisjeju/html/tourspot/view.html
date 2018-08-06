@@ -52,6 +52,9 @@
 				</ul>
 			</div>
 
+			<div id="tourist_area">
+			</div>
+
 
 
 			<!-- 
@@ -161,6 +164,8 @@
 		$(function () {
 			var id = $.urlParam('id');
 			var item = $.urlParam('item');
+			var mapx = $.urlParam('mapx');
+			var mapy = $.urlParam('mapy');
 			common.getInfo('get', 'detailCommon', "contentTypeId=" + item + "&contentId=" + id +
 				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y",
 				parsing.contentsParsing);
@@ -170,8 +175,23 @@
 			common.getInfo('get', 'detailImage', "contentTypeId=" + item + "&contentId=" + id +
 				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y",
 				parsing.contentsImgParsing);
+			common.getInfo('get', 'locationBasedList', "contentTypeId=" + item  + "&mapX=" + mapx +
+				"&mapY=" + mapy + "&radius=10000" + //radius 거리반경(단위:m) , Max값 20000m=20Km
+				"&pageNo=1&numOfRows=10&listYN=Y&arrange=P&MobileOS=ETC&MobileApp=AppTesting",
+				parsing.contentsLocationParsing);
 
 		})
+
+
+
+
+
+
+
+
+
+
+
 
 		$.urlParam = function (name) {
 			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -272,66 +292,39 @@
 
 
 			},
-
-
-
 			contentsImgParsing: function (data) {
-
-
-
 				for (var i = 0; i < 4; i++) {
 					var item = data.response.body.items.item[i];
 					var imgurl = item.originimgurl;
-					
-
-
 					//이미지가 없거나 찾지 못했을때
 					if (imgurl == null || imgurl == "undefined") {
 						return;
 					} else {
-
-
-
-
 						// $("#travelgall ul li" + (i + 1)).attr("src", data.response.body.items.item[i].originimgurl);
-			
-					var gallery =
-						"<img src=" + data.response.body.items.item[i].originimgurl +">"
-							
-
-
-
+						var gallery =
+							"<li>" + "<img src=" + data.response.body.items.item[i].originimgurl + ">" + "</li>"
 					}
-
-					$("#travelgall").append(gallery)
-
+					$("#travelgall ul").append(gallery)
 				}
-
 				// $("#travelgall").append(imgurl)
+			},
+			contentsLocationParsing: function (data) {
 
 
 
-
-			}
-
-
-
+				var list = data.response.body.items.item
+				var location =
+				"<h4>주변관광지</h4>"
 
 
+				console.log(list)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+		
+					$("#tourist_area").append(location)
+				}
+				// $("#travelgall").append(imgurl)
+			
 		}
 	</script>
 
@@ -341,3 +334,4 @@
 </body>
 
 </html>
+

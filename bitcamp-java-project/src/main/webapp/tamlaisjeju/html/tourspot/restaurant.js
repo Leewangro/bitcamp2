@@ -26,7 +26,7 @@ dataParsing: function (data) {
             var InfoElements =
             "<div class='box'>" +
             "<div class='img_area'>" +
-            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
             "<span class='category'>음식점</span>" +
             "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
@@ -36,7 +36,7 @@ dataParsing: function (data) {
 
 
             "<div class='box_cont_area'>" +
-            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+            "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
 
             "<b>" + item.title + "</b>" +
 
