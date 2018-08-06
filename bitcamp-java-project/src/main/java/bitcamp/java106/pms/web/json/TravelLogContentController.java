@@ -1,5 +1,7 @@
 package bitcamp.java106.pms.web.json;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,16 +28,9 @@ public class TravelLogContentController {
         return travelLogContentService.list(pageNo, pageSize);
     }
     
-    @RequestMapping("zz{page}")
-    public Object zz(
-    		@MatrixVariable(defaultValue="1") int pageNo,
-    		@MatrixVariable(defaultValue="100") int pageSize) {
-    	
-    	return travelLogContentService.zz(pageNo, pageSize);
-    }
     
     @RequestMapping("{no}")
-    public TravelLogContent view(@PathVariable int no) throws Exception {
+    public List<TravelLogContent> view(@PathVariable int no) throws Exception {
         return travelLogContentService.get(no);
     }
     

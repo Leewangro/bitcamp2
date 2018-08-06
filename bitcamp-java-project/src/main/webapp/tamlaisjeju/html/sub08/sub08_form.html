@@ -39,11 +39,12 @@
             <div class="header-nav">
                 <div>
                     <button id="save">저장</button>
-                    <button id="submit">발행</button>
+                    <button id="submit" onclick='submits()'>발행</button>
                     <button id="exit">나가기</button>
                 </div>
 
             </div>
+
 
 
             <div id="se_doctoolbar" class="header-docProperty">
@@ -216,6 +217,7 @@
 
 
                             <form>
+
                                 <input id="post_title_1" type="text" value="" class="post_titl" placeholder="장소">
                                 <input id="post_address_1" type="text" onclick="addrClick(this)" class="post_addr" value="" placeholder="주소" readonly data-toggle="modal"
                                     data-target=".bd-example-modal-lg-map1">
@@ -223,6 +225,15 @@
                                 <input id="post_y_1" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_y" value="" placeholder="경도" hidden>
                                 <!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div> -->
                                 <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false"></textarea>
+                                <div class="daySelect_div">
+                                    <select name="daySelect" class="cont_select_box">
+                                        <option value="">일차를 선택해 주세요</option>
+                                        <option value="" style='display:none;'> </option>
+                                        <!-- <option value="1">1일차</option>
+                                        <option value="2">2일차</option>
+                                        <option value="3">3일차</option> -->
+                                    </select>
+                                </div>
                                 <div class="text_count">글자제한:
                                     <span class="count">80</span>/80</div>
                                 <button onclick="map()"></button>
@@ -312,11 +323,11 @@
         </div>
 
 
-        <!--commonJS-->
-        <script src="../../js/common/common.js"></script>
         <!-- logo font -->
         <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
+        <!--commonJS-->
+        <script src="../../js/common/common.js"></script>
         <!--bootstrap-->
         <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -800,6 +811,7 @@
 
         <script>
             // 캘린더
+            var calCopy = null;
             $(document).ready(function () {
                 $("#total_cost").text($("#total_cost_value").val())
             });
@@ -854,9 +866,37 @@
                             document.getElementById('sdt').innerHTML = "";
                             document.getElementById('edt').innerHTML = "";
                             document.getElementById('cal_day').innerHTML = "0";
+                            $('.cont_select_box').children().remove()
                             return;
                         }
                         document.getElementById('cal_day').innerHTML = betweenDay + 1;
+                        /********************************************
+                                ↓↓↓ 일차별 셀렉트박스 생성 ↓↓↓↓
+                        *********************************************/
+                        selectAdd()
+
+                        function selectAdd() {
+                            var contSelectBox = $('.cont_select_box')
+                            if (contSelectBox.children().length != betweenDay + 1) {
+                                contSelectBox.children().remove()
+                                contSelectBox.append("<option value=''>일차를 선택해 주세요</option>")
+                                for (let i = 1; i < betweenDay + 2; i++) {
+                                    contSelectBox.append(
+                                        "<option value='" + i + "'>" + i + "일차</option>"
+                                    )
+                                }
+                                calCopy = $('.cont_select_box').clone();
+
+                            }
+                        }
+
+
+                        // $('.cont_select_box').append(
+                        //         "<option value='1'>1일차</option>" +
+                        //         "<option value='2'>2일차</option>" +
+                        //         "<option value='3'>3일차</option>"
+                        // )
+
 
                     }
                 });
@@ -883,9 +923,19 @@
                                 title: '삭제완료',
                                 text: '작성중인 게시물을 삭제하였습니다.',
                                 showConfirmButton: false,
-                                timer: 1500 
+                                timer: 1500
                             })
+                            $('#post_title_1').val("")
+                            $('#post_address_1').val("")
+                            $('#post_x_1').val("")
+                            $('#post_y_1').val("")
                             $('.add_post').remove();
+                            positions = []
+                            for (var i2 = 0; i2 < markers2.length; i2++) {
+                                markers2[i2].setMap(null)
+                            }
+                            markers2 = []
+
                         } else {
                             swal({
                                 position: 'top-end',
@@ -893,7 +943,7 @@
                                 title: '삭제실패',
                                 text: '작성된 게시물이 없습니다.',
                                 showConfirmButton: false,
-                                timer: 1500 
+                                timer: 1500
                             })
                         }
 
@@ -978,6 +1028,37 @@
             input.addEventListener("keypress", addNewItemAfterKeypress);
             manageGroupTag(li, "click", toggleDone);
             manageGroupTag(deleteBtns, "click", deleteItem);
+
+
+            /**********************************************
+            발행스크립트
+            ***********************************************/
+
+                const {
+                    value: day
+                } = await swal({
+                    title: '잠깐! 누구와 함께 다녀왔나요?',
+                    input: 'select',
+                    inputOptions: {
+                        '1': '혼자',
+                        '2': '부모님',
+                        '3': '아이',
+                        '4': '커플',
+                        '5': '친구',
+                        '6': '단체'
+                    },
+                    inputPlaceholder: '일행',
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                        return new Promise((resolve) => {
+                            resolve('You need to select Ukraine :)')
+                        })
+                    }
+                })
+
+                if (day) {
+                    swal('일행은' + day + ' 와 함께 다녀왔습니다.')
+                }
         </script>
         <script>
             var count = 2;
@@ -1004,6 +1085,8 @@
                     "<div id='map' style='width:300px;height:300px;margin-top:10px;display:none'></div>" +
                     "<textarea id='post_text_form" + count + "'" +
                     "class='title_textarea text_area' placeholder='내용을 입력하세요.' data-is-observable='false'></textarea>" +
+                    "<div class='daySelect_div" + count + " daySelect_div'>" +
+                    "</div>" +
                     "<div class='text_count'>글자제한:" +
                     "<span class='count'>80</span>/80</div>" +
                     "<button onclick='map()'></button>" +
@@ -1052,7 +1135,11 @@
                         "</div>"
                     )
                 })(count)
+                calCopy = $('.cont_select_box').clone();
+                console.log(calCopy);
+                $('.daySelect_div' + count).append(calCopy[0])
 
+                // $('.daySelect_div'+count).clone(contSelectBox)
 
                 count++;
                 var imagesDiv = null;
@@ -1222,11 +1309,11 @@
                     if (result.value) {
                         swal({
                             position: 'top-end',
-                                type: 'success',
-                                title: '삭제완료',
-                                text: '작성중인 게시물을 삭제하였습니다.',
-                                showConfirmButton: false,
-                                timer: 1500 
+                            type: 'success',
+                            title: '삭제완료',
+                            text: '작성중인 게시물을 삭제하였습니다.',
+                            showConfirmButton: false,
+                            timer: 1500
                         })
                         contDiv.remove();
                         markerRemove(removeMarkers);
