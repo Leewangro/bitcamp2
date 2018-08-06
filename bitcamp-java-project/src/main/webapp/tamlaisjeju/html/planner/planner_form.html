@@ -1125,6 +1125,7 @@ var countId = 1;
         	console.log("aaa")
         	event.dataTransfer.dropEffect = "move";
        		event.dataTransfer.effectAllowed = "move";
+       		event.dataTransfer.setData("Text", event.target.id);
         	console.log(event);
         } else {
         	console.log("bbb")
