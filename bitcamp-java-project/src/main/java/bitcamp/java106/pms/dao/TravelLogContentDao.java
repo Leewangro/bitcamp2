@@ -8,7 +8,7 @@ import bitcamp.java106.pms.domain.TravelLogContent;
 public interface TravelLogContentDao {
     List<TravelLogContent> selectList(Map<String,Object> params);
     TravelLogContent selectOne(int no);
-    List<TravelLogContent> selectListWithNo(int no);
+    List<TravelLogContent> selectListWithNo(int no); 
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기
