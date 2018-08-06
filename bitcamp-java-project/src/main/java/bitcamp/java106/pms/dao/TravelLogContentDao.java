@@ -9,7 +9,7 @@ public interface TravelLogContentDao {
     List<TravelLogContent> selectList(Map<String,Object> params);
     TravelLogContent selectOne(int no);
     List<TravelLogContent> selectListWithNo(int no); 
-}
+} 
 
 //ver 52 - 페이지 단위로 데이터 가져오기
 //ver 50 - 클래스를 인터페이스로 변경
