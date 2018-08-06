@@ -166,12 +166,12 @@
 				<div class="story-day">
 					<div class="spot-container">
 						<div class="story-conts">
-							<h3><button type="button" class="btn btn-secondary"
+							<h3><button type="button" class="btn btn-secondary" id="pre_button"
 									style="background: darkgray; font-weight: bold; color: white;">
 									<</button>
 								<strong>Day <a href="#" id="d1">1</a>
 								</strong> <span class="desc">2016.07.12(Tue)</span>
-								<button type="button" class="btn btn-secondary"
+								<button type="button" class="btn btn-secondary" id="next_button"
 									style="background: darkgray; font-weight: bold; color: white;">
 									></button>
 							</h3>
@@ -599,19 +599,20 @@
 		else {
 			$(prev_a).click(function() {
 				ReceiveList_curPage--;
-				$("label[for=tabOne]").trigger("click");
+				$("#pre_button").trigger("click");
 			});
 		}
-
+		
 		if (data.length != pageSize)
 			$(next_a).addClass("disabled");
 		else {
 			$(next_a).click(function() {
 				ReceiveList_curPage++;
-				$("label[for=tabOne]").trigger("click");
+				$("#next_button").trigger("click");
 			})
 		}
 	</script>
+	 
 	 -->
 	<script type="text/javascript">
 
