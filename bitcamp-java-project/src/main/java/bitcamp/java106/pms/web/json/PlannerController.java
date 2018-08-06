@@ -27,8 +27,9 @@ public class PlannerController {
     
     @RequestMapping("add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void add(Planner planner) throws Exception {
+    public Object add(Planner planner) throws Exception {
         plannerService.add(planner);
+        return planner.getNo();
     }
     
     @RequestMapping("delete")

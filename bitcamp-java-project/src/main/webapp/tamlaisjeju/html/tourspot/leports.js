@@ -21,13 +21,12 @@ test:function(data) {
 dataParsing: function (data) {
     var list = data.response.body.items.item
     if (list != undefined ) {
-        console.log(list)
         $.each(list, function (i, item) {
             var InfoElements =
             "<div class='box'>" +
             "<div class='img_area'>" +
             "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
-            "<span class='category'>음식점</span>" +
+            "<span class='category'>레포츠</span>" +
             "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
             "</a>" +
@@ -100,7 +99,7 @@ init     : function() {
 
 elements : function() {
     console.log(this.elementCount)
-    common.getInfo('get', 'areaBasedList', 'contentTypeId=39&areaCode='+ this.areaCode +'&sigunguCode='+ this.sigunguCode +'&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&pageNo=' + this.elementCount, parsing.dataParsing);
+    common.getInfo('get', 'areaBasedList', 'contentTypeId=28&areaCode='+ this.areaCode +'&sigunguCode='+ this.sigunguCode +'&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&pageNo=' + this.elementCount, parsing.dataParsing);
 },
 
 areaSigunguCodeGet : function() {

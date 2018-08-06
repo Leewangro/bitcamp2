@@ -28,7 +28,7 @@ var parsing = {
 
                         "<div class='box'>" +
                         "<div class='img_area'>" +
-                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
                         "<span class='category'>관광지</span>" +
                         "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
@@ -38,7 +38,7 @@ var parsing = {
 
 
                         "<div class='box_cont_area'>" +
-                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
 
                         "<b>" + item.title + "</b>" +
 
@@ -120,7 +120,7 @@ var draw = {
     },
 
     elements: function () {
-        common.getInfo('get', 'areaBasedList', 'contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=24&pageNo=' + this.elementCount, parsing.dataParsing);
+        common.getInfo('get', 'areaBasedList', 'contentTypeId=12&areaCode=' + this.areaCode + '&sigunguCode=' + this.sigunguCode + '&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=AppTest&arrange=P&numOfRows=12&pageNo=' + this.elementCount, parsing.dataParsing);
     },
 
     areaSigunguCodeGet: function () {
