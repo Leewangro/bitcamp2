@@ -1034,31 +1034,32 @@
             발행스크립트
             ***********************************************/
 
-                const {
-                    value: day
-                } = await swal({
-                    title: '잠깐! 누구와 함께 다녀왔나요?',
-                    input: 'select',
-                    inputOptions: {
-                        '1': '혼자',
-                        '2': '부모님',
-                        '3': '아이',
-                        '4': '커플',
-                        '5': '친구',
-                        '6': '단체'
-                    },
-                    inputPlaceholder: '일행',
-                    showCancelButton: true,
-                    inputValidator: (value) => {
-                        return new Promise((resolve) => {
-                            resolve('You need to select Ukraine :)')
-                        })
-                    }
-                })
+                // const {
+                //     value: day
+                // } = await swal({
+                //     title: '잠깐! 누구와 함께 다녀왔나요?',
+                //     input: 'select',
+                //     inputOptions: {
+                //         '1': '혼자',
+                //         '2': '부모님',
+                //         '3': '아이',
+                //         '4': '커플',
+                //         '5': '친구',
+                //         '6': '단체'
+                //     },
+                //     inputPlaceholder: '일행',
+                //     showCancelButton: true,
+                //     inputValidator: (value) => {
+                //         return new Promise((resolve) => {
+                //             resolve('You need to select Ukraine :)')
+                //         })
+                //     }
+                // })
 
-                if (day) {
-                    swal('일행은' + day + ' 와 함께 다녀왔습니다.')
-                }
+                // if (day) {
+                //     swal('일행은' + day + ' 와 함께 다녀왔습니다.')
+                // }
+                
         </script>
         <script>
             var count = 2;
