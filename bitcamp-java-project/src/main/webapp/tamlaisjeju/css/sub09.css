@@ -12,7 +12,7 @@
     width: 25%;
     /* height: 500px; */
     right:0;
-    top:450px;
+    /*top:450px; */
     position: fixed;
 } 
 #sub09 .content .cont_wrap {
@@ -148,6 +148,7 @@
     width: 100px;
     /*background: rgba(0,0,0,0.1);*/
     /* position: absolute;  */
+    
     position: fixed;
     left: 0;
     top: 450px;
@@ -435,7 +436,7 @@
 }
 #sub09 .absolute{
 	text-align: left; 
-    bottom: 700px; 
+    bottom: 320px; 
 }
 
 #sub09 .modal-content {
