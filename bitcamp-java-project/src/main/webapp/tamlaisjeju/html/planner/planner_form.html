@@ -33,9 +33,9 @@
                     </h1>
                     <div class="planner_set">
                         <div class="people">
-                            <input type="text" placeholder="인원을 입력하세요">명
+                            <input type="text" id="num" placeholder="인원을 입력하세요">명
                         </div>
-                        <div class="custom-select1">
+                        <div class="custom-select1" id="people">
                             <select>
                                 <option value="0">일행</option>
                                 <option value="1">부모</option>
@@ -47,7 +47,7 @@
                             </select>
                         </div>
 
-                        <div class="custom-select1" style="width: 180px;">
+                        <div class="custom-select1" id="thema" style="width: 180px;">
                                 <select>
                                     <option value="0">테마</option>
                                     <option value="1">걷기/등산</option>
@@ -463,6 +463,7 @@
     </div>
 
     <div id="footer"></div>
+    <script src="../../js/common/common.js"></script>
     <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="../../node_modules/lodash/lodash.js"></script>
     <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
@@ -989,7 +990,7 @@ function calDate() {
             	); 
 		   for (var su = 8; su <= 24; su++) {
 		   $("#schedule_detail_box"+(i)+"").append(
-		       "<div class='day_spot_item'>" +
+		       "<div class='day_spot_item' id='day_spot_item"+(su-7)+"'>" +
 		           "<div class='item_ctrl_box'>" +
 		               "<div class='btn_del' onclick='schedule_del_btn(this)' title='삭제'>" +
 		                   "<img src='../../img/sub10/item_del_icon_a.png' alt='삭제'>" +
@@ -1116,13 +1117,26 @@ document.addEventListener("click", closeAllSelect);
 
 
 <script>
+var countId = 1;
     /* Events fired on the drag target */
     document.addEventListener("dragstart", function(event) {
+        	console.log(event.target.parentElement.parentElement.parentElement.className)
+        if (event.target.parentElement.parentElement.parentElement.className == 'schedule_full') {
+        	console.log("aaa")
+        	event.dataTransfer.dropEffect = "move";
+       		event.dataTransfer.effectAllowed = "move";
+        	console.log(event);
+        } else {
+        	console.log("bbb")
         event.dataTransfer.setData("Text", event.target.id);
-        
+        event.dataTransfer.effectAllowed = "copy";
+        console.log(event);
+        	  /* console.log(event.target.id) */
+        }
     });
     
     document.addEventListener("dragend", function(event) {
+    	event.preventDefault();
     });
     
     /* Events fired on the drop target */
@@ -1132,11 +1146,28 @@ document.addEventListener("click", closeAllSelect);
     
     document.addEventListener("drop", function(event) {
         event.preventDefault();
-        if ( event.target.className == "day_spot_item" ) {
-            var data = event.dataTransfer.getData("Text");
+        if (event.dataTransfer.effectAllowed == "move") {
+        	 var data = event.dataTransfer.getData("Text"); 
+             var nodeCopy = document.getElementById(data).cloneNode(true);
+             nodeCopy.id = "newId"+countId;
+             event.target.appendChild(nodeCopy);
+             var dayIndex = $(nodeCopy).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent;
+             var daySchedule = $(nodeCopy).children()[1];
+             countId++;
+        var el = document.getElementById(event.dataTransfer.getData('Text'));
+        $(el).parent().children()[0].style.display='none'
+        el.parentNode.removeChild(el);
+        } else if ( event.target.className == "day_spot_item" && event.dataTransfer.effectAllowed == "copy" ) {
+            console.log(event); 
+            var data = event.dataTransfer.getData("Text"); 
+            console.log(data);
+            console.log(document.getElementById(data));
             var nodeCopy = document.getElementById(data).cloneNode(true);
-            nodeCopy.id = "newId"; /* We cannot use the same ID */
-            $(nodeCopy).attr('draggable','false');
+            console.log(nodeCopy);
+            // nodeCopy 다르게 줄 방법 찾을것
+            nodeCopy.id = "newId"+countId; /* We cannot use the same ID */
+            /* $(nodeCopy).attr('draggable','false'); */
+            
             event.target.appendChild(nodeCopy);
             //console.log(event.target.appendChild(nodeCopy));
             console.log($(nodeCopy).parent().children()[0]);
@@ -1145,8 +1176,10 @@ document.addEventListener("click", closeAllSelect);
             var dayIndex = $(nodeCopy).parent().parent().parent().children()[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent;
             var daySchedule = $(nodeCopy).children()[1];
             console.log(dayIndex);
-        }
+            countId++;
         dayRoot(dayIndex, daySchedule);
+        }
+        
         $(nodeCopy).parent().children()[0].style.display='block'
         console.log($(nodeCopy).parent().children()[0])
         
@@ -1269,6 +1302,7 @@ $('#category > li').click(function() {
 });
 </script>
 
+<!-- hashtag관련 -->
 <script>
             var button = document.getElementById("enter");
             var input = document.getElementById("input");
@@ -1343,6 +1377,76 @@ $('#category > li').click(function() {
             manageGroupTag(li, "click", toggleDone);
             manageGroupTag(deleteBtns, "click", deleteItem);
         </script>
+        
+<script>
+
+/* TAMLA_PLAN(SDT,EDT,PATA,PART,THEMA) <!-- 회원번호 추가 필요 MNO -->
+values(#{startDate},#{endDate},#{num},#{people},#{theme}) */
+var createPlanIndex = null;
+$('.plan_out_btn')
+        .click( function() {
+                    var param = {
+                		 startDate : $('#datefilter').val().split(" - ")[0].split("/")[0]+"-"+$('#datefilter').val().split(" - ")[0].split("/")[1]+"-"+$('#datefilter').val().split(" - ")[0].split("/")[2],
+                		 endDate : $('#datefilter').val().split(" - ")[1].split("/")[0]+"-"+$('#datefilter').val().split(" - ")[1].split("/")[1]+"-"+$('#datefilter').val().split(" - ")[1].split("/")[2],
+                		 num : $('#num').val(),
+                		 people : $('#people .select-selected')[0].textContent,
+                		 theme : $("#thema .select-selected")[0].textContent,
+                    };
+                    $.ajax({
+                        type : "POST",
+                        url : serverRoot + "/json/planner/add",
+                        data : param,
+                        async: false,
+                        success : function(data) {
+                        	createPlanIndex = data;
+                            aaa();
+                            location.href = "planner_view.html?"+ data;
+                        },
+                        error : function(data) {
+                            alert("빈 칸을 채워주세요.");
+                        }
+
+                    });
+                    
+        });
+				 function aaa() {
+				    var param1 = {
+				    		
+				    };  
+			    		for (let p = 0; p < $('.schedule_full .item').length; p++) {
+			    			let obj = {};
+			    			obj.tno = $('.schedule_full .item')[p].children[1].children[2].childNodes[0].textContent;
+			    			obj.memo = $('.schedule_full .item')[p].children[3].value;
+			    			obj.pltime = $('.schedule_full .item')[p].parentElement.children[1].textContent.replace(/[^0-9]/g,"");
+			    			obj.plday = $('.schedule_full .item')[p].parentElement.parentElement.parentElement.children[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent.substr(3,3)
+                            obj.plno = createPlanIndex
+				    	    
+		    				/* tno : $('.schedule_full .item')[p].children[1].children[2].childNodes[0].textContent
+				    	    memo : $('.schedule_full .item')[p].children[3].value
+				    	    pltime : $('.schedule_full .item')[p].parentElement.children[1].textContent.replace(/[^0-9]/g,"")
+				    	    plday : $('.schedule_full .item')[p].parentElement.parentElement.parentElement.children[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent.substr(3,3)
+				    	    plno : createPlanIndex */
+                            $.ajax({
+                                type : "POST",
+                                url : serverRoot + "/json/travelPlan/add",
+                                data : obj,
+                                async: false,
+                                success : function(data) {
+                                },
+                                error : function(data) {
+                                    alert("빈 칸을 채워주세요.");
+                                }
+                        
+                            });
+			    		};
+				    console.log(param1);
+				    
+
+				    
+				};
+
+</script>
+
 <script src="planner_form.js"></script>
 </body>
 

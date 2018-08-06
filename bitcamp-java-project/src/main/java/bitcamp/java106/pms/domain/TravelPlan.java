@@ -11,67 +11,52 @@ public class TravelPlan implements Serializable {
 
     private int plno; // 플랜번호
     private int tno; // 여행지번호
-    private String memo; // 일행
-    private List<Travel> travels;
-    
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date pltime;
-    
-    private int ttpno;
-
+    private String memo; // 메모
+    private String pltime; // 플랜시간값
+    private int ttpno; // 여행지 플랜 연동번호
+    private int plday; // 여행 날짜 번호
     @Override
     public String toString() {
-        return "TravelPlan [plno=" + plno + ", tno=" + tno + ", memo=" + memo + ", travels=" + travels + ", pltime="
-                + pltime + ", ttpno=" + ttpno + "]";
+        return "TravelPlan [plno=" + plno + ", tno=" + tno + ", memo=" + memo + ", pltime=" + pltime + ", ttpno="
+                + ttpno + ", plday=" + plday + "]";
     }
-
     public int getPlno() {
         return plno;
     }
-
     public void setPlno(int plno) {
         this.plno = plno;
     }
-
     public int getTno() {
         return tno;
     }
-
     public void setTno(int tno) {
         this.tno = tno;
     }
-
     public String getMemo() {
         return memo;
     }
-
     public void setMemo(String memo) {
         this.memo = memo;
     }
-
-    public List<Travel> getTravels() {
-        return travels;
-    }
-
-    public void setTravels(List<Travel> travels) {
-        this.travels = travels;
-    }
-
-    public Date getPltime() {
+    public String getPltime() {
         return pltime;
     }
-
-    public void setPltime(Date pltime) {
+    public void setPltime(String pltime) {
         this.pltime = pltime;
     }
-
     public int getTtpno() {
         return ttpno;
     }
-
     public void setTtpno(int ttpno) {
         this.ttpno = ttpno;
     }
+    public int getPlday() {
+        return plday;
+    }
+    public void setPlday(int plday) {
+        this.plday = plday;
+    }
+
     
     
 }

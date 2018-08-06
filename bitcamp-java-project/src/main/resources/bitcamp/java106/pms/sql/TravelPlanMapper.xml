@@ -12,12 +12,12 @@
 <mapper namespace="bitcamp.java106.pms.dao.TravelPlanDao">
 
   <resultMap type="TravelPlan" id="TravelPlanMap">
-    <id column="PLNO" property="plno"/>
+    <id column="TTPNO" property="ttpno"/>
     <result column="MEMO" property="memo"/>
     <result column="PLANTI" property="pltime"/>
-    <result column="TTPNO" property="ttpno"/>
+    <result column="PLANDAY" property="plday"/>
     <result column="TOURNO" property="tno"/>
-    
+    <result column="PLNO" property="plno"/>
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -26,6 +26,13 @@
        스프링 프레임워크와 연동할 때 DAO객체를 자동생성하고 
        그 메서드를 자동생성할 때 사용할 수 있다.
   -->
+  <insert id="insert" parameterType="map"
+       useGeneratedKeys="true" keyColumn="TTPNO" >
+       insert into
+       TAMLA_TRAVEL_PLAN(TOURNO,MEMO,PLANTI,PLANDAY,PLNO) <!-- 회원번호 추가 필요 MNO -->
+       values(#{tno},#{memo},#{pltime},#{plday},#{plno})
+   </insert>
+  
   <select id="selectList" 
           resultMap="TravelPlanMap" 
           parameterType="map">
