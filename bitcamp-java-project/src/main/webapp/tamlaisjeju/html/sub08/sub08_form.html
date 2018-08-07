@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!-- sweetArert2 -->
     <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css">
+
     <style type="text/css">
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     </style>
@@ -39,7 +41,7 @@
             <div class="header-nav">
                 <div>
                     <button id="save">저장</button>
-                    <button id="submit" onclick='submits()'>발행</button>
+                    <button id="submit" type='button' onclick='chkValue()'>발행</button>
                     <button id="exit">나가기</button>
                 </div>
 
@@ -143,9 +145,9 @@
                         </p>
                         <div class="animated bounceInDown">
 
-                            <input id="input" type="text" placeholder="HashTag 엔터로 입력">
+                            <input id="input" type="text" placeholder="HashTag 엔터로 입력" required>
                             <button id="enter">hashtag</button>
-                            <ul id="tag_box" class="tag_cls">
+                            <ul id="tag_box" class="tag_cls" title='hashTag'>
                             </ul>
                         </div>
                     </div>
@@ -158,7 +160,7 @@
                 <div class="title_wrap">
                     <div class="title_text">
                         <form>
-                            <textarea class="title_textarea text_area" placeholder="제목" rows="1" data-is-observable="false"></textarea>
+                            <textarea id='title' class="title_textarea text_area" placeholder="제목" rows="1" data-is-observable="false" title='제목'></textarea>
                         </form>
                     </div>
                 </div>
@@ -218,15 +220,17 @@
 
                             <form>
 
-                                <input id="post_title_1" type="text" value="" class="post_titl" placeholder="장소">
+                                <input id="post_title_1" type="text" value="" class="post_titl" placeholder="장소" title='장소' required>
                                 <input id="post_address_1" type="text" onclick="addrClick(this)" class="post_addr" value="" placeholder="주소" readonly data-toggle="modal"
-                                    data-target=".bd-example-modal-lg-map1">
-                                <input id="post_x_1" type="text" onclick="" class="post_x" value="" placeholder="위도" hidden>
-                                <input id="post_y_1" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_y" value="" placeholder="경도" hidden>
+                                    title='주소' data-target=".bd-example-modal-lg-map1" required>
+                                <input id="post_x_1" type="text" onclick="" class="post_x" value="" placeholder="위도" hidden required>
+                                <input id="post_y_1" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_y" value="" placeholder="경도" hidden
+                                    required>
                                 <!-- <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div> -->
-                                <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false"></textarea>
+                                <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false" required
+                                    title='내용' title='내용'></textarea>
                                 <div class="daySelect_div">
-                                    <select name="daySelect" class="cont_select_box">
+                                    <select name="daySelect" class="cont_select_box" title='일차입력'>
                                         <option value="">일차를 선택해 주세요</option>
                                         <option value="" style='display:none;'> </option>
                                         <!-- <option value="1">1일차</option>
@@ -271,7 +275,7 @@
                                 <div id="imgbox2_1" class="imgboxs2">
                                     <p>업로드 완료된 사진</p>
                                 </div>
-                                <input id="fileupload1" type="file" class='fileuploads' name="files" multiple hidden>
+                                <input id="fileupload1" type="file" class='fileuploads' name="files" multiple hidden required>
                                 <!-- 고유 값이 필요한 경우 -->
 
 
@@ -306,7 +310,7 @@
                                             <form class="search_bar" onsubmit="searchPlaces(); return false;">
                                                 장소명 :
                                                 <input class="search_input" type="text" value="제주도" + id="keyword" size="15">
-                                                <button class="search_btn" type="submit">검색하기</button>
+                                                <button class="search_btn" type="button">검색하기</button>
                                             </form>
                                         </div>
                                     </div>
@@ -855,7 +859,6 @@
                         60 / 60 / 24;
                     var $edt = $('#edt')
                     var $sdt = $("#sdt")
-                    console.log(betweenDay)
                     if (betweenDay || betweenDay == 0) {
                         if (betweenDay < 0) {
                             swal({
@@ -877,7 +880,8 @@
 
                         function selectAdd() {
                             var contSelectBox = $('.cont_select_box')
-                            if (contSelectBox.children().length != betweenDay + 1) {
+                            if ((contSelectBox.children().length < 1) || betweenDay + 1 > 0) {
+                                console.log(betweenDay)
                                 contSelectBox.children().remove()
                                 contSelectBox.append("<option value=''>일차를 선택해 주세요</option>")
                                 for (let i = 1; i < betweenDay + 2; i++) {
@@ -904,6 +908,157 @@
         </script>
 
         <script>
+            function chkValue() {
+                // 공통입력폼내의 모든 입력오브젝트
+                var titleObjs = $("#title");
+                var inputObjs = $(".post_wrap input");
+                var selectObjs = $(".post_wrap select");
+                var textObjs = $(".post_wrap textarea");
+                var tagBox = $('#tag_box').children().length
+                // 미입력여부(경우에 따라 사용)
+                var bEmpty = true;
+                var focus;
+
+                titleObjs.each(function (index) {
+                    if ($(this).val() == '') {
+                        focus = $(this);
+                        bEmpty = false;
+
+                        swal({
+                            type: 'error',
+                            title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                            showConfirmButton: false,
+                            customClass: 'animated tada',
+                            animation: false,
+                            timer: 1000
+                        })
+                        setTimeout(function(){
+                            focus.focus();
+                        },1100)
+                        return false;
+                    }
+                });
+                if (!bEmpty) return;
+
+                // 각 오브젝트에 대해 입력체크
+                inputObjs.each(function (index) {
+                    if ($(this).val() == '') {
+                        focus = $(this);
+                        bEmpty = false;
+
+                        swal({
+                            type: 'error',
+                            title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                            showConfirmButton: false,
+                            customClass: 'animated tada',
+                            animation: false,
+                            timer: 1000
+                        })
+                        setTimeout(function(){
+                            focus.focus();
+                        },1100)
+                        return false;
+                    }
+                });
+                if (!bEmpty) return;
+
+                textObjs.each(function (index) {
+                    if ($(this).val() == '') {
+                        focus = $(this);
+                        bEmpty = false;
+
+                        swal({
+                            type: 'error',
+                            title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                            showConfirmButton: false,
+                            customClass: 'animated tada',
+                            animation: false,
+                            timer: 1000
+                        })
+
+                        setTimeout(function () {
+                            focus.focus();
+                        }, 1100)
+
+                        // 여기서는 each문을 탈출
+                        return false;
+                    }
+                });
+
+                // 필수입력사항에 누락이 있으면 진행금지
+                if (!bEmpty) return;
+
+                selectObjs.each(function (index) {
+                    if ($(this).val() == '') {
+                        focus = $(this);
+                        bEmpty = false;
+
+                        swal({
+                            type: 'error',
+                            title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                            showConfirmButton: false,
+                            customClass: 'animated tada',
+                            animation: false,
+                            timer: 1000
+                        })
+                        setTimeout(function () {
+                            focus.focus();
+                        }, 1100)
+
+                        // 여기서는 each문을 탈출
+                        return false;
+                    }
+                });
+                if (!bEmpty) return;
+
+                if (tagBox < 1) {
+                    swal({
+                        type: 'error',
+                        title: $('#tag_box').attr('title') + "은 필수입력사항입니다.",
+                        showConfirmButton: false,
+                        customClass: 'animated tada',
+                        animation: false,
+                        timer: 1000
+                    })
+                    setTimeout(function () {
+                        $('#input').focus();
+                    }, 1100)
+                    bEmpty = false;
+                }
+                if (!bEmpty) return;
+
+                submits();
+            }
+            async function submits() {
+                /**********************************************
+            발행스크립트
+            ***********************************************/
+
+                const {
+                    value: day
+                } = await swal({
+                    title: '잠깐! 누구와 함께 다녀왔나요?',
+                    input: 'select',
+                    inputOptions: {
+                        '1': '혼자',
+                        '2': '부모님',
+                        '3': '아이',
+                        '4': '커플',
+                        '5': '친구',
+                        '6': '단체'
+                    },
+                    inputPlaceholder: '일행',
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+
+                    }
+                })
+                if (day) {
+                    setTimeout(() => {
+                        swal("저장되었습니다.")
+                    }, 2000)
+                }
+            }
             // 게시글 모두삭제버튼
             function cntRemoveBtn() {
                 swal({
@@ -916,36 +1071,27 @@
                     confirmButtonText: '네, 삭제할께요'
                 }).then((result) => {
                     if (result.value) {
-                        if ($('.add_post').length > 0) {
-                            swal({
-                                position: 'top-end',
-                                type: 'success',
-                                title: '삭제완료',
-                                text: '작성중인 게시물을 삭제하였습니다.',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            $('#post_title_1').val("")
-                            $('#post_address_1').val("")
-                            $('#post_x_1').val("")
-                            $('#post_y_1').val("")
-                            $('.add_post').remove();
-                            positions = []
-                            for (var i2 = 0; i2 < markers2.length; i2++) {
-                                markers2[i2].setMap(null)
-                            }
-                            markers2 = []
-
-                        } else {
-                            swal({
-                                position: 'top-end',
-                                type: 'error',
-                                title: '삭제실패',
-                                text: '작성된 게시물이 없습니다.',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
+                        swal({
+                            position: 'top-end',
+                            type: 'success',
+                            title: '삭제완료',
+                            text: '작성중인 게시물을 삭제하였습니다.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        $('#post_title_1').val("")
+                        $('#post_address_1').val("")
+                        $('#post_x_1').val("")
+                        $('#post_y_1').val("")
+                        $('.add_post').remove();
+                        $('.upload_remove_btn').trigger('click')
+                        positions = []
+                        for (var i2 = 0; i2 < markers2.length; i2++) {
+                            markers2[i2].setMap(null)
                         }
+                        markers2 = []
+
+
 
                         // markerRemove(removeMarkers);
                     }
@@ -1028,38 +1174,6 @@
             input.addEventListener("keypress", addNewItemAfterKeypress);
             manageGroupTag(li, "click", toggleDone);
             manageGroupTag(deleteBtns, "click", deleteItem);
-
-
-            /**********************************************
-            발행스크립트
-            ***********************************************/
-
-                // const {
-                //     value: day
-                // } = await swal({
-                //     title: '잠깐! 누구와 함께 다녀왔나요?',
-                //     input: 'select',
-                //     inputOptions: {
-                //         '1': '혼자',
-                //         '2': '부모님',
-                //         '3': '아이',
-                //         '4': '커플',
-                //         '5': '친구',
-                //         '6': '단체'
-                //     },
-                //     inputPlaceholder: '일행',
-                //     showCancelButton: true,
-                //     inputValidator: (value) => {
-                //         return new Promise((resolve) => {
-                //             resolve('You need to select Ukraine :)')
-                //         })
-                //     }
-                // })
-
-                // if (day) {
-                //     swal('일행은' + day + ' 와 함께 다녀왔습니다.')
-                // }
-                
         </script>
         <script>
             var count = 2;
@@ -1077,15 +1191,16 @@
 
                     "<form>" +
                     "<input id='post_title_" + count + "'" +
-                    "type='text' value='' class='post_titl' placeholder='장소'>" +
+                    "type='text' value='' class='post_titl' placeholder='장소' title='장소' required>" +
                     "<input id='post_address_" + count + "'" +
-                    "<input id='post_address_'" + count +
-                    "type='text' onclick='addrClick(this)' class='post_addr' value='' placeholder='주소' readonly data-toggle='modal' data-target='.bd-example-modal-lg-map1'>" +
-                    "<input id='post_x_'" + count + " type='text' class='post_x' value='' placeholder='위도' hidden>" +
-                    "<input id='post_y_'" + count + " type='text' class='post_y' value='' placeholder='경도' hidden>" +
+                    "type='text' onclick='addrClick(this)' class='post_addr' value='' placeholder='주소' readonly data-toggle='modal' data-target='.bd-example-modal-lg-map1' title='주소' required>" +
+                    "<input id='post_x_'" + count +
+                    " type='text' class='post_x' value='' placeholder='위도' hidden required>" +
+                    "<input id='post_y_'" + count +
+                    " type='text' class='post_y' value='' placeholder='경도' hidden required>" +
                     "<div id='map' style='width:300px;height:300px;margin-top:10px;display:none'></div>" +
                     "<textarea id='post_text_form" + count + "'" +
-                    "class='title_textarea text_area' placeholder='내용을 입력하세요.' data-is-observable='false'></textarea>" +
+                    "class='title_textarea text_area' placeholder='내용을 입력하세요.' title='내용' data-is-observable='false' required></textarea>" +
                     "<div class='daySelect_div" + count + " daySelect_div'>" +
                     "</div>" +
                     "<div class='text_count'>글자제한:" +
@@ -1120,7 +1235,7 @@
                         "<p>업로드 완료된 사진</p>" +
                         "</div>" +
                         "<input id='fileupload" + count + "'" +
-                        "class='fileuploads' type='file' name='files' multiple hidden>" +
+                        "class='fileuploads' type='file' name='files' multiple hidden required>" +
 
                         "<div class='clear'>" +
 
