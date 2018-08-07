@@ -26,11 +26,20 @@ public class WeatherController {
         //현재 날짜 받아오기
         SimpleDateFormat day = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
         SimpleDateFormat hr = new SimpleDateFormat("HH", Locale.KOREA);
+        SimpleDateFormat M = new SimpleDateFormat("M", Locale.KOREA);
+        SimpleDateFormat D = new SimpleDateFormat("d", Locale.KOREA);
+        SimpleDateFormat E = new SimpleDateFormat("E", Locale.KOREA);
         SimpleDateFormat min = new SimpleDateFormat("mm", Locale.KOREA);
         Calendar c1 = Calendar.getInstance();
         int today = Integer.parseInt(day.format(c1.getTime()));
         int hours = Integer.parseInt(hr.format(c1.getTime()));
         int minutes = Integer.parseInt(min.format(c1.getTime()));
+        int MONTH = Integer.parseInt(M.format(c1.getTime()));
+        int DAY = Integer.parseInt(D.format(c1.getTime()));
+        String EM = E.format(c1.getTime()).toString();
+        System.out.println(MONTH);
+        System.out.println(DAY);
+        System.out.println(EM);
  
         HashMap<String, Object> map = new HashMap<>();
         // 기상청 데이터 업데이트 시간 + kkmm 형식으로 변경
@@ -96,8 +105,6 @@ public class WeatherController {
             long sky = (Long) sky_item.get("obsrValue");
             long rain = (Long) rain_item.get("obsrValue");
             
-            System.out.println(sky);
-            
             String weather;
             if (rain == 1) {
                 weather = "비";
@@ -114,12 +121,6 @@ public class WeatherController {
             } else {
                 weather = "흐림";
             }
-            
-            
-            System.out.println(weather);
-            
-            
-            
             
             
             long vec = (Long) vec_item.get("obsrValue");
@@ -141,6 +142,9 @@ public class WeatherController {
                 vector = "서";
             } vector = "북서";
             
+            map.put("m", MONTH);
+            map.put("d", DAY);
+            map.put("e", EM);
             map.put("wth", weather);
             map.put("temp", temp_item.get("obsrValue").toString());
             map.put("vec", vector);
