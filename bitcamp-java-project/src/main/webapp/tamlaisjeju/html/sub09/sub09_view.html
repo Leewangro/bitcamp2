@@ -556,6 +556,7 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
+		
 		var currentPage = 0;
 		
 		$.ajax({
@@ -563,7 +564,7 @@
 			dataType : "json", 
 			success : function(paging) {
 					$(pre_button).click(function(prePage) {
-						if (currentPage == currentPage - 1){
+						currentPage == currentPage - 1
 							var dayCon = $('.spot-note-box');
 	                        var spot_tit = $('<div class="spot-tit type">');
 	                        var spot_title_area = $('<a class="spot-title-area">');
@@ -628,10 +629,10 @@
 	                        $(spot_cont).append(cont_txt_area);
 	                        $(dayCon).append(spot_cont);
 	                        /*모달 이미지 부분 종료*/
-						};
+					
 					});
 			 		$(next_button).click(function(nextPage) {	
-					 	if(currentPage == currentPage + 1){
+					 	currentPage == currentPage + 1
 							var dayCon = $('.spot-note-box');
 	                        var spot_tit = $('<div class="spot-tit type">');
 	                        var spot_title_area = $('<a class="spot-title-area">');
@@ -693,7 +694,7 @@
 	                        $(spot_cont).append(cont_txt_area);
 	                        $(dayCon).append(spot_cont);
 	                        /*모달 이미지 부분 종료*/
-				 	};
+				 	
 					
 				});
 				
