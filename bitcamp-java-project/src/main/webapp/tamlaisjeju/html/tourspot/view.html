@@ -36,21 +36,27 @@
 		</div>
 		<!-- visual end -->
 		<div id="content" class="content wrapper">
-			<div id="travelContents">
-			</div>
-			<!-- travelContents end-->
-			<div id="detailIntro">
-			</div>
-			<!-- detailIntro end -->
-			<div id="tourist_area">
-				<div class="location">
-					<h4>주변관광지</h4>
-					<ul>
-						<li class="location_item"></li>
-					</ul>
+			<div id="tourspot_view">
+
+
+				<div id="travelContents">
 				</div>
-				<!-- location end -->
+				<!-- travelContents end-->
+				<div id="detailIntro" class="clear">
+				</div>
+				<!-- detailIntro end -->
+				<div id="tourist_area" class="clear">
+					<h4>주변관광지</h4>
+					<div id="tourist_item" class="clear">
+						<ul>
+
+						</ul>
+					</div>
+					<!-- location end -->
+				</div>
+				<!-- tourist_area end-->
 			</div>
+			<!-- tourspot_view end -->
 		</div>
 		<!-- content end -->
 	</div>
@@ -75,15 +81,7 @@
 			 */
 		});
 	</script>
-	<script src="../../node_modules/slick-carousel/slick/slick.min.js"></script>
-	<script>
-		$('.location').slick({
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			autoplay: true,
-			autoplaySpeed: 4000,
-		});
-	</script>
+
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8dfe4ef61743ed1851a59061fe320e0d"></script>
 	<script>
 		$(function () {
@@ -196,33 +194,52 @@
 				})
 			},
 			contentsLocationParsing: function (data) {
-				"<h4>주변관광지</h4>"
 				var list = data.response.body.items.item
 				if (list != undefined) {
 					console.log(list)
 					$.each(list, function (i, item) {
 						var LocationElements =
-							"<div class='location'>" +
-							"<h5>" + item.title + "</h5>" +
-							"</div>" // location end
-						"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+
+							"<li>" +
+							"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
 							item.mapy + "'>" +
 							"<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" +
 							"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-							"<div class='box_cont_area'>" +
-							"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
-							item.mapy + "'>" +
 							"<b>" + item.title + "</b>" +
 							"</a>" +
-							"</div>" +
-							"</div>"
-						$("#tourist_area").append(LocationElements)
+							"</li>"
+
+						// location end
+						"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+							item.mapy + "'>" +
+							// "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" +
+							// "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+							// "<div class='box_cont_area'>" +
+							// "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+							// item.mapy + "'>" +
+							// "<b>" + item.title + "</b>" +
+							// "</a>" +
+							// "</div>" +
+							// "</div>"
+							$("#tourist_item ul").append(LocationElements)
+
 					})
 				} else {
 					$(".text-right").css("display", "none");
 				}
+
+				$('#tourist_item ul').slick({
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 4000,
+				});
+
 			}
 		}
+	</script>
+	<script src="../../node_modules/slick-carousel/slick/slick.min.js"></script>
+	<script>
 	</script>
 	<style type="text/css">
 		#travelContents {}
@@ -231,14 +248,75 @@
 			text-align: center;
 		}
 
-		#view_gallery {
-			float: left;
-			width: 60%
+
+
+		#tourspot_view h4 {
+			padding-bottom: 17px;
+			border-bottom: 1px solid #e5e5e5;
+			position: relative;
+			padding-left: 33px;
+			font-size: 20px;
+			color: #000;
 		}
 
-		.view_info {
+		#tourspot_view h4::before {
+			content: "";
+			position: absolute;
+			left: 9px;
+			top: 5px;
+			display: block;
+			width: 10px;
+			height: 10px;
+			background: url('../../img/common/tour_content_bul.png') no-repeat;
+		}
+
+
+
+
+		#travelContents .view_intro {
+			margin-bottom: 30px;
+			border: 1px solid #e5e5e5;
+		}
+
+		#travelContents #view_gallery {
 			float: left;
-			width: 40%
+			width: 50%
+		}
+
+		#travelContents .view_info {
+			float: left;
+			width: 50%
+		}
+
+
+
+
+		#view_gallery img {
+			display: block;
+			width: 100%;
+			height: 333px;
+		}
+
+
+
+		#tourist_item {}
+
+		#tourist_item ul {}
+
+		#tourist_item ul li {
+			float: left;
+			width: 20%;
+			border: 1px solid #e5e5e5;
+		}
+
+		#tourist_item ul li a {
+			display: block;
+
+		}
+
+		#tourist_item ul li a img {
+			display: block;
+			width: 100%;
 		}
 	</style>
 </body>
