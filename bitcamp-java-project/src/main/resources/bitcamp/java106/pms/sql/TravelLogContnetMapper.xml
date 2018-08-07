@@ -35,14 +35,6 @@
   </select>
   
   
-    <select id="zz" 
-          resultMap="TravelLogContentMap" 
-          parameterType="map">
-    SELECT TLNO, DAY, 
-    GROUP_CONCAT( PLACE SEPARATOR ',' ) 
-    FROM TAMLA_TRAVEL_LOG_CONTENT 
-    GROUP BY DAY
-  </select>
   <!-- 
   
   <insert id="insert" parameterType="Board"
@@ -55,6 +47,12 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
   <select id="selectOne" parameterType="int" resultMap="TravelLogContentMap">
+    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY
+    from TAMLA_TRAVEL_LOG_CONTENT 
+    where TLNO=#{value}
+  </select>
+  
+  <select id="selectListWithNo" parameterType="int" resultMap="TravelLogContentMap">
     select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY
     from TAMLA_TRAVEL_LOG_CONTENT 
     where TLNO=#{value}

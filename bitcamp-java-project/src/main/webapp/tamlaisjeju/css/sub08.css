@@ -1510,7 +1510,7 @@ body {
 
 #sub08 .editor_container .content_wrap .post_wrap .post_text form .post_titl {
     font-size: 28px;
-    width: 100%;
+    width: 66%;
     border: none;
     outline: none;
 }
@@ -2344,4 +2344,21 @@ input,
     margin-right: 184px;
     font-size: 13px;
     outline: none;
+}
+
+
+/*******************************
+일차별 셀렉트박스 추가
+*******************************/
+.cont_select_box {
+    height: 22px;
+    border: 1px solid #eee;
+    color: gray;
+    font-size: 12px;
+    padding: 2px;
+}
+.daySelect_div {
+    position: absolute;
+    right: 0;
+    top: 40px;
 }

@@ -2538,6 +2538,9 @@ travelContents 관광지 게시판 뷰
   text-align: center;
 }
 
+
+
+/*
 #travelContents .view_intro {
   margin-bottom:30px;
   border: 1px solid #e5e5e5;
@@ -2576,7 +2579,7 @@ travelContents 관광지 게시판 뷰
   margin-bottom: 10px;
   font-size: 20px;
 }
-
+*/
 /**************************************************************************************
 board_list  travelmate - 동행 게시판 리스트
 ***************************************************************************************/

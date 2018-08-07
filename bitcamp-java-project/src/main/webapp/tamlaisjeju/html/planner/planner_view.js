@@ -1,6 +1,6 @@
 var link = document.location.href.split("?")[1];
 console.log(link);
-
+var viewDate = null;
 //템플릿 엔진이 사용할 템플릿 데이터 가져오기
 var trTemplateSrc = $("#tr-template").html();
 
@@ -8,7 +8,8 @@ var trTemplateSrc = $("#tr-template").html();
 var templateFn = Handlebars.compile(trTemplateSrc);
 
 $.getJSON(serverRoot+"/json/planner/"+link, (data) => {
-	   var trHTML = templateFn(data);
+	   viewDate = data;
+	   trHTML = templateFn(data);
        $(trHTML).appendTo('#tableBody');
+       dayCal();
 });
-

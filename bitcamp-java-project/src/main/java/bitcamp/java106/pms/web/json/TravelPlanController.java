@@ -1,5 +1,6 @@
 package bitcamp.java106.pms.web.json;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import bitcamp.java106.pms.domain.Planner;
 import bitcamp.java106.pms.domain.TravelPlan;
 import bitcamp.java106.pms.service.TravelPlanService;
 
@@ -39,20 +41,24 @@ public class TravelPlanController {
         travelPlanService.delete(no);
     }
     
-    @RequestMapping("{plno}")
+    @RequestMapping("list{page}")
     public Object list(
-            @PathVariable int plno,
             @MatrixVariable(defaultValue="1") int pageNo,
-            @MatrixVariable(defaultValue="3") int pageSize,
-            Map<String,Object>map) {
-        System.out.println(plno);
-        return travelPlanService.list(plno, pageNo, pageSize);
+            @MatrixVariable(defaultValue="3") int pageSize) {
+        
+        return travelPlanService.list(pageNo, pageSize);
     }
     
     @RequestMapping("update")
     @ResponseStatus(HttpStatus.OK) // 기본 값이 OK 이다.
     public void update(TravelPlan travelPlan) throws Exception {
         travelPlanService.update(travelPlan);
+    }
+     
+    @RequestMapping("{no}")
+    public List<TravelPlan> view(@PathVariable int no) throws Exception {
+        return travelPlanService.get(no);
+        
     }
     
 }

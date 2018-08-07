@@ -46,25 +46,24 @@ var common = {
 		var ref = list.contenttypeid
 		if (ref === 12) { //관광지
 			InfoElements = "<div class='detail_info'>" +
-				
-				"<table class='tbl_basic center'>" +
-				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenter + "</td>" +
-				"<tr><td class='introLeft'><em>수용인원 	 </em></td><td class='introRight'>" + list.accomcount + "</td>" +
-				"<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdate + "</td>" +
-				"<tr><td class='introLeft'><em>개장일 </em></td><td class='introRight'>" + list.opendate + "</td>" +
-				"<tr><td class='introLeft'><em>이용시기  </em></td><td class='introRight'>" + list.useseason + "</td>" +
-				"<tr><td class='introLeft'><em>이용시간  </em></td><td class='introRight'>" + list.usetime + "</td>" +
-				"<tr><td class='introLeft'><em>체험안내	   </em></td><td class='introRight'>" + list.expguide + "</td>" +
-				"<tr><td class='introLeft'><em>체험가능연령 </em></td><td class='introRight'>" + list.expagerange + "</td>" +
-				"<tr><td class='introLeft'><em>유모차대여여부 	 </em></td><td class='introRight'>" + list.chkbabycarriage + "</td>" +
-				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parking + "</td>" +
-				"</table>" +
+				"<h4>상세 정보</h4>" +
+				"<ul>" +
+				"<li><b>문의 및 안내</b><span>" + list.infocenter + "</span></li>" +
+				"<li><b>수용인원</b><span>" + list.accomcount + "</span></li>" +
+				"<li><b>쉬는날</b><span>" + list.restdate + "</span></li>" +
+				"<li><b>개장일</b><span>" + list.opendate + "</span></li>" +
+				"<li><b>이용시기</b><span>" + list.useseason + "</span></li>" +
+				"<li><b>이용시간</b><span>" + list.usetime + "</span></li>" +
+				"<li><b>체험안내</b><span>" + list.expguide + "</span></li>" +
+				"<li><b>체험가능연령</b><span>" + list.expagerange + "</span></li>" +
+				"<li><b>유모차대여여부</b><span>" + list.chkbabycarriage + "</span></li>" +
+				"<li><b>주차가능 여부</b><span>" + list.parking + "</span></li>" +
+				"</ul>" +
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 14) { // 문화시설
 			InfoElements = "<div class='detail_info'>" +
-				
+
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterculture + "</td>" +
@@ -105,7 +104,7 @@ var common = {
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 25) { // 여행코스
 			InfoElements = "<div class='detail_info'>" +
-		
+
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocentertourcourse + "</td>" +
@@ -119,7 +118,7 @@ var common = {
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 28) { //레포츠
 			InfoElements = "<div class='detail_info'>" +
-		
+
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterleports + "</td>" +
@@ -136,12 +135,12 @@ var common = {
 				"<tr><td class='introLeft'><em>신용카드가능여부  </em></td><td class='introRight'>" + list.chkcreditcardleports + "</td>" +
 				"<tr><td class='introLeft'><em>애완동물가능여부 </em></td><td class='introRight'>" + list.chkpetleports + "</td>" +
 				"</table>" +
-	
+
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 32) { // 숙박정보 
 			InfoElements = "<div class='detail_info'>" +
-	
+
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterlodging + "</td>" +
@@ -157,12 +156,12 @@ var common = {
 				"<tr><td class='introLeft'><em>체크아웃 시간  </em></td><td class='introRight'>" + list.checkouttime + "</td>" +
 				"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td>" +
 				"</table>" +
-	
+
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 38) { // 쇼핑
 			InfoElements = "<div class='detail_info'>" +
-	
+
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>매장안내 </em></td><td class='introRight'>" + list.shopguide + "</td>" +
@@ -179,12 +178,12 @@ var common = {
 				"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingshopping + "</td>" +
 				"<tr><td class='introLeft'><em>판매품목별가격  </em></td><td class='introRight'>" + list.saleitemcost + "</td>" +
 				"</table>" +
-	
+
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 39) { // 음식점
 			InfoElements = "<div class='detail_info'>" +
-	
+
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>대표메뉴 </em></td><td class='introRight'>" + list.firstmenu + "</td>" +
@@ -198,7 +197,7 @@ var common = {
 				"<tr><td class='introLeft'><em>쉬는날  </em></td><td class='introRight'>" + list.restdatefood + "</td>" +
 				"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkcreditcardfood + "</td>" +
 				"</table>" +
-	
+
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		}

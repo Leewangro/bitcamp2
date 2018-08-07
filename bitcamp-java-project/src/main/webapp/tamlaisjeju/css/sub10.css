@@ -546,7 +546,7 @@
 
 #sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box
 	{
-	width: 425px;
+	/* width: 425px; */
 	float: left;
 	padding-left: 10px;
 }
@@ -574,7 +574,7 @@
 	line-height: 23px;
 	padding-left: 9px;
 	padding-right: 9px;
-	float: left;
+	/* float: left; */
 	border-radius: 3px;
 }
 
@@ -591,12 +591,12 @@
 
 #sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info .sinfo_txt
 	{
-	float: left;
+	/* float: left; */
 	font-size: 12px;
 	color: #555555;
 	line-height: 23px;
-	background: url(../img/sub10/spot_rate_icon.png) no-repeat;
-	padding-left: 20px;
+	/* background: url(../img/sub10/spot_rate_icon.png) no-repeat; */
+	/* padding-left: 20px; */
 }
 
 #sub10 .plan .day_page .day_page_left .day_box .day_sch_box .sch_content .spot_content_box .spot_info .sinfo_txt span

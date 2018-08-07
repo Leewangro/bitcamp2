@@ -44,18 +44,11 @@
   <select id="selectOne" 
           resultMap="PlannerMap" 
           parameterType="map">
-   SELECT TP.PLNO, TP.SDT, TP.EDT, TP.PATA, TP.PART, TP.THEMA, C.CNO
-   FROM TAMLA_CONTENT C, TAMLA_PLAN TP
+   SELECT TP.PLNO, TP.SDT, TP.EDT, TP.PATA, TP.PART, TP.THEMA
+   FROM TAMLA_PLAN TP
    where TP.PLNO=#{no}
   </select>
   
-   <select id="selectOneWithTravelPlans" 
-          resultMap="PlannerMap" 
-          parameterType="map">
-   SELECT TP.PLNO, TTP.PLANTI, TTP.MEMO, TTP.TNO, TTP.PLNO
-   FROM TAMLA_PLAN TP, TAMLA_TRAVEL_PLAN TTP
-   WHERE TP.PLNO = TTP.PLNO
-  </select>
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
