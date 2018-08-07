@@ -31,16 +31,10 @@
 <link rel="../../node_modules/lightbox2/dist/css/lightbox.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
 	<header id="header"></header>
-
-
-
-
-
 
 	<div id="sub09" class="container">
 		<div id="visual">
@@ -155,7 +149,7 @@
 				</div>
 				<!-- cont_wrap 종료 -->
 				<!--지도 시작-->
-				<div id="map" >
+				<div id="map">
 					<script type="text/javascript"
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a39a869b2b427425c966081cb35dc719"></script>
 
@@ -166,7 +160,8 @@
 				<div class="story-day">
 					<div class="spot-container">
 						<div class="story-conts">
-							<h3><button type="button" class="btn btn-secondary" id="pre_button"
+							<h3>
+								<button type="button" class="btn btn-secondary" id="pre_button"
 									style="background: darkgray; font-weight: bold; color: white;">
 									<</button>
 								<strong>Day <a href="#" id="d1">1</a>
@@ -176,10 +171,8 @@
 									></button>
 							</h3>
 							<div class="spot-note-box">
-								
-								<div class="spot-contents">
-									
-								</div>
+
+								<div class="spot-contents"></div>
 							</div>
 							<!--spot-note-box-->
 
@@ -227,7 +220,7 @@
 			<!-- content end -->
 		</div>
 	</div>
-	<!-- container end --> 
+	<!-- container end -->
 	<div id="footer"></div>
 	<!-- js -->
 	<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -320,24 +313,41 @@
 			$.ajax({
 				url : serverRoot + "/json/accompanyregi/list",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
-				success : function(data) {
-					console.log(data)
+				success : function(main) {
+					console.log(main)
 					//$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
-					$(sDay).append(data[1].sDate);
-					$(eDay).append(data[1].eDate);
-					$(partner).append(data[1].mWithNum);
-					$(theme).append(data[1].mTem);
+					$(sDay).append(main[1].sDate);
+					$(eDay).append(main[1].eDate);
+					$(partner).append(main[1].mWithNum);
+					$(theme).append(main[1].mTem);
 					//$(hits).append(data[10]./*프로퍼티 뭐로하냐*/);
 					//$(recoNum).append(data[10]./*프로퍼티명 뭐로하냐*/);
 					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
 				},
-				error : function(e) {
+				error : function(er) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
 		});
 	</script>
+	<!-- <script>
+		$(document).ready(function() {
+
+			$.ajax({
+				url : serverRoot + "/json/accompanyregi/",
+				dataType : "json", // 데이터타입을 json 으로 받아옴
+				success : function(data) {
+					
+					$(theme).append(data[1].mTem);
+					
+				},
+				error : function(e) {
+					alert("날자 불러올 수 없습니다. 다시 확인해 주세요");
+				}
+			});
+		});
+	</script> -->
 	<!-- 팝업 -->
 	<!-- <script>
 		String.prototype.popupView = function() {
@@ -363,77 +373,7 @@
 		}
 	</script>
 -->
-	<!--화면 데이별로 넘기기(노드를 동적으로 생성하는 부분 )-->
-	<!-- 
- 	<script>
- 		  
- 		let dayCon = $('.spot-note-box');
-	    let spot_tit = $('<div class="spot-tit type">');
-	    let spot_title_area = $('<a class="spot-title-area">');
-	    var h4 = $('<h4 class="i-h4">');
-	    var span = $('<span class="m-title">');
-	    
-	    $(span).text(data);
-	    $(h4).append(span);
-	    $(spot_title_area).append(h4);
-	    $(spot_tit).append(spot_title_area);
-	    $(dayCon).append(spot_tit);
-	    
-	    var spot_cont = $('<div class="spot-contents">');
-	    var cont_txt_area = $('<div class="conts-txt-area">');
-	    var img_modal  = $('<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
-	   
-	    var img = $('<img data-toggle="modal" data-taarget="exampleModal">');
-	   
-	    var modal_fade = $('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');
-	    var modal_dialog = $('<div class="modal-dialog" role="document">');
-		var modal_content = $('<div class="modal-content">');
-		var modal_header = $('<div class="modal-header">');
-		var button_close = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-		var span_aria = $('<span aria-hidden="true">');
-		
-		var m_img = $('<img class="m-img">')	;
-		
-		var r_cm = $('<p class="r-cm">');
-		/*이미지 설명부분*/
-		$(r_cm).text(data);
-		$(img_modal).append(r_cm);
-		$(cont_txt_area).append(img_modal);
-		/*원래 이미지 부분*/
-		$(img).attr(data);
-		$(img_modal).append(img);
-		/*원래 이미지 종료*/
-		$(spot_cont).text(cont_txt_area);
-	    $(dayCon).append(spot_cont);
-		/*모달 이미지 부분*/
-		$(m_img).attr(data);
-		$(modal_header).append(m_img);
-		/*모달의 x버튼 시작*/
-		$(span_aria).text(data);
-		$(button_close).append(span_aria);
-		$(modal_header).append(button_close);
-		$(modal_content).append(modal_header);
-		/*모달x버튼 종료*/
-		$(modal_content).append(modal_header);
-		$(modal_dialog).append(modal_content);
-		$(modal_fade).append(modal_dialog);
-		$(img_modal).append(modal_fade);
-		$(cont_txt_area).append(img_modal);
-		$(spot_cont).append(cont_txt_area);
-		$(dayCon).append(spot_cont);
-		/*모달 이미지 부분 종료*/
- 	</script>
- 	-->
-	<!-- 노드를 동적으로 삭제해주는 부분 -->
-	<!-- <script>
-		let dayCon = $('.spot-note-box');
-		let spot_tit = $('<div class="spot-tit type">');
-		let spot_cont = $('<div class="spot-conts">');
-		
-		$(dayCon).empty(spot_tit);
-		$(dayCon).empty(spot_cont);
-	</script>
-	-->
+
 	<!-- api에서 day에 필요한 토큰받아오기-->
 
 
@@ -443,13 +383,13 @@
          let modalIndex = 0;
          
          $.ajax({
-            url: serverRoot + "/json/travelPlan/" + 1,
+            url: serverRoot + "/json/travelPlan/1",
             dataType: "json", // 데이터타입을 json 으로 받아옴
             success: function (data) {
                console.log(data);
 
                $.ajax({
-                  url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&contentTypeId=12&_type=json",
+                  url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
                   dataType: "json", // 데이터타입을 json 으로 받아옴
                   success: function (data2) {
                      //console.log(data);
@@ -462,7 +402,7 @@
                          level: 10 // 지도의 확대 레벨
                      };
 
-                 	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                 	 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
                      for (let i = 0; i < data.length; i++) {
                         //console.log(data2.response.body.items.item);
@@ -560,12 +500,12 @@
                      }
 
                   },
-                  error: function (e) {
+                  error: function (e1) {
                      alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
                   }
                });
             },
-            error: function (e) {
+            error: function (e2) {
                alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
             }
          });
@@ -612,10 +552,174 @@
 			})
 		}
 	</script>
-	 
 	 -->
-	<script type="text/javascript">
 
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var currentPage = 0;
+		
+		$.ajax({
+			url : serverRoot + "/json/travelPlan/" + currentPage,
+			dataType : "json", 
+			success : function(paging) {
+					$(pre_button).click(function(prePage) {
+						if (currentPage == currentPage - 1){
+							var dayCon = $('.spot-note-box');
+	                        var spot_tit = $('<div class="spot-tit type">');
+	                        var spot_title_area = $('<a class="spot-title-area">');
+	                        var h4_title = $('<h4 class="i-h4">');
+	                        var span_title = $('<span class="m-title">');
+	                        //타이틀부분
+	                        $(span_title).text(data2.response.body.items.item[j].title);
+	                        $(h4_title).append(span_title);
+	                        $(spot_title_area).append(h4_title);
+	                        $(spot_tit).append(spot_title_area);
+	                        $(dayCon).append(spot_tit);
+
+	                        var spot_cont = $('<div class="spot-contents">');
+	                        var cont_txt_area = $('<div class="conts-txt-area">');
+	                        var img_modal = $(
+	                           '<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
+
+	                        var img = $('<img data-toggle="modal" data-target="#exampleModal' + modalIndex +'">');
+
+	                        var modal_fade = $(
+	                           '<div class="modal fade" id="exampleModal' + (modalIndex++) + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
+	                        );
+	                        var modal_dialog = $('<div class="modal-dialog" role="document">');
+	                        var modal_content = $('<div class="modal-content">');
+	                        var modal_header = $('<div class="modal-header">');
+	                        var button_close = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+	                        var span_aria = $('<span aria-hidden="true">');
+
+	                        var m_img = $('<img class="m-img">');
+
+	                        var r_cm = $('<p class="r-cm">');
+
+	                        /*원래 이미지 부분*/
+	                        
+	                        $(img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage) );
+	                        $(img_modal).append(img);
+	                        $(dayCon).append(img_modal);
+	                        /*이미지 설명부분*/
+	                        $(r_cm).text(data[i].memo);
+	                        $(img_modal).append(r_cm);
+	                        $(cont_txt_area).append(img_modal);
+	                        $(dayCon).append(cont_txt_area);
+	                        /*원래 이미지 종료*/
+	                        //$(spot_cont).text(cont_txt_area);
+	                        $(dayCon).append(spot_cont);
+	                        /*모달 이미지 부분*/
+	                        $(m_img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage));
+	                        
+	                        /*모달의 x버튼 시작*/
+	                        $(span_aria).text("x");
+	                        $(button_close).append(span_aria);
+	                        $(modal_header).append(button_close);
+	                        //$(modal_content).append(modal_header);
+	                        /*모달x버튼 종료*/
+	                        $(modal_content).append(modal_header);
+	                        $(modal_content).append(m_img);
+	                        //$(modal_dialog).append(modal_header);
+	                        $(modal_dialog).append(modal_content);
+	                        $(modal_fade).append(modal_dialog);
+	                        $(img_modal).append(modal_fade);
+	                        $(cont_txt_area).append(img_modal);
+	                        $(spot_cont).append(cont_txt_area);
+	                        $(dayCon).append(spot_cont);
+	                        /*모달 이미지 부분 종료*/
+						};
+					});
+			 		$(next_button).click(function(nextPage) {	
+					 	if(currentPage == currentPage + 1){
+							var dayCon = $('.spot-note-box');
+	                        var spot_tit = $('<div class="spot-tit type">');
+	                        var spot_title_area = $('<a class="spot-title-area">');
+	                        var h4_title = $('<h4 class="i-h4">');
+	                        var span_title = $('<span class="m-title">');
+	                        //타이틀부분
+	                        $(span_title).text(data2.response.body.items.item[j].title);
+	                        $(h4_title).append(span_title);
+	                        $(spot_title_area).append(h4_title);
+	                        $(spot_tit).append(spot_title_area);
+	                        $(dayCon).append(spot_tit);
+
+	                        var spot_cont = $('<div class="spot-contents">');
+	                        var cont_txt_area = $('<div class="conts-txt-area">');
+	                        var img_modal = $(
+	                           '<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
+
+	                        var img = $('<img data-toggle="modal" data-target="#exampleModal' + modalIndex +'">');
+
+	                        var modal_fade = $(
+	                           '<div class="modal fade" id="exampleModal' + (modalIndex++) + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
+	                        );
+	                        var modal_dialog = $('<div class="modal-dialog" role="document">');
+	                        var modal_content = $('<div class="modal-content">');
+	                        var modal_header = $('<div class="modal-header">');
+	                        var button_close = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+	                        var span_aria = $('<span aria-hidden="true">');
+
+	                        var m_img = $('<img class="m-img">');
+
+	                        var r_cm = $('<p class="r-cm">');
+	                        
+	                        $(img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage) );
+	                        $(img_modal).append(img);
+	                        $(dayCon).append(img_modal);
+	                        /*이미지 설명부분*/
+	                        $(r_cm).text(data[i].memo);
+	                        $(img_modal).append(r_cm);
+	                        $(cont_txt_area).append(img_modal);
+	                        $(dayCon).append(cont_txt_area);
+	                        /*원래 이미지 종료*/
+	                        //$(spot_cont).text(cont_txt_area);
+	                        $(dayCon).append(spot_cont);
+	                        /*모달 이미지 부분*/
+	                        $(m_img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage));
+	                        /*모달의 x버튼 시작*/
+	                        $(span_aria).text("x");
+	                        $(button_close).append(span_aria);
+	                        $(modal_header).append(button_close);
+	                        //$(modal_content).append(modal_header);
+	                        /*모달x버튼 종료*/
+	                        $(modal_content).append(modal_header);
+	                        $(modal_content).append(m_img);
+	                        //$(modal_dialog).append(modal_header);
+	                        $(modal_dialog).append(modal_content);
+	                        $(modal_fade).append(modal_dialog);
+	                        $(img_modal).append(modal_fade);
+	                        $(cont_txt_area).append(img_modal);
+	                        $(spot_cont).append(cont_txt_area);
+	                        $(dayCon).append(spot_cont);
+	                        /*모달 이미지 부분 종료*/
+				 	};
+					
+				});
+				
+			},
+			error : function(nopage) {
+				alert("페이지를 불러올 수 없습니다. 다시 확인해 주세요");
+			}
+		});
+	});
 	</script>
+	<!-- <script>
+	function openCity(evt, cityName) {
+	    var i, tabcontent, tablinks;
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+	    document.getElementById(cityName).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
+	document.getElementById("defaultOpen").click();
+	</script> -->
+
 </body>
 </html>
