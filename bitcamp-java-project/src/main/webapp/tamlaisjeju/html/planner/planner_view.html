@@ -399,7 +399,7 @@ for (var i = 0; i < betweenDay+1; i++) {
      console.log(calMonthDate);
      console.log(dayOfWeek);
 
-$('.day_page_all').append(
+$('.plan #1').append(
 		"<div class='day_page' data-id="+i+1+">" +
 		"<div class='day_page_left'>" +
 		    "<div class='day_box' id=day_page"+(i+1)+">" +
@@ -446,7 +446,6 @@ function schedule_comp1() {
 			if (schedule[i].plday == d) {
 				for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
 	                   if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
-	                       console.log(schedule_data.response.body.items.item[j]);
 	     
 
 							$("#day_page"+(d)+"").append(
