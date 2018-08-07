@@ -11,15 +11,26 @@ public class TravelPlan implements Serializable {
 
     private int plno; // 플랜번호
     private int tno; // 여행지번호
+    private int ttype; // 여행지타입
     private String memo; // 메모
     private String pltime; // 플랜시간값
     private int ttpno; // 여행지 플랜 연동번호
     private int plday; // 여행 날짜 번호
+    
     @Override
     public String toString() {
-        return "TravelPlan [plno=" + plno + ", tno=" + tno + ", memo=" + memo + ", pltime=" + pltime + ", ttpno="
-                + ttpno + ", plday=" + plday + "]";
+        return "TravelPlan [plno=" + plno + ", tno=" + tno + ", ttype=" + ttype + ", memo=" + memo + ", pltime="
+                + pltime + ", ttpno=" + ttpno + ", plday=" + plday + "]";
     }
+    
+    public int getTtype() {
+        return ttype;
+    }
+
+    public void setTtype(int ttype) {
+        this.ttype = ttype;
+    }
+
     public int getPlno() {
         return plno;
     }

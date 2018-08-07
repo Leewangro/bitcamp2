@@ -10,7 +10,7 @@ public interface TravelPlanDao {
     List<TravelPlan> selectList(Map<String,Object> params);
     int insert(TravelPlan travelPlan);
     int update(TravelPlan travelPlan);
-    TravelPlan selectOne(int no);
+    List<TravelPlan> selectOne(int no);
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기

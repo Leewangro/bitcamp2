@@ -20,17 +20,16 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     }
     
     @Override
-    public List<TravelPlan> list(int plno, int pageNo, int pageSize) {
+    public List<TravelPlan> list(int pageNo, int pageSize) {
         HashMap<String,Object> params = new HashMap<>();
         params.put("startRowNo", (pageNo - 1) * pageSize);
         params.put("pageSize", pageSize);
-        params.put("plno", plno);
         
         return travelPlanDao.selectList(params);
     }
     
     @Override
-    public TravelPlan get(int no) {
+    public List<TravelPlan> get(int no) {
         return travelPlanDao.selectOne(no);
     }
     

@@ -463,7 +463,6 @@
     </div>
 
     <div id="footer"></div>
-    <script src="../../js/common/common.js"></script>
     <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="../../node_modules/lodash/lodash.js"></script>
     <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
@@ -471,6 +470,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="../../js/common/common.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -489,10 +489,11 @@
                             <div class="title_info">
                             <div class="title" onclick="markerOverlay(this)" id=clti{{@index}};>{{title}}</div>
                             <div class="info clear">{{addr1}}</div>
-                            <div class="contentid_info" style="display:none";>{{contentid}}</div>
+                            <div class="contentid" style="display:none";>{{contentid}}</div>
                             <div class="lat" style="display:none";>{{mapy}}</div>
                             <div class="lng" style="display:none";>{{mapx}}</div>
                             <div class="url" style="display:none";>{{firstimage2}}</div>
+                            <div class="conttypeid" style="display:none";>{{contenttypeid}}</div>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -1417,6 +1418,7 @@ $('.plan_out_btn')
 			    		for (let p = 0; p < $('.schedule_full .item').length; p++) {
 			    			let obj = {};
 			    			obj.tno = $('.schedule_full .item')[p].children[1].children[2].childNodes[0].textContent;
+			    			obj.ttype = $('.schedule_full .item')[p].children[1].children[6].childNodes[0].textContent;
 			    			obj.memo = $('.schedule_full .item')[p].children[3].value;
 			    			obj.pltime = $('.schedule_full .item')[p].parentElement.children[1].textContent.replace(/[^0-9]/g,"");
 			    			obj.plday = $('.schedule_full .item')[p].parentElement.parentElement.parentElement.children[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent.substr(3,3)

@@ -8,8 +8,8 @@ import bitcamp.java106.pms.domain.TravelPlan;
 public interface TravelPlanService {
     // 서비스 컴포넌트에서 메서드명을 지을 때는 
     // 업무 용어를 사용하라!
-    List<TravelPlan> list(int plno, int pageNo, int pageSize);
-    TravelPlan get(int no);
+    List<TravelPlan> list(int pageNo, int pageSize);
+    List<TravelPlan> get(int no);
     int add(TravelPlan travelPlan);
     int update(TravelPlan travelPlan);
     int delete(int no);
