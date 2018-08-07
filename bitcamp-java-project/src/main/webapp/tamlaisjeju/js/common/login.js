@@ -24,14 +24,7 @@ var data;
 });*/
 
 app.get('/welcome', function(req,res){
-    var id = data.id;
-    var name = data.displayName;
-    var email = data.email;
     res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html")
-    
-    console.log(data.id);
-    console.log(data.displayName);
-    console.log(data.email);
 });
 
 app.get('/fail', function(req,res){
@@ -70,17 +63,15 @@ passport.serializeUser(function(user, done) {
 passport.use(new FacebookStrategy({
     clientID: '228605734455848',
     clientSecret: 'e16581e68a8639de8bf57f08d7654665',
-    callbackURL: "/auth/facebook/callback"
+    callbackURL: "/auth/facebook/callback",
+    profileFields: ['email']
   },
   function(accessToken, refreshToken, profile, done) {
     done(null,profile);
-    console.log(profile);
-    data = profile;
-    
     }
 ));
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { successRedirect: '/welcome',
@@ -101,7 +92,7 @@ passport.use(new KakaoStrategy({
     }
 ));
 
-app.get('/auth/kakao', passport.authenticate('kakao'));
+app.get('/auth/kakao', passport.authenticate('kakao', {scope: ['profile']}));
 
 app.get('/auth/kakao/callback',
     passport.authenticate('kakao', { successRedirect: '/welcome',

@@ -1,16 +1,5 @@
 <div class="login">
-    <a id="Login" onclick="login()" href="http://localhost:8000/auth">로그인</a>
-    <a id="Logout" onclick="logout()" href="http://localhost:8000/logout" style="display: none; float:left;">로그아웃</a>
+    <a id="Login" href="http://localhost:8000/auth">로그인</a>
+    <a id="Logout" href="http://localhost:8000/logout" style="float:left;">로그아웃</a>
 </div>
 <script src="js/common/login.js"></script>
-<script>
-    logout(function(){
-        document.getElementById('Login').style.display = 'block';
-        document.getElementById('Logout').style.display = 'none';
-    });
-
-    login(function(){
-        document.getElementById('Login').style.display = 'none';
-        document.getElementById('Logout').style.display = 'block';
-    });
-</script>
