@@ -46,6 +46,7 @@ var common = {
 		var ref = list.contenttypeid
 		if (ref === 12) { //관광지
 			InfoElements = "<div class='detail_info'>" +
+				"<h4>상세 정보</h4>" +
 				"<ul>" +
 				"<li><b>문의 및 안내</b><span>" + list.infocenter + "</span></li>" +
 				"<li><b>수용인원</b><span>" + list.accomcount + "</span></li>" +
@@ -58,19 +59,6 @@ var common = {
 				"<li><b>유모차대여여부</b><span>" + list.chkbabycarriage + "</span></li>" +
 				"<li><b>주차가능 여부</b><span>" + list.parking + "</span></li>" +
 				"</ul>" +
-				// "<table class='tbl_basic center'>" +
-				// "<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-				// "<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenter + "</td>" +
-				// "<tr><td class='introLeft'><em>수용인원 	 </em></td><td class='introRight'>" + list.accomcount + "</td>" +
-				// "<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdate + "</td>" +
-				// "<tr><td class='introLeft'><em>개장일 </em></td><td class='introRight'>" + list.opendate + "</td>" +
-				// "<tr><td class='introLeft'><em>이용시기  </em></td><td class='introRight'>" + list.useseason + "</td>" +
-				// "<tr><td class='introLeft'><em>이용시간  </em></td><td class='introRight'>" + list.usetime + "</td>" +
-				// "<tr><td class='introLeft'><em>체험안내	   </em></td><td class='introRight'>" + list.expguide + "</td>" +
-				// "<tr><td class='introLeft'><em>체험가능연령 </em></td><td class='introRight'>" + list.expagerange + "</td>" +
-				// "<tr><td class='introLeft'><em>유모차대여여부 	 </em></td><td class='introRight'>" + list.chkbabycarriage + "</td>" +
-				// "<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parking + "</td>" +
-				// "</table>" +
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 14) { // 문화시설
