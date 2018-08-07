@@ -208,22 +208,22 @@
 							"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 							"<b>" + item.title + "</b>" +
 							"<span>" + item.addr1 + "</span>"
-							if (item.contenttypeid === 12) { //관광지
-								"<p>관광지</p>"
-							} else
-						if (item.contenttypeid === 14) { // 문화시설
+
+						if (item.contenttypeid == "12") { //관광지
+							"<p>관광지</p>"
+						} else if (item.contenttypeid == "14") { // 문화시설
 							"<p>문화시설</p>"
-						} else if (item.contenttypeid === 15) { // 축제정보
+						} else if (item.contenttypeid == "15") { // 축제정보
 							"<p>축제</p>"
-						} else if (item.contenttypeid === 25) { // 여행코스
+						} else if (item.contenttypeid == "25") { // 여행코스
 							"<p>여행코스</p>"
-						} else if (item.contenttypeid === 28) { //레포츠
+						} else if (item.contenttypeid == "28") { //레포츠
 							"<p>레포츠</p>"
-						} else if (item.contenttypeid === 32) { // 숙박정보 
+						} else if (item.contenttypeid == "32") { // 숙박정보 
 							"<p>숙박</p>"
-						} else if (item.contenttypeid === 38) { // 쇼핑
+						} else if (item.contenttypeid == "38") { // 쇼핑
 							"<p>쇼핑</p>"
-						} else if (item.contenttypeid === 39) { // 음식점
+						} else if (item.contenttypeid == "39") { // 음식점
 							"<p>음식점</p>"
 						}
 
