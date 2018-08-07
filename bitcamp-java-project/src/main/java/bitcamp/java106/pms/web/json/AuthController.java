@@ -1,17 +1,25 @@
 // 로그인 폼 출력과 사용자 인증처리 서블릿
 package bitcamp.java106.pms.web.json;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.service.MemberService;
@@ -75,6 +83,44 @@ public class AuthController {
         
         session.invalidate();
         
+    }
+    
+    @GetMapping("/facebookLogin")
+    public Object facebookLogin(String accessToken) {
+        //System.out.println(accessToken);
+        Map<String,Object> result = new HashMap<>();
+        
+        try {
+            URL url = new URL("https://graph.facebook.com/v3.0/me?fields=id,name,email,gender&access_token=" + accessToken);
+            HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            
+            StringBuffer buf = new StringBuffer();
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                buf.append(line);
+            }
+            in.close();
+            
+            String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
+            
+            ObjectMapper mapper = new ObjectMapper();
+            Map dataMap = mapper.readValue(jsonResult, Map.class);
+            System.out.println(dataMap.get("id"));
+            System.out.println(dataMap.get("name"));
+            System.out.println(dataMap.get("email"));
+            
+            // DB에서 해당 이메일로 사용자를 찾아본다.
+            // 있으면, 꺼내서 세션에 보관하여 로그인 처리하고,
+            // 없으면, DB에 넣고 세션에 보관하여 로그인 처리한다.
+            
+            result.put("status", "success");
+            
+        } catch (Exception e) {
+            result.put("status", "fail");
+            result.put("message", e.getMessage());
+        }
+        return result;
     }
 }
 

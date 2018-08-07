@@ -1,4 +1,5 @@
 // express 추가
+const request = require('request');
 var express = require('express');
 var app = express();
 
@@ -24,7 +25,8 @@ var data;
 });*/
 
 app.get('/welcome', function(req,res){
-    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html")
+    console.log("/welcome ==============>")
+    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
 });
 
 app.get('/fail', function(req,res){
@@ -59,24 +61,46 @@ passport.serializeUser(function(user, done) {
     done(null, user);
  });
 
+var fbAccessToken;
+
 // 페이스북 인증
 passport.use(new FacebookStrategy({
-    clientID: '228605734455848',
-    clientSecret: 'e16581e68a8639de8bf57f08d7654665',
-    callbackURL: "/auth/facebook/callback",
-    profileFields: ['email']
-  },
-  function(accessToken, refreshToken, profile, done) {
-    done(null,profile);
+        clientID: '228605734455848',
+        clientSecret: 'e16581e68a8639de8bf57f08d7654665',
+        callbackURL: "/auth/facebook/callback",
+        profileFields: ['email', 'name', 'displayName']
+    },
+    function(accessToken, refreshToken, profile, done) {
+        fbAccessToken = accessToken;
+        console.log("1111111");
+        done(null,profile);
     }
 ));
 
 app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
 app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { successRedirect: '/welcome',
-                                        failureRedirect: '/auth' }
-    )
+    passport.authenticate('facebook', 
+        { //successRedirect: '/welcome',
+          failureRedirect: '/auth' }), 
+    (req, res) => {
+        console.log('====================>');
+        console.log(req.user);
+        console.log(fbAccessToken);
+
+        // 8888 서버에 요청하기
+        request(`http://localhost:8888/bitcamp-java-project/json/auth/facebookLogin?accessToken=${fbAccessToken}`,{ json: true }, (err, resp, body) => {
+            console.log("8888 서버에서 응답이 왔음!")
+            if (body.status === "success") {
+                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+            } else {
+                //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                console.log('로그인 실패!')
+            }
+
+        });
+
+    }
 );
 
 
