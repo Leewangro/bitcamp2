@@ -11,7 +11,7 @@ public class Content implements Serializable {
     private int no;
     private String title;
     
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="Asia/Seoul")
     private Date createDate;
 
 	@Override

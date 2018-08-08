@@ -3,10 +3,15 @@ package bitcamp.java106.pms.dao;
 import java.util.List;
 import java.util.Map;
 
+import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.domain.Content;
 
 public interface ContentDao {
+    int delete(int no);
     List<Content> selectList(Map<String,Object> params);
+    int insert(Content content);
+    int update(Content content);
+    Content selectOne(int no);
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기

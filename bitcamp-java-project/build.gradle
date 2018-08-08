@@ -81,6 +81,10 @@ dependencies {
     // 메타데이터 추출 라이브러리
     compile group: 'com.drewnoakes', name: 'metadata-extractor', version: '2.11.0'
 
+    // String 안에 있는 Escapce 문자 처리 라이브러리
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.4'
+
+
     // 스프링 시큐리티(로그인 연동)
     // compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.4.RELEASE'
     

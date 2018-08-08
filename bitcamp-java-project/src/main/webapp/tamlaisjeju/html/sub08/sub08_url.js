@@ -1,0 +1,1 @@
+var link = document.location.href.split("?")[1];

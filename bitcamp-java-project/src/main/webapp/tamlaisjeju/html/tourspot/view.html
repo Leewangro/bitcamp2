@@ -195,10 +195,14 @@
 			},
 			contentsLocationParsing: function (data) {
 				var list = data.response.body.items.item
+				var category = list.contenttypeid
 				// var ref = list.contenttypeid
+
 				if (list != undefined) {
 					console.log(list)
+
 					$.each(list, function (i, item) {
+
 						var LocationElements =
 
 							"<li>" +
@@ -207,27 +211,35 @@
 							"<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" +
 							"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 							"<b>" + item.title + "</b>" +
-							"<span>" + item.addr1 + "</span>"
-							if (item.contenttypeid === 12) { //관광지
-								"<p>관광지</p>"
-							} else
-						if (item.contenttypeid === 14) { // 문화시설
-							"<p>문화시설</p>"
-						} else if (item.contenttypeid === 15) { // 축제정보
-							"<p>축제</p>"
-						} else if (item.contenttypeid === 25) { // 여행코스
-							"<p>여행코스</p>"
-						} else if (item.contenttypeid === 28) { //레포츠
-							"<p>레포츠</p>"
-						} else if (item.contenttypeid === 32) { // 숙박정보 
-							"<p>숙박</p>"
-						} else if (item.contenttypeid === 38) { // 쇼핑
-							"<p>쇼핑</p>"
-						} else if (item.contenttypeid === 39) { // 음식점
-							"<p>음식점</p>"
-						}
+							"<span>" + item.addr1 + "</span>" +
 
-						"<span>" + item.contenttypeid + "</span>"
+							"<span id='cate'>" + item.contenttypeid + "</span>" +
+
+
+							"</a>" +
+							"</li>"
+							"<span id='cate'>" + "</span>"
+
+
+						// if (item.contenttypeid == "12") { //관광지
+						// 	$("#cate").html("관광지")
+						// } else if (item.contenttypeid == "14") { // 문화시설
+						// 	"<p>문화시설</p>"
+						// } else if (item.contenttypeid == "15") { // 축제정보
+						// 	"<p>축제</p>"
+						// } else if (item.contenttypeid == "25") { // 여행코스
+						// 	"<p>여행코스</p>"
+						// } else if (item.contenttypeid == "28") { //레포츠
+						// 	"<p>레포츠</p>"
+						// } else if (item.contenttypeid == "32") { // 숙박정보 
+						// 	"<p>숙박</p>"
+						// } else if (item.contenttypeid == "38") { // 쇼핑
+						// 	"<p>쇼핑</p>"
+						// } else if (item.contenttypeid == "39") { // 음식점
+						// 	"<p>음식점</p>"
+						// }
+
+
 
 
 
@@ -236,8 +248,8 @@
 						"</li>"
 
 						// location end
-						"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
-							item.mapy + "'>" +
+						// "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+						// 	item.mapy + "'>" +
 							// "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" +
 							// "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 							// "<div class='box_cont_area'>" +
@@ -248,11 +260,45 @@
 							// "</div>" +
 							// "</div>"
 							$("#tourist_item ul").append(LocationElements)
+						// "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" +
+						// "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+						// "<div class='box_cont_area'>" +
+						// "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+						// item.mapy + "'>" +
+						// "<b>" + item.title + "</b>" +
+						// "</a>" +
+						// "</div>" +
+						// "</div>"
+						$("#tourist_item ul").append(LocationElements)
+
+				if (item.contenttypeid === '12') { //관광지
+					"<p>관광지</p>"
+				} else
+				if (item.contenttypeid === 14) { // 문화시설
+					"<p>문화시설</p>"
+				} else if (item.contenttypeid === 15) { // 축제정보
+					"<p>축제</p>"
+				} else if (item.contenttypeid === 25) { // 여행코스
+					"<p>여행코스</p>"
+				} else if (item.contenttypeid === 28) { //레포츠
+					"<p>레포츠</p>"
+				} else if (item.contenttypeid === 32) { // 숙박정보 
+					"<p>숙박</p>"
+				} else if (item.contenttypeid === 38) { // 쇼핑
+					"<p>쇼핑</p>"
+				} else if (item.contenttypeid === 39) { // 음식점
+					"<p>음식점</p>"
+				}
 
 					})
+
+
+
+
 				} else {
 					$(".text-right").css("display", "none");
 				}
+
 
 				$('#tourist_item ul').slick({
 					slidesToShow: 4,
@@ -261,7 +307,14 @@
 					autoplaySpeed: 4000,
 				});
 
+
+
+
+
+
+
 			}
+
 		}
 	</script>
 	<script src="../../node_modules/slick-carousel/slick/slick.min.js"></script>
@@ -300,8 +353,8 @@
 		.detail_info ul li span {
 			display: block;
 			float: left;
-			width: 70%;
-			margin-left: 5%;
+			width: 75%;
+	
 		}
 
 		#tourspot_view h4 {

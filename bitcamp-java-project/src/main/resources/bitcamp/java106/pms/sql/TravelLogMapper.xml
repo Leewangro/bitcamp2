@@ -7,83 +7,46 @@
 
   <resultMap type="TravelLog" id="TravelLogMap">
 	    <id column="TLNO" property="tlno"/>
-	    <result column="MNO" property="member"/>
+	    <result column="MNO" property="memberNo"/>
 	    <result column="PART" property="partner"/>
 	    <result column="PREF" property="preference"/>
 	    <result column="SDT" property="startDate"/>
 	    <result column="EDT" property="endDate"/>
-<!--     <collection property="content" ofType="TravelLogContent">
-	    <id column="TCNO" property="tcno"/>
-	    <result column="TLNO" property="tlno"/>
-	    <result column="PLACE" property="place"/>
-	    <result column="ADDR" property="address"/>
-	    <result column="PHOTO" property="photo"/>
-	    <result column="REVIEW" property="review"/>
-	    <result column="DAY" property="day"/>
-    </collection> -->
+
   </resultMap>
   
   <select id="selectList" 
           resultMap="TravelLogMap" parameterType="map">
     SELECT * FROM `TAMLA_TRAVEL_LOG`
   </select>
-  <!-- 
-    ArrayList<Task> list = new new ArrayList<>();
-    while (rs.next()) {
-       Task task = new Task();
-       task.setName(rs.getString("name"));
-       task.setStartDate(rs.getDate("sdt"));
-       task.setEndDate(rs.getDate("edt"));
-       task.setMaxQty(rs.getInt("max_qty"));
-       list.add(task);
-    }
-  -->
-  
- <!--  <insert id="insert" parameterType="Team">
-    insert into pms2_team(name,dscrt,max_qty,sdt,edt) 
-    values(#{name},#{description},#{maxQty},#{startDate},#{endDate})
+
+
+  <insert id="insert" parameterType="TravelLog"
+          useGeneratedKeys="true" keyColumn="TLNO" keyProperty="tlno">
+          INSERT INTO TAMLA_TRAVEL_LOG(TLNO,MNO,PART,PREF,SDT,EDT)
+          VALUES(#{tlno},#{memberNO},#{partner},#{preference},#{startDate},#{endDate})
   </insert>
   
-  <select id="selectOne" parameterType="string" resultMap="TeamMap">
-    select name, dscrt, sdt, edt, max_qty 
-    from pms2_team 
-    where name=#{value}
+  <select id="selectOne" parameterType="int" resultMap="TravelLogMap">
+    select TLNO,MNO,SDT,EDT,PART,PREF 
+    from TAMLA_TRAVEL_LOG
+    where TLNO=#{value}
   </select>
   
-  <select id="selectOneWithMembers" parameterType="string" resultMap="TeamMap">
-    select 
-        t.name, 
-        t.dscrt, 
-        t.sdt, 
-        t.edt, 
-        t.max_qty,
-        tm.mid,
-        m.email
-    from pms2_team t 
-         left outer join pms2_team_member tm on t.name=tm.tnm
-         left outer join pms2_member m on tm.mid=m.mid
-    where t.name=#{value}
-  </select>
-  
-  <update id="update" parameterType="Team">
-    update pms2_team set 
-      dscrt=#{description}, 
-      max_qty=#{maxQty}, 
-      sdt=#{startDate}, 
-      edt=#{endDate} 
-    where name=#{name}
+<!-- 
+  <update id="update" parameterType="TravelLogMap">
+    update TAMLA_TRAVEL_LOG set 
+    PART=#{partner}, 
+    PREF=#{preference},
+    SDT=#{startDate},
+    EDT=#{endDate}
+    where TLNO=#{tlno}
   </update>
-  
-  <delete id="delete" parameterType="string">
-    delete from pms2_team 
-    where name=#{value}
+ -->
+  <delete id="delete" parameterType="int">
+    delete from TAMLA_TRAVEL_LOG where TLNO=#{value}
   </delete>
-  
-  <update id="updateState" parameterType="map">
-    update pms2_team set 
-      stat=#{state} 
-    where tano=#{no}
-  </update> -->
+
 </mapper>
 
 

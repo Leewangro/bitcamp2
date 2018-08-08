@@ -300,7 +300,7 @@
 
                 type: "GET",
 
-                url: serverRoot + "/json/TravelLogContent/1",
+                url: serverRoot + "/json/TravelLogContent/" + link,
 
                 dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
@@ -643,6 +643,10 @@
                 }
             });
         });
+    </script>
+    <script>
+        // url경로
+    var link = document.location.href.split("?")[1];
     </script>
 
     <script>

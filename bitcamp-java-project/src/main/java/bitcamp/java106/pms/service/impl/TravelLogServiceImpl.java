@@ -28,67 +28,25 @@ public class TravelLogServiceImpl implements TravelLogService {
         return travelLogDao.selectList(params);
     }
     
-//    @Override
-//    public Team get(String name) {
-//        return teamDao.selectOne(name);
-//    }
-//    
-//    @Override
-//    public Team getWithMembers(String name) {
-//        return teamDao.selectOneWithMembers(name);
-//    }
-//    
-//    @Override
-//    public int add(Team member) {
-//        return teamDao.insert(member);
-//    }
-//    
-//    @Override
-//    public int update(Team member) {
-//        return teamDao.update(member);
-//    }
-//    
-//    @Override
-//    public int delete(String name) {
-//        HashMap<String,Object> params = new HashMap<>();
-//        params.put("teamName", name);
-//        
-//        teamMemberDao.delete(params);
-//        taskDao.deleteByTeam(name);
-//        return teamDao.delete(name);
-//    }
-//    
-//    @Override
-//    public boolean isMember(String teamName, String memberId) {
-//        HashMap<String,Object> params = new HashMap<>();
-//        params.put("teamName", teamName);
-//        params.put("memberId", memberId);
-//        
-//        return teamMemberDao.isExist(params);
-//    }
-//    
-//    @Override
-//    public int addMember(String teamName, String memberId) {
-//        HashMap<String,Object> params = new HashMap<>();
-//        params.put("teamName", teamName);
-//        params.put("memberId", memberId);
-//        
-//        return teamMemberDao.insert(params);
-//    }
-//    
-//    @Override
-//    public int deleteMember(String teamName, String memberId) {
-//        HashMap<String,Object> params = new HashMap<>();
-//        params.put("teamName", teamName);
-//        params.put("memberId", memberId);
-//        
-//        return teamMemberDao.delete(params);
-//    }
-//    
-//    @Override
-//    public List<Member> getMembersWithEmail(String teamName) {
-//        return teamMemberDao.selectListWithEmail(teamName);
-//    }
+    @Override
+    public TravelLog get(int no) {
+        return travelLogDao.selectOne(no);
+    }
+    
+    @Override
+    public int add(TravelLog travelLog) {
+        return travelLogDao.insert(travelLog);
+    }
+    
+    @Override
+    public int update(TravelLog travelLog) {
+        return travelLogDao.update(travelLog);
+    }
+    
+    @Override
+    public int delete(int no) {
+        return travelLogDao.delete(no);
+    }
 }
 
 //ver 53 - 클래스 추가
