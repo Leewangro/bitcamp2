@@ -29,7 +29,7 @@
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     </style>
 
- 
+
 
 
 
@@ -231,7 +231,7 @@
                                     title='내용' title='내용'></textarea>
                                 <input id='main_img_1' value='' title='메인사진' hidden>
                                 <div class="daySelect_div">
-                                    <select name="daySelect" class="cont_select_box" title='일차입력'>
+                                    <select id='selectid_1' name="daySelect" class="cont_select_box" title='일차입력'>
                                         <option value="">일차를 선택해 주세요</option>
                                         <option value="" style='display:none;'> </option>
                                         <!-- <option value="1">1일차</option>
@@ -933,9 +933,9 @@
                             animation: false,
                             timer: 1000
                         })
-                        setTimeout(function(){
+                        setTimeout(function () {
                             focus.focus();
-                        },1100)
+                        }, 1100)
                         return false;
                     }
                 });
@@ -955,9 +955,9 @@
                             animation: false,
                             timer: 1000
                         })
-                        setTimeout(function(){
+                        setTimeout(function () {
                             focus.focus();
-                        },1100)
+                        }, 1100)
                         return false;
                     }
                 });
@@ -1059,20 +1059,20 @@
                     var a = 1;
 
                     var param = {
-                		 title : $("#title").val()
+                        title: $("#title").val()
                     };
                     $.ajax({
-                        type : "POST",
-                        url : serverRoot + "/json/content/add",
-                        data : param,
-                        success : function(data) {
+                        type: "POST",
+                        url: serverRoot + "/json/content/add",
+                        data: param,
+                        success: function (data) {
 
                             contentNo = data;
-                        	
-                        travelLogInsert();
+
+                            travelLogInsert();
                             // location.href = "planner_view.html?"+ data;
                         },
-                        error : function(data) {
+                        error: function (data) {
                             alert("데이터입력 실패");
                         }
 
@@ -1084,60 +1084,63 @@
 
                     function travelLogInsert() {
                         var travelLog = {
-                         tlno : contentNo,
-                         memberNo : a,
-                         partner : day,
-                         preference : a,
-                         startDate : $('#sdt')[0].innerText.replace(/[^(0-9)]/gi,"-"),
-                         endDate : $('#edt')[0].innerText.replace(/[^(0-9)]/gi,"-")
+                            tlno: contentNo,
+                            memberNo: a,
+                            partner: day,
+                            preference: a,
+                            startDate: $('#sdt')[0].innerText.replace(/[^(0-9)]/gi, "-"),
+                            endDate: $('#edt')[0].innerText.replace(/[^(0-9)]/gi, "-")
                         };
 
                         console.log(".............>>>")
 
                         $.ajax({
-                        type : "POST",
-                        url : serverRoot + "/json/travelLog/add",
-                        data : travelLog,
-                        success : function(data) {
+                            type: "POST",
+                            url: serverRoot + "/json/travelLog/add",
+                            data: travelLog,
+                            success: function (data) {
 
-                            travelLogContentInsert()
-                        	
-                            // location.href = "planner_view.html?"+ data;
-                        },
-                        error : function(data) {
-                            alert("데이터입력 실패");
-                        }
+                                travelLogContentInsert()
 
-                    });
+                                // location.href = "planner_view.html?"+ data;
+                            },
+                            error: function (data) {
+                                alert("데이터입력 실패");
+                            }
+
+                        });
                     }
 
                     function travelLogContentInsert() {
-                        var travelLogContent = {
-                         tlno : contentNo,
-                         place : $('#post_title_1').val(),
-                         address : $('#post_address_1').val(),
-                         photo : $('#main_img_1').val(),
-                         review : $('#post_text_form_1').val(),
-                         latd : $('#post_x_1').val(),
-                         lotd : $('#post_y_1').val(),
-                         day : a
-                        };
-                        console.log("<<<<-----------------")
-                        console.log(travelLogContent)
+                        for (let i = 1; i < $('.post_wrap').length+1; i++) {
+                            console.log($('#post_title_'+i).val())
+                            var travelLogContent = null;
+                            travelLogContent = {
+                                tlno: contentNo,
+                                place: $('#post_title_'+i).val(),
+                                address: $('#post_address_'+i).val(),
+                                photo: $('#main_img_'+i).val(),
+                                review: $('#post_text_form_'+i).val(),
+                                latd: $('#post_x_'+i).val(),
+                                lotd: $('#post_y_'+i).val(),
+                                day: $("#selectid_"+i+" option:selected").val()
+                            };
+                            console.log("<<<<-----------------")
+                            console.log(travelLogContent)
 
-                        $.ajax({
-                        type : "POST",
-                        url : serverRoot + "/json/travelLogContent/add",
-                        data : travelLogContent,
-                        success : function(data) {
-                            alert("완료")
+                            $.ajax({
+                                type: "POST",
+                                url: serverRoot + "/json/travelLogContent/add",
+                                data: travelLogContent,
+                                success: function (data) {
 
-                        },
-                        error : function(data) {
-                            alert("데이터입력 실패");
+                                },
+                                error: function (data) {
+                                    alert("데이터입력 실패");
+                                    break;
+                                }
+                            });
                         }
-
-                    });
                     }
                 }
             }
@@ -1276,13 +1279,14 @@
                     "type='text' value='' class='post_titl' placeholder='장소' title='장소' required>" +
                     "<input id='post_address_" + count + "'" +
                     "type='text' onclick='addrClick(this)' class='post_addr' value='' placeholder='주소' readonly data-toggle='modal' data-target='.bd-example-modal-lg-map1' title='주소' required>" +
-                    "<input id='post_x_'" + count +
-                    " type='text' class='post_x' value='' placeholder='위도' hidden required>" +
-                    "<input id='post_y_'" + count +
-                    " type='text' class='post_y' value='' placeholder='경도' hidden required>" +
+                    "<input id='post_x_" + count +
+                    "' type='text' class='post_x' value='' placeholder='위도' hidden required>" +
+                    "<input id='post_y_" + count +
+                    "' type='text' class='post_y' value='' placeholder='경도' hidden required>" +
                     "<div id='map' style='width:300px;height:300px;margin-top:10px;display:none'></div>" +
                     "<textarea id='post_text_form_" + count + "'" +
                     "class='title_textarea text_area' placeholder='내용을 입력하세요.' title='내용' data-is-observable='false' required></textarea>" +
+                    "<input id='main_img_" + count + "' value='' title='메인사진' hidden>" +
                     "<div class='daySelect_div" + count + " daySelect_div'>" +
                     "</div>" +
                     "<div class='text_count'>글자제한:" +
@@ -1456,6 +1460,7 @@
                 $(val).parent().remove();
                 if ($(imgBoxClicks).children()[1].childNodes[1].src == $(val).parent().children()[3].currentSrc) {
                     $(imgBoxClicks).children()[1].childNodes[1].src = "";
+                    $(imgBoxClicks).children()[1].childNodes[0].childNodes[13].value = "";
                     $(imgBoxClicks).children()[1].childNodes[0].style.display = "block";
                 }
                 // 첫번째 사진
@@ -1469,9 +1474,11 @@
 
             function mainImg(val) {
                 console.log($(val).parent().children()[3].currentSrc)
-                console.log()
+                // console.log($(imgBoxClicks).children()[1].childNodes[1].childNodes[13].value)
                 $(imgBoxClicks).children()[1].childNodes[1].src = $(val).parent().children()[3].currentSrc
                 $(imgBoxClicks).children()[1].childNodes[0].style.display = "none";
+                $(imgBoxClicks).children()[2].childNodes[0].childNodes[6].value = $(val).parent().children()[4].value
+
                 swal({
                     position: 'top-end',
                     type: 'success',
@@ -1485,9 +1492,9 @@
             function mainImg2(val) {
                 console.log($(imgBoxClicks).children())
                 $(imgBoxClicks).children()[0].childNodes[3].src = $(val).parent().children()[3].currentSrc
-                
-                $(imgBoxClicks).children()[1].childNodes[1].childNodes[13].value = $(val).parent().children()[4].value // 메인이미지 이름과 메인이미지 들어가야 할곳
                 $(imgBoxClicks).children()[0].childNodes[1].style.display = "none";
+
+                $(imgBoxClicks).children()[1].childNodes[1].childNodes[13].value = $(val).parent().children()[4].value // 메인이미지 이름과 메인이미지 들어가야 할곳
                 swal({
                     position: 'top-end',
                     type: 'success',
