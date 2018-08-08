@@ -29,64 +29,10 @@ var common = {
 					alert('데이터 통신에 오류가 발생하였습니다.\n 지속적으로 문제가 발생하면 홈페이지 관리자에게 문의하세요')
 				}
 				returnFunction(data)
-				// {
-				// 	if (data.length > 0) {
-				// 		for (key in data) {
-				// 			var tmp = data[key];
-				// 			console.log(tmp.title);
-				// 		}
-				// 	} else {
-				// 		console.log("no result");
-				// 	}
-				// }
+
 			}
 		});
 	},
-
-
-
-
-
-
-
-	// $.ajax({
-	// 	type : 'GET',
-	// 	url:"https://domain.com",
-	// 	dataType:"jsonp",
-	// 	error : function(error) {
-	// 		console.log("Error!");
-	// 	},
-	// 	success : function(data) {
-
-	// 		var jsonData = JSON.stringify(data);
-	// 		var json  = JSON.parse(jsonData);
-
-	// 		var json_check;
-	// 		var json_msg;
-	// 		if (json.routes !== undefined) {        // json undefined check
-	// 			json_check = 1;  
-	// 		} else {
-	// 			json_msg = json.error.error_message;
-	// 			json_check = 2; 
-	// 		}
-
-	// 		var jsonData1 = "";
-	// 		var jsonData2 = "";
-
-	// 		if(json_check == 1) {
-	// 			// 정상
-
-	// 		} else { 
-	// 		  // 오류
-	// 		}
-
-
-
-	// 	},
-	// 	complete : function() {
-	// 		console.log("complete!");
-	// 	}
-	// });
 
 
 
@@ -103,53 +49,17 @@ var common = {
 	detailPageIntroInfoDraw: function (data) {
 
 
-		// var isEmpty = function (data) {
-		// 	if (data == "" || data == null || data == undefined || (data != null && typeof data == "object" && !Object.keys(data).length)) {
-		// 		return true
-		// 	} else {
-		// 		return false
-		// 	}
-		// };
-
-
-
-
-		// function nvl(str, defaultVal) {
-		// 	var defaultValue = "-";
-
-		// 	if (typeof defaultVal != 'undefined') {
-		// 		defaultValue = defaultVal;
-		// 	}
-
-		// 	if (typeof str == "undefined" || str == null || str == '' || str == "undefined") {
-		// 		return defaultValue;
-		// 	}
-
-		// 	return str;
-		// }
 
 
 
 		var InfoElements;
 		var list = data.response.body.items.item
 		var ref = list.contenttypeid
-		if (ref === 12 || data != undefined ) { //관광지
-			InfoElements = "<div class='detail_info'>" +
-				"<h4>상세 정보</h4>" +
-				"<ul>" +
-				"<li><b>문의 및 안내</b><span>" + list.infocenter + "</span></li>" +
-				"<li><b>수용인원</b><span>" + list.accomcount + "</span></li>" +
-				"<li><b>쉬는날</b><span>" + list.restdate + "</span></li>" +
-				"<li><b>개장일</b><span>" + list.opendate + "</span></li>" +
-				"<li><b>이용시기</b><span>" + list.useseason + "</span></li>" +
-				"<li><b>이용시간</b><span>" + list.usetime + "</span></li>" +
-				"<li><b>체험안내</b><span>" + list.expguide + "</span></li>" +
-				"<li><b>체험가능연령</b><span>" + list.expagerange + "</span></li>" +
-				"<li><b>유모차대여여부</b><span>" + list.chkbabycarriage + "</span></li>" +
-				"<li><b>주차가능 여부</b><span>" + list.parking + "</span></li>" +
-				"</ul>" +
-				"</div>"
-			$("#detailIntro").append(InfoElements)
+		if (ref === 12) { //관광지
+			 InfoElements = 
+			 	"<li><b>유모차대여여부</b><span>" + list.chkbabycarriage + "</span></li>" +
+				"<li><b>주차가능 여부</b><span>" + list.parking + "</span></li>" 
+			 $(".view_info ul").append(InfoElements)
 		} else if (ref === 14) { // 문화시설
 			InfoElements = "<div class='detail_info'>" +
 
