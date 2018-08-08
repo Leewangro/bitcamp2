@@ -12,7 +12,7 @@ public interface TravelLogContentService {
       List<TravelLogContent> list(int pageNo, int pageSize); 
       List<TravelLogContent> get(int no);
 //    Team getWithMembers(String name);
-//    int add(Team team);
+      int add(TravelLogContent travelLogContent);
 //    int update(Team team);
 //    int delete(String name);
 //    boolean isMember(String teamName, String memberId);

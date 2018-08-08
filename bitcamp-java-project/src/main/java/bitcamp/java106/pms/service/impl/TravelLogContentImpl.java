@@ -13,11 +13,11 @@ import bitcamp.java106.pms.service.TravelLogContentService;
 @Service
 public class TravelLogContentImpl implements TravelLogContentService {
 
-    TravelLogContentDao travelLogContnetDao;
+    TravelLogContentDao travelLogContentDao;
 
     public TravelLogContentImpl(
             TravelLogContentDao travelLogContentDao) {
-        this.travelLogContnetDao = travelLogContentDao;
+        this.travelLogContentDao = travelLogContentDao;
     }
 
     @Override
@@ -26,13 +26,13 @@ public class TravelLogContentImpl implements TravelLogContentService {
         params.put("startRowNo", (pageNo - 1) * pageSize);
         params.put("pageSize", pageSize);
 
-        return travelLogContnetDao.selectList(params);
+        return travelLogContentDao.selectList(params);
     }
     
 
     @Override
     public List<TravelLogContent> get(int no) {
-        return travelLogContnetDao.selectListWithNo(no);
+        return travelLogContentDao.selectListWithNo(no);
     }
         
 //    @Override
@@ -40,10 +40,10 @@ public class TravelLogContentImpl implements TravelLogContentService {
 //        return teamDao.selectOneWithMembers(name);
 //    }
 //    
-//    @Override
-//    public int add(Team member) {
-//        return teamDao.insert(member);
-//    }
+    @Override
+    public int add(TravelLogContent travelLogContent) {
+        return travelLogContentDao.insert(travelLogContent);
+    }
 //    
 //    @Override
 //    public int update(Team member) {
