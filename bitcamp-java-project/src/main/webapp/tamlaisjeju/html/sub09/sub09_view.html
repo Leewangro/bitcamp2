@@ -571,7 +571,7 @@
                      };
 
              		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다    
-       					
+             		var infowindow = new daum.maps.InfoWindow({zIndex:1});	
        				 for (let i = 0; i < data.length; i++) {
                          for (let j = 0; j < data2.response.body.items.item.length; j++) { 
                             if (data[i].tno == data2.response.body.items.item[j].contentid) {
@@ -653,7 +653,26 @@
 						  
                         // 마커가 지도 위에 표시되도록 설정합니다
                         marker.setMap(map);
-       	                
+                        (function(marker, title) {
+                            daum.maps.event.addListener(marker, 'mouseover', function() {
+                                displayInfowindow(marker, title);
+                            });
+
+                            daum.maps.event.addListener(marker, 'mouseout', function() {
+                                infowindow.close();
+                            });
+                            
+                        })(marker, data2.response.body.items.item[j].title);
+                        
+                        function displayInfowindow(marker, title) {
+                      	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+                      	    infowindow.setContent(content);
+                      	    infowindow.open(map, marker);
+                      	}
+                        
+                        
+                        
                         break;
                             }
                          }
@@ -694,7 +713,7 @@
                         		            };
 
                          	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-     					
+                         	var infowindow = new daum.maps.InfoWindow({zIndex:1});
         					
               				 for (let i = 0; i < data.length; i++) {
                                  for (let j = 0; j < data2.response.body.items.item.length; j++) { 
@@ -772,7 +791,25 @@
 						  
                           // 마커가 지도 위에 표시되도록 설정합니다
                           marker.setMap(map);
-        	                
+        	              
+                          (function(marker, title) {
+                              daum.maps.event.addListener(marker, 'mouseover', function() {
+                                  displayInfowindow(marker, title);
+                              });
+
+                              daum.maps.event.addListener(marker, 'mouseout', function() {
+                                  infowindow.close();
+                              });
+                              
+                          })(marker, data2.response.body.items.item[j].title);
+                          
+                          function displayInfowindow(marker, title) {
+                        	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+                        	    infowindow.setContent(content);
+                        	    infowindow.open(map, marker);
+                        	}
+                          
            	                break;
 
                                     }
