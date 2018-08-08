@@ -398,8 +398,6 @@
                      //console.log(data);
                      //console.log("---------------");
                      console.log(data2);
-                     
-                     
 
                      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                      mapOption = { 
@@ -408,6 +406,8 @@
                      };
 
                  	 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                 	 
+                 	 var infowindow = new daum.maps.InfoWindow({zIndex:1});
 
                      for (let i = 0; i < data.length; i++) {
                         //console.log(data2.response.body.items.item);
@@ -500,32 +500,30 @@
                           });
 						  
                           // 마커가 지도 위에 표시되도록 설정합니다
-                          marker.setMap(map);
+                          marker.setMap(map); 
                           
-                          var iwContent = '<div style="padding:5px;">'+ data2.response.body.items.item[j].title + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                          (function(marker, title) {
+                              daum.maps.event.addListener(marker, 'mouseover', function() {
+                                  displayInfowindow(marker, title);
+                              });
 
-                       // 인포윈도우를 생성합니다
-                       var infowindow = new daum.maps.InfoWindow({
-                           content : iwContent
-                       });
+                              daum.maps.event.addListener(marker, 'mouseout', function() {
+                                  infowindow.close();
+                              });
+                              
+                          })(marker, data2.response.body.items.item[j].title);
+                          
+                          function displayInfowindow(marker, title) {
+                        	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
 
-                       // 마커에 마우스오버 이벤트를 등록합니다
-                       daum.maps.event.addListener(marker, 'mouseover', function() {
-                         // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-                           infowindow.open(map, marker);
-                       });
-
-                       // 마커에 마우스아웃 이벤트를 등록합니다
-                       daum.maps.event.addListener(marker, 'mouseout', function() {
-                           // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-                           infowindow.close();
-                       });
+                        	    infowindow.setContent(content);
+                        	    infowindow.open(map, marker);
+                        	}
                           
                           
                            }
                         }
                      }
-
                   },
                   error: function (e1) {
                      alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
@@ -655,25 +653,6 @@
 						  
                         // 마커가 지도 위에 표시되도록 설정합니다
                         marker.setMap(map);
-                        
-                        var iwContent = '<div style="padding:5px;">'+ data2.response.body.items.item[j].title + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-
-                        // 인포윈도우를 생성합니다
-                        var infowindow = new daum.maps.InfoWindow({
-                            content : iwContent
-                        });
-
-                        // 마커에 마우스오버 이벤트를 등록합니다
-                        daum.maps.event.addListener(marker, 'mouseover', function() {
-                          // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-                            infowindow.open(map, marker);
-                        });
-
-                        // 마커에 마우스아웃 이벤트를 등록합니다
-                        daum.maps.event.addListener(marker, 'mouseout', function() {
-                            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-                            infowindow.close();
-                        });
        	                
                         break;
                             }
@@ -739,7 +718,7 @@
         	                   '<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
 
         	                var img = $('<img data-toggle="modal" data-target="#exampleModal' + modalIndex +'">');
- 
+
         	                var modal_fade = $(
         	                   '<div class="modal fade" id="exampleModal' + (modalIndex++) + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
         	                );
@@ -793,25 +772,6 @@
 						  
                           // 마커가 지도 위에 표시되도록 설정합니다
                           marker.setMap(map);
-                          
-                          var iwContent = '<div style="padding:5px;">'+ data2.response.body.items.item[j].title + '</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-
-                          // 인포윈도우를 생성합니다
-                          var infowindow = new daum.maps.InfoWindow({
-                              content : iwContent
-                          });
-
-                          // 마커에 마우스오버 이벤트를 등록합니다
-                          daum.maps.event.addListener(marker, 'mouseover', function() {
-                            // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-                              infowindow.open(map, marker);
-                          });
-
-                          // 마커에 마우스아웃 이벤트를 등록합니다
-                          daum.maps.event.addListener(marker, 'mouseout', function() {
-                              // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-                              infowindow.close();
-                          });
         	                
            	                break;
 
