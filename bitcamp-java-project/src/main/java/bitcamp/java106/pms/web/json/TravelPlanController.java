@@ -61,6 +61,11 @@ public class TravelPlanController {
         return travelPlanService.get(planno, no);
         
     }
+    @RequestMapping("{no}")
+    public List<TravelPlan> selectOne(@PathVariable int no) throws Exception {
+        return travelPlanService.selectOne(no);
+        
+    }
     
 }
 

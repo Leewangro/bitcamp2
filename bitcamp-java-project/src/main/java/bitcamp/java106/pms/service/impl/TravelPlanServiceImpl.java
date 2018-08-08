@@ -52,6 +52,10 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     public int delete(int no) {
         return travelPlanDao.delete(no);
     }
+    @Override
+    public List<TravelPlan> selectOne(int no) {
+        return travelPlanDao.selectOne(no);
+    }
 }
 
 //ver 53 - 클래스 추가

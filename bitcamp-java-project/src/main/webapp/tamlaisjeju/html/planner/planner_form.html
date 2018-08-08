@@ -74,8 +74,7 @@
                         
                     </div>
                     <div class="plan_out">
-                        <div class="plan_out_btn">저장&amp;닫기
-                            <a href="../sub11/sub11_myschedule.html"></a>
+                        <div class="plan_out_btn" onclick="chkValue()">저장&amp;닫기
                         </div>
                         
                     </div>
@@ -1381,7 +1380,158 @@ $('#category > li').click(function() {
         </script>
         
 <script>
+function chkValue() {
+    // 공통입력폼내의 모든 입력오브젝트
+    var numObjs = $("#num");
+    var peopleObjs = $("#people");
+    var themaObjs = $("#thema");
+    var datefilterObjs = $("#datefilter");
+    var tagBox = $('#tag_box').children().length
+    // 미입력여부(경우에 따라 사용)
+    var bEmpty = true;
+    var focus;
 
+    numObjs.each(function (index) {
+        if ($(this).val() == '') {
+            focus = $(this);
+            bEmpty = false;
+
+            swal({
+                type: 'error',
+                title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                showConfirmButton: false,
+                customClass: 'animated tada',
+                animation: false,
+                timer: 1000
+            })
+            setTimeout(function(){
+                focus.focus();
+            },1100)
+            return false;
+        }
+    });
+    if (!bEmpty) return;
+
+    // 각 오브젝트에 대해 입력체크
+    peopleObjs.each(function (index) {
+        if ($(this).val() == '') {
+            focus = $(this);
+            bEmpty = false;
+
+            swal({
+                type: 'error',
+                title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                showConfirmButton: false,
+                customClass: 'animated tada',
+                animation: false,
+                timer: 1000
+            })
+            setTimeout(function(){
+                focus.focus();
+            },1100)
+            return false;
+        }
+    });
+    if (!bEmpty) return;
+
+    themaObjs.each(function (index) {
+        if ($(this).val() == '') {
+            focus = $(this);
+            bEmpty = false;
+
+            swal({
+                type: 'error',
+                title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                showConfirmButton: false,
+                customClass: 'animated tada',
+                animation: false,
+                timer: 1000
+            })
+
+            setTimeout(function () {
+                focus.focus();
+            }, 1100)
+
+            // 여기서는 each문을 탈출
+            return false;
+        }
+    });
+
+    // 필수입력사항에 누락이 있으면 진행금지
+    if (!bEmpty) return;
+
+    datefilterObjs.each(function (index) {
+        if ($(this).val() == '') {
+            focus = $(this);
+            bEmpty = false;
+
+            swal({
+                type: 'error',
+                title: $(this).attr('title') + "는 필수 입력사항입니다.",
+                showConfirmButton: false,
+                customClass: 'animated tada',
+                animation: false,
+                timer: 1000
+            })
+            setTimeout(function () {
+                focus.focus();
+            }, 1100)
+
+            // 여기서는 each문을 탈출
+            return false;
+        }
+    });
+    if (!bEmpty) return;
+
+    if (tagBox < 1) {
+        swal({
+            type: 'error',
+            title: $('#tag_box').attr('title') + "은 필수입력사항입니다.",
+            showConfirmButton: false,
+            customClass: 'animated tada',
+            animation: false,
+            timer: 1000
+        })
+        setTimeout(function () {
+            $('#input').focus();
+        }, 1100)
+        bEmpty = false;
+    }
+    if (!bEmpty) return;
+
+    submits();
+}
+async function submits() {
+    /**********************************************
+발행스크립트
+***********************************************/
+
+    const {
+        value: day
+    } = await swal({
+        title: '잠깐! 누구와 함께 다녀왔나요?',
+        input: 'select',
+        inputOptions: {
+            '1': '혼자',
+            '2': '부모님',
+            '3': '아이',
+            '4': '커플',
+            '5': '친구',
+            '6': '단체'
+        },
+        inputPlaceholder: '일행',
+        showCancelButton: true,
+        inputValidator: (value) => {
+
+        }
+    })
+    if (day) {
+        setTimeout(() => {
+            swal("저장되었습니다.")
+        }, 2000)
+    }
+}
+// 게시글 모두삭제버튼
 /* TAMLA_PLAN(SDT,EDT,PATA,PART,THEMA) <!-- 회원번호 추가 필요 MNO -->
 values(#{startDate},#{endDate},#{num},#{people},#{theme}) */
 var createPlanIndex = null;

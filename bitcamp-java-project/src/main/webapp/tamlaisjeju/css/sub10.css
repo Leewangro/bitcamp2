@@ -805,16 +805,15 @@
 	line-height: 32px;
 }
 
-#sub10 .plan .day_page_all .all_schedule .tbl_basic tbody th {
-	width: 10%;
+/* #sub10 .plan .day_page_all .all_schedule .tbl_basic tbody th {
 	background-color: #f6f3f3;
 }
 
-#sub10 .plan .day_page_all .all_schedule .tbl_basic th:last-child,
-	.tbl_basic td:last-child {
-	width: 30%;
+#sub10 .plan .day_page_all .all_schedule .tbl_basic td {
 	border-right: 1px solid #d2d2d2;
-}
+} */
+
+
 
 /*sub_10_planner*/
 #sub10 .full_wrap {

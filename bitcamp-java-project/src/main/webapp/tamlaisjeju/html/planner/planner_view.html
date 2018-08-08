@@ -150,129 +150,21 @@
                     <h4 class="all_schedule_title">전체 여행 스케줄</h4>
                     <div class="all_schedule">
                         <table class="tbl_basic center">
+		                        <caption>
+			                    <strong>공지사항</strong>
+			                    <details>
+			                        <summary>공지사항 관련 항목이며 담당부서에 바로가기로 해당 페이지로 이동할 수 있습니다</summary>
+			                    </details>
+			                    </caption>
+					                <colgroup class="tbl_col">
+					                    <col style="max-width:100px">
+					                </colgroup>
                             <thead>
-                                <tr>
-                                    <th>시간</th>
-                                    <th>1일</th>
-                                    <th>2일</th>
-                                    <th>3일</th>
+                                <tr class="tbl_basic_day">
+                                    <td>시간</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th>05:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>06:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>07:00</th>
-                                    <td></td>
-                                    <td>성산일출봉</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>08:00</th>
-                                    <td>제주국제공항</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>09:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>렌터카</td>
-                                </tr>
-                                <tr>
-                                    <th>10:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>11:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>12:00</th>
-                                    <td>올레시장</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>13:00</th>
-                                    <td></td>
-                                    <td>우도</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>14:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>천지연폭포</td>
-                                </tr>
-                                <tr>
-                                    <th>15:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>16:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>17:00</th>
-                                    <td></td>
-                                    <td>천지연폭포</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>18:00</th>
-                                    <td>이중섭거리</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>19:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>섭지코지</td>
-                                </tr>
-                                <tr>
-                                    <th>20:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>21:00</th>
-                                    <td>카멜리아힐</td>
-                                    <td>제주국제공항</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>22:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>제주국제공항</td>
-                                </tr>
-                                <tr>
-                                    <th>23:00</th>
-                                    <td>새연교</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                            <tbody class="tbl_basic_time">
                             </tbody>
                         </table>
                     </div>
@@ -495,10 +387,54 @@ function schedule_comp1() {
             }
         }  
     }
+for (var d = 1; d < betweenDay+2; d++) {
+	console.log(d);
+$('.tbl_basic_day').append(
+		"<td id=tbl_day"+d+'>'+d+"일</td>"
+		)
+$('.tbl_col').append(		
+	    "<col style='width:18%;'>"
+	    )
 }
+for (var e = 5; e <= 24; e++)   {
+$('.tbl_basic_time').append(
+		"<tr class=tbl_time_sche"+e+">" +
+		    "<th>"+e+":00</th>" +
+		"</tr>"
+		)
+}
+							for (var h = 5; h <= 24; h++) {
+								  for (var f = 1; f < betweenDay+2; f++) {
+									  $(".tbl_time_sche"+h+"").append(
+	                                            "<td class=tbl_day"+f+"></td>")
+			for (var g = 0; g < schedule.length; g++) {
+				for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
+	                if (schedule[g].tno == schedule_data.response.body.items.item[j].contentid) {
+										if (schedule[g].plday == f) { // 1  / 9
+											if (schedule[g].pltime == h){
+												console.log(h);
+											$(".tbl_time_sche"+h+" .tbl_day"+f+"").remove()
+											$(".tbl_time_sche"+h+"").append(
+							                "<td class=tbl_day"+f+">"+schedule_data.response.body.items.item[j].title+"</td>")
+							                } 
+										} 
+								   }
+                    /*             $(".tbl_time_sche"+h+"").append(
+                                "<td></td>") */
+			}
+				
+			} 
+	}
+/* <tbody>
+<tr>
+    <th>05:00</th>
+    <td></td>
+</tr>
+</tbody> */
 
 
-
+}
+}
 </script>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
