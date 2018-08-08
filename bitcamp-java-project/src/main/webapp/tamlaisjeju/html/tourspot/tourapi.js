@@ -20,6 +20,7 @@ var common = {
 		$.ajax({
 			crossOrigin: true,
 			type: method,
+
 			url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/" + flag,
 			data: "ServiceKey=5fTAWN079L8Yfhs%2F9YQ7zBKyOO6%2BKpeQJ15u5GiLJY4AN%2Bx96uwIQHWmIyyxcQwhOxdfQw8s23QzN%2B22icuKbw%3D%3D&" + option + "&_type=json",
 			dataType: "json",
@@ -28,6 +29,16 @@ var common = {
 					alert('데이터 통신에 오류가 발생하였습니다.\n 지속적으로 문제가 발생하면 홈페이지 관리자에게 문의하세요')
 				}
 				returnFunction(data)
+				// {
+				// 	if (data.length > 0) {
+				// 		for (key in data) {
+				// 			var tmp = data[key];
+				// 			console.log(tmp.title);
+				// 		}
+				// 	} else {
+				// 		console.log("no result");
+				// 	}
+				// }
 			}
 		});
 	},
@@ -38,13 +49,91 @@ var common = {
 
 
 
+	// $.ajax({
+	// 	type : 'GET',
+	// 	url:"https://domain.com",
+	// 	dataType:"jsonp",
+	// 	error : function(error) {
+	// 		console.log("Error!");
+	// 	},
+	// 	success : function(data) {
+
+	// 		var jsonData = JSON.stringify(data);
+	// 		var json  = JSON.parse(jsonData);
+
+	// 		var json_check;
+	// 		var json_msg;
+	// 		if (json.routes !== undefined) {        // json undefined check
+	// 			json_check = 1;  
+	// 		} else {
+	// 			json_msg = json.error.error_message;
+	// 			json_check = 2; 
+	// 		}
+
+	// 		var jsonData1 = "";
+	// 		var jsonData2 = "";
+
+	// 		if(json_check == 1) {
+	// 			// 정상
+
+	// 		} else { 
+	// 		  // 오류
+	// 		}
+
+
+
+	// 	},
+	// 	complete : function() {
+	// 		console.log("complete!");
+	// 	}
+	// });
+
+
+
+
+
+
+
+
+
+
+
 
 
 	detailPageIntroInfoDraw: function (data) {
+
+
+		// var isEmpty = function (data) {
+		// 	if (data == "" || data == null || data == undefined || (data != null && typeof data == "object" && !Object.keys(data).length)) {
+		// 		return true
+		// 	} else {
+		// 		return false
+		// 	}
+		// };
+
+
+
+
+		// function nvl(str, defaultVal) {
+		// 	var defaultValue = "-";
+
+		// 	if (typeof defaultVal != 'undefined') {
+		// 		defaultValue = defaultVal;
+		// 	}
+
+		// 	if (typeof str == "undefined" || str == null || str == '' || str == "undefined") {
+		// 		return defaultValue;
+		// 	}
+
+		// 	return str;
+		// }
+
+
+
 		var InfoElements;
 		var list = data.response.body.items.item
 		var ref = list.contenttypeid
-		if (ref === 12) { //관광지
+		if (ref === 12 || data != undefined ) { //관광지
 			InfoElements = "<div class='detail_info'>" +
 				"<h4>상세 정보</h4>" +
 				"<ul>" +
@@ -202,11 +291,21 @@ var common = {
 			$("#detailIntro").append(InfoElements)
 		}
 
+
+
+
+
+
 	},
 
 	getMonth: function () {
 		$('#festivalMonth').append(this.date.getMonth() + 1)
 	},
+
+
+
+
+
 }
 
 
@@ -276,3 +375,37 @@ function getError(error) {
 			break;
 	}
 }
+
+
+
+
+
+
+
+
+function isEmpty(str) {
+
+	if (typeof str == "undefined" || str == null || str == "")
+		return "-";
+	else
+		return false;
+}
+
+
+function nvl(str, defaultStr) {
+
+	if (typeof str == "undefined" || str == null || str == "")
+		str = defaultStr;
+
+	return str;
+}
+
+
+
+var isEmpty = function (data) {
+	if (data == "" || data == null || data == undefined || (data != null && typeof data == "object" && !Object.keys(data).length)) {
+		return "-"
+	} else {
+		return "-"
+	}
+};
