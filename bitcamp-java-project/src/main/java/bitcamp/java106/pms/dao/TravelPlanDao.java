@@ -10,7 +10,8 @@ public interface TravelPlanDao {
     List<TravelPlan> selectList(Map<String,Object> params);
     int insert(TravelPlan travelPlan);
     int update(TravelPlan travelPlan);
-    List<TravelPlan> selectOne(int no);
+    TravelPlan selectOne(int no);
+   List<TravelPlan> selectListWithPlan(Map<String, Object> params);
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기
@@ -25,7 +26,6 @@ public interface TravelPlanDao {
 //ver 18 - ArrayList를 이용하여 인스턴스(의 주소) 목록을 다룬다. 
 // ver 16 - 인스턴스 변수를 직접 사용하는 대신 겟터, 셋터 사용.
 // ver 14 - TravelPlanController로부터 데이터 관리 기능을 분리하여 TravelPlanDao 생성.
-
 
 
 

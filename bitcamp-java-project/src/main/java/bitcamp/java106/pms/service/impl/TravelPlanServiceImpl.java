@@ -3,6 +3,7 @@ package bitcamp.java106.pms.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,12 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     }
     
     @Override
-    public List<TravelPlan> get(int no) {
-        return travelPlanDao.selectOne(no);
+    public List<TravelPlan> get(int planno, int no) {
+       Map<String, Object> params = new HashMap<>();
+       params.put("plno", planno);
+       params.put("dayno", no);
+       
+        return travelPlanDao.selectListWithPlan(params);
     }
     
     @Override
@@ -50,7 +55,6 @@ public class TravelPlanServiceImpl implements TravelPlanService {
 }
 
 //ver 53 - 클래스 추가
-
 
 
 
