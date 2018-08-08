@@ -91,17 +91,17 @@
 			var mapx = $.urlParam('mapx');
 			var mapy = $.urlParam('mapy');
 			common.getInfo('get', 'detailCommon', "contentTypeId=" + item + "&contentId=" + id +
-				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y&_type=json",
+				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y",
 				parsing.contentsParsing);
 			common.getInfo('get', 'detailIntro', "contentTypeId=" + item + "&contentId=" + id +
-				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y&_type=json",
+				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y",
 				common.detailPageIntroInfoDraw);
 			common.getInfo('get', 'detailImage', "contentTypeId=" + item + "&contentId=" + id +
-				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&_type=json",
+				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y",
 				parsing.contentsImgParsing);
 			common.getInfo('get', 'locationBasedList', "contentTypeId=" + item + "&mapX=" + mapx +
 				"&mapY=" + mapy + "&radius=10000" + //radius 거리반경(단위:m) , Max값 20000m=20Km
-				"&pageNo=1&numOfRows=10&listYN=Y&arrange=P&MobileOS=ETC&MobileApp=AppTesting&_type=json",
+				"&pageNo=1&numOfRows=10&listYN=Y&arrange=P&MobileOS=ETC&MobileApp=AppTesting",
 				parsing.contentsLocationParsing);
 
 		})
@@ -123,47 +123,50 @@
 				var list = data.response.body.items.item
 
 
-				function isEmpty(value) {
-					return (value == null || value == NaN || value.length == 0 || typeof value == undefined);
-				}
+
 
 
 				InfoElements =
 					"<h3>" + list.title + "</h3>" +
 					"<div class='view_intro clear'>" +
 					"<div id='view_gallery'>" +
+
 					"<ul>" +
 					"<li>" + "<img src='" + list.firstimage + "'" + "alt=" + list.title + ">" + "</li>" +
 					"</ul>" +
 					"</div>" + // view_gallery
 					"<div class='view_info'>" +
+					"<h4>상세정보</h4>" +
 					"<ul>" +
 					"<li>" +
-					"<b>이름</b>" +
-					"<span>" + list.title + "</span>" +
+					"<b>우편번호</b>" +
+					"<span> " + list.zipcode + "</span>" +
 					"</li>" +
 					"<li>" +
 					"<b>위치</b>" +
 					"<span> " + list.addr1 + "</span>" +
 					"</li>" +
 					"<li>" +
-					"<b>문의</b>" +
-					"<span> " + list.tel + "</span>" +
+					"<b>홈페이지</b>" +
+					"<span> " + list.homepage + "</span>" +
 					"</li>" +
+
 					"</ul>" +
 					"</div>"
 				"</div>" // view_intro end
 				+
 				"<div class='buttonSet right'>"
+
 				if (list.homepage != undefined) {
 					InfoElements + list.homepage
 				}
+
 				InfoElements += "</div>" +
 					"<div class='detail_info clear'>" +
 					"<h4>개요</h4>" +
 					"<p class='mb30'>" + list.overview + "</p>" +
 					"<h4>위치정보</h4>" +
-					"<div class='mb30' id='map' style='width:100%; height:500px;'></div>" +
+					"<div class='mb30' id='map' style='width:100%; height:300px;'></div>" +
 					"</div>" // detail_info end
 				$("#travelContents").append(InfoElements)
 				var mapContainer = document.getElementById('map'),
@@ -265,6 +268,14 @@
 		}
 	</script>
 
+
+	<!-- <script type="text/javascript">
+		$('.detail_info').each(function () {
+			var text = $(this).text();
+			$(this).text(text.replace('undefined', 'doll'));
+		});
+	</script> -->
+
 	<script src="../../node_modules/slick-carousel/slick/slick.min.js"></script>
 
 	<style type="text/css">
@@ -339,16 +350,60 @@
 
 		#travelContents .view_info {
 			float: left;
-			width: 50%
+			width: 48%;
+			margin-left: 2%;
 		}
 
+		#travelContents .view_info h4 {
+			padding: 0 0 15px 33px;
+			margin: 15px 0 15px 0;
+			text-align: left;
+			border-bottom: 1px solid #e5e5e5;
 
+		}
+
+		#travelContents .view_info h4::before {}
+
+		#travelContents .view_info ul {}
+
+		#travelContents .view_info ul li {
+			margin: 10px 0;
+		}
+
+		#travelContents .view_info ul li b {
+			display: inline-block;
+			width: 30%;
+		}
+
+		#travelContents .view_info ul li span {
+			display: inline-block;
+			width: 70%;
+		}
 
 
 		#view_gallery img {
 			display: block;
 			width: 100%;
 			height: 333px;
+		}
+
+		#view_gallery button {
+			z-index: 9999;
+			width:47px;
+			height:47px;
+		}
+
+		#view_gallery .slick-prev {
+			left: 10px;
+		}
+
+		#view_gallery .slick-next {
+			right: 10px;
+		}
+
+
+		#view_gallery .slick-prev:before,#view_gallery .slick-next:before{
+			font-size:50px;
 		}
 
 
@@ -411,6 +466,7 @@
 		#tourist_item ul li a img {
 			display: block;
 			width: 100%;
+			height: 165px;
 		}
 
 		#tourist_item ul li .addr {
