@@ -61,6 +61,13 @@ public class TravelPlanController {
         return travelPlanService.get(planno, no);
         
     }
+    @RequestMapping("day/{planno}")
+    public int titleView(@PathVariable int planno) throws Exception {
+       System.out.printf("plno:%d\n", planno);
+        return travelPlanService.get2(planno);
+        
+    }
+
     @RequestMapping("{no}")
     public List<TravelPlan> selectOne(@PathVariable int no) throws Exception {
         return travelPlanService.selectOne(no);

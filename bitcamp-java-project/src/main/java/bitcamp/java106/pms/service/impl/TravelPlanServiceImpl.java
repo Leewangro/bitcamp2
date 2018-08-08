@@ -39,6 +39,13 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     }
     
     @Override
+    public int get2(int planno) {
+       Map<String, Object> params = new HashMap<>();
+       params.put("plno", planno);
+        return travelPlanDao.selectListWithPlanDay(params);
+    }
+    
+    @Override
     public int add(TravelPlan travelPlan) {
         return travelPlanDao.insert(travelPlan);
     }

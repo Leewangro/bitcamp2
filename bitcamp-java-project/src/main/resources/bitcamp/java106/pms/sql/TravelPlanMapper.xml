@@ -50,6 +50,14 @@
    WHERE TTP.PLNO=#{plno} and TTP.PLANDAY = #{dayno}
   </select>
   
+  <select id="selectListWithPlanDay" 
+          resultType="int"
+          parameterType="map">
+   SELECT max(TTP.PLANDAY)
+   FROM TAMLA_TRAVEL_PLAN TTP
+   WHERE TTP.PLNO=#{plno}
+  </select> 
+  
   
   
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우

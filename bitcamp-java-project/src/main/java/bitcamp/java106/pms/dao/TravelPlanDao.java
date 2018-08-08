@@ -11,6 +11,7 @@ public interface TravelPlanDao {
     int insert(TravelPlan travelPlan);
     int update(TravelPlan travelPlan);
     List<TravelPlan> selectListWithPlan(Map<String, Object> params);
+    int selectListWithPlanDay(Map<String, Object> params);
     List<TravelPlan> selectOne(int no);
 }
 

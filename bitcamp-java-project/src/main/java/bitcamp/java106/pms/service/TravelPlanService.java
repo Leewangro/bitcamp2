@@ -10,6 +10,7 @@ public interface TravelPlanService {
     // 업무 용어를 사용하라!
     List<TravelPlan> list(int pageNo, int pageSize);
     List<TravelPlan> get(int planno, int no);
+    int get2(int planno);
     int add(TravelPlan travelPlan);
     int update(TravelPlan travelPlan);
     int delete(int no);
