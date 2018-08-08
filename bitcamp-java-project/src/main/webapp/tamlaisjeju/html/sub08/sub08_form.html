@@ -29,7 +29,7 @@
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     </style>
 
-
+ 
 
 
 
@@ -1031,8 +1031,10 @@
             }
             async function submits() {
                 /**********************************************
-            발행스크립트
-            ***********************************************/
+                 발행스크립트
+                 ***********************************************/
+                var contentNo;
+                var a = 0;
 
                 const {
                     value: day
@@ -1054,9 +1056,54 @@
                     }
                 })
                 if (day) {
+                    var param = {
+                		 title : $("#title").val()
+                    };
+                    $.ajax({
+                        type : "POST",
+                        url : serverRoot + "/json/content/add",
+                        data : param,
+                        success : function(data) {
+                        	
+                        travelLogInsert(data);
+                            // location.href = "planner_view.html?"+ data;
+                        },
+                        error : function(data) {
+                            alert("데이터입력 실패");
+                        }
+
+                    });
                     setTimeout(() => {
                         swal("저장되었습니다.")
                     }, 2000)
+
+                    function travelLogInsert(data) {
+                        console.log(data)
+                        console.log($('#sdt')[0].innerText)
+                        var aa = {
+                         tlno : data,
+                         memberNo : a,
+                         partner : day,
+                         preference : a,
+                         startDate : $('#sdt')[0].innerText.replace(/[^(0-9)]/gi,"-"),
+                         endDate : $('#edt')[0].innerText.replace(/[^(0-9)]/gi,"-")
+                        };
+
+                        $.ajax({
+                        type : "POST",
+                        url : serverRoot + "/json/travelLog/add",
+                        data : aa,
+                        success : function(data) {
+                        	
+                            // location.href = "planner_view.html?"+ data;
+                        },
+                        error : function(data) {
+                            console.log(data)
+                            alert("데이터입력 실패");
+                        }
+
+                    });
+                    }
                 }
             }
             // 게시글 모두삭제버튼

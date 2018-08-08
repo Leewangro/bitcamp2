@@ -27,8 +27,9 @@ public class ContentController {
     }
     
     @RequestMapping("add")
-    public int add(Content content) throws Exception {
-        return contentService.add(content);
+    public Object add(Content content) throws Exception {
+        contentService.add(content);
+        return content.getNo();
     }
     
     @RequestMapping("delete")

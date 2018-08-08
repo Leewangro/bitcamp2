@@ -12,7 +12,7 @@ import bitcamp.java106.pms.domain.TravelLog;
 import bitcamp.java106.pms.service.TravelLogService;
 
 @RestController
-@RequestMapping("/TravelLog")
+@RequestMapping("/travelLog")
 public class TravelLogController {
     
     TravelLogService travelLogService;

@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="TravelLog"
           useGeneratedKeys="true" keyColumn="TLNO" keyProperty="tlno">
           INSERT INTO TAMLA_TRAVEL_LOG(TLNO,MNO,PART,PREF,SDT,EDT)
-          VALUES(#{tlno},#{memberNO},#{partner},#{preference},#{startDate},#{endDate})
+          VALUES(#{tlno},#{memberNo},#{partner},#{preference},#{startDate},#{endDate})
   </insert>
   
   <select id="selectOne" parameterType="int" resultMap="TravelLogMap">
