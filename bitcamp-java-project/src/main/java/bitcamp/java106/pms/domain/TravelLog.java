@@ -9,7 +9,7 @@ public class TravelLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int tlno;
-    private String member;
+    private int memberNo;
     private String partner;
     private String preference;
     
@@ -17,23 +17,22 @@ public class TravelLog implements Serializable {
     private Date startDate;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date endDate;
-    
     @Override
     public String toString() {
-        return "TravelLog [tlno=" + tlno + ", member=" + member + ", partner=" + partner + ", preference=" + preference
-                + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+        return "TravelLog [tlno=" + tlno + ", memberNo=" + memberNo + ", partner=" + partner + ", preference="
+                + preference + ", startDate=" + startDate + ", endDate=" + endDate + "]";
     }
-    public int getNo() {
+    public int getTlno() {
         return tlno;
     }
-    public void setNo(int tlno) {
+    public void setTlno(int tlno) {
         this.tlno = tlno;
     }
-    public String getMember() {
-        return member;
+    public int getMemberNo() {
+        return memberNo;
     }
-    public void setMember(String member) {
-        this.member = member;
+    public void setMemberNo(int memberNo) {
+        this.memberNo = memberNo;
     }
     public String getPartner() {
         return partner;
@@ -59,6 +58,8 @@ public class TravelLog implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+    
+   
 
     
     

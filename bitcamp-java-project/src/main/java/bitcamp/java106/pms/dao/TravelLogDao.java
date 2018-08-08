@@ -3,15 +3,19 @@ package bitcamp.java106.pms.dao;
 import java.util.List;
 import java.util.Map;
 
+import bitcamp.java106.pms.domain.Content;
 import bitcamp.java106.pms.domain.TravelLog;
 
 public interface TravelLogDao {
-//    int delete(String name);
+    int delete(int no);
     List<TravelLog> selectList(Map<String,Object> params);
-//    int insert(Team TravelLog);
-//    int update(Team TravelLog);
-//    Team selectOne(String tlno);
+    int insert(TravelLog travelLog);
+    int update(TravelLog travelLog);
+    TravelLog selectOne(int no);
+    
+    
 }
+
 
 //ver 52 - 페이지 단위로 데이터 가져오기
 //ver 50 - 클래스를 인터페이스로 전환

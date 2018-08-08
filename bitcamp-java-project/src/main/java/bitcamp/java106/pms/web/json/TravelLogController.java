@@ -1,9 +1,14 @@
 package bitcamp.java106.pms.web.json;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import bitcamp.java106.pms.domain.TravelLog;
 import bitcamp.java106.pms.service.TravelLogService;
 
 @RestController
@@ -19,24 +24,34 @@ public class TravelLogController {
     @RequestMapping("list{page}")
     public Object list(
             @MatrixVariable(defaultValue="1") int pageNo,
-            @MatrixVariable(defaultValue="100") int pageSize) {
+            @MatrixVariable(defaultValue="10") int pageSize) {
                 
         return travelLogService.list(pageNo, pageSize);
     }
     
-//    @RequestMapping("zz{page}")
-//    public Object zz(
-//    		@MatrixVariable(defaultValue="1") int pageNo,
-//    		@MatrixVariable(defaultValue="100") int pageSize) {
-//    	
-//    	return travelLogContentService.zz(pageNo, pageSize);
-//    }
-//    
-//    @RequestMapping("{no}")
-//    public TravelLogContent view(@PathVariable int no) throws Exception {
-//        return travelLogContentService.get(no);
-//    }
-//    
+    @RequestMapping("add")
+    public int add(TravelLog travelLog) throws Exception {
+        return travelLogService.add(travelLog);
+    }
+    
+    @RequestMapping("delete")
+    public int delete(@RequestParam("no") int no) throws Exception {
+        
+        return travelLogService.delete(no);
+    } 
+    @RequestMapping("update")
+    public int update(TravelLog travelLog) throws Exception {
+        
+        return travelLogService.update(travelLog);
+    }
+    
+    @RequestMapping("{no}")
+    public TravelLog view(
+            @PathVariable int no, 
+            Map<String,Object> map) throws Exception {
+        
+        return travelLogService.get(no);
+    }
 
 }
 

@@ -19,7 +19,8 @@
 	</resultMap>
 
 	<select id="selectOneByRecent" resultMap="AccompanyRegiMap">
-		select * from TAMLA_ACCOMPANY_REGI order by no DESC limit 1
+		select * 
+		from TAMLA_ACCOMPANY_REGI order by no DESC limit 1
 	</select>
 
 	<select id="selectOne" parameterType="int"
