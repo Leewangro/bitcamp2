@@ -1,6 +1,7 @@
 // express 추가
 const request = require('request');
 var express = require('express');
+var session = require('express-session');
 var app = express();
 
 // passport 추가
@@ -35,6 +36,8 @@ app.get('/fail', function(req,res){
 
 app.get('/logout', function(req, res){
     req.logout();
+    request('http://localhost:8888/bitcamp-java-project/auth/logout')
+    console.log('로그아웃완료');
     res.redirect('http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html');
 });
 
@@ -54,14 +57,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-    done(null, user);
+     done(null, user);
 });
   
- passport.deserializeUser(function(user, done) {
-    done(null, user);
- });
+// passport.deserializeUser(function(user, done) {
+//     done(null, user);
+// });
 
 var fbAccessToken;
+var kaAccessToken;
 
 // 페이스북 인증
 passport.use(new FacebookStrategy({
@@ -72,7 +76,6 @@ passport.use(new FacebookStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
         fbAccessToken = accessToken;
-        console.log("1111111");
         done(null,profile);
     }
 ));
@@ -84,10 +87,6 @@ app.get('/auth/facebook/callback',
         { //successRedirect: '/welcome',
           failureRedirect: '/auth' }), 
     (req, res) => {
-        console.log('====================>');
-        console.log(req.user);
-        console.log(fbAccessToken);
-
         // 8888 서버에 요청하기
         request(`http://localhost:8888/bitcamp-java-project/json/auth/facebookLogin?accessToken=${fbAccessToken}`,{ json: true }, (err, resp, body) => {
             console.log("8888 서버에서 응답이 왔음!")
@@ -107,21 +106,41 @@ app.get('/auth/facebook/callback',
 // 카카오 인증
 passport.use(new KakaoStrategy({
     clientID: 'cbfb710c30c958007d125829a9752b7c',
-    callbackURL: "/auth/kakao/callback"
+    clientSecret: 'efWXNj2rcdNUzB0htLB8icZIl4Dz657m',
+    callbackURL: "/auth/kakao/callback",
+    profileFields: ['email', 'name', 'displayName']
     },
     function(accessToken, refreshToken, profile, done){
+        kaAccessToken = accessToken;
+        console.log("2222222");
+        console.log(kaAccessToken);
         done(null,profile);
-        console.log(profile);
-        data = profile;
     }
 ));
 
 app.get('/auth/kakao', passport.authenticate('kakao', {scope: ['profile']}));
 
 app.get('/auth/kakao/callback',
-    passport.authenticate('kakao', { successRedirect: '/welcome',
-                                        failureRedirect: '/auth' }
-    )
+    passport.authenticate('kakao', 
+        { //successRedirect: '/welcome',
+        failureRedirect: '/auth' }),
+        (req,res) => {
+            console.log('====================>');
+            console.log(req.user);
+            console.log(kaAccessToken);
+
+            // 8888 서버에 요청하기
+        request(`http://localhost:8888/bitcamp-java-project/json/auth/kakaoLogin?accessToken=${kaAccessToken}`,{ json: true }, (err, resp, body) => {
+            console.log("8888 서버에서 응답이 왔음!")
+            if (body.status === "success") {
+                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+            } else {
+                //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                console.log('로그인 실패!')
+            }
+
+            });
+        }
 );
 
 // 구글 인증

@@ -37,9 +37,6 @@ public class WeatherController {
         int MONTH = Integer.parseInt(M.format(c1.getTime()));
         int DAY = Integer.parseInt(D.format(c1.getTime()));
         String EM = E.format(c1.getTime()).toString();
-        System.out.println(MONTH);
-        System.out.println(DAY);
-        System.out.println(EM);
  
         HashMap<String, Object> map = new HashMap<>();
         // 기상청 데이터 업데이트 시간 + kkmm 형식으로 변경
@@ -153,7 +150,6 @@ public class WeatherController {
             }catch(Exception e){
                 System.out.println(e);
             }
-        System.out.println(map);
         return map;
         }
     
