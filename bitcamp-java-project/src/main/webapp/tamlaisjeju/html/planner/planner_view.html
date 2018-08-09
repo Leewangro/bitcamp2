@@ -11,24 +11,27 @@
     <meta property="og:title" content="탐라는제주">
     <meta property="og:type" content="website">
     <meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
+    <!-- font -->
+    <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- css -->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/layout.css" />
-    <!-- sub08 -->
+    <!-- sub10 -->
     <link rel="stylesheet" type="text/css" href="../../css/sub10.css">
-    <!-- logo font -->
-    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style type="text/css">
-        @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-    </style>
-
-
 
 </head>
+
+
+
+
+
+
 
 <body>
     <div id="header"></div>
@@ -51,8 +54,8 @@
                     </div>
                     <ul class="plan_box">
                         <li class="plan_title">xxxx 여행</li>
-                     <li id="tableBody"></li>
-        
+                        <li id="tableBody"></li>
+
                     </ul>
                     <div class="cover_bg"></div>
                 </div>
@@ -78,7 +81,7 @@
                 </div>
                 <div class="day_page_all" id="1">
                     <nav class="action">
-                        <div class="plan_nav" style>
+                        <!--  <div class="plan_nav" style>
                             <div class="plan_nav_prev" data-op="prev"></div>
                             <div class="plan_nav_list">
                                 <div class="plan_nav_btn on" onclick="page_scroll('day_page','1')" data-id="1" id="defaultOpen1">D1 제주도</div>
@@ -86,25 +89,22 @@
                                 <div class="plan_nav_btn last" onclick="page_scroll('day_page','3')" data-id="3">D3 제주도</div>
                             </div>
                             <div class="plan_nav_next" data-op="next"></div>
-                        </div>
+                        </div> -->
                         <div class="day_page_right">
                             <div class="right_scroll_box" style>
                                 <div class="day_sel">
                                     <select name="" id="" class="day_select">
-                                        <option value="1">DAY1</option>
-                                        <option value="2">DAY2</option>
-                                        <option value="3">DAY3</option>
                                     </select>
                                 </div>
                                 <div class="map_box">
-                                    <div id="map" style="width: 100%; height: 100%;"></div>
+                                    <div id="map1" style="width: 100%; height: 100%;"></div>
                                 </div>
                                 <div class="spot_list_box owl-carousel owl-theme owl-loaded">
                                     <div class="owl-stage-outer">
                                         <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s;">
                                             <div class="owl-item active">
                                                 <div class="spot_list_item">
-                                                    <div class="spot_item" onclick="page_scroll('day_sch_box','1-1')" title="제주 국제공항">
+                                                    <!-- <div class="spot_item" onclick="page_scroll('day_sch_box','1-1')" title="제주 국제공항">
                                                         <div class="spot_number">1</div>
                                                         <div class="spot_title">제주 ...</div>
                                                     </div>
@@ -132,8 +132,9 @@
                                                         <div class="spot_number">7</div>
                                                         <div class="spot_title">짚라인...</div>
                                                     </div>
-                                                    <div class="clear"></div>
+                                                    <div class="clear"></div> -->
                                                 </div>
+                                                <!-- <div class="clear"></div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -143,143 +144,35 @@
                             <div class="clear"></div>
                         </div>
                     </nav>
-                    
+
                 </div>
 
                 <div class="day_page_all" id="2">
                     <h4 class="all_schedule_title">전체 여행 스케줄</h4>
                     <div class="all_schedule">
                         <table class="tbl_basic center">
+                            <caption>
+                                <strong>공지사항</strong>
+                                <details>
+                                    <summary>공지사항 관련 항목이며 담당부서에 바로가기로 해당 페이지로 이동할 수 있습니다</summary>
+                                </details>
+                            </caption>
+                            <colgroup class="tbl_col">
+                                <col style="width:10%;">
+                            </colgroup>
                             <thead>
-                                <tr>
-                                    <th>시간</th>
-                                    <th>1일</th>
-                                    <th>2일</th>
-                                    <th>3일</th>
+                                <tr class="tbl_basic_day">
+                                    <td>시간</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th>05:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>06:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>07:00</th>
-                                    <td></td>
-                                    <td>성산일출봉</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>08:00</th>
-                                    <td>제주국제공항</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>09:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>렌터카</td>
-                                </tr>
-                                <tr>
-                                    <th>10:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>11:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>12:00</th>
-                                    <td>올레시장</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>13:00</th>
-                                    <td></td>
-                                    <td>우도</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>14:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>천지연폭포</td>
-                                </tr>
-                                <tr>
-                                    <th>15:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>16:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>17:00</th>
-                                    <td></td>
-                                    <td>천지연폭포</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>18:00</th>
-                                    <td>이중섭거리</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>19:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>섭지코지</td>
-                                </tr>
-                                <tr>
-                                    <th>20:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>21:00</th>
-                                    <td>카멜리아힐</td>
-                                    <td>제주국제공항</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>22:00</th>
-                                    <td></td>
-                                    <td></td>
-                                    <td>제주국제공항</td>
-                                </tr>
-                                <tr>
-                                    <th>23:00</th>
-                                    <td>새연교</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                            <tbody class="tbl_basic_time">
                             </tbody>
                         </table>
                     </div>
 
                 </div>
 
-                
+
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
                     <div class="modal-dialog" style="width: 100%; height: 100%;  z-index: 999999;  /* background: rgba(0,0,0,0.7); */ background: white;"
@@ -293,8 +186,9 @@
                             </div>
 
                             <!-- Modal body -->
-                            <div class="modal-body" style="width: 50%; height: 50%;">
+                            <div class="modal-body" style="width: 90%; height: 80%;">
                                 <div id="map2" style="width: 100%; height: 100%;"></div>
+                                <div id="aa" style="position:fixed;padding:5px;color: white;text-align: center;z-index:1000;display:none;background-color: #008CBA;"></div>
                             </div>
 
                             <!-- Modal footer -->
@@ -356,230 +250,413 @@
              */
         });
     </script>
-    
-<script id="tr-template" type="text/x-handlebars-template">
-<li class="plan_cont clear">출발일: {{startDate}} ~ 도착일:{{endDate}}</li>
-<li class="plan_cont clear">인원: {{num}}</li>
-<li class="plan_cont clear">일행: {{people}}</li>
-<li class="plan_cont clear">테마: {{theme}}</li>
-<li class="plan_cont clear">태그: {{memo}}</li>
-</script>   
+
+    <script id="tr-template" type="text/x-handlebars-template">
+        <li class="plan_cont clear">출발일: {{startDate}} ~ 도착일:{{endDate}}</li>
+        <li class="plan_cont clear">인원: {{num}}</li>
+        <li class="plan_cont clear">일행: {{people}}</li>
+        <li class="plan_cont clear">테마: {{theme}}</li>
+        <li class="plan_cont clear">태그: {{memo}}</li>
+    </script>
 
 
-<script src="../../js/common/common.js"></script>
-<script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="../../js/common/common.js"></script>
+    <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
 
-<script src="planner_view.js"></script>
+    <script src="planner_view.js"></script>
 
 
-<script>
-// 일별로 스케줄 뿌려주는 스크립트
+    <script>
+        // 일별로 스케줄 뿌려주는 스크립트
+        var linePath = [];
+        var polyline = [];
+        var dayOfWeek = null;
+        var calMonthDate = null;
+        var betweenDay = null;
+        /* var dayIndex = (1*(viewDate.endDate.split('-')[2])-1*(viewDate.startDate.split('-')[2]))+1 */
+        function dayCal() {
 
-var dayOfWeek = null;
-var calMonthDate = null;
-var betweenDay = null;
-/* var dayIndex = (1*(viewDate.endDate.split('-')[2])-1*(viewDate.startDate.split('-')[2]))+1 */
-function dayCal() {
-	
-console.log(viewDate);
-var arr1 = viewDate.startDate.split('-');
-var arr2 = viewDate.endDate.split('-');
-var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
-var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+            var arr1 = viewDate.startDate.split('-');
+            var arr2 = viewDate.endDate.split('-');
+            var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
+            var dat2 = new Date(arr2[0], arr2[1], arr2[2]);
 
-var diff = dat2 - dat1;
-var currDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
-betweenDay = parseInt(diff/currDay);
-var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-for (var i = 0; i < betweenDay+1; i++) {
-	 var dat3 = (new Date(((dat1/currDay)+i)*currDay));
-     calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()));
-     var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate());
-     dayOfWeek = week[new Date(calYearMonthDate).getDay()];
-     console.log(calMonthDate);
-     console.log(dayOfWeek);
+            var diff = dat2 - dat1;
+            var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
+            betweenDay = parseInt(diff / currDay);
+            var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+            for (var i = 0; i < betweenDay + 1; i++) {
+                linePath[(i + 1)] = [];
+                polyline[(i + 1)] = [];
+                var dat3 = (new Date(((dat1 / currDay) + i) * currDay));
+                calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()));
+                var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate());
+                dayOfWeek = week[new Date(calYearMonthDate).getDay()];
 
-$('.plan #1').append(
-		"<div class='day_page' data-id="+i+1+">" +
-		"<div class='day_page_left'>" +
-		    "<div class='day_box' id=day_page"+(i+1)+">" +
-		        "<div class='day_info_box'>" +
-		            "<div class='day_txt'>DAY"+(i+1)+"</div>" +
-		            "<div class='day_info'>" +
-		                "<div class='day_info_left'>" +
-		                    "<div class='date'>"+calMonthDate +'('+dayOfWeek+')'+"</div>" +
-		                    "<div class='day_title'>제주도</div>" +
-		                "</div>" +
-		            "</div>" +
-                "</div>" +
-		    "</div>" + 
-		"</div>" +
-		"</div>"
-);
-}
-dayCal1();
-}
-
-var schedule = [];
-function dayCal1() {
- $.getJSON(serverRoot+"/json/travelPlan/"+link, (data1) => {
-    schedule = data1
-    console.log(schedule);
-    schedule_comp();
-});
-}
-var schedule_data = [];
-function schedule_comp() {
-	$.ajax({
-        url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=1200&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
-        dataType: "json", // 데이터타입을 json 으로 받아옴
-        success: function (data2) {
-           schedule_data = data2	
-           console.log(data2);
-           schedule_comp1();
-        }
-	});
-}
-function schedule_comp1() {
-	for (var i = 0; i < schedule.length; i++) {
-		for (var d = 1; d < betweenDay+2; d++) {
-			if (schedule[i].plday == d) {
-				for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
-	                   if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
-	     
-
-							$("#day_page"+(d)+"").append(
-							        "<div class='day_sch_box' data-id="+d+'-'+i+">" +
-							            "<div class='day_sch_num'>" +
-							                "<div class='sch_num'>"+(i+1)+"</div>" +
-							            "</div>" +
-							            "<div class='sch_content'>" +
-							                "<img src="+schedule_data.response.body.items.item[j].firstimage+" alt='' class='spot_img' onerror='this.src='/res/img/common/no_img/sight55.png';" +
-							                    "onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');" +
-							                    "style='cursor:pointer;'>" +
-							                "<div class='spot_content_box'>" +
-							                    "<div class='spot_name' onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');' style='cursor:pointer;'>"+schedule_data.response.body.items.item[j].title+"</div>" +
-							                    "<div class='spot_info'>" +
-							                    "<div class='tag'>"+schedule_data.response.body.items.item[j].addr1+"</div>" +
-							                        /* "<div class='tag'>공항</div>" +
-							                        "<div class='sinfo_line'></div>" +*/
-							                        "<div class='sinfo_txt'>" +
-							                            "<span>"+schedule[i].memo+"</span>" +
-							                        "</div>" +
-							                        "<div class='clear'></div>" +
-							                    "</div>" +
-							                "</div>" +
-							                "<div class='spot_btn_box'>" +
-							                    /* "<img src='../../img/sub10/map_ico.png' alt='' class='spot_btn map_view' onclick='set_center(33.50721000,126.49294300)'>" +
-							                    "<img src='../../img/sub10/info_ico.png' alt='' class='spot_btn spot_info_btn' onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');'>" + */
-							                    "<div class='clear'></div>" +
-							                "</div>" +
-							                "<div class='clear'></div>" +
-							            "</div>" +
-							            "<div class='clear'></div>" +
-							            /* "<div class='sch_add_content'>" +
-							                "<div class='sch_price hide' data-srl="+d+'-'+i+"></div>" +
-							                "<div class='sch_memo' data-full='&nbsp;data-min='' data-srl="+d+'-'+i+">" + 
-							                "<span class='memo_more' style=display:none; data-op='min'>닫기</span>" + 
-							                "</div>" +
-							                "<div class='sch_memo_box' data-srl="+d+'-'+i+">" +
-							                    "<textarea name='' id='' cols='30' rows='10' class='memo_input' data-srl='1-1'></textarea>" +
-							                    "<div class='memo_save_btn' data-srl='1-1'>저장</div>" +
-							                    "<div class='clear'></div>" +
-							                "</div>" +
-							            "</div>" + */
-							            "<div class='clear'></div>" 
-							); 
-	                   }
-                   }
+                $('.plan #1').append(
+                    "<div class='day_page' data-id=" + (i + 1) + ">" +
+                    "<div class='day_page_left'>" +
+                    "<div class='day_box' id=day_page" + (i + 1) + ">" +
+                    "<div class='day_info_box'>" +
+                    "<div class='day_txt'>DAY" + (i + 1) + "</div>" +
+                    "<div class='day_info'>" +
+                    "<div class='day_info_left'>" +
+                    "<div class='date'>" + calMonthDate + '(' + dayOfWeek + ')' + "</div>" +
+                    "<div class='day_title'>제주도</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>"
+                );
             }
-        }  
+            if (i == betweenDay + 1) {
+                $('.plan #1').append(
+                    "<div class='clear'</div>"
+                )
+            }
+            if (i == betweenDay + 1) {
+                console.log("dayCal1()");
+                dayCal1();
+            }
+        }
+
+        var schedule = [];
+
+        function dayCal1() {
+            $.getJSON(serverRoot + "/json/travelPlan/" + link, (data1) => {
+                schedule = data1
+                console.log(schedule);
+                schedule_comp();
+            });
+        }
+        var schedule_data = [];
+
+        function schedule_comp() {
+            $.ajax({
+                url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=1200&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
+                dataType: "json", // 데이터타입을 json 으로 받아옴
+                success: function (data2) {
+                    schedule_data = data2
+                    schedule_comp1();
+
+                }
+            });
+        }
+
+        function schedule_comp1() {
+            for (var i = 0; i < schedule.length; i++) {
+                for (var d = 1; d < betweenDay + 2; d++) {
+                    if (schedule[i].plday == d) {
+                        for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
+                            if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
+
+
+                                $("#day_page" + (d) + "").append(
+                                    "<div class='day_sch_box' data-id=" + d + '-' + (i + 1) + ">" +
+                                    "<div class='day_sch_num'>" +
+                                    "<div class='sch_num'>" + (i + 1) + "</div>" +
+                                    "</div>" +
+                                    "<div class='sch_content'>" +
+                                    "<img src=" + schedule_data.response.body.items.item[j].firstimage +
+                                    " alt='' class='spot_img' onerror='this.src='/res/img/common/no_img/sight55.png';" +
+                                    "onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');" +
+                                    "style='cursor:pointer;'>" +
+                                    "<div class='spot_content_box'>" +
+                                    "<div class='spot_name' onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');' style='cursor:pointer;'>" +
+                                    schedule_data.response.body.items.item[j].title + "</div>" +
+                                    "<div class='spot_info'>" +
+                                    "<div class='tag'>" + schedule_data.response.body.items.item[j].addr1 +
+                                    "</div>" +
+                                    /* "<div class='tag'>공항</div>" +
+                                    "<div class='sinfo_line'></div>" +*/
+                                    "<div class='sinfo_txt'>" +
+                                    "<span>" + schedule[i].memo + "</span>" +
+                                    "</div>" +
+                                    "<div class='clear'></div>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "<div class='spot_btn_box'>" +
+                                    /* "<img src='../../img/sub10/map_ico.png' alt='' class='spot_btn map_view' onclick='set_center(33.50721000,126.49294300)'>" +
+                                    "<img src='../../img/sub10/info_ico.png' alt='' class='spot_btn spot_info_btn' onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');'>" + */
+                                    "<div class='clear'></div>" +
+                                    "</div>" +
+                                    "<div class='clear'></div>" +
+                                    "</div>" +
+                                    /* "<div class='sch_add_content'>" +
+                                        "<div class='sch_price hide' data-srl="+d+'-'+i+"></div>" +
+                                        "<div class='sch_memo' data-full='&nbsp;data-min='' data-srl="+d+'-'+i+">" + 
+                                        "<span class='memo_more' style=display:none; data-op='min'>닫기</span>" + 
+                                        "</div>" +
+                                        "<div class='sch_memo_box' data-srl="+d+'-'+i+">" +
+                                            "<textarea name='' id='' cols='30' rows='10' class='memo_input' data-srl='1-1'></textarea>" +
+                                            "<div class='memo_save_btn' data-srl='1-1'>저장</div>" +
+                                            "<div class='clear'></div>" +
+                                        "</div>" +
+                                    "</div>" + */
+                                    "<div class='clear'></div>"
+                                );
+                                $(".spot_list_item").append(
+                                    "<div class='spot_item' onclick=page_scroll('day_sch_box'," + "'" + d + '-' + (
+                                        i + 1) + "'" + ') title=' + schedule_data.response.body.items.item[j].title +
+                                    ">" +
+                                    "<div class='spot_number'>" + (i + 1) + "</div>" +
+                                    "<div class='spot_title' id=markerOver" + (i + 1) +
+                                    " onclick=markerOverlay(this)>" + schedule_data.response.body.items.item[j].title +
+                                    "</div>" +
+                                    "</div>"
+                                )
+                            }
+                        }
+                    }
+                }
+                if (i == (schedule.length - 1)) {
+                    $(".spot_list_item").append(
+                        "<div class='clear'></div>"
+                    );
+                }
+
+            }
+            for (var d = 1; d < betweenDay + 2; d++) {
+                $('.tbl_basic_day').append(
+                    "<td id=tbl_day" + d + '>' + d + "일</td>"
+                )
+                $('.tbl_col').append(
+                    "<col style='width:18%;'>"
+                )
+                $('.day_select').append(
+                    "<option value=" + d + ">DAY" + d + "</option>"
+                )
+                if (d == betweenDay + 2) {
+                    col_cal_width()
+                }
+            }
+
+
+            for (var e = 5; e <= 24; e++) {
+                $('.tbl_basic_time').append(
+                    "<tr class=tbl_time_sche" + e + ">" +
+                    "<th>" + e + ":00</th>" +
+                    "</tr>"
+                )
+            }
+
+            for (var h = 5; h <= 24; h++) {
+                for (var f = 1; f < betweenDay + 2; f++) {
+                    $(".tbl_time_sche" + h + "").append(
+                        "<td class=tbl_day" + f + "></td>")
+                    for (var g = 0; g < schedule.length; g++) {
+                        for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
+                            if (schedule[g].tno == schedule_data.response.body.items.item[j].contentid) {
+                                if (schedule[g].plday == f) { // 1  / 9
+                                    if (schedule[g].pltime == h) {
+                                        $(".tbl_time_sche" + h + " .tbl_day" + f + "").remove()
+                                        $(".tbl_time_sche" + h + "").append(
+                                            "<td class=tbl_day" + f + ">" + schedule_data.response.body.items.item[
+                                                j].title + "</td>")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (h == 24) {
+                    console.log("map1");
+                    map_info();
+                }
+            }
+
+
+        function col_cal_width() {
+            for (let i in $('col')) {
+                if (i == 0) continue;
+                $('col')[i].style.width = 90 / (betweenDay + 1) + "%";
+            }
+        }
+        
+    function displayInfowindow(marker, title) {
+        var content = '<div style="background-color: #4CAF50;color: white;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
+        
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
     }
 }
+    
+	function OverlayDelete() {
+	    if (overlay != null) {
+	        overlay.setMap(null);
+	    } 
+	}
+    
+	function markerOverlay(node) {
+		console.log(node.textContent);
+	        for (var i = 0; i < schedule_data.response.body.items.item.length; i++) {
+	            if (schedule_data.response.body.items.item[i].title == node.textContent) {
+	            	console.log(i);
+	            	console.log(schedule_data.response.body.items.item[i]);
+	                if(prevClickItem != null)
+	                    prevClickItem.removeClass('on');
+	                prevClickItem = $(node).parent();
+	                prevClickItem.addClass('on');
+	                markerPoint(schedule_data.response.body.items.item[i]);
+	            }
+	        }
+	}  
 
-
-
-</script>
+	function markerPoint(datas) {
+		var bounds = new daum.maps.LatLngBounds();
+	    if (!(overlay == null)) {
+	        closeOverlay(); 
+	    }
+	    console.log(datas)
+	    
+	    bounds.extend(new daum.maps.LatLng(datas.mapy, datas.mapx));
+	    var content = '<div class="customoverlay">' +'<img src=' + datas.firstimage + '>' 
+	                    + '<div>' + datas.title + '</div>' + '</div>'
+	                    + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
+	    overlay = new daum.maps.CustomOverlay({
+	        content: content,
+	        position: new daum.maps.LatLng(datas.mapy, datas.mapx)
+	    });
+	    overlay.setMap(map);
+	    console.log(bounds);
+	    map.setBounds(bounds);
+	    map.setLevel(5);
+	}
+    function closeOverlay() {
+        overlay.setMap(null);   
+    }
+    
+    </script>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
     <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        var prevClickItem = null;
+        var prevClickMarker = null;
+        var overlay;
+        var marker;
+        var infowindow = new daum.maps.InfoWindow({
+            zIndex: 1
+        });
+        var mapContainer = document.getElementById('map1'), // 지도를 표시할 div  
             mapOption = {
-                center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
+                center: new daum.maps.LatLng(33.38003512348535, 126.63019113977133), // 지도의 중심좌표
+                level: 9 // 지도의 확대 레벨
             };
-
-        // 지도를 생성합니다    
         var map = new daum.maps.Map(mapContainer, mapOption);
 
-        // 주소-좌표 변환 객체를 생성합니다
-        var geocoder = new daum.maps.services.Geocoder();
-
-        // 주소로 좌표를 검색합니다
-        geocoder.addressSearch('제주시 애월읍 고성리 875-2', function (result, status) {
 
 
-            // 정상적으로 검색이 완료됐으면 
-            if (status === daum.maps.services.Status.OK) {
+        function map_info() {
 
-                var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
-                // 결과값으로 받은 위치를 마커로 표시합니다
-                var marker = new daum.maps.Marker({
-                    map: map,
-                    position: coords
-                });
 
-                // 인포윈도우로 장소에 대한 설명을 표시합니다
-                var infowindow = new daum.maps.InfoWindow({
-                    content: '<div style="width:150px;text-align:center;padding:6px 0;"></div>'
-                });
-                infowindow.open(map, marker);
+            for (var i = 0; i < schedule.length; i++) {
+                for (var d = 1; d < betweenDay + 2; d++) {
+                    if (schedule[i].plday == d) {
+                        for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
+                            if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
+                                schedule_data.response.body.items.item[j].mapy
+                                schedule_data.response.body.items.item[j].mapx
+                                if (schedule_data.response.body.items.item[j].contenttypeid == 12) {
+                                    var imageSrc = '../../img/sub10/301_0.png';
+                                } else if (schedule_data.response.body.items.item[j].contenttypeid == 39) {
+                                    var imageSrc = '../../img/sub10/200_0.png';
+                                } else if (schedule_data.response.body.items.item[j].contenttypeid == 38) {
+                                    var imageSrc = '../../img/sub10/400_0.png';
+                                } else if (schedule_data.response.body.items.item[j].contenttypeid == 32) {
+                                    var imageSrc = '../../img/sub10/100_0.png';
+                                }
+                                var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
+                                var imageOption = {
+                                    offset: new daum.maps.Point(20, 20)
+                                }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+                                var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
 
-                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                map.setCenter(coords);
-            }
-            // 장소 검색 객체를 생성합니다
-            var ps = new daum.maps.services.Places(map);
-            ps.categorySearch('AD5', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('AT4', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('FD6', placesSearchCB, {
-                useMapCenter: true
-            });
 
-            // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-            function placesSearchCB(data, status, pagination) {
-                if (status === daum.maps.services.Status.OK) {
-                    for (var i = 0; i < data.length; i++) {
-                        displayMarker(data[i]);
+                                marker = new daum.maps.Marker({
+                                    position: new daum.maps.LatLng(schedule_data.response.body.items.item[j].mapy,
+                                        schedule_data.response.body.items.item[j].mapx),
+                                    image: markerImage
+                                });
+                                marker.setMap(map);
+
+
+                                (function (marker, title) {
+                                    daum.maps.event.addListener(marker, 'mouseover', function () {
+                                        displayInfowindow(marker, title);
+                                    });
+
+                                    daum.maps.event.addListener(marker, 'mouseout', function () {
+                                        infowindow.close();
+                                    });
+
+                                })(marker, schedule_data.response.body.items.item[j].title);
+
+
+                            };
+                        }
                     }
                 }
             }
 
-            // 지도에 마커를 표시하는 함수입니다
-            function displayMarker(place) {
-                // 마커를 생성하고 지도에 표시합니다
-                var marker = new daum.maps.Marker({
-                    map: map,
-                    position: new daum.maps.LatLng(place.y, place.x)
-                });
+            function displayInfowindow(marker, title) {
+                var content =
+                    '<div style="text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+                    title + '</div>';
 
-                // 마커에 클릭이벤트를 등록합니다
-                daum.maps.event.addListener(marker, 'click', function () {
-                    // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-                    infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name +
-                        '</div>');
-                    infowindow.open(map, marker);
-                });
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
             }
-        });
+        }
 
+        function OverlayDelete() {
+            if (overlay != null) {
+                overlay.setMap(null);
+            }
+        }
+
+        function markerOverlay(node) {
+            console.log(node.textContent);
+            for (var i = 0; i < schedule_data.response.body.items.item.length; i++) {
+                if (schedule_data.response.body.items.item[i].title == node.textContent) {
+                    console.log(i);
+                    console.log(schedule_data.response.body.items.item[i]);
+                    if (prevClickItem != null)
+                        prevClickItem.removeClass('on');
+                    prevClickItem = $(node).parent();
+                    prevClickItem.addClass('on');
+                    markerPoint(schedule_data.response.body.items.item[i]);
+                }
+            }
+        }
+
+        function markerPoint(datas) {
+            var bounds = new daum.maps.LatLngBounds();
+            if (!(overlay == null)) {
+                closeOverlay();
+            }
+            console.log(datas)
+
+            bounds.extend(new daum.maps.LatLng(datas.mapy, datas.mapx));
+            var content = '<div class="customoverlay">' + '<img src=' + datas.firstimage + '>' +
+                '<div>' + datas.title + '</div>' + '</div>' +
+                '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
+            overlay = new daum.maps.CustomOverlay({
+                content: content,
+                position: new daum.maps.LatLng(datas.mapy, datas.mapx)
+            });
+            overlay.setMap(map);
+            console.log(bounds);
+            map.setBounds(bounds);
+            map.setLevel(5);
+        }
+
+        function closeOverlay() {
+            overlay.setMap(null);
+        }
     </script>
-
 
     <script>
         function openCity(evt, cityName) {
@@ -595,7 +672,6 @@ function schedule_comp1() {
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " on";
         }
-        map.relayout();
         document.getElementById("defaultOpen").click();
     </script>
 
@@ -605,8 +681,8 @@ function schedule_comp1() {
             $(window).bind('scroll', function () {
                 var container = $('.container').height();
                 var content = $('.day_page_all').height();
-                if ($(window).scrollTop() > container - content - 80) {
-                    if ($(window).scrollTop() > content - 100) {
+                if ($(window).scrollTop() > container - content - 200) {
+                    if ($(window).scrollTop() > content - 400) {
                         $('nav').addClass('absolute');
                         $('nav').removeClass('fixed');
                         return;
@@ -624,109 +700,255 @@ function schedule_comp1() {
                 }
             });
         });
+
+        function page_scroll(target, id) {
+            var xtop = parseInt($('.' + target + '[data-id=' + id + ']').offset().top) - 175;
+            $('.colorTip').hide();
+            $('body,html').animate({
+                scrollTop: xtop
+            });
+        }
     </script>
     <script>
         // 모달 다이알로그가 열리면 지도 크기 재조정
         $("#myModal").on('shown.bs.modal', function (e) {
             console.log("Map Modal is shown!");
             e.preventDefault();
-            map1.relayout();
+            modal_map();
+            map.relayout();
         });
     </script>
 
     <script>
-        var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
-            mapOption = {
-                center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 8 // 지도의 확대 레벨
-            };
+        'use strict';
 
-        // 지도를 생성합니다    
-        var map1 = new daum.maps.Map(mapContainer, mapOption);
+        function modal_map() {
+            var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
+                mapOption = {
+                    center: new daum.maps.LatLng(33.350701, 126.570667), // 지도의 중심좌표
+                    level: 9 // 지도의 확대 레벨
+                };
 
-        // 주소-좌표 변환 객체를 생성합니다
-        var geocoder = new daum.maps.services.Geocoder();
-
-        // 주소로 좌표를 검색합니다
-        geocoder.addressSearch('제주시 애월읍 고성리 875-2', function (result, status) {
-
-
-            // 정상적으로 검색이 완료됐으면 
-            if (status === daum.maps.services.Status.OK) {
-
-                var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-                // 결과값으로 받은 위치를 마커로 표시합니다
-                var marker = new daum.maps.Marker({
-                    map: map1,
-                    position: coords
-                });
-
-                // 인포윈도우로 장소에 대한 설명을 표시합니다
-                var infowindow = new daum.maps.InfoWindow({
-                    content: '<div style="width:150px;text-align:center;padding:6px 0;"></div>'
-                });
-                infowindow.open(map1, marker);
-
-                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                map1.setCenter(coords);
-            }
-            // 장소 검색 객체를 생성합니다
-            var ps = new daum.maps.services.Places(map1);
-            ps.categorySearch('AD5', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('AT4', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('FD6', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('CT1', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('CE7', placesSearchCB, {
-                useMapCenter: true
-            });
+            // 지도를 생성합니다    
+            console.log(schedule)
+            var map = new daum.maps.Map(mapContainer, mapOption);
+            for (var i = 0; i < schedule.length; i++) {
+                console.log("i:", i);
+                for (var d = 1; d < betweenDay + 2; d++) {
+                    if (schedule[i].plday == d) {
+                        for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
+                            if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
+                                schedule_data.response.body.items.item[j].mapy
+                                schedule_data.response.body.items.item[j].mapx
+                                if (schedule_data.response.body.items.item[j].contenttypeid == 12) {
+                                    var imageSrc = '../../img/sub10/301_0.png';
+                                } else if (schedule_data.response.body.items.item[j].contenttypeid == 39) {
+                                    var imageSrc = '../../img/sub10/200_0.png';
+                                } else if (schedule_data.response.body.items.item[j].contenttypeid == 38) {
+                                    var imageSrc = '../../img/sub10/400_0.png';
+                                } else if (schedule_data.response.body.items.item[j].contenttypeid == 32) {
+                                    var imageSrc = '../../img/sub10/100_0.png';
+                                }
+                                var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
+                                var imageOption = {
+                                    offset: new daum.maps.Point(20, 20)
+                                }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+                                var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
 
 
-            // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-            function placesSearchCB(data, status, pagination) {
-                if (status === daum.maps.services.Status.OK) {
-                    for (var i = 0; i < data.length; i++) {
-                        displayMarker(data[i]);
+                                marker = new daum.maps.Marker({
+                                    position: new daum.maps.LatLng(schedule_data.response.body.items.item[j].mapy,
+                                        schedule_data.response.body.items.item[j].mapx),
+                                    image: markerImage
+                                });
+                                marker.setMap(map);
+                                linePath[schedule[i].plday].push(new daum.maps.LatLng(schedule_data.response.body.items
+                                    .item[j].mapy, schedule_data.response.body.items.item[j].mapx));
+                                // 지도에 표시할 선을 생성합니다
+
+                                if ([schedule[i].plday] == 1) {
+                                    polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                        title: schedule_data.response.body.items.item[j].title,
+                                        path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: '#FFAE00', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                } else if ([schedule[i].plday] == 2) {
+                                    polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                        title: schedule_data.response.body.items.item[j].title,
+                                        path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: '#AEE810', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                } else if ([schedule[i].plday] == 3) {
+                                    polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                        title: schedule_data.response.body.items.item[j].title,
+                                        path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: '#08EA2D', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                } else if ([schedule[i].plday] == 4) {
+                                    polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                        title: schedule_data.response.body.items.item[j].title,
+                                        path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: '#02D7F9', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                } else {
+                                    polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                        title: schedule_data.response.body.items.item[j].title,
+                                        path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                        strokeWeight: 5, // 선의 두께 입니다
+                                        strokeColor: '#EE091F', // 선의 색깔입니다
+                                        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                        strokeStyle: 'solid' // 선의 스타일입니다
+                                    });
+                                }
+
+                                polyline[schedule[i].plday].setMap(map);
+                                console.log(polyline);
+                                (function (idx) {
+
+                                    var saveColor;
+                                    var saveStroke;
+                                    daum.maps.event.addListener(polyline[schedule[idx].plday], 'mouseover',
+                                        function (mouseEvent) {
+                                            var iwContent = "<div style='padding:5px;'>" + [schedule[idx].plday] +
+                                                "일 입니다.</div>"
+                                            var infowindow = new daum.maps.InfoWindow({
+                                                content: iwContent
+                                            });
+                                            saveColor = event.target.style.color;
+                                            saveStroke = event.target.style.stroke;
+                                            console.log("clicked")
+                                            console.log(event.target);
+                                            event.target.style.stroke = '#000';
+                                            event.target.style.color = '#000';
+                                            var mouseX = event.pageX;
+                                            var mouseY = event.pageY;
+                                            $('#aa').css("left", mouseX + 15).css("top", mouseY + 15).html([
+                                                schedule[idx].plday
+                                            ] + '일차 입니다.')[0].style.display = 'block';
+                                            /*  event.target.xc[0].style.color='#000';
+                                        event.target.xc[0].style.stroke='#000';   */
+                                        });
+
+                                    daum.maps.event.addListener(polyline[schedule[idx].plday], 'mouseout', function (
+                                        mouseEvent) {
+                                        console.log("clicked//")
+                                        var latlng = mouseEvent.latLng;
+                                        event.target.style.stroke = saveStroke;
+                                        event.target.style.color = saveColor;
+                                        console.log(latlng.toString());
+                                        console.log($('#aa'))
+                                        $('#aa')[0].style.display = 'none';
+                                    });
+                                    /* daum.maps.event.addListener(polyline[schedule[idx].plday], 'poly_click', function(event) {
+                                		   console.log("clicked")
+                                		   console.log(event.target);
+                               			   event.target.xc[0].style.color='#000';
+                               			event.target.xc[0].style.stroke='#000';
+                                		   
+                                       });   
+	                                	// original click event
+	                                	daum.maps.event.addListener(polyline[schedule[idx].plday], 'click', function(event) {
+	                                	    // dispatch custom event 'poly_click'
+	                                	    
+	                                	    daum.maps.event.trigger(polyline[schedule[idx].plday], 'poly_click', {
+	                                	        id: 'polyne1',
+	                                	        target: polyline[schedule[idx].plday]
+	                                	    });
+	                                	}); */
+                                })(i);
+
+
+
+
+                                (function (marker, title) {
+                                    daum.maps.event.addListener(marker, 'mouseover', function () {
+                                        displayInfowindow(marker, title);
+                                    });
+
+                                    daum.maps.event.addListener(marker, 'mouseout', function () {
+                                        infowindow.close();
+                                    });
+
+                                })(marker, schedule_data.response.body.items.item[j].title);
+
+
+                            };
+                        }
                     }
-                                    }
+                }
             }
 
-            // 지도에 마커를 표시하는 함수입니다
-            function displayMarker(place) {
-                // 마커를 생성하고 지도에 표시합니다
-                var marker = new daum.maps.Marker({
-                    map: map1,
-                    position: new daum.maps.LatLng(place.y, place.x)
-                });
+            function displayInfowindow(marker, title) {
+                var content =
+                    '<div style="text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+                    title + '</div>';
 
-                // 마커에 클릭이벤트를 등록합니다
-                daum.maps.event.addListener(marker, 'click', function () {
-                    // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-                    infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name +
-                        '</div>');
-                    infowindow.open(map1, marker);
-
-                });
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
             }
-        });
+
+        }
 
         function relayout() {
-        	console.log("relayout");
-        	map.relayout();
-            map1.relayout();
-            map2.relayout();
+            console.log("relayout");
+            map.relayout();
+        }
+
+        $(document).scroll(function () {
+            var stop_top = $('.list_bottom.page').position().top;
+            var right_top = $('.right_scroll_box').offset().top;
+            //console.log(stop_top+'/'+right_top+'/'+(parseInt(stop_top)-567));
+            var stop = $(document).scrollTop();
+            var body_height = parseInt($(document).height()) - parseInt($('.list_bottom.page.show').height()) -
+                1000;
+
+            if (stop > 0) {
+                $('.btn_top').fadeIn();
+            } else {
+                $('.btn_top').fadeOut();
+            }
+            var _this_day = '1';
+            $('.day_page').each(function () {
+                var xtop = parseInt($(this).offset().top) - 300;
+                if (stop >= xtop) {
+                    _this_day = $(this).attr('data-id');
+                }
+            });
+
+            set_day(_this_day);
+        });
+
+        var cur_day = 1;
+        var spot_nav = new Array();
+
+        function set_day(day) {
+            //console.log('set_day: '+day);
+            var top = 30 * parseInt(day) - 50;
+            /* $('.plan_nav_list').scrollTop(top); */
+            /* $('.plan_nav_btn').removeClass('on'); */
+            /* $('.plan_nav_btn[data-id=' + day + ']').addClass('on'); */
+            $('.day_select').val(day);
+            if (cur_day != day) {
+                $('.spot_list_box').html(spot_nav[day]);
+
+            }
+            cur_day = day;
         }
     </script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var day_data; //일차 데이터
         var sch_data; //상세 일정 데이터
         var week_arr = new Array(
@@ -841,7 +1063,7 @@ function schedule_comp1() {
             }
             cur_day = day;
         }
-    </script>
+    </script> -->
 
 
 

@@ -27,8 +27,9 @@ public class ContentController {
     }
     
     @RequestMapping("add")
-    public int add(Content content) throws Exception {
-        return contentService.add(content);
+    public Object add(Content content) throws Exception {
+        contentService.add(content);
+        return content.getNo();
     }
     
     @RequestMapping("delete")
@@ -42,7 +43,6 @@ public class ContentController {
             @MatrixVariable(defaultValue="1") int pageNo,
             @MatrixVariable(defaultValue="3") int pageSize,
             Map<String,Object> map) {        
-        
         
         return contentService.list(pageNo, pageSize);
     }

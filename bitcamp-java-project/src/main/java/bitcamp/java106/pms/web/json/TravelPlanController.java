@@ -55,9 +55,22 @@ public class TravelPlanController {
         travelPlanService.update(travelPlan);
     }
      
+    @RequestMapping("{planno}/{no}")
+    public List<TravelPlan> view(@PathVariable int planno, @PathVariable int no) throws Exception {
+       System.out.printf("plno:%d, dayno:%d\n", planno, no);
+        return travelPlanService.get(planno, no);
+        
+    }
+    @RequestMapping("day/{planno}")
+    public int titleView(@PathVariable int planno) throws Exception {
+       System.out.printf("plno:%d\n", planno);
+        return travelPlanService.get2(planno);
+        
+    }
+
     @RequestMapping("{no}")
-    public List<TravelPlan> view(@PathVariable int no) throws Exception {
-        return travelPlanService.get(no);
+    public List<TravelPlan> selectOne(@PathVariable int no) throws Exception {
+        return travelPlanService.selectOne(no);
         
     }
     
@@ -83,7 +96,6 @@ public class TravelPlanController {
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - TravelPlanController에서 add() 메서드를 추출하여 클래스로 정의. 
-
 
 
 

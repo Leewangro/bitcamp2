@@ -187,7 +187,7 @@
 
 .absolute {
 	width: 1200px;
-	bottom: 20px;
+	bottom: -25px;
 	position: absolute;
 	z-index: 1;
 }
@@ -428,7 +428,7 @@
 }
 
 #sub10 .plan .day_page {
-	padding-bottom: 60px;
+	padding-bottom: 30px;
 	float: left;
 	margin: 0 auto;
 	position: relative;
@@ -470,6 +470,7 @@
 	border-top: 1px solid #e5e5e5;
 	border-right: 1px solid #e5e5e5;
 	height: 60px;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 #sub10 .plan .day_page .day_page_left .day_box .day_info_box .day_info .day_info_left
@@ -500,6 +501,7 @@
 	border: 1px solid #e5e5e5;
 	background: white;
 	min-height: 100px;
+	border-top: 0px;
 }
 
 #sub10 .plan .day_page .day_page_left .day_box .day_sch_box .day_sch_num
@@ -716,7 +718,6 @@
 	border-right: 1px solid #e5e5e5;
 	border-left: 1px solid #e5e5e5;
 	background: white;
-	height: 195px;
 	width: 100%;
 }
 
@@ -782,6 +783,9 @@
 	padding-left: 5px;
 	line-height: 18px;
 	width: 77px;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #sub10 .plan .day_page_right .right_scroll_box .owl-carousel.owl-loaded
@@ -805,16 +809,15 @@
 	line-height: 32px;
 }
 
-#sub10 .plan .day_page_all .all_schedule .tbl_basic tbody th {
-	width: 10%;
+/* #sub10 .plan .day_page_all .all_schedule .tbl_basic tbody th {
 	background-color: #f6f3f3;
 }
 
-#sub10 .plan .day_page_all .all_schedule .tbl_basic th:last-child,
-	.tbl_basic td:last-child {
-	width: 30%;
+#sub10 .plan .day_page_all .all_schedule .tbl_basic td {
 	border-right: 1px solid #d2d2d2;
-}
+} */
+
+
 
 /*sub_10_planner*/
 #sub10 .full_wrap {

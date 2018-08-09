@@ -2,21 +2,16 @@ package bitcamp.java106.pms.domain;
 
 import java.io.Serializable;
 
-public class Member implements Serializable {
+public class SNSMember implements Serializable {
     private static final long serialVersionUID = 1L;
     
     private String id;
     private String email;
-    private String password;
+    private String userName;
+    private String profileImg;
+    private String jender;
     
     
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -25,7 +20,7 @@ public class Member implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Member other = (Member) obj;
+        SNSMember other = (SNSMember) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -36,28 +31,42 @@ public class Member implements Serializable {
     public String getId() {
         return id;
     }
-    public Member setId(String id) {
+    public SNSMember setId(String id) {
         this.id = id;
         return this;
     }
     public String getEmail() {
         return email;
     }
-    public Member setEmail(String email) {
+    public SNSMember setEmail(String email) {
         this.email = email;
         return this;
     }
-    public String getPassword() {
-        return password;
+    public String getUserName() {
+        return userName;
     }
-    public Member setPassword(String password) {
-        this.password = password;
+    public SNSMember setUserName(String userName) {
+        this.userName = userName;
         return this;
     }
-    
+    public String getProfileImg() {
+        return profileImg;
+    }
+    public SNSMember setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
+        return this;
+    }
+    public String getJender() {
+        return jender;
+    }
+    public SNSMember setJender(String jender) {
+        this.jender = jender;
+        return this;
+    }
     @Override
     public String toString() {
-        return "Member [id=" + id + ", email=" + email + ", password=" + password + "]";
+        return "SNSMember [id=" + id + ", email=" + email + ", userName=" + userName + ", profileImg=" + profileImg
+                + ", jender=" + jender + "]";
     }
     
     

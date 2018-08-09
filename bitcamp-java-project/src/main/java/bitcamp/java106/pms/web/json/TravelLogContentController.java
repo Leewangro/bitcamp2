@@ -11,13 +11,18 @@ import bitcamp.java106.pms.domain.TravelLogContent;
 import bitcamp.java106.pms.service.TravelLogContentService;
 
 @RestController
-@RequestMapping("/TravelLogContent")
+@RequestMapping("/travelLogContent")
 public class TravelLogContentController {
     
     TravelLogContentService travelLogContentService;
     
     public TravelLogContentController(TravelLogContentService travelLogContentService) {
         this.travelLogContentService = travelLogContentService;
+    }
+    
+    @RequestMapping("add")
+    public void add(TravelLogContent travelLogContent) throws Exception {
+        travelLogContentService.add(travelLogContent);
     }
     
     @RequestMapping("list{page}")

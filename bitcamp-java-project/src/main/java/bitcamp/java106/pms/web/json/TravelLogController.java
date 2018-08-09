@@ -12,7 +12,7 @@ import bitcamp.java106.pms.domain.TravelLog;
 import bitcamp.java106.pms.service.TravelLogService;
 
 @RestController
-@RequestMapping("/TravelLog")
+@RequestMapping("/travelLog")
 public class TravelLogController {
     
     TravelLogService travelLogService;
@@ -30,8 +30,9 @@ public class TravelLogController {
     }
     
     @RequestMapping("add")
-    public int add(TravelLog travelLog) throws Exception {
-        return travelLogService.add(travelLog);
+    public Object add(TravelLog travelLog) throws Exception {
+        travelLogService.add(travelLog);
+        return travelLog.getTlno();
     }
     
     @RequestMapping("delete")

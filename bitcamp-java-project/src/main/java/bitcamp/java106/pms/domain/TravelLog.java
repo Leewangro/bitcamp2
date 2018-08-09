@@ -10,8 +10,8 @@ public class TravelLog implements Serializable {
 
     private int tlno;
     private int memberNo;
-    private String partner;
-    private String preference;
+    private int partner;
+    private int preference;
     
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startDate;
@@ -34,16 +34,16 @@ public class TravelLog implements Serializable {
     public void setMemberNo(int memberNo) {
         this.memberNo = memberNo;
     }
-    public String getPartner() {
+    public int getPartner() {
         return partner;
     }
-    public void setPartner(String partner) {
+    public void setPartner(int partner) {
         this.partner = partner;
     }
-    public String getPreference() {
+    public int getPreference() {
         return preference;
     }
-    public void setPreference(String preference) {
+    public void setPreference(int preference) {
         this.preference = preference;
     }
     public Date getStartDate() {
@@ -58,6 +58,8 @@ public class TravelLog implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+    
+    
     
    
 
