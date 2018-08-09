@@ -44,7 +44,6 @@ public class ContentController {
             @MatrixVariable(defaultValue="3") int pageSize,
             Map<String,Object> map) {        
         
-        
         return contentService.list(pageNo, pageSize);
     }
     

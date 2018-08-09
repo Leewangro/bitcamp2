@@ -164,9 +164,8 @@
 								<button type="button" class="btn btn-secondary" id="pre_button"
 									style="background: darkgray; font-weight: bold; color: white;">
 									<</button>
-								<strong>Day</strong> 
-								<a id="d1">1</a>
-								<span class="desc">2016.07.12(Tue)</span>
+								<strong id="st_day"></strong> 
+								<span class="desc"></span>
 								<button type="button" class="btn btn-secondary" id="next_button"
 									style="background: darkgray; font-weight: bold; color: white;">
 									></button>
@@ -312,16 +311,16 @@
 			var recoNum = $('#b-reco');
 
 			$.ajax({
-				url : serverRoot + "/json/accompanyregi/list",
+				url : serverRoot + "/json/planner/1",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(main) {
 					console.log(main)
 					//$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
-					$(sDay).append(main[1].sDate);
-					$(eDay).append(main[1].eDate);
-					$(partner).append(main[1].mWithNum);
-					$(theme).append(main[1].mTem);
+					$(sDay).append(main.startDate);
+					$(eDay).append(main.endDate);
+					$(partner).append(main.num);
+					$(theme).append(main.theme);
 					//$(hits).append(data[10]./*프로퍼티 뭐로하냐*/);
 					//$(recoNum).append(data[10]./*프로퍼티명 뭐로하냐*/);
 					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
@@ -330,7 +329,7 @@
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
-		});
+		}); 
 	</script>
 	<!-- <script>
 		$(document).ready(function() {
@@ -383,13 +382,20 @@
 	
       $(document).ready(function () {
          
-         let modalIndex = 0;
          
          $.ajax({
-            url: serverRoot + "/json/travelPlan/1/1",
+            url: serverRoot + "/json/travelPlan/1/" + currentPage,
             dataType: "json", // 데이터타입을 json 으로 받아옴
             success: function (data) {
                console.log(data);
+		         let modalIndex = 0;
+		         
+		         /* $.ajax({
+					url : serverRoot + "/json/planner/selectOne",
+					dataType : "json", // 데이터타입을 json 으로 받아옴
+					success : function(titleDay) { */
+							 
+		         
 
                $.ajax({
                   url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
@@ -403,12 +409,19 @@
                      mapOption = { 
                          center: new daum.maps.LatLng( 33.379235341729505, 126.56948671100452), // 지도의 중심좌표
                          level: 10 // 지도의 확대 레벨
-                     };
+                     }; 
 
                  	 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
                  	 
                  	 var infowindow = new daum.maps.InfoWindow({zIndex:1});
-
+                 	 var day = $('#st_day');
+                     var day_num = $('<a id="d1">');
+                     
+                     $(day_num).text("day " + currentPage);
+                     $(day).append(day_num);
+                     
+                     
+                     
                      for (let i = 0; i < data.length; i++) {
                         //console.log(data2.response.body.items.item);
                         //console.log(data2.response.body.items.item.length);
@@ -529,18 +542,25 @@
                      alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
                   }
                });
-            },
-            error: function (e2) {
-               alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
-            }
-         });
-      });
+							 
+	            /* },
+				error : function(error) {
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+				}
+			});  */
+							 
+           },
+           error: function (e2) {
+              alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+           }
+        });
+     });
 	
 	var currentPage = 1;
 	
 	$(document).ready(function() {
 		
-		$.get(serverRoot + "/json/travelPlan/day/1", {}, res => {
+		$.get(serverRoot + "/json/travelPlan/day/1", {}, function(res) {
 			maxDay = res;
 			console.log(maxDay);
 		});
@@ -553,13 +573,21 @@
 			if(currentPage < 1 )
 				currentPage = 1;  
 			console.log("curPage:", currentPage);
-			$(".spot-note-box").empty();
-			$("#map").empty();
-
+			
             $.ajax({
                url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
                dataType: "json", // 데이터타입을 json 으로 받아옴
                success: function (data2) {
+				$(".spot-note-box").empty();
+				$("#map").empty();
+				$("#st_day").empty();
+				
+				var day = $('#st_day');
+                var day_num = $('<a id="d1">');
+               
+                $(day_num).text("day " + currentPage);
+                $(day).append(day_num);
+                
             	   $.ajax({
        				url : serverRoot + "/json/travelPlan/1/" + currentPage,
        				dataType : "json", 
@@ -571,7 +599,7 @@
                      };
 
              		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다    
-       					
+             		var infowindow = new daum.maps.InfoWindow({zIndex:1});	
        				 for (let i = 0; i < data.length; i++) {
                          for (let j = 0; j < data2.response.body.items.item.length; j++) { 
                             if (data[i].tno == data2.response.body.items.item[j].contentid) {
@@ -653,7 +681,26 @@
 						  
                         // 마커가 지도 위에 표시되도록 설정합니다
                         marker.setMap(map);
-       	                
+                        (function(marker, title) {
+                            daum.maps.event.addListener(marker, 'mouseover', function() {
+                                displayInfowindow(marker, title);
+                            });
+
+                            daum.maps.event.addListener(marker, 'mouseout', function() {
+                                infowindow.close();
+                            });
+                            
+                        })(marker, data2.response.body.items.item[j].title);
+                        
+                        function displayInfowindow(marker, title) {
+                      	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+                      	    infowindow.setContent(content);
+                      	    infowindow.open(map, marker);
+                      	}
+                        
+                        
+                        
                         break;
                             }
                          }
@@ -675,9 +722,6 @@
 				currentPage = maxDay;
 		 	
 			console.log("curPage:", currentPage);
-		 	$(".spot-note-box").empty();
-		 	$("#map").empty();
-		 	
             $.ajax({
                 url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
                 dataType: "json", // 데이터타입을 json 으로 받아옴
@@ -686,7 +730,15 @@
         				url : serverRoot + "/json/travelPlan/1/" + currentPage,
         				dataType : "json", 
         				success : function(data) {
-
+						 	$(".spot-note-box").empty();
+						 	$("#map").empty();
+						 	$("#st_day").empty();
+							
+						 	var day = $('#st_day');
+		                     var day_num = $('<a id="d1">');
+		                    
+		                     $(day_num).text("day " + currentPage);
+		                     $(day).append(day_num);
         					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                             mapOption = { 
                                          center: new daum.maps.LatLng( 33.379235341729505, 126.56948671100452), // 지도의 중심좌표
@@ -694,7 +746,7 @@
                         		            };
 
                          	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-     					
+                         	var infowindow = new daum.maps.InfoWindow({zIndex:1});
         					
               				 for (let i = 0; i < data.length; i++) {
                                  for (let j = 0; j < data2.response.body.items.item.length; j++) { 
@@ -772,9 +824,25 @@
 						  
                           // 마커가 지도 위에 표시되도록 설정합니다
                           marker.setMap(map);
-        	                
-           	                break;
+        	              
+                          (function(marker, title) {
+                              daum.maps.event.addListener(marker, 'mouseover', function() {
+                                  displayInfowindow(marker, title);
+                              });
 
+                              daum.maps.event.addListener(marker, 'mouseout', function() {
+                                  infowindow.close();
+                              });
+                              
+                          })(marker, data2.response.body.items.item[j].title);
+                          
+                          function displayInfowindow(marker, title) {
+                        	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+                        	    infowindow.setContent(content);
+                        	    infowindow.open(map, marker);
+                        	}
+           	                break;
                                     }
                                  }
               				 }

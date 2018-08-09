@@ -9,13 +9,17 @@ public class TravelLogContent implements Serializable {
 	private int tcno;
 	private String place;
 	private String address;
+	private String latd;
+	private String lotd;
 	private String photo;
 	private String review;
 	private String day;
+	
     @Override
     public String toString() {
         return "TravelLogContent [tlno=" + tlno + ", tcno=" + tcno + ", place=" + place + ", address=" + address
-                + ", photo=" + photo + ", review=" + review + ", day=" + day + "]";
+                + ", latd=" + latd + ", lotd=" + lotd + ", photo=" + photo + ", review=" + review + ", day=" + day
+                + "]";
     }
     public int getTlno() {
         return tlno;
@@ -41,6 +45,18 @@ public class TravelLogContent implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+    public String getLatd() {
+        return latd;
+    }
+    public void setLatd(String latd) {
+        this.latd = latd;
+    }
+    public String getLotd() {
+        return lotd;
+    }
+    public void setLotd(String lotd) {
+        this.lotd = lotd;
+    }
     public String getPhoto() {
         return photo;
     }
@@ -59,8 +75,5 @@ public class TravelLogContent implements Serializable {
     public void setDay(String day) {
         this.day = day;
     }
-	
-	
-
-
+   
 }
