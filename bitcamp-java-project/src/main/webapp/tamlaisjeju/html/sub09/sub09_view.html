@@ -389,7 +389,12 @@
             success: function (data) {
                console.log(data);
 		         let modalIndex = 0;
-		       
+		         
+		         /* $.ajax({
+					url : serverRoot + "/json/planner/selectOne",
+					dataType : "json", // 데이터타입을 json 으로 받아옴
+					success : function(titleDay) { */
+							 
 		         
 
                $.ajax({
@@ -415,7 +420,6 @@
                      $(day_num).text("day " + currentPage);
                      $(day).append(day_num);
                      
-                     var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
                      
                      
                      for (let i = 0; i < data.length; i++) {
@@ -538,12 +542,19 @@
                      alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
                   }
                });
-            },
-            error: function (e2) {
-               alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
-            }
-         });
-      });
+							 
+	            /* },
+				error : function(error) {
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+				}
+			});  */
+							 
+           },
+           error: function (e2) {
+              alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+           }
+        });
+     });
 	
 	var currentPage = 1;
 	
