@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import bitcamp.java106.pms.domain.Member;
+import bitcamp.java106.pms.domain.SNSMember;
 
 public class AuthCheckInterceptor implements HandlerInterceptor {
     @Override
@@ -15,7 +15,7 @@ public class AuthCheckInterceptor implements HandlerInterceptor {
             throws Exception {
         
         HttpSession session = request.getSession();
-        Member loginUser = (Member) session.getAttribute("loginUser");
+        SNSMember loginUser = (SNSMember) session.getAttribute("loginUser");
         
         if (loginUser == null) { // 로그인을 하지 않았으면 로그인 폼으로 보낸다.
             response.sendRedirect(request.getContextPath() + "/app/auth/form");

@@ -2,11 +2,9 @@
     <a id="Login" href="http://localhost:8000/auth">로그인</a>
     <a id="Logout" href="http://localhost:8000/logout" style="float:left;">로그아웃</a>
 </div>
-<script src="js/common/login.js"></script>
-<script>
-    $.getJSON(serverRoot + "/json/auth/facebookLogin?accessToken=", {
-        accessToken
-    }, data => {
-        console.log(data);
-    })
+<script type="text/javascript">
+    function name(data){
+    	console.log(data);
+    }
 </script>
+
