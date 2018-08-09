@@ -139,7 +139,6 @@ var common = {
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 32) { // 숙박정보 
 			InfoElements = "<div class='detail_info'>" +
-
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterlodging + "</td>" +
@@ -160,7 +159,6 @@ var common = {
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 38) { // 쇼핑
 			InfoElements = "<div class='detail_info'>" +
-
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>매장안내 </em></td><td class='introRight'>" + list.shopguide + "</td>" +
@@ -182,7 +180,6 @@ var common = {
 			$("#detailIntro").append(InfoElements)
 		} else if (ref === 39) { // 음식점
 			InfoElements = "<div class='detail_info'>" +
-
 				"<table class='tbl_basic center'>" +
 				"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
 				"<tr><td class='introLeft'><em>대표메뉴 </em></td><td class='introRight'>" + list.firstmenu + "</td>" +
@@ -200,11 +197,6 @@ var common = {
 				"</div>"
 			$("#detailIntro").append(InfoElements)
 		}
-
-
-
-
-
 
 	},
 
@@ -289,33 +281,3 @@ function getError(error) {
 
 
 
-
-
-
-
-function isEmpty(str) {
-
-	if (typeof str == "undefined" || str == null || str == "")
-		return "-";
-	else
-		return false;
-}
-
-
-function nvl(str, defaultStr) {
-
-	if (typeof str == "undefined" || str == null || str == "")
-		str = defaultStr;
-
-	return str;
-}
-
-
-
-var isEmpty = function (data) {
-	if (data == "" || data == null || data == undefined || (data != null && typeof data == "object" && !Object.keys(data).length)) {
-		return "-"
-	} else {
-		return "-"
-	}
-};
