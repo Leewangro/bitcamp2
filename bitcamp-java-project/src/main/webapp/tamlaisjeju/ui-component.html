@@ -26,10 +26,10 @@
     <script src="js/common/jquery-3.3.1.min.js"></script>
     <script src="js/common/jquery-ui.min.js"></script>
     <!-- form-->
-    <link href="node_modules/formstone/dist/css/checkbox.css" rel="stylesheet">
-    <script src="/components/formstone/dist/js/component.js"></script>
+    <!-- <link href="node_modules/formstone/dist/css/checkbox.css" rel="stylesheet">
+    <script src="/components/formstone/dist/js/component.js"></script> -->
 </head>
-<link href="/components/formstone/dist/css/component.css" rel="stylesheet">
+<!-- <link href="/components/formstone/dist/css/component.css" rel="stylesheet"> -->
 
 <body>
 
@@ -929,7 +929,7 @@
 
             <h4>공지사항 게시판</h4>
             <p class="h4_txt">이미지 경로는 변경해서 사용해 주세요.이미지는 각 메뉴 폴더 별로 작업해 주세요. 예) sub01, sub02, sub03 ...</p>
-            <div class="board_list notice">
+            <div class="board_list notice clear">
                 <table class="tbl_basic center">
                     <caption>
                         <strong>공지사항</strong>
@@ -1148,21 +1148,34 @@
             <!-- board_list end -->
 
 
-<div id="user_profile">
-    <div id="user_photo">
-        <img src="img/common/user.png" alt="">
-    </div>
-    <div id="user_info">
-        <ul>
-            <li></li>
-        </ul>
-    </div>
-</div>
+            <div id="user_profile" class="clear">
+                <div id="user_photo">
+                    <img src="img/common/user.png" alt="아이디">
+                </div>
+                <!-- user_photo end -->
+                <div id="user_info">
+                    <ul>
+                        <li id="id">
+                            <a href="#">tamlaisjeju</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- user_info end -->
+            </div>
+            <!-- user_profile end -->
+
+
+
 
 
 
         </div>
         <!-- container end -->
+
+
+
+
+
     </div>
     <!-- mcontainer -->
 
@@ -1171,7 +1184,40 @@
 
 
 
+    <style type="text/css">
+        /**************************************************************************************
+user_profile - 유저정보 UI
+**************************************************************************************/
 
+        #user_profile {
+            /* float: right; */
+            padding:20px;
+            width: 28%;
+            border: 1px solid #e5e5e5;
+        }
+
+        #user_profile #user_photo {}
+
+        #user_profile #user_photo img {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+
+        }
+
+        #user_profile #user_info {}
+
+        #user_profile #user_info ul #id a{
+            display: block;
+            margin:5px 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+    </style>
 
 
 
