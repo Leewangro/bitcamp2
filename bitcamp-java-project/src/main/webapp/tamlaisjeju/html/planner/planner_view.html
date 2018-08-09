@@ -94,7 +94,7 @@
                                     </select>
                                 </div>
                                 <div class="map_box">
-                                    <div id="map" style="width: 100%; height: 100%;"></div>
+                                    <div id="map1" style="width: 100%; height: 100%;"></div>
                                 </div>
                                 <div class="spot_list_box owl-carousel owl-theme owl-loaded">
                                     <div class="owl-stage-outer">
@@ -181,10 +181,11 @@
                                 <h4 class="modal-title">전체 일정 루트</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-
+                            
                             <!-- Modal body -->
-                            <div class="modal-body" style="width: 50%; height: 50%;">
+                            <div class="modal-body" style="width: 90%; height: 80%;">
                                 <div id="map2" style="width: 100%; height: 100%;"></div>
+								<div id="aa" style="position:fixed;padding:5px;color:black;z-index:1000;display:none;background-color:white;"></div>
                             </div>
 
                             <!-- Modal footer -->
@@ -264,14 +265,14 @@
 
 <script>
 // 일별로 스케줄 뿌려주는 스크립트
-
+var linePath = [];
+var polyline = []; 
 var dayOfWeek = null;
 var calMonthDate = null;
 var betweenDay = null;
 /* var dayIndex = (1*(viewDate.endDate.split('-')[2])-1*(viewDate.startDate.split('-')[2]))+1 */
 function dayCal() {
 	
-console.log(viewDate);
 var arr1 = viewDate.startDate.split('-');
 var arr2 = viewDate.endDate.split('-');
 var dat1 = new Date(arr1[0], arr1[1], arr1[2]);
@@ -282,6 +283,8 @@ var currDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
 betweenDay = parseInt(diff/currDay);
 var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 for (var i = 0; i < betweenDay+1; i++) {
+	linePath[(i+1)] = [];
+	polyline[(i+1)] = [];
 	 var dat3 = (new Date(((dat1/currDay)+i)*currDay));
      calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()));
      var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate());
@@ -309,10 +312,14 @@ for (var i = 0; i < betweenDay+1; i++) {
 			"<div class='clear'</div>"
 			)
 }
-dayCal1();
+if (i == betweenDay+1) {
+	console.log("dayCal1()");
+	dayCal1();
+}
 }
 
 var schedule = [];
+
 function dayCal1() {
  $.getJSON(serverRoot+"/json/travelPlan/"+link, (data1) => {
     schedule = data1
@@ -328,7 +335,7 @@ function schedule_comp() {
         success: function (data2) {
            schedule_data = data2	
            schedule_comp1();
-           map_info();
+           
         }
 	});
 }
@@ -384,8 +391,8 @@ function schedule_comp1() {
 							$(".spot_list_item").append(        
                             "<div class='spot_item' onclick=page_scroll('day_sch_box',"+"'"+d+'-'+(i+1)+"'"+') title='+schedule_data.response.body.items.item[j].title+">" +
                                 "<div class='spot_number'>"+(i+1)+"</div>" +
-                                "<div class='spot_title' id=markerOver"+(i+1)+"onclick=markerOverlay(this)>"+schedule_data.response.body.items.item[j].title+"</div>" +
-                            "</div>"
+                                "<div class='spot_title' id=markerOver"+(i+1)+" onclick=markerOverlay(this)>"+schedule_data.response.body.items.item[j].title+"</div>" +
+                            "</div>" 
 							)
 	                   }
                    }
@@ -440,7 +447,12 @@ function schedule_comp1() {
 		            }
 				} 
 		}
+		  if (h == 24){
+			  console.log("map1");
+			  map_info();			  
+		  }
 	}
+	
 }
 function col_cal_width() {
 	for(let i in $('col')) {
@@ -450,20 +462,27 @@ function col_cal_width() {
 }
 </script>
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
-    <script>
-    	var bounds = new daum.maps.LatLngBounds();
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-	        	center: new daum.maps.LatLng(33.400701, 126.570667), // 지도의 중심좌표
-	            level: 10 // 지도의 확대 레벨
-            };
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
+<script>
 
-        // 지도를 생성합니다    
-        var map = new daum.maps.Map(mapContainer, mapOption);
-        var infowindow = new daum.maps.InfoWindow({zIndex:1});
-    function map_info() {
+var prevClickItem = null;
+var prevClickMarker = null;
+var overlay;
+var marker;
+var infowindow = new daum.maps.InfoWindow({zIndex:1});
+var mapContainer = document.getElementById('map1'), // 지도를 표시할 div  
+mapOption = { 
+    center: new daum.maps.LatLng(33.38003512348535,126.63019113977133), // 지도의 중심좌표
+    level: 9 // 지도의 확대 레벨
+};
+var map = new daum.maps.Map(mapContainer, mapOption);
+
+
         
+    function map_info() {
+
+
+
         for (var i = 0; i < schedule.length; i++) {
             for (var d = 1; d < betweenDay+2; d++) {
                 if (schedule[i].plday == d) {
@@ -473,27 +492,27 @@ function col_cal_width() {
                         	   schedule_data.response.body.items.item[j].mapx
                         	   if (schedule_data.response.body.items.item[j].contenttypeid == 12) {
                                    var imageSrc = '../../img/sub10/301_0.png';
-                                   } 
-                                   else if (schedule_data.response.body.items.item[j].contenttypeid == 39) {
-                                   var imageSrc = '../../img/sub10/200_0.png';
-                                   }
-                                   else if (schedule_data.response.body.items.item[j].contenttypeid == 38) {
-                                   var imageSrc = '../../img/sub10/400_0.png';
-                                   }
-                                   else if (schedule_data.response.body.items.item[j].contenttypeid == 32) {
-                                   var imageSrc = '../../img/sub10/100_0.png';
-                                   }
-                                   var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
-                                   var imageOption = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
-                                   var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
-                        	   
-                        	   
-	                        	   marker = new daum.maps.Marker({
-	                                   position: new daum.maps.LatLng(schedule_data.response.body.items.item[j].mapy, schedule_data.response.body.items.item[j].mapx),
-	                                   image: markerImage
-	                               })
-	                        	   	        
-	                        	   bounds.extend(new daum.maps      .LatLng(schedule_data.response.body.items.item[j].mapy, schedule_data.response.body.items.item[j].mapx));
+                               } 
+                               else if (schedule_data.response.body.items.item[j].contenttypeid == 39) {
+                               var imageSrc = '../../img/sub10/200_0.png';
+                               }
+                               else if (schedule_data.response.body.items.item[j].contenttypeid == 38) {
+                               var imageSrc = '../../img/sub10/400_0.png';
+                               }
+                               else if (schedule_data.response.body.items.item[j].contenttypeid == 32) {
+                               var imageSrc = '../../img/sub10/100_0.png';
+                               }
+                               var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
+                               var imageOption = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+                               var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+                    	   
+                    	   
+	                     	   marker = new daum.maps.Marker({
+	                                position: new daum.maps.LatLng(schedule_data.response.body.items.item[j].mapy, schedule_data.response.body.items.item[j].mapx),
+	                                image: markerImage
+	                            });
+	                     	   marker.setMap(map);
+	                     	   
 	                        	 
 	                        	   (function(marker, title) {
 	                        		   daum.maps.event.addListener(marker, 'mouseover', function() {
@@ -506,7 +525,7 @@ function col_cal_width() {
 	                                   
 	                               })(marker, schedule_data.response.body.items.item[j].title);
 	                        	   
-						            marker.setMap(map);
+						           
 					      };
                     }
                 }
@@ -521,59 +540,52 @@ function col_cal_width() {
     }
 }
     
-    var prevClickItem = null;
-    var prevClickMarker = null;
-    var overlay;
-    var marker;
-function OverlayDelete() {
-    if (overlay != null) {
-        overlay.setMap(null);
-    } 
-}
+	function OverlayDelete() {
+	    if (overlay != null) {
+	        overlay.setMap(null);
+	    } 
+	}
     
-function markerOverlay(node) {
-	console.log(node.textContent);
-        for (var i = 0; i < schedule_data.response.body.items.item.length; i++) {
-            if (schedule_data.response.body.items.item[i].title == node.textContent) {
-            	console.log(i);
-            	console.log(schedule_data.response.body.items.item[i]);
-                if(prevClickItem != null)
-                    prevClickItem.removeClass('on');
-                prevClickItem = $(node).parent();
-                prevClickItem.addClass('on');
-                markerPoint(schedule_data.response.body.items.item[i]);
-            }
-        }
-}  
+	function markerOverlay(node) {
+		console.log(node.textContent);
+	        for (var i = 0; i < schedule_data.response.body.items.item.length; i++) {
+	            if (schedule_data.response.body.items.item[i].title == node.textContent) {
+	            	console.log(i);
+	            	console.log(schedule_data.response.body.items.item[i]);
+	                if(prevClickItem != null)
+	                    prevClickItem.removeClass('on');
+	                prevClickItem = $(node).parent();
+	                prevClickItem.addClass('on');
+	                markerPoint(schedule_data.response.body.items.item[i]);
+	            }
+	        }
+	}  
 
-function markerPoint(datas) {
-    var bounds = new daum.maps.LatLngBounds();
-    /* if (!(overlay == null)) {
-        closeOverlay(); 
-    } */
-    console.log(datas)
+	function markerPoint(datas) {
+		var bounds = new daum.maps.LatLngBounds();
+	    if (!(overlay == null)) {
+	        closeOverlay(); 
+	    }
+	    console.log(datas)
+	    
+	    bounds.extend(new daum.maps.LatLng(datas.mapy, datas.mapx));
+	    var content = '<div class="customoverlay">' +'<img src=' + datas.firstimage + '>' 
+	                    + '<div>' + datas.title + '</div>' + '</div>'
+	                    + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
+	    overlay = new daum.maps.CustomOverlay({
+	        content: content,
+	        position: new daum.maps.LatLng(datas.mapy, datas.mapx)
+	    });
+	    overlay.setMap(map);
+	    console.log(bounds);
+	    map.setBounds(bounds);
+	    map.setLevel(5);
+	}
+    function closeOverlay() {
+        overlay.setMap(null);   
+    }
     
-    bounds.extend(new daum.maps.LatLng(datas.lat, datas.lng));
-    var content = '<div class="customoverlay">' +'<img src=' + datas.img + '>' 
-                    + '<div>' + datas.title + '</div>' + '</div>'
-                    + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
-    overlay = new daum.maps.CustomOverlay({
-        content: content,
-        map: map,
-        position: new daum.maps.LatLng(datas.lat, datas.lng)
-    });
-    console.log("ccc")
-    overlay.setMap(map);
-    console.log("bbb")
-    map.setBounds(bounds);
-    console.log("aaa")
-}
-function closeOverlay() {
-    overlay.setMap(null);   
-    overlay = null;
-}
     </script>
-
 
     <script>
         function openCity(evt, cityName) {
@@ -632,98 +644,188 @@ function closeOverlay() {
         $("#myModal").on('shown.bs.modal', function (e) {
             console.log("Map Modal is shown!");
             e.preventDefault();
-            map1.relayout();
+            modal_map();
+            map.relayout();
         });
     </script>
 
     <script>
+    'use strict';
+    
+    function modal_map() {
         var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
             mapOption = {
-                center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 8 // 지도의 확대 레벨
+                center: new daum.maps.LatLng(33.350701, 126.570667), // 지도의 중심좌표
+                level: 9 // 지도의 확대 레벨
             };
 
         // 지도를 생성합니다    
-        var map1 = new daum.maps.Map(mapContainer, mapOption);
-
-        // 주소-좌표 변환 객체를 생성합니다
-        var geocoder = new daum.maps.services.Geocoder();
-
-        // 주소로 좌표를 검색합니다
-        geocoder.addressSearch('제주시 애월읍 고성리 875-2', function (result, status) {
-
-
-            // 정상적으로 검색이 완료됐으면 
-            if (status === daum.maps.services.Status.OK) {
-
-                var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-                // 결과값으로 받은 위치를 마커로 표시합니다
-                var marker = new daum.maps.Marker({
-                    map: map1,
-                    position: coords
-                });
-
-                // 인포윈도우로 장소에 대한 설명을 표시합니다
-                var infowindow = new daum.maps.InfoWindow({
-                    content: '<div style="width:150px;text-align:center;padding:6px 0;"></div>'
-                });
-                infowindow.open(map1, marker);
-
-                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                map1.setCenter(coords);
-            }
-            // 장소 검색 객체를 생성합니다
-            var ps = new daum.maps.services.Places(map1);
-            ps.categorySearch('AD5', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('AT4', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('FD6', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('CT1', placesSearchCB, {
-                useMapCenter: true
-            });
-            ps.categorySearch('CE7', placesSearchCB, {
-                useMapCenter: true
-            });
-
-
-            // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-            function placesSearchCB(data, status, pagination) {
-                if (status === daum.maps.services.Status.OK) {
-                    for (var i = 0; i < data.length; i++) {
-                        displayMarker(data[i]);
-                    }
+        console.log(schedule)
+        var map = new daum.maps.Map(mapContainer, mapOption);        
+            for (var i = 0; i < schedule.length; i++) {
+            	console.log("i:", i);
+                for (var d = 1; d < betweenDay+2; d++) {
+                    if (schedule[i].plday == d) {
+                        for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
+                               if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
+                                   schedule_data.response.body.items.item[j].mapy
+                                   schedule_data.response.body.items.item[j].mapx
+                                   if (schedule_data.response.body.items.item[j].contenttypeid == 12) {
+                                       var imageSrc = '../../img/sub10/301_0.png';
+                                   } 
+                                   else if (schedule_data.response.body.items.item[j].contenttypeid == 39) {
+                                       var imageSrc = '../../img/sub10/200_0.png';
+                                   }
+                                   else if (schedule_data.response.body.items.item[j].contenttypeid == 38) {
+                                       var imageSrc = '../../img/sub10/400_0.png';
+                                   }
+                                   else if (schedule_data.response.body.items.item[j].contenttypeid == 32) {
+                                       var imageSrc = '../../img/sub10/100_0.png';
+                                   }
+                                   var imageSize = new daum.maps.Size(45, 45); // 마커이미지의 크기입니다
+                                   var imageOption = {offset: new daum.maps.Point(20, 20)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
+                                   var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+                               
+                               
+                                   marker = new daum.maps.Marker({
+                                        position: new daum.maps.LatLng(schedule_data.response.body.items.item[j].mapy, schedule_data.response.body.items.item[j].mapx),
+                                        image: markerImage
+                                    });
+                                   marker.setMap(map);
+                                   linePath[schedule[i].plday].push(new daum.maps.LatLng(schedule_data.response.body.items.item[j].mapy, schedule_data.response.body.items.item[j].mapx));
+                                   // 지도에 표시할 선을 생성합니다
+                                  
+                                	   if ([schedule[i].plday] == 1) {
+                                		   polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                			   title: schedule_data.response.body.items.item[j].title,
+		                                       path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+		                                       strokeWeight: 5, // 선의 두께 입니다
+		                                       strokeColor: '#FFAE00', // 선의 색깔입니다
+		                                       strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+		                                       strokeStyle: 'solid' // 선의 스타일입니다
+		                                   }); 
+                                	   } else if ([schedule[i].plday] == 2) {
+                                		   polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                			   title: schedule_data.response.body.items.item[j].title,
+	                                           path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+	                                           strokeWeight: 5, // 선의 두께 입니다
+	                                           strokeColor: '#AEE810', // 선의 색깔입니다
+	                                           strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	                                           strokeStyle: 'solid' // 선의 스타일입니다
+	                                       });                                 
+                                	   } else if ([schedule[i].plday] == 3) {
+                                		   polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                			   title: schedule_data.response.body.items.item[j].title,
+                                               path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                               strokeWeight: 5, // 선의 두께 입니다
+                                               strokeColor: '#08EA2D', // 선의 색깔입니다
+                                               strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                               strokeStyle: 'solid' // 선의 스타일입니다
+                                           });                                 
+                                       } else if ([schedule[i].plday] == 4) {
+                                    	   polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                    		   title: schedule_data.response.body.items.item[j].title,
+                                               path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                               strokeWeight: 5, // 선의 두께 입니다
+                                               strokeColor: '#02D7F9', // 선의 색깔입니다
+                                               strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                               strokeStyle: 'solid' // 선의 스타일입니다
+                                           });                                 
+                                       } else {
+                                    	   polyline[schedule[i].plday] = new daum.maps.Polyline({
+                                    		   title: schedule_data.response.body.items.item[j].title,
+                                               path: linePath[schedule[i].plday], // 선을 구성하는 좌표배열 입니다
+                                               strokeWeight: 5, // 선의 두께 입니다
+                                               strokeColor: '#EE091F', // 선의 색깔입니다
+                                               strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                               strokeStyle: 'solid' // 선의 스타일입니다
+                                           });    
+                                       }
+                                		   
+                                   polyline[schedule[i].plday].setMap(map);
+                                   console.log(polyline);
+                                   (function(idx) {
+                                	   
+                                	   var saveColor;
+                                	   var saveStroke;
+                                	   daum.maps.event.addListener(polyline[schedule[idx].plday], 'mouseover', function(mouseEvent) {  
+                                		   var iwContent = "<div style='padding:5px;'>"+[schedule[idx].plday]+"일 입니다.</div>"
+                                           var infowindow = new daum.maps.InfoWindow({
+                                                content : iwContent
+                                            });
+                                		   saveColor = event.target.style.color;
+                                		   saveStroke = event.target.style.stroke;
+                                		   console.log("clicked")
+                                           console.log(event.target);
+                                		   event.target.style.stroke = '#000';
+                                		   event.target.style.color = '#000';
+                          			       var mouseX = event.pageX;
+                          			       var mouseY = event.pageY;
+                          			       $('#aa').css("left", mouseX+15).css("top", mouseY+15).html([schedule[idx].plday]+'일차 입니다.')[0].style.display='block';
+                                          /*  event.target.xc[0].style.color='#000';
+                                        event.target.xc[0].style.stroke='#000';   */
+                                		});
+                                	   
+                                	   daum.maps.event.addListener(polyline[schedule[idx].plday], 'mouseout', function(mouseEvent) { 
+                                		   console.log("clicked//")
+                                		    var latlng = mouseEvent.latLng;
+                                		    event.target.style.stroke = saveStroke;
+                                		    event.target.style.color = saveColor;
+                                		    console.log(latlng.toString());    
+                                            console.log($('#aa'))
+                                            $('#aa')[0].style.display='none';
+                                		}); 
+                                	   /* daum.maps.event.addListener(polyline[schedule[idx].plday], 'poly_click', function(event) {
+                                		   console.log("clicked")
+                                		   console.log(event.target);
+                               			   event.target.xc[0].style.color='#000';
+                               			event.target.xc[0].style.stroke='#000';
+                                		   
+                                       });   
+	                                	// original click event
+	                                	daum.maps.event.addListener(polyline[schedule[idx].plday], 'click', function(event) {
+	                                	    // dispatch custom event 'poly_click'
+	                                	    
+	                                	    daum.maps.event.trigger(polyline[schedule[idx].plday], 'poly_click', {
+	                                	        id: 'polyne1',
+	                                	        target: polyline[schedule[idx].plday]
+	                                	    });
+	                                	}); */
                                     }
+                                   )(i);
+                                    
+
+                                   
+                                   
+                                       (function(marker, title) {
+                                           daum.maps.event.addListener(marker, 'mouseover', function() {
+                                                displayInfowindow(marker, title);
+                                            });
+
+                                           daum.maps.event.addListener(marker, 'mouseout', function() {
+                                                infowindow.close();
+                                            });
+                                           
+                                       })(marker, schedule_data.response.body.items.item[j].title);
+                                       
+                                       
+                              };
+                        }
+                    }
+                }
             }
-
-            // 지도에 마커를 표시하는 함수입니다
-            function displayMarker(place) {
-                // 마커를 생성하고 지도에 표시합니다
-                var marker = new daum.maps.Marker({
-                    map: map1,
-                    position: new daum.maps.LatLng(place.y, place.x)
-                });
-
-                // 마커에 클릭이벤트를 등록합니다
-                daum.maps.event.addListener(marker, 'click', function () {
-                    // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-                    infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name +
-                        '</div>');
-                    infowindow.open(map1, marker);
-
-                });
-            }
-        });
-
+            
+        function displayInfowindow(marker, title) {
+            var content = '<div style="text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
+            
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+        }
+        
+    }
         function relayout() {
         	console.log("relayout");
         	map.relayout();
-            map1.relayout();
         }
         
         $(document).scroll(function () {
