@@ -311,16 +311,16 @@
 			var recoNum = $('#b-reco');
 
 			$.ajax({
-				url : serverRoot + "/json/accompanyregi/recent",
+				url : serverRoot + "/json/planner/",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(main) {
 					console.log(main)
 					//$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
-					$(sDay).append(main.sDate);
-					$(eDay).append(main.eDate);
-					$(partner).append(main.mWithNum);
-					$(theme).append(main.mTem);
+					$(sDay).append(main.startDate);
+					$(eDay).append(main.endDate);
+					$(partner).append(main.num);
+					$(theme).append(main.theme);
 					//$(hits).append(data[10]./*프로퍼티 뭐로하냐*/);
 					//$(recoNum).append(data[10]./*프로퍼티명 뭐로하냐*/);
 					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
