@@ -11,25 +11,22 @@
     <meta property="og:title" content="탐라는제주">
     <meta property="og:type" content="website">
     <meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
+    <!-- google 로그인-->
+    <meta name="google-signin-client_id" content="83175317661-drvsnkq8f9lr8t774t0v04if9k21pot9.apps.googleusercontent.com">
     <!-- font -->
     <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- css -->
+    <link rel="stylesheet" href="node_modules/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- js -->
-    <script src="js/common/jquery-3.3.1.min.js"></script>
-    <script src="js/common/jquery-ui.min.js"></script>
-    <!-- form-->
-    <!-- <link href="node_modules/formstone/dist/css/checkbox.css" rel="stylesheet">
-    <script src="/components/formstone/dist/js/component.js"></script> -->
+    <link rel="stylesheet" href="css/main.css" />
 </head>
-<!-- <link href="/components/formstone/dist/css/component.css" rel="stylesheet"> -->
 
 <body>
 
@@ -1169,42 +1166,98 @@
             <!-- user_profile end -->
 
 
-            <div id="travelmate_schedule">
-                <ul>
+            <div id="travelmate_schedule" class="clear">
+                <ul class="clear">
                     <li>
-                        <b>01</b>
-                        <span>우도</span>
+                        <a href="#">
+                            <b>01</b>
+                            <span>우도</span>
+                        </a>
                     </li>
                     <li>
-                        <b>02</b>
-                        <span>한라산</span>
+                        <a href="#">
+                            <b>02</b>
+                            <span>한라산</span>
+                        </a>
                     </li>
                     <li>
-                        <b>03</b>
-                        <span>카멜리아힐</span>
+                        <a href="#">
+                            <b>03</b>
+                            <span>카멜리아힐</span>
+                        </a>
                     </li>
                     <li>
-                        <b>04</b>
-                        <span>협제해수욕장</span>
+                        <a href="#">
+                            <b>04</b>
+                            <span>협제해수욕장</span>
+                        </a>
                     </li>
                     <li>
-                        <b>05</b>
-                        <span>성산일출봉 (UNESCO 세계자연유산)</span>
+                        <a href="#">
+                            <b>05</b>
+                            <span>성산일출봉 (UNESCO 세계자연유산)</span>
+                        </a>
                     </li>
                     <li>
-                        <b>06</b>
-                        <span>함덕해수욕장</span>
+                        <a href="#">
+                            <b>06</b>
+                            <span>함덕해수욕장</span>
+                        </a>
                     </li>
                     <li>
-                        <b>07</b>
-                        <span>월정리해변</span>
+                        <a href="#">
+                            <b>07</b>
+                            <span>월정리해변</span>
+                        </a>
                     </li>
                     <li>
-                        <b>08</b>
-                        <span>협재해수욕장</span>
+                        <a href="#">
+                            <b>08</b>
+                            <span>협재해수욕장</span>
+                        </a>
                     </li>
                 </ul>
             </div>
+            <!-- travelmate_schedule end -->
+
+
+
+            <!-- <div id="travelmate_schedule" class="clear">
+                <ul class="clear">
+                    <li>
+                        <a href="#">
+                            <b>01</b>
+                            <span>우도</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <b>02</b>
+                            <span>한라산</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <b>03</b>
+                            <span>카멜리아힐</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <b>04</b>
+                            <span>협제해수욕장</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <b>05</b>
+                            <span>성산일출봉 (UNESCO 세계자연유산)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- travelmate_schedule end -->
+
 
 
 
@@ -1272,6 +1325,102 @@ user_profile - 유저정보 UI
             color: #57b4ff;
             font-size: 15px;
         }
+
+
+        /**************************************************************************************
+travelmate_schedule - 동행일정
+**************************************************************************************/
+
+        #travelmate_schedule {
+            background: #57b4ff;
+            /* overflow: hidden; */
+            /* padding: 0 5%; */
+            margin:5% 0;
+            padding:5% 0;
+        }
+
+        #travelmate_schedule ul {
+            padding:0 10%;
+            position: relative;
+        }
+
+
+
+        #travelmate_schedule ul button {
+            position: absolute;
+            top:50%;
+            margin-top:-45px;
+            width:85px;
+            height: 77px;
+            font-size:0;
+            line-height:0;
+            text-indent:-9999px;
+        }
+
+        #travelmate_schedule ul .slick-prev {
+            left:0;
+            background: url('img/common/course_prev.png')no-repeat;
+        }
+
+        #travelmate_schedule ul .slick-next {
+            right:0;
+            background: url('img/common/course_next.png')no-repeat;
+        }
+
+
+
+        #travelmate_schedule ul li {
+            position: relative;
+            float: left;
+            width: 16.66%;
+            margin:0 20px;
+            text-align: center;
+        }
+
+
+
+
+        #travelmate_schedule li::after {
+            content: "";
+            position: absolute;
+            display: block;
+            left: 0;
+            right: -1px;
+            top: 60px;
+            height: 1px;
+            background: #fff;
+        }
+
+
+
+        #travelmate_schedule ul li a {
+            color: #fff;
+
+
+        }
+
+        #travelmate_schedule ul li b {
+            display: block;
+            padding-right: 4px;
+            margin: 5px auto 30px;
+            width: 39px;
+            height: 39px;
+            background: #104ba0;
+            border-radius: 50%;
+            line-height: 39px;
+            font-style: italic;
+        }
+
+
+
+        #travelmate_schedule ul li span {
+            display: block;
+			text-align: center;
+			overflow: hidden;
+			white-space: nowrap;
+			word-wrap: break-word;
+			text-overflow: ellipsis;
+        }
     </style>
 
 
@@ -1279,6 +1428,30 @@ user_profile - 유저정보 UI
 
 
     <footer id="footer"></footer>
+
+
+
+
+    <!-- js -->
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/slick-carousel/slick/slick.min.js"></script>
+    <script src="js/common/common.js"></script>
+
+    <script src="node_modules/slick-carousel/slick/slick.min.js"></script>
+    <script>
+        $('#travelmate_schedule ul').slick({
+            slidesToShow: 5
+        });
+    </script>
+
+
+
+
+
+
+
     <script>
         $(document).ready(function () {
             $("#header").load("html/include/main_header.html")
