@@ -533,7 +533,7 @@ var map = new daum.maps.Map(mapContainer, mapOption);
         }
         
     function displayInfowindow(marker, title) {
-        var content = '<div style="text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
+        var content = '<div style="background-color: #4CAF50;color: white;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
         
         infowindow.setContent(content);
         infowindow.open(map, marker);
