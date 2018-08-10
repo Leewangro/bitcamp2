@@ -201,6 +201,9 @@
 
                 <div id="travel_cont"></div>
 
+                <!-- 라이브리 시티 설치 코드 -->
+                    <div id="lv-container" data-id="city"
+                    data-uid="MTAyMC8zNzk5NC8xNDUyNA=="></div>
             </div>
         </div>
     </div>
@@ -222,6 +225,23 @@
     <!-- 카카오로그인 -->
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="../../js/common/common.js"></script>
+    <!-- 시티라이브리 -->
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') {
+                return;
+            }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <!-- 시티 설치 코드 끝 -->
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -634,7 +654,7 @@
                             var content = $('.t_timeline').height();
                             if ($(window).scrollTop() > container - content -
                                 75) {
-                                if ($(window).scrollTop() > content + 144) {
+                                if ($(window).scrollTop() > content - 360) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
                                     return;

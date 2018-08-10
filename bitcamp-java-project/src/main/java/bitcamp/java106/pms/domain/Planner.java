@@ -12,6 +12,7 @@ public class Planner implements Serializable {
     private int num; // 인원
     private String people; // 일행
     private String theme; // 테마
+    private String title;
     
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startDate; // 시작일
@@ -21,9 +22,21 @@ public class Planner implements Serializable {
 
     
 
+
     @Override
     public String toString() {
-        return "Planner [no=" + no + ", num=" + num + ", people=" + people + ", theme=" + theme + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+        return "Planner [no=" + no + ", num=" + num + ", people=" + people + ", theme=" + theme + ", title=" + title
+                + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getNo() {
