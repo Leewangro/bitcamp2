@@ -33,19 +33,19 @@ public class SNSMemberServiceImpl implements SNSMemberService {
     }
     
     @Override
-    public int add(SNSMember SnsMember) {
-        return SnsMemberDao.insert(SnsMember);
+    public void add(SNSMember SnsMember) {
+        SnsMemberDao.insert(SnsMember);
     }
     
-    @Override
-    public int update(SNSMember SnsMember) {
-        return SnsMemberDao.update(SnsMember);
-    }
+    // @Override
+    // public void update(SNSMember SnsMember) {
+    //     SnsMemberDao.update(SnsMember);
+    // }
     
-    @Override
-    public int delete(String id) {
-        return SnsMemberDao.delete(id);
-    }
+    // @Override
+    // public String delete(String id) {
+    //     return SnsMemberDao.delete(id);
+    // }
 }
 
 //ver 53 - 클래스 추가

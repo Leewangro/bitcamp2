@@ -5,9 +5,9 @@ import java.util.Map;
 import bitcamp.java106.pms.domain.SNSMember;
 
 public interface SNSMemberDao {
-    int delete(String id);
-    int insert(SNSMember SnsMember);
-    int update(SNSMember SnsMember);
+    String delete(String id);
+    void insert(SNSMember SnsMember);
+    String update(SNSMember SnsMember);
     SNSMember selectOne(String id);
     int count(Map<String,Object> params);
 }

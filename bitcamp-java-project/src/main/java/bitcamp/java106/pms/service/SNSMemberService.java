@@ -8,9 +8,9 @@ public interface SNSMemberService {
     // 업무 용어를 사용하라!
     SNSMember get(String id);
     boolean isExist(String id, String password);
-    int add(SNSMember SnsMember);
-    int update(SNSMember SnsMember);
-    int delete(String id);
+    void add(SNSMember SnsMember);
+    // void update(SNSMember SnsMember);
+    // String delete(String id);
 }
 
 //ver 53 - 인터페이스 추가

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import bitcamp.java106.pms.domain.SNSMember;
 import bitcamp.java106.pms.service.SNSMemberService;
 
-@Controller
+@RestController
 @RequestMapping("/member")
 public class SNSMemberController {
 
@@ -20,36 +20,25 @@ public class SNSMemberController {
         this.SnsMemberService = SnsMemberService;
     }
     
-    @RequestMapping("form")
-    public void form() {
-    }
-    
     @RequestMapping("add")
-    public String add(SNSMember SnsMember) throws Exception {
-          
+    public void add(SNSMember SnsMember) throws Exception {
         SnsMemberService.add(SnsMember);
-        return "redirect:list";
     }
     
-    @RequestMapping("delete")
-    public String delete(@RequestParam("id") String id) throws Exception {
+    // @RequestMapping("delete")
+    // public String delete(@RequestParam("id") String id) throws Exception {
         
-        int count = SnsMemberService.delete(id);
-        if (count == 0) {
-            throw new Exception("해당 회원이 없습니다.");
-        }
-        return "redirect:list";
-    }
+    //     int count = SnsMemberService.delete(id);
+    //     if (count == 0) {
+    //         throw new Exception("해당 회원이 없습니다.");
+    //     }
+    //     return "redirect:list";
+    // }
     
-    @RequestMapping("update")
-    public String update(SNSMember SnsMember) throws Exception {
-        
-        int count = SnsMemberService.update(SnsMember);
-        if (count == 0) {
-            throw new Exception("해당 회원이 존재하지 않습니다.");
-        }
-        return "redirect:list";
-    }
+    // @RequestMapping("update")
+    // public void update(SNSMember SnsMember) throws Exception {
+    //     SnsMemberService.update(SnsMember);
+    // }
     
     @RequestMapping("{id}")
     public String view(

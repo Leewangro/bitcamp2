@@ -3,45 +3,40 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="bitcamp.java106.pms.dao.MemberDao">
+<mapper namespace="bitcamp.java106.pms.dao.SNSMemberDao">
 
-  <resultMap type="Member" id="MemberMap">
-    <id column="mid" property="id"/>
-    <result column="email" property="email"/>
-    <result column="name" property="userName"/>
-    <result column="proImg" property="profileImg"/>
-    <result column="jender" property="jender"/>
+  <resultMap type="SNSMember" id="SNSMemberMap">
+    <id column="MID" property="id"/>
+    <result column="EMAIL" property="email"/>
+    <result column="NAME" property="userName"/>
+    <result column="PIMG" property="profileImg"/>
+    <result column="GEN" property="gender"/>
+    <result column="HP" property="phone"/>
   </resultMap>
   
-  <insert id="insert" parameterType="Member">
-    insert into pms2_member(mid,email,name,proImg,jender) 
-    values(#{id},#{email},#{userName},#{profileImg},#{jender})
+  <insert id="insert" parameterType="SNSMember">
+    insert into TAMLA_MEMBER(MID,NAME,EMAIL,PIMG,GEN,HP) 
+    values(#{id},#{email},#{userName},#{profileImg},#{gender},#{phone})
   </insert>
   
-  <select id="selectOne" parameterType="String" resultMap="MemberMap">
-    select mid, email, name, proImg, jender 
-    from pms2_member 
-    where mid=#{value}
+  <select id="selectOne" parameterType="String" resultMap="SNSMemberMap">
+    select MID, NAME, EMAIL, PIMG, GEN, HP
+    from TAMLA_MEMBER 
+    where MID=#{value}
   </select>
   
-  <select id="count" parameterType="map" resultType="int">
-    select count(*) 
-    from pms2_member 
-    where mid=#{id} and email=email(#{email})
-  </select>
+<!--   <update id="update" parameterType="SNSMember">
+    update TAMLA_MEMBER set 
+        EMAIL=#{email},
+        PIMG=#{profileImg}, 
+        GEN=#{gender},
+        HP=#{phone},
+    where MID=#{id}
+  </update> -->
   
-  <update id="update" parameterType="Member">
-    update pms2_member set 
-        email=#{email}, 
-        name=#{userName},
-        jender=#{jender},
-        proImg=#{profileImg} 
-    where mid=#{id}
-  </update>
-  
-  <delete id="delete" parameterType="String">
-    delete from pms2_member where mid=#{value}
-  </delete>
+  <!-- <delete id="delete" parameterType="String">
+    delete from TAMLA_MEMBER where MID=#{value}
+  </delete> -->
 </mapper>
 
 

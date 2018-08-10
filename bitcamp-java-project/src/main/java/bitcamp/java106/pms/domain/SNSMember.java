@@ -2,6 +2,10 @@ package bitcamp.java106.pms.domain;
 
 import java.io.Serializable;
 
+/**
+ * @author Bit
+ *
+ */
 public class SNSMember implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -9,7 +13,8 @@ public class SNSMember implements Serializable {
     private String email;
     private String userName;
     private String profileImg;
-    private String jender;
+    private int gender;
+    private int phone;
     
     
     @Override
@@ -28,46 +33,75 @@ public class SNSMember implements Serializable {
             return false;
         return true;
     }
+
+
     public String getId() {
         return id;
     }
-    public SNSMember setId(String id) {
+
+
+    public void setId(String id) {
         this.id = id;
-        return this;
     }
+
+
     public String getEmail() {
         return email;
     }
-    public SNSMember setEmail(String email) {
+
+
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
+
+
     public String getUserName() {
         return userName;
     }
-    public SNSMember setUserName(String userName) {
+
+
+    public void setUserName(String userName) {
         this.userName = userName;
-        return this;
     }
+
+
     public String getProfileImg() {
         return profileImg;
     }
-    public SNSMember setProfileImg(String profileImg) {
+
+
+    public void setProfileImg(String profileImg) {
         this.profileImg = profileImg;
-        return this;
     }
-    public String getJender() {
-        return jender;
+
+
+    public int getGender() {
+        return gender;
     }
-    public SNSMember setJender(String jender) {
-        this.jender = jender;
-        return this;
+
+
+    public void setGender(int gender) {
+        this.gender = gender;
     }
+
+
+    public int getPhone() {
+        return phone;
+    }
+
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+
     @Override
     public String toString() {
         return "SNSMember [id=" + id + ", email=" + email + ", userName=" + userName + ", profileImg=" + profileImg
-                + ", jender=" + jender + "]";
+                + ", gender=" + gender + ", phone=" + phone + "]";
     }
+
+    
     
     
 }
