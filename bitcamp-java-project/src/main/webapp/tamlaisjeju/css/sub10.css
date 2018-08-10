@@ -3,7 +3,7 @@
 #sub10_planner_header {
 	height: 85px;
 	width: 100%;
-	min-width: 1300px;
+	min-width: 1500px;
 	float: left;
 }
 
@@ -38,6 +38,31 @@
 	float: left;
 	margin-left: 100px;
 }
+
+#sub10_planner_header .myTopnav .planner_set .planner_title {
+    float: left;
+    width: 200px;
+    height: 65px;
+    line-height: 65px;
+    border-right: solid #ebebeb 1px;
+    text-align: center;
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#sub10_planner_header .myTopnav .planner_set .planner_title input {
+    float: left;
+    width: 190px;
+    height: 65px;
+    line-height: 62px;
+    border: 0;
+    text-align: right;
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 #sub10_planner_header .myTopnav .planner_set .people {
 	float: left;
@@ -290,14 +315,19 @@
 	float: left;
 	margin-bottom: 10px;
 	z-index: 10;
+	display: block;
 }
 
 #sub10 .plan .plan_cover .plan_box .plan_cont {
 	color: white;
 	font-size: 14px;
 	font-weight: bold;
-	float: left;
 	z-index: 10;
+}
+
+#hashTag .hashTagCont {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 #sub10 .plan .plan_cover .share_box {
@@ -2158,7 +2188,7 @@ hashtag --> /* hashTag */ button:focus {
 
 .animated #tag_box {
 	float: left;
-	width: 150px;
+	width: 180px;
 }
 
 #enter:active {

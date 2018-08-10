@@ -32,6 +32,9 @@
                         <a href="../../index.html">탐라는 제주</a>
                     </h1>
                     <div class="planner_set">
+                        <div class="planner_title">
+                            <input type="text" id="pl_title" placeholder="제목을 입력하세요">
+                        </div>
                         <div class="people">
                             <input type="text" id="num" placeholder="인원을 입력하세요">명
                         </div>
@@ -74,7 +77,7 @@
                         
                     </div>
                     <div class="plan_out">
-                        <div class="plan_out_btn" onclick="chkValue()">저장&amp;닫기
+                        <div class="plan_out_btn">저장&amp;닫기
                         </div>
                         
                     </div>
@@ -1381,179 +1384,53 @@ $('#category > li').click(function() {
         </script>
         
 <script>
-function chkValue() {
-    // 공통입력폼내의 모든 입력오브젝트
-    var numObjs = $("#num");
-    var peopleObjs = $("#people");
-    var themaObjs = $("#thema");
-    var datefilterObjs = $("#datefilter");
-    var tagBox = $('#tag_box').children().length
-    // 미입력여부(경우에 따라 사용)
-    var bEmpty = true;
-    var focus;
-
-    numObjs.each(function (index) {
-        if ($(this).val() == '') {
-            focus = $(this);
-            bEmpty = false;
-
-            swal({
-                type: 'error',
-                title: $(this).attr('title') + "는 필수 입력사항입니다.",
-                showConfirmButton: false,
-                customClass: 'animated tada',
-                animation: false,
-                timer: 1000
-            })
-            setTimeout(function(){
-                focus.focus();
-            },1100)
-            return false;
-        }
-    });
-    if (!bEmpty) return;
-
-    // 각 오브젝트에 대해 입력체크
-    peopleObjs.each(function (index) {
-        if ($(this).val() == '') {
-            focus = $(this);
-            bEmpty = false;
-
-            swal({
-                type: 'error',
-                title: $(this).attr('title') + "는 필수 입력사항입니다.",
-                showConfirmButton: false,
-                customClass: 'animated tada',
-                animation: false,
-                timer: 1000
-            })
-            setTimeout(function(){
-                focus.focus();
-            },1100)
-            return false;
-        }
-    });
-    if (!bEmpty) return;
-
-    themaObjs.each(function (index) {
-        if ($(this).val() == '') {
-            focus = $(this);
-            bEmpty = false;
-
-            swal({
-                type: 'error',
-                title: $(this).attr('title') + "는 필수 입력사항입니다.",
-                showConfirmButton: false,
-                customClass: 'animated tada',
-                animation: false,
-                timer: 1000
-            })
-
-            setTimeout(function () {
-                focus.focus();
-            }, 1100)
-
-            // 여기서는 each문을 탈출
-            return false;
-        }
-    });
-
-    // 필수입력사항에 누락이 있으면 진행금지
-    if (!bEmpty) return;
-
-    datefilterObjs.each(function (index) {
-        if ($(this).val() == '') {
-            focus = $(this);
-            bEmpty = false;
-
-            swal({
-                type: 'error',
-                title: $(this).attr('title') + "는 필수 입력사항입니다.",
-                showConfirmButton: false,
-                customClass: 'animated tada',
-                animation: false,
-                timer: 1000
-            })
-            setTimeout(function () {
-                focus.focus();
-            }, 1100)
-
-            // 여기서는 each문을 탈출
-            return false;
-        }
-    });
-    if (!bEmpty) return;
-
-    if (tagBox < 1) {
-        swal({
-            type: 'error',
-            title: $('#tag_box').attr('title') + "은 필수입력사항입니다.",
-            showConfirmButton: false,
-            customClass: 'animated tada',
-            animation: false,
-            timer: 1000
-        })
-        setTimeout(function () {
-            $('#input').focus();
-        }, 1100)
-        bEmpty = false;
-    }
-    if (!bEmpty) return;
-
-    submits();
-}
-async function submits() {
-    /**********************************************
-발행스크립트
-***********************************************/
-
-    const {
-        value: day
-    } = await swal({
-        title: '잠깐! 누구와 함께 다녀왔나요?',
-        input: 'select',
-        inputOptions: {
-            '1': '혼자',
-            '2': '부모님',
-            '3': '아이',
-            '4': '커플',
-            '5': '친구',
-            '6': '단체'
-        },
-        inputPlaceholder: '일행',
-        showCancelButton: true,
-        inputValidator: (value) => {
-
-        }
-    })
-    if (day) {
-        setTimeout(() => {
-            swal("저장되었습니다.")
-        }, 2000)
-    }
-}
-// 게시글 모두삭제버튼
 /* TAMLA_PLAN(SDT,EDT,PATA,PART,THEMA) <!-- 회원번호 추가 필요 MNO -->
 values(#{startDate},#{endDate},#{num},#{people},#{theme}) */
+/* <div class="planner_title">
+<input type="text" id="pl_title" placeholder="제목을 입력하세요">
+</div> */
+
 var createPlanIndex = null;
 $('.plan_out_btn')
         .click( function() {
-                    var param = {
+            var param = {
+                    title : $("#pl_title")[0].value
+               };
+               $.ajax({
+                   type : "POST",
+                   url : serverRoot + "/json/content/add",
+                   data : param,
+                   async: false,
+                   success : function(data) {
+                       createPlanIndex = data;
+                       pl_data();
+                   },
+                   error : function(data) {
+                       alert("빈 칸을 채워주세요.");
+                   }
+
+               });
+               
+   });
+        		
+        		function pl_data() {
+                    var param1 = {
                 		 startDate : $('#datefilter').val().split(" - ")[0].split("/")[0]+"-"+$('#datefilter').val().split(" - ")[0].split("/")[1]+"-"+$('#datefilter').val().split(" - ")[0].split("/")[2],
                 		 endDate : $('#datefilter').val().split(" - ")[1].split("/")[0]+"-"+$('#datefilter').val().split(" - ")[1].split("/")[1]+"-"+$('#datefilter').val().split(" - ")[1].split("/")[2],
                 		 num : $('#num').val(),
                 		 people : $('#people .select-selected')[0].textContent,
                 		 theme : $("#thema .select-selected")[0].textContent,
+                		 no : createPlanIndex
                     };
                     $.ajax({
                         type : "POST",
                         url : serverRoot + "/json/planner/add",
-                        data : param,
+                        data : param1,
                         async: false,
                         success : function(data) {
-                        	createPlanIndex = data;
-                            aaa();
-                            location.href = "planner_view.html?"+ data;
+                        	sch_data();
+                        	hash_data()
+                        	/* location.href = "planner_view.html?"+ createPlanIndex; */
                         },
                         error : function(data) {
                             alert("빈 칸을 채워주세요.");
@@ -1561,11 +1438,8 @@ $('.plan_out_btn')
 
                     });
                     
-        });
-				 function aaa() {
-				    var param1 = {
-				    		
-				    };  
+        };
+				 function sch_data() {
 			    		for (let p = 0; p < $('.schedule_full .item').length; p++) {
 			    			let obj = {};
 			    			obj.tno = $('.schedule_full .item')[p].children[1].children[2].childNodes[0].textContent;
@@ -1573,7 +1447,7 @@ $('.plan_out_btn')
 			    			obj.memo = $('.schedule_full .item')[p].children[3].value;
 			    			obj.pltime = $('.schedule_full .item')[p].parentElement.children[1].textContent.replace(/[^0-9]/g,"");
 			    			obj.plday = $('.schedule_full .item')[p].parentElement.parentElement.parentElement.children[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].textContent.substr(3,3)
-                            obj.plno = createPlanIndex
+                            obj.plno = createPlanIndex;
 				    	    
 		    				/* tno : $('.schedule_full .item')[p].children[1].children[2].childNodes[0].textContent
 				    	    memo : $('.schedule_full .item')[p].children[3].value
@@ -1586,6 +1460,7 @@ $('.plan_out_btn')
                                 data : obj,
                                 async: false,
                                 success : function(data) {
+                                	
                                 },
                                 error : function(data) {
                                     alert("빈 칸을 채워주세요.");
@@ -1593,11 +1468,28 @@ $('.plan_out_btn')
                         
                             });
 			    		};
-				    console.log(param1);
-				    
-
-				    
 				};
+				function hash_data() {
+					console.log(createPlanIndex);
+                    for (var h = 0; h < $('#tag_box .items').length; h++) {
+                        let hash = {};
+                        
+                        hash.cno = createPlanIndex;
+                        hash.content = $('#tag_box .items')[h].textContent.split("X")[0];
+                        $.ajax({
+                            type : "POST",
+                            url : serverRoot + "/json/hashTag/add",
+                            data : hash,
+                            async: false,
+                            success : function(data) {
+                            },
+                            error : function(data) {
+                                alert("빈 칸을 채워주세요.");
+                            }
+                    
+                        });
+                    };
+            };
 
 </script>
 

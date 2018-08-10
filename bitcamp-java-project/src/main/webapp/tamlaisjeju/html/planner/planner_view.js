@@ -13,3 +13,21 @@ $.getJSON(serverRoot+"/json/planner/"+link, (data) => {
        $(trHTML).appendTo('#tableBody');
        dayCal();
 });
+
+$.getJSON(serverRoot + "/json/content/"+link, (data2) => {
+	console.log(data2);
+    $('.plan_title')[0].textContent = data2.title
+});
+
+$.getJSON(serverRoot + "/json/hashTag/"+link, (data3) => {
+	console.log(data3);
+	for (var h = 0; h < data3.length; h++) {
+	$('#hashTag').append(
+			"<div class='hashTagCont'>"+data3[h].content+"</div>"
+			)
+	}
+			/*	
+	$('#thema')append(
+			"<li class='plan_cont clear'>태그: {{memo}}</li>)
+	}*/
+});

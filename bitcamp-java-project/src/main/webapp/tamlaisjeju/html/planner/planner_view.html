@@ -54,6 +54,7 @@
                     </div>
                     <ul class="plan_box">
                         <li class="plan_title">xxxx 여행</li>
+                        <li class="clear"></li>
                         <li id="tableBody"></li>
 
                     </ul>
@@ -252,11 +253,11 @@
     </script>
 
     <script id="tr-template" type="text/x-handlebars-template">
-        <li class="plan_cont clear">출발일: {{startDate}} ~ 도착일:{{endDate}}</li>
-        <li class="plan_cont clear">인원: {{num}}</li>
-        <li class="plan_cont clear">일행: {{people}}</li>
-        <li class="plan_cont clear">테마: {{theme}}</li>
-        <li class="plan_cont clear">태그: {{memo}}</li>
+        <li class="plan_cont">출발일: {{startDate}} ~ 도착일:{{endDate}}</li>
+        <li class="plan_cont">인원: {{num}}</li>
+        <li class="plan_cont">일행: {{people}}</li>
+        <li class="plan_cont">테마: {{theme}}</li>
+        <li class="plan_cont" id="hashTag">태그: </li>
     </script>
 
 
@@ -476,7 +477,7 @@
         }
         
     function displayInfowindow(marker, title) {
-        var content = '<div style="background-color: #4CAF50;color: white;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
+        var content = '<div style="background-color:#4CAF50;color: white;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
         
         infowindow.setContent(content);
         infowindow.open(map, marker);
@@ -542,7 +543,7 @@
         var mapContainer = document.getElementById('map1'), // 지도를 표시할 div  
             mapOption = {
                 center: new daum.maps.LatLng(33.38003512348535, 126.63019113977133), // 지도의 중심좌표
-                level: 9 // 지도의 확대 레벨
+                level: 10 // 지도의 확대 레벨
             };
         var map = new daum.maps.Map(mapContainer, mapOption);
 
@@ -650,7 +651,7 @@
             overlay.setMap(map);
             console.log(bounds);
             map.setBounds(bounds);
-            map.setLevel(5);
+            map.setLevel(8);
         }
 
         function closeOverlay() {

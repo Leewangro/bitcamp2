@@ -13,18 +13,18 @@ public class Planner implements Serializable {
     private String people; // 일행
     private String theme; // 테마
     
-    @Override
-    public String toString() {
-        return "Planner [no=" + no + ", num=" + num + ", people=" + people + ", theme=" + theme + ", startDate="
-                + startDate + ", endDate=" + endDate + "]";
-    }
-
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startDate; // 시작일
     
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date endDate;   // 종료일
 
+    
+
+    @Override
+    public String toString() {
+        return "Planner [no=" + no + ", num=" + num + ", people=" + people + ", theme=" + theme + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+    }
 
     public int getNo() {
         return no;
