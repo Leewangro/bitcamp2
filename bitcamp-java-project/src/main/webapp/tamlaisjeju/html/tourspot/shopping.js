@@ -25,7 +25,7 @@ var parsing = {
                 var InfoElements =
                     "<div class='box'>" +
                     "<div class='img_area'>" +
-                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
+                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
                     "<span class='category'>쇼핑</span>" +
                     "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
@@ -35,7 +35,7 @@ var parsing = {
 
 
                     "<div class='box_cont_area'>" +
-                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
+                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
 
                     "<b>" + item.title + "</b>" +
 

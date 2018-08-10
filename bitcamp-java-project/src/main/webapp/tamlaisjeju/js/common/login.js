@@ -36,9 +36,6 @@ app.get('/fail', function(req,res){
 
 app.get('/logout', function(req, res){
     req.logout();
-    request('http://localhost:8888/bitcamp-java-project/auth/logout')
-    console.log('로그아웃완료');
-    res.redirect('http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html');
 });
 
 app.get('/auth', function(req, res) {
@@ -91,6 +88,7 @@ app.get('/auth/facebook/callback',
         request(`http://localhost:8888/bitcamp-java-project/json/auth/facebookLogin?accessToken=${fbAccessToken}`,{ json: true }, (err, resp, body) => {
             console.log("8888 서버에서 응답이 왔음!")
             if (body.status === "success") {
+                console.log(body);
                 res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");

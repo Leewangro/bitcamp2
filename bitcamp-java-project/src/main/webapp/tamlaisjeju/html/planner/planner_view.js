@@ -1,19 +1,17 @@
-var link = document.location.href.split("?")[1];
-console.log(link);
-var viewDate = null;
+
+
 //템플릿 엔진이 사용할 템플릿 데이터 가져오기
 var trTemplateSrc = $("#tr-template").html();
 
 // 위에서 준비한 템플릿 데이터를 가지고 HTML을 생성할 템플릿 엔진 준비
 var templateFn = Handlebars.compile(trTemplateSrc);
 
-$.getJSON(serverRoot+"/json/planner/"+link, (data) => {
-	   viewDate = data;
-	   trHTML = templateFn(data);
+$.getJSON(serverRoot+"/json/planner/5", (data) => {
+	   var trHTML = templateFn(data);
        $(trHTML).appendTo('#tableBody');
-       dayCal();
 });
 
+<<<<<<< HEAD
 $.getJSON(serverRoot + "/json/content/"+link, (data2) => {
 	console.log(data2);
     $('.plan_title')[0].textContent = data2.title
@@ -31,3 +29,5 @@ $.getJSON(serverRoot + "/json/hashTag/"+link, (data3) => {
 			"<li class='plan_cont clear'>태그: {{memo}}</li>)
 	}*/
 });
+=======
+>>>>>>> 1b30c243abe2646bee4b48b152ad4924d35c6226
