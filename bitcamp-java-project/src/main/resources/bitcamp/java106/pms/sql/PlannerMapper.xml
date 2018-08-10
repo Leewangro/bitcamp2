@@ -18,11 +18,7 @@
     <result column="PATA" property="num"/>
     <result column="PART" property="people"/>
     <result column="THEMA" property="theme"/>
-    
-<!--     <result column="HASHTAG" property="tag"/>
-    <result column="TIME" property="pltime"/>
-    <result column="MEMO" property="memo"/>
-    <result column="TNO" property="tno"/> -->
+    <result column="TITL" property="title"/>
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -50,6 +46,15 @@
    where TP.PLNO=#{no}
   </select>
   
+  
+   <select id="selectList" resultMap="PlannerMap"
+       parameterType="map">
+	   SELECT TP.PLNO, TP.SDT, TP.EDT, TP.PATA, TP.PART, TP.THEMA, C.CNO, C.TITL
+	   FROM TAMLA_PLAN TP
+	   left join TAMLA_CONTENT C on TP.PLNO = C.CNO
+ 
+       <!-- order by no desc limit #{startRowNo}, #{pageSize} -->
+   </select>
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
