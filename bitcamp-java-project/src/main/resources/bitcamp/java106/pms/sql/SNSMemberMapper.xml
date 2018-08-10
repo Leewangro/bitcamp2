@@ -8,7 +8,7 @@
   <resultMap type="SNSMember" id="SNSMemberMap">
     <id column="MID" property="id"/>
     <result column="EMAIL" property="email"/>
-    <result column="NAME" property="userName"/>
+    <result column="NAME" property="name"/>
     <result column="PIMG" property="profileImg"/>
     <result column="GEN" property="gender"/>
     <result column="HP" property="phone"/>
@@ -16,13 +16,13 @@
   
   <insert id="insert" parameterType="SNSMember">
     insert into TAMLA_MEMBER(MID,NAME,EMAIL,PIMG,GEN,HP) 
-    values(#{id},#{email},#{userName},#{profileImg},#{gender},#{phone})
+    values(#{id},#{name},#{email},#{profileImg},#{gender},#{phone})
   </insert>
   
   <select id="selectOne" parameterType="String" resultMap="SNSMemberMap">
     select MID, NAME, EMAIL, PIMG, GEN, HP
     from TAMLA_MEMBER 
-    where MID=#{value}
+    where MID = #{id}
   </select>
   
 <!--   <update id="update" parameterType="SNSMember">

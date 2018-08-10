@@ -469,6 +469,7 @@ body.modal-open {
 }
 
 .modal-header .modal-title {
+  color: #000;
   margin-bottom: 0;
   margin-left: 43%;
   line-height: 1.5;
@@ -476,6 +477,7 @@ body.modal-open {
 }
 
 .login .modal-body {
+  color: #000;
   position: relative;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -507,7 +509,8 @@ body.modal-open {
   display: block;
   width: 320px;
   height: 40px;
-  margin-left: 11%;
+  margin-left: 15.5%;
+  margin-bottom: 14px;
   padding: 12px 0 12px 48px;
   border-radius: 3px;
 }

@@ -16,37 +16,11 @@ app.set('view engine', 'jade');
 app.set('views', './views');
 app.use(express.static('public'));
 
-
-var data;
-
-/*app.get('/', function(req, res){
-    var log = `
-    <a href="/auth">로그인</a>`
-    res.send(log);
-});*/
-
-app.get('/welcome', function(req,res){
-    console.log("/welcome ==============>")
-    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
-});
-
-app.get('/fail', function(req,res){
-    res.send('로그인실패');
-});
-
-app.get('/logout', function(req, res){
+app.get('/auth/logout', function(req, res){
     req.logout();
-});
-
-app.get('/auth', function(req, res) {
-    var output = `
-        <a href="/auth/facebook">페이스북 로그인</a><br>
-        <a href="/auth/kakao">카카오 로그인</a><br>
-        <a href="/auth/google">구글 로그인</a><br>
-        <a href="/auth/naver">네이버 로그인</a><br>
-        <a href="/">로그인화면</a><br>
-    `
-    res.send(output);
+    request('http://localhost:8888/bitcamp-java-project/json/auth/logout');
+    console.log('로그아웃완료');
+    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
 });
 
 //미들웨어 설정 필수!!!
@@ -57,9 +31,9 @@ passport.serializeUser(function(user, done) {
      done(null, user);
 });
   
-// passport.deserializeUser(function(user, done) {
-//     done(null, user);
-// });
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 
 var fbAccessToken;
 var kaAccessToken;
@@ -85,10 +59,15 @@ app.get('/auth/facebook/callback',
           failureRedirect: '/auth' }), 
     (req, res) => {
         // 8888 서버에 요청하기
+
+     //   console.log(req);
+        console.log(req.session);
+
+
         request(`http://localhost:8888/bitcamp-java-project/json/auth/facebookLogin?accessToken=${fbAccessToken}`,{ json: true }, (err, resp, body) => {
             console.log("8888 서버에서 응답이 왔음!")
+            console.log(body);
             if (body.status === "success") {
-                console.log(body);
                 res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
@@ -100,6 +79,11 @@ app.get('/auth/facebook/callback',
     }
 );
 
+app.get('/auth/is', (req, res) => {
+    request("http://localhost:8888/bitcamp-java-project/json/auth/islogin"), {json:true}, (err, resp, body) => {
+        console.log(body);
+    }   
+})
 
 // 카카오 인증
 passport.use(new KakaoStrategy({
