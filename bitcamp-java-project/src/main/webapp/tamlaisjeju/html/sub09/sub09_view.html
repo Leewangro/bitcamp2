@@ -414,13 +414,13 @@
                  	 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
                  	 
                  	 var infowindow = new daum.maps.InfoWindow({zIndex:1});
+                 	 
                  	 var day = $('#st_day');
                      var day_num = $('<a id="d1">');
-                     
+                     var nowPlanDay = data[0].plday; 
+                    	 
                      $(day_num).text("day " + currentPage);
                      $(day).append(day_num);
-                     
-                     
                      
                      for (let i = 0; i < data.length; i++) {
                         //console.log(data2.response.body.items.item);
@@ -429,6 +429,18 @@
                            //console.log(data2.response.body.items.item[j].contentid);
                            //for(let item of data2.response.body.items.item) {}   
                            if (data[i].tno == data2.response.body.items.item[j].contentid) {
+                        	   
+                        	   if(data[i].plday > nowPlanDay){
+                        		   
+                        		   nowPlanDay = data[i].plday;
+                        		   
+                        		   let newNode = $("<p>");
+                        		   $(newNode).text("day " + currentPage);
+                        		   
+                                   $().append(newNode);
+                        	   }
+                        	   
+                        	   
                               //$(data2[j].tno).append(data[i].contentid);
                               //console.log(data);
                               console.log(data2.response.body.items.item[j])

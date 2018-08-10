@@ -160,13 +160,14 @@
 				<div class="story-day">
 					<div class="spot-container">
 						<div class="story-conts">
-							<h3>
-								<strong id="st_day"></strong> 
-								<span class="desc"></span>
-							</h3>
-							<div class="spot-note-box">
 
-								<div class="spot-contents"></div>
+							<div class="spot-note-box">
+								<div class="spot-contents">
+									
+								</div>
+								<h3>
+										<strong id="st_day"></strong> <span class="desc"></span>
+									</h3>
 							</div>
 							<!--spot-note-box-->
 
@@ -408,6 +409,7 @@
                  	 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
                  	 
                  	 var infowindow = new daum.maps.InfoWindow({zIndex:1});
+                 	 
                  	 var day = $('#st_day');
                      var day_num = $('<a id="d1">');
                      
@@ -426,7 +428,7 @@
                               //$(data2[j].tno).append(data[i].contentid);
                               //console.log(data);
                               console.log(data2.response.body.items.item[j])
-
+						   
                               var dayCon = $('.spot-note-box');
                               var spot_tit = $('<div class="spot-tit type">');
                               var spot_title_area = $('<a class="spot-title-area">');
@@ -552,6 +554,6 @@
 	var currentPage = 1;
 	
 	
-	</script> 
+	</script>
 </body>
 </html>
