@@ -161,14 +161,8 @@
 					<div class="spot-container">
 						<div class="story-conts">
 							<h3>
-								<button type="button" class="btn btn-secondary" id="pre_button"
-									style="background: darkgray; font-weight: bold; color: white;">
-									<</button>
 								<strong id="st_day"></strong> 
 								<span class="desc"></span>
-								<button type="button" class="btn btn-secondary" id="next_button"
-									style="background: darkgray; font-weight: bold; color: white;">
-									></button>
 							</h3>
 							<div class="spot-note-box">
 
@@ -384,7 +378,7 @@
          
          
          $.ajax({
-            url: serverRoot + "/json/travelPlan/1/" + currentPage,
+            url: serverRoot + "/json/travelPlan/1/",
             dataType: "json", // 데이터타입을 json 으로 받아옴
             success: function (data) {
                console.log(data);
@@ -463,7 +457,7 @@
  
                               var m_img = $('<img class="m-img">');
 
-                              var r_cm = $('<p class="r-cm">');
+                              var r_cm = $('<textarea class="r-cm">');
 
 
                               //console.log(data2.response.body.items.item[j].firstimage);
@@ -475,7 +469,6 @@
                               $(img_modal).append(img);
                               $(dayCon).append(img_modal);
                               /*이미지 설명부분*/
-                              $(r_cm).text(data[i].memo);
                               $(img_modal).append(r_cm);
                               $(cont_txt_area).append(img_modal);
                               $(dayCon).append(cont_txt_area);
@@ -558,303 +551,7 @@
 	
 	var currentPage = 1;
 	
-	$(document).ready(function() {
-		
-		$.get(serverRoot + "/json/travelPlan/day/1", {}, function(res) {
-			maxDay = res;
-			console.log(maxDay);
-		});
-		
-		
-		$(pre_button).click(function() {
-			var modalIndex = 0;
-			
-			currentPage = currentPage - 1;
-			if(currentPage < 1 )
-				currentPage = 1;  
-			console.log("curPage:", currentPage);
-			
-            $.ajax({
-               url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
-               dataType: "json", // 데이터타입을 json 으로 받아옴
-               success: function (data2) {
-				$(".spot-note-box").empty();
-				$("#map").empty();
-				$("#st_day").empty();
-				
-				var day = $('#st_day');
-                var day_num = $('<a id="d1">');
-               
-                $(day_num).text("day " + currentPage);
-                $(day).append(day_num);
-                
-            	   $.ajax({
-       				url : serverRoot + "/json/travelPlan/1/" + currentPage,
-       				dataType : "json", 
-       				success : function(data) {
-       				 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                     mapOption = { 
-                         center: new daum.maps.LatLng( 33.379235341729505, 126.56948671100452), // 지도의 중심좌표
-                         level: 10 // 지도의 확대 레벨
-                     };
-
-             		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다    
-             		var infowindow = new daum.maps.InfoWindow({zIndex:1});	
-       				 for (let i = 0; i < data.length; i++) {
-                         for (let j = 0; j < data2.response.body.items.item.length; j++) { 
-                            if (data[i].tno == data2.response.body.items.item[j].contentid) {
-                      	
-       					
-       					var dayCon = $('.spot-note-box');
-       	                var spot_tit = $('<div class="spot-tit type">');
-       	                var spot_title_area = $('<a class="spot-title-area">');
-       	                var h4_title = $('<h4 class="i-h4">');
-       	                var span_title = $('<span class="m-title">');
-       	                //타이틀부분
-       	                
-       	                $(span_title).text(data2.response.body.items.item[j].title);
-       	                $(h4_title).append(span_title);
-       	                $(spot_title_area).append(h4_title);
-       	                $(spot_tit).append(spot_title_area);
-       	                $(dayCon).append(spot_tit);
-
-       	                var spot_cont = $('<div class="spot-contents">');
-       	                var cont_txt_area = $('<div class="conts-txt-area">');
-       	                var img_modal = $(
-       	                   '<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
-
-       	                var img = $('<img data-toggle="modal" data-target="#exampleModal' + modalIndex +'">');
-
-       	                var modal_fade = $(
-       	                   '<div class="modal fade" id="exampleModal' + (modalIndex++) + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
-       	                );
-       	                var modal_dialog = $('<div class="modal-dialog" role="document">');
-       	                var modal_content = $('<div class="modal-content">');
-       	                var modal_header = $('<div class="modal-header">');
-       	                var button_close = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-       	                var span_aria = $('<span aria-hidden="true">');
-
-       	                var m_img = $('<img class="m-img">');
-
-       	                var r_cm = $('<p class="r-cm">');
-
-       	                /*원래 이미지 부분*/
-       	                
-       	                $(img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage) );
-       	                $(img_modal).append(img);
-       	                $(dayCon).append(img_modal);
-       	                /*이미지 설명부분*/
-       	                $(r_cm).text(data[i].memo);
-       	                $(img_modal).append(r_cm);
-       	                $(cont_txt_area).append(img_modal);
-       	                $(dayCon).append(cont_txt_area);
-       	                /*원래 이미지 종료*/
-       	                //$(spot_cont).text(cont_txt_area);
-       	                $(dayCon).append(spot_cont);
-       	                /*모달 이미지 부분*/
-       	                $(m_img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage));
-       	                
-       	                /*모달의 x버튼 시작*/
-       	                $(span_aria).text("x");
-       	                $(button_close).append(span_aria);
-       	                $(modal_header).append(button_close);
-       	                //$(modal_content).append(modal_header);
-       	                /*모달x버튼 종료*/
-       	                $(modal_content).append(modal_header);
-       	                $(modal_content).append(m_img);
-       	                //$(modal_dialog).append(modal_header);
-       	                $(modal_dialog).append(modal_content);
-       	                $(modal_fade).append(modal_dialog);
-       	                $(img_modal).append(modal_fade);
-       	                $(cont_txt_area).append(img_modal);
-       	                $(spot_cont).append(cont_txt_area);
-       	                $(dayCon).append(spot_cont);
-       	                
-       	                /*모달 이미지 부분 종료*/
-       	          // 마커가 표시될 위치입니다 
-                        var markerPosition  = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx); 
-
-                        // 마커를 생성합니다
-                        var marker = new daum.maps.Marker({
-                            position: markerPosition
-                        });
-						  
-                        // 마커가 지도 위에 표시되도록 설정합니다
-                        marker.setMap(map);
-                        (function(marker, title) {
-                            daum.maps.event.addListener(marker, 'mouseover', function() {
-                                displayInfowindow(marker, title);
-                            });
-
-                            daum.maps.event.addListener(marker, 'mouseout', function() {
-                                infowindow.close();
-                            });
-                            
-                        })(marker, data2.response.body.items.item[j].title);
-                        
-                        function displayInfowindow(marker, title) {
-                      	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-                      	    infowindow.setContent(content);
-                      	    infowindow.open(map, marker);
-                      	}
-                        
-                        
-                        
-                        break;
-                            }
-                         }
-       				 }
-       				},
-       				error : function(nopage) {
-       					alert("페이지를 불러올 수 없습니다. 다시 확인해 주세요");
-       				}
-       			});
-               }
-            });
-		});
-				
-		$(next_button).click(function() {
-			var modalIndex = 0;
-		 	currentPage = currentPage + 1;
-		 	   
-			if(currentPage > maxDay )
-				currentPage = maxDay;
-		 	
-			console.log("curPage:", currentPage);
-            $.ajax({
-                url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
-                dataType: "json", // 데이터타입을 json 으로 받아옴
-                success: function (data2) { 
-        		 	$.ajax({
-        				url : serverRoot + "/json/travelPlan/1/" + currentPage,
-        				dataType : "json", 
-        				success : function(data) {
-						 	$(".spot-note-box").empty();
-						 	$("#map").empty();
-						 	$("#st_day").empty();
-							
-						 	var day = $('#st_day');
-		                     var day_num = $('<a id="d1">');
-		                    
-		                     $(day_num).text("day " + currentPage);
-		                     $(day).append(day_num);
-        					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                            mapOption = { 
-                                         center: new daum.maps.LatLng( 33.379235341729505, 126.56948671100452), // 지도의 중심좌표
-                                         level: 10 // 지도의 확대 레벨
-                        		            };
-
-                         	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-                         	var infowindow = new daum.maps.InfoWindow({zIndex:1});
-        					
-              				 for (let i = 0; i < data.length; i++) {
-                                 for (let j = 0; j < data2.response.body.items.item.length; j++) { 
-                                    if (data[i].tno == data2.response.body.items.item[j].contentid) {
-                            
-        					var dayCon = $('.spot-note-box');
-        	                var spot_tit = $('<div class="spot-tit type">');
-        	                var spot_title_area = $('<a class="spot-title-area">');
-        	                var h4_title = $('<h4 class="i-h4">');
-        	                var span_title = $('<span class="m-title">');
-        	                //타이틀부분
-        	                $(span_title).text(data2.response.body.items.item[j].title);
-        	                $(h4_title).append(span_title);
-        	                $(spot_title_area).append(h4_title);
-        	                $(spot_tit).append(spot_title_area);
-        	                $(dayCon).append(spot_tit);
-
-        	                var spot_cont = $('<div class="spot-contents">');
-        	                var cont_txt_area = $('<div class="conts-txt-area">');
-        	                var img_modal = $(
-        	                   '<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
-
-        	                var img = $('<img data-toggle="modal" data-target="#exampleModal' + modalIndex +'">');
-
-        	                var modal_fade = $(
-        	                   '<div class="modal fade" id="exampleModal' + (modalIndex++) + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
-        	                );
-        	                var modal_dialog = $('<div class="modal-dialog" role="document">');
-        	                var modal_content = $('<div class="modal-content">');
-        	                var modal_header = $('<div class="modal-header">');
-        	                var button_close = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-        	                var span_aria = $('<span aria-hidden="true">');
-
-        	                var m_img = $('<img class="m-img">');
-
-        	                var r_cm = $('<p class="r-cm">');
-        	                
-        	                $(img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage) );
-        	                $(img_modal).append(img);
-        	                $(dayCon).append(img_modal);
-        	                /*이미지 설명부분*/
-        	                $(r_cm).text(data[i].memo);
-        	                $(img_modal).append(r_cm);
-        	                $(cont_txt_area).append(img_modal);
-        	                $(dayCon).append(cont_txt_area);
-        	                /*원래 이미지 종료*/
-        	                //$(spot_cont).text(cont_txt_area);
-        	                $(dayCon).append(spot_cont);
-        	                /*모달 이미지 부분*/
-        	                $(m_img).attr("src", (data2.response.body.items.item[j].firstimage == undefined ? "../../img/common/noimage.jpg" : data2.response.body.items.item[j].firstimage));
-        	                /*모달의 x버튼 시작*/
-        	                $(span_aria).text("x");
-        	                $(button_close).append(span_aria);
-        	                $(modal_header).append(button_close);
-        	                //$(modal_content).append(modal_header);
-        	                /*모달x버튼 종료*/
-        	                $(modal_content).append(modal_header);
-        	                $(modal_content).append(m_img);
-        	                //$(modal_dialog).append(modal_header);
-        	                $(modal_dialog).append(modal_content);
-        	                $(modal_fade).append(modal_dialog);
-        	                $(img_modal).append(modal_fade);
-        	                $(cont_txt_area).append(img_modal);
-        	                $(spot_cont).append(cont_txt_area);
-        	                $(dayCon).append(spot_cont);
-        	                /*모달 이미지 부분 종료*/
-        	                
-        	                // 마커가 표시될 위치입니다 
-                          var markerPosition  = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx); 
-
-                          // 마커를 생성합니다
-                          var marker = new daum.maps.Marker({
-                              position: markerPosition
-                          });
-						  
-                          // 마커가 지도 위에 표시되도록 설정합니다
-                          marker.setMap(map);
-        	              
-                          (function(marker, title) {
-                              daum.maps.event.addListener(marker, 'mouseover', function() {
-                                  displayInfowindow(marker, title);
-                              });
-
-                              daum.maps.event.addListener(marker, 'mouseout', function() {
-                                  infowindow.close();
-                              });
-                              
-                          })(marker, data2.response.body.items.item[j].title);
-                          
-                          function displayInfowindow(marker, title) {
-                        	    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-                        	    infowindow.setContent(content);
-                        	    infowindow.open(map, marker);
-                        	}
-           	                break;
-                                    }
-                                 }
-              				 }
-        				},
-        				error : function(nopage) {
-        					alert("페이지를 불러올 수 없습니다. 다시 확인해 주세요");
-        				}
-        			});
-                }
-            }); 
-		});
-	});
+	
 	</script> 
 </body>
 </html>
