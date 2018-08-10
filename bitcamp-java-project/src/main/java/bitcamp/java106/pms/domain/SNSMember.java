@@ -11,7 +11,7 @@ public class SNSMember implements Serializable {
     
     private String id;
     private String email;
-    private String userName;
+    private String name;
     private String profileImg;
     private int gender;
     private int phone;
@@ -55,13 +55,13 @@ public class SNSMember implements Serializable {
     }
 
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 
@@ -97,7 +97,7 @@ public class SNSMember implements Serializable {
 
     @Override
     public String toString() {
-        return "SNSMember [id=" + id + ", email=" + email + ", userName=" + userName + ", profileImg=" + profileImg
+        return "SNSMember [id=" + id + ", email=" + email + ", userName=" + name + ", profileImg=" + profileImg
                 + ", gender=" + gender + ", phone=" + phone + "]";
     }
 

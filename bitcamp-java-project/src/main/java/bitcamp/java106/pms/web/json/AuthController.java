@@ -4,10 +4,12 @@ package bitcamp.java106.pms.web.json;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import bitcamp.java106.pms.dao.SNSMemberDao;
+import bitcamp.java106.pms.domain.SNSMember;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -25,19 +30,28 @@ public class AuthController {
     public Object info() {
         
     }*/
+    SNSMemberDao snsMemberDao;
+    SNSMember member;
+    
+    public AuthController(SNSMemberDao snsMemberDao) {
+        // TODO Auto-generated constructor stub
+        this.snsMemberDao = snsMemberDao;
+        this.member = null;
+    }
     
     @RequestMapping("/logout")
     public void logout(HttpSession session) throws Exception {
-        
-        session.invalidate();
-        
+        System.out.println("invalidate");
+        this.member = null;
     }
     
     @GetMapping("/facebookLogin")
-    public Object facebookLogin(String accessToken) {
-        Map<String,Object> result = new HashMap<>();
+    public Object facebookLogin(String accessToken, HttpSession session) {
         //System.out.println(accessToken);
+        Map<String, Object> obj = new HashMap<>();
         
+        String id="", name="", email="";
+        SNSMember member = null;
         try {
             URL url = new URL("https://graph.facebook.com/v3.0/me?fields=id,name,email,gender&access_token=" + accessToken);
             HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
@@ -51,24 +65,54 @@ public class AuthController {
             in.close();
             
             String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
-            
             ObjectMapper mapper = new ObjectMapper();
             Map dataMap = mapper.readValue(jsonResult, Map.class);
+
+            id = (String)dataMap.get("id");
+            name = (String)dataMap.get("name");
+            email = (String)dataMap.get("email");
+
+            member = snsMemberDao.selectOne(id);
+
+            obj.put("name", member.getName());
+            obj.put("status", "success");
             
-            // DB에서 해당 이메일로 사용자를 찾아본다.
-            // 있으면, 꺼내서 세션에 보관하여 로그인 처리하고,
-            // 없으면, DB에 넣고 세션에 보관하여 로그인 처리한다.
-            
-            result.put("status", "success");
-            result.put("id", dataMap.get("id"));
-            result.put("name", dataMap.get("name"));
-            result.put("email", dataMap.get("email"));
-            
+            // System.out.println("dqwew"+session.getAttribute("userInfo")); // 정상
+            // System.out.println("insert time:"+ new Date(session.getCreationTime())); // 정상
         } catch (Exception e) {
-            result.put("status", "fail");
-            result.put("message", e.getMessage());
+            member = new SNSMember();
+
+            member.setId(id);
+            member.setName(name);
+            member.setEmail(email);
+            System.out.println("memberInput");
+            System.out.println(member);
+            
+            try {
+                snsMemberDao.insert(member);
+            } catch(Exception e2) {
+                obj.put("status", "fail");
+            }
+            
+            //session.setAttribute("userInfo", member);
+            
+            obj.put("name", member.getName());
+            obj.put("status", "success");
         }
-        return result;
+        this.member = member;
+        return obj;
+    }
+    
+    @RequestMapping(value="/islogin")
+    public String isLogin(HttpSession session, HttpServletRequest request) {
+        if(this.member != null)
+            try {
+                return URLEncoder.encode( this.member.getName(), "UTF-8"); 
+            } catch(Exception e) {
+                return "n";
+            }
+        else
+            return "n";
     }
 }
 
