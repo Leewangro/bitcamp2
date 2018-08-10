@@ -7,6 +7,58 @@ all - 여행필수정보 전체
     min-height: 500px;
 }
 
+#sub08 #visual h5:before {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#sub08 #visual{
+    background-repeat: no-repeat;
+    background-image: url(../img/common/sub_visual_img01.jpg);
+    background-size: 100%;
+}
+
+#sub08 #visual .visual_bg{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/main/mvisual_bg.png) repeat;
+    z-index: 100;
+}
+
+#sub08 #visual .visual_inner_box {
+    width: 1200px;
+    padding-top: 250px;
+    margin: auto;
+    text-shadow: 1px 1px 1px #000;
+    background-color: rgb(0,0,0,0.5);
+    height: 100%;
+}
+#sub08 #visual #top_title{
+    color: #fff;
+    font-size: 40px;
+    padding-bottom: 15px;
+}
+
+#sub08 #visual #top_hashTag{
+    color: moccasin;
+    font-size: 50px;
+    padding-bottom: 15px;
+}
+
+#sub08 #visual #top_date{
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 13px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    padding-bottom: 15px;
+}
+
 #sub08 #content {
     margin: 0 auto 30px;
     /* padding: 0px 20px 100px; */
@@ -358,6 +410,15 @@ travel_view - 타임라인
 
 /* 사진 효과 */
 
+#sub08 .thum_img_box {
+    width: 50px;
+    height: 50px;
+    border-radius: 56%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
 #sub08 .t_timeline_content figure.snip0016 {
     font-family: 'Raleway', Arial, sans-serif;
     color: #fff;
@@ -368,8 +429,12 @@ travel_view - 타임라인
     min-width: 500px;
     max-width: 500px;
     width: 500px;
+    height: 500px;
     background: #000000;
     text-align: left;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 #sub08 .t_timeline_content figure.snip0016 * {
@@ -481,7 +546,7 @@ timeline fixed
 
 .absolute {
     width: 1200px;
-    bottom: 1250px;
+    bottom: 862px;
     position: absolute;
     z-index: 1;
 }

@@ -93,9 +93,9 @@ public class Fileupload {
                         .toFile(path.getCanonicalPath() + "_50x50");
               
               Thumbnails.of(path)
-              			.size(120, 120)
-              			.outputFormat("jpg")
-          				.toFile(path.getCanonicalPath() + "_120x120");
+                        .size(500, 500)
+                        .outputFormat("jpg")
+                        .toFile(path.getCanonicalPath() + "_500x500");
               
               Thumbnails.of(path)
   						.size(180, 180)

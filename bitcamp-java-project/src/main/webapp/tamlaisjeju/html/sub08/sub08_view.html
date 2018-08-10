@@ -32,7 +32,15 @@
     <div id="header"></div>
     <div id="sub08" class="sub08 container">
         <div id="visual">
-            <img src="../../img/common/sub_visual_img01.jpg" alt="대표이미지">
+            <img src="../../img/common/sub_visual_img01.jpg" alt="대표이미지" style='display: none'>
+            <div class='visual_inner_box'>
+                <div id='title_div'></div>
+
+                <h5 id='top_hashTag'>#해쉬 #제주도 #가즈아</h5>
+                <div id='date_div'></div>
+                <!-- <h5 id='top_date'>여행일: 2018년 4월 20일 - 2018년 4월 30일</h5> -->
+                <span class="visual_bg"></span>
+            </div>
         </div>
         <!-- visual end -->
 
@@ -213,6 +221,7 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=619a7dc4f7d23963aa128663f464c8d5&libraries=services"></script>
     <!-- 카카오로그인 -->
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="../../js/common/common.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -226,63 +235,70 @@
 
 
     <script>
-        // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-        var infowindow = new daum.maps.InfoWindow({
-            zIndex: 1
-        });
+        // url경로
+        var link = document.location.href.split("?")[1];
+        $.ajax({
 
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-                level: 5 // 지도의 확대 레벨
-            };
+            type: "GET",
 
+            url: serverRoot + "/json/travelLogContent/" + link,
 
+            dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
-        // 지도를 생성합니다    
-        var map = new daum.maps.Map(mapContainer, mapOption);
+            success: function (data) {
+                var positions = []
+                var markers2 = []
+                var mapContainer2 = document.getElementById('map'), // 지도를 표시할 div  
+                    mapOption = {
+                        center: new daum.maps.LatLng(33.359040372937415, 126.53430503608087), // 지도의 중심좌표
+                        level: 10 // 지도의 확대 레벨
+                    };
 
-        // 장소 검색 객체를 생성합니다
-        var ps = new daum.maps.services.Places();
-
-        // 키워드로 장소를 검색합니다
-        ps.keywordSearch('성산일출봉 관광지', placesSearchCB);
-
-        // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-        function placesSearchCB(data, status, pagination) {
-            if (status === daum.maps.services.Status.OK) {
-
-                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-                // LatLngBounds 객체에 좌표를 추가합니다
-                var bounds = new daum.maps.LatLngBounds();
+                var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
+                var marker2 = null;
+                var line = null;
+                var paths = []
+                imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                    
 
                 for (var i = 0; i < data.length; i++) {
-                    displayMarker(data[i]);
-                    bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
+
+                    // 마커 이미지의 이미지 크기 입니다
+                    imageSize = new daum.maps.Size(24, 35);
+
+                    // 마커 이미지를 생성합니다    
+                    markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+                    console.log(markerImage)
+
+                    // 마커를 생성합니다
+                    marker2 = new daum.maps.Marker({
+                        position: new daum.maps.LatLng(data[i].lotd, data[i].latd), // 마커를 표시할 위치
+                        image: markerImage // 마커 이미지 
+                    });
+
+                    paths.push(new daum.maps.LatLng(data[i].lotd, data[i].latd))
+                    
+                    
+                    marker2.setMap(map2)
+                    markers2.push(marker2)
                 }
+                var polyline = new daum.maps.Polyline({
+                    path: paths, // 선을 구성하는 좌표배열 입니다
+                    strokeWeight: 2, // 선의 두께 입니다
+                    strokeColor: '#FFAE00', // 선의 색깔입니다
+                    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'solid' // 선의 스타일입니다
+                });
+                polyline.setMap(map2);
+                // 지도에 표시할 선을 생성합니다
 
-                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-                map.setBounds(bounds);
+                // 지도에 선을 표시합니다 
+
             }
-        }
+        })
 
-        // 지도에 마커를 표시하는 함수입니다
-        function displayMarker(place) {
 
-            // 마커를 생성하고 지도에 표시합니다
-            var marker = new daum.maps.Marker({
-                map: map,
-                position: new daum.maps.LatLng(place.y, place.x)
-            });
 
-            // 마커에 클릭이벤트를 등록합니다
-            daum.maps.event.addListener(marker, 'click', function () {
-                // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name +
-                    '</div>');
-                infowindow.open(map, marker);
-            });
-        }
 
 
         function relayout() {
@@ -295,6 +311,33 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $.ajax({
+
+                type: "GET",
+
+                url: serverRoot + "/json/content/" + link,
+
+                dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                success: function (data) {
+                    $('#title_div').append(
+                        "<h5 id='top_title'>" + data.title + "</h5>")
+                }
+            })
+            $.ajax({
+
+                type: "GET",
+
+                url: serverRoot + "/json/travelLog/" + link,
+
+                dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                success: function (data) {
+                    console.log(data)
+                    $('#date_div').append(
+                        "<h5 id='top_date'>" + data.startDate + '~' + data.endDate + "</h5>")
+                }
+            })
 
             $.ajax({
 
@@ -326,7 +369,8 @@
 
                     for (var i = 1; i < maxDay + 1; i++) {
                         $("#nav_day_bar").append(
-                            "<div class='timeline_content_day fix_day" + i + " day off clear'>" +
+                            "<div class='timeline_content_day fix_day" + i +
+                            " day off clear'>" +
                             "<h4> Day" + i + "</h4>" +
                             "<p></p>" +
                             "<p>" + "Day" + i + "경로보기" + "</p>" + "</div>")
@@ -358,7 +402,8 @@
                             "</div>"
                         )
                         $("#div" + i).append(
-                            "<div id='cont_day" + i + "' class='timeline_content_day c_day" + i +
+                            "<div id='cont_day" + i + "' class='timeline_content_day c_day" +
+                            i +
                             "'>" +
                             "<h4>" + "Day" + i + "</h4>" +
                             "<p></p>" +
@@ -369,15 +414,18 @@
                             $("#div" + i).append(
                                 "<div class='t_timeline_content'>" +
                                 "<div class='context_menu'>" +
-                                "<span>" +
-                                "<a href='" + "#" + "'>" + "#데이트" + "</a>" +
-                                "<a href='" + "#" + "'>" + "#포토존" + "</a>" +
-                                "<a href='" + "#" + "'>" + "#꽃" + "</a>" +
-                                "</span>" +
+                                // "<span>" +
+                                // "<a href='" + "#" + "'>" + "#데이트" + "</a>" +
+                                // "<a href='" + "#" + "'>" + "#포토존" + "</a>" +
+                                // "<a href='" + "#" + "'>" + "#꽃" + "</a>" +
+                                // "</span>" +
                                 "</div>" +
 
                                 "<div class='content_box clear'>" +
-                                "<img src='../../img/sub08/jeju1.jpg' alt='jeju1' />" +
+                                "<div class='thum_img_box'>" +
+                                "<img src=" + serverRoot + "/files/" + scheduleOfDay[i - 1]
+                                [x].photo + "_50x50.jpg" + " alt='썸네일사진' />" +
+                                "</div>" +
                                 "<div class='content_icon'>" +
                                 "<p class='contnet_name'>" + scheduleOfDay[i - 1][x].place +
                                 "</p>" +
@@ -390,8 +438,9 @@
                                 "</div>" +
                                 "<div class='t_timeline_content_imgbox'>" +
                                 "<figure class='snip0016'>" +
-                                "<img src='../../img/sub08/" + scheduleOfDay[i - 1][x].photo +
-                                "' alt='jeju1' />" +
+                                "<img src=" + serverRoot + "/files/" + scheduleOfDay[i - 1]
+                                [x].photo+
+                                " alt='jeju1' />" +
                                 "<figcaption>" +
                                 "<p>사진더보기</p>" +
                                 "<a href='#'></a>" +
@@ -481,13 +530,15 @@
                         }, {
                             key: "isOpen",
                             value: function isOpen($el) {
-                                return $el.attr("data-treemenu-open") === "1";
+                                return $el.attr("data-treemenu-open") ===
+                                    "1";
                             }
                         }, {
                             key: "setOpen",
                             value: function setOpen($el, to) {
                                 log("set open: " + to);
-                                $el.attr("data-treemenu-open", to ? "1" : "0");
+                                $el.attr("data-treemenu-open", to ? "1" :
+                                    "0");
                             }
                         }, {
                             key: "getGroup",
@@ -498,31 +549,33 @@
                                     $el);
                                 var group = [];
 
-                                this.$container.find("[level]").each(function (
-                                    index, item) {
-                                    var $item = $(item);
+                                this.$container.find("[level]").each(
+                                    function (
+                                        index, item) {
+                                        var $item = $(item);
 
-                                    if (!group.length) {
-                                        //first item has not been passed in the loop
-                                        if (this.getElementTreeMenuId(
-                                                $el) == this.getElementTreeMenuId(
-                                                $item)) {
-                                            //the current item is the parent of the group
-                                            group.push($item);
+                                        if (!group.length) {
+                                            //first item has not been passed in the loop
+                                            if (this.getElementTreeMenuId(
+                                                    $el) == this.getElementTreeMenuId(
+                                                    $item)) {
+                                                //the current item is the parent of the group
+                                                group.push($item);
+                                            }
+                                            //stop this iteration of the loop
+                                            return true;
                                         }
-                                        //stop this iteration of the loop
-                                        return true;
-                                    }
-                                    //
-                                    //if the level of the item equals or is lower then the initial level, 
-                                    // we have reached the end of the group
-                                    var level = parseInt($item.attr(
-                                        "level"));
-                                    if (level <= firstElementLevel)
-                                        return false;
-                                    if (level == firstElementLevel + 1)
-                                        group.push($item);
-                                }.bind(this));
+                                        //
+                                        //if the level of the item equals or is lower then the initial level, 
+                                        // we have reached the end of the group
+                                        var level = parseInt($item.attr(
+                                            "level"));
+                                        if (level <= firstElementLevel)
+                                            return false;
+                                        if (level == firstElementLevel +
+                                            1)
+                                            group.push($item);
+                                    }.bind(this));
                                 return group;
                             }
                         }, {
@@ -579,8 +632,9 @@
                         $(window).bind('scroll', function () {
                             var container = $('.container').height();
                             var content = $('.t_timeline').height();
-                            if ($(window).scrollTop() > container - content - 75) {
-                                if ($(window).scrollTop() > content - 252) {
+                            if ($(window).scrollTop() > container - content -
+                                75) {
+                                if ($(window).scrollTop() > content + 144) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
                                     return;
@@ -645,8 +699,6 @@
         });
     </script>
     <script>
-        // url경로
-    var link = document.location.href.split("?")[1];
     </script>
 
     <script>

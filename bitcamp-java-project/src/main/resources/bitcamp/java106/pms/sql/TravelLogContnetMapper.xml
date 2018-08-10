@@ -32,7 +32,7 @@
   <select id="selectList" 
           resultMap="TravelLogContentMap" 
           parameterType="map">
-    SELECT TLNO, TCNO, PLACE, ADDR, PHOTO, REVIEW, DAY
+    SELECT TLNO, TCNO, PLACE, ADDR, PHOTO, REVIEW, DAY,LATD,LOTD
     FROM TAMLA_TRAVEL_LOG_CONTENT
   </select>
   
@@ -48,13 +48,13 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
   <select id="selectOne" parameterType="int" resultMap="TravelLogContentMap">
-    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY
+    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY,LATD,LOTD
     from TAMLA_TRAVEL_LOG_CONTENT 
     where TLNO=#{value}
   </select>
   
   <select id="selectListWithNo" parameterType="int" resultMap="TravelLogContentMap">
-    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY
+    select TLNO,TCNO,PLACE,ADDR,PHOTO,REVIEW,DAY,LATD,LOTD
     from TAMLA_TRAVEL_LOG_CONTENT 
     where TLNO=#{value}
   </select>

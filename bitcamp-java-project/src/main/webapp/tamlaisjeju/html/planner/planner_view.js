@@ -11,7 +11,6 @@ $.getJSON(serverRoot+"/json/planner/5", (data) => {
        $(trHTML).appendTo('#tableBody');
 });
 
-<<<<<<< HEAD
 $.getJSON(serverRoot + "/json/content/"+link, (data2) => {
 	console.log(data2);
     $('.plan_title')[0].textContent = data2.title
@@ -29,5 +28,3 @@ $.getJSON(serverRoot + "/json/hashTag/"+link, (data3) => {
 			"<li class='plan_cont clear'>태그: {{memo}}</li>)
 	}*/
 });
-=======
->>>>>>> 1b30c243abe2646bee4b48b152ad4924d35c6226
