@@ -32,18 +32,24 @@
     <div id="header"></div>
     <div id="sub08" class="sub08 container">
         <div id="visual">
-            <img src="../../img/common/sub_visual_img01.jpg" alt="대표이미지" style='display: none'>
+            <img src="../../img/sub08/travelLogBackgroundImg.jpg" alt="대표이미지" style='display: none'>
             <div class='visual_inner_box'>
                 <div id='title_div'></div>
 
                 <h5 id='top_hashTag'>#해쉬 #제주도 #가즈아</h5>
                 <div id='date_div'></div>
+                <div id='partner_div'></div>
                 <!-- <h5 id='top_date'>여행일: 2018년 4월 20일 - 2018년 4월 30일</h5> -->
                 <span class="visual_bg"></span>
             </div>
         </div>
         <!-- visual end -->
-
+        <!-- '1': '혼자',
+        '2': '부모님',
+        '3': '아이',
+        '4': '커플',
+        '5': '친구',
+        '6': '단체' -->
         <div id="content">
 
             <!-- 좋아요 탭 -->
@@ -90,7 +96,7 @@
                 <!-- 지도 -->
 
                 <!-- <div class=map_bb style="width: 100%;height: 400px;background-color: teal;margin-bottom:84px;" style="overflow: hidden;z-index:2; "></div> -->
-                <div id="map" style="width:100%;height:400px;margin-bottom:84px;"></div>
+                <div id="map" style="width:100%;height:600px;margin-bottom:84px;"></div>
             </div>
 
             <!-- 타임라인 -->
@@ -269,12 +275,14 @@
                 var positions = []
                 var markers2 = []
                 var mapContainer2 = document.getElementById('map'), // 지도를 표시할 div  
+                
                     mapOption = {
-                        center: new daum.maps.LatLng(33.359040372937415, 126.53430503608087), // 지도의 중심좌표
-                        level: 10 // 지도의 확대 레벨
+                        center: new daum.maps.LatLng(33.37648174461977, 126.55064054368353), // 지도의 중심좌표
+                        level: 9 // 지도의 확대 레벨
                     };
 
                 var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
+                
                 var marker2 = null;
                 var line = null;
                 var paths = []
@@ -310,6 +318,7 @@
                     strokeStyle: 'solid' // 선의 스타일입니다
                 });
                 polyline.setMap(map2);
+                map2.setZoomable();
                 // 지도에 표시할 선을 생성합니다
 
                 // 지도에 선을 표시합니다 
@@ -353,9 +362,25 @@
                 dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
                 success: function (data) {
-                    console.log(data)
+                    var partner;
+                    
                     $('#date_div').append(
                         "<h5 id='top_date'>" + data.startDate + '~' + data.endDate + "</h5>")
+                        if(data.partner == 1) {
+                            partner = "#혼자여행";
+                        } else if(data.partner == 2) {
+                            partner = "#부모님과여행" 
+                        } else if(data.partner == 3) {
+                            partner = "#아이와여행" 
+                        } else if(data.partner == 4) {
+                            partner = "#커플여행" 
+                        } else if(data.partner == 5) {
+                            partner = "#친구와여행" 
+                        } else if(data.partner == 6) {
+                            partner = "#단체여행" 
+                        }
+                        $('#partner_div').append(
+                        "<h5 id='top_partner'>" + partner + "</h5>")
                 }
             })
 
@@ -393,7 +418,7 @@
                             " day off clear'>" +
                             "<h4> Day" + i + "</h4>" +
                             "<p></p>" +
-                            "<p>" + "Day" + i + "경로보기" + "</p>" + "</div>")
+                            "<p onclick='MoveMap()' class='loadmap'>" +  "경로보기" + "</p>" + "</div>")
                     }
 
 
@@ -427,7 +452,7 @@
                             "'>" +
                             "<h4>" + "Day" + i + "</h4>" +
                             "<p></p>" +
-                            "<p>" + "Day" + i + "경로보기</p>" +
+                            "<p onclick='MoveMap()' class='loadmap'>" + "경로보기</p>" +
                             "</div>"
                         )
                         for (let x = 0; x < scheduleOfDay[i - 1].length; x++) {
@@ -654,7 +679,7 @@
                             var content = $('.t_timeline').height();
                             if ($(window).scrollTop() > container - content -
                                 75) {
-                                if ($(window).scrollTop() > content - 360) {
+                                if ($(window).scrollTop() > content - 80) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
                                     return;
@@ -725,6 +750,13 @@
         // 아이디 바로가기
         function fnMove(id) {
             var offset = $("#div" + id).offset();
+            $('html, body').animate({
+                scrollTop: offset.top - 75
+            }, 400);
+        }
+        // 지도로 바로가기
+        function MoveMap() {
+            var offset = $("#map").offset();
             $('html, body').animate({
                 scrollTop: offset.top - 75
             }, 400);

@@ -1049,7 +1049,6 @@
                         '5': '친구',
                         '6': '단체'
                     },
-                    inputPlaceholder: '일행',
                     showCancelButton: true,
                     inputValidator: (value) => {
 
@@ -1078,9 +1077,7 @@
 
                     });
 
-                    setTimeout(() => {
-                        swal("저장되었습니다.")
-                    }, 2000)
+
 
                     function travelLogInsert() {
                         var travelLog = {
@@ -1102,7 +1099,10 @@
 
                                 travelLogContentInsert()
 
-                                // location.href = "planner_view.html?"+ data;
+                                location.href = "sub08_view.html?" + contentNo;
+                                setTimeout(() => {
+                                    swal("저장되었습니다.")
+                                })
                             },
                             error: function (data) {
                                 alert("데이터입력 실패");
@@ -1112,18 +1112,18 @@
                     }
 
                     function travelLogContentInsert() {
-                        for (let i = 1; i < $('.post_wrap').length+1; i++) {
-                            console.log($('#post_title_'+i).val())
+                        for (let i = 1; i < $('.post_wrap').length + 1; i++) {
+                            console.log($('#post_title_' + i).val())
                             var travelLogContent = null;
                             travelLogContent = {
                                 tlno: contentNo,
-                                place: $('#post_title_'+i).val(),
-                                address: $('#post_address_'+i).val(),
-                                photo: $('#main_img_'+i).val(),
-                                review: $('#post_text_form_'+i).val(),
-                                latd: $('#post_x_'+i).val(),
-                                lotd: $('#post_y_'+i).val(),
-                                day: $("#selectid_"+i+" option:selected").val()
+                                place: $('#post_title_' + i).val(),
+                                address: $('#post_address_' + i).val(),
+                                photo: $('#main_img_' + i).val(),
+                                review: $('#post_text_form_' + i).val(),
+                                latd: $('#post_x_' + i).val(),
+                                lotd: $('#post_y_' + i).val(),
+                                day: $("#selectid_" + i + " option:selected").val()
                             };
                             console.log("<<<<-----------------")
                             console.log(travelLogContent)

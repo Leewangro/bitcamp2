@@ -13,9 +13,11 @@ all - 여행필수정보 전체
 
 #sub08 #visual{
     background-repeat: no-repeat;
-    background-image: url(../img/common/sub_visual_img01.jpg);
-    background-size: 100%;
+    background-image: url(../img/sub08/travelLogBackgroundImg.jpg);
+    background-size: cover;
+    height: 500px;
 }
+
 
 #sub08 #visual .visual_bg{
     display: block;
@@ -45,6 +47,11 @@ all - 여행필수정보 전체
 #sub08 #visual #top_hashTag{
     color: moccasin;
     font-size: 50px;
+    padding-bottom: 15px;
+}
+
+#sub08 #visual #top_partner{
+    color: #fff;
     padding-bottom: 15px;
 }
 
@@ -579,6 +586,9 @@ timeline fixed
 #sub08 .t_timeline .nav_menu {
     position: absolute;
     top: 150px;
+}
+#sub08 .loadmap {
+    cursor: pointer;
 }
 
 .treemenu [level="0"] .lbl {
