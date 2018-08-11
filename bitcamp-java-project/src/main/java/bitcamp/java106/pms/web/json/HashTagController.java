@@ -30,7 +30,7 @@ public class HashTagController {
     @RequestMapping("add")
     @ResponseStatus(HttpStatus.CREATED)
     public void add(HashTag hashTag) throws Exception {
-        System.out.println(hashTag);
+    	hashTagService.add(hashTag);
     }
     
     @RequestMapping("delete")

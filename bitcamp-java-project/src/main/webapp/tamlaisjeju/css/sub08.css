@@ -48,6 +48,7 @@ all - 여행필수정보 전체
     color: moccasin;
     font-size: 50px;
     padding-bottom: 15px;
+    display: inline-block;
 }
 
 #sub08 #visual #top_partner{

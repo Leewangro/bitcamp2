@@ -36,7 +36,8 @@
             <div class='visual_inner_box'>
                 <div id='title_div'></div>
 
-                <h5 id='top_hashTag'>#해쉬 #제주도 #가즈아</h5>
+
+                <div id='hashTag_div'></div>
                 <div id='date_div'></div>
                 <div id='partner_div'></div>
                 <!-- <h5 id='top_date'>여행일: 2018년 4월 20일 - 2018년 4월 30일</h5> -->
@@ -208,8 +209,7 @@
                 <div id="travel_cont"></div>
 
                 <!-- 라이브리 시티 설치 코드 -->
-                    <div id="lv-container" data-id="city"
-                    data-uid="MTAyMC8zNzk5NC8xNDUyNA=="></div>
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk5NC8xNDUyNA=="></div>
             </div>
         </div>
     </div>
@@ -233,7 +233,7 @@
     <script src="../../js/common/common.js"></script>
     <!-- 시티라이브리 -->
     <script type="text/javascript">
-        (function(d, s) {
+        (function (d, s) {
             var j, e = d.getElementsByTagName(s)[0];
 
             if (typeof LivereTower === 'function') {
@@ -275,19 +275,19 @@
                 var positions = []
                 var markers2 = []
                 var mapContainer2 = document.getElementById('map'), // 지도를 표시할 div  
-                
+
                     mapOption = {
                         center: new daum.maps.LatLng(33.37648174461977, 126.55064054368353), // 지도의 중심좌표
                         level: 9 // 지도의 확대 레벨
                     };
 
                 var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
-                
+
                 var marker2 = null;
                 var line = null;
                 var paths = []
                 imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-                    
+
 
                 for (var i = 0; i < data.length; i++) {
 
@@ -305,8 +305,8 @@
                     });
 
                     paths.push(new daum.maps.LatLng(data[i].lotd, data[i].latd))
-                    
-                    
+
+
                     marker2.setMap(map2)
                     markers2.push(marker2)
                 }
@@ -357,29 +357,48 @@
 
                 type: "GET",
 
+                url: serverRoot + "/json/hashTag/" + link,
+
+                dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+
+                        $('#hashTag_div').append(
+                            "<h5 id='top_hashTag'>" + data[i].content + "</h5>"
+                        )
+                    }
+
+                }
+            })
+            $.ajax({
+
+                type: "GET",
+
                 url: serverRoot + "/json/travelLog/" + link,
 
                 dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
                 success: function (data) {
                     var partner;
-                    
+
                     $('#date_div').append(
                         "<h5 id='top_date'>" + data.startDate + '~' + data.endDate + "</h5>")
-                        if(data.partner == 1) {
-                            partner = "#혼자여행";
-                        } else if(data.partner == 2) {
-                            partner = "#부모님과여행" 
-                        } else if(data.partner == 3) {
-                            partner = "#아이와여행" 
-                        } else if(data.partner == 4) {
-                            partner = "#커플여행" 
-                        } else if(data.partner == 5) {
-                            partner = "#친구와여행" 
-                        } else if(data.partner == 6) {
-                            partner = "#단체여행" 
-                        }
-                        $('#partner_div').append(
+
+                    if (data.partner == 1) {
+                        partner = "#혼자여행";
+                    } else if (data.partner == 2) {
+                        partner = "#부모님과여행"
+                    } else if (data.partner == 3) {
+                        partner = "#아이와여행"
+                    } else if (data.partner == 4) {
+                        partner = "#커플여행"
+                    } else if (data.partner == 5) {
+                        partner = "#친구와여행"
+                    } else if (data.partner == 6) {
+                        partner = "#단체여행"
+                    }
+                    $('#partner_div').append(
                         "<h5 id='top_partner'>" + partner + "</h5>")
                 }
             })
@@ -418,7 +437,8 @@
                             " day off clear'>" +
                             "<h4> Day" + i + "</h4>" +
                             "<p></p>" +
-                            "<p onclick='MoveMap()' class='loadmap'>" +  "경로보기" + "</p>" + "</div>")
+                            "<p onclick='MoveMap()' class='loadmap'>" + "경로보기" + "</p>" +
+                            "</div>")
                     }
 
 
@@ -484,7 +504,7 @@
                                 "<div class='t_timeline_content_imgbox'>" +
                                 "<figure class='snip0016'>" +
                                 "<img src=" + serverRoot + "/files/" + scheduleOfDay[i - 1]
-                                [x].photo+
+                                [x].photo +
                                 " alt='jeju1' />" +
                                 "<figcaption>" +
                                 "<p>사진더보기</p>" +
