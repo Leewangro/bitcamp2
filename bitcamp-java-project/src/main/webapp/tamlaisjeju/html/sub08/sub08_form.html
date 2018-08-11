@@ -239,8 +239,8 @@
                                         <option value="3">3일차</option> -->
                                     </select>
                                 </div>
-                                <div class="text_count">글자제한:
-                                    <span class="count">80</span>/80</div>
+                                <div class="text_count1">글자제한:
+                                    <span class="count1">80</span>/80</div>
                                 <button onclick="map()"></button>
                             </form>
                         </div>
@@ -777,10 +777,10 @@
 
         <script>
             $(function () {
-                $('.text_count').each(function () {
+                $('.text_count1').each(function () {
                     // count 정보 및 count 정보와 관련된 textarea/input 요소를 찾아내서 변수에 저장한다.
-                    var $count = $('.count', this);
-                    var $input = $(this).prev();
+                    var $count = $('.count1', this);
+                    var $input = $('#post_text_form_1')
                     // .text()가 문자열을 반환하기에 이 문자를 숫자로 만들기 위해 1을 곱한다.
                     var maximumCount = $count.text() * 1;
                     // update 함수는 keyup, paste, input 이벤트에서 호출한다.
@@ -1089,8 +1089,6 @@
                             endDate: $('#edt')[0].innerText.replace(/[^(0-9)]/gi, "-")
                         };
 
-                        console.log(".............>>>")
-
                         $.ajax({
                             type: "POST",
                             url: serverRoot + "/json/travelLog/add",
@@ -1099,10 +1097,7 @@
 
                                 travelLogContentInsert()
 
-                                location.href = "sub08_view.html?" + contentNo;
-                                setTimeout(() => {
-                                    swal("저장되었습니다.")
-                                })
+
                             },
                             error: function (data) {
                                 alert("데이터입력 실패");
@@ -1110,6 +1105,8 @@
 
                         });
                     }
+
+
 
                     function travelLogContentInsert() {
                         for (let i = 1; i < $('.post_wrap').length + 1; i++) {
@@ -1141,7 +1138,38 @@
                                 }
                             });
                         }
+                        hashTagInsert()
                     }
+
+                    function hashTagInsert() {
+                        for (let i = 0; i < $("#tag_box > li").length; i++) {
+
+                            var travelHashTag = {
+                                cno: contentNo,
+                                content: a,
+                            };
+
+                            $.ajax({
+                                type: "POST",
+                                url: serverRoot + "/json/hashTag/add",
+                                data: travelHashTag,
+                                success: function (data) {
+
+                                    location.href = "sub08_view.html?" + contentNo;
+                                },
+                                error: function (data) {
+                                    alert("데이터입력 실패");
+                                }
+
+                            });
+                        }
+
+                    }
+
+
+
+
+
                 }
             }
             // 게시글 모두삭제버튼
@@ -1289,8 +1317,8 @@
                     "<input id='main_img_" + count + "' value='' title='메인사진' hidden>" +
                     "<div class='daySelect_div" + count + " daySelect_div'>" +
                     "</div>" +
-                    "<div class='text_count'>글자제한:" +
-                    "<span class='count'>80</span>/80</div>" +
+                    "<div class='text_count" + count +"'>글자제한:" +
+                    "<span class='count"+count+"'>80</span>/80</div>" +
                     "<button onclick='map()'></button>" +
                     "</form>" +
                     "</div>" +
@@ -1338,9 +1366,46 @@
                     )
                 })(count)
                 calCopy = $('.cont_select_box').clone();
-                console.log(calCopy);
                 $('.daySelect_div' + count).append(calCopy[0])
                 $('.daySelect_div' + count).children().attr("id", "selectid_" + count)
+
+
+                $('.text_count' + count).each(function () {
+                    // count 정보 및 count 정보와 관련된 textarea/input 요소를 찾아내서 변수에 저장한다.
+                    let $count2 = $('.count' + count, this);
+                    let $input2 = $('#post_text_form_' + count)
+                    console.log($count2)
+                    console.log($input2)
+                    // .text()가 문자열을 반환하기에 이 문자를 숫자로 만들기 위해 1을 곱한다.   // .text()가 문자열을 반환하기에 이 문자를 숫자로 만들기 위해 1을 곱한다.
+                    var maximumCount = $count2.text() * 1;
+                    // update 함수는 keyup, paste, input 이벤트에서 호출한다.
+                    var update = function () {
+                        var before = $count2.text() * 1;
+                        var now = maximumCount - $input2.val().length;
+                        // 사용자가 입력한 값이 제한 값을 초과하는지를 검사한다.
+                        if (now < 0) {
+                            var str = $input2.val();
+                            swal({
+                                type: 'error',
+                                title: '입력초과',
+                                text: '글자 입력수를 초과하였습니다.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            $input2.val(str.substr(0, maximumCount));
+                            now = 0;
+                        }
+                        // 필요한 경우 DOM을 수정한다.
+                        if (before != now) {
+                            $count2.text(now);
+                        }
+                    };
+                    // input, keyup, paste 이벤트와 update 함수를 바인드한다
+                    $input2.bind('input keyup paste', function () {
+                        setTimeout(update, 0)
+                    });
+                    update();
+                });
 
                 // $('.daySelect_div'+count).clone(contSelectBox)
 
