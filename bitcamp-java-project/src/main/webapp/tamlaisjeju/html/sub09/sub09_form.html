@@ -163,11 +163,11 @@
 
 							<div class="spot-note-box">
 								<div class="spot-contents">
-									
 								</div>
 								<h3>
-										<strong id="st_day"></strong> <span class="desc"></span>
-									</h3>
+									<strong id="st_day"></strong> <span class="desc"></span>
+								</h3>
+								
 							</div>
 							<!--spot-note-box-->
 
@@ -409,7 +409,8 @@
                  	 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
                  	 
                  	 var infowindow = new daum.maps.InfoWindow({zIndex:1});
-                 	 
+                     var nowPlanDay = data[0].plday; 
+
                  	 var day = $('#st_day');
                      var day_num = $('<a id="d1">');
                      
@@ -430,7 +431,18 @@
                               console.log(data2.response.body.items.item[j])
                               
                               
-                              
+                               if(data[i].plday > nowPlanDay){
+                       		   
+                               var dayIden = $('.spot-note-box');
+                               
+                       		   nowPlanDay = data[i].plday;
+                       		   
+                       		   let newNode = $("<p>");
+                       		   $(newNode).text("day " + nowPlanDay);
+                       		   
+                               $(dayIden).append(newNode);
+                               console.log(nowPlanDay);
+                       	   	   } 
                               
 						   
                               var dayCon = $('.spot-note-box');
@@ -444,8 +456,6 @@
                               $(spot_title_area).append(h4_title);
                               $(spot_tit).append(spot_title_area);
                               $(dayCon).append(spot_tit);
-                              
-                              
 
                               var spot_cont = $('<div class="spot-contents">');
                               var cont_txt_area = $('<div class="conts-txt-area">');
