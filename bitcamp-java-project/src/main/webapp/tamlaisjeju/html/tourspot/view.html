@@ -145,13 +145,13 @@
 					"<li>" +
 					"<b>홈페이지</b>" + "<span> " + list.homepage + "</span>" +
 					"</li>" +
-					"</ul>" +
-					"</div>" +
-					"</div>" +
+				"</ul>" +
+				"</div>" +
+				"</div>" +
 
-					"<div class='detail_info clear'>" +
-					"<h4>개요</h4>" +
-					"<p class='mb30'>" + list.overview + "</p>" +
+				"<div class='detail_info clear'>" +
+				"<h4>개요</h4>" +
+				"<p class='mb30'>" + list.overview + "</p>" +
 					"<h4>위치정보</h4>" +
 					"<div class='mb30' id='map' style='width:100%; height:300px;'></div>" +
 					"</div>" // detail_info end
@@ -202,14 +202,14 @@
 			},
 
 			detailPageIntroInfoDraw: function (data) {
-				var InfoElements;
+				var InfoaddElements;
 				var list = data.response.body.items.item
 				var ref = list.contenttypeid
 				if (ref === 12) { //관광지
-					InfoElements =
+					InfoaddElements =
 						"<li><b>유모차대여여부</b><span>" + list.chkbabycarriage + "</span></li>" +
 						"<li><b>주차가능 여부</b><span>" + list.parking + "</span></li>"
-					$(".view_info ul").append(InfoElements)
+					$(".view_info ul").append(InfoaddElements)
 				} else if (ref === 14) { // 문화시설
 					InfoElements = "<div class='detail_info'>" +
 						"<table class='tbl_basic center'>" +
@@ -351,8 +351,6 @@
 
 			},
 			contentsLocationParsing: function (data) {
-				console.log(data)
-
 				var LocationElements;
 				var list = data.response.body.items.item
 
