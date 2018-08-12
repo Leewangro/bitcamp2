@@ -17,7 +17,8 @@
   
   <select id="selectList" 
           resultMap="TravelLogMap" parameterType="map">
-    SELECT * FROM `TAMLA_TRAVEL_LOG`
+    select TLNO,MNO,SDT,EDT,PART,PREF 
+    from TAMLA_TRAVEL_LOG
   </select>
 
 
