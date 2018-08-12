@@ -131,7 +131,7 @@
 					"</ul>" +
 					"</div>" + // view_gallery
 					"<div class='view_info'>" +
-					"<h4>상세정보</h4>" +
+					"<h4>기본정보</h4>" +
 					"<ul>" +
 					"<li>" +
 					"<b>우편번호</b>" +
@@ -140,11 +140,11 @@
 					"<li>" +
 					"<b>위치</b>" +
 					"<span> " + list.addr1 + "</span>" +
-					"</li>" +
-
-					"<li>" +
-					"<b>홈페이지</b>" + "<span> " + list.homepage + "</span>" +
-					"</li>" +
+					"</li>"
+				if (list.homepage != "" && list.homepage != null) {
+					InfoElements = InfoElements + "<li><b>홈페이지</b>" + list.homepage +
+						"</li>";
+				}
 				"</ul>" +
 				"</div>" +
 				"</div>" +
@@ -202,14 +202,47 @@
 			},
 
 			detailPageIntroInfoDraw: function (data) {
-				var InfoaddElements;
+				var detailIntro;
 				var list = data.response.body.items.item
 				var ref = list.contenttypeid
 				if (ref === 12) { //관광지
-					InfoaddElements =
-						"<li><b>유모차대여여부</b><span>" + list.chkbabycarriage + "</span></li>" +
-						"<li><b>주차가능 여부</b><span>" + list.parking + "</span></li>"
-					$(".view_info ul").append(InfoaddElements)
+					detailIntro =
+						"<h4>상세정보</h4>" +
+						"<ul class='detail_list'>"
+					if (list.infocenter != "" && list.infocenter != null) {
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><a style='color: black' href='tel://" + list.infocenter +
+							"'>" + list.infocenter + "</a></li>";
+					}
+					if (list.accomcount != "" && list.accomcount != null) {
+						detailIntro = detailIntro + "<li><strong>수용인원 : </strong>" + list.accomcount + "</li>";
+					}
+					if (list.restdate != "" && list.restdate != null) {
+						detailIntro = detailIntro + "<li><strong>쉬는날 : </strong>" + list.restdate + "</li>";
+					}
+					if (list.opendate != "" && list.opendate != null) {
+						detailIntro = detailIntro + "<li><strong>개장일 : </strong>" + list.opendate + "</li>";
+					}
+					if (list.useseason != "" && list.useseason != null) {
+						detailIntro = detailIntro + "<li><strong>이용시기 : </strong>" + list.useseason + "</li>";
+					}
+					if (list.usetime != "" && list.usetime != null) {
+						detailIntro = detailIntro + "<li><strong>이용시간 : </strong>" + list.usetime + "</li>";
+					}
+					if (list.expguide != "" && list.expguide != null) {
+						detailIntro = detailIntro + "<li><strong>체험안내 : </strong>" + list.expguide + "</li>";
+					}
+					if (list.expagerange != "" && list.expagerange != null) {
+						detailIntro = detailIntro + "<li><strong>체험가능연령 : </strong>" + list.expagerange + "</li>";
+					}
+					if (list.chkbabycarriage != "" && list.chkbabycarriage != null) {
+						detailIntro = detailIntro + "<li><strong>유모차대여여부 : </strong>" + list.chkbabycarriage + "</li>";
+					}
+					if (list.parking != "" && list.parking != null) {
+						detailIntro = detailIntro + "<li><strong>주차가능 여부 : </strong>" + list.parking + "</li>";
+					}
+					"</ul>"
+
+					$("#detailIntro").html(detailIntro)
 				} else if (ref === 14) { // 문화시설
 					InfoElements = "<div class='detail_info'>" +
 						"<table class='tbl_basic center'>" +
@@ -576,6 +609,21 @@
 		#travelContents .view_info ul li span {
 			display: inline-block;
 			width: 70%;
+		}
+
+
+
+
+		#detailIntro {
+			margin: 30px 0;
+		}
+
+		#detailIntro .detail_list {}
+
+		#detailIntro .detail_list li {}
+
+		#detailIntro .detail_list li strong {
+			display: block;
 		}
 
 
