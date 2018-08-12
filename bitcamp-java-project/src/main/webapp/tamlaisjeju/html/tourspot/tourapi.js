@@ -36,16 +36,6 @@ var common = {
 
 
 
-
-
-
-
-
-
-
-
-
-
 	getMonth: function () {
 		$('#festivalMonth').append(this.date.getMonth() + 1)
 	},

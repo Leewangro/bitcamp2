@@ -51,7 +51,6 @@
 						<ul>
 
 						</ul>
-
 					</div>
 					<!-- location end -->
 				</div>
@@ -107,11 +106,17 @@
 
 
 
-		$.urlParam = function (name) {
-			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-			return results[1] || 0;
-		}
 
+
+
+$.urlParam = function(name){
+    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (!results)
+    { 
+        return 0; 
+    }
+    return results[1] || 0;
+}
 		var parsing = {
 			contentsParsing: function (data) {
 				var InfoElements;
@@ -120,14 +125,10 @@
 					"<h3>" + list.title + "</h3>" +
 					"<div class='view_intro clear'>" +
 					"<div id='view_gallery'>" +
-
 					"<ul>" +
-						
-					"<li>" + "<img src='" + list.firstimage + "'" + "alt=" + list.title + ">" + "</li>" +
 
-
-
-
+					"<li>" + "<img src=" + "'" + list.firstimage + "'" + "onError=" +
+					"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" + "</li>" +
 					"</ul>" +
 					"</div>" + // view_gallery
 					"<div class='view_info'>" +
@@ -141,31 +142,23 @@
 					"<b>위치</b>" +
 					"<span> " + list.addr1 + "</span>" +
 					"</li>" +
+
 					"<li>" +
-					"<b>홈페이지</b>"
-				if (list.homepage != undefined) {
-					InfoElements + list.homepage
-				} else {
-					"<span> " + list.homepage + "</span>" +
-						"</li>" +
-						"</ul>" +
-						"</div>"
-				}
+					"<b>홈페이지</b>" + "<span> " + list.homepage + "</span>" +
+					"</li>" +
+					"</ul>" +
+					"</div>" +
+					"</div>" +
 
-				"</div>" // view_intro end
-				+
-				"<div class='buttonSet right'>"
-
-
-
-				InfoElements += "</div>" +
 					"<div class='detail_info clear'>" +
 					"<h4>개요</h4>" +
 					"<p class='mb30'>" + list.overview + "</p>" +
 					"<h4>위치정보</h4>" +
 					"<div class='mb30' id='map' style='width:100%; height:300px;'></div>" +
 					"</div>" // detail_info end
+
 				$("#travelContents").append(InfoElements)
+
 				var mapContainer = document.getElementById('map'),
 					mapOption = {
 						center: new daum.maps.LatLng(list.mapy, list.mapx),
@@ -181,12 +174,13 @@
 				map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 				map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 				marker.setMap(map);
+
 			},
 			contentsImgParsing: function (data) {
-				var list = data.response.body.items.item[i]
-				var imgurl = list.originimgurl
-				for (var i = 0; i < 5; i++) {
 
+				for (var i = 0; i < 5; i++) {
+					var list = data.response.body.items.item[i]
+					var imgurl = list.originimgurl
 					//이미지가 없거나 찾지 못했을때
 					if (imgurl == null || imgurl == "undefined") {
 						return false;
@@ -204,122 +198,7 @@
 					autoplaySpeed: 4000,
 				})
 			},
-			contentsLocationParsing: function (data) {
-				var LocationElements;
-				var list = data.response.body.items.item
-				if (list != undefined) {
-					$.each(list, function (i, list) {
-						if (list.contenttypeid === 12) { //관광지
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "관광지" + "</span>" +
-								"</a>" +
-								"</li>"
 
-						} else if (list.contenttypeid === 14) { // 문화시설
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "문화시설" + "</span>" +
-								"</a>" +
-								"</li>"
-
-						} else if (list.contenttypeid === 15) { // 축제정보
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "축제정보" + "</span>" +
-								"</a>" +
-								"</li>"
-						} else if (list.contenttypeid === 25) { // 여행코스
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "여행코스" + "</span>" +
-								"</a>" +
-								"</li>"
-						} else if (list.contenttypeid === 28) { //레포츠
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "레포츠" + "</span>" +
-								"</a>" +
-								"</li>"
-						} else if (list.contenttypeid === 32) { // 숙박정보 
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "숙박정보" + "</span>" +
-								"</a>" +
-								"</li>"
-						} else if (list.contenttypeid === 38) { // 쇼핑
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "쇼핑" + "</span>" +
-								"</a>" +
-								"</li>"
-						} else if (list.contenttypeid === 39) { // 음식점
-							LocationElements =
-								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
-								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
-								"<span id='cate'>" + "음식점" + "</span>" +
-								"</a>" +
-								"</li>"
-						}
-						$("#tourist_item ul").append(LocationElements)
-					})
-				} else {
-					$(".text-right").css("display", "none");
-				}
-				$('#tourist_item ul').slick({
-					slidesToShow: 4,
-					//slidesToScroll: 1,
-					//autoplay: true,
-					//autoplaySpeed: 4000,
-				});
-			},
 			detailPageIntroInfoDraw: function (data) {
 				var InfoElements;
 				var list = data.response.body.items.item
@@ -468,7 +347,124 @@
 					$("#detailIntro").append(InfoElements)
 				}
 
-			}
+			},
+			contentsLocationParsing: function (data) {
+
+				var LocationElements;
+				var list = data.response.body.items.item
+
+				if (list != undefined) {
+					$.each(list, function (i, list) {
+						if (list.contenttypeid === 12) { //관광지
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "관광지" + "</span>" +
+								"</a>" +
+								"</li>"
+						} else if (list.contenttypeid === 14) { // 문화시설
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "문화시설" + "</span>" +
+								"</a>" +
+								"</li>"
+
+						} else if (list.contenttypeid === 15) { // 축제정보
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "축제정보" + "</span>" +
+								"</a>" +
+								"</li>"
+						} else if (list.contenttypeid === 25) { // 여행코스
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "여행코스" + "</span>" +
+								"</a>" +
+								"</li>"
+						} else if (list.contenttypeid === 28) { //레포츠
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "레포츠" + "</span>" +
+								"</a>" +
+								"</li>"
+						} else if (list.contenttypeid === 32) { // 숙박정보 
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "숙박정보" + "</span>" +
+								"</a>" +
+								"</li>"
+						} else if (list.contenttypeid === 38) { // 쇼핑
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "쇼핑" + "</span>" +
+								"</a>" +
+								"</li>"
+						} else if (list.contenttypeid === 39) { // 음식점
+							LocationElements =
+								"<li>" +
+								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
+								list.mapy + "'>" +
+								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+								"<b>" + list.title + "</b>" +
+								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<span id='cate'>" + "음식점" + "</span>" +
+								"</a>" +
+								"</li>"
+						}
+						$("#tourist_item ul").append(LocationElements)
+					})
+				} else {
+					$(".text-right").css("display", "none");
+				}
+				$('#tourist_item ul').slick({
+					slidesToShow: 4,
+					//slidesToScroll: 1,
+					//autoplay: true,
+					//autoplaySpeed: 4000,
+				});
+			},
 
 		}
 	</script>
