@@ -84,7 +84,15 @@
 
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8dfe4ef61743ed1851a59061fe320e0d"></script>
 	<script>
-		$(function () {
+		$.urlParam = function (name) {
+			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (results == null) {
+				return null;
+			} else {
+				return results[1] || 0;
+			}
+		}
+		$(function (data) {
 			var id = $.urlParam('id');
 			var item = $.urlParam('item');
 			var mapx = $.urlParam('mapx');
@@ -108,15 +116,6 @@
 
 
 
-
-$.urlParam = function(name){
-    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (!results)
-    { 
-        return 0; 
-    }
-    return results[1] || 0;
-}
 		var parsing = {
 			contentsParsing: function (data) {
 				var InfoElements;
@@ -174,6 +173,9 @@ $.urlParam = function(name){
 				map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 				map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 				marker.setMap(map);
+
+
+
 
 			},
 			contentsImgParsing: function (data) {
@@ -349,21 +351,22 @@ $.urlParam = function(name){
 
 			},
 			contentsLocationParsing: function (data) {
+				console.log(data)
 
 				var LocationElements;
 				var list = data.response.body.items.item
 
 				if (list != undefined) {
-					$.each(list, function (i, list) {
-						if (list.contenttypeid === 12) { //관광지
+					$.each(list, function (i, item) {
+						if (item.contenttypeid === 12) { //관광지
 							LocationElements =
 								"<li>" +
-								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
-								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" +
+								item.mapy + "'>" +
+								"<img src=" + "'" + item.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
-								"<b>" + list.title + "</b>" +
-								"<span class='addr'>" + list.addr1 + "</span>" +
+								"<b>" + item.title + "</b>" +
+								"<span class='addr'>" + item.addr1 + "</span>" +
 								"<span id='cate'>" + "관광지" + "</span>" +
 								"</a>" +
 								"</li>"
@@ -372,7 +375,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -385,7 +388,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -397,7 +400,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -409,7 +412,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -421,7 +424,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -433,7 +436,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -445,7 +448,7 @@ $.urlParam = function(name){
 								"<li>" +
 								"<a href='view.html?id=" + list.contentid + "&item=" + list.contenttypeid + "&mapx=" + list.mapx + "&mapy=" +
 								list.mapy + "'>" +
-								"<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" +
+								"<img src=" + "'" + list.firstimage + "'" + "onError=" +
 								"this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 								"<b>" + list.title + "</b>" +
 								"<span class='addr'>" + list.addr1 + "</span>" +
@@ -464,7 +467,9 @@ $.urlParam = function(name){
 					//autoplay: true,
 					//autoplaySpeed: 4000,
 				});
-			},
+
+
+			}
 
 		}
 	</script>
@@ -672,7 +677,7 @@ $.urlParam = function(name){
 
 		#tourist_item ul li #cate {
 			display: inline-block;
-			margin-top: 10px;
+			margin: 10px 0;
 			padding: 7px 20px;
 			text-align: center;
 			border: 1px solid #0050a1;

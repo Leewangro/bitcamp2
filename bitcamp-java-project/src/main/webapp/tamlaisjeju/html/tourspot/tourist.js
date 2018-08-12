@@ -28,9 +28,10 @@ var parsing = {
 
                         "<div class='box'>" +
                         "<div class='img_area'>" +
-                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapX="+item.mapx+"'>" +
+                         "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
+                  
                         "<span class='category'>관광지</span>" +
-                        "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
+                        "<img src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
                         "</a>" +
 
@@ -38,7 +39,7 @@ var parsing = {
 
 
                         "<div class='box_cont_area'>" +
-                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "'>" +
+                        "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
 
                         "<b>" + item.title + "</b>" +
 
@@ -92,9 +93,15 @@ var parsing = {
             console.log(data)
             var infoElements =
                 "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-3'>" +
-                "<a href='../cmm/detail.html?id=" + list.contentid + "&item=" + list.contenttypeid + "'" + " target='_blank'>" +
+                "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapX="+item.mapx+"&mapY="+item.mapy+"'>" +
+
+                "<b>" + item.title + "</b>" +
+
+
+
+                "</a>" +
                 "<div class='thumbnail'>" +
-                "<img class=" + "'img-responsive'" + "src=" + "'" + list.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../images/default.png';" + ">" +
+                "<img src=" + "'" + list.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../images/default.png';" + ">" +
                 "<div class='caption text-center'>" +
                 "<h5>" + list.title + "</h5>" +
                 "<h6>" + list.addr1 + "</h6>" +
