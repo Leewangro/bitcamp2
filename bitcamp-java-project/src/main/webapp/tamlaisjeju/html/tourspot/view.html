@@ -249,100 +249,110 @@
 
 					$("#detailIntro").html(detailIntro)
 				} else if (ref === 14) { // 문화시설
-
 					detailIntro =
 						"<h4>상세정보</h4>" +
 						"<ul class='detail_list'>"
 					if (list.infocenterculture != "" && list.infocenterculture != null) {
-						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>"+ list.infocenterculture +
-							"'>" + list.infocenterculture + "</a></span></li>";
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>" + list.infocenterculture + "</span></li>";
 					}
-					if (list.accomcount != "" && list.accomcount != null) {
-						detailIntro = detailIntro + "<li><strong>수용인원 : </strong><span>" + list.accomcount + "</span></li>";
+					if (list.spendtime != "" && list.spendtime != null) {
+						detailIntro = detailIntro + "<li><strong>관람소요시간 : </strong><span>" + list.spendtime + "</span></li>";
 					}
-					if (list.restdate != "" && list.restdate != null) {
-						detailIntro = detailIntro + "<li><strong>쉬는날 : </strong><span>" + list.restdate + "</span></li>";
+					if (list.scale != "" && list.scale != null) {
+						detailIntro = detailIntro + "<li><strong>규모 : </strong><span>" + list.scale + "</span></li>";
 					}
-					if (list.opendate != "" && list.opendate != null) {
-						detailIntro = detailIntro + "<li><strong>개장일 : </strong><span>" + list.opendate + "</span></li>";
+					if (list.discountinfo != "" && list.discountinfo != null) {
+						detailIntro = detailIntro + "<li><strong>할인정보 : </strong><span>" + list.discountinfo + "</span></li>";
 					}
-					if (list.useseason != "" && list.useseason != null) {
-						detailIntro = detailIntro + "<li><strong>이용시기 : </strong><span>" + list.useseason + "</span></li>";
+					if (list.usetimeculture != "" && list.usetimeculture != null) {
+						detailIntro = detailIntro + "<li><strong>이용시간 : </strong><span>" + list.usetimeculture + "</span></li>";
 					}
-					if (list.usetime != "" && list.usetime != null) {
-						detailIntro = detailIntro + "<li><strong>이용시간 : </strong><span>" + list.usetime + "</span></li>";
+					if (list.usefee != "" && list.usefee != null) {
+						detailIntro = detailIntro + "<li><strong>이용요금 : </strong><span>" + list.usefee + "</span></li>";
 					}
-					if (list.expguide != "" && list.expguide != null) {
-						detailIntro = detailIntro + "<li><strong>체험안내 : </strong><span>" + list.expguide + "</span></li>";
+					if (list.restdateculture != "" && list.restdateculture != null) {
+						detailIntro = detailIntro + "<li><strong>쉬는날 : </strong><span>" + list.restdateculture + "</span></li>";
 					}
-					if (list.expagerange != "" && list.expagerange != null) {
-						detailIntro = detailIntro + "<li><strong>체험가능연령 : </strong><span>" + list.expagerange + "</span></li>";
+					if (list.chkbabycarriageculture != "" && list.chkbabycarriageculture != null) {
+						detailIntro = detailIntro + "<li><strong>유모차대여여부 : </strong><span>" + list.chkbabycarriageculture +
+							"</span></li>";
 					}
-					if (list.chkbabycarriage != "" && list.chkbabycarriage != null) {
-						detailIntro = detailIntro + "<li><strong>유모차대여여부 : </strong><span>" + list.chkbabycarriage + "</span></li>";
+					if (list.parkingculture != "" && list.parkingculture != null) {
+						detailIntro = detailIntro + "<li><strong>주차시설 : </strong><span>" + list.parkingculture + "</span></li>";
 					}
-					if (list.parking != "" && list.parking != null) {
-						detailIntro = detailIntro + "<li><strong>주차가능 여부 : </strong><span>" + list.parking + "</span></li>";
+					if (list.parkingfee != "" && list.parkingfee != null) {
+						detailIntro = detailIntro + "<li><strong>주차요금 : </strong><span>" + list.parkingfee + "</span></li>";
 					}
 					"</ul>"
 
 					$("#detailIntro").html(detailIntro)
-
-
-
-
-
-						"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" +  + "</td>" +
-						"<tr><td class='introLeft'><em>관람소요시간      </em></td><td class='introRight'>" + list.spendtime + "</td>" +
-						"<tr><td class='introLeft'><em>수용인원 	   </em></td><td class='introRight'>" + list.accomcountculture + "</td>" +
-						"<tr><td class='introLeft'><em>규모      </em></td><td class='introRight'>" + list.scale + "</td>" +
-						"<tr><td class='introLeft'><em>할인정보      </em></td><td class='introRight'>" + list.discountinfo + "</td>" +
-						"<tr><td class='introLeft'><em>이용시간 	  </em></td><td class='introRight'>" + list.usetimeculture + "</td>" +
-						"<tr><td class='introLeft'><em>이용요금 	   </em></td><td class='introRight'>" + list.usefee + "</td>" +
-						"<tr><td class='introLeft'><em>쉬는날	   </em></td><td class='introRight'>" + list.restdateculture + "</td>" +
-						"<tr><td class='introLeft'><em>유모차대여여부	 </em></td><td class='introRight'>" + list.chkbabycarriageculture +
-						"</td>" +
-						"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingculture + "</td>" +
-						"<tr><td class='introLeft'><em>주차요금  </em></td><td class='introRight'>" + list.parkingfee + "</td>" +
-						"</table>" +
-						"</div>"
-					$("#detailIntro").append(InfoElements)
 				} else if (ref === 15) { // 축제정보
-					InfoElements = "<div class='detail_info'>" +
+					detailIntro =
+						"<h4>상세정보</h4>" +
 						"<div>" + list.program + "</div>" +
 						"<div>" + list.subevent + "</div>" +
-						"<table class='tbl_basic center'>" +
-						"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-						"<tr><td class='introLeft'><em>행사장소  </em></td><td class='introRight'>" + list.eventplace + "</td>" +
-						"<tr><td class='introLeft'><em>행사장위치안내 	 </em></td><td class='introRight'>" + list.placeinfo + "</td>" +
-						"<tr><td class='introLeft'><em>이용요금 	 </em></td><td class='introRight'>" + list.usetimefestival + "</td>" +
-						"<tr><td class='introLeft'><em>할인정보 	 </em></td><td class='introRight'>" + list.discountinfofestival +
-						"</td>" +
-						"<tr><td class='introLeft'><em>예매처 	 </em></td><td class='introRight'>" + list.bookingplace + "</td>" +
-						"<tr><td class='introLeft'><em>행사시작일 	 </em></td><td class='introRight'>" + list.eventstartdate + "</td>" +
-						"<tr><td class='introLeft'><em>행사종료일	   </em></td><td class='introRight'>" + list.eventenddate + "</td>" +
-						"<tr><td class='introLeft'><em>관람가능연령	   </em></td><td class='introRight'>" + list.agelimit + "</td>" +
-						"<tr><td class='introLeft'><em>관람소요시간 </em></td><td class='introRight'>" + list.spendtimefestival + "</td>" +
-						"<tr><td class='introLeft'><em>할인정보 </em></td><td class='introRight'>" + list.discountinfofestival + "</td>" +
-						"<tr><td class='introLeft'><em>공연시간  </em></td><td class='introRight'>" + list.playtime + "</td>" +
-						"<tr><td class='introLeft'><em>주최자  </em></td><td class='introRight'>" + list.sponsor1 + "</td>" +
-						"<tr><td class='introLeft'><em>주최자연락처 </em></td><td class='introRight'>" + list.sponsor1tel + "</td>" +
-						"</table>" +
-						"</div>"
-					$("#detailIntro").append(InfoElements)
+						"<ul class='detail_list'>"
+					if (list.eventplace != "" && list.eventplace != null) {
+						detailIntro = detailIntro + "<li><strong>행사장소 : </strong><span>" + list.eventplace + "</span></li>";
+					}
+					if (list.placeinfo != "" && list.placeinfo != null) {
+						detailIntro = detailIntro + "<li><strong>행사장위치안내 : </strong><span>" + list.placeinfo + "</span></li>";
+					}
+					if (list.usetimefestival != "" && list.usetimefestival != null) {
+						detailIntro = detailIntro + "<li><strong>이용요금 : </strong><span>" + list.usetimefestival + "</span></li>";
+					}
+					if (list.discountinfofestival != "" && list.discountinfofestival != null) {
+						detailIntro = detailIntro + "<li><strong>할인정보 : </strong><span>" + list.discountinfofestival + "</span></li>";
+					}
+					if (list.bookingplace != "" && list.bookingplace != null) {
+						detailIntro = detailIntro + "<li><strong>예매처 : </strong><span>" + list.bookingplace + "</span></li>";
+					}
+					if (list.eventstartdate != "" && list.eventstartdate != null) {
+						detailIntro = detailIntro + "<li><strong>행사시작일 : </strong><span>" + list.eventstartdate + "</span></li>";
+					}
+					if (list.eventenddate != "" && list.eventenddate != null) {
+						detailIntro = detailIntro + "<li><strong>행사종료일 : </strong><span>" + list.eventenddate + "</span></li>";
+					}
+					if (list.agelimit != "" && list.agelimit != null) {
+						detailIntro = detailIntro + "<li><strong>관람가능연령 : </strong><span>" + list.agelimit +
+							"</span></li>";
+					}
+					if (list.spendtimefestival != "" && list.spendtimefestival != null) {
+						detailIntro = detailIntro + "<li><strong>관람소요시간 : </strong><span>" + list.spendtimefestival + "</span></li>";
+					}
+					if (list.playtime != "" && list.playtime != null) {
+						detailIntro = detailIntro + "<li><strong>공연시간 : </strong><span>" + list.playtime + "</span></li>";
+					}
+					if (list.sponsor1 != "" && list.sponsor1 != null) {
+						detailIntro = detailIntro + "<li><strong>주최자 : </strong><span>" + list.sponsor1 + "</span></li>";
+					}
+					if (list.sponsor1tel != "" && list.sponsor1tel != null) {
+						detailIntro = detailIntro + "<li><strong>주최자연락처 : </strong><span>" + list.sponsor1tel + "</span></li>";
+					}
+					"</ul>"
+					$("#detailIntro").html(detailIntro)
 				} else if (ref === 25) { // 여행코스
-					InfoElements = "<div class='detail_info'>" +
-						"<table class='tbl_basic center'>" +
-						"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-						"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocentertourcourse +
-						"</td>" +
-						"<tr><td class='introLeft'><em>코스테마	   </em></td><td class='introRight'>" + list.theme + "</td>" +
-						"<tr><td class='introLeft'><em>코스일정  </em></td><td class='introRight'>" + list.schedule + "</td>" +
-						"<tr><td class='introLeft'><em>코스총거리	   </em></td><td class='introRight'>" + list.distance + "</td>" +
-						"<tr><td class='introLeft'><em>코스총소요시간  </em></td><td class='introRight'>" + list.taketime + "</td>" +
-						"</table>" +
-						"</div>"
-					$("#detailIntro").append(InfoElements)
+					detailIntro =
+						"<h4>상세정보</h4>" +
+						"<ul class='detail_list'>"
+					if (list.infocentertourcourse != "" && list.infocentertourcourse != null) {
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>" + list.infocentertourcourse +
+							"</span></li>";
+					}
+					if (list.theme != "" && list.theme != null) {
+						detailIntro = detailIntro + "<li><strong>코스테마 : </strong><span>" + list.theme + "</span></li>";
+					}
+					if (list.schedule != "" && list.schedule != null) {
+						detailIntro = detailIntro + "<li><strong>코스일정 : </strong><span>" + list.schedule + "</span></li>";
+					}
+					if (list.distance != "" && list.distance != null) {
+						detailIntro = detailIntro + "<li><strong>코스총거리 : </strong><span>" + list.distance + "</span></li>";
+					}
+					if (list.taketime != "" && list.taketime != null) {
+						detailIntro = detailIntro + "<li><strong>코스총소요시간 : </strong><span>" + list.taketime + "</span></li>";
+					}
+					"</ul>"
+					$("#detailIntro").html(detailIntro)
 				} else if (ref === 28) { //레포츠
 					InfoElements = "<div class='detail_info'>" +
 						"<table class='tbl_basic center'>" +
