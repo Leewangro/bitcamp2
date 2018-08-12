@@ -402,65 +402,132 @@
 					"</ul>"
 					$("#detailIntro").html(detailIntro)
 				} else if (ref === 32) { // 숙박정보 
-					InfoElements = "<div class='detail_info'>" +
-						"<table class='tbl_basic center'>" +
-						"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-						"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterlodging + "</td>" +
-						"<tr><td class='introLeft'><em>예약 안내	   </em></td><td class='introRight'>" + list.reservationlodging +
-						"</td>" +
-						"<tr><td class='introLeft'><em>예약 안내홈페이지 </em></td><td class='introRight'>" + list.reservationurl + "</td>" +
-						"<tr><td class='introLeft'><em>부대시설	   </em></td><td class='introRight'>" + list.subfacility + "</td>" +
-						"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td>" +
-						"<tr><td class='introLeft'><em>객실내취사여부  </em></td><td class='introRight'>" + list.chkcooking + "</td>" +
-						"<tr><td class='introLeft'><em>식음료장  </em></td><td class='introRight'>" + list.foodplace + "</td>" +
-						"<tr><td class='introLeft'><em>객실수		   </em></td><td class='introRight'>" + list.roomcount + "</td>" +
-						"<tr><td class='introLeft'><em>수용가능인원 	 </em></td><td class='introRight'>" + list.accomcountlodging + "</td>" +
-						"<tr><td class='introLeft'><em>체크인 시간 	 </em></td><td class='introRight'>" + list.checkintime + "</td>" +
-						"<tr><td class='introLeft'><em>체크아웃 시간  </em></td><td class='introRight'>" + list.checkouttime + "</td>" +
-						"<tr><td class='introLeft'><em>주차가능 여부  </em></td><td class='introRight'>" + list.parkinglodging + "</td>" +
-						"</table>" +
 
-						"</div>"
-					$("#detailIntro").append(InfoElements)
+					detailIntro =
+						"<h4>상세정보</h4>" +
+						"<ul class='detail_list'>"
+					if (list.infocenterlodging != "" && list.infocenterlodging != null) {
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>" + list.infocenterlodging +
+							"</span></li>";
+					}
+					if (list.reservationlodging != "" && list.reservationlodging != null) {
+						detailIntro = detailIntro + "<li><strong>예약 안내 : </strong><span>" + list.reservationlodging + "</span></li>";
+					}
+					if (list.reservationurl != "" && list.reservationurl != null) {
+						detailIntro = detailIntro + "<li><strong>예약 안내홈페이지 : </strong><span>" + list.reservationurl + "</span></li>";
+					}
+					if (list.subfacility != "" && list.subfacility != null) {
+						detailIntro = detailIntro + "<li><strong>부대시설 : </strong><span>" + list.subfacility + "</span></li>";
+					}
+					if (list.parkinglodging != "" && list.parkinglodging != null) {
+						detailIntro = detailIntro + "<li><strong>주차가능 여부 : </strong><span>" + list.parkinglodging + "</span></li>";
+					}
+					if (list.chkcooking != "" && list.chkcooking != null) {
+						detailIntro = detailIntro + "<li><strong>객실내취사여부 : </strong><span>" + list.chkcooking + "</span></li>";
+					}
+					if (list.foodplace != "" && list.foodplace != null) {
+						detailIntro = detailIntro + "<li><strong>식음료장 : </strong><span>" + list.foodplace + "</span></li>";
+					}
+					if (list.roomcount != "" && list.roomcount != null) {
+						detailIntro = detailIntro + "<li><strong>객실수 : </strong><span>" + list.roomcount + "</span></li>";
+					}
+					if (list.accomcountlodging != "" && list.accomcountlodging != null) {
+						detailIntro = detailIntro + "<li><strong>수용가능인원 : </strong><span>" + list.accomcountlodging + "</span></li>";
+					}
+					if (list.checkintime != "" && list.checkintime != null) {
+						detailIntro = detailIntro + "<li><strong>체크인 시간 : </strong><span>" + list.checkintime + "</span></li>";
+					}
+					if (list.checkouttime != "" && list.checkouttime != null) {
+						detailIntro = detailIntro + "<li><strong>체크아웃 시간 : </strong><span>" + list.checkouttime + "</span></li>";
+					}
+					if (list.parkinglodging != "" && list.parkinglodging != null) {
+						detailIntro = detailIntro + "<li><strong>주차가능 여부 : </strong><span>" + list.parkinglodging + "</span></li>";
+					}
+					"</ul>"
+					$("#detailIntro").html(detailIntro)
 				} else if (ref === 38) { // 쇼핑
-					InfoElements = "<div class='detail_info'>" +
-						"<table class='tbl_basic center'>" +
-						"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-						"<tr><td class='introLeft'><em>매장안내 </em></td><td class='introRight'>" + list.shopguide + "</td>" +
-						"<tr><td class='introLeft'><em>문의및안내 </em></td><td class='introRight'>" + list.infocentershopping + "</td>" +
-						"<tr><td class='introLeft'><em>영업시간</em></td><td class='introRight'>" + list.opentime + "</td>" +
-						"<tr><td class='introLeft'><em>쉬는날  </em></td><td class='introRight'>" + list.restdateshopping + "</td>" +
-						"<tr><td class='introLeft'><em>규모 </em></td><td class='introRight'>" + list.scaleshopping + "</td>" +
-						"<tr><td class='introLeft'><em>장서는날 </em></td><td class='introRight'>" + list.fairday + "</td>" +
-						"<tr><td class='introLeft'><em>문화센터바로가기  </em></td><td class='introRight'>" + list.culturecenter + "</td>" +
-						"<tr><td class='introLeft'><em>화장실 </em></td><td class='introRight'>" + list.restroom + "</td>" +
-						"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkbabycarriageshopping +
-						"</td>" +
-						"<tr><td class='introLeft'><em>신용카드가능여부	   </em></td><td class='introRight'>" + list.chkcreditcardshopping +
-						"</td>" +
-						"<tr><td class='introLeft'><em>애완동물가능여부	   </em></td><td class='introRight'>" + list.chkpetshopping + "</td>" +
-						"<tr><td class='introLeft'><em>주차시설	   </em></td><td class='introRight'>" + list.parkingshopping + "</td>" +
-						"<tr><td class='introLeft'><em>판매품목별가격  </em></td><td class='introRight'>" + list.saleitemcost + "</td>" +
-						"</table>" +
-
-						"</div>"
-					$("#detailIntro").append(InfoElements)
+					detailIntro =
+						"<h4>상세정보</h4>" +
+						"<ul class='detail_list'>"
+					if (list.shopguide != "" && list.shopguide != null) {
+						detailIntro = detailIntro + "<li><strong>매장안내 : </strong><span>" + list.shopguide +
+							"</span></li>";
+					}
+					if (list.infocentershopping != "" && list.infocentershopping != null) {
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>" + list.infocentershopping + "</span></li>";
+					}
+					if (list.opentime != "" && list.opentime != null) {
+						detailIntro = detailIntro + "<li><strong>영업시간 : </strong><span>" + list.opentime + "</span></li>";
+					}
+					if (list.restdateshopping != "" && list.restdateshopping != null) {
+						detailIntro = detailIntro + "<li><strong>쉬는날 : </strong><span>" + list.restdateshopping + "</span></li>";
+					}
+					if (list.scaleshopping != "" && list.scaleshopping != null) {
+						detailIntro = detailIntro + "<li><strong>규모 : </strong><span>" + list.scaleshopping + "</span></li>";
+					}
+					if (list.fairday != "" && list.fairday != null) {
+						detailIntro = detailIntro + "<li><strong>장서는날 : </strong><span>" + list.fairday + "</span></li>";
+					}
+					if (list.culturecenter != "" && list.culturecenter != null) {
+						detailIntro = detailIntro + "<li><strong>문화센터바로가기 : </strong><span>" + list.culturecenter + "</span></li>";
+					}
+					if (list.restroom != "" && list.restroom != null) {
+						detailIntro = detailIntro + "<li><strong>화장실 : </strong><span>" + list.restroom + "</span></li>";
+					}
+					if (list.chkbabycarriageshopping != "" && list.chkbabycarriageshopping != null) {
+						detailIntro = detailIntro + "<li><strong>유모차대여 정보 : </strong><span>" + list.chkbabycarriageshopping +
+							"</span></li>";
+					}
+					if (list.chkcreditcardshopping != "" && list.chkcreditcardshopping != null) {
+						detailIntro = detailIntro + "<li><strong>신용카드가능여부 : </strong><span>" + list.chkcreditcardshopping +
+							"</span></li>";
+					}
+					if (list.chkpetshopping != "" && list.chkpetshopping != null) {
+						detailIntro = detailIntro + "<li><strong>애완동물가능여부 : </strong><span>" + list.chkpetshopping + "</span></li>";
+					}
+					if (list.parkingshopping != "" && list.parkingshopping != null) {
+						detailIntro = detailIntro + "<li><strong>주차시설 : </strong><span>" + list.parkingshopping + "</span></li>";
+					}
+					if (list.saleitemcost != "" && list.saleitemcost != null) {
+						detailIntro = detailIntro + "<li><strong>판매품목별가격 : </strong><span>" + list.saleitemcost + "</span></li>";
+					}
+					"</ul>"
+					$("#detailIntro").html(detailIntro)
 				} else if (ref === 39) { // 음식점
-					InfoElements =
-						"<h4>음식점 안내</h4>" +
-						"<ul class='list_1st'>" +
-						"	<li><b>대표메뉴</b><span>" + list.firstmenu + "</span></li>	" +
-						"	<li><b>취급메뉴</b><span>" + list.treatmenu + "</span></li>	" +
-						"	<li><b>문의및안내</b><span>" + list.infocenterfood + "</span></li>	" +
-						"	<li><b>할인정보</b><span>" + list.discountinfofood + "</span></li>	" +
-						"	<li><b>영업시간</b><span>" + list.opentimefood + "</span></li>	" +
-						"	<li><b>주차가능 여부</b><span>" + list.parkingfood + "</span></li>	" +
-						"	<li><b>급연/흡연 여부</b><span>" + list.smoking + "</span></li>	" +
-						"	<li><b>포장가능 여부</b><span>" + list.packing + "</span></li>	" +
-						"	<li><b>쉬는날</b><span>" + list.restdatefood + "</span></li>	" +
-						"	<li><b>신용카드가능여부</b><span>" + list.chkcreditcardfood + "</span></li>	" +
-						"</ul>"
-					$("#detailIntro").append(InfoElements)
+
+					detailIntro =
+						"<h4>상세정보</h4>" +
+						"<ul class='detail_list'>"
+					if (list.firstmenu != "" && list.firstmenu != null) {
+						detailIntro = detailIntro + "<li><strong>대표메뉴 : </strong><span>" + list.firstmenu +
+							"</span></li>";
+					}
+					if (list.treatmenu != "" && list.treatmenu != null) {
+						detailIntro = detailIntro + "<li><strong>취급메뉴 : </strong><span>" + list.treatmenu + "</span></li>";
+					}
+					if (list.infocenterfood != "" && list.infocenterfood != null) {
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>" + list.infocenterfood + "</span></li>";
+					}
+					if (list.opentimefood != "" && list.opentimefood != null) {
+						detailIntro = detailIntro + "<li><strong>영업시간 : </strong><span>" + list.opentimefood + "</span></li>";
+					}
+					if (list.parkingfood != "" && list.parkingfood != null) {
+						detailIntro = detailIntro + "<li><strong>주차가능 여부 : </strong><span>" + list.parkingfood + "</span></li>";
+					}
+					if (list.smoking != "" && list.smoking != null) {
+						detailIntro = detailIntro + "<li><strong>급연/흡연 여부 : </strong><span>" + list.smoking + "</span></li>";
+					}
+					if (list.packing != "" && list.packing != null) {
+						detailIntro = detailIntro + "<li><strong>포장가능 여부 : </strong><span>" + list.packing + "</span></li>";
+					}
+					if (list.restdatefood != "" && list.restdatefood != null) {
+						detailIntro = detailIntro + "<li><strong>쉬는날 : </strong><span>" + list.restdatefood + "</span></li>";
+					}
+					if (list.chkcreditcardfood != "" && list.chkcreditcardfood != null) {
+						detailIntro = detailIntro + "<li><strong>신용카드가능여부 : </strong><span>" + list.chkcreditcardfood + "</span></li>";
+					}
+					"</ul>"
+					$("#detailIntro").html(detailIntro)
 				}
 
 			},
