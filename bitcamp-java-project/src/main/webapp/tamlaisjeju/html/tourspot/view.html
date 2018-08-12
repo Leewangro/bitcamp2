@@ -146,12 +146,11 @@
 					"<span> " + list.addr2 + "</span>" +
 					"</li>"
 				if (list.homepage != undefined) {
-					InfoElements = InfoElements + "<li><b>홈페이지</b><span>" +list.homepage +
+					InfoElements = InfoElements + "<li><b>홈페이지</b><span>" + list.homepage +
 						"</span></li>";
 				}
 				InfoElements +=
-					// if (list.homepage != undefined ) {  InfoElements +	list.homepage }
-					// 					InfoElements	+=	"</div>"
+
 					"</ul>" +
 					"</div>" +
 					"</div>" +
@@ -250,10 +249,50 @@
 
 					$("#detailIntro").html(detailIntro)
 				} else if (ref === 14) { // 문화시설
-					InfoElements = "<div class='detail_info'>" +
-						"<table class='tbl_basic center'>" +
-						"<tr><td colspan='2'><em>상세 정보</em></td></tr>" +
-						"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" + list.infocenterculture + "</td>" +
+
+					detailIntro =
+						"<h4>상세정보</h4>" +
+						"<ul class='detail_list'>"
+					if (list.infocenterculture != "" && list.infocenterculture != null) {
+						detailIntro = detailIntro + "<li><strong>문의 및 안내 : </strong><span>"+ list.infocenterculture +
+							"'>" + list.infocenterculture + "</a></span></li>";
+					}
+					if (list.accomcount != "" && list.accomcount != null) {
+						detailIntro = detailIntro + "<li><strong>수용인원 : </strong><span>" + list.accomcount + "</span></li>";
+					}
+					if (list.restdate != "" && list.restdate != null) {
+						detailIntro = detailIntro + "<li><strong>쉬는날 : </strong><span>" + list.restdate + "</span></li>";
+					}
+					if (list.opendate != "" && list.opendate != null) {
+						detailIntro = detailIntro + "<li><strong>개장일 : </strong><span>" + list.opendate + "</span></li>";
+					}
+					if (list.useseason != "" && list.useseason != null) {
+						detailIntro = detailIntro + "<li><strong>이용시기 : </strong><span>" + list.useseason + "</span></li>";
+					}
+					if (list.usetime != "" && list.usetime != null) {
+						detailIntro = detailIntro + "<li><strong>이용시간 : </strong><span>" + list.usetime + "</span></li>";
+					}
+					if (list.expguide != "" && list.expguide != null) {
+						detailIntro = detailIntro + "<li><strong>체험안내 : </strong><span>" + list.expguide + "</span></li>";
+					}
+					if (list.expagerange != "" && list.expagerange != null) {
+						detailIntro = detailIntro + "<li><strong>체험가능연령 : </strong><span>" + list.expagerange + "</span></li>";
+					}
+					if (list.chkbabycarriage != "" && list.chkbabycarriage != null) {
+						detailIntro = detailIntro + "<li><strong>유모차대여여부 : </strong><span>" + list.chkbabycarriage + "</span></li>";
+					}
+					if (list.parking != "" && list.parking != null) {
+						detailIntro = detailIntro + "<li><strong>주차가능 여부 : </strong><span>" + list.parking + "</span></li>";
+					}
+					"</ul>"
+
+					$("#detailIntro").html(detailIntro)
+
+
+
+
+
+						"<tr><td class='introLeft'><em>문의 및 안내  </em></td><td class='introRight'>" +  + "</td>" +
 						"<tr><td class='introLeft'><em>관람소요시간      </em></td><td class='introRight'>" + list.spendtime + "</td>" +
 						"<tr><td class='introLeft'><em>수용인원 	   </em></td><td class='introRight'>" + list.accomcountculture + "</td>" +
 						"<tr><td class='introLeft'><em>규모      </em></td><td class='introRight'>" + list.scale + "</td>" +
