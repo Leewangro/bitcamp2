@@ -29,6 +29,15 @@ public class TravelLogServiceImpl implements TravelLogService {
     }
     
     @Override
+    public List<TravelLog> listwithPage(int pageNo, int pageSize) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("startRowNo", (pageNo - 1) * pageSize);
+        params.put("pageSize", pageSize);
+        
+        return travelLogDao.selectListwithPage(params);
+    }
+    
+    @Override
     public TravelLog get(int no) {
         return travelLogDao.selectOne(no);
     }

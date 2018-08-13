@@ -209,7 +209,7 @@
                 <div id="travel_cont"></div>
 
                 <!-- 라이브리 시티 설치 코드 -->
-                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk5NC8xNDUyNA=="></div>
+                <div id='livecity'></div>
             </div>
         </div>
     </div>
@@ -351,6 +351,10 @@
                 success: function (data) {
                     $('#title_div').append(
                         "<h5 id='top_title'>" + data.title + "</h5>")
+                    $('#livecity').append(
+                    "<div id='lv-container'"+link+" data-id='city' data-uid='MTAyMC8zNzk5NC8xNDUyNA=='></div>"
+                     )
+
                 }
             })
             $.ajax({

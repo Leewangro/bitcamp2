@@ -9,6 +9,7 @@ import bitcamp.java106.pms.domain.TravelLog;
 public interface TravelLogDao {
     int delete(int no);
     List<TravelLog> selectList(Map<String,Object> params);
+    List<TravelLog> selectListwithPage(Map<String,Object> params);
     int insert(TravelLog travelLog);
     int update(TravelLog travelLog);
     TravelLog selectOne(int no);

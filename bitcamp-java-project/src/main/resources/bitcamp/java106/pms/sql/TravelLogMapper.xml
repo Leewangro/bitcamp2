@@ -19,6 +19,15 @@
           resultMap="TravelLogMap" parameterType="map">
     select TLNO,MNO,SDT,EDT,PART,PREF 
     from TAMLA_TRAVEL_LOG
+    
+  </select>
+  
+    <select id="selectListwithPage" 
+          resultMap="TravelLogMap" parameterType="map">
+    select TLNO,MNO,SDT,EDT,PART,PREF 
+    from TAMLA_TRAVEL_LOG
+    order by TLNO desc
+    limit #{startRowNo}, #{pageSize}
   </select>
 
 

@@ -22,13 +22,20 @@ public class TravelLogController {
     }
     
     @RequestMapping("list{page}")
+    public Object listwithPage(
+            @MatrixVariable(defaultValue="1") int pageNo,
+            @MatrixVariable(defaultValue="10") int pageSize) {
+                
+        return travelLogService.listwithPage(pageNo, pageSize);
+    }
+    
+    @RequestMapping("list")
     public Object list(
             @MatrixVariable(defaultValue="1") int pageNo,
             @MatrixVariable(defaultValue="10") int pageSize) {
                 
         return travelLogService.list(pageNo, pageSize);
     }
-    
     @RequestMapping("add")
     public Object add(TravelLog travelLog) throws Exception {
         travelLogService.add(travelLog);
