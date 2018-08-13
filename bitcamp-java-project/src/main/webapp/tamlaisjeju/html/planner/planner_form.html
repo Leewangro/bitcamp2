@@ -73,15 +73,32 @@
                     <button id="enter">hashtag</button>
                     <ul id="tag_box" class="tag_cls">
                     </ul>
+                    
                 </div>
-
 
             </div>
             <div class="plan_out">
-                <div class="plan_out_btn">저장&amp;닫기
-                </div>
-
+                <button style="border: 1px solid #2793db; color: #2793db; background-color: white;" type="button" 
+                class="plan_out_btn" data-toggle="modal" data-target="#SCModal">저장&amp;닫기
+                </button>
             </div>
+            <form name="form5" id="travelmate_form">
+                    <div class="modal fade" id="SCModal" tabindex="-1" role="dialog" aria-labelledby="SCModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+	                            <div id="mo_body" class="modal-body">
+                                    일정 작성을 완료하였습니다.<br>
+                                    여행일정을 공유하여<br>
+                                    동행서비스를 이용해보시겠습니까?<br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" id="travelMate_form" data-dismiss="modal">동행신청</button>
+                                    <button type="button" class="btn btn-primary" id="plan_view" data-dismiss="modal">작성완료</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
         </div>
     </div>
 
@@ -516,6 +533,7 @@
     <script src="../../node_modules/lodash/lodash.js"></script>
     <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -534,7 +552,7 @@
     <script id="tr-template" type="text/x-handlebars-template">
         {{#each list}}
         <div class="item" id=dragitem{{@index}}; draggable="true" data-target={{@index}}>
-            <div class="img" style=background-image:url( "{{firstimage2}}"></div>
+            <div class="img" style=background-image:url("{{firstimage2}}")></div>
             <div class="title_info">
                 <div class="title" onclick="markerOverlay(this)" id=clti{{@index}};>{{title}}</div>
                 <div class="info clear">{{addr1}}</div>
@@ -1488,8 +1506,8 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
         </div> */
 
         var createPlanIndex = null;
-        $('.plan_out_btn')
-            .click(function () {
+        $('#plan_view').click(
+       		function() {
                 var param = {
                     title: $("#pl_title")[0].value
                 };
@@ -1509,6 +1527,28 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
                 });
 
             });
+        
+        $('#travelMate_form').click(
+                function() {
+                    var param = {
+                        title: $("#pl_title")[0].value
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: serverRoot + "/json/content/add",
+                        data: param,
+                        async: false,
+                        success: function (data) {
+                            createPlanIndex = data;
+                            tm_data();
+                        },
+                        error: function (data) {
+                            alert("빈 칸을 채워주세요.");
+                        }
+
+                    });
+
+                });
 
         function pl_data() {
             var param1 = {
@@ -1528,8 +1568,37 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
                 async: false,
                 success: function (data) {
                     sch_data();
-                    hash_data()
+                    hash_data();
                     location.href = "planner_view.html?" + createPlanIndex;
+                },
+                error: function (data) {
+                    alert("빈 칸을 채워주세요.");
+                }
+
+            });
+
+        };
+        
+        function tm_data() {
+            var param1 = {
+                startDate: $('#datefilter').val().split(" - ")[0].split("/")[0] + "-" + $('#datefilter').val().split(
+                    " - ")[0].split("/")[1] + "-" + $('#datefilter').val().split(" - ")[0].split("/")[2],
+                endDate: $('#datefilter').val().split(" - ")[1].split("/")[0] + "-" + $('#datefilter').val().split(
+                    " - ")[1].split("/")[1] + "-" + $('#datefilter').val().split(" - ")[1].split("/")[2],
+                num: $('#num').val(),
+                people: $('#people .select-selected')[0].textContent,
+                theme: $("#thema .select-selected")[0].textContent,
+                no: createPlanIndex
+            };
+            $.ajax({
+                type: "POST",
+                url: serverRoot + "/json/planner/add",
+                data: param1,
+                async: false,
+                success: function (data) {
+                    sch_data();
+                    hash_data();
+                    location.href = "../sub09/sub09_insert.html?" + createPlanIndex;
                 },
                 error: function (data) {
                     alert("빈 칸을 채워주세요.");
@@ -1591,6 +1660,23 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
                 });
             };
         };
+        
+        function travelMate_data() {
+            console.log(createPlanIndex);
+                hash.cno = createPlanIndex;
+                hash.content = $('#tag_box .items')[h].textContent.split("X")[0];
+                $.ajax({
+                    type: "POST",
+                    url: serverRoot + "/json/hashTag/add",
+                    data: hash,
+                    async: false,
+                    success: function (data) {},
+                    error: function (data) {
+                        alert("빈 칸을 채워주세요.");
+                    }
+
+                });
+            };
     </script>
 
     <script src="planner_form.js"></script>
