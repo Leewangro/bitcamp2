@@ -55,49 +55,11 @@
 
             <!-- 좋아요 탭 -->
             <div class="content_wrap">
-                <div class="sns_area clear">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_like_icon"></span>
-                                <strong>좋아요</strong>26</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_zzim_icon"></span>
-                                <strong>찜하기</strong>537</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_review_icon"></span>
-                                <strong>리뷰</strong>114</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_schedule_icon"></span>
-                                <strong>일정등록</strong>0</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_visit_icon"></span>
-                                <strong>방문했어요</strong>57</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_hit_icon"></span>
-                                <strong>조회</strong>19,416</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="icon view_sns_icon"></span>
-                                <strong>SNS 공유</strong>8</a>
-                        </li>
-                    </ul>
-                </div>
+                
                 <!-- 지도 -->
 
                 <!-- <div class=map_bb style="width: 100%;height: 400px;background-color: teal;margin-bottom:84px;" style="overflow: hidden;z-index:2; "></div> -->
-                <div id="map" style="width:100%;height:600px;margin-bottom:84px;"></div>
+                <div id="map" style="width:100%;height:400px;margin-bottom:84px; margin-top: 84px;"></div>
             </div>
 
             <!-- 타임라인 -->
@@ -265,7 +227,7 @@
 
                     mapOption = {
                         center: new daum.maps.LatLng(33.37648174461977, 126.55064054368353), // 지도의 중심좌표
-                        level: 9 // 지도의 확대 레벨
+                        level: 10 // 지도의 확대 레벨
                     };
 
                 var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
@@ -687,7 +649,7 @@
                             var content = $('.t_timeline').height();
                             if ($(window).scrollTop() > container - content -
                                 75) {
-                                if ($(window).scrollTop() > content+380) {
+                                if ($(window).scrollTop() > content+80) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
                                     return;
