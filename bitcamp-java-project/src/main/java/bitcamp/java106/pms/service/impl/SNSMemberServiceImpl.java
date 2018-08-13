@@ -24,10 +24,9 @@ public class SNSMemberServiceImpl implements SNSMemberService {
     }
     
     @Override
-    public boolean isExist(String id, String password) {
+    public boolean isExist(String id) {
         HashMap<String,Object> params = new HashMap<>();
         params.put("id", id);
-        params.put("password", password);
         
         return SnsMemberDao.count(params) > 0 ? true : false;
     }

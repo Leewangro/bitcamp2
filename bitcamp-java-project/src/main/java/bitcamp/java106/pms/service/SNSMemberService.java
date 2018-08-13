@@ -7,7 +7,7 @@ public interface SNSMemberService {
     // 서비스 컴포넌트에서 메서드명을 지을 때는 
     // 업무 용어를 사용하라!
     SNSMember get(String id);
-    boolean isExist(String id, String password);
+    boolean isExist(String id);
     void add(SNSMember SnsMember);
     // void update(SNSMember SnsMember);
     // String delete(String id);

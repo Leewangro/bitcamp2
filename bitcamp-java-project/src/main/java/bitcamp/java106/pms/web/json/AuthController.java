@@ -4,16 +4,16 @@ package bitcamp.java106.pms.web.json;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,32 +26,69 @@ import bitcamp.java106.pms.domain.SNSMember;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    
-/*    @RequestMapping("/info")
-    public Object info() {
-        
-    }*/
+
     SNSMemberDao snsMemberDao;
-    SNSMember member;
-    
-    public AuthController(SNSMemberDao snsMemberDao) {
-        // TODO Auto-generated constructor stub
-        this.snsMemberDao = snsMemberDao;
-        this.member = null;
-    }
+    SNSMember snsMember;
     
     @RequestMapping("/logout")
     public void logout(HttpSession session) throws Exception {
         System.out.println("invalidate");
-        this.member = null;
+        session.invalidate();
     }
     
     @GetMapping("/facebookLogin")
-    public Object facebookLogin(String accessToken, HttpSession session) {
-        //System.out.println(accessToken);
-        Map<String, Object> obj = new HashMap<>();
-        String id="", name="", email="", gender="";
+    public Object facebookLogin(String accessToken, HttpServletResponse response, HttpSession session) {
+        Cookie cookie = null;
         SNSMember member = null;
+        
+        try {
+            URL url = new URL("https://graph.facebook.com/v3.1/me?fields=id,name,email,gender,picture&access_token=" + accessToken);
+            HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+            
+            StringBuffer buf = new StringBuffer();
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                buf.append(line);
+            }
+            in.close();
+            System.out.println(buf);
+            
+            String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
+            ObjectMapper mapper = new ObjectMapper();
+            Map facebookMap = mapper.readValue(jsonResult, Map.class);
+            System.out.println(facebookMap);
+            
+            String id = (String)facebookMap.get("id");
+            String name = (String)facebookMap.get("name");
+            String email = (String)facebookMap.get("email");
+            String gender = (String)facebookMap.get("gender");
+            String picUrl = (String)facebookMap.get("url");
+            System.out.println(picUrl);
+            System.out.println(id);
+            System.out.println(name);
+            System.out.println(email);
+            System.out.println(gender);
+            
+            member = snsMemberDao.selectOne(id);
+            
+            if(member == null) {
+                member.setId(id);
+                member.setName(name);
+                member.setEmail(email);
+                member.setGender(gender);
+                //member.setProfileImg(profileImg);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return "success";
+    }
+        
+        /*Map<String, Object> obj = new HashMap<>();
+        SNSMember member = null;
+        String id="", name="", email="", gender="";
         
         try {
             URL url = new URL("https://graph.facebook.com/v3.0/me?fields=id,name,email,gender&access_token=" + accessToken);
@@ -80,9 +117,7 @@ public class AuthController {
 
             obj.put("name", member.getName());
             obj.put("status", "success");
-            
-            System.out.println("dqwew"+session.getAttribute("userInfo")); // 정상
-            System.out.println("insert time:"+ new Date(session.getCreationTime())); // 정상
+
         } catch (Exception e) {
             member.setId(id);
             member.setName(name);
@@ -102,9 +137,7 @@ public class AuthController {
             obj.put("name", member.getName());
             obj.put("status", "success");
         }
-        this.member = member;
-        return obj;
-    }
+        return obj;*/
     
     @GetMapping("/kakaoLogin")
     public Object kakaoLogin(String accessToken,  HttpSession session) {
@@ -136,8 +169,6 @@ public class AuthController {
             obj.put("name", member.getName());
             obj.put("status", "success");
             
-            System.out.println("dqwew"+session.getAttribute("userInfo")); // 정상
-            System.out.println("insert time:"+ new Date(session.getCreationTime())); // 정상
         } catch (Exception e ) {
             System.out.println(email);
             member.setId(id);
@@ -159,21 +190,7 @@ public class AuthController {
             obj.put("name", member.getName());
             obj.put("status", "success");
         }
-        this.member = member;
         return obj;
-    }
-    
-    
-    @RequestMapping(value="/islogin")
-    public String isLogin(HttpSession session, HttpServletRequest request) {
-        if(this.member != null)
-            try {
-                return URLEncoder.encode(this.member.getName(), "UTF-8"); 
-            } catch(Exception e) {
-                return "n";
-            }
-        else
-            return "n";
     }
 }
 

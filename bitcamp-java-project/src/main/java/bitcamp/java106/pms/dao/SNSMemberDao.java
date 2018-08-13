@@ -7,7 +7,6 @@ import bitcamp.java106.pms.domain.SNSMember;
 public interface SNSMemberDao {
     String delete(String id);
     void insert(SNSMember SnsMember);
-    String update(SNSMember SnsMember);
     SNSMember selectOne(String id);
     int count(Map<String,Object> params);
 }
