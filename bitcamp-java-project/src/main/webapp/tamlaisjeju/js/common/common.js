@@ -24,7 +24,7 @@ function closeNav() {
     document.getElementById("myNav").style.height = "0%";
 }
 
-$.get(serverRoot + "/json/auth/islogin", {}, user => {
+$.get(serverRoot + "tamlaisjeju/json/auth/islogin", {}, user => {
 	let name = decodeURIComponent(user);
 	if(name != "n") {
 		$("#UserName").text(name);

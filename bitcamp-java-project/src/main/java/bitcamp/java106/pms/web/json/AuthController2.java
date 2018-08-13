@@ -168,7 +168,7 @@ public class AuthController2 {
     }
     
     
-    @RequestMapping(value="/islogin")
+    @RequestMapping(value="/islogin2")
     public String isLogin(HttpSession session, HttpServletRequest request) {
         if(this.member != null)
             try {
