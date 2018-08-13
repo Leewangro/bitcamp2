@@ -368,6 +368,8 @@
 
 	<script>
 	var maxDay = -1;
+	var contentId = [];
+	var planday = -1;;
 	
       $(document).ready(function () {
          
@@ -383,7 +385,7 @@
 					url : serverRoot + "/json/planner/selectOne",
 					dataType : "json", // 데이터타입을 json 으로 받아옴
 					success : function(titleDay) { */
-							 
+				planday = data[0].plday;
 		         
 
                $.ajax({
@@ -424,6 +426,7 @@
                               //console.log(data);
                               console.log(data2.response.body.items.item[j])
                               
+                              contentId.push(data[i].tno);
                               
                                if(data[i].plday > nowPlanDay){
                        		   
@@ -444,14 +447,16 @@
                               var spot_title_area = $('<a class="spot-title-area">');
                               var h4_title = $('<h4 class="i-h4">');
                               var span_title = $('<span class="m-title">');
+
                               //타이틀부분
                               $(span_title).text(data2.response.body.items.item[j].title);
                               $(h4_title).append(span_title);
                               $(spot_title_area).append(h4_title);
                               $(spot_tit).append(spot_title_area);
                               $(dayCon).append(spot_tit);
-
+	
                               var spot_cont = $('<div class="spot-contents">');
+                              
                               var cont_txt_area = $('<div class="conts-txt-area">');
                               var img_modal = $(
                                  '<div id="img-modal" class="medium-insert-image ui-sortable" contenteditable="false">');
@@ -460,7 +465,7 @@
 
                               var modal_fade = $(
                                  '<div class="modal fade" id="exampleModal' + (modalIndex++) + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'
-                              );
+                              ); 
                               var modal_dialog = $('<div class="modal-dialog" role="document">');
                               var modal_content = $('<div class="modal-content">');
                               var modal_header = $('<div class="modal-header">');
@@ -468,7 +473,7 @@
                               var span_aria = $('<span aria-hidden="true">');
  
                               var m_img = $('<img class="m-img">');
-
+ 
                               var r_cm = $('<textarea class="r-cm">');
 
 
@@ -509,28 +514,6 @@
                           /* if(data[i].plday > maxDay)
                         	  maxDay = data[i].plday; */
                         	  
-                        	  $('#bt_update').click(function () {
-
-              					var param = {
-              						descr: $('.r-cm').val()
-              					};
-
-              					$.ajax({
-              						type: "POST",
-              						url: serverRoot + "/json/travelPlan/add2/",
-              						data: param,
-              						success: function (up) {
-              							location.href = "sub09_view.html";
-              						},
-              						error: function (up) {
-              							alert("값을 저장할 수 없습니다. 새로고침을 해주세요.");
-              							
-              						}
-
-              					});
-              				});
-                        	  
-
                           // 마커가 표시될 위치입니다 
                           var markerPosition  = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx); 
 
@@ -584,6 +567,36 @@
      });
 	
 	var currentPage = 1;
+	
+	window.onload = function() {
+	  $('#bt_update').click(function () {
+		  let idx = 0;
+		  
+		  for(let item of $(".r-cm") ) {
+			var param = {
+				plday : planday,
+				tno : contentId[idx],
+				descr : item.value
+			};
+			console.log(idx);
+		  	console.log("plday:", planday, ", data:", $(".r-cm")[idx].value, ", no:", contentId[idx]);
+		  
+			$.ajax({
+				type: "POST",
+				url: serverRoot + "/json/travelPlan/update",
+				data: param,
+				success: function (up) {
+					//location.href = "sub09_view.html";
+				},
+				error: function (up) {
+					alert("값을 저장할 수 없습니다. 새로고침을 해주세요.");
+				}
+
+			});
+			idx++;
+		  }
+		});
+	}  
 	
 	</script>	
 </body>

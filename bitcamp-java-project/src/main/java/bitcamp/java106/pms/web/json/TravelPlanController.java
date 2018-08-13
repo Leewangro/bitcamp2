@@ -55,8 +55,9 @@ public class TravelPlanController {
     
     @RequestMapping("update")
     @ResponseStatus(HttpStatus.OK) // 기본 값이 OK 이다.
-    public void update(TravelPlan travelPlan) throws Exception {
-        travelPlanService.update(travelPlan);
+    public void update(int plday, int tno, String descr) throws Exception {
+        System.out.println("asd");
+        travelPlanService.update(plday, tno, descr);
     }
      
     @RequestMapping("{planno}/{no}")
