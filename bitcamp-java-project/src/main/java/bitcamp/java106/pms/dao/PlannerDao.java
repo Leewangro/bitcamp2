@@ -9,6 +9,7 @@ import bitcamp.java106.pms.domain.TravelPlan;
 public interface PlannerDao {
     int delete(int no) ;
     List<Planner> selectList(Map<String,Object> params);
+    List<Planner> selectListwithPage(Map<String,Object> params);
     int insert(Planner planner);
     int update(Planner planner);
     Planner selectOne(int no);
