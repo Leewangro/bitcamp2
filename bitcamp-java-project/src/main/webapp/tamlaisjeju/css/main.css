@@ -167,36 +167,11 @@
     top: 30px;
     width: 64px;
     height: 64px;
-    background: url("../img/main/weather_icon.png") no-repeat;
     font-size: 0;
 }
 
 #mvisual .weather_area .wico.weather1 {
     background-position: 0 0;
-}
-
-#mvisual .weather_area .wico.weather2 {
-    background-position: -70px 0;
-}
-
-#mvisual .weather_area .wico.weather3 {
-    background-position: -140px 0;
-}
-
-#mvisual .weather_area .wico.weather4 {
-    background-position: -209px 0;
-}
-
-#mvisual .weather_area .wico.weather5 {
-    background-position: -279px 0;
-}
-
-#mvisual .weather_area .wico.weather6 {
-    background-position: -350px 0;
-}
-
-#mvisual .weather_area .wico.weather7 {
-    background-position: -419px 0;
 }
 
 #mvisual .weather_area .today_area {}
