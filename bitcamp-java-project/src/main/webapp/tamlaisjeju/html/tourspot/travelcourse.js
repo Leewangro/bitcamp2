@@ -26,7 +26,7 @@ var parsing = {
                 var InfoElements =
                     "<div class='box'>" +
                     "<div class='img_area'>" +
-                     "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
+                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" + item.mapy + "'>" +
                     "<span class='category'>여행코스</span>" +
                     "<img class=" + "'img-responsive'" + "src=" + "'" + item.firstimage + "'" + "onError=" + "this.onerror=null;this.src='../../img/common/no-image-icon.jpg';" + ">" +
 
@@ -36,7 +36,7 @@ var parsing = {
 
 
                     "<div class='box_cont_area'>" +
-                     "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx="+ item.mapx +  "&mapy=" + item.mapy + "'>" +
+                    "<a href='view.html?id=" + item.contentid + "&item=" + item.contenttypeid + "&mapx=" + item.mapx + "&mapy=" + item.mapy + "'>" +
 
                     "<b>" + item.title + "</b>" +
 
@@ -44,12 +44,6 @@ var parsing = {
 
                     "</a>" +
 
-                    "<p class='hashtag'>" +
-                    "<a href='#'>#전복김밥</a>" +
-                    "<a href='#'>#통전복주먹밥</a>" +
-                    "<a href='#'>#미역국</a>" +
-
-                    "</p>" +
                     "<div class='icon_area'>" +
                     "<ul class='clear'>" +
                     "<li class='icon like_icon'>" +
