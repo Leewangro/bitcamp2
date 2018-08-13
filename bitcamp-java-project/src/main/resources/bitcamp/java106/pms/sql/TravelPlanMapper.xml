@@ -46,7 +46,7 @@
    <select id="selectListWithPlan" 
           resultMap="TravelPlanMap" 
           parameterType="map">
-   SELECT TTP.TOURNO, TTP.TOURTYPE, TTP.MEMO, TTP.PLANTI, TTP.PLANDAY, TTP.PLNO, TTP.TTPNO
+   SELECT TTP.TOURNO, TTP.TOURTYPE, TTP.MEMO, TTP.PLANTI, TTP.PLANDAY, TTP.PLNO, TTP.TTPNO, TTP.DESCR
    FROM TAMLA_TRAVEL_PLAN TTP
    WHERE TTP.PLNO=#{plno} and TTP.PLANDAY = #{dayno}
   </select>
@@ -65,12 +65,12 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
   
-  <update id="update"  parameterType="map">
-    update TAMLA_TRAVEL_PLAN TTP set TTP.MEMO 
+  <!-- <update id="update"  parameterType="map">
+    update TAMLA_TRAVEL_PLAN TTP set TTP.DESCR = 
     where TTP.PLNO=#{plno}
-  </update>
+  </update> -->
   
-  <insert id="insert2" parameterType="map"
+  <insert id="add2" parameterType="map"
        useGeneratedKeys="true" keyColumn="TTPNO" >
        insert into
        TAMLA_TRAVEL_PLAN(DESCR) <!-- 회원번호 추가 필요 MNO -->

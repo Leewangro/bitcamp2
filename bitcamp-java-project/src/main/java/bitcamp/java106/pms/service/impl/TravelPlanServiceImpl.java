@@ -51,7 +51,7 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     }
     @Override
     public int add2(TravelPlan travelPlan) {
-        return travelPlanDao.insert(travelPlan);
+        return travelPlanDao.insert2(travelPlan);
     }
     
     @Override
