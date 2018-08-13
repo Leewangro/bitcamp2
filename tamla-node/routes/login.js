@@ -18,9 +18,9 @@ app.use(express.static('public'));
 
 app.get('/auth/logout', function(req, res){
     req.logout();
-    request('http://localhost:8888/bitcamp-java-project/json/auth/logout');
+    request('http://tamlaisjeju.java106.com:8888/bitcamp-java-project/json/auth/logout');
     console.log('로그아웃완료');
-    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+    res.redirect("http://tamlaisjeju.java106.com:8888/bitcamp-java-project/tamlaisjeju/index2.html");
 });
 
 //미들웨어 설정 필수!!!
@@ -68,11 +68,11 @@ app.get('/auth/facebook/callback',
         console.log(req.session);
 
 
-        request(`http://localhost:8888/bitcamp-java-project/json/auth/facebookLogin?accessToken=${fbAccessToken}`,{ json: true }, (err, resp, body) => {
+        request(`http://tamlaisjeju.java106.com:8888/bitcamp-java-project/json/auth/facebookLogin?accessToken=${fbAccessToken}`,{ json: true }, (err, resp, body) => {
             console.log("8888 서버에서 응답이 왔음!")
             console.log(body);
             if (body.status === "success") {
-                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                res.redirect("http://tamlaisjeju.java106.com:8888/bitcamp-java-project/tamlaisjeju/index2.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
                 console.log('로그인 실패!')
@@ -84,7 +84,7 @@ app.get('/auth/facebook/callback',
 );
 
 app.get('/auth/is', (req, res) => {
-    request("http://localhost:8888/bitcamp-java-project/json/auth/islogin"), {json:true}, (err, resp, body) => {
+    request("http://tamlaisjeju.java106.com:8888/bitcamp-java-project/json/auth/islogin"), {json:true}, (err, resp, body) => {
         console.log(body);
     }   
 })
@@ -116,11 +116,11 @@ app.get('/auth/kakao/callback',
             console.log(kaAccessToken);
 
             // 8888 서버에 요청하기
-        request(`http://localhost:8888/bitcamp-java-project/json/auth/kakaoLogin?accessToken=${kaAccessToken}`,{ json: true }, (err, resp, body) => {
+        request(`http://tamlaisjeju.java106.com:8888/bitcamp-java-project/json/auth/kakaoLogin?accessToken=${kaAccessToken}`,{ json: true }, (err, resp, body) => {
             console.log("8888 서버에서 응답이 왔음!")
             if (body.status === "success") {
                 console.log(body);
-                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                res.redirect("http://tamlaisjeju.java106.com:8888/bitcamp-java-project/tamlaisjeju/index2.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
                 console.log('로그인 실패!')

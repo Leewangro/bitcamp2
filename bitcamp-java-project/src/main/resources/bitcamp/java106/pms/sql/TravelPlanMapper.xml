@@ -70,10 +70,9 @@
     where TTP.PLNO=#{plno}
   </update> -->
   
-  <insert id="add2" parameterType="map"
+  <insert id="insert2" parameterType="map"
        useGeneratedKeys="true" keyColumn="TTPNO" >
-       insert into
-       TAMLA_TRAVEL_PLAN(DESCR) <!-- 회원번호 추가 필요 MNO -->
+       insert into TAMLA_TRAVEL_PLAN(DESCR) <!-- 회원번호 추가 필요 MNO -->
        values(#{descr})
    </insert>
   

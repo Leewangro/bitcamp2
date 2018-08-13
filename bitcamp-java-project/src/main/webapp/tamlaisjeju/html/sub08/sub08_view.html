@@ -233,19 +233,6 @@
     <script src="../../js/common/common.js"></script>
     <!-- 시티라이브리 -->
     <script type="text/javascript">
-        (function (d, s) {
-            var j, e = d.getElementsByTagName(s)[0];
-
-            if (typeof LivereTower === 'function') {
-                return;
-            }
-
-            j = d.createElement(s);
-            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-            j.async = true;
-
-            e.parentNode.insertBefore(j, e);
-        })(document, 'script');
     </script>
     <!-- 시티 설치 코드 끝 -->
 
@@ -351,9 +338,6 @@
                 success: function (data) {
                     $('#title_div').append(
                         "<h5 id='top_title'>" + data.title + "</h5>")
-                    $('#livecity').append(
-                    "<div id='lv-container'"+link+" data-id='city' data-uid='MTAyMC8zNzk5NC8xNDUyNA=='></div>"
-                     )
 
                 }
             })
@@ -703,7 +687,7 @@
                             var content = $('.t_timeline').height();
                             if ($(window).scrollTop() > container - content -
                                 75) {
-                                if ($(window).scrollTop() > content - 80) {
+                                if ($(window).scrollTop() > content+380) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
                                     return;
