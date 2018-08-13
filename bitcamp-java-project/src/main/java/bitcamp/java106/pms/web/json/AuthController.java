@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
-import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +37,7 @@ public class AuthController {
     
     @GetMapping("/facebookLogin")
     public Object facebookLogin(String accessToken, HttpServletResponse response, HttpSession session) {
+    	Map<String, Object> obj = new HashMap<>();
         Cookie cookie = null;
         SNSMember member = null;
         
@@ -52,23 +52,18 @@ public class AuthController {
                 buf.append(line);
             }
             in.close();
-            System.out.println(buf);
             
             String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
             ObjectMapper mapper = new ObjectMapper();
             Map facebookMap = mapper.readValue(jsonResult, Map.class);
-            System.out.println(facebookMap);
             
             String id = (String)facebookMap.get("id");
             String name = (String)facebookMap.get("name");
             String email = (String)facebookMap.get("email");
             String gender = (String)facebookMap.get("gender");
-            String picUrl = (String)facebookMap.get("url");
-            System.out.println(picUrl);
-            System.out.println(id);
-            System.out.println(name);
-            System.out.println(email);
-            System.out.println(gender);
+            Map picture = (Map)facebookMap.get("picture");
+            Map picdata = (Map)picture.get("data");
+            String picurl = (String)picdata.get("url");
             
             member = snsMemberDao.selectOne(id);
             
@@ -77,13 +72,22 @@ public class AuthController {
                 member.setName(name);
                 member.setEmail(email);
                 member.setGender(gender);
-                //member.setProfileImg(profileImg);
+                member.setProfileImg(picurl);
+                snsMemberDao.insert(member);
+                session.setAttribute("userInfo", member);
+            } else {
+            	session.setAttribute("userInfo", member);
             }
             
+            obj.put("name", member.getName());
+            obj.put("status", "success");
+            
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+        	System.out.println(e.getMessage());
+            obj.put("status", "fail");
         }
-        return "success";
+        System.out.println(obj);
+        return obj;
     }
         
         /*Map<String, Object> obj = new HashMap<>();
