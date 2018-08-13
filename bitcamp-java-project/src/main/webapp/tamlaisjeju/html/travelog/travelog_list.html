@@ -61,7 +61,7 @@
 
         <div class="pagination_wrap">
           <div id='pageBtn' class="pagination">
-            <a id='preBtn' href="#" onclick='preBtnfn()'>&laquo;</a>
+            
 
 
           </div>
@@ -108,7 +108,9 @@
         success: function (data) {
           var pageNo = data.length / 10;
           Math.ceil(pageNo)
-
+          $('#pageBtn').append(
+          "<a id='preBtn' href='#'>&laquo;</a>"
+          )
           for (let i = 0; i < Math.ceil(pageNo); i++) {
             $('#pageBtn').append(
               "<a href='#' id='page_" + (i + 1) + "' class='pageNoBtns' onclick='pageClick(this)'>" + (i +
@@ -116,22 +118,23 @@
             )
           }
           $('#pageBtn').append(
-            "<a id='nextBtn' href='#' onclick='nextBtnfn()'>&raquo;</a>"
+            "<a id='nextBtn' href='#'>&raquo;</a>"
           )
           $('#page_1').trigger('click')
 
 
-          // function preBtnfn() {
-          //   if ($('.active').pre() != ('#preBtn')) {
-          //     ('.active').pre().trigger('click')
-          //   }
-          // }
 
-          // function nextBtnfn() {
-          //   if ($('.active').next() != ('#preBtn')) {
-          //     ('.active').next().trigger('click')
-          //   }
-          // }
+          $('#preBtn').click(function(){
+            if ($('.active').prev()[0] != $('#preBtn')[0]) {
+               $('.active').prev().trigger('click')
+             }
+            })
+
+            $('#nextBtn').click(function(){
+            if ($('.active').next()[0] != $('#nextBtn')[0]) {
+               $('.active').next().trigger('click')
+             }
+            })
 
         }
       })
