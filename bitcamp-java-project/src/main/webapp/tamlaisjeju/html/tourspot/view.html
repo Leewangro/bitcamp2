@@ -105,15 +105,14 @@
 			common.getInfo('get', 'detailCommon', "contentTypeId=" + item + "&contentId=" + id +
 				"&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y",
 				parsing.contentsParsing);
-			common.getInfo('get', 'detailImage', "contentTypeId=" + item + "&contentId=" + id +
-				"&MobileOS=ETC&MobileApp=AppTest&imageYN=Y",
+			common.getInfo('get', 'detailImage', "contentTypeId=" + item + 
+				"&MobileOS=ETC&MobileApp=AppTest&contentId=" + id +"&imageYN=Y",
 				parsing.contentsImgParsing);
 			common.getInfo('get', 'locationBasedList', "contentTypeId=" + item + "&mapX=" + mapx +
 				"&mapY=" + mapy + "&radius=20000" + //radius 거리반경(단위:m) , Max값 20000m=20Km
 				"&pageNo=1&numOfRows=10&listYN=Y&arrange=P&MobileOS=ETC&MobileApp=AppTesting",
 				parsing.contentsLocationParsing);
 		})
-
 
 
 
@@ -188,7 +187,7 @@
 			},
 
 			contentsImgParsing: function (data) {
-				for (var i = 0; i < 5; i++) {
+				for (var i = 0; i < 1; i++) {
 					var list = data.response.body.items.item[i]
 					var imgurl = list.originimgurl
 
