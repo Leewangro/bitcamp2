@@ -9,7 +9,7 @@ public interface TravelPlanDao {
     int delete(int no) ;
     List<TravelPlan> selectList(Map<String,Object> params);
     int insert(TravelPlan travelPlan);
-    int update(TravelPlan travelPlan);
+    int update(Map<String, Object> params);
     List<TravelPlan> selectListWithPlan(Map<String, Object> params);
     int selectListWithPlanDay(Map<String, Object> params);
     List<TravelPlan> selectOne(int no);

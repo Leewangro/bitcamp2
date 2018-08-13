@@ -49,8 +49,9 @@
   
    <select id="selectList" resultMap="PlannerMap"
        parameterType="map">
-       select TP.PLNO, TP.SDT, TP.EDT, TP.PATA, TP.PART, TP.THEMA 
-       from TAMLA_PLAN TP
+       select TP.PLNO,TP.SDT,TP.EDT,TP.PATA,TP.PART,TP.THEMA, C.TITL
+    FROM TAMLA_PLAN TP
+    left join TAMLA_CONTENT C on TP.PLNO = C.CNO
        <!-- order by no desc limit #{startRowNo}, #{pageSize} -->
    </select>
    

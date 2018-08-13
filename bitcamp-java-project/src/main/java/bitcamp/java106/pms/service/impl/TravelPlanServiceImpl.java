@@ -55,8 +55,12 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     }
     
     @Override
-    public int update(TravelPlan travelPlan) {
-        return travelPlanDao.update(travelPlan);
+    public int update(int planday, int no, String text) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("plno", planday);
+        params.put("tno", no);
+        params.put("descr", text);
+        return travelPlanDao.update(params);
     }
     
     @Override
@@ -66,6 +70,12 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     @Override
     public List<TravelPlan> selectOne(int no) {
         return travelPlanDao.selectOne(no);
+    }
+
+    @Override
+    public int update(TravelPlan travelPlan) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
 

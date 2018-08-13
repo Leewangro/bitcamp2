@@ -65,15 +65,16 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
   
-  <!-- <update id="update"  parameterType="map">
-    update TAMLA_TRAVEL_PLAN TTP set TTP.DESCR = 
-    where TTP.PLNO=#{plno}
-  </update> -->
+   <update id="update"  parameterType="map">
+    update TAMLA_TRAVEL_PLAN TTP set TTP.DESCR = #{descr} 
+    where TTP.PLNO=#{plno} and TOURNO = #{tno}
+  </update>
   
   <insert id="insert2" parameterType="map"
        useGeneratedKeys="true" keyColumn="TTPNO" >
        insert into TAMLA_TRAVEL_PLAN(DESCR) <!-- 회원번호 추가 필요 MNO -->
        values(#{descr})
+       where TTP.PLNO=#{plno}
    </insert>
   
   
