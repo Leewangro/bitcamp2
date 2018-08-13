@@ -13,8 +13,6 @@ public interface TravelLogDao {
     int insert(TravelLog travelLog);
     int update(TravelLog travelLog);
     TravelLog selectOne(int no);
-    
-    
 }
 
 
