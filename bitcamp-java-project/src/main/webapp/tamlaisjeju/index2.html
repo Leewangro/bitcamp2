@@ -34,7 +34,7 @@
             <div id="mvisual">
                 <div class="weather_area">
                     <div class="weather_img">
-                        <strong id="icon_weather" class="wico weather2">구름조금</strong>
+                        <img id="icon_weather" class="wico weather1" src="img/main/weather_icon01.png"></img>
                     </div>
                     <!-- weather img end-->
                     <div class="today_area">
@@ -467,28 +467,25 @@
                     $(txt_day).text(data.d);
                     $(txt_week).text(data.e);
                     
-                    /* if (data.wth == "맑음") {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky1.png");
+                    if (data.wth == "맑음") {
+                        $(icon_weather).attr("src", "img/main/weather_icon01.png");
                         $(txt_weather_sky).text(data.wth);
                     } else if (data.wth == "구름조금") {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky2.png");
-                        $(txt_weather_sky).text(data.wth);
-                    } else if (data.wth == "구름많음") {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky3.png");
+                        $(icon_weather).attr("src", "img/main/weather_icon02.png");
                         $(txt_weather_sky).text(data.wth);
                     } else if (data.wth == "흐림") {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky4.png");
+                        $(icon_weather).attr("src", "img/main/weather_icon03.png");
                         $(txt_weather_sky).text(data.wth);
                     } else if (data.wth == "비") {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky5.png");
+                        $(icon_weather).attr("src", "img/main/weather_icon05.png");
                         $(txt_weather_sky).text(data.wth);
                     } else if (data.wth == "눈비") {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky6.png");
+                        $(icon_weather).attr("src", "img/main/weather_icon06.png");
                         $(txt_weather_sky).text(data.wth);
                     } else {
-                        $(jeju_sky).attr("src", "../../img/sub05/tour_info/sky8.png");
+                        $(icon_weather).attr("src", "img/main/weather_icon07.png");
                         $(txt_weather_sky).text(data.wth);
-                    } */
+                    }
                 })
         </script>
     </body>

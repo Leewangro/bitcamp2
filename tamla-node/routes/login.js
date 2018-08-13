@@ -25,7 +25,12 @@ app.get('/auth/logout', function(req, res){
 
 //미들웨어 설정 필수!!!
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session({
+    name:'session',
+    keys:['keys'],
+
+    maxAge:6*60*60*1000
+}));
 
 passport.serializeUser(function(user, done) {
      done(null, user);
