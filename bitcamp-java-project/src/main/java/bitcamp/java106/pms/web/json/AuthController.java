@@ -4,11 +4,13 @@ package bitcamp.java106.pms.web.json;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -29,6 +31,12 @@ public class AuthController {
     SNSMemberDao snsMemberDao;
     SNSMember member;
     
+    public AuthController(SNSMemberDao snsMemberDao) {
+        // TODO Auto-generated constructor stub
+        this.snsMemberDao = snsMemberDao;
+        this.member = null;
+    }
+    
     @RequestMapping("/logout")
     public void logout(HttpSession session) throws Exception {
         System.out.println("invalidate");
@@ -37,9 +45,8 @@ public class AuthController {
     
     @GetMapping("/facebookLogin")
     public Object facebookLogin(String accessToken, HttpServletResponse response, HttpSession session) {
-    	System.out.println(accessToken);
     	Map<String, Object> obj = new HashMap<>();
-        Cookie cookie = null;
+        String id="", name="", email="", gender="", picurl="";
         SNSMember member = null;
         
         try {
@@ -58,35 +65,40 @@ public class AuthController {
             ObjectMapper mapper = new ObjectMapper();
             Map facebookMap = mapper.readValue(jsonResult, Map.class);
             
-            String id = (String)facebookMap.get("id");
-            String name = (String)facebookMap.get("name");
-            String email = (String)facebookMap.get("email");
-            String gender = (String)facebookMap.get("gender");
+            id = (String)facebookMap.get("id");
+            name = (String)facebookMap.get("name");
+            email = (String)facebookMap.get("email");
+            gender = (String)facebookMap.get("gender");
             Map picture = (Map)facebookMap.get("picture");
             Map picdata = (Map)picture.get("data");
-            String picurl = (String)picdata.get("url");
+            picurl = (String)picdata.get("url");
             
             member = snsMemberDao.selectOne(id);
             
-            if(member == null) {
-                member.setId(id);
-                member.setName(name);
-                member.setEmail(email);
-                member.setGender(gender);
-                member.setProfileImg(picurl);
-                snsMemberDao.insert(member);
-                session.setAttribute("userInfo", member);
-            } else {
-            	session.setAttribute("userInfo", member);
-            }
             obj.put("name", member.getName());
             obj.put("status", "success");
             
         } catch (Exception e) {
-        	System.out.println(e.getMessage());
-            obj.put("status", "fail");
+            member.setId(id);
+            member.setName(name);
+            member.setEmail(email);
+            member.setEmail(gender);
+            System.out.println("memberInput");
+            System.out.println(member);
+            
+            try {
+                snsMemberDao.insert(member);
+            } catch(Exception e2) {
+                obj.put("status", "fail");
+            }
+            
+            session.setAttribute("userInfo", member);
+            
+            obj.put("name", member.getName());
+            obj.put("status", "success");
         }
         System.out.println(obj);
+        this.member = member;
         return obj;
     }
         
@@ -195,6 +207,18 @@ public class AuthController {
             obj.put("status", "success");
         }
         return obj;
+    }
+    
+    @RequestMapping(value="/islogin")
+    public String isLogin(HttpSession session, HttpServletRequest request) {
+        if(this.member != null)
+            try {
+                return URLEncoder.encode(this.member.getName(), "UTF-8"); 
+            } catch(Exception e) {
+                return "n";
+            }
+        else
+            return "n";
     }
 }
 

@@ -74,7 +74,7 @@ app.get('/auth/facebook/callback',
             if (body.status === "success") {
                 res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
             } else {
-                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
                 console.log('로그인 실패!')
             }
 
