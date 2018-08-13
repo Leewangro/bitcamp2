@@ -33,6 +33,12 @@ public class TravelPlanController {
         travelPlanService.add(travelPlan);
     }
     
+    @RequestMapping("add2")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void add2(TravelPlan travelPlan) throws Exception {
+        travelPlanService.add2(travelPlan);
+    }
+    
     @RequestMapping("delete")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@RequestParam("no") int no) throws Exception {

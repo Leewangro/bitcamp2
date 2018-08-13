@@ -15,6 +15,7 @@ public interface TravelPlanService {
     int update(TravelPlan travelPlan);
     int delete(int no);
     List<TravelPlan> selectOne(int no);
+    int add2(TravelPlan travelPlan);
 }
 
 //ver 53 - 인터페이스 추가
