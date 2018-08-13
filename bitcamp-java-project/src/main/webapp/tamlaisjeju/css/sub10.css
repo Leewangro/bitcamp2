@@ -2261,3 +2261,11 @@ input, #enter, .items {
 .planner_txt {
 	color: #5c5c5c;
 }
+
+#sub10 .full_wrap #right_full_box .frmap {
+    height: 824px;
+    position: relative;
+    width: 80%;
+    overflow: hidden;
+}
+
