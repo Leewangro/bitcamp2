@@ -3,6 +3,7 @@ package bitcamp.java106.pms.web.json;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Date;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +28,8 @@ import bitcamp.java106.pms.dao.SNSMemberDao;
 import bitcamp.java106.pms.domain.SNSMember;
 
 @RestController
-@RequestMapping("/auth")
-public class AuthController {
+@RequestMapping("/auth2")
+public class AuthController2 {
     
 /*    @RequestMapping("/info")
     public Object info() {
@@ -34,19 +38,19 @@ public class AuthController {
     SNSMemberDao snsMemberDao;
     SNSMember member;
     
-    public AuthController(SNSMemberDao snsMemberDao) {
+    public AuthController2(SNSMemberDao snsMemberDao) {
         // TODO Auto-generated constructor stub
         this.snsMemberDao = snsMemberDao;
         this.member = null;
     }
     
-    @RequestMapping("/logout")
+    @RequestMapping("/logout2")
     public void logout(HttpSession session) throws Exception {
         System.out.println("invalidate");
         this.member = null;
     }
     
-    @GetMapping("/facebookLogin")
+    @GetMapping("/facebookLogin2")
     public Object facebookLogin(String accessToken, HttpSession session) {
         //System.out.println(accessToken);
         Map<String, Object> obj = new HashMap<>();
@@ -106,7 +110,7 @@ public class AuthController {
         return obj;
     }
     
-    @GetMapping("/kakaoLogin")
+    @GetMapping("/kakaoLogin2")
     public Object kakaoLogin(String accessToken,  HttpSession session) {
         Map<String, Object> obj = new HashMap<>();
         String id="", name="", email="", gender="";

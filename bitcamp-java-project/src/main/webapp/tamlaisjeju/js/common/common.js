@@ -24,7 +24,14 @@ function closeNav() {
     document.getElementById("myNav").style.height = "0%";
 }
 
-
+$.get(serverRoot + "/json/auth/islogin", {}, user => {
+	let name = decodeURIComponent(user);
+	if(name != "n") {
+		$("#UserName").text(name);
+		$("#Login").css("display", "none");
+		$("#Logout").css("display", "block");
+	}
+})
 
 $(function() {
     $(window).on("scroll", function() {
