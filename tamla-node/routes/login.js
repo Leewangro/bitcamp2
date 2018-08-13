@@ -25,11 +25,10 @@ app.get('/auth/logout', function(req, res){
 
 //미들웨어 설정 필수!!!
 app.use(passport.initialize());
-app.use(passport.session({
-    name:'session',
-    keys:['keys'],
-
-    maxAge:6*60*60*1000
+app.use(session({
+    secret:'123456asdf',
+    resave:false,
+    saveUninitialized:true
 }));
 
 passport.serializeUser(function(user, done) {
@@ -48,7 +47,7 @@ passport.use(new FacebookStrategy({
         clientID: '228605734455848',
         clientSecret: 'e16581e68a8639de8bf57f08d7654665',
         callbackURL: "/auth/facebook/callback",
-        profileFields: ['email', 'name', 'displayName']
+        profileFields: ['email', 'name', 'displayName', 'gender']
     },
     function(accessToken, refreshToken, profile, done) {
         fbAccessToken = accessToken;
@@ -95,7 +94,7 @@ passport.use(new KakaoStrategy({
     clientID: 'cbfb710c30c958007d125829a9752b7c',
     clientSecret: 'efWXNj2rcdNUzB0htLB8icZIl4Dz657m',
     callbackURL: "/auth/kakao/callback",
-    profileFields: ['email', 'name', 'displayName']
+    profileFields: ['id', 'properties', 'kakao_account.email','kakao_account.gender']
     },
     function(accessToken, refreshToken, profile, done){
         kaAccessToken = accessToken;
@@ -120,6 +119,7 @@ app.get('/auth/kakao/callback',
         request(`http://localhost:8888/bitcamp-java-project/json/auth/kakaoLogin?accessToken=${kaAccessToken}`,{ json: true }, (err, resp, body) => {
             console.log("8888 서버에서 응답이 왔음!")
             if (body.status === "success") {
+                console.log(body);
                 res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");

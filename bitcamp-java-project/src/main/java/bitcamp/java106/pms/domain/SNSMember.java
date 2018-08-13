@@ -13,7 +13,7 @@ public class SNSMember implements Serializable {
     private String email;
     private String name;
     private String profileImg;
-    private int gender;
+    private String gender;
     private int phone;
     
     
@@ -75,12 +75,12 @@ public class SNSMember implements Serializable {
     }
 
 
-    public int getGender() {
+    public String getGender() {
         return gender;
     }
 
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

@@ -78,11 +78,10 @@ public class WeatherController {
             while((line = br.readLine()) != null) {
                 result = result + line + "\n";
             }
-            
+            br.close();
             
             JSONParser parser = new JSONParser();
             JSONObject obj = (JSONObject) parser.parse(result);
-            
             // Top레벨 단계인 response 키를 가지고 데이터를 파싱합니다.
             JSONObject parse_response = (JSONObject) obj.get("response");
             // response 로 부터 body 찾아옵니다.

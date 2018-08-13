@@ -3,6 +3,7 @@ package bitcamp.java106.pms.web.json;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +36,7 @@ public class AuthController {
     }*/
     SNSMemberDao snsMemberDao;
     SNSMember member;
+    String id="", name="", email="", gender="";
     
     public AuthController(SNSMemberDao snsMemberDao) {
         // TODO Auto-generated constructor stub
@@ -50,8 +55,6 @@ public class AuthController {
         //System.out.println(accessToken);
         Map<String, Object> obj = new HashMap<>();
         
-        String id="", name="", email="";
-        SNSMember member = null;
         try {
             URL url = new URL("https://graph.facebook.com/v3.0/me?fields=id,name,email,gender&access_token=" + accessToken);
             HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
@@ -67,10 +70,13 @@ public class AuthController {
             String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
             ObjectMapper mapper = new ObjectMapper();
             Map dataMap = mapper.readValue(jsonResult, Map.class);
-
+            
+            member = null;
+            
             id = (String)dataMap.get("id");
             name = (String)dataMap.get("name");
             email = (String)dataMap.get("email");
+            gender = (String)dataMap.get("gender");
 
             member = snsMemberDao.selectOne(id);
 
@@ -85,6 +91,7 @@ public class AuthController {
             member.setId(id);
             member.setName(name);
             member.setEmail(email);
+            member.setEmail(gender);
             System.out.println("memberInput");
             System.out.println(member);
             
@@ -102,6 +109,33 @@ public class AuthController {
         this.member = member;
         return obj;
     }
+    
+    @GetMapping("/kakaoLogin")
+    public Object kakaoLogin(String accessToken) {
+        Map<String, Object> obj = new HashMap<>();
+        
+        try {
+            URL urlstr = new URL("https://kapi.kakao.com/v2/user/me?fields=id,kakao_account.email&access_token=" + accessToken);
+            HttpsURLConnection con = (HttpsURLConnection)urlstr.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuffer buf = new StringBuffer();
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                buf.append(line);
+            }
+            in.close();
+            
+            String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
+            ObjectMapper mapper = new ObjectMapper();
+            Map kakaoMap = mapper.readValue(jsonResult, Map.class);
+            
+            
+        } catch (Exception e ) {
+            System.out.println(e);
+        }
+        return obj;
+    }
+    
     
     @RequestMapping(value="/islogin")
     public String isLogin(HttpSession session, HttpServletRequest request) {

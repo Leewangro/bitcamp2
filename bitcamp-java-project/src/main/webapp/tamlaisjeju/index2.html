@@ -473,6 +473,9 @@
                     } else if (data.wth == "구름조금") {
                         $(icon_weather).attr("src", "img/main/weather_icon02.png");
                         $(txt_weather_sky).text(data.wth);
+                    } else if (data.wth == "구름많음") {
+                        $(icon_weather).attr("src", "img/main/weather_icon03.png");
+                        $(txt_weather_sky).text(data.wth);
                     } else if (data.wth == "흐림") {
                         $(icon_weather).attr("src", "img/main/weather_icon03.png");
                         $(txt_weather_sky).text(data.wth);
