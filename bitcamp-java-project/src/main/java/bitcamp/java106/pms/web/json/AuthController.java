@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,11 +85,10 @@ public class AuthController {
             obj.put("name", member.getName());
             obj.put("status", "success");
             
-            // System.out.println("dqwew"+session.getAttribute("userInfo")); // 정상
-            // System.out.println("insert time:"+ new Date(session.getCreationTime())); // 정상
+            System.out.println("dqwew"+session.getAttribute("userInfo")); // 정상
+            System.out.println("insert time:"+ new Date(session.getCreationTime())); // 정상
         } catch (Exception e) {
             member = new SNSMember();
-
             member.setId(id);
             member.setName(name);
             member.setEmail(email);
@@ -102,7 +102,7 @@ public class AuthController {
                 obj.put("status", "fail");
             }
             
-            //session.setAttribute("userInfo", member);
+            session.setAttribute("userInfo", member);
             
             obj.put("name", member.getName());
             obj.put("status", "success");
@@ -112,7 +112,7 @@ public class AuthController {
     }
     
     @GetMapping("/kakaoLogin")
-    public Object kakaoLogin(String accessToken) {
+    public Object kakaoLogin(String accessToken,  HttpSession session) {
         Map<String, Object> obj = new HashMap<>();
         String id="", name="", email="", gender="";
         SNSMember member = null;
@@ -136,15 +136,16 @@ public class AuthController {
             id = (String) kakaoMap.get("id").toString();
             name = (String) properties.get("nickname");
             email = (String) kakao_account.get("email");
-            
             member = snsMemberDao.selectOne(id);
             
             obj.put("name", member.getName());
             obj.put("status", "success");
             
+            System.out.println("dqwew"+session.getAttribute("userInfo")); // 정상
+            System.out.println("insert time:"+ new Date(session.getCreationTime())); // 정상
         } catch (Exception e ) {
             member = new SNSMember();
-
+            System.out.println(email);
             member.setId(id);
             member.setName(name);
             member.setEmail(email);
@@ -157,7 +158,7 @@ public class AuthController {
                 obj.put("status", "fail");
             }
             
-            //session.setAttribute("userInfo", member);
+            session.setAttribute("userInfo", member);
             
             obj.put("name", member.getName());
             obj.put("status", "success");
@@ -171,7 +172,7 @@ public class AuthController {
     public String isLogin(HttpSession session, HttpServletRequest request) {
         if(this.member != null)
             try {
-                return URLEncoder.encode( this.member.getName(), "UTF-8"); 
+                return URLEncoder.encode(this.member.getName(), "UTF-8"); 
             } catch(Exception e) {
                 return "n";
             }

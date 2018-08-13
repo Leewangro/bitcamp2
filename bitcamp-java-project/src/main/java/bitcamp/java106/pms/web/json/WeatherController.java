@@ -15,8 +15,6 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bitcamp.java106.pms.domain.SNSMember;
-
 @RestController
 @RequestMapping("/weather")
 public class WeatherController {
@@ -149,13 +147,7 @@ public class WeatherController {
             map.put("wsd", wsd_item.get("obsrValue").toString());
                 br.close();
             }catch(Exception e){
-                member = new SNSMember();
-
-                member.setId(id);
-                member.setName(name);
-                member.setEmail(email);
-                member.setEmail(gender);
-                System.out.println(member);
+                System.out.println(e);
             }
         return map;
         }
