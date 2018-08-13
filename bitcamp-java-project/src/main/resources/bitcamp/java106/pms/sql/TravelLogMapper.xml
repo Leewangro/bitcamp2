@@ -5,60 +5,60 @@
 
 <mapper namespace="bitcamp.java106.pms.dao.TravelLogDao">
 
-  <resultMap type="TravelLog" id="TravelLogMap">
-	    <id column="TLNO" property="tlno"/>
-	    <result column="MNO" property="memberNo"/>
-	    <result column="PART" property="partner"/>
-	    <result column="PREF" property="preference"/>
-	    <result column="SDT" property="startDate"/>
-	    <result column="EDT" property="endDate"/>
-
-  </resultMap>
-  
-  <select id="selectList" 
-          resultMap="TravelLogMap" parameterType="map">
-    select TLNO,MNO,SDT,EDT,PART,PREF 
-    from TAMLA_TRAVEL_LOG
-    
-  </select>
-  
-    <select id="selectListwithPage" 
-          resultMap="TravelLogMap" parameterType="map">
-    select TLNO,MNO,SDT,EDT,PART,PREF 
-    from TAMLA_TRAVEL_LOG
-    order by TLNO desc
-    limit #{startRowNo}, #{pageSize}
-  </select>
+    <resultMap type="TravelLog" id="TravelLogMap">
+        <id column="TLNO" property="tlno" />
+        <result column="MNO" property="memberNo" />
+        <result column="PART" property="partner" />
+        <result column="PREF" property="preference" />
+        <result column="SDT" property="startDate" />
+        <result column="EDT" property="endDate" />
+        <result column="CDT" property="createDate" />
+        <result column="TITL" property="title" />
 
 
-  <insert id="insert" parameterType="TravelLog"
-          useGeneratedKeys="true" keyColumn="TLNO" keyProperty="tlno">
-          INSERT INTO TAMLA_TRAVEL_LOG(TLNO,MNO,PART,PREF,SDT,EDT)
-          VALUES(#{tlno},#{memberNo},#{partner},#{preference},#{startDate},#{endDate})
-         <selectKey resultType="int" keyProperty="tlno" order="AFTER" >  
+    </resultMap>
+
+    <select id="selectList" resultMap="TravelLogMap"
+        parameterType="map">
+        select TLNO,MNO,SDT,EDT,PART,PREF
+        from TAMLA_TRAVEL_LOG
+
+    </select>
+
+    <select id="selectListwithPage" resultMap="TravelLogMap"
+        parameterType="map">
+        SELECT TL.TLNO, TL.MNO, TL.SDT, TL.EDT, TL.PART,
+        TL.PREF, TC.CDT, TC.TITL
+        FROM TAMLA_TRAVEL_LOG TL
+        left join TAMLA_CONTENT TC on TL.TLNO = TC.CNO
+        order by TLNO desc
+        limit #{startRowNo}, #{pageSize}
+    </select>
+
+
+    <insert id="insert" parameterType="TravelLog"
+        useGeneratedKeys="true" keyColumn="TLNO" keyProperty="tlno">
+        INSERT INTO TAMLA_TRAVEL_LOG(TLNO,MNO,PART,PREF,SDT,EDT)
+        VALUES(#{tlno},#{memberNo},#{partner},#{preference},#{startDate},#{endDate})
+        <selectKey resultType="int" keyProperty="tlno"
+            order="AFTER">
             SELECT LAST_INSERT_ID()
-         </selectKey>
-  </insert>
-  
-  <select id="selectOne" parameterType="int" resultMap="TravelLogMap">
-    select TLNO,MNO,SDT,EDT,PART,PREF 
-    from TAMLA_TRAVEL_LOG
-    where TLNO=#{value}
-  </select>
-  
-<!-- 
-  <update id="update" parameterType="TravelLogMap">
-    update TAMLA_TRAVEL_LOG set 
-    PART=#{partner}, 
-    PREF=#{preference},
-    SDT=#{startDate},
-    EDT=#{endDate}
-    where TLNO=#{tlno}
-  </update>
- -->
-  <delete id="delete" parameterType="int">
-    delete from TAMLA_TRAVEL_LOG where TLNO=#{value}
-  </delete>
+        </selectKey>
+    </insert>
+
+    <select id="selectOne" parameterType="int"
+        resultMap="TravelLogMap">
+        select TLNO,MNO,SDT,EDT,PART,PREF
+        from TAMLA_TRAVEL_LOG
+        where TLNO=#{value}
+    </select>
+
+    <!-- <update id="update" parameterType="TravelLogMap"> update TAMLA_TRAVEL_LOG 
+        set PART=#{partner}, PREF=#{preference}, SDT=#{startDate}, EDT=#{endDate} 
+        where TLNO=#{tlno} </update> -->
+    <delete id="delete" parameterType="int">
+        delete from TAMLA_TRAVEL_LOG where TLNO=#{value}
+    </delete>
 
 </mapper>
 

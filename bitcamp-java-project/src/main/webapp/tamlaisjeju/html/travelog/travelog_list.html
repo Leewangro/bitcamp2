@@ -61,7 +61,7 @@
 
         <div class="pagination_wrap">
           <div id='pageBtn' class="pagination">
-            
+
 
 
           </div>
@@ -109,7 +109,7 @@
           var pageNo = data.length / 10;
           Math.ceil(pageNo)
           $('#pageBtn').append(
-          "<a id='preBtn' href='#'>&laquo;</a>"
+            "<a id='preBtn' href='#'>&laquo;</a>"
           )
           for (let i = 0; i < Math.ceil(pageNo); i++) {
             $('#pageBtn').append(
@@ -124,17 +124,17 @@
 
 
 
-          $('#preBtn').click(function(){
+          $('#preBtn').click(function () {
             if ($('.active').prev()[0] != $('#preBtn')[0]) {
-               $('.active').prev().trigger('click')
-             }
-            })
+              $('.active').prev().trigger('click')
+            }
+          })
 
-            $('#nextBtn').click(function(){
+          $('#nextBtn').click(function () {
             if ($('.active').next()[0] != $('#nextBtn')[0]) {
-               $('.active').next().trigger('click')
-             }
-            })
+              $('.active').next().trigger('click')
+            }
+          })
 
         }
       })
@@ -149,6 +149,8 @@
 
 
 
+
+
       $.ajax({
 
         type: "GET",
@@ -159,18 +161,20 @@
 
         success: function (data) {
 
-          $('#contnetList').empty();
+          var addData = data;
 
+          $('#contnetList').empty();
 
           for (let i = 0; i < data.length; i++) {
             $('#contnetList').append(
               "<figure class='effect type02'>" +
               "<strong class='img_wrap'>" +
-              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
+              "<img id='travelImg" + data[i].tlno +
+              "' src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
               "<figcaption>" +
-              "<h2>처음, 제주</h2>" +
-              "<p>처음 아닌 처음가는 제주도,</p>" +
-              "<a href='../sub08/sub08_view.html?" + data[i].tlno + "'>View more</a>" +
+              "<h2>" + data[i].title + "</h2>" +
+              "<p>View More</p>" +
+              "<a href='travelog_view.html?" + data[i].tlno + "'></a>" +
               "</figcaption>" +
               "</strong>" +
               "<div class='travelog_cont'>" +
@@ -205,6 +209,28 @@
               "</div>" +
               "</figure>")
           }
+          a()
+
+          function a() {
+
+            for (let i = 0; i < addData.length; i++) {
+
+              $.ajax({
+
+                type: "GET",
+
+                url: serverRoot + "/json/travelLogContent/" + addData[i].tlno,
+
+                dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                success: function (data) {
+                  $('#travelImg' +addData[i].tlno).attr('src', serverRoot + '/files/' + data[0].photo)
+                 
+                }
+              })
+            }
+          }
+
         }
       })
     }

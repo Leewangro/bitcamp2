@@ -12,7 +12,10 @@ public class TravelLog implements Serializable {
     private int memberNo;
     private int partner;
     private int preference;
+    private String title;
     
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date createDate;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date startDate;
     @JsonFormat(pattern="yyyy-MM-dd")
@@ -20,7 +23,8 @@ public class TravelLog implements Serializable {
     @Override
     public String toString() {
         return "TravelLog [tlno=" + tlno + ", memberNo=" + memberNo + ", partner=" + partner + ", preference="
-                + preference + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+                + preference + ", title=" + title + ", createDate=" + createDate + ", startDate=" + startDate
+                + ", endDate=" + endDate + "]";
     }
     public int getTlno() {
         return tlno;
@@ -46,6 +50,18 @@ public class TravelLog implements Serializable {
     public void setPreference(int preference) {
         this.preference = preference;
     }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public Date getCreateDate() {
+        return createDate;
+    }
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
     public Date getStartDate() {
         return startDate;
     }
@@ -58,11 +74,5 @@ public class TravelLog implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-    
-    
-    
-   
-
-    
     
 }
