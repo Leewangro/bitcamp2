@@ -27,7 +27,7 @@ import bitcamp.java106.pms.domain.SNSMember;
 public class AuthController {
 
     SNSMemberDao snsMemberDao;
-    SNSMember snsMember;
+    SNSMember member;
     
     @RequestMapping("/logout")
     public void logout(HttpSession session) throws Exception {
@@ -37,6 +37,7 @@ public class AuthController {
     
     @GetMapping("/facebookLogin")
     public Object facebookLogin(String accessToken, HttpServletResponse response, HttpSession session) {
+    	System.out.println(accessToken);
     	Map<String, Object> obj = new HashMap<>();
         Cookie cookie = null;
         SNSMember member = null;
@@ -78,7 +79,6 @@ public class AuthController {
             } else {
             	session.setAttribute("userInfo", member);
             }
-            
             obj.put("name", member.getName());
             obj.put("status", "success");
             
