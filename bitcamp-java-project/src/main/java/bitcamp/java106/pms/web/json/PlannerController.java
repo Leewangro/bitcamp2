@@ -38,12 +38,19 @@ public class PlannerController {
         plannerService.delete(no);
     }
     
-    @RequestMapping("list{page}")
+    @RequestMapping("list")
     public Object list(
             @MatrixVariable(defaultValue="1") int pageNo,
-            @MatrixVariable(defaultValue="3") int pageSize) {
+            @MatrixVariable(defaultValue="6") int pageSize) {
         
         return plannerService.list(pageNo, pageSize);
+    }
+    @RequestMapping("list{page}")
+    public Object listwithPage(
+            @MatrixVariable(defaultValue="1") int pageNo,
+            @MatrixVariable(defaultValue="6") int pageSize) {
+                
+        return plannerService.listwithPage(pageNo, pageSize);
     }
     
     @RequestMapping("update")

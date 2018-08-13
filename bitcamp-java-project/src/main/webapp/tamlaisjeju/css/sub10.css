@@ -2257,3 +2257,7 @@ input, #enter, .items {
 #status {
 	display: none;
 }
+
+.planner_txt {
+	color: #5c5c5c;
+}

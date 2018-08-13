@@ -425,9 +425,6 @@
                               console.log(data2.response.body.items.item[j])
                               
                               
-                              
-                              
-                              
                                if(data[i].plday > nowPlanDay){
                        		   
                                var dayIden = $('.spot-note-box');
@@ -520,7 +517,7 @@
 
               					$.ajax({
               						type: "POST",
-              						url: serverRoot + "/json/travelPlan/insert2/",
+              						url: serverRoot + "/json/travelPlan/add2/",
               						data: param,
               						success: function (up) {
               							location.href = "sub09_view.html";
