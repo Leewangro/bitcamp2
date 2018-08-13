@@ -36,7 +36,6 @@ public class AuthController {
     }*/
     SNSMemberDao snsMemberDao;
     SNSMember member;
-    String id="", name="", email="", gender="";
     
     public AuthController(SNSMemberDao snsMemberDao) {
         // TODO Auto-generated constructor stub
@@ -54,6 +53,8 @@ public class AuthController {
     public Object facebookLogin(String accessToken, HttpSession session) {
         //System.out.println(accessToken);
         Map<String, Object> obj = new HashMap<>();
+        String id="", name="", email="", gender="";
+        SNSMember member = null;
         
         try {
             URL url = new URL("https://graph.facebook.com/v3.0/me?fields=id,name,email,gender&access_token=" + accessToken);
@@ -71,7 +72,7 @@ public class AuthController {
             ObjectMapper mapper = new ObjectMapper();
             Map dataMap = mapper.readValue(jsonResult, Map.class);
             
-            member = null;
+
             
             id = (String)dataMap.get("id");
             name = (String)dataMap.get("name");
@@ -113,6 +114,8 @@ public class AuthController {
     @GetMapping("/kakaoLogin")
     public Object kakaoLogin(String accessToken) {
         Map<String, Object> obj = new HashMap<>();
+        String id="", name="", email="", gender="";
+        SNSMember member = null;
         
         try {
             URL urlstr = new URL("https://kapi.kakao.com/v2/user/me?fields=id,kakao_account.email&access_token=" + accessToken);
@@ -128,11 +131,38 @@ public class AuthController {
             String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
             ObjectMapper mapper = new ObjectMapper();
             Map kakaoMap = mapper.readValue(jsonResult, Map.class);
+            Map properties = (Map) kakaoMap.get("properties");
+            Map kakao_account = (Map) kakaoMap.get("kakao_account");
+            id = (String) kakaoMap.get("id").toString();
+            name = (String) properties.get("nickname");
+            email = (String) kakao_account.get("email");
             
+            member = snsMemberDao.selectOne(id);
+            
+            obj.put("name", member.getName());
+            obj.put("status", "success");
             
         } catch (Exception e ) {
-            System.out.println(e);
+            member = new SNSMember();
+
+            member.setId(id);
+            member.setName(name);
+            member.setEmail(email);
+            member.setEmail(gender);
+            System.out.println("memberInput");
+            System.out.println(member);
+            try {
+                snsMemberDao.insert(member);
+            } catch(Exception e2) {
+                obj.put("status", "fail");
+            }
+            
+            //session.setAttribute("userInfo", member);
+            
+            obj.put("name", member.getName());
+            obj.put("status", "success");
         }
+        this.member = member;
         return obj;
     }
     
