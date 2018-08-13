@@ -111,6 +111,8 @@
             dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
             success: function (data) {
+              
+              for (let i = 0; i < data.length; i++) {
               $('#contnetList').append(
                 "<figure class='effect type02'>" +
                 "<strong class='img_wrap'>" +
@@ -118,16 +120,16 @@
                 "<figcaption>" +
                 "<h2>처음, 제주</h2>" +
                 "<p>처음 아닌 처음가는 제주도,</p>" +
-                "<a href='../sub08/sub08_view.html'>View more</a>" +
+                "<a href='../sub08/sub08_view.html?"+data[i].tlno+"'>View more</a>" +
                 "</figcaption>" +
                 "</strong>" +
                 "<div class='travelog_cont'>" +
 
                 "<span class='writer'>" +
                 "<i class='fas fa-user-circle'></i>" +
-                "<span class='name'>kimakuh</span>" +
+                "<span class='name'>"+"user"+"</span>" +
                 "</span>" +
-                "<span class='day'>2박 3일</span>" +
+                "<span class='day'>"+data[i].startDate+"-"+data[i].endDate+"</span>" +
 
                 "<span class='hashtag'>#힐링 #자유 #혼자</span>" +
                 "<ul>" +
@@ -152,8 +154,10 @@
                 "</ul>" +
                 "</div>" +
                 "</figure>")
+              }
             }
           })
+        })
   </script>
 </body>
 
