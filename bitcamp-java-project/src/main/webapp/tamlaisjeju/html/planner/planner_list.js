@@ -100,7 +100,9 @@ $.ajax({
        success: function (data) {
          var pageNo = data.length / 6;
          Math.ceil(pageNo)
-  
+         $('#pageBtn').append(
+          "<a id='preBtn' href='#'>&laquo;</a>"
+          )
          
          for (let i = 0; i < Math.ceil(pageNo); i++) {
            $('#pageBtn').append(
@@ -111,6 +113,20 @@ $.ajax({
          "<a id='nextBtn' href='#'>&raquo;</a>"
        )
          $('#page_1').trigger('click')
+         
+          $('#preBtn').click(function(){
+            if ($('.active').prev()[0] != $('#preBtn')[0]) {
+               $('.active').prev().trigger('click')
+             }
+            })
+
+            $('#nextBtn').click(function(){
+            if ($('.active').next()[0] != $('#nextBtn')[0]) {
+               $('.active').next().trigger('click')
+             }
+            })
+         
+         
        }
      })
    })
@@ -149,7 +165,7 @@ $.ajax({
                      "</figure>" +
                      "<div class='box_cont'>"+
                        "<h5>" +
-                         "<a href=planner_view.html"+('?'+i)+'>'+data[i].title+'</a>' +
+                         "<a href=planner_view.html"+('?'+data[i].no)+'>'+data[i].title+'</a>' +
                        "</h5>" +
                        "<div class='planner_txt' style=color:#5c5c5c; id=pltravel"+data[i].no+"></div>" +
                        "<div class='hashtag' id=hashtag"+data[i].no+">" +
