@@ -13,6 +13,7 @@ public interface TravelPlanDao {
     List<TravelPlan> selectListWithPlan(Map<String, Object> params);
     int selectListWithPlanDay(Map<String, Object> params);
     List<TravelPlan> selectOne(int no);
+    int insert2(TravelPlan travelPlan);
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기

@@ -204,60 +204,26 @@
 				<!-- box_wrap -->
 				<div class="btn_wrap" style="text-align: end;">
 					<!-- Trigger/Open The Modal -->
-					<button style="border: 1px solid #2793db; color: #2793db; background-color: white;" type="button" class="btn btn-primary"
-					    data-toggle="modal" data-target="#exampleModalCenter">동행모집</button>
+					 <button style="border: 1px solid #2793db; color: #2793db; background-color: white;" type="button" class="btn btn-primary"
+					    data-toggle="modal" data-target="#exampleModalCenter1">동행모집</button>
+					   <!-- 
+					   <a href="../planner/planner_form.html" style="border: 1px solid #2793db; color: #2793db; background-color: white;">동행모집</a>
+					    --> 
 				</div>
 				<!-- Modal -->
-				<form name="form1" id="travelmate_form">
-					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				 <form name="form1" id="travelmate_form">
+					<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
 								<div class="modal-header" id="m-header">
-									<h5 class="modal-title" id="exampleModalCenterTitle" style="padding-bottom: 0px;">새 일정 만들기</h5>
+									<h5 class="modal-title" id="exampleModalCenterTitle" style="padding-bottom: 0px;">동행하기</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<div class="modal-body">
-									<input type="text" id="mTitle" placeholder=" 일정 제목을 입력해주세요.">
-									<textarea id="pDesc" placeholder="일정 설명"></textarea>
-									<div>
-										<input id="sDate" type="date" placeholder="출발일"> ~
-										<input id="eDate" type="date" placeholder="도착일">
-									</div>
-									<div style="padding-top: 10px;">
-										<label for="mTem">여행테마</label>
-										<select id="mTem" style="height: 50px; width: 35%; border: 1px solid #e9e9e9;">
-											<option selected value="w-friends">친구와 함께</option>
-											<option value="w-solo">나홀로 여행</option>
-											<option value="w-family">가족과 함께</option>
-											<option value="w-together">단체 여행</option>
-											<option value="w-package">패키지 여행</option>
-											<option value="w-couple">커플</option>
-											<option value="w-etc">기타</option>
-										</select>
-										<label for="mWithNum">동행인원</label>
-										<select id="mWithNum" style="height: 50px; width: 37.4%; border: 1px solid #e9e9e9; margin-bottom: 10px">
-											<option value="w-one">1</option>
-											<option value="w-two">2</option>
-											<option value="w-three">3</option>
-											<option value="w-four">4</option>
-											<option value="w-five">5</option>
-											<option value="w-six">6</option>
-											<option value="w-seven">7</option>
-											<option value="w-eight">8</option>
-											<option value="w-nine">9</option>
-											<option value="w-ten">10명 이상</option>
-										</select>
-									</div>
-									<div>
-										<label for="recr-gen">모집성별</label>
-										<select id="recr-gen" style="height: 50px; width: 35%; border: 1px solid #e9e9e9;">
-											<option value="g-unrel">무관</option>
-											<option value="g-man">남자</option>
-											<option value="g-woman">여자</option>
-										</select>
-									</div>
+								<div id="mo_body" class="modal-body">
+									
+									
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -338,7 +304,7 @@
 				});
 			});
 	</script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$('#regi')
 			.click(
 				function () {
@@ -367,7 +333,36 @@
 
 					});
 				});
+	</script> -->
+	
+	<script>
+		$(document).ready(function() {
+			var aWord = $('#aWord');
+			
+
+			$.ajax({
+				url : serverRoot + "/json/planner/1",
+				dataType : "json", // 데이터타입을 json 으로 받아옴
+				success : function(main) {
+					console.log(main)
+					//$(aWord).append(data[10].pDesc);
+					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
+					$(sDay).append(main.startDate);
+					$(eDay).append(main.endDate);
+					$(partner).append(main.num);
+					$(theme).append(main.theme);
+					//$(hits).append(data[10]./*프로퍼티 뭐로하냐*/);
+					//$(recoNum).append(data[10]./*프로퍼티명 뭐로하냐*/);
+					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
+				},
+				error : function(er) {
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
+				}
+			});
+		}); 
 	</script>
+	
+	
 
 
 	<style type="text/css">

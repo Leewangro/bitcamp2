@@ -16,22 +16,16 @@ public class TravelPlan implements Serializable {
     private String pltime; // 플랜시간값
     private int ttpno; // 여행지 플랜 연동번호
     private int plday; // 여행 날짜 번호
+    private String descr;
+    
     
     @Override
     public String toString() {
         return "TravelPlan [plno=" + plno + ", tno=" + tno + ", ttype=" + ttype + ", memo=" + memo + ", pltime="
-                + pltime + ", ttpno=" + ttpno + ", plday=" + plday + "]";
+                + pltime + ", ttpno=" + ttpno + ", plday=" + plday + ", descr=" + descr + "]";
     }
-    
-    public int getTtype() {
-        return ttype;
-    }
-
-    public void setTtype(int ttype) {
-        this.ttype = ttype;
-    }
-
     public int getPlno() {
+        
         return plno;
     }
     public void setPlno(int plno) {
@@ -42,6 +36,12 @@ public class TravelPlan implements Serializable {
     }
     public void setTno(int tno) {
         this.tno = tno;
+    }
+    public int getTtype() {
+        return ttype;
+    }
+    public void setTtype(int ttype) {
+        this.ttype = ttype;
     }
     public String getMemo() {
         return memo;
@@ -67,7 +67,13 @@ public class TravelPlan implements Serializable {
     public void setPlday(int plday) {
         this.plday = plday;
     }
-
+    public String getDescr() {
+        return descr;
+    }
+    public void setDescr(String descr) {
+        this.descr = descr;
+    }
+    
     
     
 }

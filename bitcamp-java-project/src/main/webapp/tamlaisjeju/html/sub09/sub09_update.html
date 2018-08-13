@@ -57,11 +57,7 @@
 						</div>
 						<!--author0box -->
 						<div class="author-ment">아이유 개이쁨;실화냐</div>
-						<div class="follower-btns">
-							<button class="follower">동행신청</button>
-							<button class="following hide">신청하였습니다</button>
-							<button id="recommend" class="follower" style="margin-left: 10px">추천하기</button>
-						</div>
+						
 
 						<div class="author-page-links">
 							<ul>
@@ -92,7 +88,6 @@
 						<ul>
 							<li><a class="btn-top nav-btn-top story-view-nav-btn"
 								id="top">Top</a></li>
-
 
 							<li class="story-view-nav-li"><a
 								class="nav-cmt story-view-nav-btn" data-id="comment"
@@ -174,8 +169,7 @@
 						</div>
 					</div>
 				</div>
-
-
+				<button type="button" id="bt_update" class="btn">저장하기</button>				
 				<!-- 
 				<div class="author-info">
 					<div class="conts-label">
@@ -431,6 +425,9 @@
                               console.log(data2.response.body.items.item[j])
                               
                               
+                              
+                              
+                              
                                if(data[i].plday > nowPlanDay){
                        		   
                                var dayIden = $('.spot-note-box');
@@ -514,6 +511,28 @@
                               /*모달 이미지 부분 종료*/
                           /* if(data[i].plday > maxDay)
                         	  maxDay = data[i].plday; */
+                        	  
+                        	  $('#bt_update').click(function () {
+
+              					var param = {
+              						descr: $('.r-cm').val()
+              					};
+
+              					$.ajax({
+              						type: "POST",
+              						url: serverRoot + "/json/travelPlan/update/",
+              						data: param,
+              						success: function (up) {
+              							location.href = "sub09_view.html";
+              						},
+              						error: function (up) {
+              							alert("값을 저장할 수 없습니다. 새로고침을 해주세요.");
+              							
+              						}
+
+              					});
+              				});
+                        	  
 
                           // 마커가 표시될 위치입니다 
                           var markerPosition  = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx); 
@@ -569,7 +588,6 @@
 	
 	var currentPage = 1;
 	
-	
-	</script>
+	</script>	
 </body>
 </html>
