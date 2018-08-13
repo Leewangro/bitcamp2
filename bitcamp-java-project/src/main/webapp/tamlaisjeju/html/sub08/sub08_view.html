@@ -209,7 +209,7 @@
                 <div id="travel_cont"></div>
 
                 <!-- 라이브리 시티 설치 코드 -->
-                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzk5NC8xNDUyNA=="></div>
+                <div id='livecity'></div>
             </div>
         </div>
     </div>
@@ -224,7 +224,7 @@
     <!-- logo font -->
     <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Jquery -->
+    <!-- jQuery -->
     <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- daum map -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=619a7dc4f7d23963aa128663f464c8d5&libraries=services"></script>
@@ -351,6 +351,10 @@
                 success: function (data) {
                     $('#title_div').append(
                         "<h5 id='top_title'>" + data.title + "</h5>")
+                    $('#livecity').append(
+                    "<div id='lv-container'"+link+" data-id='city' data-uid='MTAyMC8zNzk5NC8xNDUyNA=='></div>"
+                     )
+
                 }
             })
             $.ajax({

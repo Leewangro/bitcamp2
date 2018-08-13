@@ -60,15 +60,10 @@
 
 
         <div class="pagination_wrap">
-          <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a href="#" class="active">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
+          <div id='pageBtn' class="pagination">
+            <a id='preBtn' href="#">&laquo;</a>
+
+            
           </div>
           <!-- pagination end -->
         </div>
@@ -102,58 +97,96 @@
     });
 
     $(document).ready(function () {
-          $.ajax({
+      $.ajax({
 
-            type: "GET",
+        type: "GET",
 
-            url: serverRoot + "/json/travelLog/list",
+        url: serverRoot + "/json/travelLog/list",
 
-            dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
-            success: function (data) {
-              $('#contnetList').append(
-                "<figure class='effect type02'>" +
-                "<strong class='img_wrap'>" +
-                "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
-                "<figcaption>" +
-                "<h2>처음, 제주</h2>" +
-                "<p>처음 아닌 처음가는 제주도,</p>" +
-                "<a href='../sub08/sub08_view.html'>View more</a>" +
-                "</figcaption>" +
-                "</strong>" +
-                "<div class='travelog_cont'>" +
+        success: function (data) {
+          var pageNo = data.length / 10;
+          Math.ceil(pageNo)
 
-                "<span class='writer'>" +
-                "<i class='fas fa-user-circle'></i>" +
-                "<span class='name'>kimakuh</span>" +
-                "</span>" +
-                "<span class='day'>2박 3일</span>" +
+          for (let i = 0; i < Math.ceil(pageNo); i++) {
+            $('#pageBtn').append(
+              "<a href='#' id='page_"+(i+1)+"' class='pageNoBtns' onclick='pageClick(this)'>"+(i+1)+"</a>"
+            )
+          }
+          $('#pageBtn').append(
+          "<a id='nextBtn' href='#'>&raquo;</a>"
+        )
+          $('#page_1').trigger('click')
+        }
+      })
+    })
 
-                "<span class='hashtag'>#힐링 #자유 #혼자</span>" +
-                "<ul>" +
-                "<li>" +
 
-                "<span>" +
-                "<i class='far fa-eye'></i>조회수</span>" +
-                "<b>50</b>" +
-                "</li>" +
-                "<li>" +
+    function pageClick(val) {
+      var no = val.innerText;
+      $('.pageNoBtns').removeClass('active')
+      $(val).addClass('active')
+    
+      $.ajax({
 
-                "<span>" +
-                "<i class='far fa-heart'></i>좋아요</span>" +
-                "<b>23</b>" +
-                "</li>" +
-                "<li>" +
+        type: "GET",
 
-                "<span>" +
-                "<i class='far fa-calendar-alt'></i>작성일</span>" +
-                "<b>2018-07-09</b>" +
-                "</li>" +
-                "</ul>" +
-                "</div>" +
-                "</figure>")
-            }
-          })
+        url: serverRoot + "/json/travelLog/listpageNo=" + no,
+
+        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+        success: function (data) {
+
+          $('#contnetList').empty();
+
+
+          for (let i = 0; i < data.length; i++) {
+            $('#contnetList').append(
+              "<figure class='effect type02'>" +
+              "<strong class='img_wrap'>" +
+              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
+              "<figcaption>" +
+              "<h2>처음, 제주</h2>" +
+              "<p>처음 아닌 처음가는 제주도,</p>" +
+              "<a href='../sub08/sub08_view.html?" + data[i].tlno + "'>View more</a>" +
+              "</figcaption>" +
+              "</strong>" +
+              "<div class='travelog_cont'>" +
+
+              "<span class='writer'>" +
+              "<i class='fas fa-user-circle'></i>" +
+              "<span class='name'>" + "user" + "</span>" +
+              "</span>" +
+              "<span class='day'>" + data[i].startDate + "-" + data[i].endDate + "</span>" +
+
+              "<span class='hashtag'>#힐링 #자유 #혼자</span>" +
+              "<ul>" +
+              "<li>" +
+
+              "<span>" +
+              "<i class='far fa-eye'></i>조회수</span>" +
+              "<b>50</b>" +
+              "</li>" +
+              "<li>" +
+
+              "<span>" +
+              "<i class='far fa-heart'></i>좋아요</span>" +
+              "<b>23</b>" +
+              "</li>" +
+              "<li>" +
+
+              "<span>" +
+              "<i class='far fa-calendar-alt'></i>작성일</span>" +
+              "<b>2018-07-09</b>" +
+              "</li>" +
+              "</ul>" +
+              "</div>" +
+              "</figure>")
+          }
+        }
+      })
+    }
   </script>
 </body>
 
