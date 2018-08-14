@@ -13,6 +13,7 @@ $.ajax({
 });
 
  function planSchedule() {
+	 $('.hashtag').empty();
 	 for (var p = 0; p < planDate.length; p++) {
 		 
 		 (function(p)
@@ -40,6 +41,7 @@ $.ajax({
 		 (function(h)
 		 {$.getJSON(serverRoot+"/json/hashTag/"+planDate[h].no, (data) => {
 			 travel_hash = data;
+			 console.log(travel_hash.length)
 			   for (var s = 0; s < travel_hash.length; s++) {
 					   if (travel_hash.length != 0) {
 						   console.log(travel_hash[s].content)
