@@ -43,7 +43,7 @@
 		<div id="content" class="content wrapper">
 			<nav class="aside_wrap">
 				<div class="info-left-box">
-					<div class="user-info-box">
+					<!-- <div class="user-info-box">
 						<div class="author-box">
 							<div class="author-img">
 								<a target="_blank" href="#"> <img
@@ -55,8 +55,7 @@
 								<h5>여</h5>
 							</div>
 						</div>
-						<!--author0box -->
-						<div class="author-ment">아이유 개이쁨;실화냐</div>
+						author0box
 						<div class="follower-btns">
 							<button id = "follow_button" class="follower">동행신청</button>
 							<button id = "following" class="following hide">신청하였습니다</button>
@@ -80,7 +79,7 @@
 								</a></li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 
 					<!--user-left-box-->
 				</div>
@@ -869,11 +868,50 @@
             }); 
 		});
 	});
+	
     var userId;
-
+	var userbox = $('.info-left-box')
 		$.get(serverRoot + "/json/auth/islogin", {}, user => {
 		    id = decodeURIComponent(user.id);
         userId = id;
+        $('.user-left-box').append(
+        	"<div class='user-info-box'>"+
+			"<div class='author-box'>" +
+			"<div class='author-img'>" +
+			"<a target='_blank' href='#'>" + 
+			"<img>"+user.profileImg+"</img>"+
+			"</a>"+
+			"</div>"+
+			"<div class='author-name'>"+
+			"<h3>"+user.name+"</h3>"+
+			"<h5>"+user.gender+"</h5>"+
+			"</div>"+
+			"</div>"+
+			"<div class='follower-btns'>"+
+			"<button id = 'follow_button' class='follower'>동행신청</button>"+
+			"<button id = 'following' class='following hide'>신청하였습니다</button>"+
+			"<button id='recommend' class='follower' style='margin-left: 10px'>추천하기</button>"+
+			"</div>"+
+
+				/* <div class="author-page-links">
+					<ul>
+						<li><a style="padding-left: 5px;"> <span>여행일정</span> <span
+								id="tra_schedule" class="count">(40)</span>
+						</a></li>
+						<li><a> <span>여행리뷰</span> <span id="tra_review"
+								class="count">(40)</span>
+						</a></li>
+						<br>
+						<li><a> <span>동행횟수</span> <span id="acp_num"
+								class="count">(40)</span>
+						</a></li>
+						<li><a> <span>회원댓글</span> <span id="mem_comment"
+								class="count">(40)</span>
+						</a></li>
+					</ul>
+				</div> */
+			"</div>"
+        )
     })
 	</script> 
 	<script>
