@@ -307,18 +307,16 @@
 	          $('#contnetList').empty();
 
 	          for (let i = 0; i < data.length; i++) {
-	            $('#contnetList').append(
+	            $('#contentList').append(
 	              "<figure class='effect type01'>" +
 	              "<span class='r_status open'>모집중</span>" +
 	              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
 	              "<figcaption>" +
-	              "<span class='title'>제주도 비자림 같이가실분!!!제주도 비자림	같이가실분!!! </span> " +
-	              "<span class='hashtag'>#비자림 #힐링</span> " +
-	              "<span class='date'>2018-07-09 ~ 2018-07-10</span> " +
-	              "<span class='gender'>남성</span> " +
-	              "<span class='capacity'	>2/4</span> " +
-	              "<p>동행은 넘조아동행은 넘조아동행은 넘조아동행은 넘조아동행은 넘조아동행은 넘조아</p>" +
-	              "<a href='../sub08/sub09_view.html?" + data[i].tlno + "'>View more</a>" +
+	              "<span class='title'>" + data[i].title + "</span> " +
+	              "<span class='date'>" + data[i].sdt + data[i].sdt + "</span> " +
+	              "<span class='gender'>" + data[i].gender + "</span> " +
+	              "<span class='capacity'	>" + data[i].capa + "</span> " +
+	              "<a href='../sub08/sub09_view.html?" + data[i].plno + "'>View more</a>" +
 	              "</figcaption>" +
 	              "</figure>"
 	              )
@@ -327,8 +325,6 @@
 	      })
 	    }
 	  </script>	
-	
-
 
 	<style type="text/css">
 #travelmate_form {
