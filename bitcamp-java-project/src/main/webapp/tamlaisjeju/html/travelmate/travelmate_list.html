@@ -314,9 +314,16 @@
 	        success: function (data) {
 
 	          $('#contnetList').empty();
-
+			  var genders; 
 	          for (let i = 0; i < data.length; i++) {
-	        	  console.log( data[i].gender);
+	        	  if(data[i].gender == 0) {
+	        		  genders = '남자';
+	        	  } else if (data[i].gender == 1) {
+	        		  genders = '여자';
+	        	  } else if (data[i].gender == 2) {
+	        		  genders = '무관';
+	        	  }
+	        	  
 	            $('#contentList').append(
 	              "<figure class='effect type01'>" +
 	              "<span class='r_status open'>모집중</span>" +
@@ -324,7 +331,7 @@
 	              "<figcaption>" +
 	              "<span class='title'>" + data[i].title + "</span> " +
 	              "<span class='date'>" + pldata[i].startDate + " ~ " + pldata[i].endDate + "</span> " +
-	              "<span class='gender'>" + data[i].gender + "</span> " +
+	              "<span class='gender'>" + genders + "</span> " +
 	              "<span class='capacity'	>" + data[i].capa + "</span> " +
 	              "<a href='../sub08/sub09_view.html?" + data[i].plno + "'>View more</a>" +
 	              "</figcaption>" +
