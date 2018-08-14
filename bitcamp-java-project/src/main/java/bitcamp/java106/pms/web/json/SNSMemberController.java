@@ -24,32 +24,12 @@ public class SNSMemberController {
         SnsMemberService.add(SnsMember);
     }
     
-    // @RequestMapping("delete")
-    // public String delete(@RequestParam("id") String id) throws Exception {
-        
-    //     int count = SnsMemberService.delete(id);
-    //     if (count == 0) {
-    //         throw new Exception("해당 회원이 없습니다.");
-    //     }
-    //     return "redirect:list";
-    // }
-    
-    // @RequestMapping("update")
-    // public void update(SNSMember SnsMember) throws Exception {
-    //     SnsMemberService.update(SnsMember);
-    // }
-    
     @RequestMapping("{id}")
-    public String view(
+    public SNSMember view(
             @PathVariable String id,
             Map<String,Object> map) throws Exception {
 
-        SNSMember SnsMember = SnsMemberService.get(id);
-        if (SnsMember == null) {
-            throw new Exception("유효하지 않은 멤버 아이디입니다.");
-        }
-        map.put("member", SnsMember);
-        return "member/view";
+        return SnsMemberService.get(id);
     }
 }
 
