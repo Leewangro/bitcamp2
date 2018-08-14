@@ -12,42 +12,6 @@ $.ajax({
 }
 });
 
- // 위에서 준비한 템플릿 데이터를 가지고 HTML을 생성할 템플릿 엔진 준비
- /*$.getJSON(serverRoot+"/json/planner/list", (data) => {
- 	   planDate = data;
- 	   console.log(planDate);
-       for (var i = 0; i< planDate.length; i++) {
-    	   if (i == planDate.length-1) {
-    		   jsonDate();
-           }
-       $('.box_wrap').append(
-    		   "<div class='box'>" +
-               "<figure class='effect type03'>" +
-                 "<img src='../../img/common/board_img02.jpg' alt='제주의 바닷가'>" +
-                 "<figcaption>" +
-                   "<h5>" +
-                     "<span>"+planDate[i].title+"</span>" +
-                   "</h5>" +
-                   "<a href=planner_view.html"+('?'+planDate[i].no)+">'View more'</a>" +
-                 "</figcaption>" +
-               "</figure>" +
-               "<div class='box_cont'>"+
-                 "<h5>" +
-                   "<a href=planner_view.html"+('?'+i)+'>'+planDate[i].title+'</a>' +
-                 "</h5>" +
-                 "<p class='planner_txt' id=pltravel"+planDate[i].no+"></p>" +
-                 "<p class='hashtag' id=hashtag"+planDate[i].no+">" +
-                 "</p>" +
-                 //<!-- count_area end-->
-               "</div>" +
-               //<!-- box_cont end -->
-             "</div>"
-             //<!-- box end-->	   
-       ) 
-       } 
-});*/
-
-
  function planSchedule() {
 	 for (var p = 0; p < planDate.length; p++) {
 		 
@@ -60,6 +24,7 @@ $.ajax({
 				   for (var t = 0; t < travel_data.length; t++) {
 					   if (travel_schedule.length != 0) {
 					   if (travel_schedule[s].tno == travel_data[t].contentid) {
+						   $("#box"+travel_schedule[s].plno+" img")[0].src = travel_data[t].firstimage2;
 						   $("#pltravel"+travel_schedule[s].plno+"").append(
 								   "<span>"+"\u00A0" +mark+"\u00A0"+travel_data[t].title+"</span>"
 								   ) 
