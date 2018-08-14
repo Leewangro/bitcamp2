@@ -20,7 +20,7 @@ app.get('/auth/logout', function(req, res){
     req.logout();
     request('http://localhost:8888/bitcamp-java-project/json/auth/logout');
     console.log('로그아웃완료');
-    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+    res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index.html");
 });
 
 //미들웨어 설정 필수!!!
@@ -68,7 +68,7 @@ app.get('/auth/facebook/callback',
             console.log("8888 서버에서 응답이 왔음!")
             console.log(body);
             if (body.status === "success") {
-                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
                 console.log('로그인 실패!')
@@ -116,7 +116,7 @@ app.get('/auth/kakao/callback',
             console.log("8888 서버에서 응답이 왔음!")
             if (body.status === "success") {
                 console.log(body);
-                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index.html");
             } else {
                 //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
                 console.log('로그인 실패!')

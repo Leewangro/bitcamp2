@@ -34,19 +34,19 @@
             <div id="mvisual">
                 <div class="weather_area">
                     <div class="weather_img">
-                        <strong id="icon_weather" class="wico weather2">구름조금</strong>
+                        <img id="icon_weather" class="wico weather1" src="img/main/weather_icon01.png"></img>
                     </div>
                     <!-- weather img end-->
                     <div class="today_area">
                         <strong class="today">Today</strong>
-                        <span class="month" id="txt_month">7</span>
+                        <span class="month" id="txt_month"></span>
                         <span class="bar">/</span>
-                        <span class="date" id="txt_day">27</span>
+                        <span class="date" id="txt_day"></span>
                     </div>
                     <!-- today end -->
                     <div class="weather_txt">
-                        <em id="txt_weather_sky">구름 조금</em>
-                        <em id="txt_week">Fri</em>
+                        <em id="txt_weather_sky"></em>
+                        <em id="txt_week"></em>
                     </div>
                     <!-- weather_txt end-->
                     <p>
@@ -413,8 +413,6 @@
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="node_modules/slick-carousel/slick/slick.min.js"></script>
         <script src="js/common/common.js"></script>
-        
-        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 
 
@@ -458,6 +456,40 @@
                  $("#header").load("header.html #navbar")
                  */
             });
+        </script>
+        <script>
+                $.getJSON(serverRoot + "/json/weather/info", {
+                    nx: 59,
+                    ny: 125
+                }, data => {
+                    $(txt_weather_sky).text(data.wth);
+                    $(txt_month).text(data.m);
+                    $(txt_day).text(data.d);
+                    $(txt_week).text(data.e);
+                    
+                    if (data.wth == "맑음") {
+                        $(icon_weather).attr("src", "img/main/weather_icon01.png");
+                        $(txt_weather_sky).text(data.wth);
+                    } else if (data.wth == "구름조금") {
+                        $(icon_weather).attr("src", "img/main/weather_icon02.png");
+                        $(txt_weather_sky).text(data.wth);
+                    } else if (data.wth == "구름많음") {
+                        $(icon_weather).attr("src", "img/main/weather_icon03.png");
+                        $(txt_weather_sky).text(data.wth);
+                    } else if (data.wth == "흐림") {
+                        $(icon_weather).attr("src", "img/main/weather_icon03.png");
+                        $(txt_weather_sky).text(data.wth);
+                    } else if (data.wth == "비") {
+                        $(icon_weather).attr("src", "img/main/weather_icon05.png");
+                        $(txt_weather_sky).text(data.wth);
+                    } else if (data.wth == "눈비") {
+                        $(icon_weather).attr("src", "img/main/weather_icon06.png");
+                        $(txt_weather_sky).text(data.wth);
+                    } else {
+                        $(icon_weather).attr("src", "img/main/weather_icon07.png");
+                        $(txt_weather_sky).text(data.wth);
+                    }
+                })
         </script>
     </body>
 
