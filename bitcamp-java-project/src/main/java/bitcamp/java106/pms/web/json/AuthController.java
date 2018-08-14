@@ -100,12 +100,11 @@ public class AuthController {
     }
     
     @GetMapping("/kakaoLogin")
-    public Object kakaoLogin(String accessToken, HttpServletResponse response, HttpSession session) {
+    public Object kakaoLogin(String accessToken, HttpServletResponse response, HttpSession session) throws Exception{
         Map<String, Object> obj = new HashMap<>();
         String id="", name="", email="", gender="", picurl="";
         SNSMember member = new SNSMember();
         
-        try {
             URL urlstr = new URL("https://kapi.kakao.com/v2/user/me?fields=id,kakao_account.email&access_token=" + accessToken);
             HttpsURLConnection con = (HttpsURLConnection)urlstr.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -125,32 +124,29 @@ public class AuthController {
             id = (String) kakaoMap.get("id").toString();
             name = (String) properties.get("nickname");
             email = (String) kakao_account.get("email");
+            
+            if(snsMemberDao.selectOne(id) == null) {
+                member.setId(id);
+                member.setName(name);
+                member.setEmail(email);
+                session.setAttribute("userInfo", member);
+                try {
+                    snsMemberDao.insert(member);
+                    } catch(Exception e2 ) {                    
+                        return "fail";
+                    }
+                    obj.put("name", member.getName());
+                    obj.put("status", "success");
+                    return obj;
+            } else 
             member = snsMemberDao.selectOne(id);
-            
-            obj.put("name", member.getName());
-            obj.put("status", "success");
-            
-        } catch (Exception e ) {
-            System.out.println(email);
-            member.setId(id);
-            member.setName(name);
-            member.setEmail(gender);
-            member.setEmail(email);
-            System.out.println(email);
-            System.out.println(member);
-            try {
-                snsMemberDao.insert(member);
-            } catch(Exception e2) {
-                obj.put("status", "fail");
-            }
-            
             session.setAttribute("userInfo", member);
-            
+            System.out.println(session.getAttribute("userInfo"));
             obj.put("name", member.getName());
-            obj.put("status", "success");
             obj.put("id", member.getId());
-        }
-        return obj;
+            obj.put("status", "success");
+            this.member = member;
+            return obj;
     }
     
     @RequestMapping(value="/islogin")
