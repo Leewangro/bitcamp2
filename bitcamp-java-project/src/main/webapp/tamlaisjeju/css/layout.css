@@ -3072,17 +3072,23 @@ board_list planner - 여행일정 추천
 }
 
 .board_list.planner .box_wrap .box_cont {
+  position: relative;
   float: left;
   width: 75%;
-  padding: 2%;
+  padding: 2% 2% 0 2%;
+  min-height: 230px;
+
 }
 
 .board_list.planner .box_wrap .box_cont p {
   margin-bottom: 2%;
 }
 
-.board_list.planner .box_wrap .box_cont p.hashtag {
+.board_list.planner .box_wrap .box_cont .hashtag {
   color: #2168f6;
+  position: absolute;
+  left:20px;
+  bottom:20px;
 }
 
 .board_list.planner .box_wrap .box_cont .count_area {}
