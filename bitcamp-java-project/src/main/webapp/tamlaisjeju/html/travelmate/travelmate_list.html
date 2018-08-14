@@ -293,6 +293,15 @@
 	      $('.pageNoBtns').removeClass('active')
 	      $(val).addClass('active')
 		
+    $.ajax({
+
+       type: "GET",
+
+       url: serverRoot + "/json/planner/list",
+
+       dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+	   success: function (pldata) {
 
 	      $.ajax({
 
@@ -313,17 +322,20 @@
 	              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
 	              "<figcaption>" +
 	              "<span class='title'>" + data[i].title + "</span> " +
-	              "<span class='date'>" + data[i].sdt + data[i].sdt + "</span> " +
+	              "<span class='date'>" + pldata[i].startDate + " ~ " + pldata[i].endDate + "</span> " +
 	              "<span class='gender'>" + data[i].gender + "</span> " +
 	              "<span class='capacity'	>" + data[i].capa + "</span> " +
 	              "<a href='../sub08/sub09_view.html?" + data[i].plno + "'>View more</a>" +
 	              "</figcaption>" +
 	              "</figure>"
+	              
 	              )
 	          }
 	        }
 	      })
 	    }
+      })
+    }
 	  </script>	
 
 	<style type="text/css">
