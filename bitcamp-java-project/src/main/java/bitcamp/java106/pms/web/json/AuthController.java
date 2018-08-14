@@ -3,14 +3,12 @@ package bitcamp.java106.pms.web.json;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -100,65 +98,12 @@ public class AuthController {
             this.member = member;
             return obj;
     }
-        
-        /*Map<String, Object> obj = new HashMap<>();
-        SNSMember member = null;
-        String id="", name="", email="", gender="";
-        
-        try {
-            URL url = new URL("https://graph.facebook.com/v3.0/me?fields=id,name,email,gender&access_token=" + accessToken);
-            HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            
-            StringBuffer buf = new StringBuffer();
-            String line = null;
-            while ((line = in.readLine()) != null) {
-                buf.append(line);
-            }
-            in.close();
-            
-            String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
-            ObjectMapper mapper = new ObjectMapper();
-            Map dataMap = mapper.readValue(jsonResult, Map.class);
-            
-
-            
-            id = (String)dataMap.get("id");
-            name = (String)dataMap.get("name");
-            email = (String)dataMap.get("email");
-            gender = (String)dataMap.get("gender");
-
-            member = snsMemberDao.selectOne(id);
-
-            obj.put("name", member.getName());
-            obj.put("status", "success");
-
-        } catch (Exception e) {
-            member.setId(id);
-            member.setName(name);
-            member.setEmail(email);
-            member.setEmail(gender);
-            System.out.println("memberInput");
-            System.out.println(member);
-            
-            try {
-                snsMemberDao.insert(member);
-            } catch(Exception e2) {
-                obj.put("status", "fail");
-            }
-            
-            session.setAttribute("userInfo", member);
-            
-            obj.put("name", member.getName());
-            obj.put("status", "success");
-        }
-        return obj;*/
     
     @GetMapping("/kakaoLogin")
-    public Object kakaoLogin(String accessToken,  HttpSession session) {
+    public Object kakaoLogin(String accessToken, HttpServletResponse response, HttpSession session) {
         Map<String, Object> obj = new HashMap<>();
-        String id="", name="", email="", gender="";
-        SNSMember member = null;
+        String id="", name="", email="", gender="", picurl="";
+        SNSMember member = new SNSMember();
         
         try {
             URL urlstr = new URL("https://kapi.kakao.com/v2/user/me?fields=id,kakao_account.email&access_token=" + accessToken);
@@ -172,6 +117,7 @@ public class AuthController {
             in.close();
             
             String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
+            System.out.println(jsonResult);
             ObjectMapper mapper = new ObjectMapper();
             Map kakaoMap = mapper.readValue(jsonResult, Map.class);
             Map properties = (Map) kakaoMap.get("properties");

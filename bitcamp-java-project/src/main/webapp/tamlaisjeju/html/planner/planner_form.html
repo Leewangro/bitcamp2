@@ -1504,12 +1504,22 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
         /* <div class="planner_title">
         <input type="text" id="pl_title" placeholder="제목을 입력하세요">
         </div> */
-
+        let id;
         var createPlanIndex = null;
         $('#plan_view').click(
-       		function() {
+        		function() {
+       		$.get(serverRoot + "/json/auth/islogin", {}, user => {
+       		    id = decodeURIComponent(user.id);
+       		    console.log(id);
+       		    contIn();
+       		})
+       		}
+        		)
+       		function contIn() {
+       			console.log(id);
                 var param = {
-                    title: $("#pl_title")[0].value
+                    title: $("#pl_title")[0].value,
+                    id: id
                 };
                 $.ajax({
                     type: "POST",
@@ -1525,8 +1535,7 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
                     }
 
                 });
-
-            });
+        };
         
         $('#travelMate_form').click(
                 function() {

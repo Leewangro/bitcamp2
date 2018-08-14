@@ -10,16 +10,26 @@ public class Content implements Serializable {
 
     private int no;
     private String title;
+    private String id;
     
     @JsonFormat(pattern="yyyy-MM-dd",timezone="Asia/Seoul")
     private Date createDate;
 
-	@Override
-	public String toString() {
-		return "Content [no=" + no + ", title=" + title + ", createDate=" + createDate + "]";
-	}
 
-	public int getNo() {
+	@Override
+    public String toString() {
+        return "Content [no=" + no + ", title=" + title + ", id=" + id + ", createDate=" + createDate + "]";
+    }
+	
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getNo() {
 		return no;
 	}
 

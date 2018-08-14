@@ -15,6 +15,7 @@
     <id column="CNO" property="no"/>
     <result column="TITL" property="title"/>
     <result column="CDT" property="createDate"/>
+    <result column="MID" property="id"/>
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -26,7 +27,7 @@
   <select id="selectList" 
           resultMap="ContentMap" 
           parameterType="map">
-    SELECT CNO, TITL, CDT 
+    SELECT CNO, TITL, CDT, MID 
     FROM TAMLA_CONTENT
     <!-- order by CNO desc
     limit #{startRowNo}, #{pageSize} -->
@@ -34,8 +35,8 @@
   
   <insert id="insert" parameterType="Content"
           useGeneratedKeys="true" keyColumn="CNO" keyProperty="no">
-    insert into TAMLA_CONTENT(TITL,CDT) 
-    values(#{title},now())
+    insert into TAMLA_CONTENT(TITL,CDT,MID) 
+    values(#{title},now(),#{id})
    <!-- id값 리턴 -->
    <selectKey resultType="int" keyProperty="no" order="AFTER" >  
        SELECT LAST_INSERT_ID()
@@ -46,7 +47,7 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
   <select id="selectOne" parameterType="int" resultMap="ContentMap">
-    select CNO,TITL,CDT 
+    select CNO,TITL,CDT,MID 
     from TAMLA_CONTENT 
     where CNO=#{value}
   </select>
