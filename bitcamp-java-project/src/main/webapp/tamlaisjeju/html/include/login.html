@@ -1,9 +1,9 @@
 <ul class="login" style="float:right;">
     <li>
 <!-- Button trigger modal -->
-        <a id="UserName" style="float:left;" href="http://localhost:8888/bitcamp-java-project/tamlaisjeju/html/mytrip/mytrip_all.html"></a>
+        <a id="UserName" style="float:left;" onclick='mypage()'></a>
         <a id="Login" data-toggle="modal" data-target="#exampleModalCenter" style="display:block; float:left;">로그인</a>
-        <a id="Logout" href="http://localhost:8000/auth/logout" style="display:none; float:left;">로그아웃</a>
+        <a id="Logout" onclick='logout()' style="display:none; float:left;">로그아웃</a>
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -16,9 +16,9 @@
                         </div>
                         <div class="modal-body">로그인 하시면 여행지 리뷰 등록 및 내가 찜한 여행지와 일정, 방문지 등의 다양한 기능을 사용하실 수 있습니다.</div>
                         <div class="modal-footer">
-	                        <button type="button" class="btn_login fb" onclick="location.href='http://localhost:8000/auth/facebook'"><span>페이스북으로 로그인</span></button>
-	                        <button type="button" class="btn_login kt" onclick="location.href='http://localhost:8000/auth/kakao'"><span>카카오톡으로 로그인</span></button>
-	                        <button type="button" class="btn_login ig" onclick="location.href='http://localhost:8000/auth/google'"><span>Google로 로그인</span></button>
+	                        <button type="button" class="btn_login fb" onclick="facebook()"><span>페이스북으로 로그인</span></button>
+	                        <button type="button" class="btn_login kt" onclick="kakao()"><span>카카오톡으로 로그인</span></button>
+	                        <button type="button" class="btn_login ig" onclick="google()"><span>Google로 로그인</span></button>
                         </div>
                 </div>
             </div>
@@ -26,10 +26,29 @@
     </li>
 </ul>
 <script type="text/javascript">
-var serverRoot = "http://localhost:8888/bitcamp-java-project";
+// var serverRoot3 = "http://tamlaisjeju.java106.com:8888/bitcamp-java-project";
+var serverRoot3 = "http://localhost:8888/bitcamp-java-project";
+// var loginRoot = "http://tamlaisjeju.java106.com:8000";
+var loginRoot = "http://localhost:8000";
+
+function facebook() {
+    location.href=loginRoot + '/auth/facebook'   
+}
+function kakao() {
+    location.href=loginRoot + '/auth/kakao'   
+}
+function google() {
+    location.href=loginRoot + '/auth/google'   
+}
+function logout() {
+    location.href=loginRoot + "/auth/logout"
+}
+function mypage() {
+    location.href=serverRoot3 + "/html/mytrip/mytrip_all.html"
+}
 
 
-$.get(serverRoot + "/json/auth/islogin", {}, user => {
+$.get(serverRoot3 + "/json/auth/islogin", {}, user => {
 	console.log(user);
     let name = decodeURIComponent(user.name);
     let id = decodeURIComponent(user.id);
