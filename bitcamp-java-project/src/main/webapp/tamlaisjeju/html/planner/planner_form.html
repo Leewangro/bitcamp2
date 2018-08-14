@@ -552,7 +552,7 @@
     <script id="tr-template" type="text/x-handlebars-template">
         {{#each list}}
         <div class="item" id=dragitem{{@index}}; draggable="true" data-target={{@index}}>
-            <div class="img" style=background-image:url("{{firstimage2}}")></div>
+            <div class="img" style=background-image:url({{firstimage2}})></div>
             <div class="title_info">
                 <div class="title" onclick="markerOverlay(this)" id=clti{{@index}};>{{title}}</div>
                 <div class="info clear">{{addr1}}</div>
