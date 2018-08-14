@@ -56,11 +56,20 @@ public class TravelPlanServiceImpl implements TravelPlanService {
     
     @Override
     public int update(int planday, int no, String text) {
+        
+        System.out.println(planday);
+        System.out.println(no);
+        System.out.println(text);
+        
         Map<String, Object> params = new HashMap<>();
         params.put("plno", planday);
         params.put("tno", no);
         params.put("descr", text);
-        return travelPlanDao.update(params);
+        
+        int lines = travelPlanDao.update(params);
+        System.out.println("변경된 행 : " + lines);
+        
+        return lines;
     }
     
     @Override
