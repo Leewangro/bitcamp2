@@ -2875,12 +2875,16 @@ board_list travelog - 내가 쓰는 여행기 리스트
 
 .board_list.travelog figure img {
   position: relative;
-  display: block;
+  /* display: block; */
   min-height: 100%;
   max-width: 100%;
   /* opacity: 0.8; */
-  min-height: 318px;
+  /* min-height: 318px; */
 }
+.board_list .travelog_cont img {
+  border-radius: 25px;
+}
+
 
 .board_list.travelog figure figcaption {
   /* padding: 2em; */
