@@ -79,8 +79,8 @@ $.ajax({
 					   if (travel_hash.length != 0) {
 						   console.log(travel_hash[s].content)
 						   $("#hashtag"+travel_hash[s].cno+"").append(
-								   "<a href='#'>#"+travel_hash[s].content+"</a>"
-								   ) 
+								   "<a href='#'>"+travel_hash[s].content+"</a>"
+								   )  
 					   }
 			   }
 	 });

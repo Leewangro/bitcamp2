@@ -218,7 +218,7 @@
     </script>
 
     <script id="tr-template" type="text/x-handlebars-template">
-        <li class="plan_cont">출발일: {{startDate}} ~ 도착일:{{endDate}}</li>
+        <li class="plan_cont" id="travelDate"></li>
         <li class="plan_cont">인원: {{num}}</li>
         <li class="plan_cont">일행: {{people}}</li>
         <li class="plan_cont">테마: {{theme}}</li>
@@ -251,14 +251,17 @@
             var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
             betweenDay = parseInt(diff / currDay);
             var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+            var planSdate = new Date(((dat1 / currDay)) * currDay).getFullYear()+"."+new Date(((dat1 / currDay)) * currDay).getMonth()+"."+(new Date(((dat1 / currDay)) * currDay).getDate()+1)
+            var planEdate = new Date(((dat2 / currDay)) * currDay).getFullYear()+"."+new Date(((dat2 / currDay)) * currDay).getMonth()+"."+(new Date(((dat2 / currDay)) * currDay).getDate()+1)
+                $('#travelDate')[0].textContent=("출발일: "+planSdate+" ~ "+"도착일: "+planEdate+"");
             for (var i = 0; i < betweenDay + 1; i++) {
                 linePath[(i + 1)] = [];
                 polyline[(i + 1)] = [];
                 var dat3 = (new Date(((dat1 / currDay) + i) * currDay));
-                calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()));
-                var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate());
+                calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()+1));
+                var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()+1);
                 dayOfWeek = week[new Date(calYearMonthDate).getDay()];
-
+                
                 $('.plan #1').append(
                     "<div class='day_page' data-id=" + (i + 1) + ">" +
                     "<div class='day_page_left'>" +

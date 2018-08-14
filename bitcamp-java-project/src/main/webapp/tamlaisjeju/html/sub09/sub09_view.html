@@ -312,7 +312,7 @@
 			var recoNum = $('#b-reco');
 
 			$.ajax({
-				url : serverRoot + "/json/planner/1",
+				url : serverRoot + "/json/planner/196",
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(main) {
 					console.log(main)
@@ -385,7 +385,7 @@
          
          
          $.ajax({
-            url: serverRoot + "/json/travelPlan/1/" + currentPage,
+            url: serverRoot + "/json/travelPlan/196/" + currentPage,
             dataType: "json", // 데이터타입을 json 으로 받아옴
             success: function (data) {
                console.log(data);
@@ -573,7 +573,7 @@
 	
 	$(document).ready(function() {
 		
-		$.get(serverRoot + "/json/travelPlan/day/1", {}, function(res) {
+		$.get(serverRoot + "/json/travelPlan/day/196", {}, function(res) {
 			maxDay = res;
 			console.log(maxDay);
 		});
@@ -602,7 +602,7 @@
                 $(day).append(day_num);
                 
             	   $.ajax({
-       				url : serverRoot + "/json/travelPlan/1/" + currentPage,
+       				url : serverRoot + "/json/travelPlan/196/" + currentPage,
        				dataType : "json", 
        				success : function(data) {
        				 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -740,7 +740,7 @@
                 dataType: "json", // 데이터타입을 json 으로 받아옴
                 success: function (data2) { 
         		 	$.ajax({
-        				url : serverRoot + "/json/travelPlan/1/" + currentPage,
+        				url : serverRoot + "/json/travelPlan/196/" + currentPage,
         				dataType : "json", 
         				success : function(data) {
 						 	$(".spot-note-box").empty();
