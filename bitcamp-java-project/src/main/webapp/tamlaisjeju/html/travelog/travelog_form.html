@@ -1035,6 +1035,13 @@
                  발행스크립트
                  ***********************************************/
                 var contentNo;
+                var userId;
+
+       		$.get(serverRoot + "/json/auth/islogin", {}, user => {
+       		    id = decodeURIComponent(user.id);
+                userId = id;
+            })
+       		
 
                 const {
                     value: day
@@ -1058,7 +1065,8 @@
                     var a = 1;
 
                     var param = {
-                        title: $("#title").val()
+                        title: $("#title").val(),
+                        id : userId
                     };
                     $.ajax({
                         type: "POST",
