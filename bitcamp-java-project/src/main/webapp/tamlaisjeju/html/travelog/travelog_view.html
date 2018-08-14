@@ -40,6 +40,7 @@
                 <div id='hashTag_div'></div>
                 <div id='date_div'></div>
                 <div id='partner_div'></div>
+                <div id='delete_div'></div>
                 <!-- <h5 id='top_date'>여행일: 2018년 4월 20일 - 2018년 4월 30일</h5> -->
                 <span class="visual_bg"></span>
             </div>
@@ -53,9 +54,11 @@
         '6': '단체' -->
         <div id="content">
 
+
             <!-- 좋아요 탭 -->
             <div class="content_wrap">
-                
+
+
                 <!-- 지도 -->
 
                 <!-- <div class=map_bb style="width: 100%;height: 400px;background-color: teal;margin-bottom:84px;" style="overflow: hidden;z-index:2; "></div> -->
@@ -78,7 +81,7 @@
 
 
                     <div class="context_writer">
-                        <div class="profile large">
+                        <!-- <div class="profile large">
                             <div class="cover">
                                 <img src="https://source.unsplash.com/random/700x300" />
                                 <div class="layer">
@@ -117,11 +120,13 @@
                                     <p>퍼가기</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="auther_post">
                             <div class="post_section">
                                 <div class="post_topbox clear">
-                                    <div class="post_text">추천 여행기</div>
+                                    <div class="post_text">
+                                        <b id='recommendation'></b>
+                                        <b id='recommendation_name'></b>의 추천 여행기</div>
                                     <a href="#">모두보기</a>
                                 </div>
                                 <div class="post_content">
@@ -212,6 +217,8 @@
     <script>
         // url경로
         var link = document.location.href.split("?")[1];
+
+        // <button type="button" class="btn btn-primary">삭제</button>
         $.ajax({
 
             type: "GET",
@@ -289,6 +296,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var memberId;
             $.ajax({
 
                 type: "GET",
@@ -297,12 +305,35 @@
 
                 dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
-                success: function (data) {
+                success: function (data) { //콘텐트
                     $('#title_div').append(
                         "<h5 id='top_title'>" + data.title + "</h5>")
+                    $('#recommendation').html(data.id)
+                    memberId = data.id;
+                    memberCall()
 
                 }
             })
+
+            function memberCall() {
+
+
+                $.ajax({
+
+                    type: "GET",
+
+                    url: serverRoot + "/json/member/" + memberId,
+
+                    dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                    success: function (data) {
+
+                        $('#recommendation_name').html(data.name)
+
+
+                    }
+                })
+            }
             $.ajax({
 
                 type: "GET",
@@ -649,7 +680,7 @@
                             var content = $('.t_timeline').height();
                             if ($(window).scrollTop() > container - content -
                                 75) {
-                                if ($(window).scrollTop() > content+80) {
+                                if ($(window).scrollTop() > content + 80) {
                                     $('nav').addClass('absolute');
                                     $('nav').removeClass('fixed');
                                     return;

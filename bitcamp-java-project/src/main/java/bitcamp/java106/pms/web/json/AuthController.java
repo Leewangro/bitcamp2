@@ -72,7 +72,6 @@ public class AuthController {
             Map picdata = (Map)picture.get("data");
             picurl = (String)picdata.get("url");
             
-            
             if(snsMemberDao.selectOne(id) == null) {
                 member.setId(id);
                 member.setName(name);
@@ -80,6 +79,7 @@ public class AuthController {
                 member.setGender(gender);
                 member.setProfileImg(picurl);
                 session.setAttribute("userInfo", member);
+                
                 try {
                     snsMemberDao.insert(member);
                     } catch(Exception e2 ) {                    
@@ -155,7 +155,7 @@ public class AuthController {
         if(this.member != null)
             try {
                 map.put("id", URLEncoder.encode(this.member.getId(), "UTF-8"));
-                map.put("name", URLEncoder.encode(this.member.getName(), "UTF-8")); 
+                map.put("name", URLEncoder.encode(this.member.getName(), "UTF-8"));
                 return map;
             } catch(Exception e) {
                 return "n";

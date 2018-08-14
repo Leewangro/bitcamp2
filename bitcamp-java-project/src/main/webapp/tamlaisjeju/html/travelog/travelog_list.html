@@ -55,15 +55,20 @@
         </div>
         <!-- box_wrap end -->
 
+        <div class="btn_wrap" style="text-align: end;">
+          <button style="border: 1px solid #2793db; color: #2793db; background-color: white;" type="button" class="btn btn-primary"
+            onclick="location.href='travelog_form.html'">여행기작성</button>
+            </div>
         <div class="pagination_wrap">
           <div id='pageBtn' class="pagination"></div>
           <!-- pagination end -->
-     
+
         </div>
         <!-- pagination_wrap end-->
 
       </div>
       <!-- board_list end-->
+      </div>
     </div>
     <!-- content end-->
   </div>
@@ -171,7 +176,7 @@
               "</strong>" +
               "<div class='travelog_cont'>" +
 
-              "<span id='member_"+data[i].tlno+"' class='writer'>" +
+              "<span id='member_" + data[i].tlno + "' class='writer'>" +
               // "<img id=memberImg_"+data[i].tlno+">" +
               // "<span id='memberName_'"+data[i].tlno+" class='name'></span>" +
               "</span>" +
@@ -220,7 +225,7 @@
 
                 success: function (data) {
                   $('#travelImg' + addData[i].tlno).attr('src', serverRoot + '/files/' + data[0].photo)
-                  
+
 
                 }
               })
@@ -267,12 +272,12 @@
 
                 success: function (data) {
 
-                    $('#member_' + addData[i].tlno).append(
-                      "<img src="+data.profileImg+">" +
-                      "<span class='name'>" + data.name + " </span>"
-                    )
-                    console.log(data.profileImg)
-                    console.log(data[0].profileImg)
+                  $('#member_' + addData[i].tlno).append(
+                    "<img src=" + data.profileImg + ">" +
+                    "<span class='name'>" + data.name + " </span>"
+                  )
+                  console.log(data.profileImg)
+                  console.log(data[0].profileImg)
 
 
                 }

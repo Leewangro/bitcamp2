@@ -67,6 +67,32 @@ all - 여행필수정보 전체
     padding-bottom: 15px;
 }
 
+#sub08 #visual #delete_div {
+    position: absolute;
+    bottom: 0;
+    width: 1200px;
+    margin: auto;
+}
+
+#sub08 #visual #delete_div button{
+    border: 1px solid #2793db;
+    color: #2793db;
+    background-color: white;
+    /* color: #fff; */
+    /* font-size: 17px; */
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    z-index: 101;
+    -webkit-transition: 0.5s;
+}
+#sub08 #visual #delete_div button:hover {
+    color: rgb(255, 53, 53);
+    border: 1px solid rgb(255, 53, 53)
+    /* color: rgb(255, 100, 100); */
+}
+
 #sub08 #content {
     margin: 0 auto 30px;
     /* padding: 0px 20px 100px; */
@@ -672,9 +698,17 @@ timeline fixed
 }
 
 #sub08 .t_timeline .context_writer .auther_post .post_section .post_topbox .post_text {
-    margin-right: 160px;
+    /* margin-right: 160px; */
     font-weight: bold;
     color: black;
+}
+
+#sub08 .t_timeline .context_writer .auther_post .post_section .post_topbox a {
+    float: right;
+}
+
+#sub08 #recommendation {
+    display: none;
 }
 
 #sub08 .t_timeline .context_writer .auther_post .post_section .post_content {

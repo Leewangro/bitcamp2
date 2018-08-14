@@ -49,13 +49,15 @@ function mypage() {
 
 
 $.get(serverRoot3 + "/json/auth/islogin", {}, user => {
-	console.log(user);
+    console.log(user);
+    
     let name = decodeURIComponent(user.name);
     let id = decodeURIComponent(user.id);
+    
     if(user != "n") {
         $("#Login").css("display", "none");
         $("#Logout").css("display", "block");
-        $("#UserName").text(name);
+        $("#UserName").text(name.replace("+"," "));
     } else if(user == "n") {
     	$("#Login").css("display", "block");
         $("#Logout").css("display", "none");
