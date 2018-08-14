@@ -869,6 +869,12 @@
             }); 
 		});
 	});
+    var userId;
+
+		$.get(serverRoot + "/json/auth/islogin", {}, user => {
+		    id = decodeURIComponent(user.id);
+        userId = id;
+    })
 	</script> 
 	<script>
 	$('#follow_button').click(function () {
