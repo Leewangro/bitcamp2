@@ -25,11 +25,7 @@ app.get('/auth/logout', function(req, res){
 
 //미들웨어 설정 필수!!!
 app.use(passport.initialize());
-app.use(session({
-    secret:'123456asdf',
-    resave:false,
-    saveUninitialized:true
-}));
+app.use(passport.session({}));
 
 passport.serializeUser(function(user, done) {
      done(null, user);

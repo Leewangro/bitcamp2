@@ -3,6 +3,7 @@ package bitcamp.java106.pms.web.json;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -41,15 +42,15 @@ public class AuthController {
     public void logout(HttpSession session) throws Exception {
         System.out.println("invalidate");
         session.invalidate();
+        this.member = null;
     }
     
     @GetMapping("/facebookLogin")
-    public Object facebookLogin(String accessToken, HttpServletResponse response, HttpSession session) {
+    public Object facebookLogin(String accessToken, HttpServletResponse response, HttpSession session) throws Exception {
     	Map<String, Object> obj = new HashMap<>();
         String id="", name="", email="", gender="", picurl="";
-        SNSMember member = null;
-        
-        try {
+        SNSMember member = new SNSMember();
+            
             URL url = new URL("https://graph.facebook.com/v3.1/me?fields=id,name,email,gender,picture&access_token=" + accessToken);
             HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
@@ -73,33 +74,31 @@ public class AuthController {
             Map picdata = (Map)picture.get("data");
             picurl = (String)picdata.get("url");
             
+            
+            if(snsMemberDao.selectOne(id) == null) {
+                member.setId(id);
+                member.setName(name);
+                member.setEmail(email);
+                member.setGender(gender);
+                member.setProfileImg(picurl);
+                session.setAttribute("userInfo", member);
+                try {
+                    snsMemberDao.insert(member);
+                    } catch(Exception e2 ) {                    
+                        return "fail";
+                    }
+                    obj.put("name", member.getName());
+                    obj.put("status", "success");
+                    return obj;
+            } else 
             member = snsMemberDao.selectOne(id);
-            
-            obj.put("name", member.getName());
-            obj.put("status", "success");
-            
-        } catch (Exception e) {
-            member.setId(id);
-            member.setName(name);
-            member.setEmail(email);
-            member.setEmail(gender);
-            System.out.println("memberInput");
-            System.out.println(member);
-            
-            try {
-                snsMemberDao.insert(member);
-            } catch(Exception e2) {
-                obj.put("status", "fail");
-            }
-            
             session.setAttribute("userInfo", member);
-            
+            System.out.println(session.getAttribute("userInfo"));
             obj.put("name", member.getName());
+            obj.put("id", member.getId());
             obj.put("status", "success");
-        }
-        System.out.println(obj);
-        this.member = member;
-        return obj;
+            this.member = member;
+            return obj;
     }
         
         /*Map<String, Object> obj = new HashMap<>();
@@ -190,9 +189,7 @@ public class AuthController {
             member.setId(id);
             member.setName(name);
             member.setEmail(gender);
-            if (member.getEmail() == null) {
-                member.setEmail(email);
-            }
+            member.setEmail(email);
             System.out.println(email);
             System.out.println(member);
             try {
@@ -205,15 +202,19 @@ public class AuthController {
             
             obj.put("name", member.getName());
             obj.put("status", "success");
+            obj.put("id", member.getId());
         }
         return obj;
     }
     
     @RequestMapping(value="/islogin")
-    public String isLogin(HttpSession session, HttpServletRequest request) {
+    public Object isLogin(HttpSession session, HttpServletRequest request) {
+        HashMap<String, Object> map = new HashMap<>();
         if(this.member != null)
             try {
-                return URLEncoder.encode(this.member.getName(), "UTF-8"); 
+                map.put("id", URLEncoder.encode(this.member.getId(), "UTF-8"));
+                map.put("name", URLEncoder.encode(this.member.getName(), "UTF-8")); 
+                return map;
             } catch(Exception e) {
                 return "n";
             }

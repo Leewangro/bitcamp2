@@ -11,16 +11,15 @@
     <result column="NAME" property="name"/>
     <result column="PIMG" property="profileImg"/>
     <result column="GEN" property="gender"/>
-    <result column="HP" property="phone"/>
   </resultMap>
   
   <insert id="insert" parameterType="SNSMember">
-    insert into TAMLA_MEMBER(MID,NAME,EMAIL,PIMG,GEN,HP) 
-    values(#{id},#{name},#{email},#{profileImg},#{gender},#{phone})
+    insert into TAMLA_MEMBER(MID,NAME,EMAIL,PIMG,GEN) 
+    values(#{id},#{name},#{email},#{profileImg},#{gender})
   </insert>
   
   <select id="selectOne" parameterType="String" resultMap="SNSMemberMap">
-    select MID, NAME, EMAIL, PIMG, GEN, HP
+    select MID, NAME, EMAIL, PIMG, GEN
     from TAMLA_MEMBER 
     where MID = #{id}
   </select>

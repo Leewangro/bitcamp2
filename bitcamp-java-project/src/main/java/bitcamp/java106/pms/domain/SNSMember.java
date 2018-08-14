@@ -14,7 +14,6 @@ public class SNSMember implements Serializable {
     private String name;
     private String profileImg;
     private String gender;
-    private int phone;
     
     
     @Override
@@ -84,21 +83,10 @@ public class SNSMember implements Serializable {
         this.gender = gender;
     }
 
-
-    public int getPhone() {
-        return phone;
-    }
-
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-
     @Override
     public String toString() {
         return "SNSMember [id=" + id + ", email=" + email + ", userName=" + name + ", profileImg=" + profileImg
-                + ", gender=" + gender + ", phone=" + phone + "]";
+                + ", gender=" + gender + "]";
     }
 
     
