@@ -354,6 +354,23 @@
 
 
         <script>
+            $.get(serverRoot + "/json/auth/islogin", {}, user => {
+                var user = decodeURIComponent(user);
+
+                if (user == 'n') {
+                    swal({
+                        type: 'error',
+                        title: '비정상적인 접근입니다.',
+                        text: '이전페이지로 돌아갑니다.',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                    setTimeout(function () {
+                        history.back();
+                    }, 1000)
+                }
+            })
+
             var mapArr = new Array();
             var mapData = null;
             var addrValue = null;
@@ -1037,11 +1054,27 @@
                 var contentNo;
                 var userId;
 
-       		$.get(serverRoot + "/json/auth/islogin", {}, user => {
-       		    id = decodeURIComponent(user.id);
-                userId = id;
-            })
-       		
+                $.get(serverRoot + "/json/auth/islogin", {}, user => {
+                    userId = decodeURIComponent(user.id);
+                    var user = decodeURIComponent(user);
+
+                    if (user == 'n') {
+                        swal({
+                            type: 'error',
+                            title: '비정상적인 접근입니다.',
+                            text: '이전페이지로 돌아갑니다.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        history.back();
+
+                    }
+
+
+
+
+                })
+
 
                 const {
                     value: day
@@ -1066,7 +1099,7 @@
 
                     var param = {
                         title: $("#title").val(),
-                        id : userId
+                        id: userId
                     };
                     $.ajax({
                         type: "POST",
@@ -1153,7 +1186,7 @@
 
                             var travelHashTag = {
                                 cno: contentNo,
-                                content: $("#tag_box > li")[i].innerText.slice(0,-1)
+                                content: $("#tag_box > li")[i].innerText.slice(0, -1)
                             };
 
                             $.ajax({
@@ -1320,8 +1353,8 @@
                     "<input id='main_img_" + count + "' value='' title='메인사진' hidden>" +
                     "<div class='daySelect_div" + count + " daySelect_div'>" +
                     "</div>" +
-                    "<div class='text_count text_count" + count +"'>글자제한:" +
-                    "<span class='count count"+count+"'>80</span>/80</div>" +
+                    "<div class='text_count text_count" + count + "'>글자제한:" +
+                    "<span class='count count" + count + "'>80</span>/80</div>" +
                     "<button onclick='map()'></button>" +
                     "</form>" +
                     "</div>" +

@@ -14,6 +14,7 @@
         <result column="CDT" property="createDate" />
         <result column="TITL" property="title" />
         <result column="MID" property="memberId" />
+        <result column="COUNT" property="count" />
 
 
     </resultMap>
@@ -28,7 +29,7 @@
     <select id="selectListwithPage" resultMap="TravelLogMap"
         parameterType="map">
         SELECT TL.TLNO, TL.SDT, TL.EDT, TL.PART,
-        TL.PREF, TC.CDT, TC.TITL, TC.MID
+        TL.PREF, TC.CDT, TC.TITL, TC.MID, TC.COUNT
         FROM TAMLA_TRAVEL_LOG TL
         left join TAMLA_CONTENT TC on TL.TLNO = TC.CNO
         order by TLNO desc
@@ -57,7 +58,9 @@
         set PART=#{partner}, PREF=#{preference}, SDT=#{startDate}, EDT=#{endDate} 
         where TLNO=#{tlno} </update> -->
     <delete id="delete" parameterType="int">
-        delete from TAMLA_TRAVEL_LOG where TLNO=#{value}
+    	<!-- delete from TAMLA_CONTENT where CNO=#{tlno} -->
+        delete from TAMLA_TRAVEL_LOG where TLNO=#{tlno}
+        
     </delete>
 
 </mapper>

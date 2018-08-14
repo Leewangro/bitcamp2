@@ -44,6 +44,12 @@ public class ContentServiceImpl implements ContentService {
         return contentDao.update(content);
     }
     
+    
+    @Override
+    public int updateCount(Content content) {
+    	return contentDao.updateCount(content);
+    }
+    
     @Override
     public int delete(int no) {
         return contentDao.delete(no);

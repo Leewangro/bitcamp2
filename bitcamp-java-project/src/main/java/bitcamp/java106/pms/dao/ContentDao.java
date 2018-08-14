@@ -11,6 +11,7 @@ public interface ContentDao {
     List<Content> selectList(Map<String,Object> params);
     int insert(Content content);
     int update(Content content);
+    int updateCount(Content content);
     Content selectOne(int no);
 }
 

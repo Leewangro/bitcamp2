@@ -14,6 +14,7 @@ public interface ContentService {
     Content get(int no);
     int add(Content content);
     int update(Content content);
+    int updateCount(Content content);
     int delete(int no);
 }
 

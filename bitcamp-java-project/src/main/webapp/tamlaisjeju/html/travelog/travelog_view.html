@@ -62,7 +62,7 @@
                 <!-- 지도 -->
 
                 <!-- <div class=map_bb style="width: 100%;height: 400px;background-color: teal;margin-bottom:84px;" style="overflow: hidden;z-index:2; "></div> -->
-                <div id="map" style="width:100%;height:400px;margin-bottom:84px; margin-top: 84px;"></div>
+                <div id="map" style="width:100%;height:400px;margin-bottom:84px; margin-top: 42px;"></div>
             </div>
 
             <!-- 타임라인 -->
@@ -185,7 +185,7 @@
     <div id="footer"></div>
 
 
-
+    <script src="../../js/common/common.js"></script>
     <!-- handlebars -->
     <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
     <!-- logo font -->
@@ -218,7 +218,7 @@
         // url경로
         var link = document.location.href.split("?")[1];
 
-        // <button type="button" class="btn btn-primary">삭제</button>
+
         $.ajax({
 
             type: "GET",
@@ -228,6 +228,8 @@
             dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
             success: function (data) {
+
+
                 var positions = []
                 var markers2 = []
                 var mapContainer2 = document.getElementById('map'), // 지도를 표시할 div  
@@ -268,8 +270,8 @@
                 }
                 var polyline = new daum.maps.Polyline({
                     path: paths, // 선을 구성하는 좌표배열 입니다
-                    strokeWeight: 2, // 선의 두께 입니다
-                    strokeColor: '#FFAE00', // 선의 색깔입니다
+                    strokeWeight: 4, // 선의 두께 입니다
+                    strokeColor: 'rgb(195, 60, 60);', // 선의 색깔입니다
                     strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                     strokeStyle: 'solid' // 선의 스타일입니다
                 });
@@ -297,6 +299,26 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var memberId;
+            var contentMember;
+
+            $.get(serverRoot + "/json/auth/islogin", {}, user => {
+                memberId = decodeURIComponent(user.id);
+            })
+
+            $.ajax({
+
+                type: "GET",
+
+                url: serverRoot + "/json/content/update" + link,
+
+                dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+                success: function (data) { 
+                   
+
+                }
+            })
+
             $.ajax({
 
                 type: "GET",
@@ -309,7 +331,22 @@
                     $('#title_div').append(
                         "<h5 id='top_title'>" + data.title + "</h5>")
                     $('#recommendation').html(data.id)
-                    memberId = data.id;
+                    contentMember = data.id;
+                    $('#delete_div').append(
+                        "<button id='list' type='button' class='btn btn-primary'>목록으로</button>"
+                    )
+
+                    if (memberId == data.id) {
+                        $('#delete_div').append(
+                            "<button type='button' class='btn btn-primary'>삭제</button>" +
+                            "<button id='update' type='button' class='btn btn-primary'>수정</button>"
+                        )
+                    }
+
+                    $('#list').click(function () {
+                        location.href = 'travelog_list.html'
+                    })
+
                     memberCall()
 
                 }
@@ -322,7 +359,7 @@
 
                     type: "GET",
 
-                    url: serverRoot + "/json/member/" + memberId,
+                    url: serverRoot + "/json/member/" + contentMember,
 
                     dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
@@ -744,8 +781,6 @@
             });
         });
     </script>
-    <script>
-    </script>
 
     <script>
         // 아이디 바로가기
@@ -763,7 +798,7 @@
             }, 400);
         }
     </script>
-    <script src="../../js/common/common.js"></script>
+
     <!-- <script type="text/javascript" src="sub08_view.js"></script> -->
 </body>
 

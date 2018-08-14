@@ -16,6 +16,7 @@
     <result column="TITL" property="title"/>
     <result column="CDT" property="createDate"/>
     <result column="MID" property="id"/>
+    <result column="COUNT" property="count"/>
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -56,6 +57,12 @@
     update TAMLA_CONTENT set 
         TITL=#{title}, 
         CDT=now()
+    where CNO=#{no}
+  </update>
+  
+  <update id="updateCount" parameterType="Content">
+    update TAMLA_CONTENT set 
+        COUNT=COUNT+1 
     where CNO=#{no}
   </update>
   

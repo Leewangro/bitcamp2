@@ -75,9 +75,9 @@ all - 여행필수정보 전체
 }
 
 #sub08 #visual #delete_div button{
-    border: 1px solid #2793db;
-    color: #2793db;
-    background-color: white;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    /* background-color: white; */
     /* color: #fff; */
     /* font-size: 17px; */
     float: right;
@@ -88,10 +88,30 @@ all - 여행필수정보 전체
     -webkit-transition: 0.5s;
 }
 #sub08 #visual #delete_div button:hover {
+    
     color: rgb(255, 53, 53);
-    border: 1px solid rgb(255, 53, 53)
+    border: 1px solid rgb(255, 53, 53);
+    background-color: #ffffff00;
+
     /* color: rgb(255, 100, 100); */
 }
+
+#sub08 #visual #delete_div #update:hover {
+    color:#2793db;
+    border: 1px solid #2793db;
+    background-color: #ffffff00;
+
+    /* color: rgb(255, 100, 100); */
+}
+
+#sub08 #visual #delete_div #list:hover {
+    color:#2793db;
+    border: 1px solid #2793db;
+    background-color: #ffffff00;
+
+    /* color: rgb(255, 100, 100); */
+}
+
 
 #sub08 #content {
     margin: 0 auto 30px;

@@ -11,25 +11,12 @@ public class Content implements Serializable {
     private int no;
     private String title;
     private String id;
+    private int count;
     
     @JsonFormat(pattern="yyyy-MM-dd",timezone="Asia/Seoul")
     private Date createDate;
 
-
-	@Override
-    public String toString() {
-        return "Content [no=" + no + ", title=" + title + ", id=" + id + ", createDate=" + createDate + "]";
-    }
-	
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getNo() {
+	public int getNo() {
 		return no;
 	}
 
@@ -45,6 +32,22 @@ public class Content implements Serializable {
 		this.title = title;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -52,6 +55,15 @@ public class Content implements Serializable {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Content [no=" + no + ", title=" + title + ", id=" + id + ", count=" + count + ", createDate="
+				+ createDate + "]";
+	}
+
+
+	
     
 
     

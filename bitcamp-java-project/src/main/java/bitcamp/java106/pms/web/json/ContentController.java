@@ -53,6 +53,12 @@ public class ContentController {
         return contentService.update(content);
     }
     
+    @RequestMapping("update{no}")
+    public int updateCount(Content content) throws Exception {
+        
+        return contentService.updateCount(content);
+    }
+    
     @RequestMapping("{no}")
     public Content view(
             @PathVariable int no, 
