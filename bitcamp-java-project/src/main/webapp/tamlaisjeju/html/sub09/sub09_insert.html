@@ -346,7 +346,7 @@
 							data : params,
 							success : function(main) {
 							TPupdat();
-						}
+						} 
 					});
 					//$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
@@ -431,7 +431,7 @@
 					url : serverRoot + "/json/planner/selectOne",
 					dataType : "json", // 데이터타입을 json 으로 받아옴
 					success : function(titleDay) { */
-				planday = data[0].plday;
+				planday = data[0].plno;
 		         
 
                $.ajax({
@@ -625,13 +625,13 @@
 			};
 			console.log(idx);
 		  	console.log("plday:", planday, ", data:", $(".r-cm")[idx].value, ", no:", contentId[idx]);
-		  
+		    console.log(param);
 			$.ajax({
 				type: "POST",
 				url: serverRoot + "/json/travelPlan/update",
 				data: param,
 				success: function (up) {
-					location.href = "sub09_view.html";
+					//location.href = "sub09_view.html";
 				},
 				error: function (up) {
 					alert("값을 저장할 수 없습니다. 새로고침을 해주세요.");

@@ -2586,14 +2586,15 @@ board_list  travelmate - 동행 게시판 리스트
   clear: both;
   list-style: none;
   text-align: center;
+  margin-left:-2%;
 }
 
 .board_list.travelmate .box_wrap figure {
   position: relative;
   float: left;
   overflow: hidden;
-  width: 32%;
-  margin-left: 2%;
+  width: 31%;
+  margin:2% 0 0 2%;
   margin-bottom: 0;
   min-height: 365px;
   height: auto;
@@ -2602,9 +2603,9 @@ board_list  travelmate - 동행 게시판 리스트
   cursor: pointer;
 }
 
-.board_list.travelmate .box_wrap figure:first-child {
+/* .board_list.travelmate .box_wrap figure:first-child {
   margin-left: 0;
-}
+} */
 
 .board_list.travelmate .box_wrap figure img {
   position: relative;
@@ -3072,17 +3073,23 @@ board_list planner - 여행일정 추천
 }
 
 .board_list.planner .box_wrap .box_cont {
+  position: relative;
   float: left;
   width: 75%;
-  padding: 2%;
+  padding: 2% 2% 0 2%;
+  min-height: 230px;
+
 }
 
 .board_list.planner .box_wrap .box_cont p {
   margin-bottom: 2%;
 }
 
-.board_list.planner .box_wrap .box_cont p.hashtag {
+.board_list.planner .box_wrap .box_cont .hashtag {
   color: #2168f6;
+  position: absolute;
+  left:20px;
+  bottom:20px;
 }
 
 .board_list.planner .box_wrap .box_cont .count_area {}
