@@ -110,7 +110,33 @@
 						<div class="plan-txt">
 							<pre id="aWord"></pre>
 						</div>
+						
 						<div class="more-info-con">
+							<div class ="mainTitle">
+								<input type="text" placeholder="제목을 입력해주세요" style="width: 100%">
+							</div>
+							<div class="gender">
+								<select>
+		                        <option value="0">남자</option>
+		                        <option value="1">여자</option>
+		                        <option value="2">무관</option>
+		                        </select>
+							</div>
+							<div class="p-num">
+		                    <select>
+		                        <option value="0">0</option>
+		                        <option value="1">1</option>
+		                        <option value="2">2</option>
+		                        <option value="3">3</option>
+		                        <option value="4">4</option>
+		                        <option value="5">5</option>
+		                        <option value="6">6</option>
+		                        <option value="7">7</option>
+		                        <option value="8">8</option>
+		                        <option value="9">9</option>
+		                        <option value="10">10이상</option>
+		                    </select>
+               				</div>
 							<div class="theme-round">
 								<p>
 									<span> 여행시작일 : </span> <span id=sdt></span>
@@ -125,12 +151,12 @@
 							</div>
 
 							<div class="theme-round">
-								<p>
+								 <!-- <p>
 									<span id="b-hits">조회수 :</span>
 								</p>
 								<p>
 									<span id="b-reco">추천수 :</span>
-								</p>
+								</p>  -->
 							</div>
 						</div>
 					</div>
@@ -290,6 +316,8 @@
       }(document, 'script', 'facebook-jssdk'));
    </script> -->
 	<script>
+	
+	$("#bt_update").click(function() {
 		$(document).ready(function() {
 			var aWord = $('#aWord');
 			var sDay = $('#sdt');
@@ -298,12 +326,28 @@
 			var theme = $('#theme');
 			var hits = $('#b-hits');
 			var recoNum = $('#b-reco');
-
-			$.ajax({
-				url : serverRoot + "/json/planner/196",
-				dataType : "json", // 데이터타입을 json 으로 받아옴
-				success : function(main) {
-					console.log(main)
+			var mTitle = $('#mainTitle');
+			
+			var params = {
+					gender: $('.gender option:selected').val(),
+					capa: $('.p-num option:selected').val(),
+					title: $('.mainTitle input')[0].value
+					
+				};
+			
+				$.ajax({
+					url : serverRoot + "/json/planner/196",
+					dataType : "json", // 데이터타입을 json 으로 받아옴
+					success : function(main) {
+						
+						$.ajax({
+							type: "POST",
+							url : serverRoot + "/json/partner/add",
+							data : params,
+							success : function(main) {
+							TPupdat();
+						}
+					});
 					//$(aWord).append(data[10].pDesc);
 					//$(sDay).val("(" + data./*프로퍼티명 뭐로하냐*/ + ")");
 					$(sDay).append(main.startDate);
@@ -313,12 +357,14 @@
 					//$(hits).append(data[10]./*프로퍼티 뭐로하냐*/);
 					//$(recoNum).append(data[10]./*프로퍼티명 뭐로하냐*/);
 					//$(gen).val((data[10].gen == 0 ? "여" : "남"));
+					
 				},
 				error : function(er) {
 					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
 		}); 
+	});
 	</script>
 	<!-- <script>
 		$(document).ready(function() {
@@ -568,8 +614,7 @@
 	
 	var currentPage = 1;
 	
-	window.onload = function() {
-	  $('#bt_update').click(function () {
+	  function TPupdat() {
 		  let idx = 0;
 		  
 		  for(let item of $(".r-cm") ) {
@@ -595,9 +640,9 @@
 			});
 			idx++;
 		  }
-		});
 	}  
-	
 	</script>	
+	
+	
 </body>
 </html>

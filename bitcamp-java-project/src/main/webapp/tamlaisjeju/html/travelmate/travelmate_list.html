@@ -292,14 +292,13 @@
 	      var no = val.innerText;
 	      $('.pageNoBtns').removeClass('active')
 	      $(val).addClass('active')
-
-
+		
 
 	      $.ajax({
 
 	        type: "GET",
 
-	        url: serverRoot + "/json/planner/list",
+	        url: serverRoot + "/json/partner/list",
 
 	        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
@@ -317,7 +316,7 @@
 	              "<span class='hashtag'>#비자림 #힐링</span> " +
 	              "<span class='date'>2018-07-09 ~ 2018-07-10</span> " +
 	              "<span class='gender'>남성</span> " +
-	              "<span class='capacity'>2/4</span> " +
+	              "<span class='capacity'	>2/4</span> " +
 	              "<p>동행은 넘조아동행은 넘조아동행은 넘조아동행은 넘조아동행은 넘조아동행은 넘조아</p>" +
 	              "<a href='../sub08/sub09_view.html?" + data[i].tlno + "'>View more</a>" +
 	              "</figcaption>" +
