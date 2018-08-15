@@ -43,7 +43,7 @@
 		<div id="content" class="content wrapper">
 			<nav class="aside_wrap">
 				<div class="info-left-box">
-					 <div class="user-info-box">
+					<div class="user-info-box">
 						<div class="author-box">
 							<div class="author-img">
 								<a target="_blank" href="#"> <img
@@ -62,7 +62,7 @@
 						</div>
 
 						<div class="author-page-links">
-							<ul>
+							<!-- <ul>
 								<li><a style="padding-left: 5px;"> <span>여행일정</span> <span
 										id="tra_schedule" class="count">(40)</span>
 								</a></li>
@@ -76,7 +76,7 @@
 								<li><a> <span>회원댓글</span> <span id="mem_comment"
 										class="count">(40)</span>
 								</a></li>
-							</ul>
+							</ul> -->
 						</div>
 					</div> 
 
@@ -874,7 +874,7 @@
 		$.get(serverRoot + "/json/auth/islogin", {}, user => {
 		    id = decodeURIComponent(user.id);
         userId = id;
-        /* $('.user-left-box').append(
+         $('.user-left-box').append(
         	"<div class='user-info-box'>"+
 			"<div class='author-box'>" +
 			"<div class='author-img'>" +
@@ -891,7 +891,7 @@
 			"<button id = 'follow_button' class='follower'>동행신청</button>"+
 			"<button id = 'following' class='following hide'>신청하였습니다</button>"+
 			"<button id='recommend' class='follower' style='margin-left: 10px'>추천하기</button>"+
-			"</div>"+ */
+			"</div>"+ 
 
 				/* <div class="author-page-links">
 					<ul>
@@ -910,7 +910,7 @@
 						</a></li>
 					</ul>
 				</div> */
-			/* "</div>" */
+		 "</div>"
         )
     })
 	</script> 
