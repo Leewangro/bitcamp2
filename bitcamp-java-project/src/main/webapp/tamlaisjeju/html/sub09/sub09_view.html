@@ -43,16 +43,16 @@
 		<div id="content" class="content wrapper">
 			<nav class="aside_wrap">
 				<div class="info-left-box">
-					<div class="user-info-box">
+				<!-- 
+					 <div class="user-info-box">
 						<div class="author-box">
 							<div class="author-img">
 								<a target="_blank" href="#"> <img
-									src="../../img/sub09/iu.jpg">
+									src="../../img/sub09/meme.PNG">
 								</a>
 							</div>
 							<div class="author-name">
-								<h3>ID값</h3>
-								<h5>여</h5>
+								<h3>왕로</h3>
 							</div>
 						</div>
 						<div class="follower-btns">
@@ -61,7 +61,7 @@
 							<button id="recommend" class="follower" style="margin-left: 10px">추천하기</button>
 						</div>
 
-						<div class="author-page-links">
+						<div class="author-page-links"> 
 							<!-- <ul>
 								<li><a style="padding-left: 5px;"> <span>여행일정</span> <span
 										id="tra_schedule" class="count">(40)</span>
@@ -77,9 +77,9 @@
 										class="count">(40)</span>
 								</a></li>
 							</ul> -->
-						</div>
-					</div> 
-
+					 	<!--  </div>
+					</div> -->
+ 
 					<!--user-left-box-->
 				</div>
 				<!--info-left-box-->
@@ -127,14 +127,14 @@
 								<p id="theme"></p>
 							</div>
 
-							<!-- <div class="theme-round">
+							 <div class="theme-round">
 								<p>
-									<span id="b-hits">조회수 :</span>
+									<span id="b-hits">조회수 : 93</span>
 								</p>
 								<p>
-									<span id="b-reco">추천수 :</span>
+									<span id="b-reco">추천수 : 15</span>
 								</p>
-							</div> -->
+							</div>
 						</div>
 					</div>
 
@@ -872,9 +872,20 @@
     var userId;
 	var userbox = $('.info-left-box')
 		$.get(serverRoot + "/json/auth/islogin", {}, user => {
-		    id = decodeURIComponent(user.id);
-        userId = id;
-         $('.user-left-box').append(
+			userId = decodeURIComponent(user.id);
+        	
+			$.get(serverRoot + "/json/member/"+userId, {}, data => {
+				
+				
+				
+				
+			});
+			
+        //if(user.id != null){
+        	
+        console.log(userId);
+        	
+         $('.info-left-box').append(
         	"<div class='user-info-box'>"+
 			"<div class='author-box'>" +
 			"<div class='author-img'>" +
@@ -883,8 +894,7 @@
 			"</a>"+
 			"</div>"+
 			"<div class='author-name'>"+
-			"<h3>"+user.name+"</h3>"+
-			"<h5>"+user.gender+"</h5>"+
+			"<h3>"+ decodeURIComponent(user.name) +"</h3>"+
 			"</div>"+
 			"</div>"+
 			"<div class='follower-btns'>"+
@@ -892,32 +902,22 @@
 			"<button id = 'following' class='following hide'>신청하였습니다</button>"+
 			"<button id='recommend' class='follower' style='margin-left: 10px'>추천하기</button>"+
 			"</div>"+ 
-
-				/* <div class="author-page-links">
-					<ul>
-						<li><a style="padding-left: 5px;"> <span>여행일정</span> <span
-								id="tra_schedule" class="count">(40)</span>
-						</a></li>
-						<li><a> <span>여행리뷰</span> <span id="tra_review"
-								class="count">(40)</span>
-						</a></li>
-						<br>
-						<li><a> <span>동행횟수</span> <span id="acp_num"
-								class="count">(40)</span>
-						</a></li>
-						<li><a> <span>회원댓글</span> <span id="mem_comment"
-								class="count">(40)</span>
-						</a></li>
-					</ul>
-				</div> */
-		 "</div>"
+			"</div>"
         )
+        //}
     })
 	</script> 
 	<script>
 	$('#follow_button').click(function () {
 		alert("신청이 완료되었습니다");
 		$(this).text('신청완료');
+	});
+	</script>
+	<script>
+	$('#recommend').click(function () {
+		alert("추천이 완료되었습니다");
+
+		$(this).text('추천완료');
 	});
 	</script>
 	
