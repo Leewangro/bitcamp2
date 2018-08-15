@@ -7,6 +7,7 @@ $.get(serverRoot + "/json/auth/islogin", {}, user => {
 
   if (user != 'n') {
     $("#writer").click(function () {
+      console.log("aaa");
       location.href = 'planner_form.html'
     })
   } else {

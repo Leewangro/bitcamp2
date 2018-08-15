@@ -2269,3 +2269,38 @@ input, #enter, .items {
     overflow: hidden;
 }
 
+#sub10 #delete_div {
+    /* position: absolute; */
+    bottom: 0;
+    width: 1200px;
+    margin: auto;
+}
+#sub10 #delete_div button {
+    border: 1px solid #223b68; z-index:100; color: #223b68; background-color: white;
+    margin-right: 100px;
+}
+
+#sub10 #delete_div button:hover {
+    
+    color: rgb(255, 53, 53);
+    border: 1px solid rgb(255, 53, 53);
+    background-color: #ffffff00;
+
+    /* color: rgb(255, 100, 100); */
+}
+
+#sub10 #delete_div #update:hover {
+    color:#2793db;
+    border: 1px solid #2793db;
+    background-color: #ffffff00;
+
+    /* color: rgb(255, 100, 100); */
+}
+
+#sub10 #delete_div #list:hover {
+    color:#2793db;
+    border: 1px solid #2793db;
+    background-color: #ffffff00;
+
+    /* color: rgb(255, 100, 100); */
+}
