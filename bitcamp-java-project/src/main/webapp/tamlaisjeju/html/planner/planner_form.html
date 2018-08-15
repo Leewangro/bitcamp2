@@ -1538,9 +1538,18 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
         };
         
         $('#travelMate_form').click(
-                function() {
+        		function() {
+                    $.get(serverRoot + "/json/auth/islogin", {}, user => {
+                        id = decodeURIComponent(user.id);
+                        console.log(id);
+                        tmcontIn();
+                    })
+                    }
+        		)
+                function tmcontIn() {
                     var param = {
-                        title: $("#pl_title")[0].value
+                        title: $("#pl_title")[0].value,
+                        id: id
                     };
                     $.ajax({
                         type: "POST",
@@ -1557,7 +1566,7 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
 
                     });
 
-                });
+                };
 
         function pl_data() {
             var param1 = {
