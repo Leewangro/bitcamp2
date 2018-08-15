@@ -14,7 +14,7 @@ public class Partner implements Serializable {
     private String capa; // 인원
     private String memberno; // 회원번호
     private int plno;
-     
+    
 	@Override
 	public String toString() {
 		return "Partner [ptno=" + ptno + ", title=" + title + ", gender=" + gender + ", capa=" + capa + ", memberno="

@@ -869,32 +869,30 @@
 		});
 	});
 	
-    var userId;
+    
 	var userbox = $('.info-left-box')
-		$.get(serverRoot + "/json/auth/islogin", {}, user => {
-			userId = decodeURIComponent(user.id);
-        	
-			$.get(serverRoot + "/json/member/"+userId, {}, data => {
-				
-				
-				
-				
-			});
-			
+			$.ajax({
+				url : serverRoot + "/json/content/"+link ,
+				dataType : "json", 
+				success : function(data) {
         //if(user.id != null){
-        	
-        console.log(userId);
-        	
+        		var idd = data.id;
+        		$.ajax({
+    				url : serverRoot + "/json/member/"+idd ,
+    				dataType : "json", 
+    				success : function(data2) {
+    					 
+        		
          $('.info-left-box').append(
         	"<div class='user-info-box'>"+
 			"<div class='author-box'>" +
 			"<div class='author-img'>" +
 			"<a target='_blank' href='#'>" + 
-			"<img>"+user.profileImg+"</img>"+
+			"<img src="+data2.profileImg+">"+
 			"</a>"+
 			"</div>"+
 			"<div class='author-name'>"+
-			"<h3>"+ decodeURIComponent(user.name) +"</h3>"+
+			"<h3>"+data2.name+"</h3>"+
 			"</div>"+
 			"</div>"+
 			"<div class='follower-btns'>"+
@@ -904,8 +902,11 @@
 			"</div>"+ 
 			"</div>"
         )
+    				}
+        		})
+        }
+        })
         //}
-    })
 	</script> 
 	<script>
 	$('#follow_button').click(function () {
@@ -913,6 +914,7 @@
 		$(this).text('신청완료');
 	});
 	</script>
+	
 	<script>
 	$('#recommend').click(function () {
 		alert("추천이 완료되었습니다");
