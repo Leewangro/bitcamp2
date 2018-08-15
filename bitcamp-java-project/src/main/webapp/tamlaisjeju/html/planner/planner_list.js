@@ -2,6 +2,25 @@ var planDate = [];
 var travel_data = [];
 var travel_schedule = [];
 var travel_hash = [];
+$.get(serverRoot + "/json/auth/islogin", {}, user => {
+  var isLogins = decodeURIComponent(user);
+
+  if (user != 'n') {
+    $("#writer").click(function () {
+      location.href = 'planner_form.html'
+    })
+  } else {
+    $("#writer").click(function () {
+      swal({
+        type: 'error',
+        title: '로그인후 이용해주세요',
+        // text: '로그인후 이용해주세요',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+  }
+})
 $.ajax({
 	   url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=1200&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
 	   dataType: "json", 

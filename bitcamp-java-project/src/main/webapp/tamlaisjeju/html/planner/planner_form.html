@@ -24,6 +24,9 @@
     <style type="text/css">
         @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     </style>
+    <!-- sweetArert2 -->
+    <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css">
 </head>
 
 <body>
@@ -73,32 +76,33 @@
                     <button id="enter">hashtag</button>
                     <ul id="tag_box" class="tag_cls">
                     </ul>
-                    
+
                 </div>
 
             </div>
             <div class="plan_out">
-                <button style="border: 1px solid #2793db; color: #2793db; background-color: white;" type="button" 
-                class="plan_out_btn" data-toggle="modal" data-target="#SCModal">저장&amp;닫기
+                <button style="border: 1px solid #2793db; color: #2793db; background-color: white;" type="button" class="plan_out_btn" data-toggle="modal"
+                    data-target="#SCModal">저장&amp;닫기
                 </button>
             </div>
             <form name="form5" id="travelmate_form">
-                    <div class="modal fade" id="SCModal" tabindex="-1" role="dialog" aria-labelledby="SCModal" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-	                            <div id="mo_body" class="modal-body">
-                                    일정 작성을 완료하였습니다.<br>
-                                    여행일정을 공유하여<br>
-                                    동행서비스를 이용해보시겠습니까?<br>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" id="travelMate_form" data-dismiss="modal">동행신청</button>
-                                    <button type="button" class="btn btn-primary" id="plan_view" data-dismiss="modal">작성완료</button>
-                                </div>
+                <div class="modal fade" id="SCModal" tabindex="-1" role="dialog" aria-labelledby="SCModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div id="mo_body" class="modal-body">
+                                일정 작성을 완료하였습니다.
+                                <br> 여행일정을 공유하여
+                                <br> 동행서비스를 이용해보시겠습니까?
+                                <br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="travelMate_form" data-dismiss="modal">동행신청</button>
+                                <button type="button" class="btn btn-primary" id="plan_view" data-dismiss="modal">작성완료</button>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -167,13 +171,14 @@
                             }
 
                             #sub10 .full_wrap #right_full_box {
-                               
+
                                 left: 426px;
                                 width: 100%;
                                 overflow: visible;
                             }
-                            #sub10 .full_wrap #right_full_box .frmap{
-                                margin-left:365px;
+
+                            #sub10 .full_wrap #right_full_box .frmap {
+                                margin-left: 365px;
                             }
                         </style>
                         <ul id="pn_date_controll_box" data="" data-member_srl="1360628">
@@ -538,6 +543,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="../../js/common/common.js"></script>
+    <!-- sweetArert2 -->
+    <script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -1499,74 +1506,103 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
     </script>
 
     <script>
+        $.get(serverRoot + "/json/auth/islogin", {}, user => {
+            var user = decodeURIComponent(user);
+            if (user == 'n') {
+                swal({
+                    type: 'error',
+                    title: '비정상적인 접근입니다.',
+                    text: '이전페이지로 돌아갑니다.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setTimeout(function () {
+                    history.back();
+                }, 1000)
+
+            }
+        })
         /* TAMLA_PLAN(SDT,EDT,PATA,PART,THEMA) <!-- 회원번호 추가 필요 MNO -->
-        values(#{startDate},#{endDate},#{num},#{people},#{theme}) */
+                        values(#{startDate},#{endDate},#{num},#{people},#{theme}) */
         /* <div class="planner_title">
         <input type="text" id="pl_title" placeholder="제목을 입력하세요">
         </div> */
         let id;
         var createPlanIndex = null;
         $('#plan_view').click(
-        		function() {
-       		$.get(serverRoot + "/json/auth/islogin", {}, user => {
-       		    id = decodeURIComponent(user.id);
-       		    console.log(id);
-       		    contIn();
-       		})
-       		}
-        		)
-       		function contIn() {
-       			console.log(id);
-                var param = {
-                    title: $("#pl_title")[0].value,
-                    id: id
-                };
-                $.ajax({
-                    type: "POST",
-                    url: serverRoot + "/json/content/add",
-                    data: param,
-                    async: false,
-                    success: function (data) {
-                        createPlanIndex = data;
-                        pl_data();
-                    },
-                    error: function (data) {
-                        alert("빈 칸을 채워주세요.");
-                    }
+            function () {
+                $.get(serverRoot + "/json/auth/islogin", {}, user => {
+                    id = decodeURIComponent(user.id);
+                    var user = decodeURIComponent(user);
+                    if (user == 'n') {
+                        swal({
+                            type: 'error',
+                            title: '비정상적인 접근입니다.',
+                            text: '이전페이지로 돌아갑니다.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        history.back();
 
-                });
+                    }
+                    contIn();
+                })
+            }
+        )
+
+        function contIn() {
+            console.log(id);
+            var param = {
+                title: $("#pl_title")[0].value,
+                id: id
+            };
+            $.ajax({
+                type: "POST",
+                url: serverRoot + "/json/content/add",
+                data: param,
+                async: false,
+                success: function (data) {
+                    createPlanIndex = data;
+                    pl_data();
+                },
+                error: function (data) {
+                    alert("빈 칸을 채워주세요.");
+                }
+
+            });
         };
-        
+
         $('#travelMate_form').click(
-        		function() {
-                    $.get(serverRoot + "/json/auth/islogin", {}, user => {
-                        id = decodeURIComponent(user.id);
-                        console.log(id);
-                        tmcontIn();
-                    })
-                    }
-        		)
-                function tmcontIn() {
-                    var param = {
-                        title: $("#pl_title")[0].value,
-                        id: id
-                    };
-                    $.ajax({
-                        type: "POST",
-                        url: serverRoot + "/json/content/add",
-                        data: param,
-                        async: false,
-                        success: function (data) {
-                            createPlanIndex = data;
-                            tm_data();
-                        },
-                        error: function (data) {
-                            alert("빈 칸을 채워주세요.");
-                        }
+            function () {
+                $.get(serverRoot + "/json/auth/islogin", {}, user => {
+                    id = decodeURIComponent(user.id);
+                    console.log(id);
+                    tmcontIn();
+                })
+            }
+        )
 
-                    });
+        function tmcontIn() {
+            var param = {
+                title: $("#pl_title")[0].value,
+                id: id
+            };
+            $.ajax({
+                type: "POST",
+                url: serverRoot + "/json/content/add",
+                data: param,
+                async: false,
+                success: function (data) {
+                    createPlanIndex = data;
+                    tm_data();
+                },
+                error: function (data) {
+                    alert("빈 칸을 채워주세요.");
+                }
 
-                };
+            });
+
+        };
 
         function pl_data() {
             var param1 = {
@@ -1596,7 +1632,7 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
             });
 
         };
-        
+
         function tm_data() {
             var param1 = {
                 startDate: $('#datefilter').val().split(" - ")[0].split("/")[0] + "-" + $('#datefilter').val().split(
@@ -1678,23 +1714,23 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
                 });
             };
         };
-        
+
         function travelMate_data() {
             console.log(createPlanIndex);
-                hash.cno = createPlanIndex;
-                hash.content = $('#tag_box .items')[h].textContent.split("X")[0];
-                $.ajax({
-                    type: "POST",
-                    url: serverRoot + "/json/hashTag/add",
-                    data: hash,
-                    async: false,
-                    success: function (data) {},
-                    error: function (data) {
-                        alert("빈 칸을 채워주세요.");
-                    }
+            hash.cno = createPlanIndex;
+            hash.content = $('#tag_box .items')[h].textContent.split("X")[0];
+            $.ajax({
+                type: "POST",
+                url: serverRoot + "/json/hashTag/add",
+                data: hash,
+                async: false,
+                success: function (data) {},
+                error: function (data) {
+                    alert("빈 칸을 채워주세요.");
+                }
 
-                });
-            };
+            });
+        };
     </script>
 
     <script src="planner_form.js"></script>
