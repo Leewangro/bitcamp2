@@ -316,7 +316,7 @@
       }(document, 'script', 'facebook-jssdk'));
    </script> -->
 	<script>
-	
+	var link = document.location.href.split("?")[1];
 	$("#bt_update").click(function() {
 		$(document).ready(function() {
 			var aWord = $('#aWord');
@@ -331,12 +331,12 @@
 			var params = {
 					gender: $('.gender option:selected').val(),
 					capa: $('.p-num option:selected').val(),
-					title: $('.mainTitle input')[0].value
-					
+					title: $('.mainTitle input')[0].value,
+					plno: link
 				};
 			
 				$.ajax({
-					url : serverRoot + "/json/planner/196",
+					url : serverRoot + "/json/planner/"+ link,
 					dataType : "json", // 데이터타입을 json 으로 받아옴
 					success : function(main) {
 						
@@ -413,6 +413,8 @@
 
 
 	<script>
+	
+	var link = document.location.href.split("?")[1];
 	var maxDay = -1;
 	var contentId = [];
 	var planday = -1;;
@@ -421,7 +423,7 @@
          
          
          $.ajax({
-            url: serverRoot + "/json/travelPlan/196",
+            url: serverRoot + "/json/travelPlan/" + link,
             dataType: "json", // 데이터타입을 json 으로 받아옴
             success: function (data) {
                console.log(data);
@@ -646,3 +648,4 @@
 	
 </body>
 </html>
+

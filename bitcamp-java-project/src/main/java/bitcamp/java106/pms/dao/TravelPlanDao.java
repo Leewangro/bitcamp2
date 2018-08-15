@@ -15,7 +15,6 @@ public interface TravelPlanDao {
     List<TravelPlan> selectOne(int no);
     int insert2(TravelPlan travelPlan);
 }
-
 //ver 52 - 페이지 단위로 데이터 가져오기
 //ver 50 - 클래스를 인터페이스로 변경
 //ver 33 - Mybatis 적용 

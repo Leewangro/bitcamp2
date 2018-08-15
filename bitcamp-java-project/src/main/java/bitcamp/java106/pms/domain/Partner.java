@@ -13,42 +13,50 @@ public class Partner implements Serializable {
     private String gender; // 성별
     private String capa; // 인원
     private String memberno; // 회원번호
-    @Override
-    public String toString() {
-        return "Partner [ptno=" + ptno + ", title=" + title + ", gender=" + gender + ", capa=" + capa + ", memberno="
-                + memberno + "]";
-    }
-    public int getPtno() {
-        return ptno;
-    }
-    public void setPtno(int ptno) {
-        this.ptno = ptno;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getGender() {
-        return gender;
-    }
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    public String getCapa() {
-        return capa;
-    }
-    public void setCapa(String capa) {
-        this.capa = capa;
-    }
-    public String getMemberno() {
-        return memberno;
-    }
-    public void setMemberno(String memberno) {
-        this.memberno = memberno;
-    }
-   
+    private int plno;
+    
+	@Override
+	public String toString() {
+		return "Partner [ptno=" + ptno + ", title=" + title + ", gender=" + gender + ", capa=" + capa + ", memberno="
+				+ memberno + ", plno=" + plno + "]";
+	}
+	public int getPtno() {
+		return ptno;
+	}
+	public void setPtno(int ptno) {
+		this.ptno = ptno;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getCapa() {
+		return capa;
+	}
+	public void setCapa(String capa) {
+		this.capa = capa;
+	}
+	public String getMemberno() {
+		return memberno;
+	}
+	public void setMemberno(String memberno) {
+		this.memberno = memberno;
+	}
+	public int getPlno() {
+		return plno;
+	}
+	public void setPlno(int plno) {
+		this.plno = plno;
+	}
+    
     
 }
 
@@ -58,9 +66,3 @@ public class Partner implements Serializable {
 //ver 18 - 게시물 객체의 고유 번호(no)를 static 변수(count)를 이용하여 자동 설정한다. 
 // ver 16 - 캡슐화 적용. 겟터, 셋터 추가.
 // ver 13 - 등록일의 데이터 타입을 String에서 Date으로 변경
-
-
-
-
-
-

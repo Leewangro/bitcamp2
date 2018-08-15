@@ -301,6 +301,7 @@
       }(document, 'script', 'facebook-jssdk'));
    </script> -->
 	<script>
+	var link = document.location.href.split("?")[1];
 		$(document).ready(function() {
 			var aWord = $('#aWord');
 			var sDay = $('#sdt');
@@ -311,7 +312,7 @@
 			var recoNum = $('#b-reco');
 
 			$.ajax({
-				url : serverRoot + "/json/planner/196",
+				url : serverRoot + "/json/planner/"+link,
 				dataType : "json", // 데이터타입을 json 으로 받아옴
 				success : function(main) {
 					console.log(main)
@@ -380,12 +381,12 @@
 
 	<script>
 	var maxDay = -1;
-	
+	var link = document.location.href.split("?")[1];
       $(document).ready(function () {
          
          
          $.ajax({
-            url: serverRoot + "/json/travelPlan/196/" + currentPage,
+            url: serverRoot + "/json/travelPlan/"+link+"/" + currentPage,
             dataType: "json", // 데이터타입을 json 으로 받아옴
             success: function (data) {
                console.log(data);
@@ -573,7 +574,7 @@
 	
 	$(document).ready(function() {
 		
-		$.get(serverRoot + "/json/travelPlan/day/196", {}, function(res) {
+		$.get(serverRoot + "/json/travelPlan/day/"+link, {}, function(res) {
 			maxDay = res;
 			console.log(maxDay);
 		});
@@ -602,7 +603,7 @@
                 $(day).append(day_num);
                 
             	   $.ajax({
-       				url : serverRoot + "/json/travelPlan/196/" + currentPage,
+       				url : serverRoot + "/json/travelPlan/"+link+"/" + currentPage,
        				dataType : "json", 
        				success : function(data) {
        				 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

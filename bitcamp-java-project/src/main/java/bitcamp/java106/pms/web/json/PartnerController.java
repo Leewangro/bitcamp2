@@ -85,10 +85,4 @@ public class PartnerController {
 //         자동 Refresh 태그 추가
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
-//ver 26 - PartnerController에서 add() 메서드를 추출하여 클래스로 정의. 
-
-
-
-
-
-
+//ver 26 - PartnerController에서 add() 메서드를 추출하여 클래스로 정의.

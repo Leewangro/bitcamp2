@@ -199,6 +199,12 @@
 
 	<script>
 	
+	$(document).ready(function() {
+		$("#mTitle").change(function() {
+			$("#regi").attr("href", "../sub09/sub09_insert.html?"+$("#mTitle option:selected").val().split(":")[1].split("/")[0]);
+		});
+	});
+	
 	$('#accom_regi').click(function() {
 		
 			var moBody = $('#mo_body');
@@ -225,7 +231,7 @@
 									/*$(slList).text(main[i].title);
 									$(mTit).append(slList);
 									$(moBody).append(mTit);*/
-									$('#mTitle').append("<option>"+"번호:" + main[i].no +"제목:" +main[i].title+"</option>");
+									$('#mTitle').append("<option>"+"번호:" + main[i].no +"/제목:" +main[i].title+"</option>");
 								}
 							}
 						});
@@ -302,48 +308,39 @@
        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
 	   success: function (pldata) {
+		   $('#contnetList').empty();
 
-	      $.ajax({
-
-	        type: "GET",
-
-	        url: serverRoot + "/json/partner/list",
-
-	        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-
-	        success: function (data) {
-
-	          $('#contnetList').empty();
-			  var genders; 
-	          for (let i = 0; i < data.length; i++) {
-	        	  if(data[i].gender == 0) {
-	        		  genders = '남자';
-	        	  } else if (data[i].gender == 1) {
-	        		  genders = '여자';
-	        	  } else if (data[i].gender == 2) {
-	        		  genders = '무관';
-	        	  }
-	        	  
-	            $('#contentList').append(
-	              "<figure class='effect type01'>" +
-	              "<span class='r_status open'>모집중</span>" +
-	              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
-	              "<figcaption>" +
-	              "<span class='title'>" + data[i].title + "</span> " +
-	              "<span class='date'>" + pldata[i].startDate + " ~ " + pldata[i].endDate + "</span> " +
-	              "<span class='gender'>" + genders + "</span> " +
-	              "<span class='capacity'	>" + data[i].capa + "</span> " +
-	              "<a href='../sub09/sub09_view.html?" + data[i].plno + "'>View more</a>" +
-	              "</figcaption>" +
-	              "</figure>"
-	              
-	              )
-	          }
-	        }
-	      })
-	    } 
-      })
+		      for(let plan of pldata) {
+		    	  for(let partner of plan.partners) {
+		    		  /**/
+		    		  
+		    		 var genders; 
+		        	 if(partner.gender == 0) {
+		        	  genders = '남자';
+		        	 } else if (partner.gender == 1) {
+		        	  genders = '여자';
+		        	 } else if (partner.gender == 2) {
+		        	  genders = '무관';
+		        	 }
+		        	  
+		            $('#contentList').append(
+		              "<figure class='effect type01'>" +
+		              "<span class='r_status open'>모집중</span>" +
+		              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
+		              "<figcaption>" +
+		              "<span class='title'>" + partner.title + "</span> " +
+		              "<span class='date'>" + plan.startDate + " ~ " + plan.endDate + "</span> " +
+		             "<span class='gender'>" + genders + "</span> " +
+		              "<span class='capacity'	>" + partner.capa + "</span> " +
+		              "<a href='../sub09/sub09_view.html?" + plan.no + "'>View more</a>" +
+		              "</figcaption>" +
+		              "</figure>");	
+		    	  }
+		      }
     }
+    });
+	}
+    
 	  </script>	
 
 	<style type="text/css">

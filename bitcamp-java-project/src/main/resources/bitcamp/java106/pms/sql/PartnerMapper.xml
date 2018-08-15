@@ -17,6 +17,7 @@
     <result column="GEN" property="gender"/>
     <result column="CAPA" property="capa"/>
     <result column="MNO" property="memberno"/>
+    <result column="PLNO" property="plno" />
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -29,8 +30,8 @@
    <insert id="insert" parameterType="map"
        useGeneratedKeys="true" keyColumn="PTNO" >
        insert into
-       TAMLA_PARTNER(TITL,GEN,CAPA) <!-- 회원번호 추가 필요 MNO -->
-       values(#{title},#{gender},#{capa})
+       TAMLA_PARTNER(TITL,GEN,CAPA,PLNO) <!-- 회원번호 추가 필요 MNO -->
+       values(#{title},#{gender},#{capa}, #{plno})
        <selectKey resultType="int" keyProperty="ptno" order="AFTER" >  
            SELECT LAST_INSERT_ID()
        </selectKey>
@@ -42,6 +43,10 @@
    SELECT TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO
    FROM TAMLA_PARTNER TP
    where TP.PTNO=#{no}
+  </select>
+  
+  <select id="selectListWithNo" parameterType="int" resultMap="PartnerMap">
+  	select * from TAMLA_PARTNER where PLNO=#{no}
   </select>
   
   
@@ -64,10 +69,3 @@
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->
 </mapper>
-
-
-
-
-
-
-

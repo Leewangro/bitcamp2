@@ -55,7 +55,9 @@ public class TravelPlanController {
     
     @RequestMapping("update")
     @ResponseStatus(HttpStatus.OK) // 기본 값이 OK 이다.
-    public void update(int plday, int tno, String descr) throws Exception {
+    public void update(@RequestParam(value="plday", defaultValue="0") int plday, 
+    				   @RequestParam(value="tno", defaultValue="0")int tno, 
+    				   String descr) throws Exception {
         System.out.println("asd");
         travelPlanService.update(plday, tno, descr);
     }
@@ -101,6 +103,15 @@ public class TravelPlanController {
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - TravelPlanController에서 add() 메서드를 추출하여 클래스로 정의. 
+
+
+
+
+
+
+
+
+
 
 
 

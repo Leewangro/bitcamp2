@@ -1,4 +1,3 @@
-// 업무로직 구현체 - 고객사 마다 다른 구현을 할 수 있다.
 package bitcamp.java106.pms.service.impl;
 
 import java.util.HashMap;
@@ -59,9 +58,3 @@ public class PartnerServiceImpl implements PartnerService {
 }
 
 //ver 53 - 클래스 추가
-
-
-
-
-
-
