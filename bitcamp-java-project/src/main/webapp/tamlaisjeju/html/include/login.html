@@ -1,8 +1,8 @@
 <ul class="login" style="float:right;">
-    <li>
+    <li style="vertical-align:middle;">
 <!-- Button trigger modal -->
         <a id="UserName" style="float:left;" onclick='mypage()'></a>
-        <a id="Login" data-toggle="modal" data-target="#exampleModalCenter" style="display:block; float:left;">로그인</a>
+        <a id="Login" data-toggle="modal" data-target="#exampleModalCenter" >로그인</a>
         <a id="Logout" onclick='logout()' style="display:none; float:left;">로그아웃</a>
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -56,10 +56,10 @@ $.get(serverRoot3 + "/json/auth/islogin", {}, user => {
     
     if(user != "n") {
         $("#Login").css("display", "none");
-        $("#Logout").css("display", "block");
+        $("#Logout").css("display", "inline-block");
         $("#UserName").text(name.replace("+"," "));
     } else if(user == "n") {
-    	$("#Login").css("display", "block");
+    	$("#Login").css("display", "inline-block");
         $("#Logout").css("display", "none");
         $("#UserName").text("");    	
     }
