@@ -631,7 +631,7 @@
 				url: serverRoot + "/json/travelPlan/update",
 				data: param,
 				success: function (up) {
-					location.href = "sub09_view.html";
+					location.href = "sub09_view.html?"+link;
 				},
 				error: function (up) {
 					alert("값을 저장할 수 없습니다. 새로고침을 해주세요.");

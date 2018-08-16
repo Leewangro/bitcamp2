@@ -198,7 +198,8 @@
 	</script> -->
 
 	<script>
-	
+	var link = document.location.href.split("?")[1];
+
 	$(document).ready(function() {
 		$("#mTitle").change(function() {
 			$("#regi").attr("href", "../sub09/sub09_insert.html?"+$("#mTitle option:selected").val().split(":")[1].split("/")[0]);
@@ -221,18 +222,31 @@
 					if(main != null){
 						
 						$.ajax({
-							url : serverRoot + "/json/planner/list",
+							url : serverRoot + "/json/content/list",
 							dataType : "json", // 데이터타입을 json 으로 받아옴
-							success : function() {
-								for(i=0; i < main.length ; i++){
-									console.log(main[i].title);
-									console.log(main[i].no);
+							success : function(main2) {
+								console.log("111111111111");
+								console.log(main2);
+								 	var memberId;
+								    var contentMember;
+
+								    $.get(serverRoot + "/json/auth/islogin", {}, user => {
+								        memberId = decodeURIComponent(user.id);
+								        console.log(memberId);
+								    
+								for(j=0; j < main2.length ;j++){
+									console.log(main2[j].id);
+									console.log(memberId);
+									if(memberId == main2[j].id){	
 									
 									/*$(slList).text(main[i].title);
 									$(mTit).append(slList);
 									$(moBody).append(mTit);*/
-									$('#mTitle').append("<option>"+"번호:" + main[i].no +"/제목:" +main[i].title+"</option>");
-								}
+									$('#mTitle').append("<option>"+"번호:" + main2[j].no +"/제목:" +main2[j].title+"</option>");
+									
+									}
+									}
+								    })
 							}
 						});
 					}
