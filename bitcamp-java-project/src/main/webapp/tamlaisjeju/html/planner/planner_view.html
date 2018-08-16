@@ -333,56 +333,52 @@
 
 
     <script>
-            $(document).ready(function(){
-    
-    $("a[data-toggle='sns_share']").click(function(e){
- 
-     
-         e.preventDefault();
-         
-         var _this = $(this);
-         var sns_type = _this.attr('data-service');
-         var href = window.location.href;
-         var title = _this.attr('data-title');
-         var loc = "";
-         var img = $("meta[name='og:image']").attr('content');
-         var popOption = "width=500, height=660, resizable=no, scrollbars=no, status=no;";   
-         
-         if( ! sns_type || !href || !title) return;
-         
-         if( sns_type == 'facebook' ) {
-             loc = '//www.facebook.com/sharer/sharer.php?u='+href+'&t='+title;
-         }
-         else if ( sns_type == 'twitter' ) {
-             loc = '//twitter.com/home?status='+encodeURIComponent(title)+' '+href;
-         }
-         else if ( sns_type == 'google' ) {
-             loc = '//plus.google.com/share?url='+href;
-         }
-         else if ( sns_type == 'pinterest' ) {
-             
-             loc = '//www.pinterest.com/pin/create/button/?url='+href+'&media='+img+'&description='+encodeURIComponent(title);
-         }
-         else if ( sns_type == 'kakaostory') {
-             loc = 'https://story.kakao.com/share?url='+encodeURIComponent(href);
-         }
-         else if ( sns_type == 'band' ) {
-             loc = 'http://www.band.us/plugin/share?body='+encodeURIComponent(title)+'%0A'+encodeURIComponent(href);
-         }
-         else if ( sns_type == 'naver' ) {
-             loc = "http://share.naver.com/web/shareView.nhn?url="+encodeURIComponent(href)+"&title="+encodeURIComponent(title);
-         }
-         else {
-             return false;
-         }
- 
-         window.open(loc,"", popOption);
-         return false;
-     });
-     
-     
- });
- 
+        $(document).ready(function () {
+
+            $("a[data-toggle='sns_share']").click(function (e) {
+
+
+                e.preventDefault();
+
+                var _this = $(this);
+                var sns_type = _this.attr('data-service');
+                var href = window.location.href;
+                var title = _this.attr('data-title');
+                var loc = "";
+                var img = $("meta[name='og:image']").attr('content');
+                var popOption = "width=500, height=660, resizable=no, scrollbars=no, status=no;";
+
+                if (!sns_type || !href || !title) return;
+
+                if (sns_type == 'facebook') {
+                    loc = '//www.facebook.com/sharer/sharer.php?u=' + href + '&t=' + title;
+                } else if (sns_type == 'twitter') {
+                    loc = '//twitter.com/home?status=' + encodeURIComponent(title) + ' ' + href;
+                } else if (sns_type == 'google') {
+                    loc = '//plus.google.com/share?url=' + href;
+                } else if (sns_type == 'pinterest') {
+
+                    loc = '//www.pinterest.com/pin/create/button/?url=' + href + '&media=' + img +
+                        '&description=' + encodeURIComponent(title);
+                } else if (sns_type == 'kakaostory') {
+                    loc = 'https://story.kakao.com/share?url=' + encodeURIComponent(href);
+                } else if (sns_type == 'band') {
+                    loc = 'http://www.band.us/plugin/share?body=' + encodeURIComponent(title) + '%0A' +
+                        encodeURIComponent(href);
+                } else if (sns_type == 'naver') {
+                    loc = "http://share.naver.com/web/shareView.nhn?url=" + encodeURIComponent(href) +
+                        "&title=" + encodeURIComponent(title);
+                } else {
+                    return false;
+                }
+
+                window.open(loc, "", popOption);
+                return false;
+            });
+
+
+        });
+
         // 일별로 스케줄 뿌려주는 스크립트
         var linePath = [];
         var polyline = [];
@@ -1073,6 +1069,16 @@
             }
             cur_day = day;
         }
+    </script>
+    <script>
+        $(document).on('change', '.day_select', function () {
+            var _this_day = $(this).val();
+            var scrollId = $('[data-id=' + _this_day + ']').offset();
+
+             $('html, body').animate({
+        scrollTop: scrollId.top - 75
+    }, 400);
+        });
     </script>
 
     <!-- <script type="text/javascript">
