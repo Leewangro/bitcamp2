@@ -49,84 +49,6 @@
 
 
 
-						<div id="user_profile" class="clear">
-								<div id="user_photo">
-									<img src="img/common/user.png" alt="아이디">
-								</div>
-								<!-- user_photo end -->
-								<div id="user_info">
-									<ul>
-										<li id="id">
-											<a href="#">tamlaisjeju</a>
-										</li>
-										<li id="comment">3박 4일 여행일정 함께 하실 분 모집합니다. 재미있게 같이다녀요.</li>
-										<li id="hashtag">
-											<a href="#">#힐링</a>
-											<a href="#">#가난</a>
-											<a href="#">#탈출</a>
-										</li>
-									</ul>
-									<div class="button_area">
-										<a href="#">동행신청</a>
-										<a href="#">추천하기</a>
-									</div>
-								</div>
-								<!-- user_info end -->
-							</div>
-			
-							<style type="text/css">
-								/**************************************************************************************
-			user_profile - 유저정보 UI
-			**************************************************************************************/
-			
-								#user_profile {
-									/* float: right; */
-									padding: 20px;
-									width: 100%;
-									border: 1px solid #e5e5e5;
-								}
-			
-								#user_profile #user_photo {}
-			
-								#user_profile #user_photo img {
-									display: block;
-									margin: 0 auto;
-									width: 150px;
-									height: 150px;
-									border-radius: 100%;
-									border: 1px solid #e5e5e5;
-			
-								}
-			
-								#user_profile #user_info {}
-			
-								#user_profile #user_info ul #id a {
-									display: block;
-									margin: 5px 0;
-									font-size: 20px;
-									font-weight: bold;
-									color: #333;
-									text-align: center;
-								}
-			
-			
-								#user_profile #user_info .button_area {
-									text-align: center;
-			
-								}
-			
-								#user_profile #user_info .button_area a {
-									display: inline-block;
-									margin: 5px 0;
-									padding: 5px 15px;
-									border: 1px solid #57b4ff;
-									border-radius: 20px;
-									color: #57b4ff;
-									font-size: 15px;
-								}
-							</style>
-
-
 
 
 					<!-- 
@@ -998,23 +920,54 @@
 
 
 						$('.info-left-box').append(
-							"<div class='user-info-box'>" +
-							"<div class='author-box'>" +
-							"<div class='author-img'>" +
-							"<a target='_blank' href='#'>" +
+							// "<div class='user-info-box'>" +
+							// "<div class='author-box'>" +
+							// "<div class='author-img'>" +
+							// "<a target='_blank' href='#'>" +
+							// "<img src=" + data2.profileImg + ">" +
+							// "</a>" +
+							// "</div>" +
+							// "<div class='author-name'>" +
+							// "<h3>" + data2.name + "</h3>" +
+							// "</div>" +
+							// "</div>" +
+							// "<div class='follower-btns'>" +
+							// "<button id = 'follow_button' class='follower'>동행신청</button>" +
+							// "<button id = 'following' class='following hide'>신청하였습니다</button>" +
+							// "<button id='recommend' class='follower' style='margin-left: 10px'>추천하기</button>" +
+							// "</div>" +
+							// "</div>"
+
+
+
+
+							"<div id='user_profile' class='clear'>" +
+							"<div id='user_photo'>" +
 							"<img src=" + data2.profileImg + ">" +
-							"</a>" +
 							"</div>" +
-							"<div class='author-name'>" +
-							"<h3>" + data2.name + "</h3>" +
+							"<div id='user_info'>" +
+							"<ul>" +
+							"<li id='id'>" +
+							"<a href='#'>" + data2.name + "</a>" +
+							"</li>" +
+							"<li id='comment'>여행일정 함께 하실 분 모집합니다. 재미있게 같이다녀요.</li>" +
+							"<li id='hashtag'>" +
+							"<a href='#'>#힐링</a>" +
+							"<a href='#'>#동행</a>" +
+							"<a href='#'>#젊음</a>" +
+							"</li>" +
+							"</ul>" +
+							"<div class='button_area'>" +
+							"<a id='follow_button' href='#'>동행신청</a>" +
+							"<a id='following' href='#'>동행신청 완료</a>" +
+							"<a href='#'>추천하기</a>" +
 							"</div>" +
-							"</div>" +
-							"<div class='follower-btns'>" +
-							"<button id = 'follow_button' class='follower'>동행신청</button>" +
-							"<button id = 'following' class='following hide'>신청하였습니다</button>" +
-							"<button id='recommend' class='follower' style='margin-left: 10px'>추천하기</button>" +
 							"</div>" +
 							"</div>"
+
+
+
+
 						)
 						$('#follow_button').click(function () {
 							alert("신청이 완료되었습니다");
@@ -1034,6 +987,59 @@
 		})
 		//}
 	</script>
+
+	<style type="text/css">
+		/**************************************************************************************
+user_profile - 유저정보 UI
+**************************************************************************************/
+
+		#user_profile {
+			/* float: right; */
+			padding: 20px;
+			width: 100%;
+			border: 1px solid #e5e5e5;
+		}
+
+		#user_profile #user_photo {}
+
+		#user_profile #user_photo img {
+			display: block;
+			margin: 0 auto;
+			width: 150px;
+			height: 150px;
+			border-radius: 100%;
+			border: 1px solid #e5e5e5;
+
+		}
+
+		#user_profile #user_info {}
+
+		#user_profile #user_info ul #id a {
+			display: block;
+			margin: 5px 0;
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			text-align: center;
+		}
+
+
+		#user_profile #user_info .button_area {
+			text-align: center;
+
+		}
+
+		#user_profile #user_info .button_area a {
+			display: inline-block;
+			margin: 5px 0;
+			padding: 5px 15px;
+			border: 1px solid #57b4ff;
+			border-radius: 20px;
+			color: #57b4ff;
+			font-size: 15px;
+		}
+	</style>
+
 
 
 
