@@ -79,7 +79,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-									<a id="regi" href="../sub09/sub09_insert.html" class="btn btn-primary">등록하기</a>
+									<a id="regi" href="../travelmate/travelmate_insert.html" class="btn btn-primary">등록하기</a>
 								</div>
 							</div>
 						</div>
@@ -186,7 +186,7 @@
 
 		$(document).ready(function () {
 			$("#mTitle").change(function () {
-				$("#regi").attr("href", "../sub09/sub09_insert.html?" + $("#mTitle option:selected").val().split(":")[1].split(
+				$("#regi").attr("href", "../travelmate/travelmate_insert.html?" + $("#mTitle option:selected").val().split(":")[1].split(
 					"/")[0]);
 			});
 		});
@@ -370,7 +370,7 @@
 															"<span class='gender'>" + genders + "</span> " +
 															"<span class='capacity'	>"+  partner.capa +"명"+ "</span> " +
 															"</b>" +
-															"<a href='../sub09/sub09_view.html?" + plan.no + "'>View more</a>" +
+															"<a href='../travelmate/travelmate_view.html?" + plan.no + "'>View more</a>" +
 															"</figcaption>" +
 															"</figure>");
 													}
