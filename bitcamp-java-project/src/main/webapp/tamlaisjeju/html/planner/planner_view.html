@@ -35,15 +35,83 @@
 
 <body>
     <div id="header"></div>
+    <!-- <div id="visual">
+        <img src="../../img/sub04/sub04_visual.jpg" alt="제주의 풍경">
+      </div> -->
+
+
+    <style type="text/css">
+        #sub10 #content {
+            margin: 0
+        }
+
+        #sub10 .plan .cover_img {}
+
+        #sub10 .plan .cover_img {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            background: url(http://img.earthtory.com/img/city_images/312/jeju_1425527621.jpg) no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        /* #sub10 .plan .plan_cover{width:1200px;margin:0 auto;} */
+
+        #sub10 .plan .plan_mnu_box {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        #sub10 .plan .day_page_all {
+            width: 1200px;
+            margin: 30px auto;
+        }
+
+        /* #sub10 .plan .plan_cover{width:1200px;margin:0 auto;} */
+
+        #sub10 .plan .cover_bg {
+            background: url(../../img/sub10/cover_bg.png) repeat-x;
+            width: 100%;
+            height: 204px;
+            position: absolute;
+            z-index: 2;
+            left: 0px;
+            bottom: 0px;
+        }
+
+        #sub10 .plan .plan_cover {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        #sub10 .plan .plan_cover .share_box {
+            right: 0;
+            top: -70px;
+        }
+
+        #sub10 .plan .plan_cover .plan_box{
+            top:-205px;
+            left:0;
+        }
+        #sub10 .plan .plan_cover .plan_box .plan_title{font-size:32px;}
+        #sub10 .plan .plan_cover .plan_box .plan_cont{margin:5px 0;}
+    </style>
+
+
+
 
     <div class="container" id="sub10">
 
-        <div id="content" class="wrapper">
+        <div id="content">
 
-            <div class="plan wrapper clear">
+            <div class="plan clear">
+                <div class="cover_img">
+                    <div class="cover_bg"></div>
+                </div>
 
                 <div class="plan_cover">
-                    <div class="cover_img"></div>
+
                     <div class="share_box">
                         <div class="share_btn" id="share">
                             <img src="../../img/sub10/btn_share.png" alt="">
@@ -58,9 +126,9 @@
                         <li id="tableBody"></li>
 
                     </ul>
-                    <div class="cover_bg"></div>
+
                 </div>
-                <div class="plan_mnu_box clear" style>
+                <div class="plan_mnu_box wrapper  clear">
                     <div class="plan_mnu_box1">
                         <button type="button" class="plan_mnu" onclick="openCity(event, '1')" id="defaultOpen">일정</button>
                         <div class="plan_mnu_line"></div>
@@ -189,9 +257,9 @@
                 </div>
 
                 <div class="list_bottom page show" data-id="1">
-              <!--       <button style="border: 1px solid #223b68; z-index:100; color: #223b68; background-color: white;" 
+                    <!--       <button style="border: 1px solid #223b68; z-index:100; color: #223b68; background-color: white;" 
                     type="button" class="btn btn-primary" OnClick="location.href='planner_list.html'">목록보기</button> -->
-                <div id='delete_div'></div>
+                    <div id='delete_div'></div>
                 </div>
 
             </div>
@@ -252,17 +320,19 @@
             var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
             betweenDay = parseInt(diff / currDay);
             var week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-            var planSdate = new Date(((dat1 / currDay)) * currDay).getFullYear()+"."+new Date(((dat1 / currDay)) * currDay).getMonth()+"."+(new Date(((dat1 / currDay)) * currDay).getDate()+1)
-            var planEdate = new Date(((dat2 / currDay)) * currDay).getFullYear()+"."+new Date(((dat2 / currDay)) * currDay).getMonth()+"."+(new Date(((dat2 / currDay)) * currDay).getDate()+1)
-                $('#travelDate')[0].textContent=("출발일: "+planSdate+" ~ "+"도착일: "+planEdate+"");
+            var planSdate = new Date(((dat1 / currDay)) * currDay).getFullYear() + "." + new Date(((dat1 / currDay)) *
+                currDay).getMonth() + "." + (new Date(((dat1 / currDay)) * currDay).getDate() + 1)
+            var planEdate = new Date(((dat2 / currDay)) * currDay).getFullYear() + "." + new Date(((dat2 / currDay)) *
+                currDay).getMonth() + "." + (new Date(((dat2 / currDay)) * currDay).getDate() + 1)
+            $('#travelDate')[0].textContent = ("출발일: " + planSdate + " ~ " + "도착일: " + planEdate + "");
             for (var i = 0; i < betweenDay + 1; i++) {
                 linePath[(i + 1)] = [];
                 polyline[(i + 1)] = [];
                 var dat3 = (new Date(((dat1 / currDay) + i) * currDay));
-                calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()+1));
-                var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate()+1);
+                calMonthDate = (dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate() + 1));
+                var calYearMonthDate = dat3.getFullYear() + "." + dat3.getMonth() + "." + (dat3.getDate() + 1);
                 dayOfWeek = week[new Date(calYearMonthDate).getDay()];
-                
+
                 $('.plan #1').append(
                     "<div class='day_page' data-id=" + (i + 1) + ">" +
                     "<div class='day_page_left'>" +
@@ -321,7 +391,7 @@
                     if (schedule[i].plday == d) {
                         for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
                             if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
-                            	
+
                                 $("#day_page" + (d) + "").append(
                                     "<div class='day_sch_box' data-id=" + d + '-' + (i + 1) + ">" +
                                     "<div class='day_sch_num'>" +
@@ -333,7 +403,12 @@
                                     "onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');" +
                                     "style='cursor:pointer;'>" +
                                     "<div class='spot_content_box'>" +
-                                    "<div class='spot_name' onclick='window.open("+'"'+serverRoot+"/tamlaisjeju/html/tourspot/view.html?id="+schedule_data.response.body.items.item[j].contentid+'&'+'item'+'='+schedule_data.response.body.items.item[j].contenttypeid+'&mapx='+schedule_data.response.body.items.item[j].mapx+'&mapy='+schedule_data.response.body.items.item[j].mapy+'"'+")' "+' style="cursor:pointer;">' +
+                                    "<div class='spot_name' onclick='window.open(" + '"' + serverRoot +
+                                    "/tamlaisjeju/html/tourspot/view.html?id=" + schedule_data.response.body.items.item[
+                                        j].contentid + '&' + 'item' + '=' + schedule_data.response.body.items.item[
+                                        j].contenttypeid + '&mapx=' + schedule_data.response.body.items.item[j].mapx +
+                                    '&mapy=' + schedule_data.response.body.items.item[j].mapy + '"' + ")' " +
+                                    ' style="cursor:pointer;">' +
                                     schedule_data.response.body.items.item[j].title + "</div>" +
                                     "<div class='spot_info'>" +
                                     "<div class='tag'>" + schedule_data.response.body.items.item[j].addr1 +
@@ -437,66 +512,68 @@
             }
 
 
-        function col_cal_width() {
-            for (let i in $('col')) {
-                if (i == 0) continue;
-                $('col')[i].style.width = 90 / (betweenDay + 1) + "%";
+            function col_cal_width() {
+                for (let i in $('col')) {
+                    if (i == 0) continue;
+                    $('col')[i].style.width = 90 / (betweenDay + 1) + "%";
+                }
+            }
+
+            function displayInfowindow(marker, title) {
+                var content =
+                    '<div style="background-color:#4CAF50;color: white;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+                    title + '</div>';
+
+                infowindow.setContent(content);
+                infowindow.open(map, marker);
             }
         }
-        
-    function displayInfowindow(marker, title) {
-        var content = '<div style="background-color:#4CAF50;color: white;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + title + '</div>';
-        
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-    }
-}
-    
-	function OverlayDelete() {
-	    if (overlay != null) {
-	        overlay.setMap(null);
-	    } 
-	}
-    
-	function markerOverlay(node) {
-		console.log(node.textContent);
-	        for (var i = 0; i < schedule_data.response.body.items.item.length; i++) {
-	            if (schedule_data.response.body.items.item[i].title == node.textContent) {
-	            	console.log(i);
-	            	console.log(schedule_data.response.body.items.item[i]);
-	                if(prevClickItem != null)
-	                    prevClickItem.removeClass('on');
-	                prevClickItem = $(node).parent();
-	                prevClickItem.addClass('on');
-	                markerPoint(schedule_data.response.body.items.item[i]);
-	            }
-	        }
-	}  
 
-	function markerPoint(datas) {
-		var bounds = new daum.maps.LatLngBounds();
-	    if (!(overlay == null)) {
-	        closeOverlay(); 
-	    }
-	    console.log(datas)
-	    
-	    bounds.extend(new daum.maps.LatLng(datas.mapy, datas.mapx));
-	    var content = '<div class="customoverlay">' +'<img src=' + datas.firstimage + '>' 
-	                    + '<div>' + datas.title + '</div>' + '</div>'
-	                    + '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
-	    overlay = new daum.maps.CustomOverlay({
-	        content: content,
-	        position: new daum.maps.LatLng(datas.mapy, datas.mapx)
-	    });
-	    overlay.setMap(map);
-	    console.log(bounds);
-	    map.setBounds(bounds);
-	    map.setLevel(5);
-	}
-    function closeOverlay() {
-        overlay.setMap(null);   
-    }
-    
+        function OverlayDelete() {
+            if (overlay != null) {
+                overlay.setMap(null);
+            }
+        }
+
+        function markerOverlay(node) {
+            console.log(node.textContent);
+            for (var i = 0; i < schedule_data.response.body.items.item.length; i++) {
+                if (schedule_data.response.body.items.item[i].title == node.textContent) {
+                    console.log(i);
+                    console.log(schedule_data.response.body.items.item[i]);
+                    if (prevClickItem != null)
+                        prevClickItem.removeClass('on');
+                    prevClickItem = $(node).parent();
+                    prevClickItem.addClass('on');
+                    markerPoint(schedule_data.response.body.items.item[i]);
+                }
+            }
+        }
+
+        function markerPoint(datas) {
+            var bounds = new daum.maps.LatLngBounds();
+            if (!(overlay == null)) {
+                closeOverlay();
+            }
+            console.log(datas)
+
+            bounds.extend(new daum.maps.LatLng(datas.mapy, datas.mapx));
+            var content = '<div class="customoverlay">' + '<img src=' + datas.firstimage + '>' +
+                '<div>' + datas.title + '</div>' + '</div>' +
+                '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
+            overlay = new daum.maps.CustomOverlay({
+                content: content,
+                position: new daum.maps.LatLng(datas.mapy, datas.mapx)
+            });
+            overlay.setMap(map);
+            console.log(bounds);
+            map.setBounds(bounds);
+            map.setLevel(5);
+        }
+
+        function closeOverlay() {
+            overlay.setMap(null);
+        }
     </script>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a2267e059228624227866fafbb7d06&libraries=services"></script>
