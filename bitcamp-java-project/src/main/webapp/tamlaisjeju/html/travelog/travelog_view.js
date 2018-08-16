@@ -566,7 +566,13 @@ $(document).ready(function () {
 
         error: function (xhr, status, error) {
 
-            alert("에러발생");
+            swal({
+                type: 'error',
+                title: '페이지에러',
+                text: '다시 시도해주세요',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     });
 });

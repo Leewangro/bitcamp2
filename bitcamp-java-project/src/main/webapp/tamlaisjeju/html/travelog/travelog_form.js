@@ -62,7 +62,14 @@ function searchPlaces() {
     var keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+        swal({
+            position: 'top-end',
+            type: 'success',
+            title: '입력오류',
+            text: '키워드를 입력해주세요',
+            showConfirmButton: false,
+            timer: 1500
+        })
         return false;
     }
 
@@ -111,12 +118,26 @@ function placesSearchCB(data, status, pagination) {
 
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
 
-        alert('검색 결과가 존재하지 않습니다.');
+        swal({
+            position: 'top-end',
+            type: 'success',
+            title: '검색오류',
+            text: '검색결과가 존재하지 않습니다.',
+            showConfirmButton: false,
+            timer: 1500
+        })
         return;
 
     } else if (status === daum.maps.services.Status.ERROR) {
 
-        alert('검색 결과 중 오류가 발생했습니다.');
+        swal({
+            position: 'top-end',
+            type: 'success',
+            title: '검색오류',
+            text: '검색결과중 오류가 발생하였습니다.',
+            showConfirmButton: false,
+            timer: 1500
+        })
         return;
 
     }
@@ -692,21 +713,21 @@ async function submits() {
     var contentNo;
     var userId;
 
-    $.get(serverRoot + "/json/auth/islogin", {}, user => {
-        userId = decodeURIComponent(user.id);
-        var user = decodeURIComponent(user);
-        if (user == 'n') {
-            swal({
-                type: 'error',
-                title: '비정상적인 접근입니다.',
-                text: '이전페이지로 돌아갑니다.',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            history.back();
+    // $.get(serverRoot + "/json/auth/islogin", {}, user => {
+    //     userId = decodeURIComponent(user.id);
+    //     var user = decodeURIComponent(user);
+    //     if (user == 'n') {
+    //         swal({
+    //             type: 'error',
+    //             title: '비정상적인 접근입니다.',
+    //             text: '이전페이지로 돌아갑니다.',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //         })
+    //         history.back();
 
-        }
-    })
+    //     }
+    // })
 
 
     const {
@@ -746,7 +767,13 @@ async function submits() {
                 // location.href = "planner_view.html?"+ data;
             },
             error: function (data) {
-                alert("데이터입력 실패");
+                swal({
+                    type: 'error',
+                    title: '입력실패',
+                    text: '데이터 입력을 실패하였습니다.',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
 
         });
@@ -773,7 +800,13 @@ async function submits() {
 
                 },
                 error: function (data) {
-                    alert("데이터입력 실패");
+                    swal({
+                        type: 'error',
+                        title: '입력실패',
+                        text: '데이터 입력을 실패하였습니다.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
 
             });
@@ -806,7 +839,13 @@ async function submits() {
 
                     },
                     error: function (data) {
-                        alert("데이터입력 실패");
+                        swal({
+                            type: 'error',
+                            title: '입력실패',
+                            text: '데이터 입력을 실패하였습니다.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                         break;
                     }
                 });
@@ -831,7 +870,13 @@ async function submits() {
                         location.href = "travelog_view.html?" + contentNo;
                     },
                     error: function (data) {
-                        alert("데이터입력 실패");
+                        swal({
+                            type: 'error',
+                            title: '입력실패',
+                            text: '데이터 입력을 실패하였습니다.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
 
                 });

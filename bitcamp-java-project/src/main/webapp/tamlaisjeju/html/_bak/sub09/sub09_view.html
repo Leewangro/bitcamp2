@@ -36,7 +36,21 @@
 		</div>
 		<div id="content" class="content wrapper">
 			<nav class="aside_wrap">
+
+
+
+
+
+
+
+
 				<div class="info-left-box">
+
+
+
+
+
+
 					<!-- 
 					 <div class="user-info-box">
 						<div class="author-box">
@@ -329,13 +343,7 @@
 
 				},
 				error: function (er) {
-					swal({
-						type: 'error',
-						title: '오류',
-						text: '값을 확인할수 없습니다. 다시 시도해보세요',
-						showConfirmButton: false,
-						timer: 1500
-					})
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
 		});
@@ -566,13 +574,7 @@
 							}
 						},
 						error: function (e1) {
-							swal({
-								type: 'error',
-								title: '오류',
-								text: '값을 불러올 수 없습니다. 다시시도해주세요',
-								showConfirmButton: false,
-								timer: 1500
-							})
+							alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 						}
 					});
 
@@ -584,13 +586,7 @@
 
 				},
 				error: function (e2) {
-					swal({
-						type: 'error',
-						title: '오류',
-						text: '값을 불러올 수 없습니다. 다시시도해주세요',
-						showConfirmButton: false,
-						timer: 1500
-					})
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
 		});
@@ -753,13 +749,7 @@
 								}
 							},
 							error: function (nopage) {
-								swal({
-									type: 'error',
-									title: '오류',
-									text: '페이지를 불러올 수 없습니다. 다시시도해주세요',
-									showConfirmButton: false,
-									timer: 1500
-								})
+								alert("페이지를 불러올 수 없습니다. 다시 확인해 주세요");
 							}
 						});
 					}
@@ -907,13 +897,7 @@
 								}
 							},
 							error: function (nopage) {
-								swal({
-									type: 'error',
-									title: '오류',
-									text: '페이지를 불러올 수 없습니다. 다시시도해주세요',
-									showConfirmButton: false,
-									timer: 1500
-								})
+								alert("페이지를 불러올 수 없습니다. 다시 확인해 주세요");
 							}
 						});
 					}
@@ -975,8 +959,8 @@
 							"</ul>" +
 							"<div class='button_area'>" +
 							"<a id='follow_button' href='#'>동행신청</a>" +
-							"<a id='following' class='following hide' href='#'>동행신청 완료</a>" +
-							"<a id='recommend' href='#'>추천하기</a>" +
+							"<a id='following' href='#'>동행신청 완료</a>" +
+							"<a href='#'>추천하기</a>" +
 							"</div>" +
 							"</div>" +
 							"</div>"
@@ -986,28 +970,14 @@
 
 						)
 						$('#follow_button').click(function () {
-							swal({
-								position: 'top-end',
-								type: 'success',
-								title: '삭제완료',
-								text: '동행신청을 완료하였습니다.',
-								showConfirmButton: false,
-								timer: 1500
-							})
-							$(this).addClass('active').text('신청완료');
+							alert("신청이 완료되었습니다");
+							$(this).text('신청완료');
 						});
 
 						$('#recommend').click(function () {
-							swal({
-								position: 'top-end',
-								type: 'success',
-								title: '추천',
-								text: '추천성공',
-								showConfirmButton: false,
-								timer: 1500
-							})
+							alert("추천이 완료되었습니다");
 
-							$(this).addClass('active').text('추천완료');
+							$(this).text('추천완료');
 						});
 
 
@@ -1035,8 +1005,8 @@ user_profile - 유저정보 UI
 		#user_profile #user_photo img {
 			display: block;
 			margin: 0 auto;
-			width: 50px;
-			height: 50px;
+			width: 150px;
+			height: 150px;
 			border-radius: 100%;
 			border: 1px solid #e5e5e5;
 
@@ -1053,17 +1023,6 @@ user_profile - 유저정보 UI
 			text-align: center;
 		}
 
-		#user_profile #user_info ul #hashtag {
-			margin: 5px 0;
-			text-align: center;
-		}
-
-		#user_profile #user_info ul #hashtag a {
-			display: inline-block;
-			color: #2168f6;
-
-		}
-
 
 		#user_profile #user_info .button_area {
 			text-align: center;
@@ -1072,18 +1031,12 @@ user_profile - 유저정보 UI
 
 		#user_profile #user_info .button_area a {
 			display: inline-block;
-			margin: 5px;
+			margin: 5px 0;
 			padding: 5px 15px;
 			border: 1px solid #57b4ff;
 			border-radius: 20px;
 			color: #57b4ff;
 			font-size: 15px;
-		}
-
-
-		#user_profile #user_info .button_area a.active {
-			background-color: #57b4ff;
-			color: #fff;
 		}
 	</style>
 
