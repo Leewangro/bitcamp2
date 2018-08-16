@@ -902,26 +902,25 @@
 			"</div>"+ 
 			"</div>"
         )
+        $('#follow_button').click(function () {
+    		alert("신청이 완료되었습니다");
+    		$(this).text('신청완료');
+    	});	
+    				
+         $('#recommend').click(function () {
+     		alert("추천이 완료되었습니다");
+
+     		$(this).text('추천완료');
+     	});			
+    				
+    				
     				}
         		})
         }
         })
         //}
 	</script> 
-	<script>
-	$('#follow_button').click(function () {
-		alert("신청이 완료되었습니다");
-		$(this).text('신청완료');
-	});
-	</script>
 	
-	<script>
-	$('#recommend').click(function () {
-		alert("추천이 완료되었습니다");
-
-		$(this).text('추천완료');
-	});
-	</script>
 	
 	
 </body>

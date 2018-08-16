@@ -87,7 +87,7 @@
 								<div id="mo_body" class="modal-body">
 									<div id="sl_list" style="padding-top: 10px;">
 										<label for="mTitle">여행제목</label> <select id="mTitle"
-											style="height: 50px; width: 35%; border: 1px solid #e9e9e9;">
+											style="height: 50px; width: 100%; border: 1px solid #e9e9e9;">
 
 										</select>
 									</div>
@@ -248,6 +248,7 @@
 	</script>
 
 	<script>
+	var link = document.location.href.split("?")[1];
 	$(document).ready(function () {
 	      $.ajax({
 
@@ -293,12 +294,12 @@
 
 	    })
 
+		var img_check = [];
 
 	    function pageClick(val) {
 	      var no = val.innerText;
 	      $('.pageNoBtns').removeClass('active')
 	      $(val).addClass('active')
-		
     $.ajax({
 
        type: "GET",
@@ -308,12 +309,35 @@
        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
 	   success: function (pldata) {
-		   $('#contentList').empty();
+		   $.ajax({
 
+		       type: "GET",
+
+		       url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=999&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json" ,
+
+		       dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+			   success: function (api) {
+			   	  img_check=api.response.body.items.item; 
+			   console.log(img_check)
+		   $('#contentList').empty();
+			
 		      for(let plan of pldata) {
 		    	  for(let partner of plan.partners) {
 		    		  /**/
-		    		  
+		    		  console.log(partner)
+		   $.ajax({
+
+		       type: "GET",
+
+		       url: serverRoot + "/json/travelPlan/"  + partner.plno ,
+
+		       dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+			   success: function (pt) {
+				   console.log(pt[0].tno);
+			for(k=0;k<img_check.length; k++){
+			   if(pt[0].tno == img_check[k].contentid){
 		    		 var genders; 
 		        	 if(partner.gender == 0) {
 		        	  genders = '남자';
@@ -326,7 +350,7 @@
 		            $('#contentList').append(
 		              "<figure class='effect type01'>" +
 		              "<span class='r_status open'>모집중</span>" +
-		              "<img src='../../img/common/board_img.png' alt='제주김만복(만복이네김밥집)'>" +
+		              "<img src="+img_check[k].firstimage2+">" +
 		              "<figcaption>" +
 		              "<span class='title'>" + partner.title + "</span> " +
 		              "<span class='date'>" + plan.startDate + " ~ " + plan.endDate + "</span> " +
@@ -335,8 +359,14 @@
 		              "<a href='../sub09/sub09_view.html?" + plan.no + "'>View more</a>" +
 		              "</figcaption>" +
 		              "</figure>");	
+			   }
+			}
+			   }
+		    		  });
 		    	  }
 		      }
+			   } 
+		   });
     }
     });
 	}
