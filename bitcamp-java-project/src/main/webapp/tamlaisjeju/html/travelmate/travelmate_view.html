@@ -945,8 +945,8 @@
 							"</ul>" +
 							"<div class='button_area'>" +
 							"<a id='follow_button' href='#'>동행신청</a>" +
-							"<a id='following' href='#'>동행신청 완료</a>" +
-							"<a href='#'>추천하기</a>" +
+							"<a id='following' class='following hide' href='#'>동행신청 완료</a>" +
+							"<a id='recommend' href='#'>추천하기</a>" +
 							"</div>" +
 							"</div>" +
 							"</div>"
@@ -957,13 +957,13 @@
 						)
 						$('#follow_button').click(function () {
 							alert("신청이 완료되었습니다");
-							$(this).text('신청완료');
+							$(this).addClass('active').text('신청완료');
 						});
 
 						$('#recommend').click(function () {
 							alert("추천이 완료되었습니다");
 
-							$(this).text('추천완료');
+							$(this).addClass('active').text('추천완료');
 						});
 
 
@@ -1010,16 +1010,17 @@ user_profile - 유저정보 UI
 		}
 
 		#user_profile #user_info ul #hashtag {
-			margin:5px 0;
+			margin: 5px 0;
+			text-align: center;
 		}
 
 		#user_profile #user_info ul #hashtag a {
 			display: inline-block;
 			color: #2168f6;
-			text-align: center;
+
 		}
 
-		
+
 		#user_profile #user_info .button_area {
 			text-align: center;
 
@@ -1027,12 +1028,18 @@ user_profile - 유저정보 UI
 
 		#user_profile #user_info .button_area a {
 			display: inline-block;
-			margin: 5px 0;
+			margin: 5px;
 			padding: 5px 15px;
 			border: 1px solid #57b4ff;
 			border-radius: 20px;
 			color: #57b4ff;
 			font-size: 15px;
+		}
+
+
+		#user_profile #user_info .button_area a.active {
+			background-color: #57b4ff;
+			color: #fff;
 		}
 	</style>
 

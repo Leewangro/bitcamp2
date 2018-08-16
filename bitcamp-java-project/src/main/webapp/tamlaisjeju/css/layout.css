@@ -61,7 +61,8 @@
   font-size: 0;
   line-height: 0;
   text-indent: -9999px;
-  width: 206px;
+  width: 180px;
+  /* width: 206px; */
   height: 46px;
 }
 
@@ -71,7 +72,7 @@
   width: 100%;
   height: 46px;
   background: url('../img/common/logo.png') no-repeat;
-  background-size: cover;
+  background-size: 100%;
 }
 
 #header.active h1 a {
