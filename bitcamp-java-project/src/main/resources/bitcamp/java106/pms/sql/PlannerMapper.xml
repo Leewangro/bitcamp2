@@ -60,6 +60,7 @@
     select TP.PLNO,TP.SDT,TP.EDT,TP.PATA,TP.PART,TP.THEMA, C.TITL
     FROM TAMLA_PLAN TP
     left join TAMLA_CONTENT C on TP.PLNO = C.CNO
+    order by TP.PLNO desc
     limit #{startRowNo}, #{pageSize}
   </select>
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
