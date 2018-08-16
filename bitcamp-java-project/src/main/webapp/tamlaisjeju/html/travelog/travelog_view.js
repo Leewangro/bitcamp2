@@ -56,13 +56,13 @@ $.ajax({
                 image: markerImage // 마커 이미지 
             });
             var content1 = '<div class="customoverlay">' + '<div>' + data[i].place +
-            '</div>' + '</div>';
-	        mapOverlay = new daum.maps.CustomOverlay({
-	            content: content1,
-	            position: new daum.maps.LatLng(data[i].lotd, data[i].latd)
-	        });
-	        mapOverlay.setMap(map2);
-            
+                '</div>' + '</div>';
+            mapOverlay = new daum.maps.CustomOverlay({
+                content: content1,
+                position: new daum.maps.LatLng(data[i].lotd, data[i].latd)
+            });
+            mapOverlay.setMap(map2);
+
             paths.push(new daum.maps.LatLng(data[i].lotd, data[i].latd))
 
 
@@ -78,6 +78,8 @@ $.ajax({
         });
         polyline.setMap(map2);
         map2.setZoomable();
+        var zoomControl = new daum.maps.ZoomControl();
+        map2.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
         // 지도에 표시할 선을 생성합니다
 
         // 지도에 선을 표시합니다 
@@ -113,8 +115,8 @@ $(document).ready(function () {
 
         dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
-        success: function (data) { 
-           
+        success: function (data) {
+
 
         }
     })
