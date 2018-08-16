@@ -40,7 +40,7 @@
   <select id="selectOne" 
           resultMap="PartnerMap" 
           parameterType="map">
-   SELECT TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO
+   SELECT TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO , TP.PLNO
    FROM TAMLA_PARTNER TP
    where TP.PTNO=#{no}
   </select>
@@ -52,7 +52,7 @@
   
    <select id="selectList" resultMap="PartnerMap"
        parameterType="map">
-       select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO
+       select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO, TP.PLNO
     FROM TAMLA_PARTNER TP
     left join TAMLA_CONTENT C on TP.PTNO = C.CNO
        <!-- order by no desc limit #{startRowNo}, #{pageSize} -->
@@ -60,7 +60,7 @@
    
     <select id="selectListwithPage" 
           resultMap="PartnerMap" parameterType="map">
-    select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO
+    select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO, TP.PLNO
     FROM TAMLA_PARTNER TP
     left join TAMLA_CONTENT C on TP.PTNO = C.CNO
     limit #{startRowNo}, #{pageSize}

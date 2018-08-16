@@ -238,6 +238,8 @@
 									console.log(main2[j].id);
 									console.log(memberId);
 									if(memberId == main2[j].id){	
+									console.log(main[i].title);
+									console.log(main[i].no);
 									
 									/*$(slList).text(main[i].title);
 									$(mTit).append(slList);
@@ -268,17 +270,18 @@
 
 	        type: "GET",
 
-	        url: serverRoot + "/json/planner/list",
+	        url: serverRoot + "/json/partner/list",
 
 	        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
 	        success: function (data) {
-	          var pageNo = data.length / 10;
+	          var pageNo = data.length / 6;
 	          Math.ceil(pageNo)
 	          $('#pageBtn').append(
 	          "<a id='preBtn' href='#'>&laquo;</a>"
 	          )
 	          for (let i = 0; i < Math.ceil(pageNo); i++) {
+	        	  console.log( Math.ceil(pageNo))
 	            $('#pageBtn').append(
 	              "<a href='#' id='page_" + (i + 1) + "' class='pageNoBtns' onclick='pageClick(this)'>" + (i +
 	                1) + "</a>"
@@ -312,17 +315,19 @@
 
 	    function pageClick(val) {
 	      var no = val.innerText;
+	      
 	      $('.pageNoBtns').removeClass('active')
 	      $(val).addClass('active')
     $.ajax({
 
        type: "GET",
 
-       url: serverRoot + "/json/planner/list",
+       url: serverRoot + "/json/partner/listpageNo=" + no,
 
        dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 
 	   success: function (pldata) {
+		   console.log(pldata);
 		   $.ajax({
 
 		       type: "GET",
@@ -336,10 +341,18 @@
 			   console.log(img_check)
 		   $('#contentList').empty();
 			
-		      for(let plan of pldata) {
-		    	  for(let partner of plan.partners) {
-		    		  /**/
-		    		  console.log(partner)
+		      for(let partner of pldata) {
+		    	  $.ajax({
+
+		    	       type: "GET",
+
+		    	       url: serverRoot + "/json/planner/" + partner.plno,
+
+		    	       dataType: "JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+
+		    		   success: function (plan) {
+		    	  console.log(plan)
+		    		  
 		   $.ajax({
 
 		       type: "GET",
@@ -360,7 +373,9 @@
 		        	 } else if (partner.gender == 2) {
 		        	  genders = '무관';
 		        	 }
-		        	  
+		        	 console.log(partner.length)
+		        	 console.log(plan.length)
+		        	 
 		            $('#contentList').append(
 		              "<figure class='effect type01'>" +
 		              "<span class='r_status open'>모집중</span>" +
@@ -373,13 +388,14 @@
 		              "<a href='../sub09/sub09_view.html?" + plan.no + "'>View more</a>" +
 		              "</figcaption>" +
 		              "</figure>");	
-			   }
+			   } 
 			}
 			   }
 		    		  });
 		    	  }
-		      }
+		      });
 			   } 
+			   }
 		   });
     }
     });

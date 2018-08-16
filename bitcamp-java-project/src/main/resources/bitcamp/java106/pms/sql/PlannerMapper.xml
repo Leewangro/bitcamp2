@@ -41,8 +41,9 @@
   <select id="selectOne" 
           resultMap="PlannerMap" 
           parameterType="map">
-   SELECT TP.PLNO, TP.SDT, TP.EDT, TP.PATA, TP.PART, TP.THEMA
+   SELECT TP.PLNO, TP.SDT, TP.EDT, TP.PATA, TP.PART, TP.THEMA,C.TITL
    FROM TAMLA_PLAN TP
+   left join TAMLA_CONTENT C on TP.PLNO = C.CNO
    where TP.PLNO=#{no}
   </select>
   
