@@ -321,8 +321,7 @@
                     if (schedule[i].plday == d) {
                         for (let j = 0; j < schedule_data.response.body.items.item.length; j++) {
                             if (schedule[i].tno == schedule_data.response.body.items.item[j].contentid) {
-
-
+                            	
                                 $("#day_page" + (d) + "").append(
                                     "<div class='day_sch_box' data-id=" + d + '-' + (i + 1) + ">" +
                                     "<div class='day_sch_num'>" +
@@ -334,7 +333,7 @@
                                     "onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');" +
                                     "style='cursor:pointer;'>" +
                                     "<div class='spot_content_box'>" +
-                                    "<div class='spot_name' onclick='window.open('/ko/city/jeju_312/attraction/jeju-international-airport_7488');' style='cursor:pointer;'>" +
+                                    "<div class='spot_name' onclick='window.open("+'"'+serverRoot+"/tamlaisjeju/html/tourspot/view.html?id="+schedule_data.response.body.items.item[j].contentid+'&'+'item'+'='+schedule_data.response.body.items.item[j].contenttypeid+'&mapx='+schedule_data.response.body.items.item[j].mapx+'&mapy='+schedule_data.response.body.items.item[j].mapy+'"'+")' "+' style="cursor:pointer;">' +
                                     schedule_data.response.body.items.item[j].title + "</div>" +
                                     "<div class='spot_info'>" +
                                     "<div class='tag'>" + schedule_data.response.body.items.item[j].addr1 +

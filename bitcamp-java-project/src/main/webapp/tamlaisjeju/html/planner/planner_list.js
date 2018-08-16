@@ -45,7 +45,9 @@ $.ajax({
 				   for (var t = 0; t < travel_data.length; t++) {
 					   if (travel_schedule.length != 0) {
 					   if (travel_schedule[s].tno == travel_data[t].contentid) {
+						   if (travel_schedule[0].tno == travel_data[t].contentid) {
 						   $("#box"+travel_schedule[s].plno+" img")[0].src = travel_data[t].firstimage2;
+						   }
 						   $("#pltravel"+travel_schedule[s].plno+"").append(
 								   "<span>"+"\u00A0" +mark+"\u00A0"+travel_data[t].title+"</span>"
 								   ) 

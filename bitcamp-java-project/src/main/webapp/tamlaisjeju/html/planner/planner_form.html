@@ -631,6 +631,7 @@
                             data.firstimage2 =
                                 'http://tong.visitkorea.or.kr/cms/resource/93/197693_image3_1.jpg';
                         }
+                        let v = data.contentid;
                         let w = data.contenttypeid;
                         let x = data.mapy;
                         let y = data.mapx;
@@ -645,7 +646,8 @@
                             lat: x,
                             lng: y,
                             img: z,
-                            contenttypeid: w
+                            contenttypeid: w,
+                            contentid: v
                         });
                     }
 
@@ -670,6 +672,7 @@
                             data.firstimage2 =
                                 'http://tong.visitkorea.or.kr/cms/resource/97/689597_image3_1.jpg';
                         }
+                        let v = data.contentid;
                         let w = data.contenttypeid;
                         let x = data.mapy;
                         let y = data.mapx;
@@ -684,7 +687,8 @@
                             lat: x,
                             lng: y,
                             img: z,
-                            contenttypeid: w
+                            contenttypeid: w,
+                            contentid: v
                         }));
                     }
 
@@ -709,6 +713,7 @@
                             data.firstimage2 =
                                 'http://tong.visitkorea.or.kr/cms/resource/92/818792_image3_1.jpg';
                         }
+                        let v = data.contentid;
                         let w = data.contenttypeid;
                         let x = data.mapy;
                         let y = data.mapx;
@@ -723,7 +728,8 @@
                             lat: x,
                             lng: y,
                             img: z,
-                            contenttypeid: w
+                            contenttypeid: w,
+                            contentid: v
                         }));
                     }
 
@@ -748,6 +754,7 @@
                             data.firstimage2 =
                                 'http://tong.visitkorea.or.kr/cms/resource/11/729311_image3_1.jpg';
                         }
+                        let v = data.contentid;
                         let w = data.contenttypeid;
                         let x = data.mapy;
                         let y = data.mapx;
@@ -762,7 +769,8 @@
                             lat: x,
                             lng: y,
                             img: z,
-                            contenttypeid: w
+                            contenttypeid: w,
+                            contentid: v
                         }));
                     }
 
@@ -796,10 +804,9 @@
                 position: new daum.maps.LatLng(datas.lat, datas.lng),
                 image: markerImage
             })
-
             bounds.extend(new daum.maps.LatLng(datas.lat, datas.lng));
             var content = '<div class="customoverlay">' + '<img src=' + datas.img + '>' +
-                '<div>' + datas.title + '</div>' + '</div>' +
+                "<div onclick='window.open("+'"'+serverRoot+"/tamlaisjeju/html/tourspot/view.html?id="+datas.contentid+'&'+'item'+'='+datas.contenttypeid+'&mapx='+datas.lng+'&mapy='+datas.lat+'"'+")'"+'>' +datas.title+'</div>'+'</div>' +
                 '<div class="close" onclick="closeOverlay()" title="닫기"></div>';
             overlay = new daum.maps.CustomOverlay({
                 content: content,
