@@ -11,15 +11,14 @@ all - 여행필수정보 전체
     background-color: rgba(255, 255, 255, 0);
 }
 
-#sub08 #visual{
+#sub08 #visual {
     background-repeat: no-repeat;
     background-image: url(../img/sub08/travelLogBackgroundImg.jpg);
     background-size: cover;
     height: 500px;
 }
 
-
-#sub08 #visual .visual_bg{
+#sub08 #visual .visual_bg {
     display: block;
     position: absolute;
     left: 0;
@@ -35,28 +34,29 @@ all - 여행필수정보 전체
     padding-top: 250px;
     margin: auto;
     text-shadow: 1px 1px 1px #000;
-    background-color: rgb(0,0,0,0.5);
+    background-color: rgb(0, 0, 0, 0.5);
     height: 100%;
 }
-#sub08 #visual #top_title{
+
+#sub08 #visual #top_title {
     color: #fff;
     font-size: 40px;
     padding-bottom: 15px;
 }
 
-#sub08 #visual #top_hashTag{
+#sub08 #visual #top_hashTag {
     color: moccasin;
     font-size: 50px;
     padding-bottom: 15px;
     display: inline-block;
 }
 
-#sub08 #visual #top_partner{
+#sub08 #visual #top_partner {
     color: #fff;
     padding-bottom: 15px;
 }
 
-#sub08 #visual #top_date{
+#sub08 #visual #top_date {
     position: relative;
     margin-bottom: 25px;
     padding-left: 13px;
@@ -74,7 +74,7 @@ all - 여행필수정보 전체
     margin: auto;
 }
 
-#sub08 #visual #delete_div button{
+#sub08 #visual #delete_div button {
     border: 1px solid #ffffff;
     color: #ffffff;
     /* background-color: white; */
@@ -87,31 +87,27 @@ all - 여행필수정보 전체
     z-index: 101;
     -webkit-transition: 0.5s;
 }
+
 #sub08 #visual #delete_div button:hover {
-    
     color: rgb(255, 53, 53);
     border: 1px solid rgb(255, 53, 53);
     background-color: #ffffff00;
-
     /* color: rgb(255, 100, 100); */
 }
 
 #sub08 #visual #delete_div #update:hover {
-    color:#2793db;
+    color: #2793db;
     border: 1px solid #2793db;
     background-color: #ffffff00;
-
     /* color: rgb(255, 100, 100); */
 }
 
 #sub08 #visual #delete_div #list:hover {
-    color:#2793db;
+    color: #2793db;
     border: 1px solid #2793db;
     background-color: #ffffff00;
-
     /* color: rgb(255, 100, 100); */
 }
-
 
 #sub08 #content {
     margin: 0 auto 30px;
@@ -486,9 +482,9 @@ travel_view - 타임라인
     height: 500px;
     background: #000000;
     text-align: left;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #sub08 .t_timeline_content figure.snip0016 * {
@@ -634,6 +630,7 @@ timeline fixed
     position: absolute;
     top: 150px;
 }
+
 #sub08 .loadmap {
     cursor: pointer;
 }
@@ -695,6 +692,46 @@ timeline fixed
 }
 
 /* 작성자 콘텐츠 */
+
+#sub08 .context_writer .share_div {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+#sub08 .context_writer .share_div img {
+    border-radius: 100%;
+    width: 40px;
+    transition: 0.5s;
+}
+
+#sub08 .context_writer .share_div .btn-facebook {
+    margin-left: 15%;
+}
+
+#sub08 .context_writer .share_div .btn-twitter {
+    margin-left: 5%;
+}
+#sub08 .context_writer .share_div .btn-kakaostory {
+    margin-left: 5%;
+}
+#sub08 .context_writer .share_div .btn-naver {
+    margin-left: 5%;
+}
+
+#sub08 .context_writer .share_div img:hover {
+    opacity: 0.7;
+} 
+
+#sub08 .context_writer .share_div .share_text {
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    color: gray;
+}
 
 #sub08 .t_timeline .context_writer .auther_post {
     width: 320px;
@@ -1619,7 +1656,6 @@ body {
     position: absolute;
     color: rgb(194, 194, 194);
     text-align: center;
-    
     cursor: pointer;
 }
 
@@ -1630,7 +1666,6 @@ body {
 #sub08 .editor_container .content_wrap .post_wrap .post_imgbox .post_imgbox_text {
     display: block;
     margin-top: 76px;
-
 }
 
 #sub08 .editor_container .content_wrap .post_wrap .post_text form * {
@@ -2394,8 +2429,8 @@ input,
     }
 }
 
-
 /* 모달지도 */
+
 .search_bar {
     position: fixed;
     background-color: #2168f6;
@@ -2417,28 +2452,32 @@ input,
     border-bottom: 1px solid white;
     color: white;
 }
+
 .search_btn {
     border-radius: 20px;
     border: 1px solid white;
     padding: 2px;
     font-size: 10px;
 }
+
 /* 사진 업로드 */
 
-.imgboxDiv .colorBox{
+.imgboxDiv .colorBox {
     -webkit-transition: all 0.5s;
 }
 
-.imgboxDiv:hover .colorBox{
+.imgboxDiv:hover .colorBox {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     z-index: 2;
 }
+
 .imgboxDiv:hover .upload_remove_btn {
     display: block;
 }
+
 .upload_remove_btn {
     display: none;
     position: absolute;
@@ -2452,6 +2491,7 @@ input,
 .imgboxDiv:hover .upload_main_btn {
     display: block;
 }
+
 .upload_main_btn {
     display: none;
     position: absolute;
@@ -2463,6 +2503,7 @@ input,
     color: #eee;
     font-size: 10px;
 }
+
 .cntbox_remove .cntbox_remove_btn {
     border: 1px solid #eee;
     padding: 5px 10px 5px 10px;
@@ -2476,10 +2517,10 @@ input,
     outline: none;
 }
 
-
 /*******************************
 일차별 셀렉트박스 추가
 *******************************/
+
 .cont_select_box {
     height: 22px;
     border: 1px solid #eee;
@@ -2487,6 +2528,7 @@ input,
     font-size: 12px;
     padding: 2px;
 }
+
 .daySelect_div {
     position: absolute;
     right: 0;
