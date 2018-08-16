@@ -32,8 +32,11 @@
                     <a href="../tourinfo/tourinfo_notice.html">공지</a>
                 </div>
             </div>
+
             <div class="depth_1">
-                <button class="dropbtn">나의 여행
+                <a href="../mytrip/mytrip_all.html">나의 여행</a>
+            </div>
+            <!-- <button class="dropbtn">
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -44,52 +47,52 @@
                     <a href="../mytrip/mytrip_myreview.html">나의 리뷰</a>
                     <a href="../mytrip/mytrip_zzim.html">찜한여행</a>
                     <a href="../mytrip/mytrip_accounts.html">정보수정</a>
-                </div>
-            </div>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-        </div>
-        <!-- topnav end -->
+                </div> 
+        </div>-->
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
-    <!-- menu_area end-->
-    <div class="ico_wrap">
-        <a id="login" class="login" href="#">
-        </a>
-        <a class="sitemap" href="#" onclick="openNav()">
-            <i class="fas fa-bars"></i>
-            <sapn class="ico_txt">사이트맵</sapn>
-        </a>
-        <a class="search" href="#" onclick="openSearch()">
-            <i class="fas fa-search"></i>
-            <sapn class="ico_txt">검색</sapn>
-        </a>
+    <!-- topnav end -->
+</div>
+<!-- menu_area end-->
+<div class="ico_wrap">
+    <a id="login" class="login" href="#">
+    </a>
+    <a class="sitemap" href="#" onclick="openNav()">
+        <i class="fas fa-bars"></i>
+        <sapn class="ico_txt">사이트맵</sapn>
+    </a>
+    <a class="search" href="#" onclick="openSearch()">
+        <i class="fas fa-search"></i>
+        <sapn class="ico_txt">검색</sapn>
+    </a>
 
+</div>
+<!-- ico_wrap end-->
+
+<div id="myNav" class="nav_overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="nav_overlay-content">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
     </div>
-    <!-- ico_wrap end-->
+</div>
 
-    <div id="myNav" class="nav_overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="nav_overlay-content">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
+
+
+
+<div id="myOverlay" class="srh_overlay">
+    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+    <div class="srh_overlay-content">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
     </div>
-
-
-
-
-    <div id="myOverlay" class="srh_overlay">
-        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-        <div class="srh_overlay-content">
-            <form action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-        </div>
-    </div>
+</div>
 
 
 
@@ -110,7 +113,7 @@
     }
 </script>
 <script>
-        $(document).ready(function () {
-            $("#login").load("/bitcamp-java-project/tamlaisjeju/html/include/login.html")
-        });
+    $(document).ready(function () {
+        $("#login").load("/bitcamp-java-project/tamlaisjeju/html/include/login.html")
+    });
 </script>
