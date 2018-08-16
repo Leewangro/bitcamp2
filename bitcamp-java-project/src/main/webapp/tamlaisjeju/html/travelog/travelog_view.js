@@ -31,28 +31,38 @@ $.ajax({
             };
 
         var map2 = new daum.maps.Map(mapContainer2, mapOption); // 지도를 생성합니다
-
+        var imageOption = null;
         var marker2 = null;
         var line = null;
         var paths = []
         imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
-
+        var mapOverlay = [];
         for (var i = 0; i < data.length; i++) {
 
             // 마커 이미지의 이미지 크기 입니다
             imageSize = new daum.maps.Size(24, 35);
-
+            imageOption = {
+                offset: new daum.maps.Point(15, 25)
+            }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다
             // 마커 이미지를 생성합니다    
-            markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+            markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
             console.log(markerImage)
 
             // 마커를 생성합니다
+            console.log(data)
             marker2 = new daum.maps.Marker({
                 position: new daum.maps.LatLng(data[i].lotd, data[i].latd), // 마커를 표시할 위치
                 image: markerImage // 마커 이미지 
             });
-
+            var content1 = '<div class="customoverlay">' + '<div>' + data[i].place +
+            '</div>' + '</div>';
+	        mapOverlay = new daum.maps.CustomOverlay({
+	            content: content1,
+	            position: new daum.maps.LatLng(data[i].lotd, data[i].latd)
+	        });
+	        mapOverlay.setMap(map2);
+            
             paths.push(new daum.maps.LatLng(data[i].lotd, data[i].latd))
 
 
