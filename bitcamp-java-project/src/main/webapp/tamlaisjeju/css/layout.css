@@ -204,6 +204,7 @@
   display: inline-block;
   color: #fff;
   margin: 0 5px;
+  vertical-align: middle;
 }
 
 #header.active .ico_wrap a {
