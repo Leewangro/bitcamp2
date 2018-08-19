@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>탐라는제주 - 숨어 있던 진짜 hot한 제주</title>
-	<link rel="shortcut icon" type="image/x-icon" href="../../img/common/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
 	<meta property="og:title" content="탐라는제주">
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="../../css/layout.css" />
 	<link rel="stylesheet" href="../../css/sub04.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- sweetArert2 -->
+		<!-- sweetArert2 -->
 	<link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
 	<link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css">
 
@@ -45,7 +45,7 @@
 
 			<p class="h3_txt">혼자 하는 여행을 즐기시나요? 아니면 누군가와 함께하는 여행을 원하시나요?</p>
 
-
+	
 			<div class="board_list travelmate">
 				<div id="contentList" class="box_wrap clear">
 
@@ -82,7 +82,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-									<a id="regi" href="../travelmate/travelmate_insert.html" class="btn btn-primary">등록하기</a>
+									<a id="regi" href="travelmate_insert.html" class="btn btn-primary">등록하기</a>
 								</div>
 							</div>
 						</div>
@@ -112,8 +112,6 @@
 	<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../../js/common/common.js"></script>
-	<!-- sweetArert2 -->
-	<script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#header").load("../include/sub_header.html")
@@ -123,6 +121,8 @@
 			 */
 		});
 	</script>
+	<!-- sweetArert2 -->
+	<script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
 	<!-- 모달 취소버튼시 초기화 되는 스크립트 -->
 	<!-- <script type="text/javascript">
@@ -191,8 +191,7 @@
 
 		$(document).ready(function () {
 			$("#mTitle").change(function () {
-				$("#regi").attr("href", "../travelmate/travelmate_insert.html?" + $("#mTitle option:selected").val().split(":")[
-					1].split(
+				$("#regi").attr("href", "travelmate_insert.html?" + $("#mTitle option:selected").val().split(":")[1].split(
 					"/")[0]);
 			});
 		});
@@ -241,24 +240,12 @@
 							}
 						});
 					} else {
-						swal({
-							type: 'error',
-							title: '작성오류',
-							text: '플랜을 먼저 작성해주세요!',
-							showConfirmButton: false,
-							timer: 1000
-						})
+						alert("플랜을 만들어주세요!!");
 						location.href = "planner_form.html";
 					}
 				},
 				error: function (er) {
-					swal({
-                    type: 'error',
-                    title: '오류',
-                    text: '값을 확인할수 없습니다. 다시 시도해보세요',
-                    showConfirmButton: false,
-                    timer: 1000
-                })
+					alert("값을 불러올 수 없습니다. 다시 확인해 주세요");
 				}
 			});
 		});
@@ -386,9 +373,9 @@
 															"<span class='title'>" + partner.title + "</span> " +
 															"<span class='date'>" + plan.startDate + " ~ " + plan.endDate + "</span> " +
 															"<span class='gender'>" + genders + "</span> " +
-															"<span class='capacity'	>" + partner.capa + "명" + "</span> " +
+															"<span class='capacity'	>"+  partner.capa +"명"+ "</span> " +
 															"</b>" +
-															"<a href='../travelmate/travelmate_view.html?" + plan.no + "'>View more</a>" +
+															"<a href='travelmate_view.html?" + plan.no + "'>View more</a>" +
 															"</figcaption>" +
 															"</figure>");
 													}
@@ -425,8 +412,8 @@
 		}
 
 		#travelmate_form .modal-header .close {
-			color: #fff;
-			font-size: 45px;
+			color:#fff;
+			font-size:45px;
 		}
 
 		#travelmate_form #mTitle {
@@ -465,6 +452,7 @@
 		#travelmate_form #mWithNum {
 			padding: 5px;
 		}
+		
 	</style>
 
 </body>
