@@ -3531,7 +3531,8 @@ mytrip  - 마이페이지
 .mytrip_wrap {}
 
 .mytrip_wrap .myinfo_box {
-  background: #f4f4f4;
+  border:1px solid #e5e5e5;
+  /* background: #f4f4f4; */
   margin-bottom: 30px;
 }
 
@@ -3566,6 +3567,7 @@ mytrip  - 마이페이지
   margin: 0 auto;
   border-radius: 100%;
   text-align: center;
+  border:1px solid #f4f4f4;
 }
 
 .mytrip_wrap .myinfo_box .photo_zone .porfile_photo i {
@@ -3605,7 +3607,7 @@ mytrip  - 마이페이지
 
 .mytrip_wrap .mytrip_box_wrap .mytrip_box {
   float: left;
-  width: 23%;
+  width: 31%;
   margin: 0 1%;
 }
 
