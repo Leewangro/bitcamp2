@@ -40,7 +40,7 @@
 		<div id="content" class="content wrapper">
 			<nav class="aside_wrap">
 				<div class="info-left-box">
-					<div class="user-info-box">
+					<!-- <div class="user-info-box">-->
 						<!-- <div class="author-box">
 							<div class="author-img">
 								<a target="_blank" href="#"> <img
@@ -54,7 +54,7 @@
 						<!--author0box -->
 
 
-						<div class="author-page-links">
+						<!-- <div class="author-page-links">-->
 							<!-- <ul>
 								<li><a style="padding-left: 5px;"> <span>여행일정</span> <span
 										id="tra_schedule" class="count">(40)</span>
@@ -70,8 +70,8 @@
 										class="count">(40)</span>
 								</a></li>
 							</ul>-->
-						</div>
-					</div>
+						<!-- </div>-->
+					<!-- </div> -->
 
 					<!--user-left-box-->
 				</div>
@@ -596,7 +596,7 @@
 					url: serverRoot + "/json/travelPlan/update",
 					data: param,
 					success: function (up) {
-						location.href = "sub09_view.html?" + link;
+						location.href = "travelmate_list.html?" + link;
 					},
 					error: function (up) {
 						swal({
@@ -613,7 +613,7 @@
 			}
 		}
 	</script>
-
+	
 
 </body>
 

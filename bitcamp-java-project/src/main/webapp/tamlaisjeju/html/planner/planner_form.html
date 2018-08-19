@@ -37,10 +37,10 @@
             </h1>
             <div class="planner_set">
                 <div class="planner_title">
-                    <input type="text" id="pl_title" placeholder="제목을 입력하세요">
+                    <input type="text" id="pl_title" placeholder="제목">
                 </div>
                 <div class="people">
-                    <input type="text" id="num" placeholder="인원을 입력하세요">명
+                    <input type="text" id="num" placeholder="인원">명
                 </div>
                 <div class="custom-select1" id="people">
                     <select>
@@ -596,8 +596,8 @@
     <script>
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
             mapOption = {
-                center: new daum.maps.LatLng(33.38003512348535, 126.63019113977133), // 지도의 중심좌표
-                level: 9 // 지도의 확대 레벨
+                center: new daum.maps.LatLng(33.34003512348535, 126.90019113977133), // 지도의 중심좌표
+                level: 10 // 지도의 확대 레벨
             };
         var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
         // 마커를 표시할 위치와 title 객체 배열입니다 
@@ -814,9 +814,9 @@
                 position: new daum.maps.LatLng(datas.lat, datas.lng)
             });
             overlay.setMap(map);
-            map.setBounds(bounds);
+            //map.setLevel(10); 
+            //map.setBounds(bounds);
             console.log(bounds);
-            map.setLevel(8);
         }
 
         function closeOverlay() {
@@ -1659,7 +1659,7 @@ $('#schedule_detail_box, .list_box').on('mouseover', '.day_spot_item', function 
                 success: function (data) {
                     sch_data();
                     hash_data();
-                    location.href = "../sub09/sub09_insert.html?" + createPlanIndex;
+                    location.href = "../travelmate/travelmate_insert.html?" + createPlanIndex;
                 },
                 error: function (data) {
                     alert("빈 칸을 채워주세요.");

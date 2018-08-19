@@ -609,7 +609,7 @@
   align-items: center;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1rem; 
   border-top: 1px solid #e9ecef;
 }
 
@@ -627,4 +627,8 @@
   width: 50px;
   height: 50px;
   overflow: scroll;
+}
+#sub09 .spot-note-box p{
+	margin-left: 49%;
+    margin-top: 2%;
 }
