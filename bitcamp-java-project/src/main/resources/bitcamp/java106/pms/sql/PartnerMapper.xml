@@ -48,13 +48,12 @@
   <select id="selectListWithNo" parameterType="int" resultMap="PartnerMap">
   	select * from TAMLA_PARTNER where PLNO=#{no}
   </select>
-  
+   
   
    <select id="selectList" resultMap="PartnerMap"
        parameterType="map">
        select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO, TP.PLNO
     FROM TAMLA_PARTNER TP
-    
     left join TAMLA_CONTENT C on TP.PTNO = C.CNO
        <!-- order by no desc limit #{startRowNo}, #{pageSize} -->
    </select>
@@ -64,6 +63,7 @@
     select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO, TP.PLNO
     FROM TAMLA_PARTNER TP
     left join TAMLA_CONTENT C on TP.PTNO = C.CNO
+    order by TP.PTNO desc
     limit #{startRowNo}, #{pageSize}
   </select>
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
