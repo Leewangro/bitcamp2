@@ -25,6 +25,9 @@
 	<link rel="stylesheet" href="../../css/sub09.css" />
 	<link rel="../../node_modules/lightbox2/dist/css/lightbox.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- sweetArert2 -->
+	<link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css">
 </head>
 
 <body>
@@ -79,7 +82,7 @@
 				<!--info-left-box-->
 
 				<!--info-right-box 시작-->
-				<div class="info-right-box">
+				<!-- div class="info-right-box">
 					<nav class="nav-warp">
 						<ul>
 							<li>
@@ -94,7 +97,7 @@
 							</li>
 						</ul>
 					</nav>
-				</div>
+				</div>-->
 				<!--info-right-box 종료-->
 			</nav>
 			<!-- aside_wrap -->
@@ -229,6 +232,8 @@
 	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../../node_modules/lightbox2/dist/js/lightbox.js"></script>
 	<script src="../../js/common/common.js"></script>
+	<!-- sweetArert2 -->
+	<script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
 	<!--footer -->
 	<script type="text/javascript">
@@ -987,9 +992,9 @@
 						)
 						$('#follow_button').click(function () {
 							swal({
-								position: 'top-end',
+								position: 'center',
 								type: 'success',
-								title: '삭제완료',
+								title: '신청완료',
 								text: '동행신청을 완료하였습니다.',
 								showConfirmButton: false,
 								timer: 1500
