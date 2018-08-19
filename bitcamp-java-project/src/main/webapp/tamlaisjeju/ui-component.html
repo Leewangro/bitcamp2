@@ -1234,19 +1234,29 @@
                     <li>
                         <figure>
                             <img src="img/common/user.png" alt="아이디">
-                            <figcaption>사용자 아이디</figcaption>
+                            <figcaption>
+                                <b>김가람</b>
+                                <span>저랑 일정이 비슷해서 동행 신청해 봐요.</span>
+                            </figcaption>
                         </figure>
                     </li>
                     <li>
                         <figure>
                             <img src="img/common/user.png" alt="아이디">
-                            <figcaption>사용자 아이디</figcaption>
+                            <figcaption>
+                                <b>김기남</b>
+                                <span>우도에 같이가고 싶어요.</span>
+                            </figcaption>
                         </figure>
                     </li>
-                    <figure>
-                        <img src="img/common/user.png" alt="아이디">
-                        <figcaption>사용자 아이디</figcaption>
-                    </figure>
+                    <li>
+                        <figure>
+                            <img src="img/common/user.png" alt="아이디">
+                            <figcaption>
+                                <b>김복진</b>
+                                <span>이번 여행 기대됩니다.</span>
+                            </figcaption>
+                        </figure>
                     </li>
                 </ul>
             </div>
@@ -1325,18 +1335,26 @@ user_profile - 유저정보 UI
 travelmate_list - 동행신청 UI
 **************************************************************************************/
 
-        #travelmate_list {width:28%;}
+        #travelmate_list {
+            width: 28%;
+        }
 
         #travelmate_list ul {}
 
         #travelmate_list ul li {
             border-bottom: 1px solid #e5e5e5;
+            overflow: hidden;
+            vertical-align: middle;
+            padding: 10px 0;
         }
 
-        #travelmate_list ul li figure {}
+        #travelmate_list ul li figure {
+            height: 100%;
+            margin: 0;
+        }
 
         #travelmate_list ul li figure img {
-            display: block;
+            display: inline-block;
             width: 50px;
             height: 50px;
             border-radius: 100%;
@@ -1344,7 +1362,22 @@ travelmate_list - 동행신청 UI
         }
 
         #travelmate_list ul li figcaption {
-            font-size: 20px;
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        #travelmate_list ul li figcaption b {
+            display: block;
+
+        }
+
+        #travelmate_list ul li figcaption span {
+            display: block;
+            font-size: 14px;
+            color: #bbb;
         }
 
 
