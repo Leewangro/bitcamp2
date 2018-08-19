@@ -255,7 +255,7 @@
 				var container = $('.container').height();
 				var content = $('.content').height();
 				if ($(window).scrollTop() > container - content - 30) {
-					if ($(window).scrollTop() > content - 600) {
+					if ($(window).scrollTop() > container - content - 30) {
 						$('nav').removeClass('fixed');
 						$('nav').addClass('absolute');
 						return;
