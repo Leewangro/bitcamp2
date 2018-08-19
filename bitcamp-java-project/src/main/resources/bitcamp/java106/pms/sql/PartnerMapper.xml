@@ -49,7 +49,7 @@
   	select * from TAMLA_PARTNER where PLNO=#{no}
   </select>
    
-  
+   
    <select id="selectList" resultMap="PartnerMap"
        parameterType="map">
        select TP.PTNO, TP.TITL, TP.GEN, TP.CAPA, TP.MNO, TP.PLNO
