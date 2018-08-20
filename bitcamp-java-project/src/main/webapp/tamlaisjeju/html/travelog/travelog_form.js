@@ -713,21 +713,21 @@ async function submits() {
     var contentNo;
     var userId;
 
-    // $.get(serverRoot + "/json/auth/islogin", {}, user => {
-    //     userId = decodeURIComponent(user.id);
-    //     var user = decodeURIComponent(user);
-    //     if (user == 'n') {
-    //         swal({
-    //             type: 'error',
-    //             title: '비정상적인 접근입니다.',
-    //             text: '이전페이지로 돌아갑니다.',
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //         })
-    //         history.back();
+     $.get(serverRoot + "/json/auth/islogin", {}, user => {
+         userId = decodeURIComponent(user.id);
+         var user = decodeURIComponent(user);
+         if (user == 'n') {
+             swal({
+                 type: 'error',
+                 title: '비정상적인 접근입니다.',
+                 text: '이전페이지로 돌아갑니다.',
+                 showConfirmButton: false,
+                 timer: 1500
+             })
+             history.back();
 
-    //     }
-    // })
+         }
+     })
 
 
     const {
