@@ -131,13 +131,21 @@ app.get('/auth/kakao/callback',
         }
 );
 
+app.get('/auth/is', (req, res) => {
+    request(serverRoot2 +"/json/auth/islogin"), {json:true}, (err, resp, body) => {
+        console.log(body);
+    }   
+})
+
 // 구글 인증
 passport.use(new GoogleStrategy({
+    api_key: 'AIzaSyDgj_0GgwgTt3qrtq_SNuZLemzIbqaexJU',
     clientID: '216742254118-u8424bjgqqohd6evp78ar2llqdd5uiv2.apps.googleusercontent.com',
     clientSecret: '-bW-0FIjukXhToiKItkHR--4',
     callbackURL: '/auth/google/callback'
     },
-    function(accessToken, refreshToken, profile, done){
+    function(accessToken, refreshToken, profile, donen, api_key){
+        ggAccessToken = api_key;
         done(null,profile);
         console.log(profile);
         data = profile;
@@ -146,31 +154,33 @@ passport.use(new GoogleStrategy({
 
 app.get('/auth/google', passport.authenticate('google', {scope: ['profile']}));
 
-app.get('/auth/google/callback', passport.authenticate( 'google', { failureRedirect: '/auth' }),
-    function(req, res) {
-            res.redirect('/welcome'); 
-});
+app.get('/auth/google/callback',
+    passport.authenticate('google', 
+        { //successRedirect: '/welcome',
+        failureRedirect: '/auth' }),
+        (req,res) => {
+            console.log(ggAccessToken);
 
+            // 8888 서버에 요청하기
+        request(serverRoot2 +`/json/auth/googleLogin?accessToken=${ggAccessToken}`,{ json: true }, (err, resp, body) => {
+            console.log("8888 서버에서 응답이 왔음!")
+            if (body.status === "success") {
+                console.log(body);
+                res.redirect(serverRoot2 +"/tamlaisjeju/index.html");
+            } else {
+                //res.redirect("http://localhost:8888/bitcamp-java-project/tamlaisjeju/index2.html");
+                console.log('로그인 실패!')
+            }
 
-// 네이버 인증
-passport.use(new NaverStrategy({
-    clientID: 'ot77q82amxODW5DFTVs6',
-    clientSecret: 'vvIVCVGAPk',
-    callbackURL: '/auth/naver/callback'
-    },
-    function(accessToken, refreshToken, profile, done){
-        done(null,profile);
-        console.log(profile);
-        data = profile;
-    }
-));
-
-app.get('/auth/naver', passport.authenticate('naver'));
-
-app.get('/auth/naver/callback',
-    passport.authenticate('naver', { successRedirect: '/welcome',
-                                        failureRedirect: '/auth' }
-    )
+            });
+        }
 );
+
+app.get('/auth/is', (req, res) => {
+    request(serverRoot2 +"/json/auth/islogin"), {json:true}, (err, resp, body) => {
+        console.log(body);
+    }   
+})
+
 
 app.listen(8000);

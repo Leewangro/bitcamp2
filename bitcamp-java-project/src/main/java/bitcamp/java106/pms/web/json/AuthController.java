@@ -149,6 +149,57 @@ public class AuthController {
             return obj;
     }
     
+    @GetMapping("/googleLogin")
+    public Object googleLogin(String accessToken, HttpServletResponse response, HttpSession session) throws Exception{
+        Map<String, Object> obj = new HashMap<>();
+        String id="", name="", email="", gender="", picurl="";
+        SNSMember member = new SNSMember();
+        
+            URL urlstr = new URL("https://www.googleapis.com/plus/v1/people/me?fields=aboutMe%2Cemails%2Cgender%2Cid%2Cimage%2Cname%2Cnickname&key=" + accessToken);
+            System.out.println(urlstr);
+            HttpsURLConnection con = (HttpsURLConnection)urlstr.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuffer buf = new StringBuffer();
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                buf.append(line);
+            }
+            in.close();
+            
+            String jsonResult = StringEscapeUtils.unescapeJson(buf.toString());
+            System.out.println(jsonResult);
+            ObjectMapper mapper = new ObjectMapper();
+            /*Map googleMap = mapper.readValue(jsonResult, Map.class);
+            Map properties = (Map) googleMap.get("properties");
+            Map kakao_account = (Map) googleMap.get("google_account");
+            id = (String) kakaoMap.get("id").toString();
+            name = (String) properties.get("nickname");
+            email = (String) kakao_account.get("email");
+            
+            if(snsMemberDao.selectOne(id) == null) {
+                member.setId(id);
+                member.setName(name);
+                member.setEmail(email);
+                session.setAttribute("userInfo", member);
+                try {
+                    snsMemberDao.insert(member);
+                    } catch(Exception e2 ) {                    
+                        return "fail";
+                    }
+                    obj.put("name", member.getName());
+                    obj.put("status", "success");
+                    return obj;
+            } else 
+            member = snsMemberDao.selectOne(id);
+            session.setAttribute("userInfo", member);
+            System.out.println(session.getAttribute("userInfo"));
+            obj.put("name", member.getName());
+            obj.put("id", member.getId());
+            obj.put("status", "success");
+            this.member = member; */
+            return obj; 
+    }
+    
     @RequestMapping(value="/islogin")
     public Object isLogin(HttpSession session, HttpServletRequest request) {
         HashMap<String, Object> map = new HashMap<>();
