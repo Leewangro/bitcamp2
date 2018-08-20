@@ -37,10 +37,10 @@
             <div class="mytrip_wrap clear">
                 <div class="myinfo_box clear">
                     <h3>
-                        <span class="user_name" id="UserName">정준기</span>님의 제주여행</h3>
+                        <span class="user_name" id="UserName">BokJin Kim</span>님의 제주여행</h3>
                     <div class="photo_zone">
                         <div class="porfile_photo">
-                            <img src="../../img/common/user01.jpg" alt="정준기">
+                            <img src="../../img/common/user02.jpg" alt="김복진">
                         </div>
                         <!-- porfile_photo end-->
                     </div>
@@ -64,6 +64,41 @@
                     <!-- myinfo_zone end-->
                 </div>
                 <!-- myinfo_box end -->
+
+
+
+                <div id="travelmate_list">
+                    <h4>동행 신청자 목록</h4>
+                    <ul>
+                        <li>
+                            <figure>
+                                <img src="../../img/common/user03.jpg" alt="이왕로">
+                                <figcaption>
+                                    <b>이왕로</b>
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <!-- <li>
+                            <figure>
+                                <img src="../../img/common/user.png" alt="아이디">
+                                <figcaption>
+                                    <b>김기남</b>
+                                </figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="../../img/common/user.png" alt="아이디">
+                                <figcaption>
+                                    <b>김복진</b>
+                                </figcaption>
+                            </figure>
+                        </li> -->
+                    </ul>
+                </div>
+
+
+
                 <div class="mytrip_box_wrap clear">
                     <div class="mytrip_box">
                         <h4>
@@ -156,38 +191,7 @@
             </div>
             <!-- mytrip end -->
 
-            <div id="travelmate_list">
-                <h4>동행 신청 리스트</h4>
-                <ul>
-                    <li>
-                        <figure>
-                            <img src="img/common/user.png" alt="아이디">
-                            <figcaption>
-                                <b>김가람</b>
-                                <span>저랑 일정이 비슷해서 동행 신청해 봐요.</span>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <img src="img/common/user.png" alt="아이디">
-                            <figcaption>
-                                <b>김기남</b>
-                                <span>우도에 같이가고 싶어요.</span>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <img src="img/common/user.png" alt="아이디">
-                            <figcaption>
-                                <b>김복진</b>
-                                <span>이번 여행 기대됩니다.</span>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
+
 
 
 
@@ -219,14 +223,58 @@
         });
     </script>
 
+    <style type="text/css">
+        /**************************************************************************************
+travelmate_list - 동행신청 UI
+**************************************************************************************/
 
-    /************************************************************************************** travelmate_list - 동행신청 UI **************************************************************************************/
-    #travelmate_list { width: 28%; } #travelmate_list ul {} #travelmate_list ul li { border-bottom: 1px solid #e5e5e5; overflow:
-    hidden; vertical-align: middle; padding: 10px 0; } #travelmate_list ul li figure { height: 100%; margin: 0; } #travelmate_list
-    ul li figure img { display: inline-block; width: 50px; height: 50px; border-radius: 100%; border: 1px solid #e5e5e5;
-    } #travelmate_list ul li figcaption { display: inline-block; margin-left: 10px; font-size: 16px; font-weight: bold; vertical-align:
-    middle; } #travelmate_list ul li figcaption b { display: block; } #travelmate_list ul li figcaption span { display: block;
-    font-size: 14px; color: #bbb; }
+        #travelmate_list {
+            margin:30px 0;
+        }
+
+        #travelmate_list ul {overflow: hidden;}
+
+        #travelmate_list ul li {
+            border-bottom: 1px solid #e5e5e5;
+            overflow: hidden;
+            vertical-align: middle;
+            padding: 10px 0;
+            width:33.3%;
+            float: left;
+        }
+
+        #travelmate_list ul li figure {
+            height: 100%;
+            margin: 0;
+        }
+
+        #travelmate_list ul li figure img {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            border: 1px solid #e5e5e5;
+        }
+
+        #travelmate_list ul li figcaption {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        #travelmate_list ul li figcaption b {
+            display: block;
+
+        }
+
+        #travelmate_list ul li figcaption span {
+            display: block;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
 </body>
 
 </html>
