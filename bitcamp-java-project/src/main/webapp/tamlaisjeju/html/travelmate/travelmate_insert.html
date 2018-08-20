@@ -345,7 +345,8 @@
 		var maxDay = -1;
 		var contentId = [];
 		var planday = -1;;
-
+		var paths = [];
+		var markers = [];
 		$(document).ready(function () {
 
 
@@ -353,9 +354,9 @@
 				url: serverRoot + "/json/travelPlan/" + link,
 				dataType: "json", // 데이터타입을 json 으로 받아옴
 				success: function (data) {
+					console.log("111111111111");
 					console.log(data);
 					let modalIndex = 0;
-
 					/* $.ajax({
 					url : serverRoot + "/json/planner/selectOne",
 					dataType : "json", // 데이터타입을 json 으로 받아옴
@@ -497,15 +498,24 @@
 										// 마커가 표시될 위치입니다 
 										var markerPosition = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
 											.items.item[j].mapx);
-
+			                        	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+			                            var imageSize = new daum.maps.Size(24, 35);
+			                            var imageOption = {
+			                                      offset: new daum.maps.Point(15, 25)
+			                                  };
+			                            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+			                            
 										// 마커를 생성합니다
 										var marker = new daum.maps.Marker({
-											position: markerPosition
+											position: markerPosition,
+											image: markerImage 
 										});
 
 										// 마커가 지도 위에 표시되도록 설정합니다
 										marker.setMap(map);
 
+										
+										
 										(function (marker, title) {
 											daum.maps.event.addListener(marker, 'mouseover', function () {
 												displayInfowindow(marker, title);
@@ -518,7 +528,8 @@
 										})(marker, data2.response.body.items.item[j].title);
 
 										function displayInfowindow(marker, title) {
-											var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+											var content = '<div style="border-right:1px solid black;border-bottom:1px solid black;background-color:white;color: black;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+						                    title + '</div>';
 
 											infowindow.setContent(content);
 											infowindow.open(map, marker);

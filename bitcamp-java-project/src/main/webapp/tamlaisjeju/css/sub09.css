@@ -632,3 +632,24 @@
 	margin-left: 49%;
     margin-top: 2%;
 }
+
+.customoverlay {
+    position: relative;
+    text-align: center;
+    bottom: 38px;
+    border-radius: 6px;
+    float: left;
+    background-color: #1a7ad9;
+    color: white;
+    max-width: 205px;
+    overflow: hidden;
+    line-height: 1;
+}
+
+
+.customoverlay div {
+    padding: 4px    ; overflow : hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    text-align: center;
+} 

@@ -440,7 +440,8 @@
 
 							$(day_num).text("day " + currentPage);
 							$(day).append(day_num);
-
+							var paths = [];
+							var markers = [];
 							for (let i = 0; i < data.length; i++) {
 								//console.log(data2.response.body.items.item);
 								//console.log(data2.response.body.items.item.length);
@@ -541,13 +542,40 @@
 										// 마커가 표시될 위치입니다 
 										var markerPosition = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
 											.items.item[j].mapx);
-
+		                        	  	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+			                            var imageSize = new daum.maps.Size(24, 35);
+			                            var imageOption = {
+			                                      offset: new daum.maps.Point(15, 25)
+			                                  };
+			                            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
 										// 마커를 생성합니다
 										var marker = new daum.maps.Marker({
-											position: markerPosition
+											position: markerPosition,
+											image: markerImage 
 										});
+										var content1 = '<div class="customoverlay">' + '<div>' + data2.response.body.items.item[j].title +
+						                '</div>' + '</div>';
+							            mapOverlay = new daum.maps.CustomOverlay({
+							                content: content1,
+							                position: new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
+													.items.item[j].mapx)
+							            });
+							            mapOverlay.setMap(map);
+										
+							            paths.push(new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx))
 
-										// 마커가 지도 위에 표시되도록 설정합니다
+										
+							            marker.setMap(map)
+							            markers.push(marker)
+								        var polyline = new daum.maps.Polyline({
+								            path: paths, // 선을 구성하는 좌표배열 입니다
+								            strokeWeight: 4, // 선의 두께 입니다
+								            strokeColor: 'rgb(195, 60, 60);', // 선의 색깔입니다
+								            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+								            strokeStyle: 'solid' // 선의 스타일입니다
+								        });
+								        polyline.setMap(map);
+										// 마커가 지도 위에 표시 되도록 설정합니다
 										marker.setMap(map);
 
 										(function (marker, title) {
@@ -562,7 +590,8 @@
 										})(marker, data2.response.body.items.item[j].title);
 
 										function displayInfowindow(marker, title) {
-											var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+											var content = '<div style="border-right:1px solid black;border-bottom:1px solid black;background-color:white;color: black;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+						                    title + '</div>';
 
 											infowindow.setContent(content);
 											infowindow.open(map, marker);
@@ -649,6 +678,8 @@
 								var infowindow = new daum.maps.InfoWindow({
 									zIndex: 1
 								});
+								var markers = [];
+								var paths = [];
 								for (let i = 0; i < data.length; i++) {
 									for (let j = 0; j < data2.response.body.items.item.length; j++) {
 										if (data[i].tno == data2.response.body.items.item[j].contentid) {
@@ -727,12 +758,39 @@
 											// 마커가 표시될 위치입니다 
 											var markerPosition = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
 												.items.item[j].mapx);
-
+											var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+				                            var imageSize = new daum.maps.Size(24, 35);
+				                            var imageOption = {
+				                                      offset: new daum.maps.Point(15, 25)
+				                                  };
+				                            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
 											// 마커를 생성합니다
 											var marker = new daum.maps.Marker({
-												position: markerPosition
+												position: markerPosition,
+												image: markerImage 
 											});
-
+											var content1 = '<div class="customoverlay">' + '<div>' + data2.response.body.items.item[j].title +
+							                '</div>' + '</div>';
+								            mapOverlay = new daum.maps.CustomOverlay({
+								                content: content1,
+								                position: new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
+														.items.item[j].mapx)
+								            });
+								            mapOverlay.setMap(map);
+											
+								            paths.push(new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx))
+	
+											
+								            marker.setMap(map)
+								            markers.push(marker)
+									        var polyline = new daum.maps.Polyline({
+									            path: paths, // 선을 구성하는 좌표배열 입니다
+									            strokeWeight: 4, // 선의 두께 입니다
+									            strokeColor: 'rgb(195, 60, 60);', // 선의 색깔입니다
+									            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+									            strokeStyle: 'solid' // 선의 스타일입니다
+									        });
+									        polyline.setMap(map);
 											// 마커가 지도 위에 표시되도록 설정합니다
 											marker.setMap(map);
 											(function (marker, title) {
@@ -747,7 +805,8 @@
 											})(marker, data2.response.body.items.item[j].title);
 
 											function displayInfowindow(marker, title) {
-												var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+												var content = '<div style="border-right:1px solid black;border-bottom:1px solid black;background-color:white;color: black;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+							                    title + '</div>'; 
 
 												infowindow.setContent(content);
 												infowindow.open(map, marker);
@@ -809,7 +868,8 @@
 								var infowindow = new daum.maps.InfoWindow({
 									zIndex: 1
 								});
-
+								var paths = [];
+								var markers = [];
 								for (let i = 0; i < data.length; i++) {
 									for (let j = 0; j < data2.response.body.items.item.length; j++) {
 										if (data[i].tno == data2.response.body.items.item[j].contentid) {
@@ -883,12 +943,39 @@
 											// 마커가 표시될 위치입니다 
 											var markerPosition = new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
 												.items.item[j].mapx);
-
+											var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+				                            var imageSize = new daum.maps.Size(24, 35);
+				                            var imageOption = {
+				                                      offset: new daum.maps.Point(15, 25)
+				                                  };
+				                            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
 											// 마커를 생성합니다
 											var marker = new daum.maps.Marker({
-												position: markerPosition
+												position: markerPosition,
+												image: markerImage 
 											});
-
+											var content1 = '<div class="customoverlay">' + '<div>' + data2.response.body.items.item[j].title +
+							                '</div>' + '</div>';
+								            mapOverlay = new daum.maps.CustomOverlay({
+								                content: content1,
+								                position: new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body
+														.items.item[j].mapx)
+								            });
+								            mapOverlay.setMap(map);
+											
+								            paths.push(new daum.maps.LatLng(data2.response.body.items.item[j].mapy, data2.response.body.items.item[j].mapx))
+	
+											
+								            marker.setMap(map)
+								            markers.push(marker)
+									        var polyline = new daum.maps.Polyline({
+									            path: paths, // 선을 구성하는 좌표배열 입니다
+									            strokeWeight: 4, // 선의 두께 입니다
+									            strokeColor: 'rgb(195, 60, 60);', // 선의 색깔입니다
+									            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+									            strokeStyle: 'solid' // 선의 스타일입니다
+									        });
+									        polyline.setMap(map);
 											// 마커가 지도 위에 표시되도록 설정합니다
 											marker.setMap(map);
 
@@ -904,7 +991,8 @@
 											})(marker, data2.response.body.items.item[j].title);
 
 											function displayInfowindow(marker, title) {
-												var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+												var content = '<div style="border-right:1px solid black;border-bottom:1px solid black;background-color:white;color: black;text-align:center;width:150px;padding:5px;z-index:1;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' +
+							                    title + '</div>';
 
 												infowindow.setContent(content);
 												infowindow.open(map, marker);
