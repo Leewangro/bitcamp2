@@ -13,6 +13,7 @@ public interface HashTagService {
     int update(HashTag hashTag);
     int delete(int no);
     List<HashTag> selectOne(int no);
+    List<HashTag> selectOneWithHash(String content);
 }
 
 //ver 53 - 인터페이스 추가

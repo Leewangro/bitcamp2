@@ -59,6 +59,14 @@ public class HashTagController {
         
     }
     
+    @RequestMapping("hash/{content}")
+    public List<HashTag> selectOneWithHash(@PathVariable String content) throws Exception {
+        
+        System.out.println(content);
+        return hashTagService.selectOneWithHash(content);
+        
+    }
+    
 }
 
 //ver 53 - DAO 대신 Service 객체 사용

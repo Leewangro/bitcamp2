@@ -8,13 +8,28 @@ public class HashTag implements Serializable {
     private int cno;
     private String content;
     private int hno;
+    private int tourno;
+    
+    
     
     
     @Override
     public String toString() {
-        return "HashTag [cno=" + cno + ", content=" + content + ", hno=" + hno + "]";
+        return "HashTag [cno=" + cno + ", content=" + content + ", hno=" + hno + ", tourno=" + tourno + "]";
     }
-    
+
+    public int getTourno() {
+        return tourno;
+    }
+
+
+
+    public void setTourno(int tourno) {
+        this.tourno = tourno;
+    }
+
+
+
     public int getHno() {
         return hno;
     }

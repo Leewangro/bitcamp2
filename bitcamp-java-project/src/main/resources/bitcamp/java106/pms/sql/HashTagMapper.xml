@@ -38,6 +38,15 @@
    WHERE HT.CNO=#{cno}
   </select>
   
+  <select id="selectOneWithHash" 
+          resultMap="HashTagMap" 
+          parameterType="map">
+   SELECT HT.CNO, HT.HASHTAG, HT.HNO, TTP.TOURNO
+   FROM TAMLA_HASHTAG HT
+   left join TAMLA_TRAVEL_PLAN TTP on HT.CNO = TTP.PLNO
+   WHERE HT.HASHTAG=#{content}
+  </select>
+  
   
   
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우

@@ -47,6 +47,11 @@ public class HashTagServiceImpl implements HashTagService {
     public List<HashTag> selectOne(int no) {
         return hashTagDao.selectOne(no);
     }
+
+    @Override
+    public List<HashTag> selectOneWithHash(String content) {
+        return hashTagDao.selectOneWithHash(content);
+    }
 }
 
 //ver 53 - 클래스 추가

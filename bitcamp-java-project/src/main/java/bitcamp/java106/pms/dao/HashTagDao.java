@@ -11,6 +11,7 @@ public interface HashTagDao {
     int insert(HashTag hashTag);
     int update(HashTag hashTag);
     List<HashTag> selectOne(int no);
+    List<HashTag> selectOneWithHash(String content);
 }
 
 //ver 52 - 페이지 단위로 데이터 가져오기
