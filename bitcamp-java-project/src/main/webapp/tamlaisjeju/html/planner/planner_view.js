@@ -12,6 +12,7 @@
 
 	    $.get(serverRoot + "/json/auth/islogin", {}, user => {
 	        memberId = decodeURIComponent(user.id);
+	        
 	    })
  
  
@@ -21,6 +22,7 @@
  	   trHTML = templateFn(data);
        $(trHTML).appendTo('#tableBody');
        dayCal();
+       hashTag();
 });
  
 
@@ -41,6 +43,8 @@ $.getJSON(serverRoot + "/json/content/"+link, (data2) => {
         location.href = 'planner_list.html'
     })
 });
+ });
+ function hashTag() {
  $.getJSON(serverRoot + "/json/hashTag/"+link, (data3) => {
 	console.log(data3);
 	for (var h = 0; h < data3.length; h++) {
@@ -54,4 +58,4 @@ $.getJSON(serverRoot + "/json/content/"+link, (data2) => {
 	}*/
 
 });
-});
+ }
