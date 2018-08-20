@@ -63,6 +63,7 @@ public class HashTagController {
     public List<HashTag> selectOneWithHash(@PathVariable String content) throws Exception {
         
         System.out.println(content);
+        System.out.println(hashTagService.selectOneWithHash(content));
         return hashTagService.selectOneWithHash(content);
         
     }
