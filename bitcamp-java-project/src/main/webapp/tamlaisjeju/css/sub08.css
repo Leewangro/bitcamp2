@@ -49,6 +49,7 @@ all - 여행필수정보 전체
     font-size: 50px;
     padding-bottom: 15px;
     display: inline-block;
+    z-index: 999;
 }
 
 #sub08 #visual #top_partner {
