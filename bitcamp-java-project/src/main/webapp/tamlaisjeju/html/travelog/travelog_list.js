@@ -187,7 +187,7 @@ $(document).ready(function () {
                 for (let j = 0; j < data.length; j++) {
 
                   $('#createDate_' + addData[i].tlno).append(
-                    "<b>" + data[j].content + " <b>"
+                    "<a style='z-index:9999;font-weight: bold;' target='_blank' href=../../search.html?"+data[j].content+">" + data[j].content + " <a>"
                   )
                 }
 

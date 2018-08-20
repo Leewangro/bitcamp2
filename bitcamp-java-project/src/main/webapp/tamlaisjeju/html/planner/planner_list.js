@@ -66,9 +66,9 @@ $.ajax({
 			 console.log(travel_hash.length)
 			   for (var s = 0; s < travel_hash.length; s++) {
 					   if (travel_hash.length != 0) {
-						   console.log(travel_hash[s].content)
+						   console.log(travel_hash[s].content) 
 						   $("#hashtag"+travel_hash[s].cno+"").append(
-								   "<a href=../hashphoto/hashphoto_view.html?"+travel_hash[s].content+">"+travel_hash[s].content+"</a>"
+								   "<a target='_blank' href=../../search.html?"+travel_hash[s].content+">"+travel_hash[s].content+"</a>"
 								   )  
 					   }
 			   }

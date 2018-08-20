@@ -15,6 +15,7 @@
     <id column="HNO" property="hno"/>
     <result column="HASHTAG" property="content"/>
     <result column="CNO" property="cno"/>
+    <result column="TITL" property="title"/>
   </resultMap>
   
   <!-- SQL 문 id를 설정할 때 SQL문을 사용하는 메서드 이름과 같게하면
@@ -41,14 +42,13 @@
   <select id="selectOneWithHash" 
           resultMap="HashTagMap" 
           parameterType="map">
-   SELECT HT.CNO, HT.HASHTAG, HT.HNO, TTP.TOURNO
+   SELECT HT.CNO, HT.HASHTAG, HT.HNO, TTP.TOURNO, TTLC.PHOTO, TC.TITL
    FROM TAMLA_HASHTAG HT
    left join TAMLA_TRAVEL_PLAN TTP on HT.CNO = TTP.PLNO
+   left join TAMLA_TRAVEL_LOG_CONTENT TTLC on HT.CNO = TTLC.TLNO
+      left join TAMLA_CONTENT TC on HT.CNO = TC.CNO
    WHERE HT.HASHTAG=#{content}
   </select>
-  
-  
-  
   <!-- 파라미터의 타입이 primitive type이나 wrapper 클래스, String 클래스인 경우
        값을 꺼낼 때 프로퍼티 이름을 마음대로 해도 된다.
   -->

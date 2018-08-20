@@ -36,11 +36,11 @@
             </div>
             <div id="content" class="content wrapper">
                 <div id="search_result">
-                    <h3><span>#힐링</span> 검색결과</h3>
+                    <h3><span id="search_titl">#힐링</span> 검색결과</h3>
                     <div class="planner_result result_list">
                         <h4>플래너</h4>
-                        <ul>
-                            <li>
+                        <ul id="planner_search">
+                            <!-- <li>
                                 <a href="#">
                                     <img src="img/common/board_img.gif" alt="이미지">
                                 </a>
@@ -75,18 +75,18 @@
                                     <a href="#">세화해변</a>
                                 </b>
                                 <span>인생 사진을 남길 수 있는 인생 바다</span>
-                            </li>
+                            </li> -->
                         </ul>
-                        <div class="btn_wrap">
+                     <!--    <div class="btn_wrap">
                             <a class="btn btn-ani btn-list" href="#" title="새창열림" target="_blank">더보기
                                 <i class="fas fa-th-list"></i>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="travelog_result result_list">
                         <h4>여행기</h4>
-                        <ul>
-                            <li>
+                        <ul id="log_search">
+                            <!-- <li>
                                 <a href="#">
                                     <img src="img/common/board_img.gif" alt="이미지">
                                 </a>
@@ -121,13 +121,13 @@
                                     <a href="#">세화해변</a>
                                 </b>
                                 <span>인생 사진을 남길 수 있는 인생 바다</span>
-                            </li>
+                            </li> -->
                         </ul>
-                        <div class="btn_wrap">
+                        <!-- <div class="btn_wrap">
                             <a class="btn btn-ani btn-list" href="#" title="새창열림" target="_blank">더보기
                                 <i class="fas fa-th-list"></i>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="travelmate_result result_list">
                         <h4>동행</h4>
@@ -285,7 +285,119 @@
                 border: 1px solid #e5e5e5;
             }
         </style>
-
+<script>
+        var travel_data = []; 
+        var travel_log_photo = [];
+        var travel_plan_photo = [];
+        var link = decodeURIComponent(document.location.href.split("?")[1]);
+        $('#search_titl')[0].textContent = link;
+        console.log(link);
+        var link1 = link.split("#")[1];
+                console.log(link1)
+        var hash = [];
+            $.ajax({
+                url: serverRoot + "/json/hashTag/hash/"+"%23"+link1,
+                dataType: "json", // 데이터타입을 json 으로 받아옴
+                success: function (main) {
+                    hash = main;
+                    console.log(hash)
+                    $.ajax({
+                           url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=1200&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
+                           dataType: "json", 
+                           success: function (data) {
+                               travel_data = data.response.body.items.item
+                               console.log(travel_data)
+                               hashphoto()
+                    }
+                    });
+                },
+                error: function (er) {
+                    swal({
+                        type: 'error',
+                        title: '오류',
+                        text: '값을 확인할수 없습니다. 다시 시도해보세요',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            });
+            
+            function hashphoto() {
+                    for (var j = 0; j < hash.length; j++) {
+                        if (hash[j].tourno == 0) {
+                            travel_log_photo.push(hash[j])
+                            console.log(travel_log_photo)
+                            
+                        } else {
+                            travel_plan_photo.push(hash[j])
+                        } 
+                        }
+                    travel_plan_pho();
+                    travel_log_pho();
+                     function travel_log_pho() {
+                            var arr = [];
+                            var no = 0;
+                            for (let i in travel_log_photo) {
+                                if (no != travel_log_photo[i].cno) {
+                                    arr.push(travel_log_photo[i])
+                                    console.log(arr)
+                                }
+                                no = travel_log_photo[i].cno
+                            }
+                            for (var z = 0; z < arr.length; z++) {
+                                console.log(arr.length)
+                            $('#log_search').append(
+                                    "<li>" + 
+                                    "<a href=html/planner/planner_view.html?"+arr[z].cno+">" +
+                                        "<img src="+serverRoot+"/files/"+arr[z].photo+">" +
+                                    "</a>" +
+                                    "<b>" +
+                                        "<a href=html/travelog/travelog_view.html?"+arr[z].cno+">"+arr[z].title+"</a>" +
+                                    "</b>" +
+                                    "</li>"
+                                  )
+                            }
+                            
+                        }
+                     function travel_plan_pho() {
+                         var arr1 = [];
+                         var no = 0;
+                         for (let i in travel_plan_photo) {
+                             if (no != travel_plan_photo[i].cno) {
+                                 /* for (var j = 0; j < travel_data.length; j++) {
+                                     if (travel_plan_photo[i].tourno == travel_data[j].contentid) {
+                                         travel_plan_photo[i].firstimage = travel_data[j].firstimage;
+                                     } */
+                                 arr1.push(travel_plan_photo[i])
+                                 }
+                             no = travel_plan_photo[i].cno
+                             }
+                            for (var k = 0; k < arr1.length; k++) {
+                                 for (let data of travel_data) {
+                                     if (arr1[k].tourno == data.contentid) {
+                                         arr1[k].firstimage = data.firstimage;
+                                     }
+                                 }
+                             }
+                                 console.log(arr1);
+                                 for (var l = 0; l < arr1.length; l++) {
+                                	 console.log(arr1.length)
+                                 $('#planner_search').append(
+                                		 "<li>" + 
+                                         "<a href=html/planner/planner_view.html?"+arr1[l].cno+">" +
+                                             "<img src="+arr1[l].firstimage+">" +
+                                         "</a>" +
+                                         "<b>" +
+                                             "<a href=html/planner/planner_view.html?"+arr1[l].cno+">"+arr1[l].title+"</a>" +
+                                         "</b>" +
+                                         //"<span>섬나무 숲에서 즐기는 산림욕</span>"
+                                         "</li>"
+                                       )
+                                 }
+                         }
+                         
+            }
+    </script>
 
 
     </body>
