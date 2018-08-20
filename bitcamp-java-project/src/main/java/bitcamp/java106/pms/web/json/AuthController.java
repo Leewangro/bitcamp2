@@ -96,7 +96,8 @@ public class AuthController {
             obj.put("id", member.getId());
             obj.put("status", "success");
             this.member = member;
-            return obj;
+            return obj
+                    ;
     }
     
     @GetMapping("/kakaoLogin")

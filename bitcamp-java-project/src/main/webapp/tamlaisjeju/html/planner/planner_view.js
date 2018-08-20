@@ -49,7 +49,7 @@ $.getJSON(serverRoot + "/json/content/"+link, (data2) => {
 	console.log(data3);
 	for (var h = 0; h < data3.length; h++) {
 	$('#hashTag').append(
-			"<div class='hashTagCont'>"+data3[h].content+"</div>"
+			"<a style='z-index:9999;font-weight: bold;' target='_blank' href=../../search.html?"+data3[h].content+">"+data3[h].content+" <a>"
 			)
 	}
 			/*	
@@ -59,3 +59,4 @@ $.getJSON(serverRoot + "/json/content/"+link, (data2) => {
 
 });
  }
+ 

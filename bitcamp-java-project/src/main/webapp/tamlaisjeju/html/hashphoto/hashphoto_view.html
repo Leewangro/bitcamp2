@@ -68,16 +68,29 @@
 
 
 	<script>
+	    var travel_data = []; 
+	    var travel_log_photo = [];
+	    var travel_plan_photo = [];
 		var link = decodeURIComponent(document.location.href.split("?")[1]);
+		console.log(link)
 		var link1 = link.split("#")[1];
 				console.log(link1)
 	    var hash = [];
-			$.ajax({ 
+			$.ajax({
 				url: serverRoot + "/json/hashTag/hash/"+"%23"+link1,
 				dataType: "json", // 데이터타입을 json 으로 받아옴
 				success: function (main) {
 					hash = main;
 					console.log(hash)
+					$.ajax({
+					       url: "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=AghOwOn9iSRKD4eyNq4IepTd%2F3cDZ%2FWIuLq3zY4QHRE3OKKaRIRd6XHMc%2F66smnwRpZ0eSsflIyqdd9yrL30Dg%3D%3D&pageNo=1&startPage=1&numOfRows=1200&pageSize=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=39&listYN=Y&_type=json",
+					       dataType: "json", 
+					       success: function (data) {
+					           travel_data = data.response.body.items.item
+					           console.log(travel_data)
+					           hashphoto()
+					}
+					});
 				},
 				error: function (er) {
 					swal({
@@ -89,6 +102,51 @@
 					})
 				}
 			});
+			
+			function hashphoto() {
+					for (var j = 0; j < hash.length; j++) {
+						if (hash[j].tourno == 0) {
+							travel_log_photo.push(hash[j])
+							console.log(travel_log_photo)
+							travel_log_pho();
+						} else {
+							travel_plan_photo.push(hash[j])
+						} travel_plan_pho(); 
+						}
+					 function travel_log_pho() {
+					        var arr = [];
+					        var no = 0;
+					        for (let i in travel_log_photo) {
+					            if (no != travel_log_photo[i].cno) {
+					                arr.push(travel_log_photo[i])
+					                console.log(arr)
+					            }
+					            no = travel_log_photo[i].cno
+					        }
+					    }
+					 function travel_plan_pho() {
+						 var arr1 = [];
+                         var no = 0;
+                         for (let i in travel_plan_photo) {
+                             if (no != travel_plan_photo[i].cno) {
+                            	 /* for (var j = 0; j < travel_data.length; j++) {
+                            		 if (travel_plan_photo[i].tourno == travel_data[j].contentid) {
+                            			 travel_plan_photo[i].firstimage = travel_data[j].firstimage;
+                            		 } */
+                                 arr1.push(travel_plan_photo[i])
+                            	 }
+                             no = travel_plan_photo[i].cno
+                             }
+                            for (var k = 0; k < arr1.length; k++) {
+	                             for (let data of travel_data) {
+	                            	 if (arr1[k].tourno == data.contentid) {
+	                                     arr1[k].firstimage = data.firstimage;
+	                                 }
+	                             }
+                             }
+	                             console.log(arr1);
+                         }
+			}
 	</script>
 
 </body>

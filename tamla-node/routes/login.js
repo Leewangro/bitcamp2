@@ -1,4 +1,5 @@
 // url경로
+//var serverRoot2 = 'http://jungjoongi.com:8888/pms'
 var serverRoot2 = 'http://localhost:8888/bitcamp-java-project';
 // var serverRoot2 = 'http://tamlaisjeju.java106.com:8888/bitcamp-java-project'
 
