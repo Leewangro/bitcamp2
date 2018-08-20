@@ -188,7 +188,9 @@ $(document).ready(function () {
                     "<h5 id='top_hashTag'>" + data[i].content + "</h5>"
                 )
             }
-
+            $('#top_hashTag').click(function() {
+            	location=serverRoot+"/tamlaisjeju/search.html?"+this.textContent
+            })
         }
     })
     $.ajax({
