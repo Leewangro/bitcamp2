@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/layout.css" />
+    <!-- sweetArert2 -->
+    <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css">
 </head>
 
 <body>
@@ -69,10 +72,12 @@
 
                 <div id="travelmate_list">
                     <h4>동행 신청자 목록</h4>
+                    <p class="txt-tip">
+                        <span class="excep_icon">i</span> 신청자를 선택하면 문자가 발송됩니다.</p>
                     <ul>
                         <li>
                             <figure>
-                                <a href="#">
+                                <a href="#" id="sms_button">
                                     <img src="../../img/common/user03.jpg" alt="이왕로">
                                     <figcaption>
                                         <b>이왕로</b>
@@ -214,6 +219,11 @@
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../js/common/common.js"></script>
 
+
+
+    <!-- sweetArert2 -->
+    <script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $("#header").load("../include/sub_header.html")
@@ -222,6 +232,20 @@
             /* id 지정을 통해서도 가능합니다. 
              $("#header").load("header.html #navbar")
              */
+        });
+    </script>
+
+    <script>
+        $('#sms_button').click(function () {
+            swal({
+                position: 'center',
+                type: 'success',
+                title: '문자가 발송되었습니다.',
+                text: '문자가 발송되었습니다.',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            //$(this).addClass('active').text('문자 전송 완료');
         });
     </script>
 
@@ -251,6 +275,11 @@ travelmate_list - 동행신청 UI
             height: 100%;
             margin: 0;
         }
+
+        #travelmate_list ul li figure a {
+            display: block;
+        }
+
 
         #travelmate_list ul li figure img {
             display: inline-block;
